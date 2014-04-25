@@ -4,4 +4,7 @@ DOOOEEEIII
 
 xxxx
 
-<div style="color:green;">teeest</div>
+<script>
+window.onload = function(){
+	alert("Giechel");
+}</script>
