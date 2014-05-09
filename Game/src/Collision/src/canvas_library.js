@@ -1,23 +1,25 @@
 var WIDTH;
 var HEIGHT;
 var ctx;
-
+var c;
+var ci;
 
 function init() {
-  var c = document.getElementById("canvas");  
+  c = document.getElementById("canvas"); 
+  
+  ci = new Circle(c);
+  ci.x = 320;
+  ci.y = 100;
+  ci.dx = 2;
+  ci.dy = 4;
+  ci.radius = 10; 
+
   ctx = c.getContext("2d");
   WIDTH = c.width;
   HEIGHT = c.height;
   return setInterval(draw, 10);
 }
- 
-function circle(x,y,r) {
-  ctx.beginPath();
-  ctx.arc(x, y, r, 0, Math.PI*2, true);
-  ctx.closePath();
-  ctx.fill();
-}
- 
+  
 function rect(x,y,w,h) {
   ctx.beginPath();
   ctx.rect(x,y,w,h);
