@@ -3,8 +3,8 @@ window.onload = function(){
 }
 
 //Circle
-var x = 150;
-var y = 150;
+var x = 320;
+var y = 100;
 var dx = 2;
 var dy = 4;
 
@@ -47,9 +47,20 @@ function checkWallCollision(){
 }
 
 function checkPoleCollision(){
-	if (x + dx > rx && x + dx < rx+width && y + dx > ry && y + dx < ry+height){
-		dx = -dx;
+	
+	//If ball hits top of pole
+	if ((x + dx >= rx && x + dx <= rx+width) && (y + dy == ry)){
 		dy = -dy;
 	}
-	//TODO: checken welke kant je raakt, aan de hand van dat het weerkaatsen goed zetten.
+
+	//If ball hits left side of pole
+
+	//If ball hits right side of pole
+
+	//If ball hits bottom of pole	
+	else if ((x + dx >= rx && x + dx <= rx+width) && (y + dy == ry + height)){
+		dy = -dy;
+	}
+	
+
 }

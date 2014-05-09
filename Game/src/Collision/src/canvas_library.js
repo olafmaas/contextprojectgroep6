@@ -1,8 +1,3 @@
-
-var x = 150;
-var y = 150;
-var dx = 2;
-var dy = 4;
 var WIDTH;
 var HEIGHT;
 var ctx;
