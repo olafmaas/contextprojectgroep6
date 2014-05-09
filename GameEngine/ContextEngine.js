@@ -1,14 +1,67 @@
-function Game(update){
-	var canv = createCanvas().getContext("2d");
+function Game(load, update, draw){
+	var width = document.body.clientWidth;
+	var height = document.body.clientHeight;
 	var backGroundColor = "#000000";
-	var running = true;
 
 	parentUpdate = function(){
+		updateGameDimensions();
+
 		update();
-		sleep(17, parentUpdate);
+
+		parentDraw();
 	}
 
-	parentUpdate();
+	parentDraw = function(){
+		var ctx = canv.getContext("2d");
+
+		clearCanvas();
+		draw(ctx);
+
+	}
+
+	createCanvas = function(){
+		var canv = document.createElement("canvas");
+		canv.id = 'gameCanvas';
+
+		canv.width = width;
+		canv.height = height;
+
+		document.body.appendChild(canv);
+
+		return document.getElementById("gameCanvas");
+	}
+
+	updateGameDimensions = function(){
+		width=window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+
+		height=window.innerHeight
+		|| document.documentElement.clientHeight
+		|| document.body.clientHeight;
+
+		canv.width = width;
+		canv.height = height;
+	}
+
+	clearCanvas = function(){
+		var ctx = canv.getContext("2d");
+		ctx.clearRect(0, 0, width, height);
+		ctx.fillStyle = backGroundColor;
+		ctx.fillRect(0, 0, width, height);
+	}
+
+	Initialize = function(){
+		canv = createCanvas();
+	}
+
+	Boot = function(){
+		load();
+		setInterval(parentUpdate, 17);
+	}
+
+	Initialize();
+	Boot();
 }
 
 function Sprite(){
@@ -23,19 +76,4 @@ function Sprite(){
 	this.Draw = function(){
 
 	}
-}
-
-function createCanvas(){
-	var canv = document.createElement("canvas");
-	canv.id = 'gameCanvas';
-
-	document.body.appendChild(canv);
-
-	return document.getElementById("gameCanvas");
-}
-
-function sleep(millis, callback) {
-    setTimeout(function()
-            { callback(); }
-    , millis);
 }
