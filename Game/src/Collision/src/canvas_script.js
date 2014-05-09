@@ -1,10 +1,4 @@
 
-//Rectangle
-var rx = 400;
-var ry = 300;
-var width = 50;
-var height = 100;
-
 function draw() {
 	clear();
 	
@@ -14,7 +8,7 @@ function draw() {
 
 	//Check collisions
 	checkWallCollision(ci);
-  	checkPoleCollision(ci);
+  	checkPoleCollision(ci, rc);
 
   	//Move ball around
   	ci.move();
@@ -22,11 +16,10 @@ function draw() {
 
 function drawBouncingBall(){
   ci.draw();
-  //circle(x, y, 10);
 }
 
 function drawPole(){
-  rect(rx, ry, width, height);
+  rc.draw();
 }
 
 function checkWallCollision(_obj){
@@ -37,15 +30,15 @@ function checkWallCollision(_obj){
     _obj.dy = -_obj.dy;
 }
 
-function checkPoleCollision(_obj){
+function checkPoleCollision(_obj, _pole){
 	
 	//If ball hits top or bottom of pole
-	if ( (_obj.x + _obj.dx >= rx && _obj.x + _obj.dx <= rx + width) && (_obj.y + _obj.dy == ry || _obj.y + _obj.dy == ry + height) ){
+	if ( (_obj.x + _obj.dx >= _pole.x && _obj.x + _obj.dx <= _pole.x + _pole.width) && (_obj.y + _obj.dy == _pole.y || _obj.y + _obj.dy == _pole.y + _pole.height) ){
 		_obj.dy = -_obj.dy;
 	}
 
 	//If ball hits left or right side of pole
-	else if ( (_obj.x + _obj.dx == rx || _obj.x + _obj.dx == rx + width) && (_obj.y + _obj.dy >= ry && _obj.y + _obj.dy <= ry + height) ){
+	else if ( (_obj.x + _obj.dx == _pole.x || _obj.x + _obj.dx == _pole.x + _pole.width) && (_obj.y + _obj.dy >= _pole.y && _obj.y + _obj.dy <= _pole.y + _pole.height) ){
 		_obj.dx = -_obj.dx;
 	}
 }
