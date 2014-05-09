@@ -49,16 +49,22 @@ function checkWallCollision(){
 function checkPoleCollision(){
 	
 	//If ball hits top of pole
-	if ((x + dx >= rx && x + dx <= rx+width) && (y + dy == ry)){
+	if ( (x + dx >= rx && x + dx <= rx+width) && (y + dy == ry) ){
 		dy = -dy;
 	}
 
 	//If ball hits left side of pole
-
+	else if ( (x + dx == rx) && (y + dy >= ry && y + dy <= ry + height) ){
+		dx = -dx;
+	}
+	
 	//If ball hits right side of pole
+	else if ( (x + dx == rx + width) && (y + dy >= ry && y + dy <= ry + height) ){
+		dx = -dx;
+	}
 
 	//If ball hits bottom of pole	
-	else if ((x + dx >= rx && x + dx <= rx+width) && (y + dy == ry + height)){
+	else if ( (x + dx >= rx && x + dx <= rx+width) && (y + dy == ry + height) ){
 		dy = -dy;
 	}
 	
