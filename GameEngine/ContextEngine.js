@@ -68,12 +68,15 @@ function Sprite(){
 	var texture;
 	var position = {x: 0, y: 0};
 	var origin = {x: 0, y: 0};
+	var rotation = 0;
+	var scale = {x: 1, y: 1};
 
-	this.LoadContent = function(texturePath){
-
+	LoadContent = function(texturePath){
+		this.texture = new Image();
+		this.texture.src = texturePath;
 	}
 
-	this.Draw = function(){
-
+	Draw = function(canvasContext){
+		canvasContext.drawImage(this.texture, position.x, position.y);
 	}
 }
