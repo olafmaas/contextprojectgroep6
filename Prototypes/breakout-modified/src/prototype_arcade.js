@@ -9,17 +9,18 @@ function preload() {
     //Background image
     game.load.image('starfield', 'sprites/starfield.jpg');
 
+    //pole and shield sprites
+    game.load.image('pole', 'sprites/pole.png');
+    game.load.image('shield', 'sprites/shield.png')
 }
 
 //Variables
 
 //Groups
 var balls;
-var shields;
-var poles;
-var explosions;
+var pole;
 
-var nrOfBalls = 2; //Number of balls, currently 2
+var nrOfBalls = 3; //Number of balls, currently 2
 
 var ball;
 var shield;
@@ -48,33 +49,25 @@ function create(){
 	//Game background
 	s = game.add.tileSprite(0, 0, 800, 600, 'starfield');
 
-	//Adds a group for the poles
-	poles = game.add.group();
-    poles.enableBody = true;
-    poles.physicsBodyType = Phaser.Physics.ARCADE;
-
     //Add a group for the balls
     balls = game.add.group();
     balls.enableBody = true;
     balls.physicsBodyType = Phaser.Physics.ARCADE;
 
-    //Adds a group for the explosions
-    explosions = game.add.group();
-    explosions.createMultiple(30, 'kaboom');
-	explosions.forEach(setupExplosion, this);
-
-    var pole;
     //add 1 pole (x, y, breakout, image)
  	//this pole should be protected
-	pole = poles.create(game.world.centerX, 250, 'breakout', 'brick_1_1.png');
+    pole = game.add.sprite(game.world.centerX, game.world.centerY, 'pole');
+    game.physics.enable(pole, Phaser.Physics.ARCADE);
     pole.body.bounce.set(1);
     pole.body.immovable = true;
+    pole.anchor.setTo(0.5, 0.5);
 
     //Add a shield
-    shield = game.add.sprite(game.world.centerX, 500, 'breakout', 'paddle_big.png');
+    shield = game.add.sprite(game.world.centerX, game.world.centerY, 'breakout', 'paddle_big.png');
+    //shield = game.add.sprite(game.world.centerX, game.world.centerY, 'shield');
     shield.anchor.setTo(0.5, 0.5); //anchor the shield
 
-    //Enable ARCADE physics
+    //Enable ARCADE physics for shield
     game.physics.enable(shield, Phaser.Physics.ARCADE);
 
     //Set shield properties
@@ -109,13 +102,6 @@ function create(){
     game.input.onDown.add(releaseBall, this);
 }
 
-//Hook the explosions to each of the poles
-function setupExplosion (_pole) {
-    _pole.anchor.x = 0.5;
-    _pole.anchor.y = 0.5;
-   	_pole.animations.add('kaboom');
-}
-
 function scoreTimer() {
     var timeText = 'Time: 0:00';
 
@@ -141,30 +127,47 @@ function scoreTimer() {
 }
 
 function update(){
-	//  Fun, but a little sea-sick inducing :) Uncomment if you like!
-    // s.tilePosition.x += (game.input.speed.x / 2);
+    var mousePointerPos = game.input.activePointer.position;
+    var x = mousePointerPos.x;
+    var y = mousePointerPos.y;
 
-    shield.body.x = game.input.x;
-    shield.body.y = game.input.y; //so you can move the shield anywhere on the screen
+    var cx = game.world.centerX; // => pole.body.x = links, pole.x = rechts
+    var cy = game.world.centerY; // => pole.body.y =  boven pole.y = beneden
+    var deltaX = x - cx;
+    var deltaY = y - cy;
+    //var angle =  -Math.atan2(deltaY, deltaX);
+    var angle = -Math.atan2(deltaX, deltaY) -0.75 * Math.PI + 10;
 
-    if (shield.x < 24)
-    {
-        shield.x = 24;
-    }
-    else if (shield.x > game.width - 24)
-    {
-        shield.x = game.width - 24;
-    }
+    var radius = 80;
+
+    shield.rotation = -Math.atan2(x - game.world.centerX, y - game.world.centerY);
+
+    //shield.x = cx + Math.sin(angle) * 50;
+    //shield.y = cy + Math.cos(angle) * 50;
+
+    shield.x = Math.cos(angle) * radius + cx;
+    shield.y = Math.sin(angle) * radius + cy;
 
     balls.forEach(function (ball) {
         game.physics.arcade.collide(ball, shield, ballHitShield, null, this); //if a ball hits a shield
-        game.physics.arcade.collide(ball, poles, ballHitPole, null, this); //if a ball hits a pole
+        game.physics.arcade.collide(ball, pole, ballHitPole, null, this); //if a ball hits a pole
         game.physics.arcade.collide(ball, balls, ballHitBall, null, this); //if a ball hits another ball
     });
 }
 
 function releaseBall () {
 
+var mousePointerPos = game.input.activePointer.position;
+
+/*
+    console.error(x);
+    console.error(y);
+    console.error(cx);
+    console.error(cy);
+    console.error(deltaX);
+    console.error(deltaY);
+    console.error(angle);
+*/
     if(!released){
         released = true;
         hit = false;
@@ -183,14 +186,9 @@ function gameOver () {
     introText.visible = true;
 }
 
-function ballHitPole (_ball, _pole) {
+function ballHitPole(_ball, _pole) {
 
     _pole.kill();
-
-    //Create an explosion on impact:)
-    var explosion = explosions.getFirstExists(false);
-    explosion.reset(_pole.body.x, _pole.body.y);
-    explosion.play('kaboom', 30, false, true);
 
     hit = true;
     scoreText.text = 'Time: 0:00';
@@ -212,11 +210,17 @@ function ballHitPole (_ball, _pole) {
             var min = Math.floor(score / 60);
             var sec = score % 60;
             if(sec < 10) { sec = '0' + sec; }
-            timeText = 'Time: ' + min + ':' + sec;
+            timeText = 'Highscore: ' + min + ':' + sec;
         }
-
+ 
         highscoreText.text = timeText;
     }
+
+    //alert("Hit");
+    //Reset score
+    score = 0;
+    hit = false;
+    _pole.revive();
 }
 
 function ballHitBall (_ball, _ball2) {
@@ -251,7 +255,7 @@ function ballHitShield (_ball, _shield) {
         //  Ball is on the left-hand side of the shield
         diff = _shield.x - _ball.x;
         _ball.body.velocity.x = (-10 * diff);
-    }
+    }  
     else if (_ball.x > _shield.x)
     {
         //  Ball is on the right-hand side of the shield
@@ -264,6 +268,5 @@ function ballHitShield (_ball, _shield) {
         //  Add a little random X to stop it bouncing straight up!
         _ball.body.velocity.x = 2 + Math.random() * 8;
     }
-
 }
 

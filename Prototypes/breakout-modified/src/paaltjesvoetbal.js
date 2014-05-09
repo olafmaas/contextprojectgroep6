@@ -9,6 +9,8 @@ function preload() {
     //Background image
     game.load.image('starfield', 'sprites/starfield.jpg');
 
+    game.load.image('pole', 'sprites/pole.png');
+    game.load.image('shield', 'sprites/shield.png')
 }
 
 //Variables
@@ -66,12 +68,13 @@ function create(){
     var pole;
     //add 1 pole (x, y, breakout, image)
  	//this pole should be protected
-	pole = poles.create(game.world.centerX, 250, 'breakout', 'brick_1_1.png');
+	pole = poles.create(game.world.centerX, game.world.centerY, 'pole');
     pole.body.bounce.set(1);
     pole.body.immovable = true;
+    pole.anchor.setTo(0.5, 0.5);
 
     //Add a shield
-    shield = game.add.sprite(game.world.centerX, 500, 'breakout', 'paddle_big.png');
+    shield = game.add.sprite(game.world.centerX, game.world.centerY, 'shield');
     shield.anchor.setTo(0.5, 0.5); //anchor the shield
 
     //Enable ARCADE physics
@@ -145,7 +148,7 @@ function update(){
     // s.tilePosition.x += (game.input.speed.x / 2);
 
     //Define where the shield can be (360 degrees around pole with a radius of ?? )
-    shield.body.x = game.input.x;
+    /*shield.body.x = game.input.x;
     shield.body.y = game.input.y; //so you can move the shield anywhere on the screen
 
     if (shield.x < 24)
@@ -156,6 +159,9 @@ function update(){
     {
         shield.x = game.width - 24;
     }
+*/
+var mousePointerPos = game.input.activePointer.position;
+    shield.rotation = -Math.atan2(mousePointerPos.x - game.world.centerX, mousePointerPos.y - game.world.centerY) - 0.75 * Math.PI;
 
     balls.forEach(function (ball) {
         game.physics.arcade.collide(ball, shield, ballHitShield, null, this); //if a ball hits a shield
@@ -252,12 +258,14 @@ function ballHitShield (_ball, _shield) {
         //  Ball is on the left-hand side of the shield
         diff = _shield.x - _ball.x;
         _ball.body.velocity.x = (-10 * diff);
+        console.error("S-X: " + _shield.x + " | B-X: " + _ball.x + " | diff: " + diff);
     }
     else if (_ball.x > _shield.x)
     {
         //  Ball is on the right-hand side of the shield
         diff = _ball.x -_shield.x;
         _ball.body.velocity.x = (10 * diff);
+        console.error("S-X: " + _shield.x + "B-X: " + _ball.x + " | diff: " + diff);
     }
     else
     {
