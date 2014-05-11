@@ -1,7 +1,8 @@
 //A simple rectangle class
+
+//Creates a rectangle object
 //@Param _canv 
 //  The canvas on which the rectanble will reside
-
 function Rectangle(_canv){
   
     //Rectangle properties
@@ -17,6 +18,30 @@ function Rectangle(_canv){
         ctx.rect(this.x,this.y,this.width,this.height);
         ctx.closePath();
         ctx.fill();
+    }
+
+    //Sets the position of the rectangle on the canvas
+    //@Param _x
+    //
+    //@Param _y
+    //
+    this.setPosition = function (_x, _y){
+        this.x = _x;
+        this.y = _y;
+    }
+
+    //Sets the width of the rectangle
+    //@Param _width
+    //
+    this.setWidth = function (_width){
+        this.width = _width;
+    }
+
+    //Sets the height of the rectangle
+    //@Param _height
+    //
+    this.setHeight = function (_height){
+        this.height = _height;
     }
 
 }

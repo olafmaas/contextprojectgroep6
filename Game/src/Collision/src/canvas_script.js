@@ -1,6 +1,6 @@
 
 function draw() {
-	clear();
+	clear(); //clear the screen
 	
 	//Redraw stuff
 	drawBouncingBall();
@@ -9,6 +9,8 @@ function draw() {
 	//Check collisions
 	checkWallCollision(ci);
   	checkPoleCollision(ci, rc);
+  	checkPoleCollision(ci, rc2);
+	checkPoleCollision(ci, rc3);
 
   	//Move ball around
   	ci.move();
@@ -20,6 +22,8 @@ function drawBouncingBall(){
 
 function drawPole(){
   rc.draw();
+  rc2.draw();
+  rc3.draw();
 }
 
 function checkWallCollision(_obj){

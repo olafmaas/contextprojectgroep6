@@ -4,22 +4,31 @@ var ctx;
 var c;
 var ci;
 var rc;
+var rc2;
+var rc3;
 
 function init() {
   c = document.getElementById("canvas"); 
   
   ci = new Circle(c);
-  ci.x = 320;
-  ci.y = 100;
-  ci.dx = 2;
-  ci.dy = 4;
-  ci.radius = 10; 
+  ci.setPosition(320, 100);
+  ci.setSpeed(2, 4);
+  ci.setRadius(10)
 
   rc = new Rectangle(c);
-  rc.x = 400;
-  rc.y = 300;
-  rc.width = 50;
-  rc.height = 100;
+  rc.setPosition(400, 300);
+  rc.setWidth(50);
+  rc.setHeight(100);
+
+  rc2 = new Rectangle(c);
+  rc2.setPosition(530, 50);
+  rc2.setWidth(50);
+  rc2.setHeight(100);
+
+  rc3 = new Rectangle(c);
+  rc3.setPosition(230, 350);
+  rc3.setWidth(50);
+  rc3.setHeight(100);
 
   ctx = c.getContext("2d");
   WIDTH = c.width;
@@ -34,3 +43,6 @@ function clear() {
 window.onload = function() {
   init();
 }
+
+//TODO:
+//checken of er niet al iets op die plek staat? dus dat je niet twee 'poles' kan hebben die half door elkaar heen gaan?
