@@ -44,14 +44,17 @@ function checkWallCollision(_obj){
 
 //Checks the collision of an object with a pole
 function checkPoleCollision(_obj, _pole){
-	
+
+	//PROBLEM FOUND:
+	//Nu wordt er gecheckt op _obj.x == _pole.x, maar als je snelheid ervoor zorgt dat je niet precies gelijk bent met _pole.x, dan gaat collision found
+	//Geldt ook voor y.
+	//TEMPORARY SOLUTION:
+	//Blokjes zo neerzeten dat de stapjes van x + dx en y + dy goed uitkomen ;p
+
 	//If object hits top or bottom of pole
-	if ( ( (_obj.x + _obj.dx >= _pole.x) && (_obj.x + _obj.dx <= _pole.x + _pole.width) ) && ( _obj.y + _obj.dy == _pole.y ) ){
+	if ( ( (_obj.x + _obj.dx >= _pole.x) && (_obj.x + _obj.dx <= _pole.x + _pole.width) ) && ( _obj.y + _obj.dy == _pole.y || _obj.y + _obj.dy == _pole.y + _pole.height) ){
 		_obj.dy = -_obj.dy;
 	} 
-	else if ( ( (_obj.x + _obj.dx >= _pole.x) && (_obj.x + _obj.dx <= _pole.x + _pole.width) ) && ( _obj.y + _obj.dy == _pole.y + _pole.height ) ){
-		_obj.dy = -_obj.dy;
-	}
 
 	//If object hits left or right side of pole
 	else if ( ( (_obj.x + _obj.dx == _pole.x) || (_obj.x + _obj.dx == _pole.x + _pole.width) ) && ( (_obj.y + _obj.dy >= _pole.y) && (_obj.y + _obj.dy <= _pole.y + _pole.height) ) ){

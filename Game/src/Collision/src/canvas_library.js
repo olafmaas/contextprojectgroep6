@@ -14,15 +14,15 @@ function init() {
   
   //Create ball
   ci = new Circle(c);
-  ci.setPosition(300, 100);
+  ci.setPosition(320, 100);
   ci.setSpeed(2, 4);
   ci.setRadius(10)
 
   //Create pole
   rc = new Rectangle(c);
   rc.setPosition(400, 300);
-  rc.setWidth(25);
-  rc.setHeight(50);
+  rc.setWidth(26);
+  rc.setHeight(52);
 
   //Create shield
   sh = new Shield(c, rc);
