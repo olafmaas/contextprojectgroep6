@@ -31,9 +31,9 @@ function Circle(_canv){
 
 	//Sets the position of the circle on the canvas
 	//@Param _x
-	//
+	//	The x coordinate of the middle of the circle
 	//@Param _y
-	//
+	//	The y coordinate of the middle of the circle
 	this.setPosition = function (_x, _y){
 		this.x = _x;
 		this.y = _y;
@@ -41,18 +41,49 @@ function Circle(_canv){
 
 	//Sets the radius of the circle
 	//@Param _radius
-	//
+	//	The radius of the circle in pixels
 	this.setRadius = function (_radius) {
 		this.radius = _radius;
 	}
 
 	//Sets the speed of the circle
 	//@Param _dx
-	//
+	//	The speed of the circle from left to right in pixels per redraw. Negative number is right to left.
 	//@Param _dy
+	//	The speed of the circle from top to bottom in pixels per redraw. Negative number is bottom to top.
 	this.setSpeed = function (_dx, _dy){
 		this.dx = _dx;
 		this.dy = _dy;
+	}
+
+	//Get the x coordinate of the middle of the circle
+	this.getXPosition = function (){
+		return this.x;
+	}
+
+	//Get the y coordinate of the middle of the circle
+	this.getYPosition = function (){
+		return this.y;
+	}
+
+	//Get the velocity of the circle
+	this.getVelocity = function (){
+		return this.velocity;
+	}
+
+	//Get the radius of the circle
+	this.getRadius = function (){
+		return this.radius;
+	}
+
+	//Get the left-to-right speed of the circle
+	this.getXSpeed = function (){
+		return this.dx;
+	}
+
+	//Get the top-to-bottom speed of the circle
+	this.getYSpeed = function (){
+		return this.dy;
 	}
 
 }

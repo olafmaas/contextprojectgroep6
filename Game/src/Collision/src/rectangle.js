@@ -22,9 +22,9 @@ function Rectangle(_canv){
 
     //Sets the position of the rectangle on the canvas
     //@Param _x
-    //
+    //  The x coordinate of the top left corner of the rectangle
     //@Param _y
-    //
+    //  The y coordinate of the top left corner of the rectangle
     this.setPosition = function (_x, _y){
         this.x = _x;
         this.y = _y;
@@ -32,16 +32,36 @@ function Rectangle(_canv){
 
     //Sets the width of the rectangle
     //@Param _width
-    //
+    //  The width of the rectangle in pixels
     this.setWidth = function (_width){
         this.width = _width;
     }
 
     //Sets the height of the rectangle
     //@Param _height
-    //
+    //  The height of the rectangle in pixels
     this.setHeight = function (_height){
         this.height = _height;
+    }
+
+    //Get the x coordinate of the top left corner of the rectangle
+    this.getXPosition = function (){
+        return this.x;
+    }
+
+    //Get the y coordinate of the top left corner of the rectangle
+    this.getYPosition = function (){
+        return this.y;
+    }
+
+    //Get the width of the rectangle
+    this.getWidth = function (){
+        return this.width;
+    }
+
+    //Get the height of the rectangle
+    this.getHeight = function (){
+        return this.height;
     }
 
 }
