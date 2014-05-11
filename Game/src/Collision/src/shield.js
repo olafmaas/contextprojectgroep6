@@ -19,14 +19,21 @@ function Shield(_canv, _pole){
 		//First calculate the current angle 
 		this.angle = this.calculateAngle(_mouseX, _mouseY);
 
+		//Draw the first half of the shield
 		var ctx = _canv.getContext("2d");
 		ctx.beginPath();
-  		ctx.arc(this.x, this.y, this.radius, this.angle, this.angle+Math.PI);
+  		ctx.arc(this.x, this.y, this.radius, this.angle, this.angle+(Math.PI/3.5));
   		//We don't end the path, otherwise we will have a line from one end to the other
   		ctx.stroke();
+  		
+  		//Draw the second half of the shield (counter-clockwise), so the mouse pointer will be in the middle
+  		var ctx2 = _canv.getContext("2d");
+  		ctx2.beginPath();
+  		ctx2.arc(this.x, this.y, this.radius, this.angle, this.angle-(Math.PI/3.5), true);
+  		ctx2.stroke();
 	}
 
-	//Calculates the angle (in degrees) of the shield depending on the mouse input 
+	//Calculates the angle (in radian) of the shield depending on the mouse input 
 	//@Param _mouseY
 	//	The y coordinate of the mouse on the canvas
 	//@Param _mouseX
@@ -44,7 +51,7 @@ function Shield(_canv, _pole){
 		this.y = _pole.middleY;
 	}
 
-	//Sets the angle of the shield in degrees
+	//Sets the angle of the shield in radian
 	//@Param _angle
 	//	The specified angle 
 	this.setAngle = function (_angle){
