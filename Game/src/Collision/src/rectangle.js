@@ -20,6 +20,16 @@ function Rectangle(_canv){
         ctx.fill();
     }
 
+    //Returns the x coordinate of the middle of the rectangle
+    this.middleX = function (){
+        return this.x + (0.5 * this.width);
+    }
+
+    //Returns the y coordinate of the middle of the rectangle
+    this.middleY = function (){
+        return this.y + (0.5 * this.height);
+    }
+
     //Sets the position of the rectangle on the canvas
     //@Param _x
     //  The x coordinate of the top left corner of the rectangle
