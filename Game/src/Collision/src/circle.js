@@ -56,6 +56,16 @@ function Circle(_canv){
 		this.dy = _dy;
 	}
 
+	//Reverst the y speed
+	this.revertYSpeed = function (){
+		this.dy = -this.dy;
+	}
+
+	//Revers the x speed 
+	this.revertXSpeed = function (){
+		this.dx = -this.dx;
+	}
+
 	//Get the x coordinate of the middle of the circle
 	this.getXPosition = function (){
 		return this.x;

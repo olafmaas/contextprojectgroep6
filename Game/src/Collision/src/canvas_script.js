@@ -45,19 +45,39 @@ function checkWallCollision(_obj){
 //Checks the collision of an object with a pole
 function checkPoleCollision(_obj, _pole){
 
-	//PROBLEM FOUND:
-	//Nu wordt er gecheckt op _obj.x == _pole.x, maar als je snelheid ervoor zorgt dat je niet precies gelijk bent met _pole.x, dan gaat collision found
-	//Geldt ook voor y.
-	//TEMPORARY SOLUTION:
-	//Blokjes zo neerzeten dat de stapjes van x + dx en y + dy goed uitkomen ;p
+	//Collision ball to pole:
+	//The collision of the ball is calculated from the centre. Because of this there is not square around the ball, and
+	//it looks like the ball 'bounces' of the pole as it partially goes through it, which gives a nice effect
+
+	var speedX = _obj.getXSpeed();
+	var speedY = _obj.getYSpeed();
+	var oX = _obj.getXPosition() + speedX;
+	var oY = _obj.getYPosition() + speedY;
+	var pX = _pole.getXPosition();
+	var pY = _pole.getYPosition();
+	var pW = pX + _pole.getWidth();
+	var pH = pY + _pole.getHeight();
 
 	//If object hits top or bottom of pole
-	if ( ( (_obj.x + _obj.dx >= _pole.x) && (_obj.x + _obj.dx <= _pole.x + _pole.width) ) && ( _obj.y + _obj.dy == _pole.y || _obj.y + _obj.dy == _pole.y + _pole.height) ){
+	if ( ( (oX >= pX) && (oX <= pW) ) && ( (oY >= pY && oY <= pY + speedY) || (oY >= pH && oY <= pH - speedY ) ) ){
+		_obj.revertYSpeed();
+	} 
+
+	//If object hits left or right side of pole
+	else if ( ( (oX >= pX && oX <= pX + speedX) || (oX >= pW && oX <= pW - speedX) ) && ( (oY >= pY) && (oY <= pH) ) ){
+		_obj.revertXSpeed();
+	}
+
+/* OLD
+	//If object hits top or bottom of pole
+	if ( ( (_obj.x + _obj.dx >= _pole.x) && (_obj.x + _obj.dx <= _pole.x + _pole.width) ) && ( (_obj.y + _obj.dy >= _pole.y && _obj.y + _obj.dy <= _pole.y + _obj.dy) || (_obj.y + _obj.dy >= _pole.y + _pole.height && _obj.y + _obj.dy <= _pole.y + _pole.height - _obj.dy ) ) ){
 		_obj.dy = -_obj.dy;
 	} 
 
 	//If object hits left or right side of pole
-	else if ( ( (_obj.x + _obj.dx == _pole.x) || (_obj.x + _obj.dx == _pole.x + _pole.width) ) && ( (_obj.y + _obj.dy >= _pole.y) && (_obj.y + _obj.dy <= _pole.y + _pole.height) ) ){
+	else if ( ( (_obj.x + _obj.dx >= _pole.x && _obj.x + _obj.dx <= _pole.x + _obj.dx) || (_obj.x + _obj.dx >= _pole.x + _pole.width && _obj.x + _obj.dx <= _pole.x + _pole.width - _obj.dx) ) && ( (_obj.y + _obj.dy >= _pole.y) && (_obj.y + _obj.dy <= _pole.y + _pole.height) ) ){
 		_obj.dx = -_obj.dx;
 	}
+*/
+
 }

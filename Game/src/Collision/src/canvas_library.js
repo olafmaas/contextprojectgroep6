@@ -16,17 +16,17 @@ function init() {
   ci = new Circle(c);
   ci.setPosition(320, 100);
   ci.setSpeed(2, 4);
-  ci.setRadius(10)
+  ci.setRadius(7)
 
   //Create pole
   rc = new Rectangle(c);
   rc.setPosition(400, 300);
-  rc.setWidth(26);
-  rc.setHeight(52);
+  rc.setWidth(25);
+  rc.setHeight(50);
 
   //Create shield
   sh = new Shield(c, rc);
-  sh.setRadius(80);
+  sh.setRadius(50);
 
   //Retrieve width / height of the current canvas 
   ctx = c.getContext("2d");
