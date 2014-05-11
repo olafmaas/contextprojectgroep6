@@ -11,13 +11,20 @@ function draw() {
 	checkWallCollision(ci);
   	checkPoleCollision(ci, rc);
 
+  	checkWallCollision(ci2);
+  	checkPoleCollision(ci2, rc);
+
+  	checkBallCollision(ci, ci2);
+
   	//Move ball around
   	ci.move();
+  	ci2.move();
 }
 
 //Draws the ball
 function drawBouncingBall(){
   ci.draw();
+  ci2.draw();
 }
 
 //Draws the poles
@@ -79,5 +86,29 @@ function checkPoleCollision(_obj, _pole){
 		_obj.dx = -_obj.dx;
 	}
 */
-
 }
+
+//Checks whether two balls collide
+function checkBallCollision(_ball1, _ball2){
+	var x1 = _ball1.getXPosition();
+	var y1 = _ball1.getYPosition();
+	var x2 = _ball2.getXPosition();
+	var y2 = _ball2.getYPosition();
+	var radius1 = _ball1.getRadius();
+	var radius2 = _ball2.getRadius();
+	 
+	//compare the distance to combined radii
+	var dx = x2 - x1;
+	var dy = y2 - y1;
+	var radii = radius1 + radius2;
+	if ( ( dx * dx )  + ( dy * dy ) < radii * radii ) 
+	{
+		_ball1.revertXSpeed();
+		_ball1.revertYSpeed();
+		_ball2.revertXSpeed();
+		_ball2.revertYSpeed();
+	}
+}
+
+
+

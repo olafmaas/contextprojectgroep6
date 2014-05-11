@@ -6,6 +6,7 @@ var MOUSEY = 0;
 var ctx;
 var c;
 var ci;
+var ci2;
 var rc;
 var sh;
 
@@ -17,6 +18,11 @@ function init() {
   ci.setPosition(320, 100);
   ci.setSpeed(2, 4);
   ci.setRadius(7)
+
+  ci2 = new Circle(c);
+  ci2.setPosition(20, 500);
+  ci2.setSpeed(2, 4);
+  ci2.setRadius(7)
 
   //Create pole
   rc = new Rectangle(c);
