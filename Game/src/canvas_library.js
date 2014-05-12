@@ -15,20 +15,20 @@ function init() {
   
   //Create ball
   ci = new Circle(c);
-  ci.setPosition(320, 100);
-  ci.setSpeed(2, 4);
-  ci.setRadius(7)
+  ci.setPosition(430, 100);
+  ci.setSpeed(6, 1);
+  ci.setRadius(20)
 
   ci2 = new Circle(c);
   ci2.setPosition(20, 500);
-  ci2.setSpeed(2, 4);
-  ci2.setRadius(7)
+  ci2.setSpeed(6, 1);
+  ci2.setRadius(20)
 
   //Create pole
   rc = new Rectangle(c);
-  rc.setPosition(400, 300);
-  rc.setWidth(25);
-  rc.setHeight(50);
+  rc.setPosition(403, 300);
+  rc.setWidth(250);
+  rc.setHeight(500);
 
   //Create shield
   sh = new Shield(c, rc);
