@@ -1,7 +1,7 @@
 function Game(load, update, draw){
-	var width = document.body.clientWidth;
-	var height = document.body.clientHeight;
-	var backGroundColor = "#000000";
+	var width, height;
+	var backGroundColor;
+	var canv;
 
 	parentUpdate = function(){
 		updateGameDimensions();
@@ -52,6 +52,10 @@ function Game(load, update, draw){
 	}
 
 	Initialize = function(){
+		width = document.body.clientWidth;
+		height = document.body.clientHeight;
+		backGroundColor = "#000000";
+
 		canv = createCanvas();
 	}
 
@@ -61,22 +65,15 @@ function Game(load, update, draw){
 	}
 
 	Initialize();
-	Boot();
-}
+	setTimeout(Boot, 1000);
 
-function Sprite(){
-	var texture;
-	var position = {x: 0, y: 0};
-	var origin = {x: 0, y: 0};
-	var rotation = 0;
-	var scale = {x: 1, y: 1};
-
-	LoadContent = function(texturePath){
-		this.texture = new Image();
-		this.texture.src = texturePath;
+	//====================
+	//Section: gets & sets
+	this.getBackgroundColor = function(){
+		return backGroundColor;
 	}
 
-	Draw = function(canvasContext){
-		canvasContext.drawImage(this.texture, position.x, position.y);
+	this.setBackgroundColor = function(_color){
+		backGroundColor = _color;
 	}
 }
