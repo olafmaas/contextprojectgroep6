@@ -1,18 +1,24 @@
 var port = 5050
 var server = 'http://localhost'
 var socket = io.connect(server+":"+port);
-	sendMessage();
 var clientList;
+var left = 0;
+var topf = 0;
 
 var context;
 
+
+socket.on('canvasPos', function (data){
+	left = data.left;
+	topf = data.top;
+})
+
 socket.on('draw', function (data) {
-	console.log('draw!');
   context= myCanvas.getContext('2d');
   context.clearRect(0,0,300,300);
   context.beginPath();
   context.fillStyle="#0000ff";
-  context.arc(data.x,data.y,20,0,Math.PI*2,true);
+  context.arc(data.x - left,data.y - topf,20,0,Math.PI*2,true);
   context.closePath();
   context.fill();
 })
@@ -26,12 +32,3 @@ socket.on('clientList', function (data) {
 	console.log(data);
 })
 
-function sendMessage() {
-	socket.emit('getClients');
-}
-
-function handleMouseMove(event) {
-	socket.emit('getPoint', {x: event.clientX, y: event.clientY})
-}
-
-//window.onmousemove = handleMouseMove;

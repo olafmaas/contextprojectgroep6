@@ -1,46 +1,70 @@
 var io = require('socket.io').listen(5050)
 
- var clientList = {};
+var clientList = {};
 var idList = new Array();
+
+var canvasWidth = 300;
+var canvasHeight = 300;
+
+var maxRowWidth = 2;
+var grid = new Array();
+grid.push(new Array());
 
 var dx= 4;
 var dy=4;
 var y=150;
 var x=10;
 
+setInterval(draw,10); 
+
+function draw(){
+  if( x<0 || x>grid[0].length * canvasWidth){
+    dx=-dx;
+  }
+  if( y<0 || y>grid.length * canvasHeight){
+    dy=-dy;
+  }
+  x+=dx;
+  y+=dy;
+
+  io.sockets.emit('draw', {x: x, y:y})
+
+}
+
 io.sockets.on('connection', function (socket) {
+  var x;
+  var y;
   console.log('client connected');
 
   clientList[socket.id] = socket;
   idList.push(socket.id);
+  
 
-  for(id in idList){
-    console.log(idList[id]);
+  placed = false;
+  for (i = 0; i < grid.length; i++) {
+    if(grid[i].indexOf(-1) >  -1 || grid[i].length < maxRowWidth) {
+      placed = true;
+      if(grid[i].indexOf(-1) > -1){
+        x = grid[i].indexOf(-1);
+        grid[i][x] = socket.id;
+      }else{
+        x = grid[i].length;
+        grid[i].push(socket.id)
+      }
+      y = i;
+      break;
+    }
   }
 
-  setInterval(draw,10); 
-
-  function draw(){
-    if( x<0 || x>600){
-      dx=-dx;
-    }
-    if( y<0 || y>300){
-      dy=-dy;
-    }
-    x+=dx;
-    y+=dy;
-
-    
-    if(idList.length == 2){
-      if(x<300){
-        clientList[idList[0]].emit('draw', {x: x, y: y});
-      }
-      else{
-        clientList[idList[1]].emit('draw', {x: x-300, y: y});
-      }
-    }
-    //socket.emit('draw', {x: x, y: y});
+  if(!placed){
+    grid.push(new Array());
+    x = 0;
+    y = grid.length - 1;
+    grid[i].push(socket.id);
   }
+
+
+  socket.emit('canvasPos', {left: x * canvasWidth, top: y*canvasHeight} )
 
   //Get data and send it back.
   socket.on('getPoint', function (data) {
@@ -62,6 +86,7 @@ io.sockets.on('connection', function (socket) {
     console.log('client disconnected');
 
     delete clientList[socket.id];
+    grid[y][x] = -1;
     idList.splice(idList.indexOf(socket.id), 1);
   })
 });
