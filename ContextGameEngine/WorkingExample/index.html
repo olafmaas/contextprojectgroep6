@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Canvas test</title>
+
+        
+        <script src="Base.js"></script>
+        <script src="Game.js"></script>
+        <script src="Sprite.js"></script>
+        <script src="Ball.js"></script>
+        <script src="Body.js"></script>
+        <script src="CircularBody.js"></script>
+        <script src="Input.js"></script>
+        <script src="Shield.js"></script>
+        
+        <style type="text/css">
+	        body {
+	            margin: 0;
+	        }
+    	</style>
+    </head>
+    <body>
+
+    <script type="text/javascript">
+    	var game = new Game(loadContent, update, draw);
+
+    	var pole = new Ball(10);
+    	pole.getBody().isStatic = true;
+    	pole.setColor("#CDF99E");
+    	pole.setPosition(300, 300);
+
+    	var ball = new Ball(10);
+    	ball.setPosition(0, 0);
+    	ball.setColor("#9EB9F9");
+    	ball.setVelocity(1);
+    	ball.setVelocityDirection(1.75 * Math.PI);
+
+    	var shield = new Shield(pole);
+
+    	function loadContent(){
+
+    	}
+
+    	function update(){
+    		pole.Update();
+    		ball.Update();
+    		shield.Update();
+
+    		if(pole.CollidesWith(ball)){
+    			game.setBackgroundColor("red");
+    		}else{
+    			game.setBackgroundColor("black");
+    		}
+    	}
+
+    	function draw(canvasContext){
+    		pole.Draw(canvasContext);
+    		ball.Draw(canvasContext);
+    		shield.Draw(canvasContext);
+    	}
+    </script>
+
+    </body>
+</html>
