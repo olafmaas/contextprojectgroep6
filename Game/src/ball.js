@@ -10,14 +10,13 @@
 */
 function Ball(_radius){
   
-	//Circle properties
-	var position = {x: 0, y: 0}; //position of the circle
+	//Ball properties
+	var position = {x: 0, y: 0}; //position of the ball
 	var radius = _radius; //radius of the ball
 	var velocity = 0; //velocity of ball
 	var angle = 0; //angle in which the ball is moving
 	var dx = 0; //speed of ball in x direction (pixels per redraw)
 	var dy = 0; //speed of ball in y direction (pixels per redraw)
-
 
 	/**
 	* Draws the ball on the canvas
@@ -26,10 +25,10 @@ function Ball(_radius){
 	* @param {CanvasContext} _canvasContext - The canvas context on which the ball will be drawn.
 	*/
 	this.draw = function (_canvasContext){
-		ctx.beginPath();
-		ctx.arc(position.x, position.y, radius, 0, Math.PI*2, true);
-		ctx.closePath();
-		ctx.fill();
+		_canvasContext.beginPath();
+		_canvasContext.arc(position.x, position.y, radius, 0, Math.PI*2, true);
+		_canvasContext.closePath();
+		_canvasContext.fill();
 	}
 
 	/**

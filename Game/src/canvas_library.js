@@ -12,12 +12,11 @@ var balls = new Group();
 
 function init() {
   c = document.getElementById("canvas"); 
+  ctx = c.getContext("2d");
 
   //Create pole
-  pole = new Rectangle(c);
+  pole = new Pole(25, 50);
   pole.setPosition(400, 300);
-  pole.setWidth(25);
-  pole.setHeight(50);
 
   //Create shield
   shield = new Shield(c, pole);

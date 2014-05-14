@@ -27,12 +27,12 @@ function draw() {
 
 //Draws the ball
 function drawBouncingBall(){
-  balls.draw();
+  balls.draw(ctx);
 }
 
 //Draws the poles
 function drawPole(){
-  pole.draw();
+  pole.draw(ctx);
 }
 
 //Draws the shield
@@ -57,7 +57,8 @@ function checkWallCollision(_ball){
 
 //Checks the collision of an ball with a pole
 function checkPoleCollision(_obj, _pole){
-
+	//TODO: ervoor zorgen dat er niet alleen naar het middelpunt van de bal gekeken wordt, maar dat ook de radius wordt meegenomen.
+	//Op dit moment kan een bal namelijk half door een paaltje gaan zonder 'echt' de paal te raken, omdat het net naast het middelpunt zit
 	var speedX = _obj.getXSpeed();
 	var speedY = _obj.getYSpeed();
 	var oX = _obj.getXPosition() + speedX;

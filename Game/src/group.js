@@ -49,7 +49,7 @@ function Group(){
 	//Draws everything that's a member in the group
 	this.draw = function() {
 		members.forEach(function (_object){
-			_object.draw();
+			_object.draw(ctx);
 		});
 	}
 
