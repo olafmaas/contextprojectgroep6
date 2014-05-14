@@ -11,13 +11,12 @@
 function Ball(_radius){
   
 	//Circle properties
-	this.x = 0; //x position in the canvas (center of ball)
-	this.y = 0; //y position in the canvas (center of ball)
-	this.radius = _radius; //radius of the ball
-	this.velocity = 0; //velocity of ball
-	this.angle = 0; //angle in which the ball is moving
-	this.dx = 0; //speed of ball in x direction (pixels per redraw)
-	this.dy = 0; //speed of ball in y direction (pixels per redraw)
+	var position = {x: 0, y: 0}; //position of the circle
+	var radius = _radius; //radius of the ball
+	var velocity = 0; //velocity of ball
+	var angle = 0; //angle in which the ball is moving
+	var dx = 0; //speed of ball in x direction (pixels per redraw)
+	var dy = 0; //speed of ball in y direction (pixels per redraw)
 
 
 	/**
@@ -28,7 +27,7 @@ function Ball(_radius){
 	*/
 	this.draw = function (_canvasContext){
 		ctx.beginPath();
-		ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
+		ctx.arc(position.x, position.y, radius, 0, Math.PI*2, true);
 		ctx.closePath();
 		ctx.fill();
 	}
@@ -39,8 +38,8 @@ function Ball(_radius){
 	* @method Ball#move
 	*/
 	this.move = function (){
-		this.x += this.dx;
-		this.y += this.dy;
+		position.x += dx;
+		position.y += dy;
 	}
 
 	/**
@@ -51,8 +50,8 @@ function Ball(_radius){
 	* @param {number} _y - The y coordinate of the center of the ball.
 	*/
 	this.setPosition = function (_x, _y){
-		this.x = _x;
-		this.y = _y;
+		position.x = _x;
+		position.y = _y;
 	}
 
 	/**
@@ -62,7 +61,7 @@ function Ball(_radius){
 	* @param {number} _radius - The radius of the ball in pixels.
 	*/
 	this.setRadius = function (_radius) {
-		this.radius = _radius;
+		radius = _radius;
 	}
 
 	/**
@@ -74,11 +73,11 @@ function Ball(_radius){
 	* @param {number} _angle - The angle of the ball in radians.
 	*/
 	this.setAngleVelocity = function (_velocity, _angle){
-		this.velocity = _velocity;
-		this.angle = _angle;
+		velocity = _velocity;
+		angle = _angle;
 
-		this.dx = _velocity * Math.sin(_angle);
-		this.dy = _velocity * Math.cos(_angle);
+		dx = _velocity * Math.sin(_angle);
+		dy = _velocity * Math.cos(_angle);
 	}
 
 	/**
@@ -91,11 +90,11 @@ function Ball(_radius){
 	* @param {number} _dy - The speed on the y axis (pixels per redraw).
 	*/
 	this.setSpeed = function (_dx, _dy){
-		this.dx = _dx;
-		this.dy = _dy;
+		dx = _dx;
+		dy = _dy;
 
-		this.velocity = this.distanceBetween();
-		this.angle = this.angleBetween();
+		velocity = this.distanceBetween();
+		angle = this.angleBetween();
 	}
 
 	/**
@@ -105,7 +104,7 @@ function Ball(_radius){
 	* @return {number} The angle in radians.
 	*/
 	this.angleBetween = function (){
-		return Math.atan2(this.dy, this.dx);
+		return Math.atan2(dy, dx);
 	}
 
 	/**
@@ -116,10 +115,7 @@ function Ball(_radius){
 	*/
 	this.distanceBetween = function()
 	{
-	  var xs = this.dx * this.dx;
-	  var ys = this.dy * this.dy;
-	 
-	  return Math.sqrt( xs + ys );
+	  return Math.sqrt( dx * dx + dy * dy );
 	}
 
 	/**
@@ -129,8 +125,8 @@ function Ball(_radius){
 	* @method Ball#revertYSpeed
 	*/
 	this.revertYSpeed = function (){
-		this.dy = -this.dy;
-		this.angle = this.angleBetween();
+		dy = -dy;
+		angle = this.angleBetween();
 	}
 
 	/**
@@ -140,8 +136,18 @@ function Ball(_radius){
 	* @method Ball#revertXSpeed
 	*/
 	this.revertXSpeed = function (){
-		this.dx = -this.dx;
-		this.angle = this.angleBetween();
+		dx = -dx;
+		angle = this.angleBetween();
+	}
+
+	/**
+	* Retrieves both x and y coordinate of the middle of the ball.
+	*
+	* @method Ball#getPosition
+	* @return {number, number} The x and y coordinate of the middle of the ball.
+	*/
+	this.getPosition = function (){
+		return position;
 	}
 
 	/**
@@ -151,7 +157,7 @@ function Ball(_radius){
 	* @return {number} The x coordinate of the middle of the ball.
 	*/
 	this.getXPosition = function (){
-		return this.x;
+		return position.x;
 	}
 
 	/**
@@ -161,7 +167,7 @@ function Ball(_radius){
 	* @return {number} The y coordinate of the middle of the ball.
 	*/
 	this.getYPosition = function (){
-		return this.y;
+		return position.y;
 	}
 
 	/**
@@ -171,7 +177,17 @@ function Ball(_radius){
 	* @return {number} The current velocity of the ball.
 	*/
 	this.getVelocity = function (){
-		return this.velocity;
+		return velocity;
+	}
+
+	/**
+	* Retrieves the angle of the ball.
+	*
+	* @method Ball#getAngle
+	* @return {number} The current angle of the ball in radians.
+	*/
+	this.getAngle = function(){
+		return angle;
 	}
 
 	/**
@@ -181,7 +197,7 @@ function Ball(_radius){
 	* @return {number} The radius of the ball.
 	*/
 	this.getRadius = function (){
-		return this.radius;
+		return radius;
 	}
 
 	/**
@@ -191,7 +207,7 @@ function Ball(_radius){
 	* @return {number} The speed at which the ball travels across the x-axis.
 	*/
 	this.getXSpeed = function (){
-		return this.dx;
+		return dx;
 	}
 
 	/**
@@ -201,7 +217,7 @@ function Ball(_radius){
 	* @return {number} The speed at which the ball travels across the y-axis.
 	*/
 	this.getYSpeed = function (){
-		return this.dy;
+		return dy;
 	}
 
 }

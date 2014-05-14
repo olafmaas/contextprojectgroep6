@@ -42,13 +42,15 @@ function drawShield(_mouseX, _mouseY){
 
 //Checks the collision of a ball with the wall
 function checkWallCollision(_ball){
-
   //If object hits one of the walls on the sides
-  if (_ball.x + _ball.dx > WIDTH || _ball.x + _ball.dx < 0 )
-  	_ball.revertXSpeed(); 
+  var ballX = _ball.getXPosition() + _ball.getXSpeed();
+  var ballY = _ball.getYPosition() + _ball.getYSpeed();
+
+  if (ballX > WIDTH || ballX < 0 )
+  	_ball.revertXSpeed();
 
   //If object hits one of the walls on the top or bottom
-  if (_ball.y + _ball.dy > HEIGHT || _ball.y + _ball.dy < 0 )
+  if (ballY > HEIGHT || ballY < 0 )
     _ball.revertYSpeed();
 
 }
@@ -103,20 +105,22 @@ function checkBallCollision(_ball1, _ball2){
 
 //Deflects the balls by calculating their new angle on impact
 function ballsCollided(_ball1, _ball2, _tangent){
-	var speed1 = _ball1.velocity;
-	var speed2 = _ball2.velocity;
+	var speed1 = _ball1.getVelocity();
+	var speed2 = _ball2.getVelocity();
+	var angle1 = _ball1.getAngle();
+	var angle2 = _ball2.getAngle();
+	var x1 = _ball1.getXPosition();
+	var x2 = _ball2.getXPosition();
+	var y1 = _ball1.getYPosition();
+	var y2 = _ball2.getYPosition();
 
-	_ball1.setAngleVelocity(speed2, (2 * _tangent - _ball1.angle));
-	_ball2.setAngleVelocity(speed1, (2 * _tangent - _ball2.angle));
-
+	_ball1.setAngleVelocity(speed2, (2 * _tangent - angle1));
+	_ball2.setAngleVelocity(speed1, (2 * _tangent - angle2));
 
 	var angle = 0.5 * Math.PI + _tangent;
 
-	_ball1.x += Math.sin(angle);
-	_ball1.y -= Math.cos(angle);
-	_ball2.x -= Math.sin(angle);
-	_ball2.y += Math.cos(angle);
-
+	_ball1.setPosition(x1 + Math.sin(angle), y1 - Math.cos(angle));
+	_ball2.setPosition(x2 - Math.sin(angle), y2 - Math.cos(angle));
 }
 
 //Should later bounce of collided balls
