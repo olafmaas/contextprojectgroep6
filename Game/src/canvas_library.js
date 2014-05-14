@@ -6,8 +6,6 @@ var NROFBALLS = 2;
 
 var ctx;
 var c;
-//var ball;
-var ball2;
 var pole;
 var shield;
 var balls = new Group();
@@ -27,10 +25,9 @@ function init() {
 
   //Simple ball adding (hardcoded places)
   for (var i = 0; i < NROFBALLS; i++){
-    ball = new Circle(c);
+    var ball = new Ball(20);
     ball.setPosition(10 + (300*i), 10 + (200*i));
     ball.setSpeed(6, 1);
-    ball.setRadius(20);
     balls.add(ball);
     balls.addCollision(ball, null, checkWallCollision, null);
     balls.addCollision(ball, pole, checkPoleCollision, null);

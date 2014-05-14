@@ -79,7 +79,8 @@ function checkPoleCollision(_obj, _pole){
 //Checks whether two balls collide and bounces them off
 function checkBallCollision(_ball1, _ball2){
 	//TODO: optimization: eerst box check doen en daarna pas de intensievere check of de rondjes daadwerkelijk colliden
-
+	//TODO: in phaser code kijken hoe zij dit afhandelen in arcade ?
+	
 	var x1 = _ball1.getXPosition();
 	var y1 = _ball1.getYPosition();
 	var x2 = _ball2.getXPosition();
@@ -105,8 +106,8 @@ function ballsCollided(_ball1, _ball2, _tangent){
 	var speed1 = _ball1.velocity;
 	var speed2 = _ball2.velocity;
 
-	_ball1.setAngle(speed2, (2 * _tangent - _ball1.angle));
-	_ball2.setAngle(speed1, (2 * _tangent - _ball2.angle));
+	_ball1.setAngleVelocity(speed2, (2 * _tangent - _ball1.angle));
+	_ball2.setAngleVelocity(speed1, (2 * _tangent - _ball2.angle));
 
 
 	var angle = 0.5 * Math.PI + _tangent;
