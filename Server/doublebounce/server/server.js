@@ -1,8 +1,9 @@
 var io = require('socket.io').listen(5050)
 io.set('log level', 2);   // 0 - error | 1 - warn | 2 - info | 3 - debug
 
-var clientList = {};
-var idList = new Array();
+//TODO Rooms gebruiken
+var mainScreenSocket;
+var playerSockets = {};
 
 var canvasWidth = 300;
 var canvasHeight = 300;
@@ -11,10 +12,10 @@ var maxRowWidth = 2;
 var grid = new Array();
 grid.push(new Array());
 
-var dx= 4;
-var dy=4;
-var y=150;
-var x=10;
+var dx = 4;
+var dy = 4;
+var y = 150;
+var x = 10;
 
 setInterval(draw,10); 
 
@@ -28,18 +29,37 @@ function draw(){
   x+=dx;
   y+=dy;
 
+  //TODO stuur alleen naar de clients die dat kunnen zien.
   io.sockets.emit('draw', {x: x, y:y})
-
 }
 
 io.sockets.on('connection', function (socket) {
+  if(!mainScreenSocket){
+    console.log('MainScreen connected');
+    mainScreenConnects(socket);
+  }
+  else{
+    console.log('Client connected');
+    clientConnects(socket);
+  }
+});
+
+function mainScreenConnects(socket){
+  mainScreenSocket = socket;
+
+  //Handle MainScreen Disconnet
+  socket.on('disconnect', function (data){
+    console.log('MainScreen disconnected');
+    mainScreenSocket = null;
+  })
+};
+
+function clientConnects(socket){ 
+  playerSockets[socket.id] = socket;
+
+
   var x;
   var y;
-  console.log('client connected');
-
-  clientList[socket.id] = socket;
-  idList.push(socket.id);
-  
 
   placed = false;
   for (i = 0; i < grid.length; i++) {
@@ -64,32 +84,13 @@ io.sockets.on('connection', function (socket) {
     grid[i].push(socket.id);
   }
 
-
   socket.emit('canvasPos', {left: x * canvasWidth, top: y*canvasHeight} )
 
-  //Get data and send it back.
-  socket.on('getPoint', function (data) {
-    socket.emit('getPoint',data);
-  });
-
-  //Return clientList to client
-  socket.on('getClients', function (data){
-    socket.emit('clientList', idList);
-  })
-
-  //Send message to client x
-  socket.on('sendToClient', function (data){
-    clientList[data.id].emit('messageFromClient', {id: socket.id, message: data});
-  })
-
-  //Handle Disconnet
+  //Handle Client Disconnet
   socket.on('disconnect', function (data){
-    console.log('client disconnected');
+    console.log('Client disconnected');
 
-    delete clientList[socket.id];
+    delete playerSockets[socket.id];
     grid[y][x] = -1;
-    idList.splice(idList.indexOf(socket.id), 1);
   })
-});
-
-
+};
