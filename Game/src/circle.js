@@ -47,12 +47,13 @@ function Circle(_canv){
 		this.radius = _radius;
 	}
 
-	//ADDED
-	this.setAngle = function (_speed, _angle){
-		this.velocity = _speed;
+	//Sets the angle, velocity and dx/dy values of the circle
+	this.setAngle = function (_velocity, _angle){
+		this.velocity = _velocity;
 		this.angle = _angle;
-		this.dx = _speed * Math.sin(_angle);
-		this.dy = _speed * Math.cos(_angle);
+
+		this.dx = _velocity * Math.sin(_angle);
+		this.dy = _velocity * Math.cos(_angle);
 	}
 
 	//Sets the speed of the circle
@@ -64,17 +65,16 @@ function Circle(_canv){
 		this.dx = _dx;
 		this.dy = _dy;
 
-		//ADDED
 		this.velocity = this.lineDistance();
 		this.angle = this.angleBetweenLines();
 	}
 
-	//ADDED
+	//Calculates angle
 	this.angleBetweenLines = function (){
 		return Math.atan2(this.dy, this.dx);
 	}
 
-	//ADDED
+	//Calculates the speed (distance of the line)
 	this.lineDistance = function()
 	{
 	  var xs = this.dx * this.dx;
@@ -83,13 +83,13 @@ function Circle(_canv){
 	  return Math.sqrt( xs + ys );
 	}
 
-	//Revers the y speed
+	//Reverts the y speed
 	this.revertYSpeed = function (){
 		this.dy = -this.dy;
 		this.angle = this.angleBetweenLines();
 	}
 
-	//Revers the x speed 
+	//Reverts the x speed 
 	this.revertXSpeed = function (){
 		this.dx = -this.dx;
 		this.angle = this.angleBetweenLines();

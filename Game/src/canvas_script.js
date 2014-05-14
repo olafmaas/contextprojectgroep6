@@ -7,34 +7,37 @@ function draw() {
 	drawPole();
 	drawShield(MOUSEX, MOUSEY);
 
-	//Check collisions
-	checkWallCollision(ci);
-  	checkPoleCollision(ci, rc);
+	balls.checkCollisions();
 
-  	checkWallCollision(ci2);
-  	checkPoleCollision(ci2, rc);
+	//Alleen ball to ball collision werkt niet via de groep,
+	//want de functie neemt 2 ballen als parameter en als je het
+	//in de groep stopt, krijg je zowel 1 collide met 2 als 2 collide met 1 
+	//en dat geeft problemen ;p
+	//Dus voor nu gewoon zo:
+	var members = balls.getMembers();
+	for(var i = 0; i < members.length; i++){
+		for(var j = i+1; j < members.length; j++){
+			checkBallCollision(members[i], members[j]);
+		}
+	}
 
-  	checkBallCollision(ci, ci2);
-
-  	//Move ball around
-  	ci.move();
-  	ci2.move();
+  	//Move balls around
+	balls.move();
 }
 
 //Draws the ball
 function drawBouncingBall(){
-  ci.draw();
-  ci2.draw();
+  balls.draw();
 }
 
 //Draws the poles
 function drawPole(){
-  rc.draw();
+  pole.draw();
 }
 
 //Draws the shield
 function drawShield(_mouseX, _mouseY){
-  sh.draw(_mouseX, _mouseY);
+  shield.draw(_mouseX, _mouseY);
 }
 
 //Checks the collision of a ball with the wall
