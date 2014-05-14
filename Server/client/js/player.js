@@ -1,7 +1,7 @@
 var port = 5050
 var server = 'http://localhost'
 var socket = io.connect(server+":"+port);
-var clientList;
+
 var left = 0;
 var topf = 0;
 
@@ -23,12 +23,4 @@ socket.on('draw', function (data) {
   context.fill();
 })
 
-socket.on('getPoint', function	(data) {
-	document.getElementById('mousePos').innerHTML = "x:"+ data.x + " y:" + data.y;
-})
-
-socket.on('clientList', function (data) {
-	document.getElementById('clientList').innerHTML = "0:"+data[0]+" 1:"+data[1];
-	console.log(data);
-})
-
+socket.on('disconnect', alert("Game is full!") );
