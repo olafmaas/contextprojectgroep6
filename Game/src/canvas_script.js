@@ -119,8 +119,8 @@ function ballsCollided(_ball1, _ball2, _tangent){
 
 	var angle = 0.5 * Math.PI + _tangent;
 
-	_ball1.setPosition(x1 + Math.sin(angle), y1 - Math.cos(angle));
-	_ball2.setPosition(x2 - Math.sin(angle), y2 - Math.cos(angle));
+	_ball1.setPosition(x1 + Math.cos(angle), y1 - Math.sin(angle));
+	_ball2.setPosition(x2 - Math.cos(angle), y2 - Math.sin(angle));
 }
 
 //Should later bounce of collided balls
