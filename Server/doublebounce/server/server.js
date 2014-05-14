@@ -17,21 +17,7 @@ var dy = 4;
 var y = 150;
 var x = 10;
 
-setInterval(draw,10); 
 
-function draw(){
-  if( x<0 || x>grid[0].length * canvasWidth){
-    dx=-dx;
-  }
-  if( y<0 || y>grid.length * canvasHeight){
-    dy=-dy;
-  }
-  x+=dx;
-  y+=dy;
-
-  //TODO stuur alleen naar de clients die dat kunnen zien.
-  io.sockets.emit('draw', {x: x, y:y})
-}
 
 io.sockets.on('connection', function (socket) {
   if(!mainScreenSocket){
@@ -84,7 +70,8 @@ function clientConnects(socket){
     grid[i].push(socket.id);
   }
 
-  socket.emit('canvasPos', {left: x * canvasWidth, top: y*canvasHeight} )
+  socket.emit('canvasPos', {left: x * canvasWidth, top: y*canvasHeight});
+  mainScreenSocket.emit('newCanvasSize', {width: grid[0].length * canvasWidth, height: grid.length * canvasHeight});
 
   //Handle Client Disconnet
   socket.on('disconnect', function (data){
@@ -94,3 +81,18 @@ function clientConnects(socket){
     grid[y][x] = -1;
   })
 };
+
+setInterval(draw,10); 
+function draw(){
+  if( x<0 || x>grid[0].length * canvasWidth){
+    dx=-dx;
+  }
+  if( y<0 || y>grid.length * canvasHeight){
+    dy=-dy;
+  }
+  x+=dx;
+  y+=dy;
+
+  //TODO stuur alleen naar de clients die dat kunnen zien.
+  io.sockets.emit('draw', {x: x, y:y})
+}
