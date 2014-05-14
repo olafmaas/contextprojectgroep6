@@ -10,6 +10,7 @@ function Circle(_canv){
 	this.y = 0; //y position in the canvas (middle of circle)
 	this.radius = 0; //radius of the circle
 	this.velocity = 0; //speed of circle
+	this.angle = 0; //ADDED
 	this.dx = 0; //speed of circle in x direction
 	this.dy = 0; //speed of circle in y direction
 
@@ -46,6 +47,14 @@ function Circle(_canv){
 		this.radius = _radius;
 	}
 
+	//ADDED
+	this.setAngle = function (_speed, _angle){
+		this.velocity = _speed;
+		this.angle = _angle;
+		this.dx = _speed * Math.sin(_angle);
+		this.dy = _speed * Math.cos(_angle);
+	}
+
 	//Sets the speed of the circle
 	//@Param _dx
 	//	The speed of the circle from left to right in pixels per redraw. Negative number is right to left.
@@ -54,16 +63,36 @@ function Circle(_canv){
 	this.setSpeed = function (_dx, _dy){
 		this.dx = _dx;
 		this.dy = _dy;
+
+		//ADDED
+		this.velocity = this.lineDistance();
+		this.angle = this.angleBetweenLines();
 	}
 
-	//Reverst the y speed
+	//ADDED
+	this.angleBetweenLines = function (){
+		return Math.atan2(this.dy, this.dx);
+	}
+
+	//ADDED
+	this.lineDistance = function()
+	{
+	  var xs = this.dx * this.dx;
+	  var ys = this.dy * this.dy;
+	 
+	  return Math.sqrt( xs + ys );
+	}
+
+	//Revers the y speed
 	this.revertYSpeed = function (){
 		this.dy = -this.dy;
+		this.angle = this.angleBetweenLines();
 	}
 
 	//Revers the x speed 
 	this.revertXSpeed = function (){
 		this.dx = -this.dx;
+		this.angle = this.angleBetweenLines();
 	}
 
 	//Get the x coordinate of the middle of the circle

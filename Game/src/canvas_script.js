@@ -42,12 +42,11 @@ function checkWallCollision(_ball){
 
   //If object hits one of the walls on the sides
   if (_ball.x + _ball.dx > WIDTH || _ball.x + _ball.dx < 0 )
-    _ball.dx = -_ball.dx;
+  	_ball.revertXSpeed(); 
 
   //If object hits one of the walls on the top or bottom
   if (_ball.y + _ball.dy > HEIGHT || _ball.y + _ball.dy < 0 )
-    _ball.dy = -_ball.dy;
-
+    _ball.revertYSpeed();
 
 }
 
@@ -98,9 +97,21 @@ function checkBallCollision(_ball1, _ball2){
 	}	
 }
 
-//
+//Deflects the balls by calculating their new angle on impact
 function ballsCollided(_ball1, _ball2, _tangent){
-	//TODO: balletjes wegkaatsen
+	var speed1 = _ball1.velocity;
+	var speed2 = _ball2.velocity;
+
+	_ball1.setAngle(speed2, (2 * _tangent - _ball1.angle));
+	_ball2.setAngle(speed1, (2 * _tangent - _ball2.angle));
+
+
+	var angle = 0.5 * Math.PI + _tangent;
+
+	_ball1.x += Math.sin(angle);
+	_ball1.y -= Math.cos(angle);
+	_ball2.x -= Math.sin(angle);
+	_ball2.y += Math.cos(angle);
 
 }
 
