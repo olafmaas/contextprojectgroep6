@@ -104,5 +104,31 @@ function ballsCollided(_ball1, _ball2, _tangent){
 
 }
 
+//Should later bounce of collided balls
+function handleShieldCollision(){
+	console.log("Collision detected");
+}
+
+//Checks whether a ball collides with the area where the shield actually is
+function checkPreciseShieldCollision(delta, _shield){
+	var phaseShield = {start:_shield.getAngle(), end:_shield.getYPosition()};
+	var phaseCollision = Math.atan2(delta.dy, delta.dx);
+	
+	return (phaseShield.start < phaseCollision && phaseCollision < phaseShield.end);
+}
+
+//Checks whether a ball collides with the area of the whole shield
+function checkShieldCollision(_ball, _shield){
+	var posBall = {x:_ball.getXPosition(), y:_ball.getYPosition()};
+	var posShield = {x:_shield.getXPosition(), y:_shield.getYPosition()};
+	var distance = _ball.getRadius() + _shield.getRadius();
+	var delta = {dx:posBall.x - posShield.x, dy:-(posBall.y - posShield.y)};
+	
+	if (( delta.dx*delta.dx )  + ( delta.dy*delta.dy ) < distance*distance ) 
+	{		
+		return checkPreciseShieldCollision(delta, _shield);
+	}
+}
+
 
 
