@@ -2,8 +2,7 @@ var port = 5050
 var server = 'http://localhost'
 var socket = io.connect(server+":"+port);
 
-var left = 0;
-var topf = 0;
+socket.emit('screenSizeMainScreen', {height: screen.height, width: screen.width});
 
 var canvasSize = {
   width: 100,
@@ -18,7 +17,7 @@ socket.on('draw', function (data) {
 
   context.beginPath();
   context.fillStyle="#0000ff";
-  context.arc(data.x - left,data.y - topf,20,0,Math.PI*2,true);
+  context.arc(data.x ,data.y ,20,0,Math.PI*2,true);
   context.closePath();
   context.fill();
 })

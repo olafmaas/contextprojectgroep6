@@ -4,11 +4,12 @@ io.set('log level', 2);   // 0 - error | 1 - warn | 2 - info | 3 - debug
 //TODO Rooms gebruiken
 var mainScreenSocket;
 var playerSockets = {};
+var maximumPlayers;
 
 var canvasWidth = 300;
 var canvasHeight = 300;
 
-var maxRowWidth = 2;
+var maximumCol;
 var grid = new Array();
 grid.push(new Array());
 
@@ -17,21 +18,30 @@ var dy = 4;
 var y = 150;
 var x = 10;
 
-
-
 io.sockets.on('connection', function (socket) {
   if(!mainScreenSocket){
     console.log('MainScreen connected');
-    mainScreenConnects(socket);
+    connectMainScreen(socket);
   }
   else{
-    console.log('Client connected');
-    clientConnects(socket);
+    if(Object.keys(playerSockets).length == maximumPlayers){
+      socket.disconnect();
+    }
+    else{
+      console.log('Client connected');
+      connectClient(socket);
+    } 
   }
 });
 
-function mainScreenConnects(socket){
+function connectMainScreen(socket){
   mainScreenSocket = socket;
+
+  //Bepaal het maximaal aantal spelers
+  socket.on('screenSizeMainScreen', function(data){
+    maximumPlayers = Math.floor(data.width / canvasWidth) * Math.floor(data.height / canvasHeight);
+    maximumCol = Math.floor(data.width / canvasWidth);
+  })
 
   //Handle MainScreen Disconnet
   socket.on('disconnect', function (data){
@@ -40,7 +50,7 @@ function mainScreenConnects(socket){
   })
 };
 
-function clientConnects(socket){ 
+function connectClient(socket){ 
   playerSockets[socket.id] = socket;
 
 
@@ -49,7 +59,7 @@ function clientConnects(socket){
 
   placed = false;
   for (i = 0; i < grid.length; i++) {
-    if(grid[i].indexOf(-1) >  -1 || grid[i].length < maxRowWidth) {
+    if(grid[i].indexOf(-1) >  -1 || grid[i].length < maximumCol) {
       placed = true;
       if(grid[i].indexOf(-1) > -1){
         x = grid[i].indexOf(-1);
