@@ -9,13 +9,6 @@
 (_______)\_______/   )_(        )_(   (_______/\_______)   )_(   
 </pre>                                    
 
-HALLOOO
-
-DOOOEEEIII
-
-xxxx
-
-<script>
-window.onload = function(){
-	alert("Giechel");
-}</script>
+Contextproject: Games
+Group: 			6
+Game:			Paaltjesvoetbal - The Game
