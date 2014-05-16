@@ -29,6 +29,8 @@
     	pole.getBody().isStatic = true;
     	pole.setColor("#CDF99E");
     	pole.setPosition(300, 300);
+        
+        var shield = new Shield(pole);
 
     	var ball = new Ball(10);
     	ball.setPosition(0, 0);
@@ -36,8 +38,6 @@
     	ball.setVelocity(1);
     	ball.setVelocityDirection(1.75 * Math.PI);
         ball.setPosition(150, 150);
-
-    	var shield = new Shield(pole);
 
     	function loadContent(){
 

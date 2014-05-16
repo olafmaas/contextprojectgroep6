@@ -14,6 +14,7 @@ var CircularBody = Body.extend({
 
 	CollidesWith: function(other){
 		if(other instanceof CircularBody) return this.CollidesWithBall(other);
+		if(other instanceof Shield) return other.collidesWith(parentBall);
 		else console.log("Unimplemented Collision with " + other);
 	},
 
@@ -34,14 +35,14 @@ var CircularBody = Body.extend({
 		if(!CollidesWith(other)) return;
 
 		//Make the bodies handle the collision
-		HandleIndividual(other);
-		other.HandleIndividual(this);
+		handleIndividual(other);
+		other.handleIndividual(this);
 
 		//TODO: Handle collision code
 		console.log("Collision handled");
 	},
 
-	HandleIndividual: function(other){
+	handleIndividual: function(other){
 		//If the body is static it shouldn't respond to collision
 		if(isStatic) return;
 	}

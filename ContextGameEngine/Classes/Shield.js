@@ -47,6 +47,16 @@ function Shield(_pole){
 		return shieldEnds.begin < collisionAngle && shieldEnds.end > collisionAngle;
 	}
 
+	this.handleCollision = function(_other){
+		if(!this.collidesWith(_other)) return;
+
+		_other.getBody().handleIndividual();
+	}
+
+	this.handleIndividual = function(_other){
+		//Nothing to do yet, shield doesn't respond to collisions
+	}
+
 	//Calculates the angle (in radian) of the shield depending on the mouse input 
 	//@Param _mouseY
 	//	The y coordinate of the mouse on the canvas
