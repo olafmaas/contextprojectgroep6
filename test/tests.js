@@ -8,3 +8,5 @@ describe('Array', function(){
     })
   })
 })
+
+window.onload() = mocha.run();

@@ -6,7 +6,6 @@ var canvasSize = {
   width: 100,
   height: 100
 }
-
 var context;
 
 socket.on('connect_failed', function (reason){ 

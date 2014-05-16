@@ -143,6 +143,7 @@ function checkPreciseShieldCollision(delta, _shield, _ball){
 	var phaseCollision = Math.atan2(delta.dy, delta.dx);
 	
 	if(phaseShield.start < phaseCollision && phaseCollision < phaseShield.end){
+	console.log(phaseShield.start, phaseCollision, phaseShield.end);
 		var speed = _ball.getVelocity();
 		var angle = _ball.getAngle();
 		_ball.setAngleVelocity(speed, 2* phaseCollision - angle);
