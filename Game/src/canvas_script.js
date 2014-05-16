@@ -144,17 +144,13 @@ function checkPreciseShieldCollision(delta, _shield, _ball){
 	
 	if(phaseShield.start < phaseCollision && phaseCollision < phaseShield.end){
 		var speed = _ball.getVelocity();
-		
-		var x1 = _shield.getXPosition();
-		var x2 = _ball.getXPosition();
-		var y1 = _shield.getYPosition();
-		var y2 = _ball.getYPosition();
-		var tangent = Math.atan2(y2-y1, x2-x1);
 		var angle = _ball.getAngle();
-		_ball.setAngleVelocity(speed, 2* tangent - angle);
+		_ball.setAngleVelocity(speed, 2* phaseCollision - angle);
 		
-		angle = 0.5 * Math.PI + tangent;
-		_ball.setPosition(x2 + Math.cos(angle), y2 - Math.sin(angle));
+		var x = _ball.getXPosition();
+		var y = _ball.getYPosition();
+		angle = 0.5 * Math.PI + phaseCollision;
+		_ball.setPosition(x + Math.cos(angle), y - Math.sin(angle));
 	}
 }
 
