@@ -1,3 +1,4 @@
+//TODO: Documentation for each function
 function Game(load, update, draw){
 	var width, height;
 	var backGroundColor;

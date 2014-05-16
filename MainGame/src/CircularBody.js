@@ -1,3 +1,4 @@
+//TODO: Documentation for each function
 var CircularBody = Body.extend({
 	radius: 1,
 	parentBall: 0,
@@ -35,17 +36,17 @@ var CircularBody = Body.extend({
 	//First checks whether the two collide by calling the collidesWith function
 	//Second handles the individual collisions 
 	//In all collision functions, there are check to see which collisions occur (ball-ball, ball-shield, etc)
-	HandleCollision: function(other){
+	handleCollision: function(other){
 		if(!this.CollidesWith(other)) { this.hit = false; return; }
 
 		//Make the bodies handle the collision
-		this.HandleIndividual(other);
-		other.getBody().HandleIndividual(this.parentBall);
+		this.handleIndividual(other);
+		other.getBody().handleIndividual(this.parentBall);
 	},
 
-	HandleIndividual: function(other){
+	handleIndividual: function(other){
 		//If the body is static it shouldn't respond to collision
-		if(this.isStatic) return;
+		if(this.immovable) return;
 		//Check which collision to handle
 		if(other instanceof Ball) this.handleBallCollision(other);
 
@@ -57,7 +58,7 @@ var CircularBody = Body.extend({
 			//Get x and y difference
 			var dx = Math.abs(this.position.x - other.getBody().position.x);
 			var dy = Math.abs(this.position.y - other.getBody().position.y);
-			console.log("HIT");
+
 			var tangent = Math.atan2(dx, dy);
 			this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
 			this.hit = true;

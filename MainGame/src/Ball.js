@@ -57,7 +57,7 @@ function Ball(_radius){
 	* @param {Object} _other - The other object with which the ball collides
 	*/
 	this.collidesWith = function(_other){
-		return body.CollidesWith(_other.getBody());
+		return body.CollidesWith(_other);
 	}
 
 	//=============================

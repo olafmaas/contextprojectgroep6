@@ -1,7 +1,9 @@
+
 var Body = Base.extend({
+	
 	//Body properties
 	position: {x:0, y:0},
-	isStatic: false,
+	immovable: false,
 	isTrigger: false,
 	velocity: 0, //The velocity of the circle
 	velocityDirection: 0, //The direction the ball is moving in
@@ -14,7 +16,7 @@ var Body = Base.extend({
 	*/
 	Update: function(){
 		//If the body is static it should be immovable
-		if(this.isStatic) return;
+		if(this.immovable) return;
 
 		//Keep velocityDirection value between 0 and 2pi
 		this.velocityDirection = this.velocityDirection % (2 * Math.PI);

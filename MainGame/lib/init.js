@@ -3,10 +3,11 @@ var ball;
 var ball2;
 var shield;
 
+//Initializes the balls, poles and shield on the screen
 function init(){
 
     pole = new Ball(10);
-    pole.getBody().isStatic = true;
+    pole.getBody().immovable = true;
     pole.setColor("#CDF99E");
     pole.setPosition(300, 300);
 
@@ -23,11 +24,13 @@ function init(){
     ball2.setPosition(250, 150);
 
     shield = new Shield(pole);
+    shield.getBody().immovable = true;
 }
 function loadContent(){
 
 }
 
+//Updates the position of the items on the canvas and checks for collisions
 function update(){
 	pole.update();
 	ball.update();
@@ -36,19 +39,21 @@ function update(){
 
 	//Bit messy for now, but we don't have groups yet for which we can set the collisions,
 	//so we just do it manually here
-	ball.getBody().HandleCollision(pole); //ball1 to pole
-	ball.getBody().HandleCollision(ball2); //ball1 to ball2
+	ball.getBody().handleCollision(pole); //ball1 to pole
+	ball.getBody().handleCollision(ball2); //ball1 to ball2
 	ball.getBody().checkWorldBounds(game); //ball1 to worldBounds
 	ball2.getBody().checkWorldBounds(game); //ball2 to worldBounds
-	ball2.getBody().HandleCollision(pole); //ball2 to pole
+	ball2.getBody().handleCollision(pole); //ball2 to pole
 
-	if(shield.collidesWith(ball)){
+	//Shield collision handling is not yet implemented
+	if(shield.getBody().handleCollision(ball) || shield.getBody().handleCollision(ball2)){
 		game.setBackgroundColor("red");
 	}else{
 		game.setBackgroundColor("black");
 	}
 }
 
+//Draws everything on the canvas
 function draw(canvasContext){
 	pole.draw(canvasContext);
 	ball.draw(canvasContext);
