@@ -9,12 +9,6 @@ function draw() {
 
 	balls.checkCollisions();
 	
-	var kaas = balls.getMembers();
-	for(var j = i+1; j < kaas.length; j++){
-		checkShieldCollision(kaas[j], shield);
-	}
-	
-	
 	//Alleen ball to ball collision werkt niet via de groep,
 	//want de functie neemt 2 ballen als parameter en als je het
 	//in de groep stopt, krijg je zowel 1 collide met 2 als 2 collide met 1 
@@ -23,13 +17,10 @@ function draw() {
 	//console.log(shield);
 	var members = balls.getMembers();
 	for(var i = 0; i < members.length; i++){
-		checkShieldCollision(members[i], shield);
 		for(var j = i+1; j < members.length; j++){
 			checkBallCollision(members[i], members[j]);
 		}
 	}
-
-	balls.checkCollisions();
 
   	//Move balls around
 	balls.move();
@@ -63,6 +54,8 @@ function checkWallCollision(_ball){
   if (ballY > HEIGHT || ballY < 0 )
     _ball.revertYSpeed();
 
+//ball.checkBounds(_game) >> uit game de hoogte/breedte
+//ballgroup / polegroup / shield >> group en dan extenden voor bepaalde typen
 }
 
 //Checks the collision of an ball with a pole

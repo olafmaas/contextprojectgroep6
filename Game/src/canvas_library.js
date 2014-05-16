@@ -30,8 +30,6 @@ function init() {
     balls.add(ball);
     balls.addCollision(ball, null, checkWallCollision, null);
     balls.addCollision(ball, pole, checkPoleCollision, null);
-	
-	balls.addCollision(ball, shield, checkShieldCollision, null);
   }
 
   //Retrieve width / height of the current canvas 
