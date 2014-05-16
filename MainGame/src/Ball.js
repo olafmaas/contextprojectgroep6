@@ -80,7 +80,7 @@ function Ball(_radius){
 	* Sets the color of the ball.
 	*
 	* @method Ball#setColor
-	* @param {RGB value} _color - The RGB value of the color.
+	* @param {Hex value} _color - The hex value of the color.
 	*/
 	this.setColor = function(_color){
 		color = _color;
@@ -110,7 +110,7 @@ function Ball(_radius){
 	* Retrieves the color of the ball.
 	*
 	* @method Ball#getColor
-	* @return {RGB} The color of the ball in RGB value.
+	* @return {Hex} The color of the ball in hex value.
 	*/
 	this.getColor = function(){
 		return color;

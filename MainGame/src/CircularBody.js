@@ -1,6 +1,7 @@
 var CircularBody = Body.extend({
 	radius: 1,
 	parentBall: 0,
+	hit: false,
 
 	constructor: function(_parent){
 		this.radius = _parent.getRadius();
@@ -31,28 +32,32 @@ var CircularBody = Body.extend({
 	},
 
 	HandleCollision: function(other){
-		if(!this.CollidesWith(other)) return;
+		if(!this.CollidesWith(other)) { this.hit = false; return; }
 
 		//Make the bodies handle the collision
 		this.HandleIndividual(other);
-		other.getBody().HandleIndividual(this);
+		other.getBody().HandleIndividual(this.parentBall);
 	},
 
 	HandleIndividual: function(other){
 		//If the body is static it shouldn't respond to collision
 		if(this.isStatic) return;
 		//Check which collision to handle
-		if(other.getBody() instanceof CircularBody) this.handleBallCollision(other);
+		if(other instanceof Ball) this.handleBallCollision(other);
 
 	},
 
 	handleBallCollision: function(other){
-		//Get x and y difference
-		var dx = Math.abs(this.position.x - other.getBody().position.x);
-		var dy = Math.abs(this.position.y - other.getBody().position.y);
 		
-		var tangent = Math.atan2(dx, dy);
-		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
+		if(!this.hit){
+			//Get x and y difference
+			var dx = Math.abs(this.position.x - other.getBody().position.x);
+			var dy = Math.abs(this.position.y - other.getBody().position.y);
+			console.log("HIT");
+			var tangent = Math.atan2(dx, dy);
+			this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
+			this.hit = true;
+		}
 	},
 
 	checkWorldBounds: function(game){
