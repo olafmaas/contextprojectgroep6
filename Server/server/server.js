@@ -18,24 +18,33 @@ var dy = 4;
 var y = 150;
 var x = 10;
 
-io.sockets.on('connection', function (socket) {
+io.sockets.on('error', function(reason){
+  console.error('Error: ', reason);
+});
+
+
+io.of('/mainscreen').on('connection', function (socket) {
   if(!mainScreenSocket){
-    console.log('MainScreen connected');
+    console.info('MainScreen connected');
     connectMainScreen(socket);
   }
-  else{
-    if(Object.keys(playerSockets).length == maximumPlayers){
-      socket.disconnect();
-    }
-    else{
-      console.log('Client connected');
-      connectClient(socket);
-    } 
+});
+
+io.of('/player').on('connection', function (socket) {
+  if(Object.keys(playerSockets).length < maximumPlayers){
+    console.log('Client connected');
+    connectClient(socket);
   }
+  else{
+    socket.send('Game is full!');
+    socket.disconnect();
+  } 
 });
 
 function connectMainScreen(socket){
   mainScreenSocket = socket;
+
+  updateMainScreenSize();
 
   //Bepaal het maximaal aantal spelers
   socket.on('screenSizeMainScreen', function(data){
@@ -49,6 +58,12 @@ function connectMainScreen(socket){
     mainScreenSocket = null;
   })
 };
+
+function updateMainScreenSize(){
+  if(mainScreenSocket){
+    mainScreenSocket.emit('newCanvasSize', {width: grid[0].length * canvasWidth, height: grid.length * canvasHeight});
+  }
+}
 
 function connectClient(socket){ 
   playerSockets[socket.id] = socket;
@@ -81,7 +96,7 @@ function connectClient(socket){
   }
 
   socket.emit('canvasPos', {left: x * canvasWidth, top: y*canvasHeight});
-  mainScreenSocket.emit('newCanvasSize', {width: grid[0].length * canvasWidth, height: grid.length * canvasHeight});
+  updateMainScreenSize();
 
   //Handle Client Disconnet
   socket.on('disconnect', function (data){
@@ -104,5 +119,9 @@ function draw(){
   y+=dy;
 
   //TODO stuur alleen naar de clients die dat kunnen zien.
-  io.sockets.emit('draw', {x: x, y:y})
+  //io.of('/player').emit('draw', {x: x, y:y}) ik denk dat door de interval dit voor de errors zorgt bij disconnecten
+
+  if(mainScreenSocket){
+    mainScreenSocket.emit('draw', {x: x, y:y})
+  }
 }
