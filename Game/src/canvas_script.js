@@ -7,11 +7,7 @@ function draw() {
 	drawPole();
 	drawShield(MOUSEX, MOUSEY);
 
-<<<<<<< HEAD
 	balls.checkCollisions();
-=======
-	balls.checkCollisions();	
->>>>>>> FETCH_HEAD
 	
 	//Alleen ball to ball collision werkt niet via de groep,
 	//want de functie neemt 2 ballen als parameter en als je het

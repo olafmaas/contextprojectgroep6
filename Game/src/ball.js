@@ -198,7 +198,7 @@ function Ball(_radius){
 	this.getRadius = function (){
 		return radius;
 	}
-
+---------------------------------------
 	/**
 	* Retrieves the speed at which the ball travels across the x-axis.
 	*
