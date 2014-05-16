@@ -12,7 +12,7 @@ function Ball(_radius){
   
 	//Ball properties
 	var position = {x: 0, y: 0}; //position of the ball
-	var radius = radius; //radius of the bal
+	var radius = _radius; //radius of the bal
 	var color = "#000000"; //The color of the ball
 	var body;
 
@@ -23,12 +23,12 @@ function Ball(_radius){
 	* @param {CanvasContext} _canvasContext - The canvas context on which the ball will be drawn.
 	*/
 	this.draw = function (_canvasContext){
-		canvasContext.beginPath();
-		canvasContext.arc(position.x, position.y, radius, 0, Math.PI*2, true);
-		canvasContext.closePath();
+		_canvasContext.beginPath();
+		_canvasContext.arc(position.x, position.y, radius, 0, Math.PI*2, true);
+		_canvasContext.closePath();
 
-		canvasContext.fillStyle = color;
-		canvasContext.fill();
+		_canvasContext.fillStyle = color;
+		_canvasContext.fill();
 	}
 
 	//Function to update
@@ -45,58 +45,6 @@ function Ball(_radius){
 		return body.CollidesWith(other.getBody());
 	}
 
-<<<<<<< HEAD
-	/**
-	* Calculates the angle in which the ball is moving, by using the current x and y speed of the ball.
-	* 
-	* @method Ball#angleBetween
-	* @return {number} The angle in radians.
-	*/
-	this.angleBetween = function (_dx, _dy){
-		return Math.atan2(_dx, _dy);
-	}
-
-	/**
-	* Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.
-	*
-	* @method Ball#distanceBetween
-	* @return {number} The velocity of the ball.
-	*/
-	this.distanceBetween = function(_dx, _dy)
-	{
-	  return Math.sqrt( _dx * _dx + _dy * _dy );
-	}
-
-	/**
-	* Reverts the y speed (positive to negative and vice versa).
-	* It also calculates the new angle (speed remains the same).
-	*
-	* @method Ball#revertYSpeed
-	*/
-	this.revertYSpeed = function (){
-		var dx = body.velocity * Math.cos(body.velocityDirection);
-		var dy = -body.velocity * Math.sin(body.velocityDirection);
-		dy = -dy;
-		body.velocityDirection = this.angleBetween(dx, dy);
-	}
-
-	/**
-	* Reverts the x speed (positive to negative and vice versa).
-	* It also calculates the new angle (speed remains the same).
-	*
-	* @method Ball#revertXSpeed
-	*/
-	this.revertXSpeed = function (){
-		var dx = body.velocity * Math.cos(body.velocityDirection);
-		var dy = -body.velocity * Math.sin(body.velocityDirection);
-
-		dx = -dx;
-		angle = this.angleBetween();
-	}
-
-
-=======
->>>>>>> parent of 2b49fbd... Added functions from game/ball.js to the engine
 	//=============================
 	//SECTION: Get & sets
 
@@ -160,5 +108,5 @@ function Ball(_radius){
 	}
 
 	//Stuff to execute when constructing
-	this.EnableBody();
+	this.enableBody();
 }
