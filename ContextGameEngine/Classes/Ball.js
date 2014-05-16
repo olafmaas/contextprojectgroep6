@@ -102,7 +102,6 @@ function Ball(_radius){
 	this.revertXSpeed = function (){
 		var dx = body.velocity * Math.cos(body.velocityDirection);
 		var dy = -body.velocity * Math.sin(body.velocityDirection);
-		dy = -dy;
 
 		dx = -dx;
 		angle = this.angleBetween();
