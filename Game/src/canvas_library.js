@@ -25,7 +25,7 @@ function init() {
   //Simple ball adding (hardcoded places)
   for (var i = 0; i < NROFBALLS; i++){
     var ball = new Ball(20);
-    ball.setPosition(10 + (300*i), 10 + (200*i));
+    ball.setPosition(10 + (50*i), 10 + (100*i));
     ball.setSpeed(6, 1);
     balls.add(ball);
     balls.addCollision(ball, null, checkWallCollision, null);

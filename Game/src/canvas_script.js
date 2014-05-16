@@ -14,17 +14,22 @@ function draw() {
 		checkShieldCollision(kaas[j], shield);
 	}
 	
+	
 	//Alleen ball to ball collision werkt niet via de groep,
 	//want de functie neemt 2 ballen als parameter en als je het
 	//in de groep stopt, krijg je zowel 1 collide met 2 als 2 collide met 1 
 	//en dat geeft problemen ;p
 	//Dus voor nu gewoon zo:
+	//console.log(shield);
 	var members = balls.getMembers();
 	for(var i = 0; i < members.length; i++){
+		checkShieldCollision(members[i], shield);
 		for(var j = i+1; j < members.length; j++){
 			checkBallCollision(members[i], members[j]);
 		}
 	}
+
+	balls.checkCollisions();
 
   	//Move balls around
 	balls.move();
@@ -87,7 +92,6 @@ function checkPoleCollision(_obj, _pole){
 //Checks whether two balls collide and bounces them off
 function checkBallCollision(_ball1, _ball2){
 	//TODO: optimization: eerst box check doen en daarna pas de intensievere check of de rondjes daadwerkelijk colliden
-	//TODO: in phaser code kijken hoe zij dit afhandelen in arcade ?
 	
 	var x1 = _ball1.getXPosition();
 	var y1 = _ball1.getYPosition();
@@ -106,11 +110,12 @@ function checkBallCollision(_ball1, _ball2){
 		//If balls collided, calculate their new angles
 		var tangent = Math.atan2(dy, dx);
 		ballsCollided(_ball1, _ball2, tangent);
-	}	
+	}
 }
 
 //Deflects the balls by calculating their new angle on impact
 function ballsCollided(_ball1, _ball2, _tangent){
+	
 	var speed1 = _ball1.getVelocity();
 	var speed2 = _ball2.getVelocity();
 	var angle1 = _ball1.getAngle();
@@ -124,9 +129,11 @@ function ballsCollided(_ball1, _ball2, _tangent){
 	_ball2.setAngleVelocity(speed1, (2 * _tangent - angle2));
 
 	var angle = 0.5 * Math.PI + _tangent;
-	
+
+
+	//TODO: Met flags werken kan ook ipv verplaatsen, waarschijnlijk handiger omdat je dan niet buiten het scherm kan komen
 	_ball1.setPosition(x1 + Math.cos(angle), y1 - Math.sin(angle));
-	_ball2.setPosition(x2 - Math.cos(angle), y2 - Math.sin(angle));
+	_ball2.setPosition(x2 - Math.cos(angle), y2 + Math.sin(angle));
 }
 
 //Should later bounce of collided balls
@@ -173,6 +180,9 @@ function checkShieldCollision(_ball, _shield){
 	if (( delta.dx*delta.dx )  + ( delta.dy*delta.dy ) < distance*distance ) 
 	{		
 		return checkPreciseShieldCollision(delta, _shield, _ball);
+
+		if(checkPreciseShieldCollision(delta, _shield))
+			handleShieldCollision();
 	}
 }
 
