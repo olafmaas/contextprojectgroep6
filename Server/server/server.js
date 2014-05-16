@@ -1,10 +1,18 @@
-var io = require('socket.io').listen(5050)
+var io = require('socket.io').listen(5050);
+require('Base.js');
+require('Game.js');
+require('Sprite.js');
+require('Ball.js');
+require('Body.js');
+require('CircularBody.js');
+require('Input.js');
+require('Shield.js');
+
 io.set('log level', 2);   // 0 - error | 1 - warn | 2 - info | 3 - debug
 
 var mainScreenSocket;
 var playerSockets = {};
 var maximumPlayers = 0;
-
 
 // GAME EN GRID GEBEUREN
 var canvasWidth = 300;
