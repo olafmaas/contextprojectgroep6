@@ -4,7 +4,6 @@ var socket = io.connect(server+":"+port).of('/player');
 
 var left = 0;
 var topf = 0;
-
 var context;
 
 socket.on('connect_failed', function (reason){ 
@@ -42,5 +41,3 @@ socket.on('draw', function (data) {
   context.closePath();
   context.fill();
 })
-
-
