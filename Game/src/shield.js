@@ -87,7 +87,6 @@ function Shield(_canv, _pole){
 	this.getRadius = function (){
 		return this.radius;
 	}
-<<<<<<< HEAD
 	
 	this.getXPosition = function (){
 		return this.x;
@@ -100,4 +99,3 @@ function Shield(_canv, _pole){
 
 //TODO: schild wordt getekend vanaf links (dus x,y geeft meest linker punt van het schild)
 //		het zou mooier zijn als het vanuit het midden was
-}
