@@ -34,7 +34,7 @@ function Group(){
 		}
 		else {
 			//Create new collision object and add it to the array
-			var collObj = new Collision(_object1, pole, _collision, _preCollision);
+			var collObj = new Collision(_object1, _object2, _collision, _preCollision);
 			collision.push(collObj);
 		}
 	}

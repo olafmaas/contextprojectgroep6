@@ -102,11 +102,12 @@ function checkBallCollision(_ball1, _ball2){
 		//If balls collided, calculate their new angles
 		var tangent = Math.atan2(dy, dx);
 		ballsCollided(_ball1, _ball2, tangent);
-	}	
+	}
 }
 
 //Deflects the balls by calculating their new angle on impact
 function ballsCollided(_ball1, _ball2, _tangent){
+	
 	var speed1 = _ball1.getVelocity();
 	var speed2 = _ball2.getVelocity();
 	var angle1 = _ball1.getAngle();

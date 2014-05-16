@@ -1,18 +1,28 @@
-//A simple circle class
+//A simple ball class
 
-//Creates a circle object
-//@Param _canv 
-//  The canvas on which the circle will reside
-function Ball(radius){
+/** 
+* Ball constructor
+*
+* @class Ball
+* @classdesc Ball constructor.
+* @constructor
+* @param {number} _radius - The radius of the ball.
+*/
+function Ball(_radius){
   
-	//Circle properties
-	var position = {x: 0, y: 0}; //position of the circle
-	var radius = radius; //radius of the circle
+	//Ball properties
+	var position = {x: 0, y: 0}; //position of the ball
+	var radius = radius; //radius of the bal
 	var color = "#000000"; //The color of the ball
 	var body;
 
-	//Draws the circle on the canvas
-	this.Draw = function (canvasContext){
+	/**
+	* Draws the ball on the canvas
+	*
+	* @method Ball#draw
+	* @param {CanvasContext} _canvasContext - The canvas context on which the ball will be drawn.
+	*/
+	this.draw = function (_canvasContext){
 		canvasContext.beginPath();
 		canvasContext.arc(position.x, position.y, radius, 0, Math.PI*2, true);
 		canvasContext.closePath();
@@ -22,16 +32,16 @@ function Ball(radius){
 	}
 
 	//Function to update
-	this.Update = function(){
+	this.update = function(){
 		if(body instanceof CircularBody) body.Update();
 	}
 
-	this.EnableBody = function(){
+	this.enableBody = function(){
 		body = new CircularBody(this);
 	}
 
 	//Check for collision
-	this.CollidesWith = function(other){
+	this.collidesWith = function(_other){
 		return body.CollidesWith(other.getBody());
 	}
 
