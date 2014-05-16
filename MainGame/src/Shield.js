@@ -31,7 +31,7 @@ function Shield(_pole){
 	* A method that checks if the shield collides with a ball
 	* 
 	* @method collidesWith
-	* @param{_ball} The ball that should be hittested with the shield
+	* @param {_ball} The ball that should be hittested with the shield
 	*/
 	this.collidesWith = function(_ball){
 		var delta = {x: _ball.getPosition().x - position.x, y: _ball.getPosition().y - position.y};

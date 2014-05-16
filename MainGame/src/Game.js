@@ -82,4 +82,12 @@ function Game(load, update, draw){
 	this.setBackgroundColor = function(_color){
 		backGroundColor = _color;
 	}
+
+	this.getWidth = function(){
+		return width;
+	}
+
+	this.getHeight = function(){
+		return height;
+	}
 }

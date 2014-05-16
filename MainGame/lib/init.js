@@ -23,15 +23,12 @@ function loadContent(){
 }
 
 function update(){
-	//ball.collidesWith(pole);
-	//ball.collidesWith(ball);
-	//ball.collidesWith(shield);
-
-	ball.getBody().HandleCollision(pole);
-
 	pole.update();
 	ball.update();
 	shield.update();
+
+	ball.getBody().HandleCollision(pole);
+	ball.getBody().checkWorldBounds(game);
 
 	if(shield.collidesWith(ball)){
 		game.setBackgroundColor("red");
@@ -45,4 +42,3 @@ function draw(canvasContext){
 	ball.draw(canvasContext);
 	shield.draw(canvasContext);
 }
-

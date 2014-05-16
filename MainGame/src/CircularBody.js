@@ -53,5 +53,20 @@ var CircularBody = Body.extend({
 		
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
+	},
+
+	checkWorldBounds: function(game){
+		var ballPosition = this.getPosition();
+		var ballSpeed = this.getXYSpeed();
+		var nextXPos = ballPosition.x + ballSpeed.x;
+		var nextYPos = ballPosition.y + ballSpeed.y;
+		var width = game.getWidth();
+		var height = game.getHeight();
+
+		if(nextXPos > width || nextXPos < 0)
+			this.revertXSpeed();
+
+		if(nextYPos > height || nextYPos < 0)
+			this.revertYSpeed();
 	}
 });
