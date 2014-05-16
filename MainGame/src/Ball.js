@@ -31,19 +31,31 @@ function Ball(_radius){
 		_canvasContext.fill();
 	}
 
-	//TODO: documentation
-	//Function to update
+	/**
+	* Updates the position of the ball
+	*
+	* @method Ball#update
+	*/
 	this.update = function(){
 		if(body instanceof CircularBody) body.Update();
 	}
 
-	//TODO: documentation
+	/**
+	* Creates the body of the ball
+	*
+	* @method Ball#enableBody
+	*/
 	this.enableBody = function(){
 		body = new CircularBody(this);
 	}
 
-	//TODO: documentation
-	//Check for collision
+	/**
+	* Collision handler for the ball
+	* It calls the collision function in the body class which takes care of the rest
+	*
+	* @method Ball#collidesWith
+	* @param {Object} _other - The other object with which the ball collides
+	*/
 	this.collidesWith = function(_other){
 		return body.CollidesWith(_other.getBody());
 	}

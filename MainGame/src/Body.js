@@ -1,4 +1,5 @@
 var Body = Base.extend({
+	//Body properties
 	position: {x:0, y:0},
 	isStatic: false,
 	isTrigger: false,
@@ -6,6 +7,11 @@ var Body = Base.extend({
 	velocityDirection: 0, //The direction the ball is moving in
 	vectorVelocity: {x: 0, y: 0}, //velocity of circle split in a vector
 
+	/**
+	* Updates the position of the body
+	*
+	* @method Body#update
+	*/
 	Update: function(){
 		//If the body is static it should be immovable
 		if(this.isStatic) return;

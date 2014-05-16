@@ -31,6 +31,10 @@ var CircularBody = Body.extend({
 		return (distanceApart <= this.radius + other.getRadius());
 	},
 
+	//Handles everything from the collision:
+	//First checks whether the two collide by calling the collidesWith function
+	//Second handles the individual collisions 
+	//In all collision functions, there are check to see which collisions occur (ball-ball, ball-shield, etc)
 	HandleCollision: function(other){
 		if(!this.CollidesWith(other)) { this.hit = false; return; }
 
