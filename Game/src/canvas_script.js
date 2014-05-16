@@ -8,18 +8,28 @@ function draw() {
 	drawShield(MOUSEX, MOUSEY);
 
 	balls.checkCollisions();
-
+	
+	var kaas = balls.getMembers();
+	for(var j = i+1; j < kaas.length; j++){
+		checkShieldCollision(kaas[j], shield);
+	}
+	
+	
 	//Alleen ball to ball collision werkt niet via de groep,
 	//want de functie neemt 2 ballen als parameter en als je het
 	//in de groep stopt, krijg je zowel 1 collide met 2 als 2 collide met 1 
 	//en dat geeft problemen ;p
 	//Dus voor nu gewoon zo:
+	//console.log(shield);
 	var members = balls.getMembers();
 	for(var i = 0; i < members.length; i++){
+		checkShieldCollision(members[i], shield);
 		for(var j = i+1; j < members.length; j++){
 			checkBallCollision(members[i], members[j]);
 		}
 	}
+
+	balls.checkCollisions();
 
   	//Move balls around
 	balls.move();
@@ -82,7 +92,6 @@ function checkPoleCollision(_obj, _pole){
 //Checks whether two balls collide and bounces them off
 function checkBallCollision(_ball1, _ball2){
 	//TODO: optimization: eerst box check doen en daarna pas de intensievere check of de rondjes daadwerkelijk colliden
-	//TODO: in phaser code kijken hoe zij dit afhandelen in arcade ?
 	
 	var x1 = _ball1.getXPosition();
 	var y1 = _ball1.getYPosition();
@@ -101,11 +110,12 @@ function checkBallCollision(_ball1, _ball2){
 		//If balls collided, calculate their new angles
 		var tangent = Math.atan2(dy, dx);
 		ballsCollided(_ball1, _ball2, tangent);
-	}	
+	}
 }
 
 //Deflects the balls by calculating their new angle on impact
 function ballsCollided(_ball1, _ball2, _tangent){
+	
 	var speed1 = _ball1.getVelocity();
 	var speed2 = _ball2.getVelocity();
 	var angle1 = _ball1.getAngle();
@@ -114,27 +124,35 @@ function ballsCollided(_ball1, _ball2, _tangent){
 	var x2 = _ball2.getXPosition();
 	var y1 = _ball1.getYPosition();
 	var y2 = _ball2.getYPosition();
-
+	
 	_ball1.setAngleVelocity(speed2, (2 * _tangent - angle1));
 	_ball2.setAngleVelocity(speed1, (2 * _tangent - angle2));
 
 	var angle = 0.5 * Math.PI + _tangent;
 
+
+	//TODO: Met flags werken kan ook ipv verplaatsen, waarschijnlijk handiger omdat je dan niet buiten het scherm kan komen
 	_ball1.setPosition(x1 + Math.cos(angle), y1 - Math.sin(angle));
-	_ball2.setPosition(x2 - Math.cos(angle), y2 - Math.sin(angle));
+	_ball2.setPosition(x2 - Math.cos(angle), y2 + Math.sin(angle));
 }
 
-//Should later bounce of collided balls
-function handleShieldCollision(){
-	console.log("Collision detected");
-}
 
 //Checks whether a ball collides with the area where the shield actually is
-function checkPreciseShieldCollision(delta, _shield){
-	var phaseShield = {start:_shield.getAngle(), end:_shield.getYPosition()};
+function checkPreciseShieldCollision(delta, _shield, _ball){
+	var phaseShield = {start:_shield.getAngle()-Math.PI/3.5, end:_shield.getAngle()+Math.PI/3.5};
 	var phaseCollision = Math.atan2(delta.dy, delta.dx);
 	
-	return (phaseShield.start < phaseCollision && phaseCollision < phaseShield.end);
+	if(phaseShield.start < phaseCollision && phaseCollision < phaseShield.end){
+	console.log(phaseShield.start, phaseCollision, phaseShield.end);
+		var speed = _ball.getVelocity();
+		var angle = _ball.getAngle();
+		_ball.setAngleVelocity(speed, 2* phaseCollision - angle);
+		
+		var x = _ball.getXPosition();
+		var y = _ball.getYPosition();
+		angle = 0.5 * Math.PI + phaseCollision;
+		_ball.setPosition(x + Math.cos(angle), y - Math.sin(angle));
+	}
 }
 
 //Checks whether a ball collides with the area of the whole shield
@@ -142,11 +160,11 @@ function checkShieldCollision(_ball, _shield){
 	var posBall = {x:_ball.getXPosition(), y:_ball.getYPosition()};
 	var posShield = {x:_shield.getXPosition(), y:_shield.getYPosition()};
 	var distance = _ball.getRadius() + _shield.getRadius();
-	var delta = {dx:posBall.x - posShield.x, dy:-(posBall.y - posShield.y)};
+	var delta = {dx:posBall.x - posShield.x, dy:(posBall.y - posShield.y)};
 	
 	if (( delta.dx*delta.dx )  + ( delta.dy*delta.dy ) < distance*distance ) 
 	{		
-		return checkPreciseShieldCollision(delta, _shield);
+		checkPreciseShieldCollision(delta, _shield, _ball);
 	}
 }
 

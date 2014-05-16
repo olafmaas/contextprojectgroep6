@@ -65,6 +65,14 @@ function Shield(_canv, _pole){
 		this.radius = _radius;
 	}
 
+	this.getXPosition = function (){
+		return this.x;
+	}
+
+	this.getYPosition = function () {
+		return this.y;
+	}
+
 	//Gets the pole belonging to the shield
 	this.getPole = function (){
 		return this.pole;
@@ -78,6 +86,14 @@ function Shield(_canv, _pole){
 	//Gets the radius of the shield
 	this.getRadius = function (){
 		return this.radius;
+	}
+	
+	this.getXPosition = function (){
+		return this.x;
+	}
+	
+	this.getYPosition = function (){
+		return this.y;
 	}
 }
 

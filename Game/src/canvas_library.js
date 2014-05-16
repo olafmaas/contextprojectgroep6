@@ -25,11 +25,13 @@ function init() {
   //Simple ball adding (hardcoded places)
   for (var i = 0; i < NROFBALLS; i++){
     var ball = new Ball(20);
-    ball.setPosition(10 + (300*i), 10 + (200*i));
+    ball.setPosition(10 + (50*i), 10 + (100*i));
     ball.setSpeed(6, 1);
     balls.add(ball);
     balls.addCollision(ball, null, checkWallCollision, null);
     balls.addCollision(ball, pole, checkPoleCollision, null);
+	
+	balls.addCollision(ball, shield, checkShieldCollision, null);
   }
 
   //Retrieve width / height of the current canvas 
@@ -39,11 +41,6 @@ function init() {
 
   //Handle the movement of the mouse (for shield)
   canvas.onmousemove = handleMouseMovement;
-
-  var temp = balls.getMembers();
-  temp.forEach(function (_ball){
-    balls.addCollision(_ball, balls, checkBallCollision, null);
-  });
 
   //Set the refresh rate of the canvas (stuff drawn every 10 ms)
   return setInterval(draw, 10);
