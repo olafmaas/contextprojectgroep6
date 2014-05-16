@@ -35,6 +35,11 @@
     	ball.setColor("#9EB9F9");
     	ball.setVelocity(1);
     	ball.setVelocityDirection(1.75 * Math.PI);
+        ball.setPosition(150, 150);
+
+        var hallo = new Ball(20);
+        hallo.setColor('orange');
+        hallo.setPosition(100, 200);
 
     	var shield = new Shield(pole);
 
@@ -43,11 +48,11 @@
     	}
 
     	function update(){
-    		pole.Update();
-    		ball.Update();
-    		shield.Update();
+    		pole.update();
+    		ball.update();
+    		shield.update();
 
-    		if(pole.CollidesWith(ball)){
+    		if(shield.collidesWith(ball)){
     			game.setBackgroundColor("red");
     		}else{
     			game.setBackgroundColor("black");
@@ -55,9 +60,9 @@
     	}
 
     	function draw(canvasContext){
-    		pole.Draw(canvasContext);
-    		ball.Draw(canvasContext);
-    		shield.Draw(canvasContext);
+    		pole.draw(canvasContext);
+    		ball.draw(canvasContext);
+    		shield.draw(canvasContext);
     	}
     </script>
 
