@@ -7,7 +7,11 @@ function draw() {
 	drawPole();
 	drawShield(MOUSEX, MOUSEY);
 
+<<<<<<< HEAD
 	balls.checkCollisions();
+=======
+	balls.checkCollisions();	
+>>>>>>> FETCH_HEAD
 	
 	//Alleen ball to ball collision werkt niet via de groep,
 	//want de functie neemt 2 ballen als parameter en als je het
@@ -136,6 +140,7 @@ function checkPreciseShieldCollision(delta, _shield, _ball){
 	var phaseCollision = Math.atan2(delta.dy, delta.dx);
 	
 	if(phaseShield.start < phaseCollision && phaseCollision < phaseShield.end){
+	console.log(phaseShield.start, phaseCollision, phaseShield.end);
 		var speed = _ball.getVelocity();
 		var angle = _ball.getAngle();
 		_ball.setAngleVelocity(speed, 2* phaseCollision - angle);
