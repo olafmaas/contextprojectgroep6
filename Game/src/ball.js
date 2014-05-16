@@ -75,8 +75,8 @@ function Ball(_radius){
 		velocity = _velocity;
 		angle = _angle;
 
-		dx = _velocity * Math.cos(_angle);
-		dy = -_velocity * Math.sin(_angle);
+		dx = _velocity * Math.sin(_angle);
+		dy = _velocity * Math.cos(_angle);
 	}
 
 	/**

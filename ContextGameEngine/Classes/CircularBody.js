@@ -1,5 +1,4 @@
 var CircularBody = Body.extend({
-	
 	radius: 1,
 	parentBall: 0,
 

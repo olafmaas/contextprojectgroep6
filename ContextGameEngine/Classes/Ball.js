@@ -31,34 +31,21 @@ function Ball(_radius){
 		canvasContext.fill();
 	}
 
-	/**
-	* Updates the ball (position, etc)
-	*
-	* @method Ball#update
-	*/
+	//Function to update
 	this.update = function(){
 		if(body instanceof CircularBody) body.Update();
 	}
 
-	/**
-	* Instantiates the body of the ball
-	* 
-	* @method Ball#enableBody
-	*/
 	this.enableBody = function(){
 		body = new CircularBody(this);
 	}
 
-	/**
-	* Checks for collision with the ball
-	*
-	* @method Ball#collidesWith
-	* @param {Object} _other - The other object where it collides with.
-	*/
+	//Check for collision
 	this.collidesWith = function(_other){
 		return body.CollidesWith(other.getBody());
 	}
 
+<<<<<<< HEAD
 	/**
 	* Calculates the angle in which the ball is moving, by using the current x and y speed of the ball.
 	* 
@@ -108,16 +95,16 @@ function Ball(_radius){
 	}
 
 
+=======
+>>>>>>> parent of 2b49fbd... Added functions from game/ball.js to the engine
 	//=============================
 	//SECTION: Get & sets
 
-	/**
-	* Sets the position of the ball in the canvas.
-	*
-	* @method Ball#setPosition
-	* @param {number} _x - The x coordinate of the center of the ball.
-	* @param {number} _y - The y coordinate of the center of the ball.
-	*/
+	//Sets the position of the circle on the canvas
+	//@Param _x
+	//	The x coordinate of the middle of the circle
+	//@Param _y
+	//	The y coordinate of the middle of the circle
 	this.setPosition = function (_x, _y){
 		position.x = _x;
 		position.y = _y;
@@ -134,143 +121,42 @@ function Ball(_radius){
 		body.velocity = _vel;
 	}
 
-	/**
-	* Sets the velocity and angle of the ball. 
-	* It also calculates the corresponding speed values for the x and y axis.
-	*
-	* @param Ball#setAngleVelocity
-	* @param {number} _velocity - The velocity of the ball.
-	* @param {number} _angle - The angle of the ball in radians.
-	*/
-	this.setAngleVelocity = function (_velocity, _angle){
-		body.velocity = _velocity;
-		body.velocityDirection = _angle;
-	}
-
-
 	this.setVelocityDirection = function(_direction){
 		body.velocityDirection = _direction;
 	}
 
-	/**
-	* Sets the speed by using x and y values
-	* It also calculates the corresponding angle and velocity.
-	* Note: The given speed can also be negative, it then moves in the opposite direction.
-	*
-	* @method Ball#setSpeed
-	* @param {number} _dx - The speed on the x axis (pixels per redraw).
-	* @param {number} _dy - The speed on the y axis (pixels per redraw).
-	*/
-	this.setSpeed = function (_dx, _dy){
-		body.velocity = this.distanceBetween(dx, dy);
-		body.velocityDirection = this.angleBetween(dx, dy);
-	}
-
-	/**
-	* Sets the radius of the ball.
-	*
-	* @method Ball#setRadius
-	* @param {number} _radius - The radius of the ball in pixels.
-	*/
+	//Sets the radius of the circle
+	//@Param _radius
+	//	The radius of the circle in pixels
 	this.setRadius = function (_radius) {
 		radius = _radius;
 		body.radius = _radius;
 	}
 
-//TODO: documentation
 	this.setColor = function(_color){
 		color = _color;
 	}
 
-	/**
-	* Retrieves both x and y coordinate of the middle of the ball.
-	*
-	* @method Ball#getPosition
-	* @return {number, number} The x and y coordinate of the middle of the ball.
-	*/
 	this.getPosition = function(){
 		return position;
 	}
 
-//------- get x en y position kunnen ook wel weg straks. gewoon position ophalen en dan daaruit x en y coordinaten halen)
-	/**
-	* Retrieves the x coordinate of the middle of the ball.
-	*
-	* @method Ball#getXPosition
-	* @return {number} The x coordinate of the middle of the ball.
-	*/
-	this.getXPosition = function (){
-		return position.x;
-	}
-
-	/**
-	* Retrieves the y coordinate of the middle of the ball.
-	*
-	* @method Ball#getYPosition
-	* @return {number} The y coordinate of the middle of the ball.
-	*/
-	this.getYPosition = function (){
-		return position.y;
-	}
-//---------------
-	/**
-	* Retrieves the velocity of the ball.
-	*
-	* @method Ball#getVelocity
-	* @return {number} The current velocity of the ball.
-	*/
+	//Get the velocity of the circle
 	this.getVelocity = function (){
 		return body.velocity;
 	}
 
-	/**
-	* Retrieves the angle of the ball.
-	*
-	* @method Ball#getAngle
-	* @return {number} The current angle of the ball in radians.
-	*/
-	this.getAngle = function(){
-		return body.velocityDirection;
-	}
-
-	/**
-	* Retrieves the radius of the ball.
-	*
-	* @method Ball#getRadius
-	* @return {number} The radius of the ball.
-	*/
+	//Get the radius of the circle
 	this.getRadius = function (){
 		return radius;
 	}
 
-	//TODO: documentation
 	this.getColor = function(){
 		return color;
 	}
 
-	//TODO: documentation
 	this.getBody = function(){
 		return body;
-	}
-
-	/**
-	* Retrieves the speed at which the ball travels across the x-axis.
-	*
-	* @method Ball#getXSpeed
-	* @return {number} The speed at which the ball travels across the x-axis.
-	*/
-	this.getXSpeed = function (){
-		return body.velocity * Math.cos(body.velocityDirection);
-	}
-
-	/**
-	* Retrieves the speed at which the ball travels across the y-axis.
-	*
-	* @method Ball#getYSpeed
-	* @return {number} The speed at which the ball travels across the y-axis.
-	*/
-	this.getYSpeed = function (){
-		return -body.velocity * Math.sin(body.velocityDirection);
 	}
 
 	//Stuff to execute when constructing
