@@ -7,13 +7,7 @@ function draw() {
 	drawPole();
 	drawShield(MOUSEX, MOUSEY);
 
-	balls.checkCollisions();
-	
-	var kaas = balls.getMembers();
-	for(var j = i+1; j < kaas.length; j++){
-		checkShieldCollision(kaas[j], shield);
-	}
-	
+	balls.checkCollisions();	
 	
 	//Alleen ball to ball collision werkt niet via de groep,
 	//want de functie neemt 2 ballen als parameter en als je het
