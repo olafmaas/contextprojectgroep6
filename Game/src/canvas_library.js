@@ -2,37 +2,37 @@ var WIDTH = 0;
 var HEIGHT = 0;
 var MOUSEX = 0;
 var MOUSEY = 0;
+var NROFBALLS = 2;
 
 var ctx;
 var c;
-var ci;
-var ci2;
-var rc;
-var sh;
+var pole;
+var shield;
+var balls = new Group();
 
 function init() {
   c = document.getElementById("canvas"); 
-  
-  //Create ball
-  ci = new Circle(c);
-  ci.setPosition(430, 100);
-  ci.setSpeed(6, 1);
-  ci.setRadius(20)
-
-  ci2 = new Circle(c);
-  ci2.setPosition(20, 500);
-  ci2.setSpeed(6, 1);
-  ci2.setRadius(20)
+  ctx = c.getContext("2d");
 
   //Create pole
-  rc = new Rectangle(c);
-  rc.setPosition(403, 300);
-  rc.setWidth(250);
-  rc.setHeight(500);
+  pole = new Pole(25, 50);
+  pole.setPosition(400, 300);
 
   //Create shield
-  sh = new Shield(c, rc);
-  sh.setRadius(50);
+  shield = new Shield(c, pole);
+  shield.setRadius(50);
+
+  //Simple ball adding (hardcoded places)
+  for (var i = 0; i < NROFBALLS; i++){
+    var ball = new Ball(20);
+    ball.setPosition(10 + (50*i), 10 + (100*i));
+    ball.setSpeed(6, 1);
+    balls.add(ball);
+    balls.addCollision(ball, null, checkWallCollision, null);
+    balls.addCollision(ball, pole, checkPoleCollision, null);
+	
+	balls.addCollision(ball, shield, checkShieldCollision, null);
+  }
 
   //Retrieve width / height of the current canvas 
   ctx = c.getContext("2d");

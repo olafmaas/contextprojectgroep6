@@ -2,11 +2,10 @@ function Game(load, update, draw){
 	var width, height;
 	var backGroundColor;
 	var canv;
-	var input = new InputManager();
 
 	parentUpdate = function(){
 		updateGameDimensions();
-		input.Update();
+		input.update();
 
 		update();
 
@@ -59,7 +58,7 @@ function Game(load, update, draw){
 		backGroundColor = "#000000";
 
 		canv = createCanvas();
-		canv.addEventListener('mousemove', input.MouseMoveListener);
+		canv.onmousemove = input.mouseMoveListener;
 	}
 
 	Boot = function(){

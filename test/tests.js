@@ -1,7 +1,10 @@
-var buster = require('buster');
+var assert = require("assert")
 
-buster.testCase('Blaat',{
-	'testeinz': function () {
-		buster.assert.equals(8,8, "Het faalt");
-	}
+describe('Array', function(){
+  describe('#indexOf()', function(){
+    it('should return -1 when the value is not present', function(){
+      assert.equal(-1, [1,2,3].indexOf(5));
+      assert.equal(-1, [1,2,3].indexOf(0));
+    })
+  })
 })
