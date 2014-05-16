@@ -17,13 +17,10 @@ function draw() {
 	//console.log(shield);
 	var members = balls.getMembers();
 	for(var i = 0; i < members.length; i++){
-		checkShieldCollision(members[i], shield);
 		for(var j = i+1; j < members.length; j++){
 			checkBallCollision(members[i], members[j]);
 		}
 	}
-
-	balls.checkCollisions();
 
   	//Move balls around
 	balls.move();
