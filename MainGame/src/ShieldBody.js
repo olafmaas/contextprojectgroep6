@@ -32,7 +32,8 @@ var ShieldBody = Body.extend({
 		var delta = {x: _other.getPosition().x - this.position.x, y: _other.getPosition().y - this.position.y};
 		var dist = _other.getRadius() + this.radius;
 
-		if(Math.pow(delta.x, 2) + Math.pow(delta.y, 2) < Math.pow(dist, 2)) return this.preciseCollidesWith(delta);
+		if(Math.pow(delta.x, 2) + Math.pow(delta.y, 2) < Math.pow(dist, 2))
+			return this.preciseCollidesWith(delta);
 	},
 
 	/**
@@ -45,14 +46,14 @@ var ShieldBody = Body.extend({
 		var shieldEnds = {begin: this.angle - this.parentShield.getSize() / 2, end: this.angle + this.parentShield.getSize() / 2};
 		var collisionAngle = Math.atan2(_delta.y, _delta.x);
 
-		return shieldEnds.begin < collisionAngle && shieldEnds.end > collisionAngle;
+		return (shieldEnds.begin < collisionAngle && shieldEnds.end > collisionAngle);
 	},
 
 
 	//Handles everything from the collision:
 	//First checks whether the two collide by calling the collidesWith function
 	//Second handles the individual collisions 
-	//In all collision functions, there are check to see which collisions occur (ball-ball, ball-shield, etc)
+	//In all collision functions, there are checks to see which collisions occurs (ball-ball, ball-shield, etc)
 	handleCollision: function(_other){
 		if(!this.collidesWith(_other)) return;
 
@@ -66,9 +67,23 @@ var ShieldBody = Body.extend({
 
 	handleIndividual: function(_other){
 		//If the body is static it shouldn't respond to collision
-		if(this.immovable) return;
+		//if(this.immovable) return;
 		
-		//TODO: collision handling
+		//Check which collision to handle
+		if(_other instanceof Ball) this.handleShieldCollision(_other);
+	},
+	
+		handleShieldCollision: function(_other){
+		
+		if(!this.hit){
+			//Get x and y difference
+			var dx = Math.abs(_other.getBody().position.x - this.position.x);
+			var dy = Math.abs(_other.getBody().position.y - this.position.y);
+
+			var tangent = Math.atan2(dy, dx);
+			_other.getBody().setVelocityDirection(2 * tangent - this.getVelocityDirection());
+			this.hit = true;
+		}
 	},
 
 	/**
@@ -78,7 +93,7 @@ var ShieldBody = Body.extend({
 	* @return {number} The angle between the shield and the current mousepointer.
 	*/
 	calculateAngle: function(){
-		console.log(this.position.y + " | " + this.position.x);
+		//console.log(this.position.y + " | " + this.position.x);
 		return Math.atan2(mouseY - this.position.y, mouseX - this.position.x);
 	}
 

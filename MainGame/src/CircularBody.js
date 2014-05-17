@@ -44,11 +44,11 @@ var CircularBody = Body.extend({
 		other.getBody().handleIndividual(this.parentBall);
 	},
 
-	handleIndividual: function(other){
+	handleIndividual: function(_other){
 		//If the body is static it shouldn't respond to collision
 		if(this.immovable) return;
 		//Check which collision to handle
-		if(other instanceof Ball) this.handleBallCollision(other);
+		if(_other instanceof Ball) this.handleBallCollision(_other);
 
 	},
 
