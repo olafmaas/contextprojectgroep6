@@ -6,16 +6,10 @@
 | | ____    | |      | |        | |   |  __)   (_____  )   | |   
 | | \_  )   | |      | |        | |   | (            ) |   | |   
 | (___) |___) (___   | |        | |   | (____/\/\____) |   | |   
-(_______)\_______/   )_(        )_(   (_______/\_______)   )_(   
-</pre>                                    
+(_______)\_______/   )_(        )_(   (_______/\_______)   )_(                                    
 
-HALLOOO
+Contextproject: Games
+Group: 			6
+Game:			Paaltjesvoetbal - The Game
 
-DOOOEEEIII
-
-xxxx
-
-<script>
-window.onload = function(){
-	alert("Giechel");
-}</script>
+</pre> 

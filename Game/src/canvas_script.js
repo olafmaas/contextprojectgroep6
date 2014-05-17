@@ -7,7 +7,7 @@ function draw() {
 	drawPole();
 	drawShield(MOUSEX, MOUSEY);
 
-	balls.checkCollisions();	
+	balls.checkCollisions();
 	
 	//Alleen ball to ball collision werkt niet via de groep,
 	//want de functie neemt 2 ballen als parameter en als je het
@@ -54,6 +54,8 @@ function checkWallCollision(_ball){
   if (ballY > HEIGHT || ballY < 0 )
     _ball.revertYSpeed();
 
+//ball.checkBounds(_game) >> uit game de hoogte/breedte
+//ballgroup / polegroup / shield >> group en dan extenden voor bepaalde typen
 }
 
 //Checks the collision of an ball with a pole
