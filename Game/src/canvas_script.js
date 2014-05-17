@@ -127,6 +127,16 @@ function ballsCollided(_ball1, _ball2, _tangent){
 	_ball2.setPosition(x2 - Math.cos(angle), y2 + Math.sin(angle));
 }
 
+function handleCollision(phaseCollision, _ball){
+	var speed = _ball.getVelocity();
+	var angle = _ball.getAngle();
+	_ball.setAngleVelocity(speed, 2 * phaseCollision - angle);
+	
+	var x = _ball.getXPosition();
+	var y = _ball.getYPosition();
+	angle = 0.5 * Math.PI + phaseCollision;
+	_ball.setPosition(x + Math.cos(angle), y - Math.sin(angle));
+}
 
 //Checks whether a ball collides with the area where the shield actually is
 function checkPreciseShieldCollision(delta, _shield, _ball){
@@ -134,15 +144,8 @@ function checkPreciseShieldCollision(delta, _shield, _ball){
 	var phaseCollision = Math.atan2(delta.dy, delta.dx);
 	
 	if(phaseShield.start < phaseCollision && phaseCollision < phaseShield.end){
-	console.log(phaseShield.start, phaseCollision, phaseShield.end);
-		var speed = _ball.getVelocity();
-		var angle = _ball.getAngle();
-		_ball.setAngleVelocity(speed, 2* phaseCollision - angle);
-		
-		var x = _ball.getXPosition();
-		var y = _ball.getYPosition();
-		angle = 0.5 * Math.PI + phaseCollision;
-		_ball.setPosition(x + Math.cos(angle), y - Math.sin(angle));
+		console.log(phaseShield.start, phaseCollision, phaseShield.end);
+		handleCollision(phaseCollision, _ball);
 	}
 }
 
@@ -151,7 +154,7 @@ function checkShieldCollision(_ball, _shield){
 	var posBall = {x:_ball.getXPosition(), y:_ball.getYPosition()};
 	var posShield = {x:_shield.getXPosition(), y:_shield.getYPosition()};
 	var distance = _ball.getRadius() + _shield.getRadius();
-	var delta = {dx:posBall.x - posShield.x, dy:(posBall.y - posShield.y)};
+	var delta = {dx:posBall.x - posShield.x, dy:posBall.y - posShield.y};
 	
 	if (( delta.dx*delta.dx )  + ( delta.dy*delta.dy ) < distance*distance ) 
 	{		
