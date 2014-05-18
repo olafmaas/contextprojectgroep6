@@ -18,8 +18,15 @@ var input = {
 
 		mouseX = this.mainPointer.x;
 		mouseY = this.mainPointer.y;
+	},
+
+	//'Pause' when you click in the canvas (for debugging)
+	mouseDownListener: function(_e){
+		mouseDown = 1 - mouseDown;
 	}
 }
 
 var mouseX = 0;
 var mouseY = 0;
+var mouseDown = 0;
+var previousVel = []; 

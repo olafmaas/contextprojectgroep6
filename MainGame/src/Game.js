@@ -56,10 +56,11 @@ function Game(load, update, draw){
 	Initialize = function(){
 		width = document.body.clientWidth;
 		height = document.body.clientHeight;
-		backGroundColor = "#000000";
+		backGroundColor = "#FFFFFF";
 
 		canv = createCanvas();
 		canv.onmousemove = input.mouseMoveListener;
+		canv.onmousedown = input.mouseDownListener;
 	}
 
 	Boot = function(){

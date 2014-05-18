@@ -8,18 +8,18 @@ function init(){
 
     pole = new Ball(10);
     pole.getBody().immovable = true;
-    pole.setColor("#CDF99E");
+    pole.setColor("blue");
     pole.setPosition(300, 300);
 
     ball = new Ball(10);
-    ball.setColor("#9EB9F9");
-    ball.getBody().setVelocity(3);
+    ball.setColor("green");
+    ball.getBody().setVelocity(5);
     ball.getBody().setVelocityDirection(1.75 * Math.PI);
     ball.setPosition(150, 150);
 
     ball2 = new Ball(10);
-    ball2.setColor("#FFFF66");
-    ball2.getBody().setVelocity(3);
+    ball2.setColor("black");
+    ball2.getBody().setVelocity(5);
     ball2.getBody().setVelocityDirection(1.25 * Math.PI);
     ball2.setPosition(250, 150);
 
@@ -49,7 +49,7 @@ function update(){
 	if(shield.getBody().handleCollision(ball) || shield.getBody().handleCollision(ball2)){
 		game.setBackgroundColor("red");
 	}else{
-		game.setBackgroundColor("black");
+		game.setBackgroundColor("white");
 	}
 }
 

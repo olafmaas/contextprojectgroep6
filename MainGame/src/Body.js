@@ -100,8 +100,8 @@ var Body = Base.extend({
 	* @method Body#calculateVelocity
 	* @return {number} The angle in radians.
 	*/
-	calculateVelocity: function (){
-		return Math.atan2(this.vectorVelocity.y, this.vectorVelocity.x);
+	calculateVDirection: function (){
+		return -Math.atan2(this.vectorVelocity.y, this.vectorVelocity.x);
 	},
 
 	/**
@@ -110,7 +110,7 @@ var Body = Base.extend({
 	* @method Body#calculateVDirection
 	* @return {number} The velocity of the ball.
 	*/
-	calculateVDirection: function()
+	calculateVelocity: function()
 	{
 		var dx = this.vectorVelocity.x;
 		var dy = this.vectorVelocity.y;
@@ -136,7 +136,7 @@ var Body = Base.extend({
 	*/
 	revertXSpeed: function (){
 		this.vectorVelocity.x = -this.vectorVelocity.x;
-		this.velocityDirection = this.calculateVDirection();
+		this.velocityDirection = this.calculateVDirection();		
 	},
 
 	/**

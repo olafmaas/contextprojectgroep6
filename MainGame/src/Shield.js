@@ -16,7 +16,7 @@ function Shield(_pole){
 	var position = {x: _pole.getPosition().x, y: _pole.getPosition().y};
 	var radius = 70; //the radius of the shield
 	var size = 0.5 * Math.PI; //The size of the shield
-	var color = "white"; //Color of the shield
+	var color = "#000000"; //Color of the shield
 	var body;
 
 	/**
