@@ -3,6 +3,7 @@ var ShieldBody = Body.extend({
 	angle: 0,
 	radius: 1,
 	parentShield: 0,
+	hit: false,
 
 	constructor: function(_parent){
 		this.angle = _parent.getAngle();
@@ -55,7 +56,7 @@ var ShieldBody = Body.extend({
 	//Second handles the individual collisions 
 	//In all collision functions, there are checks to see which collisions occurs (ball-ball, ball-shield, etc)
 	handleCollision: function(_other){
-		if(!this.collidesWith(_other)) return;
+		if(!this.collidesWith(_other)) { this.hit = false; return; }
 
 		//Make the bodies handle the collision
 		this.handleIndividual(_other);
@@ -73,7 +74,7 @@ var ShieldBody = Body.extend({
 		if(_other instanceof Ball) this.handleShieldCollision(_other);
 	},
 	
-		handleShieldCollision: function(_other){
+	handleShieldCollision: function(_other){
 		
 		if(!this.hit){
 			//Get x and y difference
