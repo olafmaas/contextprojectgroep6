@@ -1,3 +1,6 @@
+if(typeof module != 'undefined'){
+    var Base = require('./Base.js');
+}
 
 var Body = Base.extend({
 	
@@ -170,3 +173,7 @@ var Body = Base.extend({
 	}
 
 });
+
+if(typeof module != 'undefined'){
+	module.exports = Body;
+}

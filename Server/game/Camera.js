@@ -1,3 +1,7 @@
+if(typeof module != 'undefined'){
+    module.exports = Camera;
+}
+
 Camera = function(){
 	var center = {x: 0, y: 0};
 	var zoom - 1;

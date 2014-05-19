@@ -15,3 +15,7 @@ function Sprite(){
 		canvasContext.drawImage(texture, this.position.x, this.position.y);
 	}
 }
+
+if(typeof module != 'undefined'){
+	module.exports = Sprite
+}  

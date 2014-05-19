@@ -1,4 +1,9 @@
-//TODO: finish documentation
+if(typeof module != 'undefined'){
+    var CircularBody = require('./CircularBody.js');
+	var Input = require('./Input.js');
+	var Body = require('./Body.js');
+}  
+
 var ShieldBody = Body.extend({
 	angle: 0,
 	radius: 1,
@@ -99,3 +104,7 @@ var ShieldBody = Body.extend({
 	}
 
 });
+
+if(typeof module != 'undefined'){
+	module.exports = ShieldBody
+}  

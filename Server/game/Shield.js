@@ -1,4 +1,6 @@
-//A simple shield class
+if(typeof module != 'undefined'){
+    var ShieldBody = require('./ShieldBody.js');
+}  
 
 /** 
 * Shield constructor
@@ -190,3 +192,7 @@ function Shield(_pole){
 	//Stuff to execute when constructing
 	this.enableBody();
 }
+
+if(typeof module != 'undefined'){
+    module.exports = Shield;
+}  

@@ -1,24 +1,14 @@
-//TODO: Documentation for each function
 function Game(load, update, draw){
-	var width, height;
+	var width = 40; 
+	var height = 40;
 	var backGroundColor;
 	var canv;
-
-	parentUpdate = function(){
-		updateGameDimensions();
-		input.update();
-
-		update();
-
-		parentDraw();
-	}
 
 	parentDraw = function(){
 		var ctx = canv.getContext("2d");
 
 		clearCanvas();
 		draw(ctx);
-
 	}
 
 	createCanvas = function(){
@@ -59,22 +49,21 @@ function Game(load, update, draw){
 		backGroundColor = "#FFFFFF";
 
 		canv = createCanvas();
-		canv.onmousemove = input.mouseMoveListener;
-		canv.onmousedown = input.mouseDownListener;
+		canv.onmousemove = Input.mouseMoveListener;
+		canv.onmousedown = Input.mouseDownListener;
 	}
 
 	Boot = function(){
 		load();
-		setInterval(parentUpdate, 17);
+		setInterval(update, 17);
 	}
 
-	Initialize();
 	setTimeout(Boot, 1000);
 
 	//====================
 	//Section: gets & sets
 	this.getInput = function(){
-		return input;
+		return Input;
 	}
 
 	this.getBackgroundColor = function(){
@@ -92,4 +81,16 @@ function Game(load, update, draw){
 	this.getHeight = function(){
 		return height;
 	}
+
+	this.setWidth = function(_width){
+		width = _width;
+	}
+
+	this.setHeight = function(_height){
+		height = _height;
+	}
 }
+  
+if(typeof module != 'undefined'){
+    module.exports = Game;
+}  

@@ -1,4 +1,9 @@
-//TODO: Documentation for each function
+if(typeof module != 'undefined'){
+	var Body = require('./Body.js');
+	var Ball = require('./Ball.js');
+}
+
+
 var CircularBody = Body.extend({
 	radius: 1,
 	parentBall: 0,
@@ -12,31 +17,19 @@ var CircularBody = Body.extend({
 	Update: function(){
 		this.base();
 
-		//temporary, needed to 'pause' the game
-		if(mouseDown) {
-			if(this.getVelocity() != 0){
-				if(this.parentBall.getColor() == "green")
-					previousVel[0] = this.getVelocity();
-				else if(this.parentBall.getColor() == "black")
-					previousVel[1] = this.getVelocity();
-				console.log(this.parentBall.getColor() + ": " + this.getVelocity() + " | " + this.getVelocityDirection());
-				this.setVelocity(0);
-			}
+		if(this.getVelocity() == 0){
+			if(this.parentBall.getColor() == "green")
+				this.setVelocity(previousVel[0]);
+			else if(this.parentBall.getColor() == "black")
+				this.setVelocity(previousVel[1]);
 		}
-		else {
-			if(this.getVelocity() == 0){
-				if(this.parentBall.getColor() == "green")
-					this.setVelocity(previousVel[0]);
-				else if(this.parentBall.getColor() == "black")
-					this.setVelocity(previousVel[1]);
-			}
-		}
+
 
 		this.parentBall.setPosition(this.position.x, this.position.y);
 	},
 
 	CollidesWith: function(other){
-		if(other.getBody() instanceof CircularBody) return this.CollidesWithBall(other);
+		if(other.getBody() instanceof CircularBody.constructor) return this.CollidesWithBall(other);
 		else console.log("Unimplemented Collision with " + other);
 	},
 
@@ -69,7 +62,7 @@ var CircularBody = Body.extend({
 		//If the body is static it shouldn't respond to collision
 		if(this.immovable) return;
 		//Check which collision to handle
-		if(_other instanceof Ball) this.handleBallCollision(_other);
+		if(_other instanceof Ball.constructor) this.handleBallCollision(_other);
 
 	},
 
@@ -101,3 +94,7 @@ var CircularBody = Body.extend({
 			this.revertYSpeed();
 	}
 });
+
+if(typeof module != 'undefined'){
+	module.exports = CircularBody;
+}

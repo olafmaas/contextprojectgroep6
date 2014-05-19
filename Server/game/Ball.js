@@ -1,4 +1,6 @@
-//A simple ball class
+if(typeof module != 'undefined'){
+	var CircularBody = require('./CircularBody.js');
+}
 
 /** 
 * Ball constructor
@@ -141,3 +143,8 @@ function Ball(_radius){
 	//Stuff to execute when constructing
 	this.enableBody();
 }
+
+if(typeof module != 'undefined'){
+    module.exports = Ball;
+}
+    
