@@ -10,6 +10,7 @@ var ShieldBody = Body.extend({
 	/**
 	* Constructor for the shield body
 	* @method Shield#constructor
+	* @param {_parent} The shield object
 	*/
 	constructor: function(_parent){
 		this.angle = _parent.getAngle();
