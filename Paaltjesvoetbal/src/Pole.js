@@ -10,7 +10,7 @@ var Pole = Ball.extend({
 
 	isHit: function(){
 		return this.hit;
-	}
+	},
 
 	setHit: function(_hit){
 		this.hit = _hit;

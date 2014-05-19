@@ -14,7 +14,7 @@ function Game(load, update, draw){
 		parentDraw();
 	}
 
-	parentDraw = function(){C
+	parentDraw = function(){
 		var ctx = canv.getContext("2d");
 
 		clearCanvas();
