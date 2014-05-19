@@ -8,7 +8,7 @@ function Game(load, update, draw){
 		updateGameDimensions();
 		input.update();
 
-		if(mouseDown) return;
+		if(mouseDown) { parentDraw(); return; }
 		update();
 
 		parentDraw();
@@ -19,7 +19,6 @@ function Game(load, update, draw){
 
 		clearCanvas();
 		draw(ctx);
-
 	}
 
 	createCanvas = function(){
