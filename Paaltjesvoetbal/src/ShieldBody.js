@@ -1,10 +1,16 @@
-//TODO: finish documentation
+//The shield body class
+
+//Properties for the shield body
 var ShieldBody = Body.extend({
 	angle: 0,
 	radius: 1,
 	parentShield: 0,
 	hit: false,
 
+	/**
+	* Constructor for the shield body
+	* @method Shield#constructor
+	*/
 	constructor: function(_parent){
 		this.angle = _parent.getAngle();
 		this.radius = _parent.getRadius();
@@ -12,36 +18,47 @@ var ShieldBody = Body.extend({
 		this.position = _parent.getPosition();
 	},
 
+	/**
+	* Updates the angle of the shield
+	* @method Shield#update
+	*/
 	update: function(){
 		this.base();
 		this.parentShield.setAngle(this.calculateAngle());
 	},
 
 	/**
-	* A method that checks if the shield collides with a ball
-	* 
+	* A method that checks with what object the shield collides
 	* @method Shield#collidesWith
-	* @param {_ball} The ball that should be hittested with the shield
+	* @param {_object} The object that should be hit tested with the shield
 	*/
 	collidesWith: function(_other){
 		if(_other.getBody() instanceof CircularBody) return this.collidesWithBall(_other);
 		else console.log("Unimplemented Collision with " + _other);
 	},
 
-	//Shield to ball collision
+	/**
+	* A method that checks if the shield collides with a ball
+	* @method Shield#collidesWithBall
+	* @param {_ball} The ball that should be hit tested with the shield
+	*/
 	collidesWithBall: function(_other){
 		var delta = {x: _other.getPosition().x - this.position.x, y: _other.getPosition().y - this.position.y};
 		var dist = _other.getRadius() + this.radius;
-
-		if(Math.pow(delta.x, 2) + Math.pow(delta.y, 2) < Math.pow(dist, 2))
+		
+		var velocity = _other.getBody().getVelocity();
+		
+		console.log(Math.pow(delta.x,2) + ", " + Math.pow(delta.y, 2) + ", " + Math.pow(dist,2));
+		
+		if((Math.pow(delta.x, 2) + Math.pow(delta.y, 2) > Math.pow(dist-this.radius/12, 2)) &&
+		(Math.pow(delta.x, 2) + Math.pow(delta.y, 2) < Math.pow(dist+this.radius/12, 2)))
 			return this.preciseCollidesWith(delta);
 	},
 
 	/**
-	* A method that checks the precise collision of the shield
-	* 
+	* A method that checks the precise collision of the shield with a ball
 	* @method Shield#preciseCollidesWith
-	* @param {_delta} ??
+	* @param {_delta} x and y distance between the shield and the ball
 	*/
 	preciseCollidesWith: function(_delta){
 		var shieldEnds = {begin: this.angle - this.parentShield.getSize() / 2, end: this.angle + this.parentShield.getSize() / 2};
@@ -49,23 +66,29 @@ var ShieldBody = Body.extend({
 
 		return (shieldEnds.begin < collisionAngle && shieldEnds.end > collisionAngle);
 	},
-
-
-	//Handles everything from the collision:
-	//First checks whether the two collide by calling the collidesWith function
-	//Second handles the individual collisions 
-	//In all collision functions, there are checks to see which collisions occurs (ball-ball, ball-shield, etc)
+	
+	/**
+	* This method uses the previous methods to check whether the shield collides
+	* And then handles the collision
+	* @method Shield#handleCollision
+	* @param {_other} object which collides with the shield
+	*/
 	handleCollision: function(_other){
 		if(!this.collidesWith(_other)) { this.hit = false; return; }
 
 		//Make the bodies handle the collision
 		this.handleIndividual(_other);
 		_other.getBody().handleIndividual(this.parentShield);
-
+		
 		//TODO: this is temporary to keep the red color of the background when something hits the shield
 		return true;
 	},
 
+	/**
+	* This method calls the correct handling function for the occuring collision
+	* @method Shield#handleIndividual
+	* @param {_other} object which collides with the shield
+	*/
 	handleIndividual: function(_other){
 		//If the body is static it shouldn't respond to collision
 		//if(this.immovable) return;
@@ -89,9 +112,8 @@ var ShieldBody = Body.extend({
 
 	/**
 	* Calculates the angle of the shield (in radians) depending on the current mouse input
-	*
 	* @method Shield#calculateAngle
-	* @return {number} The angle between the shield and the current mousepointer.
+	* @return {number} The angle between the shield and the current mousepointer
 	*/
 	calculateAngle: function(){
 		//console.log(this.position.y + " | " + this.position.x);
