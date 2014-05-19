@@ -8,13 +8,13 @@ function Game(load, update, draw){
 		updateGameDimensions();
 		input.update();
 
-		if(mouseDown) return;
+		if(mouseDown) { parentDraw(); return; }
 		update();
 
 		parentDraw();
 	}
 
-	parentDraw = function(){
+	parentDraw = function(){C
 		var ctx = canv.getContext("2d");
 
 		clearCanvas();

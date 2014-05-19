@@ -6,8 +6,7 @@ var shield;
 //Initializes the balls, poles and shield on the screen
 function init(){
 
-    pole = new Ball(10);
-    pole.getBody().immovable = true;
+	pole = new Pole(10);
     pole.setColor("blue");
     pole.setPosition(300, 300);
 
@@ -44,6 +43,8 @@ function update(){
 	ball.getBody().checkWorldBounds(game); //ball1 to worldBounds
 	ball2.getBody().checkWorldBounds(game); //ball2 to worldBounds
 	ball2.getBody().handleCollision(pole); //ball2 to pole
+	//pole.getBody().handleCollision(ball);
+	//pole.getBody().handleCollision(ball2)
 
 	//Shield collision handling is not yet implemented
 	if(shield.getBody().handleCollision(ball) || shield.getBody().handleCollision(ball2)){
