@@ -41,3 +41,9 @@ socket.on('draw', function (data) {
   context.closePath();
   context.fill();
 })
+
+socket.on('UpdateBall', function (pos) {
+  //ball.setPosition(pos.x, pos.y);
+  ball.setPosition(pos.x - left, pos.y - topf);
+})
+

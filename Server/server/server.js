@@ -1,14 +1,31 @@
 var io = require('socket.io').listen(5050);
-require('Base.js');
-require('Game.js');
-require('Sprite.js');
-require('Ball.js');
-require('Body.js');
-require('CircularBody.js');
-require('Input.js');
-require('Shield.js');
-
 io.set('log level', 2);   // 0 - error | 1 - warn | 2 - info | 3 - debug
+
+var Game = require('../game/Game.js');
+var Ball = require('../game/Ball.js');
+
+var ball;
+var game = new Game(loadContent, update, drawToClients);
+
+function loadContent(){
+  ball = new Ball(10);
+  ball.getBody().setVelocity(5);
+  ball.getBody().setVelocityDirection(-1.75 * Math.PI);
+  ball.setPosition(150, 150);
+}
+
+function update(){
+  ball.update();
+  ball.getBody().checkWorldBounds(game);
+  drawToClients();
+}
+
+function drawToClients(){
+  io.of('/player').emit('UpdateBall', ball.getPosition());
+  if(mainScreenSocket){
+    mainScreenSocket.emit('draw', ball.getPosition());
+  }
+}
 
 var mainScreenSocket;
 var playerSockets = {};
@@ -53,6 +70,10 @@ function connectMainScreen(socket){
   socket.on('screenSizeMainScreen', function(data){ 
     maximumPlayers = Math.floor(data.width / canvasWidth) * Math.floor(data.height / canvasHeight);
     maximumCol = Math.floor(data.width / canvasWidth);
+    game.setWidth(data.width);
+    game.setHeight(data.height);
+    game.setWidth(600);
+    game.setHeight(300);
   });
 
   //Handle MainScreen Disconnet
@@ -63,6 +84,8 @@ function connectMainScreen(socket){
 };
 
 function updateMainScreenCanvasSize(){
+  game.setWidth(grid[0].length * canvasWidth);
+  game.setHeight(grid.length * canvasHeight);
   if(mainScreenSocket){
     mainScreenSocket.emit('newCanvasSize', {width: grid[0].length * canvasWidth, height: grid.length * canvasHeight});
   }
@@ -99,8 +122,11 @@ function connectClient(socket){
   }
   socket.emit('canvasPos', {left: x * canvasWidth, top: y*canvasHeight});
 
-
   updateMainScreenCanvasSize();
+
+  socket.on('shieldHit', function (data){
+    console.log(data);
+  });
 
   //Handle Client Disconnet
   socket.on('disconnect', function (data){
@@ -108,24 +134,5 @@ function connectClient(socket){
     delete playerSockets[socket.id];
 
     grid[y][x] = -1;
-  })
-};
-
-setInterval(draw,10); 
-function draw(){
-  if( x<0 || x>grid[0].length * canvasWidth){
-    dx=-dx;
-  }
-  if( y<0 || y>grid.length * canvasHeight){
-    dy=-dy;
-  }
-  x+=dx;
-  y+=dy;
-
-  //TODO stuur alleen naar de clients die dat kunnen zien.
-  //io.of('/player').emit('draw', {x: x, y:y}) ik denk dat door de interval dit voor de errors zorgt bij disconnecten
-
-  if(mainScreenSocket){
-    mainScreenSocket.emit('draw', {x: x, y:y});
-  }
+  });
 };
