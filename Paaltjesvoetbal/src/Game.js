@@ -8,6 +8,7 @@ function Game(load, update, draw){
 		updateGameDimensions();
 		input.update();
 
+		if(mouseDown) return;
 		update();
 
 		parentDraw();

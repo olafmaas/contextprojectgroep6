@@ -1,0 +1,5 @@
+
+var Pole = Ball.extend({
+	
+
+});
