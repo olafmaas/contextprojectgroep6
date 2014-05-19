@@ -5,15 +5,25 @@
     </head>
     <body>
         <div id="mocha"></div>
+
+        <!--Import Require modules-->
         <script src="../../node_modules/mocha/mocha.js"></script>
         <script src="../../node_modules/chai/chai.js"></script>
         <script src="../../node_modules/sinon/lib/sinon.js"></script>
 		<script src="../../node_modules/sinon-chai/lib/sinon-chai.js"></script>
+        <script src="../../Paaltjesvoetbal/src/Base.js"></script>
+
+        <!--Config Mocha, Chai and Sinon-->
         <script>
             mocha.ui('bdd'); 
             mocha.reporter('html');
             var expect = chai.expect;
         </script>
+
+        <!--Import Game Framework-->
+        <script src="../../Paaltjesvoetbal/src/Body.js"></script>
+
+        <!--Import Test-->
         <script src="test.js"></script>
         <script src="test2.js"></script>
         <script>
