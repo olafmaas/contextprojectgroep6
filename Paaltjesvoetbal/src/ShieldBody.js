@@ -49,7 +49,7 @@ var ShieldBody = Body.extend({
 		
 		var velocity = _other.getBody().getVelocity();
 		
-		console.log(Math.pow(delta.x,2) + ", " + Math.pow(delta.y, 2) + ", " + Math.pow(dist,2));
+		//console.log(Math.pow(delta.x,2) + ", " + Math.pow(delta.y, 2) + ", " + Math.pow(dist,2));
 		
 		if((Math.pow(delta.x, 2) + Math.pow(delta.y, 2) > Math.pow(dist-this.radius/12, 2)) &&
 		(Math.pow(delta.x, 2) + Math.pow(delta.y, 2) < Math.pow(dist+this.radius/12, 2)))

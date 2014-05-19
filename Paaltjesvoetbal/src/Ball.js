@@ -29,7 +29,7 @@ var Ball = Base.extend({
 	*/
 	draw: function (_canvasContext){
 		_canvasContext.beginPath();
-		_canvasContext.arc(this.body.position.x, this.body.position.y, this.radius, 0, Math.PI*2, true);
+		_canvasContext.arc(this.getBody().position.x, this.getBody().position.y, this.radius, 0, Math.PI*2, true);
 		_canvasContext.closePath();
 
 		_canvasContext.fillStyle = this.color;

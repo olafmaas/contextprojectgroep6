@@ -72,10 +72,9 @@ var CircularBody = Body.extend({
 	* @param {_other} object which collides with the circle
 	*/
 	handleIndividual: function(_other){
+		if(this.parentBall instanceof Pole) this.handlePoleCollision();
 		//If the body is static it shouldn't respond to collision, but should respond to getting hit in case it's the pole
-		if(this.immovable) {			
-			return;
-		}
+		if(this.immovable || this.hit) return;
 		//Check which collision to handle
 		if(_other instanceof Ball) this.handleBallCollision(_other);
 	},
@@ -87,15 +86,22 @@ var CircularBody = Body.extend({
 	*/
 	handleBallCollision: function(_other){
 		
-		if(!this.hit){
-			//Get x and y difference
-			var dx = Math.abs(this.position.x - _other.getBody().position.x);
-			var dy = Math.abs(this.position.y - _other.getBody().position.y);
+		//Get x and y difference
+		var dx = Math.abs(this.position.x - _other.getBody().position.x);
+		var dy = Math.abs(this.position.y - _other.getBody().position.y);
 
-			var tangent = Math.atan2(dx, dy);
-			this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
-			this.hit = true;
-		}
+		var tangent = Math.atan2(dx, dy);
+		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
+		this.hit = true;
+	},
+
+	/**
+	* Handles the collision of circle and pole
+	*
+	* @method CircularBody#handlePoleCollision
+	*/
+	handlePoleCollision: function(){
+		this.parentBall.isHit();
 	},
 
 	/**
