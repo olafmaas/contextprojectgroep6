@@ -4,7 +4,7 @@ var input = {
 	/**
 	* The update function for updating the input
 	* 
-	* @method Update
+	* @method Input#update
 	*/
 	update: function(){
 		//TODO: update main pointer door muis of touchscreen
@@ -12,6 +12,10 @@ var input = {
 		//console.log(this.mainPointer);
 	},
 
+	/**
+	* Listener for mouse movement to save X and Y position 
+	* @method Game#mouseMoveListener
+	*/
 	mouseMoveListener: function(_e){
 		this.mainPointer = {isActive: true, x: _e.clientX, y: _e.clientY};
 		//console.log(this.mainPointer);

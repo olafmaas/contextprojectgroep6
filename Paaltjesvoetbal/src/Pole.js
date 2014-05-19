@@ -44,7 +44,6 @@ var Pole = Ball.extend({
 	/**
 	* Handles the cooldown period of the pole, which includes a change of color
 	* and not being able to get hit again for some amount of time.
-	*
 	* @method Pole#coolDown
 	*/
 	//TODO: iets van laten knipperen? sneller = cooldown bijna afgelopen?
