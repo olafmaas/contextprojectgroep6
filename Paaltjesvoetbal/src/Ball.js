@@ -107,7 +107,7 @@ var Ball = Base.extend({
 	* @return {number, number} The x and y coordinate of the middle of the ball.
 	*/
 	getPosition: function(){
-		return this.body.position;
+		return this.getBody().getPosition();
 	},
 
 	/**
