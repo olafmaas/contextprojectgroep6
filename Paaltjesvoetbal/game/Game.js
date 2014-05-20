@@ -66,6 +66,7 @@ function Game(load, update, draw){
 			label.setText("Score: " + min + ":" + sec);
 		}
 	}
+	setInterval(updateScore, 1000);
 
 	/**
 	* Function which updates the width and height

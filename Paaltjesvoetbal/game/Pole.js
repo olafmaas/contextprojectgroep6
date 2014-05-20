@@ -33,6 +33,7 @@ var Pole = Ball.extend({
 			//save highscore
 			//reset score
 			//start cooldown in which player cannot be hit
+			
 		}
 	},
 
