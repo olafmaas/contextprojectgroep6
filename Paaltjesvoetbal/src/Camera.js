@@ -1,5 +1,3 @@
-//Camera class
-
 //Properties of the camera object
 Camera = function(){
 	var center = {x: 0, y: 0};
@@ -21,4 +19,8 @@ Camera = function(){
 	this.getZoom = function(){
 		return zoom;
 	}
+}
+
+if(typeof module != 'undefined'){
+    module.exports = Camera;
 }

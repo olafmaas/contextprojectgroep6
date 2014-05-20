@@ -1,8 +1,4 @@
-/**
-* Sprite class
-* @class Sprite
-* @classdesc A simple sprite class to load textures
-*/
+//Sprite properties
 function Sprite(){
 	var texture;
 	this.position = {x: 0, y: 0};
@@ -30,3 +26,8 @@ function Sprite(){
 		canvasContext.drawImage(texture, this.position.x, this.position.y);
 	}
 }
+
+if(typeof module != 'undefined'){
+	module.exports = Sprite
+}  
+

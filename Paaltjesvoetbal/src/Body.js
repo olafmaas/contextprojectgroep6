@@ -1,10 +1,7 @@
-/** 
-* Body constructor
-*
-* @class Body
-* @classdesc The bass class from which the other bodies inherit.
-* @constructor
-*/
+if(typeof module != 'undefined'){
+    var Base = require('./Base.js');
+}
+
 var Body = Base.extend({
 	
 	//Body properties
@@ -174,5 +171,8 @@ var Body = Base.extend({
 	getVelocityDirection: function(){
 		return this.velocityDirection;
 	}
-
 });
+
+if(typeof module != 'undefined'){
+	module.exports = Body;
+}

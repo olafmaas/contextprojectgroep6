@@ -1,11 +1,17 @@
+if(typeof module != 'undefined'){
+	var CircularBody = require('./CircularBody.js');
+	var Base = require('./Base.js');
+}
+
 //A simple ball class
 
 /** 
-* Ball Class
+* Ball constructor
+*
 * @class Ball
-* @classdesc Ball class with constructor and methods.
+* @classdesc Ball constructor.
 * @constructor
-* @param {number} The radius of the ball.
+* @param {number} _radius - The radius of the ball.
 */
 var Ball = Base.extend({
   
@@ -139,3 +145,7 @@ var Ball = Base.extend({
 		return this.body;
 	}
 });
+
+if(typeof module != 'undefined'){
+    module.exports = Ball;
+}

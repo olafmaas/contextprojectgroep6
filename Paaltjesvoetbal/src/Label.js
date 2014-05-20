@@ -1,11 +1,8 @@
-//Label class
-
 /**
-* Label Class
+* A label class for drawing text on the screen
+*
 * @class Label
-* @classdescp Label class for writing text on the screen.
 * @contructor
-* @param {_text} String we want to write.
 */
 Label = function(_text){
 	var text = _text; //Var containing the string

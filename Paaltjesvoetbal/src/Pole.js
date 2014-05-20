@@ -4,14 +4,18 @@
 *
 * @class Pole
 * @classdesc A simple pole class which extends Ball
-* @constructor - The constructor also sets the pole to be immovable.
-* @param {number} _radius - The radius of the pole.
 */
 var Pole = Ball.extend({
 	hit: false,
 	prevColor: 0,
 
-
+	/** 
+	* Pole constructor
+	* It automatically sets the pole to be immovable.
+	*
+	* @constructor
+	* @param {number} _radius - The radius of the pole.
+	*/
 	constructor: function(_radius){
 		this.radius = _radius;
 		this.enableBody();
@@ -21,6 +25,7 @@ var Pole = Ball.extend({
 	/**
 	* Handles everything when the pole is hit:
 	* from setting the hit flag, to managing the cooldown of the pole.
+	*
 	* @method Pole#isHit
 	*/
 	isHit: function(){
@@ -40,7 +45,6 @@ var Pole = Ball.extend({
 	* Handles the cooldown period of the pole, which includes a change of color
 	* and not being able to get hit again for some amount of time.
 	* @method Pole#coolDown
-	* @param {interval} of the cool down
 	*/
 	//TODO: iets van laten knipperen? sneller = cooldown bijna afgelopen?
 	coolDown: function(_interval){

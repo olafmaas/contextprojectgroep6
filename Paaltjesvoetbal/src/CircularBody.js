@@ -1,12 +1,10 @@
 //The circular body class
+if(typeof module != 'undefined'){
+	var Body = require('./Body.js');
+	var Ball = require('./Ball.js');
+}
 
-/**
-* CircularBody Class
-* @class CircularBody
-* @classdesc CircularBody class which extends the Body class.
-* @constructor
-* @param {_parent} Ball object (or pole object)
-*/
+//Properties for the circular body
 var CircularBody = Body.extend({
 	radius: 1,
 	parentBall: 0,
@@ -14,7 +12,7 @@ var CircularBody = Body.extend({
 	
 	/**
 	* Constructor for the circular body
-	* @method CircularBody#constructor
+	* @method Circular#constructor
 	* @param {_parent} The circle object
 	*/
 	constructor: function(_parent){
@@ -130,3 +128,7 @@ var CircularBody = Body.extend({
 			this.revertYSpeed();
 	}
 });
+
+if(typeof module != 'undefined'){
+	module.exports = CircularBody;
+}

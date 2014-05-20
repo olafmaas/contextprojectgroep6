@@ -2,23 +2,10 @@
 
 //Properties of the game object
 function Game(load, update, draw){
-	var width, height;
+	var width = 40; 
+	var height = 40;
 	var backGroundColor;
 	var canv;
-
-	/**
-	* Update function for the game object
-	* @method Game#parentUpdate
-	*/
-	parentUpdate = function(){
-		updateGameDimensions();
-		input.update();
-
-		if(mouseDown) { parentDraw(); return; }
-		update();
-
-		parentDraw();
-	}
 
 	/**
 	* Draw function
@@ -95,10 +82,9 @@ function Game(load, update, draw){
 	*/
 	Boot = function(){
 		load();
-		setInterval(parentUpdate, 17);
+		setInterval(update, 17);
 	}
 
-	Initialize();
 	setTimeout(Boot, 1000);
 
 	//====================
@@ -143,4 +129,16 @@ function Game(load, update, draw){
 	this.getHeight = function(){
 		return height;
 	}
+
+	this.setWidth = function(_width){
+		width = _width;
+	}
+
+	this.setHeight = function(_height){
+		height = _height;
+	}
 }
+
+if(typeof module != 'undefined'){
+    module.exports = Game;
+}  
