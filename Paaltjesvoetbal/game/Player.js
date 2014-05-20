@@ -1,7 +1,7 @@
 //Player class
 
 /**
-* @class Player class
+* @class Player
 * @classdesc Class to represent players with properties.
 */
 function Player(){
