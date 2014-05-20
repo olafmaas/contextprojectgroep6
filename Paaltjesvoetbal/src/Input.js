@@ -1,3 +1,11 @@
+
+/**
+* Input class
+*
+* @class Input
+* @classdesc A simple input class which registers input from the mouse on the canvas.
+* @constructor 
+*/
 var input = {
 	mainPointer: {isActive: true, x: 0, y: 0},
 
@@ -14,7 +22,8 @@ var input = {
 
 	/**
 	* Listener for mouse movement to save X and Y position 
-	* @method Game#mouseMoveListener
+	*
+	* @method Input#mouseMoveListener
 	*/
 	mouseMoveListener: function(_e){
 		this.mainPointer = {isActive: true, x: _e.clientX, y: _e.clientY};
@@ -24,7 +33,11 @@ var input = {
 		mouseY = this.mainPointer.y;
 	},
 
-	//'Pause' when you click in the canvas (for debugging)
+	/**
+	* Debug functionality to be able to pause the game (to be removed in final version)
+	* 
+	* @method Input#mouseDownListener
+	*/
 	mouseDownListener: function(_e){
 		mouseDown = 1 - mouseDown;
 	}

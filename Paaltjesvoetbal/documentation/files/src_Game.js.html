@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/Camera.js</title>
+    <title>src/Game.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -90,32 +90,154 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/Camera.js</h1>
+                        <h1 class="file-heading">File: src/Game.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-//Camera class
+//Game class
 
-//Properties of the camera object
-Camera = function(){
-	var center = {x: 0, y: 0};
-	var zoom - 1;
+//Properties of the game object
+function Game(load, update, draw){
+	var width, height;
+	var backGroundColor;
+	var canv;
 
 	/**
-	* Get the center position of the camera
-	*
-	* @method getCenter
+	* Update function for the game object
+	* @method Game#parentUpdate
 	*/
-	this.getCenter = function(){
-		return center;
+	parentUpdate = function(){
+		updateGameDimensions();
+		input.update();
+
+		if(mouseDown) { parentDraw(); return; }
+		update();
+
+		parentDraw();
 	}
 
 	/**
-	* Get the zoom factor of the camera
-	* @method getZoom
+	* Draw function
+	* @method Game#parentDraw
 	*/
-	this.getZoom = function(){
-		return zoom;
+	parentDraw = function(){
+		var ctx = canv.getContext(&quot;2d&quot;);
+
+		clearCanvas();
+		draw(ctx);
+	}
+
+	/**
+	* Create function for the game field (canvas)
+	* @method Game#createCanvas
+	*/
+	createCanvas = function(){
+		var canv = document.createElement(&quot;canvas&quot;);
+		canv.id = &#x27;gameCanvas&#x27;;
+
+		canv.width = width;
+		canv.height = height;
+
+		document.body.appendChild(canv);
+
+		return document.getElementById(&quot;gameCanvas&quot;);
+	}
+
+	/**
+	* Function which updates the width and height
+	* @method Game#updateGameDimensions
+	*/
+	updateGameDimensions = function(){
+		width=window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+
+		height=window.innerHeight
+		|| document.documentElement.clientHeight
+		|| document.body.clientHeight;
+
+		canv.width = width;
+		canv.height = height;
+	}
+
+	/**
+	* Function which clears the playing field
+	* @method Game#clearCanvas
+	*/
+	clearCanvas = function(){
+		var ctx = canv.getContext(&quot;2d&quot;);
+		ctx.clearRect(0, 0, width, height);
+		ctx.fillStyle = backGroundColor;
+		ctx.fillRect(0, 0, width, height);
+	}
+
+	/**
+	* Initializes the variables
+	* @method Game#Initialize
+	*/
+	Initialize = function(){
+		width = document.body.clientWidth;
+		height = document.body.clientHeight;
+		backGroundColor = &quot;#FFFFFF&quot;;
+
+		canv = createCanvas();
+		canv.onmousemove = input.mouseMoveListener;
+		canv.onmousedown = input.mouseDownListener;
+	}
+
+	/**
+	* Starts up the game itself
+	* @method Game#Boot
+	*/
+	Boot = function(){
+		load();
+		setInterval(parentUpdate, 17);
+	}
+
+	Initialize();
+	setTimeout(Boot, 1000);
+
+	//====================
+	//Section: gets &amp; sets
+	
+	/**
+	* Returns the input
+	* @method Game#getInput
+	*/
+	this.getInput = function(){
+		return input;
+	}
+
+	/**
+	* Returns the background color
+	* @method Game#getBackgroundColor
+	*/
+	this.getBackgroundColor = function(){
+		return backGroundColor;
+	}
+
+	/**
+	* Sets the background color
+	* @method Game#setBackgroundColor
+	*/
+	this.setBackgroundColor = function(_color){
+		backGroundColor = _color;
+	}
+
+	/**
+	* Returns the width of the canvas
+	* @method Game#getWidth
+	*/
+	this.getWidth = function(){
+		return width;
+	}
+
+	/**
+	* Returns the height of the canvas
+	* @method Game#getHeight
+	*/
+	this.getHeight = function(){
+		return height;
 	}
 }
     </pre>

@@ -31,6 +31,13 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/Game.js": {
+            "name": "src/Game.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
         "src/Input.js": {
             "name": "src/Input.js",
             "modules": {},
@@ -69,6 +76,15 @@
             "name": "src/ShieldBody.js",
             "modules": {},
             "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/Sprite.js": {
+            "name": "src/Sprite.js",
+            "modules": {},
+            "classes": {
+                "Sprite": 1
+            },
             "fors": {},
             "namespaces": {}
         }
@@ -142,6 +158,19 @@
                     "type": "Pole"
                 }
             ]
+        },
+        "Sprite": {
+            "name": "Sprite",
+            "shortname": "Sprite",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/Sprite.js",
+            "line": 1,
+            "description": "Sprite class",
+            "classdesc": "A simple sprite class to load textures"
         }
     },
     "classitems": [
@@ -437,16 +466,16 @@
         },
         {
             "file": "src/Camera.js",
-            "line": 5,
-            "description": "Get the center position",
+            "line": 8,
+            "description": "Get the center position of the camera",
             "itemtype": "method",
             "name": "getCenter",
             "class": "Label"
         },
         {
             "file": "src/Camera.js",
-            "line": 14,
-            "description": "Get the zoom factor",
+            "line": 17,
+            "description": "Get the zoom factor of the camera",
             "itemtype": "method",
             "name": "getZoom",
             "class": "Label"
@@ -573,11 +602,115 @@
             "class": "Label"
         },
         {
+            "file": "src/Game.js",
+            "line": 9,
+            "description": "Update function for the game object",
+            "itemtype": "method",
+            "name": "Game#parentUpdate",
+            "class": "Label"
+        },
+        {
+            "file": "src/Game.js",
+            "line": 23,
+            "description": "Draw function",
+            "itemtype": "method",
+            "name": "Game#parentDraw",
+            "class": "Label"
+        },
+        {
+            "file": "src/Game.js",
+            "line": 34,
+            "description": "Create function for the game field (canvas)",
+            "itemtype": "method",
+            "name": "Game#createCanvas",
+            "class": "Label"
+        },
+        {
+            "file": "src/Game.js",
+            "line": 50,
+            "description": "Function which updates the width and height",
+            "itemtype": "method",
+            "name": "Game#updateGameDimensions",
+            "class": "Label"
+        },
+        {
+            "file": "src/Game.js",
+            "line": 67,
+            "description": "Function which clears the playing field",
+            "itemtype": "method",
+            "name": "Game#clearCanvas",
+            "class": "Label"
+        },
+        {
+            "file": "src/Game.js",
+            "line": 78,
+            "description": "Initializes the variables",
+            "itemtype": "method",
+            "name": "Game#Initialize",
+            "class": "Label"
+        },
+        {
+            "file": "src/Game.js",
+            "line": 92,
+            "description": "Starts up the game itself",
+            "itemtype": "method",
+            "name": "Game#Boot",
+            "class": "Label"
+        },
+        {
+            "file": "src/Game.js",
+            "line": 107,
+            "description": "Returns the input",
+            "itemtype": "method",
+            "name": "Game#getInput",
+            "class": "Label"
+        },
+        {
+            "file": "src/Game.js",
+            "line": 115,
+            "description": "Returns the background color",
+            "itemtype": "method",
+            "name": "Game#getBackgroundColor",
+            "class": "Label"
+        },
+        {
+            "file": "src/Game.js",
+            "line": 123,
+            "description": "Sets the background color",
+            "itemtype": "method",
+            "name": "Game#setBackgroundColor",
+            "class": "Label"
+        },
+        {
+            "file": "src/Game.js",
+            "line": 131,
+            "description": "Returns the width of the canvas",
+            "itemtype": "method",
+            "name": "Game#getWidth",
+            "class": "Label"
+        },
+        {
+            "file": "src/Game.js",
+            "line": 139,
+            "description": "Returns the height of the canvas",
+            "itemtype": "method",
+            "name": "Game#getHeight",
+            "class": "Label"
+        },
+        {
             "file": "src/Input.js",
             "line": 4,
             "description": "The update function for updating the input",
             "itemtype": "method",
-            "name": "Update",
+            "name": "Input#update",
+            "class": "Label"
+        },
+        {
+            "file": "src/Input.js",
+            "line": 15,
+            "description": "Listener for mouse movement to save X and Y position",
+            "itemtype": "method",
+            "name": "Game#mouseMoveListener",
             "class": "Label"
         },
         {
@@ -732,7 +865,7 @@
         },
         {
             "file": "src/Pole.js",
-            "line": 12,
+            "line": 11,
             "description": "Pole constructor\nIt automatically sets the pole to be immovable.",
             "is_constructor": 1,
             "params": [
@@ -746,7 +879,7 @@
         },
         {
             "file": "src/Pole.js",
-            "line": 25,
+            "line": 23,
             "description": "Handles everything when the pole is hit:\nfrom setting the hit flag, to managing the cooldown of the pole.",
             "itemtype": "method",
             "name": "Pole#isHit",
@@ -754,15 +887,22 @@
         },
         {
             "file": "src/Pole.js",
-            "line": 44,
+            "line": 41,
             "description": "Handles the cooldown period of the pole, which includes a change of color\nand not being able to get hit again for some amount of time.",
             "itemtype": "method",
             "name": "Pole#coolDown",
+            "params": [
+                {
+                    "name": "of",
+                    "description": "the cool down",
+                    "type": "Interval"
+                }
+            ],
             "class": "Pole"
         },
         {
             "file": "src/Shield.js",
-            "line": 22,
+            "line": 21,
             "description": "Draws the shield on the canvas",
             "itemtype": "method",
             "name": "Shield#draw",
@@ -777,7 +917,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 35,
+            "line": 34,
             "description": "Updates the position of the shield",
             "itemtype": "method",
             "name": "Shield#update",
@@ -785,7 +925,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 45,
+            "line": 44,
             "description": "Creates the body of the shield",
             "itemtype": "method",
             "name": "Shield#enableBody",
@@ -793,7 +933,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 54,
+            "line": 53,
             "description": "Collision handler for the shield\nIt calls the collision function in the body class which takes care of the rest",
             "itemtype": "method",
             "name": "Shield#collidesWith",
@@ -808,7 +948,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 65,
+            "line": 64,
             "description": "Sets the angle of the shield.",
             "itemtype": "method",
             "name": "Shield#setAngle",
@@ -823,7 +963,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 76,
+            "line": 75,
             "description": "Sets the radius of the shield.",
             "itemtype": "method",
             "name": "Shield#setRadius",
@@ -838,7 +978,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 87,
+            "line": 86,
             "description": "Sets the color of the shield.",
             "itemtype": "method",
             "name": "Shield#setColor",
@@ -853,7 +993,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 97,
+            "line": 96,
             "description": "Sets the size of the shield.",
             "itemtype": "method",
             "name": "Shield#setSize",
@@ -868,7 +1008,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 107,
+            "line": 106,
             "description": "Sets the position of the shield in the canvas.",
             "itemtype": "method",
             "name": "Shield#setPosition",
@@ -883,7 +1023,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 120,
+            "line": 119,
             "description": "Retrieves both x and y coordinate of the middle of the shield.",
             "itemtype": "method",
             "name": "Shield#getPosition",
@@ -895,7 +1035,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 130,
+            "line": 129,
             "description": "Retrieves the pole belonging to the shield.",
             "itemtype": "method",
             "name": "Shield#getPole",
@@ -907,7 +1047,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 140,
+            "line": 139,
             "description": "Retrieves the current angle of the shield.",
             "itemtype": "method",
             "name": "Shield#getAngle",
@@ -919,7 +1059,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 150,
+            "line": 149,
             "description": "Retrieves the size of the radius of the shield.",
             "itemtype": "method",
             "name": "Shield#getRadius",
@@ -931,7 +1071,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 160,
+            "line": 159,
             "description": "Retrieves the color of the shield.",
             "itemtype": "method",
             "name": "Shield#getColor",
@@ -943,7 +1083,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 170,
+            "line": 169,
             "description": "Retrieves the size of the shield (circle)",
             "itemtype": "method",
             "name": "Shield#getSize",
@@ -955,7 +1095,7 @@
         },
         {
             "file": "src/Shield.js",
-            "line": 180,
+            "line": 179,
             "description": "Retrieves the body of the shield.",
             "itemtype": "method",
             "name": "Shield#getBody",
@@ -978,7 +1118,7 @@
                     "type": "_parent"
                 }
             ],
-            "class": ""
+            "class": "Sprite"
         },
         {
             "file": "src/ShieldBody.js",
@@ -986,7 +1126,7 @@
             "description": "Updates the angle of the shield",
             "itemtype": "method",
             "name": "Shield#update",
-            "class": ""
+            "class": "Sprite"
         },
         {
             "file": "src/ShieldBody.js",
@@ -1001,7 +1141,7 @@
                     "type": "_object"
                 }
             ],
-            "class": ""
+            "class": "Sprite"
         },
         {
             "file": "src/ShieldBody.js",
@@ -1016,7 +1156,7 @@
                     "type": "_ball"
                 }
             ],
-            "class": ""
+            "class": "Sprite"
         },
         {
             "file": "src/ShieldBody.js",
@@ -1031,7 +1171,7 @@
                     "type": "_delta"
                 }
             ],
-            "class": ""
+            "class": "Sprite"
         },
         {
             "file": "src/ShieldBody.js",
@@ -1046,7 +1186,7 @@
                     "type": "_other"
                 }
             ],
-            "class": ""
+            "class": "Sprite"
         },
         {
             "file": "src/ShieldBody.js",
@@ -1061,7 +1201,7 @@
                     "type": "_other"
                 }
             ],
-            "class": ""
+            "class": "Sprite"
         },
         {
             "file": "src/ShieldBody.js",
@@ -1073,7 +1213,37 @@
                 "description": "The angle between the shield and the current mousepointer",
                 "type": "Number"
             },
-            "class": ""
+            "class": "Sprite"
+        },
+        {
+            "file": "src/Sprite.js",
+            "line": 14,
+            "description": "Function which loads a texture",
+            "itemtype": "method",
+            "name": "Sprite#LoadContent",
+            "params": [
+                {
+                    "name": "UNKNOWN",
+                    "description": "",
+                    "type": "Texture's path"
+                }
+            ],
+            "class": "Sprite"
+        },
+        {
+            "file": "src/Sprite.js",
+            "line": 24,
+            "description": "Function which draws the sprite",
+            "itemtype": "method",
+            "name": "Sprite#Draw",
+            "params": [
+                {
+                    "name": "UNKNOWN",
+                    "description": "",
+                    "type": "The canvas"
+                }
+            ],
+            "class": "Sprite"
         }
     ],
     "warnings": [
@@ -1094,8 +1264,20 @@
             "line": " src/Shield.js:3"
         },
         {
+            "message": "unknown tag: classdesc",
+            "line": " src/Sprite.js:1"
+        },
+        {
+            "message": "param name missing: {texture's path}",
+            "line": " src/Sprite.js:14"
+        },
+        {
+            "message": "param name missing: {The canvas}",
+            "line": " src/Sprite.js:24"
+        },
+        {
             "message": "Missing item type\nPole constructor\nIt automatically sets the pole to be immovable.",
-            "line": " src/Pole.js:12"
+            "line": " src/Pole.js:11"
         }
     ]
 }

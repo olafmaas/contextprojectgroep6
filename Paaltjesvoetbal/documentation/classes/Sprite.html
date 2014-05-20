@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Ball</title>
+    <title>Sprite</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -90,7 +90,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Ball Class</h1>
+                        <h1>Sprite Class</h1>
 <div class="box meta">
     
 
@@ -98,7 +98,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_Ball.js.html#l3"><code>src&#x2F;Ball.js:3</code></a>
+            Defined in: <a href="../files/src_Sprite.js.html#l1"><code>src&#x2F;Sprite.js:1</code></a>
         </div>
     
 
@@ -110,103 +110,10 @@
 
 
 <div class="box intro">
-    <p>Ball constructor</p>
+    <p>Sprite class</p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Ball" class="method item">
-    <h3 class="name"><code>Ball</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_radius</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Ball.js.html#l3"><code>src&#x2F;Ball.js:3</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_radius</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The radius of the ball.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -232,77 +139,70 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#collidesWith">Ball#collidesWith</a>
+                                <a href="#method_Shield#calculateAngle">Shield#calculateAngle</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#draw">Ball#draw</a>
+                                <a href="#method_Shield#collidesWith">Shield#collidesWith</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#enableBody">Ball#enableBody</a>
+                                <a href="#method_Shield#collidesWithBall">Shield#collidesWithBall</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getBody">Ball#getBody</a>
+                                <a href="#method_Shield#constructor">Shield#constructor</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getColor">Ball#getColor</a>
+                                <a href="#method_Shield#handleCollision">Shield#handleCollision</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getPosition">Ball#getPosition</a>
+                                <a href="#method_Shield#handleIndividual">Shield#handleIndividual</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getRadius">Ball#getRadius</a>
+                                <a href="#method_Shield#preciseCollidesWith">Shield#preciseCollidesWith</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#setColor">Ball#setColor</a>
+                                <a href="#method_Shield#update">Shield#update</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#setPosition">Ball#setPosition</a>
+                                <a href="#method_Sprite#Draw">Sprite#Draw</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#setRadius">Ball#setRadius</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Ball#update">Ball#update</a>
+                                <a href="#method_Sprite#LoadContent">Sprite#LoadContent</a>
 
                                 
                                 
@@ -324,465 +224,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Ball#collidesWith" class="method item">
-    <h3 class="name"><code>Ball#collidesWith</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_other</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Ball.js.html#l57"><code>src&#x2F;Ball.js:57</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Collision handler for the ball
-It calls the collision function in the body class which takes care of the rest</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_other</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The other object with which the ball collides</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#draw" class="method item">
-    <h3 class="name"><code>Ball#draw</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_canvasContext</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Ball.js.html#l24"><code>src&#x2F;Ball.js:24</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Draws the ball on the canvas</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_canvasContext</code>
-                        <span class="type">CanvasContext</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The canvas context on which the ball will be drawn.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#enableBody" class="method item">
-    <h3 class="name"><code>Ball#enableBody</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Ball.js.html#l48"><code>src&#x2F;Ball.js:48</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Creates the body of the ball</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getBody" class="method item">
-    <h3 class="name"><code>Ball#getBody</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Body</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Ball.js.html#l133"><code>src&#x2F;Ball.js:133</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the body of the ball.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Body</span>:
-                    
-                    <p>The body of the ball.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getColor" class="method item">
-    <h3 class="name"><code>Ball#getColor</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Hex</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Ball.js.html#l123"><code>src&#x2F;Ball.js:123</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the color of the ball.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Hex</span>:
-                    
-                    <p>The color of the ball in hex value.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getPosition" class="method item">
-    <h3 class="name"><code>Ball#getPosition</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Ball.js.html#l103"><code>src&#x2F;Ball.js:103</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves both x and y coordinate of the middle of the ball.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y coordinate of the middle of the ball.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getRadius" class="method item">
-    <h3 class="name"><code>Ball#getRadius</code></h3>
+                    <div id="method_Shield#calculateAngle" class="method item">
+    <h3 class="name"><code>Shield#calculateAngle</code></h3>
 
     
         <span class="paren">()</span>
@@ -817,7 +260,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Ball.js.html#l113"><code>src&#x2F;Ball.js:113</code></a>
+        <a href="../files/src_ShieldBody.js.html#l114"><code>src&#x2F;ShieldBody.js:114</code></a>
         
         </p>
 
@@ -828,7 +271,7 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Retrieves the radius of the ball.</p>
+        <p>Calculates the angle of the shield (in radians) depending on the current mouse input</p>
 
     </div>
 
@@ -843,7 +286,7 @@ It calls the collision function in the body class which takes care of the rest</
                     
                         <span class="type">Number</span>:
                     
-                    <p>The radius of the ball.</p>
+                    <p>The angle between the shield and the current mousepointer</p>
 
                 
             </div>
@@ -854,8 +297,8 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#setColor" class="method item">
-    <h3 class="name"><code>Ball#setColor</code></h3>
+                    <div id="method_Shield#collidesWith" class="method item">
+    <h3 class="name"><code>Shield#collidesWith</code></h3>
 
     
         <div class="args">
@@ -863,7 +306,7 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>_color</code>
+                        <code>The</code>
                     
                 </li>
             
@@ -896,7 +339,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Ball.js.html#l93"><code>src&#x2F;Ball.js:93</code></a>
+        <a href="../files/src_ShieldBody.js.html#l31"><code>src&#x2F;ShieldBody.js:31</code></a>
         
         </p>
 
@@ -907,7 +350,7 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Sets the color of the ball.</p>
+        <p>A method that checks with what object the shield collides</p>
 
     </div>
 
@@ -919,16 +362,14 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_color</code>
-                        <span class="type">Hex value</span>
+                        <code class="param-name">The</code>
+                        <span class="type">_object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
-<li>The hex value of the color.</li>
-</ul>
+                        <p>object that should be hit tested with the shield</p>
 
                     </div>
 
@@ -945,8 +386,8 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#setPosition" class="method item">
-    <h3 class="name"><code>Ball#setPosition</code></h3>
+                    <div id="method_Shield#collidesWithBall" class="method item">
+    <h3 class="name"><code>Shield#collidesWithBall</code></h3>
 
     
         <div class="args">
@@ -954,13 +395,7 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>_x</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>_y</code>
+                        <code>The</code>
                     
                 </li>
             
@@ -993,7 +428,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Ball.js.html#l71"><code>src&#x2F;Ball.js:71</code></a>
+        <a href="../files/src_ShieldBody.js.html#l41"><code>src&#x2F;ShieldBody.js:41</code></a>
         
         </p>
 
@@ -1004,7 +439,7 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Sets the position of the ball in the canvas.</p>
+        <p>A method that checks if the shield collides with a ball</p>
 
     </div>
 
@@ -1016,34 +451,14 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_x</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">The</code>
+                        <span class="type">_ball</span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
-<li>The x coordinate of the center of the ball.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">_y</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The y coordinate of the center of the ball.</li>
-</ul>
+                        <p>ball that should be hit tested with the shield</p>
 
                     </div>
 
@@ -1060,8 +475,8 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#setRadius" class="method item">
-    <h3 class="name"><code>Ball#setRadius</code></h3>
+                    <div id="method_Shield#constructor" class="method item">
+    <h3 class="name"><code>Shield#constructor</code></h3>
 
     
         <div class="args">
@@ -1069,7 +484,7 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>_radius</code>
+                        <code>The</code>
                     
                 </li>
             
@@ -1102,7 +517,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Ball.js.html#l82"><code>src&#x2F;Ball.js:82</code></a>
+        <a href="../files/src_ShieldBody.js.html#l10"><code>src&#x2F;ShieldBody.js:10</code></a>
         
         </p>
 
@@ -1113,7 +528,7 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Sets the radius of the ball.</p>
+        <p>Constructor for the shield body</p>
 
     </div>
 
@@ -1125,16 +540,14 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_radius</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">The</code>
+                        <span class="type">_parent</span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
-<li>The radius of the ball in pixels.</li>
-</ul>
+                        <p>shield object</p>
 
                     </div>
 
@@ -1151,8 +564,276 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#update" class="method item">
-    <h3 class="name"><code>Ball#update</code></h3>
+                    <div id="method_Shield#handleCollision" class="method item">
+    <h3 class="name"><code>Shield#handleCollision</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>object</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_ShieldBody.js.html#l71"><code>src&#x2F;ShieldBody.js:71</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>This method uses the previous methods to check whether the shield collides
+And then handles the collision</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">object</code>
+                        <span class="type">_other</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>which collides with the shield</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Shield#handleIndividual" class="method item">
+    <h3 class="name"><code>Shield#handleIndividual</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>object</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_ShieldBody.js.html#l88"><code>src&#x2F;ShieldBody.js:88</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>This method calls the correct handling function for the occuring collision</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">object</code>
+                        <span class="type">_other</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>which collides with the shield</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Shield#preciseCollidesWith" class="method item">
+    <h3 class="name"><code>Shield#preciseCollidesWith</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_ShieldBody.js.html#l59"><code>src&#x2F;ShieldBody.js:59</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A method that checks the precise collision of the shield with a ball</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">_delta</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>and y distance between the shield and the ball</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Shield#update" class="method item">
+    <h3 class="name"><code>Shield#update</code></h3>
 
     
         <span class="paren">()</span>
@@ -1183,7 +864,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Ball.js.html#l39"><code>src&#x2F;Ball.js:39</code></a>
+        <a href="../files/src_ShieldBody.js.html#l22"><code>src&#x2F;ShieldBody.js:22</code></a>
         
         </p>
 
@@ -1194,10 +875,186 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Updates the position of the ball</p>
+        <p>Updates the angle of the shield</p>
 
     </div>
 
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Sprite#Draw" class="method item">
+    <h3 class="name"><code>Sprite#Draw</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>UNKNOWN</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_Sprite.js.html#l24"><code>src&#x2F;Sprite.js:24</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Function which draws the sprite</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">UNKNOWN</code>
+                        <span class="type">The canvas</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Sprite#LoadContent" class="method item">
+    <h3 class="name"><code>Sprite#LoadContent</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>UNKNOWN</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_Sprite.js.html#l14"><code>src&#x2F;Sprite.js:14</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Function which loads a texture</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">UNKNOWN</code>
+                        <span class="type">Texture's path</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
