@@ -1,10 +1,46 @@
 var CollisionDetection ={
+	handledCollisions: [],
+
 	handleCollision: function(_bodyOne, _bodyTwo){
-		if(!this.collides(_bodyOne, _bodyTwo)) return false;
+		if(!this.shouldHandle(_bodyOne, _bodyTwo)) return false;
 
 		_bodyOne.handleCollision(_bodyTwo);
 		_bodyTwo.handleCollision(_bodyOne);
+
 		return true;
+	},
+
+	shouldHandle: function(_bodyOne, _bodyTwo){
+		//Get the collisions
+		var collisionObject = this.checkForCollision(_bodyOne, _bodyTwo);
+
+		//If the collisionobject isn't an object but false, return
+		if(collisionObject == false) return false;
+
+		//Check if the collision has been handled already
+		if(this.handledCollisions.indexOf(collisionObject) > -1) return false;
+
+		//Add the collision ot handledcollisions
+		this.handledCollisions.push(collisionObject);
+
+		return true;
+	},
+
+	checkForCollision: function(_bodyOne, _bodyTwo){
+		var collisionObject = {
+			bodyOne: _bodyOne,
+			bodyTwo: _bodyTwo
+		};
+
+		if(!this.collides(_bodyOne, _bodyTwo)) { 
+			if(this.handledCollisions.indexOf(collisionObject) != -1){
+				this.handledCollisions.remove(this.handledCollisions.indexOf(collisionObject));
+			}
+
+			return false; 
+		}
+
+		return collisionObject;
 	},
 
 	collides: function(_bodyOne, _bodyTwo){
