@@ -2,6 +2,13 @@ if(typeof module != 'undefined'){
     var Base = require('./Base.js');
 }
 
+/** 
+* Body constructor
+*
+* @class Body
+* @classdesc The bass class from which the other bodies inherit.
+* @constructor
+*/
 var Body = Base.extend({
 	
 	//Body properties
