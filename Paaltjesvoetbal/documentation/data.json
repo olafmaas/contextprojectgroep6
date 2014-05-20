@@ -1,0 +1,1101 @@
+{
+    "project": {},
+    "files": {
+        "src/Ball.js": {
+            "name": "src/Ball.js",
+            "modules": {},
+            "classes": {
+                "Ball": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/Body.js": {
+            "name": "src/Body.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/Camera.js": {
+            "name": "src/Camera.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/CircularBody.js": {
+            "name": "src/CircularBody.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/Input.js": {
+            "name": "src/Input.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/Label.js": {
+            "name": "src/Label.js",
+            "modules": {},
+            "classes": {
+                "Label": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/Pole.js": {
+            "name": "src/Pole.js",
+            "modules": {},
+            "classes": {
+                "Pole": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/Shield.js": {
+            "name": "src/Shield.js",
+            "modules": {},
+            "classes": {
+                "Shield": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/ShieldBody.js": {
+            "name": "src/ShieldBody.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "Ball": {
+            "name": "Ball",
+            "shortname": "Ball",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/Ball.js",
+            "line": 3,
+            "description": "Ball constructor",
+            "classdesc": "Ball constructor.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_radius",
+                    "description": "- The radius of the ball.",
+                    "type": "Number"
+                }
+            ]
+        },
+        "Label": {
+            "name": "Label",
+            "shortname": "Label",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/Label.js",
+            "line": 1,
+            "description": "A label class for drawing text on the screen",
+            "contructor": ""
+        },
+        "Pole": {
+            "name": "Pole",
+            "shortname": "Pole",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/Pole.js",
+            "line": 2,
+            "description": "Pole class",
+            "classdesc": "A simple pole class which extends Ball"
+        },
+        "Shield": {
+            "name": "Shield",
+            "shortname": "Shield",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/Shield.js",
+            "line": 3,
+            "description": "Shield constructor",
+            "classdesc": "Shield constructor.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_pole",
+                    "description": "- The pole which the shield protects",
+                    "type": "Pole"
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/Ball.js",
+            "line": 24,
+            "description": "Draws the ball on the canvas",
+            "itemtype": "method",
+            "name": "Ball#draw",
+            "params": [
+                {
+                    "name": "_canvasContext",
+                    "description": "- The canvas context on which the ball will be drawn.",
+                    "type": "CanvasContext"
+                }
+            ],
+            "class": "Ball"
+        },
+        {
+            "file": "src/Ball.js",
+            "line": 39,
+            "description": "Updates the position of the ball",
+            "itemtype": "method",
+            "name": "Ball#update",
+            "class": "Ball"
+        },
+        {
+            "file": "src/Ball.js",
+            "line": 48,
+            "description": "Creates the body of the ball",
+            "itemtype": "method",
+            "name": "Ball#enableBody",
+            "class": "Ball"
+        },
+        {
+            "file": "src/Ball.js",
+            "line": 57,
+            "description": "Collision handler for the ball\nIt calls the collision function in the body class which takes care of the rest",
+            "itemtype": "method",
+            "name": "Ball#collidesWith",
+            "params": [
+                {
+                    "name": "_other",
+                    "description": "- The other object with which the ball collides",
+                    "type": "Object"
+                }
+            ],
+            "class": "Ball"
+        },
+        {
+            "file": "src/Ball.js",
+            "line": 71,
+            "description": "Sets the position of the ball in the canvas.",
+            "itemtype": "method",
+            "name": "Ball#setPosition",
+            "params": [
+                {
+                    "name": "_x",
+                    "description": "- The x coordinate of the center of the ball.",
+                    "type": "Number"
+                },
+                {
+                    "name": "_y",
+                    "description": "- The y coordinate of the center of the ball.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Ball"
+        },
+        {
+            "file": "src/Ball.js",
+            "line": 82,
+            "description": "Sets the radius of the ball.",
+            "itemtype": "method",
+            "name": "Ball#setRadius",
+            "params": [
+                {
+                    "name": "_radius",
+                    "description": "- The radius of the ball in pixels.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Ball"
+        },
+        {
+            "file": "src/Ball.js",
+            "line": 93,
+            "description": "Sets the color of the ball.",
+            "itemtype": "method",
+            "name": "Ball#setColor",
+            "params": [
+                {
+                    "name": "_color",
+                    "description": "- The hex value of the color.",
+                    "type": "Hex value"
+                }
+            ],
+            "class": "Ball"
+        },
+        {
+            "file": "src/Ball.js",
+            "line": 103,
+            "description": "Retrieves both x and y coordinate of the middle of the ball.",
+            "itemtype": "method",
+            "name": "Ball#getPosition",
+            "return": {
+                "description": "The x and y coordinate of the middle of the ball.",
+                "type": "Number, number"
+            },
+            "class": "Ball"
+        },
+        {
+            "file": "src/Ball.js",
+            "line": 113,
+            "description": "Retrieves the radius of the ball.",
+            "itemtype": "method",
+            "name": "Ball#getRadius",
+            "return": {
+                "description": "The radius of the ball.",
+                "type": "Number"
+            },
+            "class": "Ball"
+        },
+        {
+            "file": "src/Ball.js",
+            "line": 123,
+            "description": "Retrieves the color of the ball.",
+            "itemtype": "method",
+            "name": "Ball#getColor",
+            "return": {
+                "description": "The color of the ball in hex value.",
+                "type": "Hex"
+            },
+            "class": "Ball"
+        },
+        {
+            "file": "src/Ball.js",
+            "line": 133,
+            "description": "Retrieves the body of the ball.",
+            "itemtype": "method",
+            "name": "Ball#getBody",
+            "return": {
+                "description": "The body of the ball.",
+                "type": "Body"
+            },
+            "class": "Ball"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 12,
+            "description": "Updates the position of the body",
+            "itemtype": "method",
+            "name": "Body#update",
+            "class": "Label"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 36,
+            "description": "Sets the velocity of the ball. \nIt also calculates the corresponding speed values for the x and y axis.",
+            "itemtype": "method",
+            "name": "Body#setVelocity",
+            "params": [
+                {
+                    "name": "_vel",
+                    "description": "- The velocity of the ball.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 52,
+            "description": "Sets the velocity direction (angle) of the ball. \nIt also calculates the corresponding speed values for the x and y axis.",
+            "itemtype": "method",
+            "name": "Body#setVelocityDirection",
+            "params": [
+                {
+                    "name": "_direction",
+                    "description": "- The direction (angle) of the ball in radians.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 68,
+            "description": "Sets the x and y speed values of the ball.\nIt also calculates the corresponding angle and velocity.\nNote: The given speed can also be negative, it then moves in the opposite direction.",
+            "itemtype": "method",
+            "name": "Body#setXYSpeed",
+            "params": [
+                {
+                    "name": "_x",
+                    "description": "- The speed on the x axis (pixels per redraw).",
+                    "type": "Number"
+                },
+                {
+                    "name": "_y",
+                    "description": "- The speed on the y axis (pixels per redraw).",
+                    "type": "Number"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 87,
+            "description": "Retrieves the x and y speed.",
+            "itemtype": "method",
+            "name": "Body#getXYSpeed",
+            "return": {
+                "description": "The x and y speeds of the body.",
+                "type": "Number, number"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 97,
+            "description": "Calculates the velocity direction (angle) in which the ball is moving, by using the current x and y speed of the ball.",
+            "itemtype": "method",
+            "name": "Body#calculateVelocity",
+            "return": {
+                "description": "The angle in radians.",
+                "type": "Number"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 107,
+            "description": "Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.",
+            "itemtype": "method",
+            "name": "Body#calculateVDirection",
+            "return": {
+                "description": "The velocity of the ball.",
+                "type": "Number"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 120,
+            "description": "Reverts the y speed (positive to negative and vice versa).\nIt also calculates the new angle (speed remains the same).",
+            "itemtype": "method",
+            "name": "Body#revertYSpeed",
+            "class": "Label"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 131,
+            "description": "Reverts the x speed (positive to negative and vice versa).\nIt also calculates the new angle (speed remains the same).",
+            "itemtype": "method",
+            "name": "Body#revertXSpeed",
+            "class": "Label"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 142,
+            "description": "Retrieves the position.",
+            "itemtype": "method",
+            "name": "Body#getPosition",
+            "return": {
+                "description": "The x and y coordinate the position of the body.",
+                "type": "Number, number"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 152,
+            "description": "Retrieves the velocity of the body.",
+            "itemtype": "method",
+            "name": "Body#getVelocity",
+            "return": {
+                "description": "The current velocity of the body.",
+                "type": "Number"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/Body.js",
+            "line": 162,
+            "description": "Retrieves the velocity direction (angle) of the body.",
+            "itemtype": "method",
+            "name": "Body#getAngle",
+            "return": {
+                "description": "The current angle of the body in radians.",
+                "type": "Number"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/Camera.js",
+            "line": 5,
+            "description": "Get the center position",
+            "itemtype": "method",
+            "name": "getCenter",
+            "class": "Label"
+        },
+        {
+            "file": "src/Camera.js",
+            "line": 14,
+            "description": "Get the zoom factor",
+            "itemtype": "method",
+            "name": "getZoom",
+            "class": "Label"
+        },
+        {
+            "file": "src/CircularBody.js",
+            "line": 9,
+            "description": "Constructor for the circular body",
+            "itemtype": "method",
+            "name": "Circular#constructor",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "circle object",
+                    "type": "_parent"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/CircularBody.js",
+            "line": 19,
+            "description": "Updates the position of the circle",
+            "itemtype": "method",
+            "name": "Circular#update",
+            "class": "Label"
+        },
+        {
+            "file": "src/CircularBody.js",
+            "line": 28,
+            "description": "A method that checks with what object the circle collides",
+            "itemtype": "method",
+            "name": "Circular#collidesWith",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "object that should be hit tested with the circle",
+                    "type": "_object"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/CircularBody.js",
+            "line": 38,
+            "description": "A method that checks if the circle collides with a ball",
+            "itemtype": "method",
+            "name": "Circle#collidesWithBall",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "ball that should be hit tested with the circle",
+                    "type": "_ball"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/CircularBody.js",
+            "line": 55,
+            "description": "This method uses the previous methods to check whether the circle collides\nAnd then handles the collision",
+            "itemtype": "method",
+            "name": "Circular#handleCollision",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "which collides with the shield",
+                    "type": "_other"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/CircularBody.js",
+            "line": 69,
+            "description": "This method calls the correct handling function for the occuring collision",
+            "itemtype": "method",
+            "name": "Circular#handleIndividual",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "which collides with the circle",
+                    "type": "_other"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/CircularBody.js",
+            "line": 82,
+            "description": "Handles the collision of circle and ball",
+            "itemtype": "method",
+            "name": "Circular#handleBallCollision",
+            "params": [
+                {
+                    "name": "ball",
+                    "description": "which collides with the circle",
+                    "type": "_ball"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/CircularBody.js",
+            "line": 98,
+            "description": "Handles the collision of circle and pole",
+            "itemtype": "method",
+            "name": "CircularBody#handlePoleCollision",
+            "class": "Label"
+        },
+        {
+            "file": "src/CircularBody.js",
+            "line": 107,
+            "description": "Checks if the ball collides with world boundaries and handles it",
+            "itemtype": "method",
+            "name": "Circular#checkWorldBounds",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "game/playing field",
+                    "type": "_game"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/Input.js",
+            "line": 4,
+            "description": "The update function for updating the input",
+            "itemtype": "method",
+            "name": "Update",
+            "class": "Label"
+        },
+        {
+            "file": "src/Label.js",
+            "line": 14,
+            "description": "Draws the label on the game canvas",
+            "itemtype": "method",
+            "name": "draw",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "canvascontext which should be drawn",
+                    "type": "CanvasContext"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/Label.js",
+            "line": 25,
+            "description": "Gets the string which is the labels text",
+            "itemtype": "method",
+            "name": "getText",
+            "return": {
+                "description": "The text of the label",
+                "type": "String"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/Label.js",
+            "line": 35,
+            "description": "Gets the position of the top-left corner of the label",
+            "itemtype": "method",
+            "name": "getPosition",
+            "return": {
+                "description": "An position object containing and x and y property",
+                "type": "Object"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/Label.js",
+            "line": 45,
+            "description": "Gets the name of the font",
+            "itemtype": "method",
+            "name": "getFont",
+            "return": {
+                "description": "The name of the font",
+                "type": "String"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/Label.js",
+            "line": 55,
+            "description": "Gets the font size in pixels",
+            "itemtype": "method",
+            "name": "getFontSize",
+            "return": {
+                "description": "The font size in pixels",
+                "type": "Float"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/Label.js",
+            "line": 65,
+            "description": "Gets the color of the label",
+            "itemtype": "method",
+            "name": "getColor",
+            "return": {
+                "description": "The hex code of the color",
+                "type": "Hexcolor"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/Label.js",
+            "line": 75,
+            "description": "Sets the string which is the labels text",
+            "itemtype": "method",
+            "name": "setText",
+            "params": [
+                {
+                    "name": "_text",
+                    "description": "The text which should be on the label",
+                    "type": "String"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/Label.js",
+            "line": 85,
+            "description": "Sets the position of the left-top corner of the label where it's drawn",
+            "itemtype": "method",
+            "name": "setPosition",
+            "params": [
+                {
+                    "name": "_position",
+                    "description": "An object containing an x and y value",
+                    "type": "Object"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/Label.js",
+            "line": 95,
+            "description": "Sets the font of the label",
+            "itemtype": "method",
+            "name": "setFont",
+            "params": [
+                {
+                    "name": "_font",
+                    "description": "the name of the font",
+                    "type": "String"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/Label.js",
+            "line": 105,
+            "description": "Sets the font size in pixels",
+            "itemtype": "method",
+            "name": "setFontSize",
+            "params": [
+                {
+                    "name": "_fontSize",
+                    "description": "The size of the font in pixels",
+                    "type": "Float"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/Label.js",
+            "line": 115,
+            "description": "Sets the color of the label",
+            "itemtype": "method",
+            "name": "setColor",
+            "params": [
+                {
+                    "name": "_color",
+                    "description": "The color in hexidecimal form",
+                    "type": "Hexcolor"
+                }
+            ],
+            "class": "Label"
+        },
+        {
+            "file": "src/Pole.js",
+            "line": 12,
+            "description": "Pole constructor\nIt automatically sets the pole to be immovable.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_radius",
+                    "description": "- The radius of the pole.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Pole"
+        },
+        {
+            "file": "src/Pole.js",
+            "line": 25,
+            "description": "Handles everything when the pole is hit:\nfrom setting the hit flag, to managing the cooldown of the pole.",
+            "itemtype": "method",
+            "name": "Pole#isHit",
+            "class": "Pole"
+        },
+        {
+            "file": "src/Pole.js",
+            "line": 44,
+            "description": "Handles the cooldown period of the pole, which includes a change of color\nand not being able to get hit again for some amount of time.",
+            "itemtype": "method",
+            "name": "Pole#coolDown",
+            "class": "Pole"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 22,
+            "description": "Draws the shield on the canvas",
+            "itemtype": "method",
+            "name": "Shield#draw",
+            "params": [
+                {
+                    "name": "_canvasContext",
+                    "description": "- The canvas context on which the shield will be drawn.",
+                    "type": "CanvasContext"
+                }
+            ],
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 35,
+            "description": "Updates the position of the shield",
+            "itemtype": "method",
+            "name": "Shield#update",
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 45,
+            "description": "Creates the body of the shield",
+            "itemtype": "method",
+            "name": "Shield#enableBody",
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 54,
+            "description": "Collision handler for the shield\nIt calls the collision function in the body class which takes care of the rest",
+            "itemtype": "method",
+            "name": "Shield#collidesWith",
+            "params": [
+                {
+                    "name": "_other",
+                    "description": "- The other object with which the shield collides",
+                    "type": "Object"
+                }
+            ],
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 65,
+            "description": "Sets the angle of the shield.",
+            "itemtype": "method",
+            "name": "Shield#setAngle",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "angle of the shield in radians.",
+                    "type": "_angle"
+                }
+            ],
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 76,
+            "description": "Sets the radius of the shield.",
+            "itemtype": "method",
+            "name": "Shield#setRadius",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "radius of the shield.",
+                    "type": "_radius"
+                }
+            ],
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 87,
+            "description": "Sets the color of the shield.",
+            "itemtype": "method",
+            "name": "Shield#setColor",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "color of the shield in hex value.",
+                    "type": "_color"
+                }
+            ],
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 97,
+            "description": "Sets the size of the shield.",
+            "itemtype": "method",
+            "name": "Shield#setSize",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "size of the shield.",
+                    "type": "_size"
+                }
+            ],
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 107,
+            "description": "Sets the position of the shield in the canvas.",
+            "itemtype": "method",
+            "name": "Shield#setPosition",
+            "params": [
+                {
+                    "name": "_pole",
+                    "description": "- The pole to which the shield will be assigned",
+                    "type": "Pole"
+                }
+            ],
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 120,
+            "description": "Retrieves both x and y coordinate of the middle of the shield.",
+            "itemtype": "method",
+            "name": "Shield#getPosition",
+            "return": {
+                "description": "The x and y coordinate of the middle of the shield.",
+                "type": "Number, number"
+            },
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 130,
+            "description": "Retrieves the pole belonging to the shield.",
+            "itemtype": "method",
+            "name": "Shield#getPole",
+            "return": {
+                "description": "The pole the shield protects.",
+                "type": "Pole"
+            },
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 140,
+            "description": "Retrieves the current angle of the shield.",
+            "itemtype": "method",
+            "name": "Shield#getAngle",
+            "return": {
+                "description": "The angle of the shield in radians.",
+                "type": "Number"
+            },
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 150,
+            "description": "Retrieves the size of the radius of the shield.",
+            "itemtype": "method",
+            "name": "Shield#getRadius",
+            "return": {
+                "description": "Radius of the shield.",
+                "type": "Number"
+            },
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 160,
+            "description": "Retrieves the color of the shield.",
+            "itemtype": "method",
+            "name": "Shield#getColor",
+            "return": {
+                "description": "The color of the shield in hex value",
+                "type": "Hex"
+            },
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 170,
+            "description": "Retrieves the size of the shield (circle)",
+            "itemtype": "method",
+            "name": "Shield#getSize",
+            "return": {
+                "description": "Size of the shield.",
+                "type": "Number"
+            },
+            "class": "Shield"
+        },
+        {
+            "file": "src/Shield.js",
+            "line": 180,
+            "description": "Retrieves the body of the shield.",
+            "itemtype": "method",
+            "name": "Shield#getBody",
+            "return": {
+                "description": "The body of the shield.",
+                "type": "Body"
+            },
+            "class": "Shield"
+        },
+        {
+            "file": "src/ShieldBody.js",
+            "line": 10,
+            "description": "Constructor for the shield body",
+            "itemtype": "method",
+            "name": "Shield#constructor",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "shield object",
+                    "type": "_parent"
+                }
+            ],
+            "class": ""
+        },
+        {
+            "file": "src/ShieldBody.js",
+            "line": 22,
+            "description": "Updates the angle of the shield",
+            "itemtype": "method",
+            "name": "Shield#update",
+            "class": ""
+        },
+        {
+            "file": "src/ShieldBody.js",
+            "line": 31,
+            "description": "A method that checks with what object the shield collides",
+            "itemtype": "method",
+            "name": "Shield#collidesWith",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "object that should be hit tested with the shield",
+                    "type": "_object"
+                }
+            ],
+            "class": ""
+        },
+        {
+            "file": "src/ShieldBody.js",
+            "line": 41,
+            "description": "A method that checks if the shield collides with a ball",
+            "itemtype": "method",
+            "name": "Shield#collidesWithBall",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "ball that should be hit tested with the shield",
+                    "type": "_ball"
+                }
+            ],
+            "class": ""
+        },
+        {
+            "file": "src/ShieldBody.js",
+            "line": 59,
+            "description": "A method that checks the precise collision of the shield with a ball",
+            "itemtype": "method",
+            "name": "Shield#preciseCollidesWith",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "and y distance between the shield and the ball",
+                    "type": "_delta"
+                }
+            ],
+            "class": ""
+        },
+        {
+            "file": "src/ShieldBody.js",
+            "line": 71,
+            "description": "This method uses the previous methods to check whether the shield collides\nAnd then handles the collision",
+            "itemtype": "method",
+            "name": "Shield#handleCollision",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "which collides with the shield",
+                    "type": "_other"
+                }
+            ],
+            "class": ""
+        },
+        {
+            "file": "src/ShieldBody.js",
+            "line": 88,
+            "description": "This method calls the correct handling function for the occuring collision",
+            "itemtype": "method",
+            "name": "Shield#handleIndividual",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "which collides with the shield",
+                    "type": "_other"
+                }
+            ],
+            "class": ""
+        },
+        {
+            "file": "src/ShieldBody.js",
+            "line": 114,
+            "description": "Calculates the angle of the shield (in radians) depending on the current mouse input",
+            "itemtype": "method",
+            "name": "Shield#calculateAngle",
+            "return": {
+                "description": "The angle between the shield and the current mousepointer",
+                "type": "Number"
+            },
+            "class": ""
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/Ball.js:3"
+        },
+        {
+            "message": "unknown tag: contructor",
+            "line": " src/Label.js:1"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/Pole.js:2"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/Shield.js:3"
+        },
+        {
+            "message": "Missing item type\nPole constructor\nIt automatically sets the pole to be immovable.",
+            "line": " src/Pole.js:12"
+        }
+    ]
+}
