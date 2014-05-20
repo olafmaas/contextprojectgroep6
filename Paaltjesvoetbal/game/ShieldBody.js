@@ -33,102 +33,43 @@ var ShieldBody = Body.extend({
 	*/
 	update: function(){
 		this.base();
-		this.parentShield.setAngle(this.calculateAngle());
+		this.setAngle(this.getParentShield().getAngle());
+		this.setRadius(this.getParentShield().getRadius());
 	},
 
 	/**
-	* A method that checks with what object the shield collides
-	* @method ShieldBody#collidesWith
-	* @param {object} _other - The object that should be hit tested with the shield
-	*/
-	collidesWith: function(_other){
-		if(_other.getBody() instanceof CircularBody) return this.collidesWithBall(_other);
-		else console.log("Unimplemented Collision with " + _other);
-	},
-
-	/**
-	* A method that checks if the shield collides with a ball
-	* @method ShieldBody#collidesWithBall
-	* @param {ball} _other - The ball that should be hit tested with the shield
-	*/
-	collidesWithBall: function(_other){
-		var delta = {x: _other.getPosition().x - this.position.x, y: _other.getPosition().y - this.position.y};
-		var dist = _other.getRadius() + this.radius;
-		
-		var velocity = _other.getBody().getVelocity();
-		
-		//console.log(Math.pow(delta.x,2) + ", " + Math.pow(delta.y, 2) + ", " + Math.pow(dist,2));
-		
-		if((Math.pow(delta.x, 2) + Math.pow(delta.y, 2) > Math.pow(dist-this.radius/12, 2)) &&
-		(Math.pow(delta.x, 2) + Math.pow(delta.y, 2) < Math.pow(dist+this.radius/12, 2)))
-			return this.preciseCollidesWith(delta);
-	},
-
-	/**
-	* A method that checks the precise collision of the shield with a ball
-	* @method ShieldBody#preciseCollidesWith
-	* @param {number} _delta - x and y distance between the shield and the ball
-	*/
-	preciseCollidesWith: function(_delta){
-		var shieldEnds = {begin: this.angle - this.parentShield.getSize() / 2, end: this.angle + this.parentShield.getSize() / 2};
-		var collisionAngle = Math.atan2(_delta.y, _delta.x);
-
-		return (shieldEnds.begin < collisionAngle && shieldEnds.end > collisionAngle);
-	},
-	
-	/**
-	* This method uses the previous methods to check whether the shield collides
-	* And then handles the collision
-	* @method ShieldBody#handleCollision
-	* @param {object} _other - The object which collides with the shield
-	*/
-	handleCollision: function(_other){
-		if(!this.collidesWith(_other)) { this.hit = false; return; }
-
-		//Make the bodies handle the collision
-		this.handleIndividual(_other);
-		_other.getBody().handleIndividual(this.parentShield);
-		
-		//TODO: this is temporary to keep the red color of the background when something hits the shield
-		return true;
-	},
-
-	/**
-	* This method calls the correct handling function for the occuring collision
-	* @method ShieldBody#handleIndividual
-	* @param {object} _other - The object which collides with the shield
+	* Method to handle a collision
+	* @method Shieldbody#handleIndividual
+	* @param {Body} _other - The other item that collides
 	*/
 	handleIndividual: function(_other){
 		//If the body is static it shouldn't respond to collision
-		//if(this.immovable) return;
-		
-		//Check which collision to handle
-		if(_other instanceof Ball) this.handleShieldCollision(_other);
+		if(this.hit) return;
 	},
 	
-	handleShieldCollision: function(_other){
-		
-		if(!this.hit){
-			//Get x and y difference
-			var dx = Math.abs(_other.getBody().position.x - this.position.x);
-			var dy = Math.abs(_other.getBody().position.y - this.position.y);
-
-			var tangent = Math.atan2(dy, dx);
-			_other.getBody().setVelocityDirection(2 * tangent - this.getVelocityDirection());
-			this.hit = true;
-		}
+	getAngle: function(){
+		return this.angle;
 	},
 
-	/**
-	* Calculates the angle of the shield (in radians) depending on the current mouse input
-	* @method ShieldBody#calculateAngle
-	* @return {number} The angle between the shield and the current mousepointer
-	*/
-	calculateAngle: function(){
-		//console.log(this.position.y + " | " + this.position.x);
-		return Math.atan2(mouseY - this.position.y, mouseX - this.position.x);
-	}
+	getRadius: function(){
+		return this.radius;
+	},
 
+	getParentShield: function(){
+		return this.parentShield;
+	},
+
+	setAngle: function(_angle){
+		this.angle = _angle;
+	},
+
+	setRadius: function(_radius){
+		this.radius = _radius;
+	},
+
+	setParentShield: function(_parentShield){
+		this.parentShield = _parentShield;
+	}
 });
 
 if(typeof module != 'undefined'){
