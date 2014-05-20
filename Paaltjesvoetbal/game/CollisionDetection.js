@@ -47,8 +47,10 @@ var CollisionDetection ={
 		var delta = {x: _ball.getPosition().x - _shield.getPosition().x, y: _ball.getPosition().y - _shield.getPosition().y};
 		var dist = _ball.getRadius() + _shield.getRadius();
 
-		if(Math.pow(delta.x, 2) + Math.pow(delta.y, 2) < Math.pow(dist, 2))
+		if((Math.pow(delta.x, 2) + Math.pow(delta.y, 2) > Math.pow(dist - _ball.getRadius()/4, 2)) &&
+ 		(Math.pow(delta.x, 2) + Math.pow(delta.y, 2) < Math.pow(dist + _ball.getRadius()/4, 2))){
 			return this.preciseCollidesBallWithShield(_ball, _shield);
+		}
 	},
 
 	preciseCollidesBallWithShield: function(_ball, _shield){
