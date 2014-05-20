@@ -14,7 +14,7 @@ describe("CircularBody", function(){
 		
 	})
 
-	describe("#CollidesWith", function(){
+	describe("#HandleCollision", function(){
 		var b = new Ball(10);
 
 		
@@ -35,12 +35,51 @@ describe("CircularBody", function(){
 		})
 	})
 
-	describe("#CollidesWithBall", function(){
+	describe("#handleBallCollision", function(){
 		var b = new Ball(10);
-		var mockedBall = sinon.stub(b, 'setPosition');
 
-		it("Should detect a collision with an other ball if they collide")
+		it("Should handle the ball collision and set a new direction", function(){
+			cb = new CircularBody(b);
+			cb.setVelocityDirection(1);
+			stubbedBall = sinon.stub(b, "getPosition", function(){return {x: 0, y:0}} )
+			
+			cb.handleBallCollision(b);
 
-		it("Shouldn't detect a collision with an other ball if they don't collide")
+			expect(stubbedBall).to.have.been.calledTwice;
+			expect(cb.getVelocityDirection()).to.equal(-1);
+		})
+
+	})
+
+	describe("#handleShieldCollision", function(){
+		it("Should handle the shield  collision and set a new direction  -- TBD")
+	})
+
+	describe("#checkWorldBounds", function() {
+		var b = new Ball(10);
+		b.setPosition(100, 100);
+
+		it("Should check if the ball collides with the world", function() {
+			cb = new CircularBody(b);
+			cb.setVelocity(1);
+			si = function(){
+				this.getWidth = function(){return 1000;}
+				this.getHeight = function(){return 1000;}
+			};
+			cb.checkWorldBounds(new si());
+			expect(cb.getVelocity()).to.equal(1);
+		})
+
+		it("Should if the ball collides with the world handle it", function() {
+			b.setPosition(0, 0);
+			cb = new CircularBody(b);
+			cb.setVelocity(1);
+			si = function(){
+				this.getWidth = function(){return 0;}
+				this.getHeight = function(){return 0;}
+			};
+			cb.checkWorldBounds(new si());
+			expect(cb.getVelocity()).to.equal(1);
+		})
 	})
 })
