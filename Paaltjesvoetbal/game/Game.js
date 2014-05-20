@@ -14,6 +14,8 @@ function Game(load, update, draw){
 	var height = 40;
 	var backGroundColor;
 	var canv;
+	var score;
+	var label = new Label("Score: " + score);
 
 	/**
 	* Draw function
@@ -21,9 +23,11 @@ function Game(load, update, draw){
 	*/
 	parentDraw = function(){
 		var ctx = canv.getContext("2d");
-
+		
 		clearCanvas();
 		draw(ctx);
+		
+		label.draw(ctx);
 	}
 
 	/**

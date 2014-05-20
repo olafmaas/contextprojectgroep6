@@ -1,3 +1,5 @@
+//BEER MUST DO DOCUMENTATION ON THIS CLASS
+
 var CollisionDetection ={
 	handleCollision: function(_bodyOne, _bodyTwo){
 		if(!this.collides(_bodyOne, _bodyTwo)) return false;
