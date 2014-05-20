@@ -1,10 +1,43 @@
 var CollisionDetection ={
+	handledCollisions: [],
+
 	handleCollision: function(_bodyOne, _bodyTwo){
-		if(!this.collides(_bodyOne, _bodyTwo)) return false;
+		if(!this.shouldHandle(_bodyOne, _bodyTwo)) return false;
 
 		_bodyOne.handleCollision(_bodyTwo);
 		_bodyTwo.handleCollision(_bodyOne);
+
 		return true;
+	},
+
+	shouldHandle: function(_bodyOne, _bodyTwo){
+		//Get the collisions
+		var collisionObject = this.checkForCollision(_bodyOne, _bodyTwo);
+
+		//If the collisionobject isn't an object but false, return
+		if(collisionObject == false) return false;
+
+		//Check if the collision has been handled already
+		if(this.handledCollisions.indexOf(collisionObject) > -1) return false;
+
+		//Add the collision ot handledcollisions
+		this.handledCollisions.push(collisionObject);
+
+		return true;
+	},
+
+	checkForCollision: function(_bodyOne, _bodyTwo){
+		var collisionObject = _bodyOne.ID + "with" + _bodyTwo.ID;
+
+		if(!this.collides(_bodyOne, _bodyTwo)) { 
+			if(this.handledCollisions.indexOf(collisionObject) != -1){
+				this.handledCollisions.splice(this.handledCollisions.indexOf(collisionObject), 1);
+			}
+
+			return false; 
+		}
+
+		return collisionObject;
 	},
 
 	collides: function(_bodyOne, _bodyTwo){
@@ -45,10 +78,14 @@ var CollisionDetection ={
 
 	collidesBallWithShield: function(_ball, _shield){
 		var delta = {x: _ball.getPosition().x - _shield.getPosition().x, y: _ball.getPosition().y - _shield.getPosition().y};
-		var dist = _ball.getRadius() + _shield.getRadius();
+		var distsq = Math.pow(delta.x, 2) + Math.pow(delta.y, 2);
 
-		if(Math.pow(delta.x, 2) + Math.pow(delta.y, 2) < Math.pow(dist, 2))
+		var maxDist = _shield.getRadius() + _ball.getRadius();
+		var minDist = _shield.getRadius() - _ball.getRadius();
+
+		if(distsq > Math.pow(minDist, 2) && distsq < Math.pow(maxDist, 2)){
 			return this.preciseCollidesBallWithShield(_ball, _shield);
+		}
 	},
 
 	preciseCollidesBallWithShield: function(_ball, _shield){

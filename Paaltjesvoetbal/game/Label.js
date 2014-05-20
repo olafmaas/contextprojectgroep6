@@ -8,7 +8,7 @@
 */
 Label = function(_text){
 	var text = _text; //Var containing the string
-	var position = {x: 0, y: 0}; //Var for the position
+	var position = {x: 500, y: 500}; //Var for the position
 	var font = "Verdana"; //Var for the font
 	var fontSize = 20; //Var for the font size
 	var color = "#000000" //Var for the font color
@@ -54,7 +54,7 @@ Label = function(_text){
 	/**
 	* Gets the font size in pixels
 	* @method Label#getFontSize
-	* @return {float} The font size in pixels.
+	* @return {number} The font size in pixels.
 	*/
 	this.getFontSize = function(){
 		return fontSize;
@@ -98,9 +98,8 @@ Label = function(_text){
 
 	/**
 	* Sets the font size in pixels
-	*
 	* @method Label#setFontSize
-	* @param {float} _fontSize - The size of the font in pixels.
+	* @param {number} _fontSize - The size of the font in pixels.
 	*/
 	this.setFontSize = function(_fontSize){
 		fontSize = _fontSize;
@@ -108,7 +107,6 @@ Label = function(_text){
 
 	/**
 	* Sets the color of the label
-	*
 	* @method Label#setColor
 	* @param {hexcolor} _color - The color in hexidecimal form.
 	*/

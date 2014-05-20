@@ -43,22 +43,17 @@ var pole;
             ball2.update();
             shield.update();
 
-            //Bit messy for now, but we don't have groups yet for which we can set the collisions,
-            //so we just do it manually here
-            handleCollision(ball, ball2); //ball1 to pole
-            handleCollision(ball, pole); //ball1 to ball2
+            handleCollision(ball, ball2);
+            handleCollision(ball, shield);
+            handleCollision(ball2, shield);
+
+            if(handleCollision(ball2, pole) || handleCollision(ball, pole))
+                pole.isHit();
+
             ball.getBody().checkWorldBounds(game); //ball1 to worldBounds
             ball2.getBody().checkWorldBounds(game); //ball2 to worldBounds
-            handleCollision(ball2, pole); //ball2 to pole
-            //pole.getBody().handleCollision(ball);
-            //pole.getBody().handleCollision(ball2)
 
-            //Shield collision handling is not yet implemented
-            if(handleCollision(ball, shield) || handleCollision(ball2, shield)){
-                game.setBackgroundColor("red");
-            }else{
-                game.setBackgroundColor("white");
-            }
+            
         }
         parentDraw();
     }
