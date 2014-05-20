@@ -8,7 +8,7 @@
 */
 Label = function(_text){
 	var text = _text; //Var containing the string
-	var position = {x: 500, y: 500}; //Var for the position
+	var position = {x: 0, y: 0}; //Var for the position
 	var font = "Verdana"; //Var for the font
 	var fontSize = 20; //Var for the font size
 	var color = "#000000" //Var for the font color

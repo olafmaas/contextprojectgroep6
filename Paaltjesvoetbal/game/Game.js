@@ -15,7 +15,7 @@ function Game(load, update, draw){
 	var backGroundColor;
 	var canv;
 	var score = 0;
-	var label = new Label("Score: " + score);
+	var label = new Label("Score: 0:00");
 
 	/**
 	* Draw function
@@ -51,8 +51,9 @@ function Game(load, update, draw){
 	* @method Game#updateScore
 	*/
 	updateScore = function(){
-		++score;
-		label.setText("Score: " + score);
+		var lblPosition = {x: 500, y: 500};
+		label.setPosition(lblPosition);
+
 		if(score < 10){
 			label.setText("Score: 0:0" + score);
 		}
@@ -65,6 +66,7 @@ function Game(load, update, draw){
 			if(sec < 10) { sec = '0' + sec; }
 			label.setText("Score: " + min + ":" + sec);
 		}
+		++score;
 	}
 	setInterval(updateScore, 1000);
 
