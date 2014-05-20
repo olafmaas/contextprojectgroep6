@@ -2,7 +2,6 @@
 
 /** 
 * Shield constructor
-*
 * @class Shield
 * @classdesc Shield constructor.
 * @constructor
