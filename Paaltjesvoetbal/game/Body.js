@@ -44,6 +44,23 @@ var Body = Base.extend({
 	},
 
 	/**
+	* Gets the angle from this object to another object
+	*
+	* @method getAngleToObject
+	* @param _other {Body} the body of the other object
+	*/
+	getAngleTo: function(_other){
+		var delta = {x: _other.getPosition().x - this.getPosition().x, y: _other.getPosition().y - this.getPosition().y};
+		var angle = Math.atan2(delta.y, delta.x);
+
+		return angle;
+	},
+
+	handleCollision: function(_other){
+		//Here collisions should be handled
+	},
+
+	/**
 	* Sets the velocity of the ball. 
 	* It also calculates the corresponding speed values for the x and y axis.
 	*
