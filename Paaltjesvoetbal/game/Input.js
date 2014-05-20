@@ -1,3 +1,12 @@
+/**
+* Input class
+* 
+* @class Input
+* @classdescr Input class
+* @constructor
+*
+*/
+
 var input = {
 	mainPointer: {isActive: true, x: 0, y: 0},
 
@@ -14,7 +23,8 @@ var input = {
 
 	/**
 	* Listener for mouse movement to save X and Y position 
-	* @method Game#mouseMoveListener
+	*
+	* @method Input#mouseMoveListener
 	*/
 	mouseMoveListener: function(_e){
 		this.mainPointer = {isActive: true, x: _e.clientX, y: _e.clientY};
@@ -24,7 +34,11 @@ var input = {
 		mouseY = this.mainPointer.y;
 	},
 
-	//'Pause' when you click in the canvas (for debugging)
+	/**
+	* Listener for mouse down for the pause functionality (debuggin purpose only)
+	*
+	* @method Input#mouseDownListener
+	*/
 	mouseDownListener: function(_e){
 		mouseDown = 1 - mouseDown;
 	}
@@ -33,7 +47,6 @@ var input = {
 var mouseX = 0;
 var mouseY = 0;
 var mouseDown = 0;
-var previousVel = []; 
 
 if(typeof module != 'undefined'){
 	module.exports = mouseX;
