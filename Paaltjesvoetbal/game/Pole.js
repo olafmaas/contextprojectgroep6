@@ -4,18 +4,13 @@
 *
 * @class Pole
 * @classdesc A simple pole class which extends Ball
+* @constructor It automatically sets the pole to be immovable when constructed.
+* @param {number} _radius - The radius of the pole.
 */
 var Pole = Ball.extend({
 	hit: false,
 	prevColor: 0,
 
-	/** 
-	* Pole constructor
-	* It automatically sets the pole to be immovable.
-	*
-	* @constructor
-	* @param {number} _radius - The radius of the pole.
-	*/
 	constructor: function(_radius){
 		this.radius = _radius;
 		this.enableBody();
