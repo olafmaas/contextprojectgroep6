@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/Input.js</title>
+    <title>Input.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,7 +43,19 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/Camera.html">Camera</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
                 <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
@@ -90,10 +102,19 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/Input.js</h1>
+                        <h1 class="file-heading">File: Input.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
+/**
+* Input class
+* 
+* @class Input
+* @classdescr Input class
+* @constructor
+*
+*/
+
 var input = {
 	mainPointer: {isActive: true, x: 0, y: 0},
 
@@ -110,7 +131,8 @@ var input = {
 
 	/**
 	* Listener for mouse movement to save X and Y position 
-	* @method Game#mouseMoveListener
+	*
+	* @method Input#mouseMoveListener
 	*/
 	mouseMoveListener: function(_e){
 		this.mainPointer = {isActive: true, x: _e.clientX, y: _e.clientY};
@@ -120,7 +142,11 @@ var input = {
 		mouseY = this.mainPointer.y;
 	},
 
-	//&#x27;Pause&#x27; when you click in the canvas (for debugging)
+	/**
+	* Listener for mouse down for the pause functionality (debuggin purpose only)
+	*
+	* @method Input#mouseDownListener
+	*/
 	mouseDownListener: function(_e){
 		mouseDown = 1 - mouseDown;
 	}
@@ -129,7 +155,14 @@ var input = {
 var mouseX = 0;
 var mouseY = 0;
 var mouseDown = 0;
-var previousVel = []; 
+
+if(typeof module != &#x27;undefined&#x27;){
+	module.exports = mouseX;
+	module.exports = mouseY;
+	module.exports = mouseDown;
+	module.exports = previousVel;
+}
+
     </pre>
 </div>
 

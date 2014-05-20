@@ -43,7 +43,19 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/Camera.html">Camera</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
                 <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
@@ -98,7 +110,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_Shield.js.html#l3"><code>src&#x2F;Shield.js:3</code></a>
+            Defined in: <a href="../files/Shield.js.html#l6"><code>Shield.js:6</code></a>
         </div>
     
 
@@ -159,7 +171,7 @@
             
         
         
-        <a href="../files/src_Shield.js.html#l3"><code>src&#x2F;Shield.js:3</code></a>
+        <a href="../files/Shield.js.html#l6"><code>Shield.js:6</code></a>
         
         </p>
 
@@ -232,7 +244,7 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#collidesWith">Shield#collidesWith</a>
+                                <a href="#method_Shield#calculateAngle">Shield#calculateAngle</a>
 
                                 
                                 
@@ -359,23 +371,17 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Shield#collidesWith" class="method item">
-    <h3 class="name"><code>Shield#collidesWith</code></h3>
+                    <div id="method_Shield#calculateAngle" class="method item">
+    <h3 class="name"><code>Shield#calculateAngle</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_other</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Float</span>
+        </span>
     
 
     
@@ -401,7 +407,7 @@
             
         
         
-        <a href="../files/src_Shield.js.html#l53"><code>src&#x2F;Shield.js:53</code></a>
+        <a href="../files/Shield.js.html#l56"><code>Shield.js:56</code></a>
         
         </p>
 
@@ -412,39 +418,26 @@
     </div>
 
     <div class="description">
-        <p>Collision handler for the shield
-It calls the collision function in the body class which takes care of the rest</p>
+        <p>Calculates the angle of the shield (in radians) depending on the current mouse input</p>
 
     </div>
 
     
-        <div class="params">
-            <h4>Parameters:</h4>
 
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_other</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The other object with which the shield collides</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
+        <div class="returns">
+            <h4>Returns:</h4>
 
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Float</span>:
+                    
+                    <p>The angle between the shield and the current mousepointer.</p>
+
+                
+            </div>
+        </div>
     
 
     
@@ -493,7 +486,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l21"><code>src&#x2F;Shield.js:21</code></a>
+        <a href="../files/Shield.js.html#l25"><code>Shield.js:25</code></a>
         
         </p>
 
@@ -574,7 +567,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l44"><code>src&#x2F;Shield.js:44</code></a>
+        <a href="../files/Shield.js.html#l47"><code>Shield.js:47</code></a>
         
         </p>
 
@@ -633,7 +626,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l139"><code>src&#x2F;Shield.js:139</code></a>
+        <a href="../files/Shield.js.html#l137"><code>Shield.js:137</code></a>
         
         </p>
 
@@ -679,7 +672,7 @@ It calls the collision function in the body class which takes care of the rest</
 
     
         <span class="returns-inline">
-            <span class="type">Body</span>
+            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
         </span>
     
 
@@ -706,7 +699,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l179"><code>src&#x2F;Shield.js:179</code></a>
+        <a href="../files/Shield.js.html#l177"><code>Shield.js:177</code></a>
         
         </p>
 
@@ -730,7 +723,7 @@ It calls the collision function in the body class which takes care of the rest</
             <div class="returns-description">
                 
                     
-                        <span class="type">Body</span>:
+                        <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>:
                     
                     <p>The body of the shield.</p>
 
@@ -779,7 +772,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l159"><code>src&#x2F;Shield.js:159</code></a>
+        <a href="../files/Shield.js.html#l157"><code>Shield.js:157</code></a>
         
         </p>
 
@@ -852,7 +845,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l129"><code>src&#x2F;Shield.js:129</code></a>
+        <a href="../files/Shield.js.html#l127"><code>Shield.js:127</code></a>
         
         </p>
 
@@ -925,7 +918,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l119"><code>src&#x2F;Shield.js:119</code></a>
+        <a href="../files/Shield.js.html#l117"><code>Shield.js:117</code></a>
         
         </p>
 
@@ -998,7 +991,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l149"><code>src&#x2F;Shield.js:149</code></a>
+        <a href="../files/Shield.js.html#l147"><code>Shield.js:147</code></a>
         
         </p>
 
@@ -1071,7 +1064,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l169"><code>src&#x2F;Shield.js:169</code></a>
+        <a href="../files/Shield.js.html#l167"><code>Shield.js:167</code></a>
         
         </p>
 
@@ -1117,7 +1110,7 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>The</code>
+                        <code>_angle</code>
                     
                 </li>
             
@@ -1150,7 +1143,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l64"><code>src&#x2F;Shield.js:64</code></a>
+        <a href="../files/Shield.js.html#l66"><code>Shield.js:66</code></a>
         
         </p>
 
@@ -1173,14 +1166,16 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">The</code>
-                        <span class="type">_angle</span>
+                        <code class="param-name">_angle</code>
+                        <span class="type">Number</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>angle of the shield in radians.</p>
+                        <ul>
+<li>The angle of the shield in radians.</li>
+</ul>
 
                     </div>
 
@@ -1206,7 +1201,7 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>The</code>
+                        <code>_color</code>
                     
                 </li>
             
@@ -1239,7 +1234,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l86"><code>src&#x2F;Shield.js:86</code></a>
+        <a href="../files/Shield.js.html#l86"><code>Shield.js:86</code></a>
         
         </p>
 
@@ -1262,14 +1257,16 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">The</code>
-                        <span class="type">_color</span>
+                        <code class="param-name">_color</code>
+                        <span class="type">Hex</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>color of the shield in hex value.</p>
+                        <ul>
+<li>The color of the shield in hex value.</li>
+</ul>
 
                     </div>
 
@@ -1328,7 +1325,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l106"><code>src&#x2F;Shield.js:106</code></a>
+        <a href="../files/Shield.js.html#l104"><code>Shield.js:104</code></a>
         
         </p>
 
@@ -1386,7 +1383,7 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>The</code>
+                        <code>_radius</code>
                     
                 </li>
             
@@ -1419,7 +1416,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l75"><code>src&#x2F;Shield.js:75</code></a>
+        <a href="../files/Shield.js.html#l76"><code>Shield.js:76</code></a>
         
         </p>
 
@@ -1442,14 +1439,16 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">The</code>
-                        <span class="type">_radius</span>
+                        <code class="param-name">_radius</code>
+                        <span class="type">Number</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>radius of the shield.</p>
+                        <ul>
+<li>The radius of the shield</li>
+</ul>
 
                     </div>
 
@@ -1475,7 +1474,7 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>The</code>
+                        <code>_size</code>
                     
                 </li>
             
@@ -1508,7 +1507,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l96"><code>src&#x2F;Shield.js:96</code></a>
+        <a href="../files/Shield.js.html#l95"><code>Shield.js:95</code></a>
         
         </p>
 
@@ -1531,14 +1530,16 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">The</code>
-                        <span class="type">_size</span>
+                        <code class="param-name">_size</code>
+                        <span class="type">Number</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>size of the shield.</p>
+                        <ul>
+<li>The size of the shield.</li>
+</ul>
 
                     </div>
 
@@ -1587,7 +1588,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_Shield.js.html#l34"><code>src&#x2F;Shield.js:34</code></a>
+        <a href="../files/Shield.js.html#l37"><code>Shield.js:37</code></a>
         
         </p>
 

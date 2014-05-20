@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/Ball.js</title>
+    <title>Ball.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,7 +43,19 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/Camera.html">Camera</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
                 <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
@@ -90,15 +102,19 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/Ball.js</h1>
+                        <h1 class="file-heading">File: Ball.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
+if(typeof module != &#x27;undefined&#x27;){
+	var CircularBody = require(&#x27;./CircularBody.js&#x27;);
+	var Base = require(&#x27;./Base.js&#x27;);
+}
+
 //A simple ball class
 
 /** 
 * Ball constructor
-*
 * @class Ball
 * @classdesc Ball constructor.
 * @constructor
@@ -117,9 +133,9 @@ var Ball = Base.extend({
 		//Stuff to execute when constructing
 		this.enableBody();
 	},
+	
 	/**
 	* Draws the ball on the canvas
-	*
 	* @method Ball#draw
 	* @param {CanvasContext} _canvasContext - The canvas context on which the ball will be drawn.
 	*/
@@ -134,7 +150,6 @@ var Ball = Base.extend({
 
 	/**
 	* Updates the position of the ball
-	*
 	* @method Ball#update
 	*/
 	update: function(){
@@ -143,7 +158,6 @@ var Ball = Base.extend({
 
 	/**
 	* Creates the body of the ball
-	*
 	* @method Ball#enableBody
 	*/
 	enableBody: function(){
@@ -153,7 +167,6 @@ var Ball = Base.extend({
 	/**
 	* Collision handler for the ball
 	* It calls the collision function in the body class which takes care of the rest
-	*
 	* @method Ball#collidesWith
 	* @param {Object} _other - The other object with which the ball collides
 	*/
@@ -166,7 +179,6 @@ var Ball = Base.extend({
 
 	/**
 	* Sets the position of the ball in the canvas.
-	*
 	* @method Ball#setPosition
 	* @param {number} _x - The x coordinate of the center of the ball.
 	* @param {number} _y - The y coordinate of the center of the ball.
@@ -177,7 +189,6 @@ var Ball = Base.extend({
 
 	/**
 	* Sets the radius of the ball.
-	*
 	* @method Ball#setRadius
 	* @param {number} _radius - The radius of the ball in pixels.
 	*/
@@ -236,6 +247,11 @@ var Ball = Base.extend({
 		return this.body;
 	}
 });
+
+if(typeof module != &#x27;undefined&#x27;){
+    module.exports = Ball;
+}
+
     </pre>
 </div>
 

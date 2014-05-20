@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/Body.js</title>
+    <title>Body.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,7 +43,19 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/Camera.html">Camera</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
                 <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
@@ -90,11 +102,21 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/Body.js</h1>
+                        <h1 class="file-heading">File: Body.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
+if(typeof module != &#x27;undefined&#x27;){
+    var Base = require(&#x27;./Base.js&#x27;);
+}
 
+/** 
+* Body constructor
+*
+* @class Body
+* @classdesc The bass class from which the other bodies inherit.
+* @constructor
+*/
 var Body = Base.extend({
 	
 	//Body properties
@@ -127,6 +149,23 @@ var Body = Base.extend({
 	*/
 		this.position.x += this.vectorVelocity.x;
 		this.position.y += this.vectorVelocity.y;
+	},
+
+	/**
+	* Gets the angle from this object to another object
+	*
+	* @method getAngleToObject
+	* @param _other {Body} the body of the other object
+	*/
+	getAngleTo: function(_other){
+		var delta = {x: _other.getPosition().x - this.getPosition().x, y: _other.getPosition().y - this.getPosition().y};
+		var angle = Math.atan2(delta.y, delta.x);
+
+		return angle;
+	},
+
+	handleCollision: function(_other){
+		//Here collisions should be handled
 	},
 
 	/**
@@ -264,8 +303,12 @@ var Body = Base.extend({
 	getVelocityDirection: function(){
 		return this.velocityDirection;
 	}
-
 });
+
+if(typeof module != &#x27;undefined&#x27;){
+	module.exports = Body;
+}
+
     </pre>
 </div>
 

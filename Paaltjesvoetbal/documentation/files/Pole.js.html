@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/Camera.js</title>
+    <title>Pole.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,7 +43,19 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/Camera.html">Camera</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
                 <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
@@ -90,34 +102,66 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/Camera.js</h1>
+                        <h1 class="file-heading">File: Pole.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-//Camera class
 
-//Properties of the camera object
-Camera = function(){
-	var center = {x: 0, y: 0};
-	var zoom - 1;
+/**
+* Pole class
+*
+* @class Pole
+* @classdesc A simple pole class which extends Ball
+* @constructor It automatically sets the pole to be immovable when constructed.
+* @param {number} _radius - The radius of the pole.
+*/
+var Pole = Ball.extend({
+	hit: false,
+	prevColor: 0,
+
+	constructor: function(_radius){
+		this.radius = _radius;
+		this.enableBody();
+		this.body.immovable = true;
+	},
 
 	/**
-	* Get the center position of the camera
+	* Handles everything when the pole is hit:
+	* from setting the hit flag, to managing the cooldown of the pole.
 	*
-	* @method getCenter
+	* @method Pole#isHit
 	*/
-	this.getCenter = function(){
-		return center;
-	}
+	isHit: function(){
+		if(!this.hit){
+			this.hit = true;
+			this.prevColor = this.getColor();
+			this.setColor(&quot;darkOrange&quot;);
+			this.coolDown(3000);
+			//TODO:
+			//save highscore
+			//reset score
+			//start cooldown in which player cannot be hit
+		}
+	},
 
 	/**
-	* Get the zoom factor of the camera
-	* @method getZoom
+	* Handles the cooldown period of the pole, which includes a change of color
+	* and not being able to get hit again for some amount of time.
+	* @method Pole#coolDown
 	*/
-	this.getZoom = function(){
-		return zoom;
+	//TODO: iets van laten knipperen? sneller = cooldown bijna afgelopen?
+	coolDown: function(_interval){
+		if(_interval &gt; 0){
+			var savedThis = this;
+			setTimeout( function() { savedThis.coolDown(0); }, _interval);
+		}
+		else {
+			this.setColor(this.prevColor); //Revert back to previous color
+			this.hit = false; //remove hit flag
+		}
 	}
-}
+
+});
     </pre>
 </div>
 

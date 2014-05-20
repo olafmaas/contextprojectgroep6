@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Label</title>
+    <title>Game</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -102,7 +102,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Label Class</h1>
+                        <h1>Game Class</h1>
 <div class="box meta">
     
 
@@ -110,7 +110,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/Label.js.html#l1"><code>Label.js:1</code></a>
+            Defined in: <a href="../files/Game.js.html#l3"><code>Game.js:3</code></a>
         </div>
     
 
@@ -122,15 +122,15 @@
 
 
 <div class="box intro">
-    <p>A label class for writing text on the screen</p>
+    <p>Game class</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Label" class="method item">
-    <h3 class="name"><code>Label</code></h3>
+        <div id="method_Game" class="method item">
+    <h3 class="name"><code>Game</code></h3>
 
     
         <div class="args">
@@ -138,7 +138,19 @@
             
                 <li class="arg">
                     
-                        <code>_text</code>
+                        <code>load</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>update</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>draw</code>
                     
                 </li>
             
@@ -171,7 +183,7 @@
             
         
         
-        <a href="../files/Label.js.html#l1"><code>Label.js:1</code></a>
+        <a href="../files/Game.js.html#l3"><code>Game.js:3</code></a>
         
         </p>
 
@@ -193,15 +205,51 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_text</code>
-                        <span class="type">String</span>
+                        <code class="param-name">load</code>
+                        <span class="type">Function</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>String to write on the screen.</li>
+<li>Load function</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">update</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Update function</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">draw</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Draw function</li>
 </ul>
 
                     </div>
@@ -244,77 +292,91 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Label#draw">Label#draw</a>
+                                <a href="#method_Game#Boot">Game#Boot</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#getColor">Label#getColor</a>
+                                <a href="#method_Game#clearCanvas">Game#clearCanvas</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#getFont">Label#getFont</a>
+                                <a href="#method_Game#createCanvas">Game#createCanvas</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#getFontSize">Label#getFontSize</a>
+                                <a href="#method_Game#getBackgroundColor">Game#getBackgroundColor</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#getPosition">Label#getPosition</a>
+                                <a href="#method_Game#getHeight">Game#getHeight</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#getText">Label#getText</a>
+                                <a href="#method_Game#getInput">Game#getInput</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#setColor">Label#setColor</a>
+                                <a href="#method_Game#getWidth">Game#getWidth</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#setFont">Label#setFont</a>
+                                <a href="#method_Game#Initialize">Game#Initialize</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#setFontSize">Label#setFontSize</a>
+                                <a href="#method_Game#parentDraw">Game#parentDraw</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#setPosition">Label#setPosition</a>
+                                <a href="#method_Game#setBackgroundColor">Game#setBackgroundColor</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#setText">Label#setText</a>
+                                <a href="#method_Game#setHeight">Game#setHeight</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Game#setWidth">Game#setWidth</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Game#updateGameDimensions">Game#updateGameDimensions</a>
 
                                 
                                 
@@ -336,21 +398,11 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Label#draw" class="method item">
-    <h3 class="name"><code>Label#draw</code></h3>
+                    <div id="method_Game#Boot" class="method item">
+    <h3 class="name"><code>Game#Boot</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_canvasContext</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -378,7 +430,7 @@
             
         
         
-        <a href="../files/Label.js.html#l16"><code>Label.js:16</code></a>
+        <a href="../files/Game.js.html#l87"><code>Game.js:87</code></a>
         
         </p>
 
@@ -389,36 +441,10 @@
     </div>
 
     <div class="description">
-        <p>Draws the label on the game canvas</p>
+        <p>Starts up the game itself</p>
 
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_canvasContext</code>
-                        <span class="type">CanvasContext</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The canvascontext which should be drawn.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -427,8 +453,118 @@
 </div>
 
                 
-                    <div id="method_Label#getColor" class="method item">
-    <h3 class="name"><code>Label#getColor</code></h3>
+                    <div id="method_Game#clearCanvas" class="method item">
+    <h3 class="name"><code>Game#clearCanvas</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Game.js.html#l62"><code>Game.js:62</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Function which clears the playing field</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Game#createCanvas" class="method item">
+    <h3 class="name"><code>Game#createCanvas</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Game.js.html#l29"><code>Game.js:29</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Create function for the game field (canvas)</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Game#getBackgroundColor" class="method item">
+    <h3 class="name"><code>Game#getBackgroundColor</code></h3>
 
     
         <span class="paren">()</span>
@@ -436,7 +572,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Hexcolor</span>
+            <span class="type">BackGroundColor</span>
         </span>
     
 
@@ -463,7 +599,7 @@
             
         
         
-        <a href="../files/Label.js.html#l63"><code>Label.js:63</code></a>
+        <a href="../files/Game.js.html#l110"><code>Game.js:110</code></a>
         
         </p>
 
@@ -474,7 +610,7 @@
     </div>
 
     <div class="description">
-        <p>Gets the color of the label</p>
+        <p>Returns the background color</p>
 
     </div>
 
@@ -487,9 +623,9 @@
             <div class="returns-description">
                 
                     
-                        <span class="type">Hexcolor</span>:
+                        <span class="type">BackGroundColor</span>:
                     
-                    <p>The hex code of the color.</p>
+                    <p>The background color</p>
 
                 
             </div>
@@ -500,8 +636,63 @@
 </div>
 
                 
-                    <div id="method_Label#getFont" class="method item">
-    <h3 class="name"><code>Label#getFont</code></h3>
+                    <div id="method_Game#getHeight" class="method item">
+    <h3 class="name"><code>Game#getHeight</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Game.js.html#l135"><code>Game.js:135</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the height of the canvas</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Game#getInput" class="method item">
+    <h3 class="name"><code>Game#getInput</code></h3>
 
     
         <span class="paren">()</span>
@@ -509,7 +700,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="../classes/Input.html" class="crosslink">Input</a></span>
         </span>
     
 
@@ -536,7 +727,7 @@
             
         
         
-        <a href="../files/Label.js.html#l45"><code>Label.js:45</code></a>
+        <a href="../files/Game.js.html#l101"><code>Game.js:101</code></a>
         
         </p>
 
@@ -547,7 +738,7 @@
     </div>
 
     <div class="description">
-        <p>Gets the name of the font</p>
+        <p>Returns the input</p>
 
     </div>
 
@@ -560,9 +751,9 @@
             <div class="returns-description">
                 
                     
-                        <span class="type">String</span>:
+                        <span class="type"><a href="../classes/Input.html" class="crosslink">Input</a></span>:
                     
-                    <p>The name of the font.</p>
+                    <p>The input object</p>
 
                 
             </div>
@@ -573,18 +764,14 @@
 </div>
 
                 
-                    <div id="method_Label#getFontSize" class="method item">
-    <h3 class="name"><code>Label#getFontSize</code></h3>
+                    <div id="method_Game#getWidth" class="method item">
+    <h3 class="name"><code>Game#getWidth</code></h3>
 
     
         <span class="paren">()</span>
     
 
     
-        <span class="returns-inline">
-            <span class="type">Float</span>
-        </span>
-    
 
     
 
@@ -609,7 +796,7 @@
             
         
         
-        <a href="../files/Label.js.html#l54"><code>Label.js:54</code></a>
+        <a href="../files/Game.js.html#l127"><code>Game.js:127</code></a>
         
         </p>
 
@@ -620,44 +807,26 @@
     </div>
 
     <div class="description">
-        <p>Gets the font size in pixels</p>
+        <p>Returns the width of the canvas</p>
 
     </div>
 
     
 
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Float</span>:
-                    
-                    <p>The font size in pixels.</p>
-
-                
-            </div>
-        </div>
-    
 
     
 </div>
 
                 
-                    <div id="method_Label#getPosition" class="method item">
-    <h3 class="name"><code>Label#getPosition</code></h3>
+                    <div id="method_Game#Initialize" class="method item">
+    <h3 class="name"><code>Game#Initialize</code></h3>
 
     
         <span class="paren">()</span>
     
 
     
-        <span class="returns-inline">
-            <span class="type">Object</span>
-        </span>
-    
 
     
 
@@ -682,7 +851,7 @@
             
         
         
-        <a href="../files/Label.js.html#l35"><code>Label.js:35</code></a>
+        <a href="../files/Game.js.html#l73"><code>Game.js:73</code></a>
         
         </p>
 
@@ -693,44 +862,26 @@
     </div>
 
     <div class="description">
-        <p>Gets the position of the top-left corner of the label</p>
+        <p>Initializes the variables</p>
 
     </div>
 
     
 
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Object</span>:
-                    
-                    <p>An position object containing and x and y property</p>
-
-                
-            </div>
-        </div>
-    
 
     
 </div>
 
                 
-                    <div id="method_Label#getText" class="method item">
-    <h3 class="name"><code>Label#getText</code></h3>
+                    <div id="method_Game#parentDraw" class="method item">
+    <h3 class="name"><code>Game#parentDraw</code></h3>
 
     
         <span class="paren">()</span>
     
 
     
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
 
     
 
@@ -755,7 +906,7 @@
             
         
         
-        <a href="../files/Label.js.html#l26"><code>Label.js:26</code></a>
+        <a href="../files/Game.js.html#l18"><code>Game.js:18</code></a>
         
         </p>
 
@@ -766,115 +917,10 @@
     </div>
 
     <div class="description">
-        <p>Gets the string which is the labels text</p>
+        <p>Draw function</p>
 
     </div>
 
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">String</span>:
-                    
-                    <p>The text of the label</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Label#setColor" class="method item">
-    <h3 class="name"><code>Label#setColor</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_color</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Label.js.html#l109"><code>Label.js:109</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Sets the color of the label</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_color</code>
-                        <span class="type">Hexcolor</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The color in hexidecimal form.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -883,21 +929,11 @@
 </div>
 
                 
-                    <div id="method_Label#setFont" class="method item">
-    <h3 class="name"><code>Label#setFont</code></h3>
+                    <div id="method_Game#setBackgroundColor" class="method item">
+    <h3 class="name"><code>Game#setBackgroundColor</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_font</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -925,7 +961,7 @@
             
         
         
-        <a href="../files/Label.js.html#l90"><code>Label.js:90</code></a>
+        <a href="../files/Game.js.html#l119"><code>Game.js:119</code></a>
         
         </p>
 
@@ -936,36 +972,10 @@
     </div>
 
     <div class="description">
-        <p>Sets the font of the label</p>
+        <p>Sets the background color</p>
 
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_font</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The name of the font.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -974,21 +984,11 @@
 </div>
 
                 
-                    <div id="method_Label#setFontSize" class="method item">
-    <h3 class="name"><code>Label#setFontSize</code></h3>
+                    <div id="method_Game#setHeight" class="method item">
+    <h3 class="name"><code>Game#setHeight</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_fontSize</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -1016,7 +1016,7 @@
             
         
         
-        <a href="../files/Label.js.html#l99"><code>Label.js:99</code></a>
+        <a href="../files/Game.js.html#l151"><code>Game.js:151</code></a>
         
         </p>
 
@@ -1027,36 +1027,10 @@
     </div>
 
     <div class="description">
-        <p>Sets the font size in pixels</p>
+        <p>Sets the height of the canvas</p>
 
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_fontSize</code>
-                        <span class="type">Float</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The size of the font in pixels.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -1065,21 +1039,11 @@
 </div>
 
                 
-                    <div id="method_Label#setPosition" class="method item">
-    <h3 class="name"><code>Label#setPosition</code></h3>
+                    <div id="method_Game#setWidth" class="method item">
+    <h3 class="name"><code>Game#setWidth</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_position</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -1107,7 +1071,7 @@
             
         
         
-        <a href="../files/Label.js.html#l81"><code>Label.js:81</code></a>
+        <a href="../files/Game.js.html#l143"><code>Game.js:143</code></a>
         
         </p>
 
@@ -1118,36 +1082,10 @@
     </div>
 
     <div class="description">
-        <p>Sets the position of the left-top corner of the label where it&#39;s drawn</p>
+        <p>Sets the width of the canvas</p>
 
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_position</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>An object containing an x and y value</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -1156,21 +1094,11 @@
 </div>
 
                 
-                    <div id="method_Label#setText" class="method item">
-    <h3 class="name"><code>Label#setText</code></h3>
+                    <div id="method_Game#updateGameDimensions" class="method item">
+    <h3 class="name"><code>Game#updateGameDimensions</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_text</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -1198,7 +1126,7 @@
             
         
         
-        <a href="../files/Label.js.html#l72"><code>Label.js:72</code></a>
+        <a href="../files/Game.js.html#l45"><code>Game.js:45</code></a>
         
         </p>
 
@@ -1209,36 +1137,10 @@
     </div>
 
     <div class="description">
-        <p>Sets the string which is the labels text</p>
+        <p>Function which updates the width and height</p>
 
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_text</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The text which should be displayed on the label.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
