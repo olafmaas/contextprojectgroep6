@@ -1,4 +1,8 @@
-//Sprite properties
+/**
+* Sprite class
+* @class Sprite
+* @classdesc A simple sprite class to load textures
+*/
 function Sprite(){
 	var texture;
 	this.position = {x: 0, y: 0};
