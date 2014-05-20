@@ -1,8 +1,11 @@
 var io = require('socket.io').listen(5050);
 io.set('log level', 2);   // 0 - error | 1 - warn | 2 - info | 3 - debug
-
 var Game = require('../game/Game.js');
 var Ball = require('../game/Ball.js');
+
+//////////
+// GAME //
+//////////
 
 var ball;
 var game = new Game(loadContent, update, drawToClients);
@@ -10,7 +13,7 @@ var game = new Game(loadContent, update, drawToClients);
 function loadContent(){
   ball = new Ball(10);
   ball.getBody().setVelocity(5);
-  ball.getBody().setVelocityDirection(-1.75 * Math.PI);
+  ball.getBody().setVelocityDirection(-1.5 * Math.PI);
   ball.setPosition(150, 150);
 }
 
@@ -27,6 +30,10 @@ function drawToClients(){
   }
 }
 
+/////////////////
+// CONNECTIONS //
+/////////////////
+
 var mainScreenSocket;
 var playerSockets = {};
 var maximumPlayers = 0;
@@ -37,11 +44,6 @@ var canvasHeight = 300;
 var maximumCol;
 var grid = new Array();
 grid.push(new Array());
-var dx = 4;
-var dy = 4;
-var y = 150;
-var x = 10;
-
 
 io.of('/mainscreen').on('connection', function (socket) {
   if(!mainScreenSocket){
@@ -70,10 +72,6 @@ function connectMainScreen(socket){
   socket.on('screenSizeMainScreen', function(data){ 
     maximumPlayers = Math.floor(data.width / canvasWidth) * Math.floor(data.height / canvasHeight);
     maximumCol = Math.floor(data.width / canvasWidth);
-    game.setWidth(data.width);
-    game.setHeight(data.height);
-    game.setWidth(600);
-    game.setHeight(300);
   });
 
   //Handle MainScreen Disconnet
@@ -123,9 +121,10 @@ function connectClient(socket){
   socket.emit('canvasPos', {left: x * canvasWidth, top: y*canvasHeight});
 
   updateMainScreenCanvasSize();
+  log();
 
   socket.on('shieldHit', function (data){
-    console.log(data);
+    console.log('shildhit on ' + socket.id);
   });
 
   //Handle Client Disconnet
@@ -136,3 +135,9 @@ function connectClient(socket){
     grid[y][x] = -1;
   });
 };
+
+function log(){
+  console.log('mainScreenSocket: ' + !!mainScreenSocket);
+  console.log('maximumPlayers: '+ maximumPlayers);
+  console.log('playerSockets: ' + Object.keys(playerSockets).length);
+}

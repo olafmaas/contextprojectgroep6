@@ -19,6 +19,7 @@
         <script src="../game/Shield.js"></script>
         <script src="../game/Pole.js"></script>
         <script src="../game/Label.js"></script>
+        <script src="../game/CollisionDetection.js"></script>
         
         <style type="text/css">
             body {
@@ -61,8 +62,7 @@ function update(){
     pole.update();
     shield.update();
 
-    //Shield collision handling is not yet implemented
-    if(shield.getBody().handleCollision(ball)){
+    if(handleCollision(ball, shield)){
         game.setBackgroundColor("red");
         socket.emit('shieldHit', 'SHIELDHIT!!');
     }else{
