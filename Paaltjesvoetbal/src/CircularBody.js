@@ -1,6 +1,12 @@
 //The circular body class
 
-//Properties for the circular body
+/**
+* CircularBody Class
+* @class CircularBody
+* @classdesc CircularBody class which extends the Body class.
+* @constructor
+* @param {_parent} Ball object (or pole object)
+*/
 var CircularBody = Body.extend({
 	radius: 1,
 	parentBall: 0,
@@ -8,7 +14,7 @@ var CircularBody = Body.extend({
 	
 	/**
 	* Constructor for the circular body
-	* @method Circular#constructor
+	* @method CircularBody#constructor
 	* @param {_parent} The circle object
 	*/
 	constructor: function(_parent){

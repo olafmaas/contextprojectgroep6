@@ -1,7 +1,7 @@
 //A simple shield class
 
 /** 
-* Shield constructor
+* Shield Class
 * @class Shield
 * @classdesc Shield constructor.
 * @constructor

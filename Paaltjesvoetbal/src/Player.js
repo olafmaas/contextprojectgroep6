@@ -1,5 +1,11 @@
 //Player class
 
+/**
+* Player Class
+* @class Player
+* @classdesc Player class with properties, needs to be extended.
+*/
+
 function Player(){
 	
 	var name; //Name of the player
