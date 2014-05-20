@@ -49,6 +49,7 @@ function update(){
         ball.update();
         ball2.update();
         shield.update();
+        player.update(); //Update score of the player on screen
 
         handleCollision(ball, ball2);
         handleCollision(ball, shield);
@@ -71,5 +72,5 @@ function draw(canvasContext){
     ball.draw(canvasContext);
     ball2.draw(canvasContext);
     shield.draw(canvasContext);
-    player.draw(canvasContext);
+    player.draw(canvasContext); //Draw the score of the player on screen
 }
