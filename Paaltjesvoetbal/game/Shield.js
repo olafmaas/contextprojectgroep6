@@ -40,7 +40,8 @@ function Shield(_pole){
 	*/
 	this.update = function(){
 		if(body instanceof ShieldBody) body.update();
-		//angle = body.calculateAngle();
+
+		this.setAngle(this.calculateAngle());
 	}
 
 	/**
@@ -53,13 +54,13 @@ function Shield(_pole){
 	}
 
 	/**
-	* Collision handler for the shield
-	* It calls the collision function in the body class which takes care of the rest
-	* @method Shield#collidesWith
-	* @param {object} _other - The object with which the shield collides
+	* Calculates the angle of the shield (in radians) depending on the current mouse input
+	*
+	* @method Shield#calculateAngle
+	* @return {Float} The angle between the shield and the current mousepointer.
 	*/
-	this.collidesWith = function(_other){
-		return body.collidesWith(_other);
+	this.calculateAngle = function(){
+		return Math.atan2(mouseY - this.getPosition().y, mouseX - this.getPosition().x);
 	}
 
 	/**
