@@ -69,6 +69,10 @@ var Pole = Ball.extend({
 		}
 		this.player.setScore(0); //reset score
 		this.timer.reset(); //reset timer
+	},
+
+	getTimer: function(){
+		return this.timer;
 	}
 
 });
