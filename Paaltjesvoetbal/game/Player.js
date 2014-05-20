@@ -1,5 +1,9 @@
 //Player class
 
+/**
+* @class Player class
+* @classdesc Class to represent players with properties.
+*/
 function Player(){
 	
 	var name; //Name of the player

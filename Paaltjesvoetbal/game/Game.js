@@ -1,6 +1,14 @@
 //Game class
 
-//Properties of the game object
+/**
+* Game class
+* @class Game
+* @classdesc Game class for setting up the game/field.
+* @constructor
+* @param {function} load - Load function
+* @param {function} update - Update function
+* @param {function} draw - Draw function
+*/
 function Game(load, update, draw){
 	var width = 40; 
 	var height = 40;
@@ -93,6 +101,7 @@ function Game(load, update, draw){
 	/**
 	* Returns the input
 	* @method Game#getInput
+	* @return {input} The input object
 	*/
 	this.getInput = function(){
 		return input;
@@ -101,6 +110,7 @@ function Game(load, update, draw){
 	/**
 	* Returns the background color
 	* @method Game#getBackgroundColor
+	* @return {backGroundColor} The background color
 	*/
 	this.getBackgroundColor = function(){
 		return backGroundColor;
@@ -130,10 +140,18 @@ function Game(load, update, draw){
 		return height;
 	}
 
+	/**
+	* Sets the width of the canvas
+	* @method Game#setWidth
+	*/
 	this.setWidth = function(_width){
 		width = _width;
 	}
 
+	/**
+	* Sets the height of the canvas
+	* @method Game#setHeight
+	*/
 	this.setHeight = function(_height){
 		height = _height;
 	}

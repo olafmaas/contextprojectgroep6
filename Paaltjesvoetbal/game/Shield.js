@@ -9,7 +9,7 @@ if(typeof module != 'undefined'){
 * @class Shield
 * @classdesc Shield constructor.
 * @constructor
-* @param {Pole} _pole - The pole which the shield protects
+* @param {pole} _pole - The pole which the shield protects
 */
 function Shield(_pole){
 
@@ -24,7 +24,6 @@ function Shield(_pole){
 
 	/**
 	* Draws the shield on the canvas
-	*
 	* @method Shield#draw
 	* @param {CanvasContext} _canvasContext - The canvas context on which the shield will be drawn.
 	*/
@@ -37,7 +36,6 @@ function Shield(_pole){
 
 	/**
 	* Updates the position of the shield
-	*
 	* @method Shield#update
 	*/
 	this.update = function(){
@@ -57,9 +55,8 @@ function Shield(_pole){
 	/**
 	* Collision handler for the shield
 	* It calls the collision function in the body class which takes care of the rest
-	*
 	* @method Shield#collidesWith
-	* @param {Object} _other - The other object with which the shield collides
+	* @param {object} _other - The object with which the shield collides
 	*/
 	this.collidesWith = function(_other){
 		return body.collidesWith(_other);
@@ -67,9 +64,8 @@ function Shield(_pole){
 
 	/**
 	* Sets the angle of the shield.
-	*
 	* @method Shield#setAngle
-	* @param {_angle} The angle of the shield in radians.
+	* @param {number} _angle - The angle of the shield in radians.
 	*/
 	this.setAngle = function (_angle){
 		angle = _angle;
@@ -78,9 +74,8 @@ function Shield(_pole){
 
 	/**
 	* Sets the radius of the shield.
-	*
 	* @method Shield#setRadius
-	* @param {_radius} The radius of the shield.
+	* @param {number} _radius - The radius of the shield
 	*/
 	this.setRadius = function (_radius){
 		radius = _radius;
@@ -89,9 +84,8 @@ function Shield(_pole){
 
 	/**
 	* Sets the color of the shield.
-	*
 	* @method Shield#setColor
-	* @param {_color} The color of the shield in hex value.
+	* @param {hex} _color - The color of the shield in hex value.
 	*/
 	this.setColor = function(_color){
 		color = _color;
@@ -99,9 +93,8 @@ function Shield(_pole){
 
 	/**
 	* Sets the size of the shield.
-	*
 	* @method Shield#setSize
-	* @param {_size} The size of the shield.
+	* @param {number} _size - The size of the shield.
 	*/
 	this.setSize = function(_size){
 		size = _size;
@@ -111,7 +104,7 @@ function Shield(_pole){
 	* Sets the position of the shield in the canvas.
 	*
 	* @method Shield#setPosition
-	* @param {Pole} _pole - The pole to which the shield will be assigned
+	* @param {pole} _pole - The pole to which the shield will be assigned
 	*/
 	this.setPosition = function (_pole){
 		position.x = _pole.getPosition().x;
@@ -134,7 +127,7 @@ function Shield(_pole){
 	* Retrieves the pole belonging to the shield.
 	*
 	* @method Shield#getPole
-	* @return {Pole} The pole the shield protects.
+	* @return {pole} The pole the shield protects.
 	*/
 	this.getPole = function (){
 		return pole;
@@ -164,7 +157,7 @@ function Shield(_pole){
 	* Retrieves the color of the shield.
 	*
 	* @method Shield#getColor
-	* @return {Hex} The color of the shield in hex value
+	* @return {hex} The color of the shield in hex value
 	*/
 	this.getColor = function(){
 		return color;
@@ -184,7 +177,7 @@ function Shield(_pole){
 	* Retrieves the body of the shield.
 	*
 	* @method Shield#getBody
-	* @return {Body} The body of the shield.
+	* @return {body} The body of the shield.
 	*/
 	this.getBody = function(){
 		return body;

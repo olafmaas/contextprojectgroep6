@@ -7,7 +7,6 @@ if(typeof module != 'undefined'){
 
 /** 
 * Ball constructor
-*
 * @class Ball
 * @classdesc Ball constructor.
 * @constructor
@@ -26,9 +25,9 @@ var Ball = Base.extend({
 		//Stuff to execute when constructing
 		this.enableBody();
 	},
+	
 	/**
 	* Draws the ball on the canvas
-	*
 	* @method Ball#draw
 	* @param {CanvasContext} _canvasContext - The canvas context on which the ball will be drawn.
 	*/
@@ -43,7 +42,6 @@ var Ball = Base.extend({
 
 	/**
 	* Updates the position of the ball
-	*
 	* @method Ball#update
 	*/
 	update: function(){
@@ -52,7 +50,6 @@ var Ball = Base.extend({
 
 	/**
 	* Creates the body of the ball
-	*
 	* @method Ball#enableBody
 	*/
 	enableBody: function(){
@@ -62,7 +59,6 @@ var Ball = Base.extend({
 	/**
 	* Collision handler for the ball
 	* It calls the collision function in the body class which takes care of the rest
-	*
 	* @method Ball#collidesWith
 	* @param {Object} _other - The other object with which the ball collides
 	*/
@@ -75,7 +71,6 @@ var Ball = Base.extend({
 
 	/**
 	* Sets the position of the ball in the canvas.
-	*
 	* @method Ball#setPosition
 	* @param {number} _x - The x coordinate of the center of the ball.
 	* @param {number} _y - The y coordinate of the center of the ball.
@@ -86,7 +81,6 @@ var Ball = Base.extend({
 
 	/**
 	* Sets the radius of the ball.
-	*
 	* @method Ball#setRadius
 	* @param {number} _radius - The radius of the ball in pixels.
 	*/

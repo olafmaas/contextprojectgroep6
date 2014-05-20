@@ -4,7 +4,13 @@ if(typeof module != 'undefined'){
 	var Ball = require('./Ball.js');
 }
 
-//Properties for the circular body
+/**
+* CircularBody Class
+* @class CircularBody
+* @classdesc CircularBody class which extends the Body class.
+* @constructor
+* @param {ball} _parent - Ball or pole object to which the body is assigned.
+*/
 var CircularBody = Body.extend({
 	radius: 1,
 	parentBall: 0,
@@ -12,7 +18,7 @@ var CircularBody = Body.extend({
 	
 	/**
 	* Constructor for the circular body
-	* @method Circular#constructor
+	* @method CircularBody#constructor
 	* @param {_parent} The circle object
 	*/
 	constructor: function(_parent){
@@ -22,7 +28,7 @@ var CircularBody = Body.extend({
 
 	/**
 	* Updates the position of the circle
-	* @method Circular#update
+	* @method CircularBody#update
 	*/
 	Update: function(){
 		this.base();
@@ -31,8 +37,8 @@ var CircularBody = Body.extend({
 
 	/**
 	* A method that checks with what object the circle collides
-	* @method Circular#collidesWith
-	* @param {_object} The object that should be hit tested with the circle
+	* @method CircularBody#collidesWith
+	* @param {object} _other - The object that should be hit tested with the circle
 	*/
 	CollidesWith: function(other){
 		if(other.getBody() instanceof CircularBody) return this.CollidesWithBall(other);
@@ -41,8 +47,8 @@ var CircularBody = Body.extend({
 
 	/**
 	* A method that checks if the circle collides with a ball
-	* @method Circle#collidesWithBall
-	* @param {_ball} The ball that should be hit tested with the circle
+	* @method CircularBody#collidesWithBall
+	* @param {ball} other - The ball object that should be hit tested with the circle
 	*/
 	CollidesWithBall: function(other){
 		//Get x and y difference
@@ -59,8 +65,8 @@ var CircularBody = Body.extend({
 	/**
 	* This method uses the previous methods to check whether the circle collides
 	* And then handles the collision
-	* @method Circular#handleCollision
-	* @param {_other} object which collides with the shield
+	* @method CircularBody#handleCollision
+	* @param {object} other - Object which collides with the shield
 	*/
 	handleCollision: function(other){
 		if(!this.CollidesWith(other)) { this.hit = false; return; }
@@ -72,8 +78,8 @@ var CircularBody = Body.extend({
 
 	/**
 	* This method calls the correct handling function for the occuring collision
-	* @method Circular#handleIndividual
-	* @param {_other} object which collides with the circle
+	* @method CircularBody#handleIndividual
+	* @param {object} _other - Object which collides with the circle
 	*/
 	handleIndividual: function(_other){
 		if(this.parentBall instanceof Pole) this.handlePoleCollision();
@@ -85,8 +91,8 @@ var CircularBody = Body.extend({
 	
 	/**
 	* Handles the collision of circle and ball
-	* @method Circular#handleBallCollision
-	* @param {_ball} ball which collides with the circle
+	* @method CircularBody#handleBallCollision
+	* @param {ball} _other - Ball object which collides with the circle
 	*/
 	handleBallCollision: function(_other){
 		
@@ -110,8 +116,8 @@ var CircularBody = Body.extend({
 
 	/**
 	* Checks if the ball collides with world boundaries and handles it
-	* @method Circular#checkWorldBounds
-	* @param {_game} The game/playing field
+	* @method CircularBody#checkWorldBounds
+	* @param {game} _game - The game/playing field
 	*/
 	checkWorldBounds: function(_game){
 		var ballPosition = this.getPosition();

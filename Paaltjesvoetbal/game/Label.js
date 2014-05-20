@@ -1,8 +1,10 @@
 /**
-* A label class for drawing text on the screen
+* A label class for writing text on the screen
 *
 * @class Label
+* @classdesc Label class for writing text on the screen.
 * @contructor
+* @param {string} _text - String to write on the screen.
 */
 Label = function(_text){
 	var text = _text; //Var containing the string
@@ -13,9 +15,8 @@ Label = function(_text){
 
 	/**
 	* Draws the label on the game canvas
-	*
-	* @method draw
-	* @param {CanvasContext} The canvascontext which should be drawn
+	* @method Label#draw
+	* @param {CanvasContext} _canvasContext - The canvascontext which should be drawn.
 	*/
 	this.draw = function(_canvasContext){
 		_canvasContext.font = this.getFontSize() + "px " + this.getFont();
@@ -24,9 +25,8 @@ Label = function(_text){
 
 	/**
 	* Gets the string which is the labels text
-	*
-	* @method getText
-	* @return {String} The text of the label
+	* @method Label#getText
+	* @return {string} The text of the label
 	*/
 	this.getText = function(){
 		return text;
@@ -35,8 +35,8 @@ Label = function(_text){
 	/**
 	* Gets the position of the top-left corner of the label
 	*
-	* @method getPosition
-	* @return {Object} An position object containing and x and y property
+	* @method Label#getPosition
+	* @return {object} An position object containing and x and y property
 	*/
 	this.getPosition = function(){
 		return position;
@@ -44,9 +44,8 @@ Label = function(_text){
 
 	/**
 	* Gets the name of the font
-	*
-	* @method getFont
-	* @return {String} The name of the font
+	* @method Label#getFont
+	* @return {string} The name of the font.
 	*/
 	this.getFont = function(){
 		return font;
@@ -54,9 +53,8 @@ Label = function(_text){
 
 	/**
 	* Gets the font size in pixels
-	*
-	* @method getFontSize
-	* @return {Float} The font size in pixels
+	* @method Label#getFontSize
+	* @return {float} The font size in pixels.
 	*/
 	this.getFontSize = function(){
 		return fontSize;
@@ -64,9 +62,8 @@ Label = function(_text){
 
 	/**
 	* Gets the color of the label
-	*
-	* @method getColor
-	* @return {Hexcolor} The hex code of the color
+	* @method Label#getColor
+	* @return {hexcolor} The hex code of the color.
 	*/
 	this.getColor = function(){
 		return color;
@@ -74,9 +71,8 @@ Label = function(_text){
 
 	/**
 	* Sets the string which is the labels text
-	*
-	* @method setText
-	* @param _text {String} The text which should be on the label
+	* @method Label#setText
+	* @param {string} _text - The text which should be displayed on the label.
 	*/
 	this.setText = function(_text){
 		text = _text;
@@ -84,9 +80,8 @@ Label = function(_text){
 
 	/**
 	* Sets the position of the left-top corner of the label where it's drawn
-	*
-	* @method setPosition
-	* @param _position {Object} An object containing an x and y value
+	* @method Label#setPosition
+	* @param {object} _position - An object containing an x and y value
 	*/
 	this.setPosition = function(_position){
 		position = _position;
@@ -94,9 +89,8 @@ Label = function(_text){
 
 	/**
 	* Sets the font of the label
-	*
-	* @method setFont
-	* @param _font {String} the name of the font
+	* @method Label#setFont
+	* @param {string} _font - The name of the font.
 	*/
 	this.setFont = function(_font){
 		font = _font;
@@ -105,8 +99,8 @@ Label = function(_text){
 	/**
 	* Sets the font size in pixels
 	*
-	* @method setFontSize
-	* @param _fontSize {Float} The size of the font in pixels
+	* @method Label#setFontSize
+	* @param {float} _fontSize - The size of the font in pixels.
 	*/
 	this.setFontSize = function(_fontSize){
 		fontSize = _fontSize;
@@ -115,8 +109,8 @@ Label = function(_text){
 	/**
 	* Sets the color of the label
 	*
-	* @method setColor
-	* @param _color {Hexcolor} The color in hexidecimal form
+	* @method Label#setColor
+	* @param {hexcolor} _color - The color in hexidecimal form.
 	*/
 	this.setColor = function(_color){
 		color = _color;

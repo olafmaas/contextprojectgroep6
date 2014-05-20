@@ -5,7 +5,10 @@ if(typeof module != 'undefined'){
 	var Body = require('./Body.js');
 }  
 
-//Properties for the shield body
+/**
+*
+*
+*/
 var ShieldBody = Body.extend({
 	angle: 0,
 	radius: 1,
@@ -14,8 +17,8 @@ var ShieldBody = Body.extend({
 
 	/**
 	* Constructor for the shield body
-	* @method Shield#constructor
-	* @param {_parent} The shield object
+	* @method ShieldBody#constructor
+	* @param {shield} _parent - The shield object
 	*/
 	constructor: function(_parent){
 		this.angle = _parent.getAngle();
@@ -26,7 +29,7 @@ var ShieldBody = Body.extend({
 
 	/**
 	* Updates the angle of the shield
-	* @method Shield#update
+	* @method ShieldBody#update
 	*/
 	update: function(){
 		this.base();
@@ -35,8 +38,8 @@ var ShieldBody = Body.extend({
 
 	/**
 	* A method that checks with what object the shield collides
-	* @method Shield#collidesWith
-	* @param {_object} The object that should be hit tested with the shield
+	* @method ShieldBody#collidesWith
+	* @param {object} _other - The object that should be hit tested with the shield
 	*/
 	collidesWith: function(_other){
 		if(_other.getBody() instanceof CircularBody) return this.collidesWithBall(_other);
@@ -45,8 +48,8 @@ var ShieldBody = Body.extend({
 
 	/**
 	* A method that checks if the shield collides with a ball
-	* @method Shield#collidesWithBall
-	* @param {_ball} The ball that should be hit tested with the shield
+	* @method ShieldBody#collidesWithBall
+	* @param {ball} _other - The ball that should be hit tested with the shield
 	*/
 	collidesWithBall: function(_other){
 		var delta = {x: _other.getPosition().x - this.position.x, y: _other.getPosition().y - this.position.y};
@@ -63,8 +66,8 @@ var ShieldBody = Body.extend({
 
 	/**
 	* A method that checks the precise collision of the shield with a ball
-	* @method Shield#preciseCollidesWith
-	* @param {_delta} x and y distance between the shield and the ball
+	* @method ShieldBody#preciseCollidesWith
+	* @param {number} _delta - x and y distance between the shield and the ball
 	*/
 	preciseCollidesWith: function(_delta){
 		var shieldEnds = {begin: this.angle - this.parentShield.getSize() / 2, end: this.angle + this.parentShield.getSize() / 2};
@@ -76,8 +79,8 @@ var ShieldBody = Body.extend({
 	/**
 	* This method uses the previous methods to check whether the shield collides
 	* And then handles the collision
-	* @method Shield#handleCollision
-	* @param {_other} object which collides with the shield
+	* @method ShieldBody#handleCollision
+	* @param {object} _other - The object which collides with the shield
 	*/
 	handleCollision: function(_other){
 		if(!this.collidesWith(_other)) { this.hit = false; return; }
@@ -92,8 +95,8 @@ var ShieldBody = Body.extend({
 
 	/**
 	* This method calls the correct handling function for the occuring collision
-	* @method Shield#handleIndividual
-	* @param {_other} object which collides with the shield
+	* @method ShieldBody#handleIndividual
+	* @param {object} _other - The object which collides with the shield
 	*/
 	handleIndividual: function(_other){
 		//If the body is static it shouldn't respond to collision
@@ -118,7 +121,7 @@ var ShieldBody = Body.extend({
 
 	/**
 	* Calculates the angle of the shield (in radians) depending on the current mouse input
-	* @method Shield#calculateAngle
+	* @method ShieldBody#calculateAngle
 	* @return {number} The angle between the shield and the current mousepointer
 	*/
 	calculateAngle: function(){

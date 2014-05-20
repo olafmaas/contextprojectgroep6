@@ -1,4 +1,9 @@
-//Sprite properties
+/**
+* Sprite class
+* @class Sprite
+* @classdesc Sprite class for loading textures
+* @constructor
+*/
 function Sprite(){
 	var texture;
 	this.position = {x: 0, y: 0};
@@ -10,7 +15,7 @@ function Sprite(){
 	/**
 	* Function which loads a texture
 	* @method Sprite#LoadContent
-	* @param {texture's path}
+	* @param {string} texturePath - texture's path
 	*/
 	this.LoadContent = function(texturePath){
 		texture = new Image();
@@ -20,7 +25,7 @@ function Sprite(){
 	/**
 	* Function which draws the sprite
 	* @method Sprite#Draw
-	* @param {The canvas}
+	* @param {canvas} canvasContext - The playing field
 	*/
 	this.Draw = function(canvasContext){
 		canvasContext.drawImage(texture, this.position.x, this.position.y);
