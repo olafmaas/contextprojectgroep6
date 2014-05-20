@@ -3,7 +3,7 @@
 *
 * @class Label
 * @classdesc Label class for writing text on the screen.
-* @contructor
+* @constructor
 * @param {string} _text - String to write on the screen.
 */
 Label = function(_text){
