@@ -1,17 +1,18 @@
 //The shield body class
 
-//Properties for the shield body
+/**
+* Constructor for the shield body
+* @class ShieldBody
+* @classdesc ShieldBody class which extends the Body class
+* @constructor ShieldBody#constructor
+* @param {_parent} The shield object
+*/
 var ShieldBody = Body.extend({
 	angle: 0,
 	radius: 1,
 	parentShield: 0,
 	hit: false,
-
-	/**
-	* Constructor for the shield body
-	* @method Shield#constructor
-	* @param {_parent} The shield object
-	*/
+	
 	constructor: function(_parent){
 		this.angle = _parent.getAngle();
 		this.radius = _parent.getRadius();
@@ -30,7 +31,7 @@ var ShieldBody = Body.extend({
 
 	/**
 	* A method that checks with what object the shield collides
-	* @method Shield#collidesWith
+	* @method ShieldBody#collidesWith
 	* @param {_object} The object that should be hit tested with the shield
 	*/
 	collidesWith: function(_other){
@@ -40,7 +41,7 @@ var ShieldBody = Body.extend({
 
 	/**
 	* A method that checks if the shield collides with a ball
-	* @method Shield#collidesWithBall
+	* @method ShieldBody#collidesWithBall
 	* @param {_ball} The ball that should be hit tested with the shield
 	*/
 	collidesWithBall: function(_other){
@@ -58,7 +59,7 @@ var ShieldBody = Body.extend({
 
 	/**
 	* A method that checks the precise collision of the shield with a ball
-	* @method Shield#preciseCollidesWith
+	* @method ShieldBody#preciseCollidesWith
 	* @param {_delta} x and y distance between the shield and the ball
 	*/
 	preciseCollidesWith: function(_delta){
@@ -71,7 +72,7 @@ var ShieldBody = Body.extend({
 	/**
 	* This method uses the previous methods to check whether the shield collides
 	* And then handles the collision
-	* @method Shield#handleCollision
+	* @method ShieldBody#handleCollision
 	* @param {_other} object which collides with the shield
 	*/
 	handleCollision: function(_other){
@@ -87,7 +88,7 @@ var ShieldBody = Body.extend({
 
 	/**
 	* This method calls the correct handling function for the occuring collision
-	* @method Shield#handleIndividual
+	* @method ShieldBody#handleIndividual
 	* @param {_other} object which collides with the shield
 	*/
 	handleIndividual: function(_other){
@@ -98,6 +99,7 @@ var ShieldBody = Body.extend({
 		if(_other instanceof Ball) this.handleShieldCollision(_other);
 	},
 	
+	//Must be moved, so that the ball class handles this.
 	handleShieldCollision: function(_other){
 		
 		if(!this.hit){
@@ -113,7 +115,7 @@ var ShieldBody = Body.extend({
 
 	/**
 	* Calculates the angle of the shield (in radians) depending on the current mouse input
-	* @method Shield#calculateAngle
+	* @method ShieldBody#calculateAngle
 	* @return {number} The angle between the shield and the current mousepointer
 	*/
 	calculateAngle: function(){

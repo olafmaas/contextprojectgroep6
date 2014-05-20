@@ -1,12 +1,11 @@
 //A simple ball class
 
 /** 
-* Ball constructor
-*
+* Ball Class
 * @class Ball
-* @classdesc Ball constructor.
+* @classdesc Ball class with constructor and methods.
 * @constructor
-* @param {number} _radius - The radius of the ball.
+* @param {number} The radius of the ball.
 */
 var Ball = Base.extend({
   
