@@ -14,7 +14,6 @@ if(typeof module != 'undefined'){
 var CircularBody = Body.extend({
 	radius: 1,
 	parentBall: 0,
-	hit: false,
 	
 	/**
 	* Constructor for the circular body
@@ -58,14 +57,21 @@ var CircularBody = Body.extend({
 	* @param {ball} _other - Ball object which collides with the circle
 	*/
 	handleBallCollision: function(_other){
-		
 		//Get x and y difference
-		var dx = Math.abs(this.position.x - _other.getBody().position.x);
-		var dy = Math.abs(this.position.y - _other.getBody().position.y);
+		var dx = Math.abs(this.getPosition().x - _other.getPosition().x);
+		var dy = Math.abs(this.getPosition().y - _other.getPosition().y);
 
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
-		this.hit = true;
+	},
+
+	handleShieldCollision: function(_other){
+		//Get x and y difference
+		var dx = Math.abs(this.getPosition().x - _other.getPosition().x);
+		var dy = Math.abs(this.getPosition().y - _other.getPosition().y);
+
+		var tangent = Math.atan2(dx, dy);
+		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
 	},
 
 	/**

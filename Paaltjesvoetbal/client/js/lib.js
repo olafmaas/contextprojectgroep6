@@ -45,16 +45,16 @@ var pole;
 
             //Bit messy for now, but we don't have groups yet for which we can set the collisions,
             //so we just do it manually here
-            ball.getBody().handleCollision(pole); //ball1 to pole
-            ball.getBody().handleCollision(ball2); //ball1 to ball2
+            handleCollision(ball, ball2); //ball1 to pole
+            handleCollision(ball, pole); //ball1 to ball2
             ball.getBody().checkWorldBounds(game); //ball1 to worldBounds
             ball2.getBody().checkWorldBounds(game); //ball2 to worldBounds
-            ball2.getBody().handleCollision(pole); //ball2 to pole
+            handleCollision(ball2, pole); //ball2 to pole
             //pole.getBody().handleCollision(ball);
             //pole.getBody().handleCollision(ball2)
 
             //Shield collision handling is not yet implemented
-            if(shield.getBody().handleCollision(ball) || shield.getBody().handleCollision(ball2)){
+            if(handleCollision(ball, shield) || handleCollision(ball2, shield)){
                 game.setBackgroundColor("red");
             }else{
                 game.setBackgroundColor("white");

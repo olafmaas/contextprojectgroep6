@@ -13,7 +13,6 @@ var ShieldBody = Body.extend({
 	angle: 0,
 	radius: 1,
 	parentShield: 0,
-	hit: false,
 
 	/**
 	* Constructor for the shield body
@@ -44,7 +43,6 @@ var ShieldBody = Body.extend({
 	*/
 	handleIndividual: function(_other){
 		//If the body is static it shouldn't respond to collision
-		if(this.hit) return;
 	},
 	
 	getAngle: function(){
