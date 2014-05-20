@@ -1,4 +1,5 @@
-var pole;
+    var pole;
+    var player;
     var ball;
     var ball2;
     var shield;
@@ -9,6 +10,9 @@ var pole;
 
     }
     function loadContent(){
+
+
+
         pole = new Pole(10);
         pole.setColor("blue");
         pole.setPosition(300, 300);
@@ -27,6 +31,10 @@ var pole;
 
         shield = new Shield(pole);
         shield.getBody().immovable = true;
+
+        player = new Player("Test");
+        player.setPole(pole);
+        player.setShield(shield);
 
         Initialize();
     }
