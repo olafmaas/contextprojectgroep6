@@ -13,6 +13,7 @@ var ShieldBody = Body.extend({
 	angle: 0,
 	radius: 1,
 	parentShield: 0,
+	ID: -1,
 
 	/**
 	* Constructor for the shield body
@@ -24,6 +25,7 @@ var ShieldBody = Body.extend({
 		this.radius = _parent.getRadius();
 		this.parentShield = _parent;
 		this.position = _parent.getPosition();
+		this.ID = IDDistributor.getNewId();
 	},
 
 	/**

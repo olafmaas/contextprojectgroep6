@@ -14,6 +14,7 @@ if(typeof module != 'undefined'){
 var CircularBody = Body.extend({
 	radius: 1,
 	parentBall: 0,
+	ID: -1,
 	
 	/**
 	* Constructor for the circular body
@@ -23,6 +24,7 @@ var CircularBody = Body.extend({
 	constructor: function(_parent){
 		this.radius = _parent.getRadius();
 		this.parentBall = _parent;
+		this.ID = IDDistributor.getNewId();
 	},
 
 	/**

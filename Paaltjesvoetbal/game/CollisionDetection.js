@@ -1,5 +1,3 @@
-//BEER MUST DO DOCUMENTATION ON THIS CLASS
-
 var CollisionDetection ={
 	handledCollisions: [],
 
@@ -29,14 +27,11 @@ var CollisionDetection ={
 	},
 
 	checkForCollision: function(_bodyOne, _bodyTwo){
-		var collisionObject = {
-			bodyOne: _bodyOne,
-			bodyTwo: _bodyTwo
-		};
+		var collisionObject = _bodyOne.ID + "with" + _bodyTwo.ID;
 
 		if(!this.collides(_bodyOne, _bodyTwo)) { 
 			if(this.handledCollisions.indexOf(collisionObject) != -1){
-				this.handledCollisions.remove(this.handledCollisions.indexOf(collisionObject));
+				this.handledCollisions.splice(this.handledCollisions.indexOf(collisionObject), 1);
 			}
 
 			return false; 
@@ -83,10 +78,12 @@ var CollisionDetection ={
 
 	collidesBallWithShield: function(_ball, _shield){
 		var delta = {x: _ball.getPosition().x - _shield.getPosition().x, y: _ball.getPosition().y - _shield.getPosition().y};
-		var dist = _ball.getRadius() + _shield.getRadius();
+		var distsq = Math.pow(delta.x, 2) + Math.pow(delta.y, 2);
 
-		if((Math.pow(delta.x, 2) + Math.pow(delta.y, 2) > Math.pow(dist - _ball.getRadius()/4, 2)) &&
- 		(Math.pow(delta.x, 2) + Math.pow(delta.y, 2) < Math.pow(dist + _ball.getRadius()/4, 2))){
+		var maxDist = _shield.getRadius() + _ball.getRadius();
+		var minDist = _shield.getRadius() - _ball.getRadius();
+
+		if(distsq > Math.pow(minDist, 2) && distsq < Math.pow(maxDist, 2)){
 			return this.preciseCollidesBallWithShield(_ball, _shield);
 		}
 	},

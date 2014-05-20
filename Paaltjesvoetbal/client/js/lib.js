@@ -44,18 +44,16 @@ var pole;
             shield.update();
 
             handleCollision(ball, ball2);
-            ball.getBody().checkWorldBounds(game); //ball1 to worldBounds
-            ball2.getBody().checkWorldBounds(game); //ball2 to worldBounds
+            handleCollision(ball, shield);
+            handleCollision(ball2, shield);
 
             if(handleCollision(ball2, pole) || handleCollision(ball, pole))
                 pole.isHit();
 
-            //Shield collision handling is not yet implemented
-            if(handleCollision(ball, shield) || handleCollision(ball2, shield)){
-                game.setBackgroundColor("red");
-            }else{
-                game.setBackgroundColor("white");
-            }
+            ball.getBody().checkWorldBounds(game); //ball1 to worldBounds
+            ball2.getBody().checkWorldBounds(game); //ball2 to worldBounds
+
+            
         }
         parentDraw();
     }
