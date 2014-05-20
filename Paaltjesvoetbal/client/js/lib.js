@@ -71,4 +71,5 @@ function draw(canvasContext){
     ball.draw(canvasContext);
     ball2.draw(canvasContext);
     shield.draw(canvasContext);
+    player.draw(canvasContext);
 }

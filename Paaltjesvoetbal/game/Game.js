@@ -15,7 +15,6 @@ function Game(load, update, draw){
 	var backGroundColor;
 	var canv;
 	var score = 0;
-	var label = new Label("Score: 0:00");
 
 	/**
 	* Draw function
@@ -26,8 +25,6 @@ function Game(load, update, draw){
 		
 		clearCanvas();
 		draw(ctx);
-		
-		label.draw(ctx);
 	}
 
 	/**
@@ -45,30 +42,6 @@ function Game(load, update, draw){
 
 		return document.getElementById("gameCanvas");
 	}
-	
-	/**
-	* Function which updates the score
-	* @method Game#updateScore
-	*/
-	updateScore = function(){
-		var lblPosition = {x: 500, y: 500};
-		label.setPosition(lblPosition);
-
-		if(score < 10){
-			label.setText("Score: 0:0" + score);
-		}
-		else if(score < 60){
-			label.setText("Score: 0:" + score);
-		}
-		else{
-			var min = Math.floor(score / 60);
-			var sec = score % 60;
-			if(sec < 10) { sec = '0' + sec; }
-			label.setText("Score: " + min + ":" + sec);
-		}
-		++score;
-	}
-	setInterval(updateScore, 1000);
 
 	/**
 	* Function which updates the width and height

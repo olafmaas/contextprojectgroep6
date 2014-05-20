@@ -15,10 +15,29 @@ function Player(_name){
 	var points = 5; //Points the player is worth when hit 
 	var score = 0; //Current score of the player
 	var highscore = 0; //Highscore of the player
+	var label = new Label("Score: 0 | Time alive: 0:00");
 	
 	//TODO update function
 	this.update = function(){
 
+	}
+
+	/**
+	* Currently it just draws the score on the canvas
+	*
+	* @method Player#draw
+	* @param {CanvasContext} _canvasContext - The canvas on which it will be drawn.
+	*/
+	this.draw = function(_canvasContext){
+
+		label.draw(_canvasContext);
+
+		var lblPosition = {x: 500, y: 500}; //hardcoded position for now..
+		label.setPosition(lblPosition);
+		var min = pole.getTimer().getMinutes();
+		var sec = pole.getTimer().getSeconds();
+
+		label.setText("Score: " + score + " | Time alive: " + min + ":" + sec);
 	}
 
 	/**

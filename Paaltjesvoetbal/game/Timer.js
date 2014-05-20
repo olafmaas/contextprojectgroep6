@@ -86,9 +86,12 @@ function Timer(_player){
 	* Returns the current time in seconds (between 0 and 59, otherwise it's a minute)
 	*
 	* @method Timer#getSeconds
-	* @return {number} The amount of seconds between 0 and 59.
+	* @return {String} The amount of seconds between 0 and 59, formatted on two numbers (so 00, 01, etc)
 	*/
 	this.getSeconds = function(){
-		return time % 60;
+		var mod = time % 60;
+		if(mod < 10)
+			return "0" + mod;
+		return mod;
 	}
 }
