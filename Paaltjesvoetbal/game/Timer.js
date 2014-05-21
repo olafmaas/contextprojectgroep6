@@ -32,7 +32,7 @@ function Timer(_player){
 	this.count = function(){
 		time++;
 		player.incrementScore(1);
-		console.log(time + " | " + player.getScore());
+		//console.log(time + " | " + player.getScore());
 	}
 
 	/**
@@ -80,6 +80,17 @@ function Timer(_player){
 	*/
 	this.getMinutes = function(){
 		return Math.floor(time / 60);
+	}
+
+	/**
+	* Returns the state of the
+	*
+	* @method Timer#isPaused
+	* @return {boolean} Wether the timer is paused
+	*/
+
+	this.isPaused = function(){
+		return paused;
 	}
 
 	/**
