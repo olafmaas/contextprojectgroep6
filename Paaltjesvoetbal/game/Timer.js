@@ -94,6 +94,15 @@ function Timer(_player){
 	}
 
 	/**
+	* Returns the count
+	*
+	* @method Timer#isPaused
+	* @return {number} The current number of seconds.
+	*/
+	this.getTime = function(){
+		return time;
+	}
+	/**
 	* Returns the current time in seconds (between 0 and 59, otherwise it's a minute)
 	*
 	* @method Timer#getSeconds
@@ -105,4 +114,6 @@ function Timer(_player){
 			return "0" + mod;
 		return mod;
 	}
+
+
 }
