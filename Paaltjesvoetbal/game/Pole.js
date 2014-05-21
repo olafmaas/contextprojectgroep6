@@ -65,7 +65,7 @@ var Pole = Ball.extend({
 		var highscore = this.player.getHighscore();
 		if(highscore < currScore){
 			this.player.setHighscore(currScore);
-			console.log("Highscore: " + this.player.getHighscore());
+			//console.log("Highscore: " + this.player.getHighscore());
 		}
 		this.player.setScore(0); //reset score
 		this.timer.reset(); //reset timer
