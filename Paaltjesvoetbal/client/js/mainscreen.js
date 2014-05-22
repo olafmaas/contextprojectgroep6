@@ -36,7 +36,7 @@ socket.on('drawShield', function (data) {
 
 socket.on('drawShield2', function (data) {
   //console.log(data);
-  shield2.setMousePos(data.x+300, data.y);
+  shield2.setMousePos(data.x, data.y);
   //console.log(input.getMouseX());
 });
 
