@@ -85,6 +85,14 @@ function Game(load, update, draw){
 		canv.onmousedown = input.mouseDownListener;
 	}
 
+	InitializeMainScreen = function(){
+		width = 100;
+		height = 100;
+		backGroundColor = "#FFFFFF";
+
+		canv = createCanvas();
+	}
+
 	/**
 	* Starts up the game itself
 	* @method Game#Boot

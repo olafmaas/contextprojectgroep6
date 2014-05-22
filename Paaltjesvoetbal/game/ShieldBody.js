@@ -3,6 +3,7 @@ if(typeof module != 'undefined'){
     var CircularBody = require('./CircularBody.js');
 	var Input = require('./Input.js');
 	var Body = require('./Body.js');
+	var IDDistributor = require('./IDDistributor.js');
 }  
 
 /**

@@ -4,11 +4,6 @@ var ball2;
 var shield;
 var player;
 
-//Initializes the balls, poles and shield on the screen
-function init(){
-
-
-}
 function loadContent(){
     pole = new Pole(10);
     pole.setColor("blue");
