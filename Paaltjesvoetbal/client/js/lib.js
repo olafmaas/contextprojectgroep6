@@ -4,6 +4,8 @@ var ball2;
 var shield;
 var player;
 
+var balls = [];
+
 function loadContent(){
     pole = new Pole(10);
     pole.setColor("blue");
@@ -20,6 +22,9 @@ function loadContent(){
     ball2.getBody().setVelocity(5);
     ball2.getBody().setVelocityDirection(1.25 * Math.PI);
     ball2.setPosition(250, 150);
+
+    balls.push(ball);
+    balls.push(ball2);
 
     shield = new Shield(pole);
     shield.getBody().immovable = true;
@@ -41,8 +46,11 @@ function update(){
         input.update();
 
         pole.update();
-        ball.update();
-        ball2.update();
+
+        for (var i = 0; i < balls.length; ++i) {
+            balls[i].update();
+        }
+
         shield.update();
         player.update(); //Update score of the player on screen
 
