@@ -1,4 +1,5 @@
 
+//TOOD: documentation
 //TODO: For now it's just for balls.
 function Group(_type){
 
@@ -28,6 +29,10 @@ function Group(_type){
 
 	this.getMembers = function(){
 		return members;
+	}
+
+	this.getMember = function(_index){
+		return members[_index];
 	}
 
 	this.getMemberLength = function(){
