@@ -26,6 +26,10 @@ function Group(_type){
 		});
 	}
 
+	this.getMembers = function(){
+		return members;
+	}
+
 	this.getMemberLength = function(){
 		return members.length;
 	}
@@ -38,29 +42,31 @@ function Group(_type){
 		}
 	}
 
-	this.addCollision = function(_object1, _object2, _collision, _preCollision)	{
-
-	//In case the second object is a group
-	if(_object2 instanceof Group){
-		var members = _object2.getMembers();
-		for(var i = 0; i<_object2.memberlength; i++){
-			if(_object1 !== members[i]){
-				//console.log(_object2.members[i]);
-				var tempObj = new Collision(_object1, members[i], _collision, _preCollision);
-				collision.push(tempObj);
+	this.addCollision = function(_object1, _object2){
+		//In case the second object is a group
+		if(_object2 instanceof Group){
+			var members = _object2.getMembers();
+			for(var i = 0; i < members.length; i++){
+				console.log("a");
+				if(_object1 !== members[i]){
+					console.log("b");
+					var tempObj = new Collision(_object1, members[i]);
+					console.log(tempObj);
+					collision.push(tempObj);
+				}
 			}
 		}
+		
+		else {
+			var collObj = new Collision(_object1, _object2);
+			collision.push(collObj);
+		}
 	}
-	
-	else {
-		//Create new collision object and add it to the array
-		var collObj = new Collision(_object1, _object2, _collision, _preCollision);
-		collision.push(collObj);
-	}
-}
 
 	this.checkCollision = function(){
-
+		collision.forEach(function (_coll) {
+			_coll.execute();
+		});
 	}
 
 }

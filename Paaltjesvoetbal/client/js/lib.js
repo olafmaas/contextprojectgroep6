@@ -19,7 +19,7 @@ function loadContent(){
 
    balls = new Group(Ball);
 
-/*    for(var i = 0; i < NROFBALLS; i++){
+    for(var i = 0; i < NROFBALLS; i++){
         ball = new Ball(10);
         var color = "#000000";
         if(i % 6 == 0)
@@ -42,8 +42,8 @@ function loadContent(){
 
         balls.addMember(ball);
     }
-*/
-    ball = new Ball(10);
+
+/*    ball = new Ball(10);
     ball.setColor("green");
     ball.getBody().setVelocity(5);
     ball.getBody().setVelocityDirection(1.75 * Math.PI);
@@ -54,7 +54,7 @@ function loadContent(){
     ball2.getBody().setVelocity(5);
     ball2.getBody().setVelocityDirection(1.25 * Math.PI);
     ball2.setPosition(250, 150);
-
+*/
     shield = new Shield(pole);
     shield.getBody().immovable = true;
 
@@ -63,6 +63,9 @@ function loadContent(){
     player.setShield(shield);
 
     pole.setPlayer(player);
+
+    balls.addCollision(pole, balls);
+    balls.addCollision(shield, balls);
 
     Initialize();
 }
@@ -75,14 +78,15 @@ function update(){
         input.update();
 
         //Update group
-   //     balls.update();
+        balls.update();
+
         pole.update();
-        ball.update();
-        ball2.update();
+   //     ball.update();
+    //    ball2.update();
         shield.update();
         player.update(); //Update score of the player on screen
 
-       handleCollision(ball, ball2);
+   /*    handleCollision(ball, ball2);
         handleCollision(ball, shield);
         handleCollision(ball2, shield);
 
@@ -91,8 +95,10 @@ function update(){
 
         ball.getBody().checkWorldBounds(game); //ball1 to worldBounds
         ball2.getBody().checkWorldBounds(game); //ball2 to worldBounds
+*/
 
-     //   balls.checkWorldBounds(game);
+        balls.checkCollision();
+        balls.checkWorldBounds(game);
         
     }
     parentDraw();
@@ -101,11 +107,11 @@ function update(){
 //Draws everything on the canvas
 function draw(canvasContext){
     pole.draw(canvasContext);
-    ball.draw(canvasContext);
-    ball2.draw(canvasContext);
+ //   ball.draw(canvasContext);
+ //   ball2.draw(canvasContext);
     shield.draw(canvasContext);
 
     //Draw group
-  //  balls.draw(canvasContext);
+    balls.draw(canvasContext);
     player.draw(canvasContext); //Draw the score of the player on screen
 }
