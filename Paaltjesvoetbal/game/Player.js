@@ -17,7 +17,9 @@ function Player(_name){
 	var points = 5; //Points the player is worth when hit 
 	var score = 0; //Current score of the player
 	var highscore = 0; //Highscore of the player
-	var label = new Label("Score: 0 | Time alive: 0:00 | Highscore: 0");
+	var label = new Label("Score: 0 | Time alive: 0:00");
+	var label3 = new Label("Highscore: 0");
+	var label2 = new Label("Username: " + name);
 	
 	/**
 	* Updates the score label which will be drawn on screen
@@ -26,12 +28,19 @@ function Player(_name){
 	* @method Player#update
 	*/
 	this.update = function(){
-		var lblPosition = {x: 100, y: 500}; //hardcoded position for now..
+		
+		var lblPosition = {x: pole.getPosition().x - 150, y: pole.getPosition().y + 200}; //hardcoded position for now..
+		var lbl2Position = {x: pole.getPosition().x - 100, y: pole.getPosition().y - 200};
+		var lbl3Position = {x: pole.getPosition().x - 80, y: pole.getPosition().y + 230}; //hardcoded position for now..
+		
 		label.setPosition(lblPosition);
+		label2.setPosition(lbl2Position);
+		label3.setPosition(lbl3Position);
+
 		var min = pole.getTimer().getMinutes();
 		var sec = pole.getTimer().getSeconds();
-
-		label.setText("Score: " + score + " | Time alive: " + min + ":" + sec + " | Highscore: " + highscore);
+		label.setText("Score: " + score + " | Time alive: " + min + ":" + sec);
+		label3.setText("Highscore: " + highscore);
 	}
 
 	/**
@@ -41,7 +50,9 @@ function Player(_name){
 	* @param {CanvasContext} _canvasContext - The canvas on which it will be drawn.
 	*/
 	this.draw = function(_canvasContext){
-		label.draw(_canvasContext);
+		label.draw(_canvasContext); //Draw score + time alive
+		label2.draw(_canvasContext); //Draw username
+		label3.draw(_canvasContext); //Draw highscore
 	}
 
 	/**

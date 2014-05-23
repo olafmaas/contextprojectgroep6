@@ -19,7 +19,7 @@ function Group(){
 	//	The collision function that is executed when collision between objects occurs
 	//@Param _preCollision (Optional)
 	//	A pre-collision function to perform additional checks whether the two objects really collided
-	this.addCollision = function(_object1, _object2, _collision, _preCollision)	{
+	this.addCollision = function(_object1, _object2, _collision, _preCollision, _this)	{
 
 		//In case the second object is a group
 		if(_object2 instanceof Group){
@@ -27,7 +27,7 @@ function Group(){
 			for(var i = 0; i<_object2.memberlength; i++){
 				if(_object1 !== members[i]){
 					//console.log(_object2.members[i]);
-					var tempObj = new Collision(_object1, members[i], _collision, _preCollision);
+					var tempObj = new Collision(_object1, members[i], _collision, _preCollision, _this);
 					collision.push(tempObj);
 				}
 			}
@@ -35,7 +35,7 @@ function Group(){
 		
 		else {
 			//Create new collision object and add it to the array
-			var collObj = new Collision(_object1, _object2, _collision, _preCollision);
+			var collObj = new Collision(_object1, _object2, _collision, _preCollision, _this);
 			collision.push(collObj);
 		}
 	}

@@ -29,13 +29,19 @@ var Pole = Ball.extend({
 	*
 	* @method Pole#isHit
 	*/
-	isHit: function(){
-		if(!this.hit){
-			this.hit = true; //set hit flag
-			this.prevColor = this.getColor(); //retrieve original color
-			this.setColor("darkOrange"); //set new color to indicate being hit
-			this.saveHighscore(); //Save current score if highscore
-			this.coolDown(3000); //set cooldown period
+	isHit: function(_this){
+		if(_this != null  && _this != undefined){
+			savedThis = _this;
+		}
+		else {
+			savedThis = this;
+		}
+		if(!savedThis.hit){
+			savedThis.hit = true; //set hit flag
+			savedThis.prevColor = savedThis.getColor(); //retrieve original color
+			savedThis.setColor("darkOrange"); //set new color to indicate being hit
+			savedThis.saveHighscore(); //Save current score if highscore
+			savedThis.coolDown(3000); //set cooldown period
 		}
 	},
 
@@ -53,6 +59,7 @@ var Pole = Ball.extend({
 		else {
 			this.setColor(this.prevColor); //Revert back to previous color
 			this.hit = false; //remove hit flag
+			this.timer.startTimer();
 		}
 	},
 
@@ -72,7 +79,7 @@ var Pole = Ball.extend({
 			//console.log("Highscore: " + this.player.getHighscore());
 		}
 		this.player.setScore(0); //reset score
-		this.timer.reset(); //reset timer
+		this.timer.stop(); //reset timer
 	},
 
 	getTimer: function(){
