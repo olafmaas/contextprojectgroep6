@@ -78,7 +78,6 @@ var CollisionDetection ={
 
 		var maxDist = _shield.getRadius() + _ball.getRadius();
 		var minDist = _shield.getRadius() - _ball.getRadius();
-
 		if(distsq > Math.pow(minDist, 2) && distsq < Math.pow(maxDist, 2)){
 			return this.preciseCollidesBallWithShield(_ball, _shield);
 		}
