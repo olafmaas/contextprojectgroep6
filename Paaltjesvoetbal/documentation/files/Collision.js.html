@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/Sprite.js</title>
+    <title>Collision.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,13 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/Camera.html">Camera</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/Collision.html">Collision</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
                 <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
                 <li><a href="../classes/Shield.html">Shield</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
             
             </ul>
 
@@ -90,41 +110,48 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/Sprite.js</h1>
+                        <h1 class="file-heading">File: Collision.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
-* Sprite class
-* @class Sprite
-* @classdesc A simple sprite class to load textures
+* Collision class
+* @class Collision
+* @classdesc This class is used by the Group class to save collisions.
+* @constructor 
+* @param {Object} _object1 - The first object for the collision (No groups)
+* @param {Object} _object2 - The secod object for the collision (Can be a group)
+* @param {Function} _funcAfter - A function which will be triggered after the collision handling (Optional)
+* @param {Object} _this - The &#x27;this&#x27; object that will be used as parameter in the function triggered after the collision (Optional)
 */
-function Sprite(){
-	var texture;
-	this.position = {x: 0, y: 0};
-	this.origin = {x: 0, y: 0};
-	this.rotation = 0;
-	this.scale = {x: 1, y: 1};
-	this.body;
+function Collision(_object1, _object2, _funcAfter, _this){
+	//Properties
+	var obj1 = _object1;
+	var obj2 = _object2; //even if it&#x27;s null, we just set it here
+	var func = _funcAfter;
+	var funcThis = _this;
 
 	/**
-	* Function which loads a texture
-	* @method Sprite#LoadContent
-	* @param {texture&#x27;s path}
+	* Executes the collision depending on the parameters that are set.
+	* In case the funcAfter parameter is set, this function will be triggered 
+	* when handleCollision returns true;
+	* 
+	* @method Collision#execute
 	*/
-	this.LoadContent = function(texturePath){
-		texture = new Image();
-		texture.src = texturePath;
-	}
+	this.execute = function(){
 
-	/**
-	* Function which draws the sprite
-	* @method Sprite#Draw
-	* @param {The canvas}
-	*/
-	this.Draw = function(canvasContext){
-		canvasContext.drawImage(texture, this.position.x, this.position.y);
+		//Execute collision function
+		if(obj2 !== null &amp;&amp; obj2 !== undefined){
+			if(handleCollision(obj1, obj2) &amp;&amp; func != null){
+				//do something after collision
+				func(funcThis);
+			}
+		}
 	}
+}
+
+if(typeof module != &#x27;undefined&#x27;){
+    module.exports = Collision;
 }
     </pre>
 </div>

@@ -49,7 +49,13 @@
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
+                <li><a href="../classes/Collision.html">Collision</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -62,6 +68,8 @@
                 <li><a href="../classes/Shield.html">Shield</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
             
             </ul>
 
@@ -127,6 +135,7 @@ Label = function(_text){
 	* @param {CanvasContext} _canvasContext - The canvascontext which should be drawn.
 	*/
 	this.draw = function(_canvasContext){
+		_canvasContext.fillStyle = color;
 		_canvasContext.font = this.getFontSize() + &quot;px &quot; + this.getFont();
 		_canvasContext.fillText(this.getText(), this.getPosition().x, this.getPosition().y)
 	}
@@ -162,7 +171,7 @@ Label = function(_text){
 	/**
 	* Gets the font size in pixels
 	* @method Label#getFontSize
-	* @return {float} The font size in pixels.
+	* @return {number} The font size in pixels.
 	*/
 	this.getFontSize = function(){
 		return fontSize;
@@ -206,9 +215,8 @@ Label = function(_text){
 
 	/**
 	* Sets the font size in pixels
-	*
 	* @method Label#setFontSize
-	* @param {float} _fontSize - The size of the font in pixels.
+	* @param {number} _fontSize - The size of the font in pixels.
 	*/
 	this.setFontSize = function(_fontSize){
 		fontSize = _fontSize;
@@ -216,7 +224,6 @@ Label = function(_text){
 
 	/**
 	* Sets the color of the label
-	*
 	* @method Label#setColor
 	* @param {hexcolor} _color - The color in hexidecimal form.
 	*/
@@ -224,6 +231,11 @@ Label = function(_text){
 		color = _color;
 	}
 }
+
+if(typeof module != &#x27;undefined&#x27;){
+    module.exports = Label;
+}
+
     </pre>
 </div>
 

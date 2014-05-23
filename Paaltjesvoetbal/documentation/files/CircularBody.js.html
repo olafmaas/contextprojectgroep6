@@ -49,7 +49,13 @@
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
+                <li><a href="../classes/Collision.html">Collision</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -62,6 +68,8 @@
                 <li><a href="../classes/Shield.html">Shield</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
             
             </ul>
 
@@ -109,7 +117,9 @@
 //The circular body class
 if(typeof module != &#x27;undefined&#x27;){
 	var Body = require(&#x27;./Body.js&#x27;);
+	var ShieldBody = require(&#x27;./ShieldBody.js&#x27;);
 	var Ball = require(&#x27;./Ball.js&#x27;);
+	var IDDistributor = require(&#x27;./IDDistributor.js&#x27;);
 }
 
 /**
@@ -122,6 +132,7 @@ if(typeof module != &#x27;undefined&#x27;){
 var CircularBody = Body.extend({
 	radius: 1,
 	parentBall: 0,
+	ID: -1,
 	
 	/**
 	* Constructor for the circular body
@@ -131,6 +142,7 @@ var CircularBody = Body.extend({
 	constructor: function(_parent){
 		this.radius = _parent.getRadius();
 		this.parentBall = _parent;
+		this.ID = IDDistributor.getNewId();
 	},
 
 	/**
@@ -166,8 +178,8 @@ var CircularBody = Body.extend({
 	*/
 	handleBallCollision: function(_other){
 		//Get x and y difference
-		var dx = Math.abs(this.getPosition().x - _other.getPosition().x);
-		var dy = Math.abs(this.getPosition().y - _other.getPosition().y);
+		var dx = this.getPosition().x - _other.getPosition().x;
+		var dy = this.getPosition().y - _other.getPosition().y;
 
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
@@ -175,8 +187,8 @@ var CircularBody = Body.extend({
 
 	handleShieldCollision: function(_other){
 		//Get x and y difference
-		var dx = Math.abs(this.getPosition().x - _other.getPosition().x);
-		var dy = Math.abs(this.getPosition().y - _other.getPosition().y);
+		var dx = this.getPosition().x - _other.getPosition().x;
+		var dy = this.getPosition().y - _other.getPosition().y;
 
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
@@ -195,11 +207,19 @@ var CircularBody = Body.extend({
 		var width = _game.getWidth();
 		var height = _game.getHeight();
 
-		if(nextXPos &gt; width || nextXPos &lt; 0)
-			this.revertXSpeed();
+		var collision = false
 
-		if(nextYPos &gt; height || nextYPos &lt; 0)
+		if(nextXPos &gt; width - this.getRadius() || nextXPos &lt; this.getRadius()){
+			this.revertXSpeed();
+			collision = true;
+		}
+
+		if(nextYPos &gt; height - this.getRadius()|| nextYPos &lt; this.getRadius()){
 			this.revertYSpeed();
+			collision = true;
+		}
+
+		return collision;
 	},
 
 	getRadius: function(){

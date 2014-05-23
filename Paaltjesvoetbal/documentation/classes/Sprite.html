@@ -43,13 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/Camera.html">Camera</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/Collision.html">Collision</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
                 <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
                 <li><a href="../classes/Shield.html">Shield</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
             
             </ul>
 
@@ -98,7 +118,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_Sprite.js.html#l1"><code>src&#x2F;Sprite.js:1</code></a>
+            Defined in: <a href="../files/Sprite.js.html#l1"><code>Sprite.js:1</code></a>
         </div>
     
 
@@ -114,6 +134,63 @@
 
 </div>
 
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_Sprite" class="method item">
+    <h3 class="name"><code>Sprite</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Sprite.js.html#l1"><code>Sprite.js:1</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -139,56 +216,21 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#calculateAngle">Shield#calculateAngle</a>
+                                <a href="#method_ShieldBody#constructor">ShieldBody#constructor</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#collidesWith">Shield#collidesWith</a>
+                                <a href="#method_Shieldbody#handleIndividual">Shieldbody#handleIndividual</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#collidesWithBall">Shield#collidesWithBall</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#constructor">Shield#constructor</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#handleCollision">Shield#handleCollision</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#handleIndividual">Shield#handleIndividual</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#preciseCollidesWith">Shield#preciseCollidesWith</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#update">Shield#update</a>
+                                <a href="#method_ShieldBody#update">ShieldBody#update</a>
 
                                 
                                 
@@ -224,81 +266,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Shield#calculateAngle" class="method item">
-    <h3 class="name"><code>Shield#calculateAngle</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ShieldBody.js.html#l114"><code>src&#x2F;ShieldBody.js:114</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Calculates the angle of the shield (in radians) depending on the current mouse input</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The angle between the shield and the current mousepointer</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#collidesWith" class="method item">
-    <h3 class="name"><code>Shield#collidesWith</code></h3>
+                    <div id="method_ShieldBody#constructor" class="method item">
+    <h3 class="name"><code>ShieldBody#constructor</code></h3>
 
     
         <div class="args">
@@ -306,7 +275,7 @@
             
                 <li class="arg">
                     
-                        <code>The</code>
+                        <code>_parent</code>
                     
                 </li>
             
@@ -339,185 +308,7 @@
             
         
         
-        <a href="../files/src_ShieldBody.js.html#l31"><code>src&#x2F;ShieldBody.js:31</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A method that checks with what object the shield collides</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">The</code>
-                        <span class="type">_object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>object that should be hit tested with the shield</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#collidesWithBall" class="method item">
-    <h3 class="name"><code>Shield#collidesWithBall</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>The</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ShieldBody.js.html#l41"><code>src&#x2F;ShieldBody.js:41</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A method that checks if the shield collides with a ball</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">The</code>
-                        <span class="type">_ball</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>ball that should be hit tested with the shield</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#constructor" class="method item">
-    <h3 class="name"><code>Shield#constructor</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>The</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ShieldBody.js.html#l10"><code>src&#x2F;ShieldBody.js:10</code></a>
+        <a href="../files/ShieldBody.js.html#l18"><code>ShieldBody.js:18</code></a>
         
         </p>
 
@@ -540,14 +331,16 @@
             
                 <li class="param">
                     
-                        <code class="param-name">The</code>
-                        <span class="type">_parent</span>
+                        <code class="param-name">_parent</code>
+                        <span class="type"><a href="../classes/Shield.html" class="crosslink">Shield</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>shield object</p>
+                        <ul>
+<li>The shield object</li>
+</ul>
 
                     </div>
 
@@ -564,8 +357,8 @@
 </div>
 
                 
-                    <div id="method_Shield#handleCollision" class="method item">
-    <h3 class="name"><code>Shield#handleCollision</code></h3>
+                    <div id="method_Shieldbody#handleIndividual" class="method item">
+    <h3 class="name"><code>Shieldbody#handleIndividual</code></h3>
 
     
         <div class="args">
@@ -573,7 +366,7 @@
             
                 <li class="arg">
                     
-                        <code>object</code>
+                        <code>_other</code>
                     
                 </li>
             
@@ -606,7 +399,7 @@
             
         
         
-        <a href="../files/src_ShieldBody.js.html#l71"><code>src&#x2F;ShieldBody.js:71</code></a>
+        <a href="../files/ShieldBody.js.html#l41"><code>ShieldBody.js:41</code></a>
         
         </p>
 
@@ -617,8 +410,7 @@
     </div>
 
     <div class="description">
-        <p>This method uses the previous methods to check whether the shield collides
-And then handles the collision</p>
+        <p>Method to handle a collision</p>
 
     </div>
 
@@ -630,14 +422,16 @@ And then handles the collision</p>
             
                 <li class="param">
                     
-                        <code class="param-name">object</code>
-                        <span class="type">_other</span>
+                        <code class="param-name">_other</code>
+                        <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>which collides with the shield</p>
+                        <ul>
+<li>The other item that collides</li>
+</ul>
 
                     </div>
 
@@ -654,186 +448,8 @@ And then handles the collision</p>
 </div>
 
                 
-                    <div id="method_Shield#handleIndividual" class="method item">
-    <h3 class="name"><code>Shield#handleIndividual</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>object</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ShieldBody.js.html#l88"><code>src&#x2F;ShieldBody.js:88</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>This method calls the correct handling function for the occuring collision</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">object</code>
-                        <span class="type">_other</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>which collides with the shield</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#preciseCollidesWith" class="method item">
-    <h3 class="name"><code>Shield#preciseCollidesWith</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ShieldBody.js.html#l59"><code>src&#x2F;ShieldBody.js:59</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A method that checks the precise collision of the shield with a ball</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">_delta</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>and y distance between the shield and the ball</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#update" class="method item">
-    <h3 class="name"><code>Shield#update</code></h3>
+                    <div id="method_ShieldBody#update" class="method item">
+    <h3 class="name"><code>ShieldBody#update</code></h3>
 
     
         <span class="paren">()</span>
@@ -864,7 +480,7 @@ And then handles the collision</p>
             
         
         
-        <a href="../files/src_ShieldBody.js.html#l22"><code>src&#x2F;ShieldBody.js:22</code></a>
+        <a href="../files/ShieldBody.js.html#l31"><code>ShieldBody.js:31</code></a>
         
         </p>
 
@@ -896,7 +512,7 @@ And then handles the collision</p>
             
                 <li class="arg">
                     
-                        <code>UNKNOWN</code>
+                        <code>canvasContext</code>
                     
                 </li>
             
@@ -929,7 +545,7 @@ And then handles the collision</p>
             
         
         
-        <a href="../files/src_Sprite.js.html#l24"><code>src&#x2F;Sprite.js:24</code></a>
+        <a href="../files/Sprite.js.html#l25"><code>Sprite.js:25</code></a>
         
         </p>
 
@@ -952,14 +568,17 @@ And then handles the collision</p>
             
                 <li class="param">
                     
-                        <code class="param-name">UNKNOWN</code>
-                        <span class="type">The canvas</span>
+                        <code class="param-name">canvasContext</code>
+                        <span class="type">Canvas</span>
                     
 
                     
 
                     <div class="param-description">
-                         
+                        <ul>
+<li>The playing field</li>
+</ul>
+
                     </div>
 
                     
@@ -984,7 +603,7 @@ And then handles the collision</p>
             
                 <li class="arg">
                     
-                        <code>UNKNOWN</code>
+                        <code>texturePath</code>
                     
                 </li>
             
@@ -1017,7 +636,7 @@ And then handles the collision</p>
             
         
         
-        <a href="../files/src_Sprite.js.html#l14"><code>src&#x2F;Sprite.js:14</code></a>
+        <a href="../files/Sprite.js.html#l15"><code>Sprite.js:15</code></a>
         
         </p>
 
@@ -1040,14 +659,17 @@ And then handles the collision</p>
             
                 <li class="param">
                     
-                        <code class="param-name">UNKNOWN</code>
-                        <span class="type">Texture's path</span>
+                        <code class="param-name">texturePath</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                         
+                        <ul>
+<li>texture&#39;s path</li>
+</ul>
+
                     </div>
 
                     

@@ -49,7 +49,13 @@
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
+                <li><a href="../classes/Collision.html">Collision</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -62,6 +68,8 @@
                 <li><a href="../classes/Shield.html">Shield</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
             
             </ul>
 
@@ -106,7 +114,11 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-
+if(typeof module != &#x27;undefined&#x27;){
+	var CircularBody = require(&#x27;./CircularBody.js&#x27;);
+	var Ball = require(&#x27;./Ball.js&#x27;);
+	var Timer = require(&#x27;./Timer.js&#x27;);
+}
 /**
 * Pole class
 *
@@ -118,6 +130,8 @@
 var Pole = Ball.extend({
 	hit: false,
 	prevColor: 0,
+	player: 0,
+	timer: 0, //Each pole keeps its own &#x27;alive&#x27; time
 
 	constructor: function(_radius){
 		this.radius = _radius;
@@ -131,16 +145,19 @@ var Pole = Ball.extend({
 	*
 	* @method Pole#isHit
 	*/
-	isHit: function(){
-		if(!this.hit){
-			this.hit = true;
-			this.prevColor = this.getColor();
-			this.setColor(&quot;darkOrange&quot;);
-			this.coolDown(3000);
-			//TODO:
-			//save highscore
-			//reset score
-			//start cooldown in which player cannot be hit
+	isHit: function(_this){
+		if(_this != null  &amp;&amp; _this != undefined){
+			savedThis = _this;
+		}
+		else {
+			savedThis = this;
+		}
+		if(!savedThis.hit){
+			savedThis.hit = true; //set hit flag
+			savedThis.prevColor = savedThis.getColor(); //retrieve original color
+			savedThis.setColor(&quot;darkOrange&quot;); //set new color to indicate being hit
+			savedThis.saveHighscore(); //Save current score if highscore
+			savedThis.coolDown(3000); //set cooldown period
 		}
 	},
 
@@ -158,10 +175,38 @@ var Pole = Ball.extend({
 		else {
 			this.setColor(this.prevColor); //Revert back to previous color
 			this.hit = false; //remove hit flag
+			this.timer.startTimer();
 		}
+	},
+
+	//Set player
+	setPlayer: function(_player){
+		this.player = _player;
+		this.timer = new Timer(_player);
+		this.timer.startTimer();
+	},
+
+	//Todo: move to player class?
+	saveHighscore: function(){
+		var currScore = this.player.getScore();
+		var highscore = this.player.getHighscore();
+		if(highscore &lt; currScore){
+			this.player.setHighscore(currScore);
+		}
+		this.player.setScore(0); //reset score
+		this.timer.stop(); //reset timer
+	},
+
+	getTimer: function(){
+		return this.timer;
 	}
 
 });
+
+if(typeof module != &#x27;undefined&#x27;){
+    module.exports = Pole;
+}
+
     </pre>
 </div>
 
