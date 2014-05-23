@@ -31,14 +31,6 @@ var Body = Base.extend({
 		//Keep velocityDirection value between 0 and 2pi
 		this.velocityDirection = this.velocityDirection % (2 * Math.PI);
 	
-		//Dit verandert alleen als je de velocity / direction aanpast
-		//niet nodig dus om dit voor elke update te berekenen.
-	/*	
-		this.vectorVelocity  = {
-			x: this.velocity * Math.cos(this.velocityDirection),
-			y: -this.velocity * Math.sin(this.velocityDirection)
-		};
-	*/
 		this.position.x += this.vectorVelocity.x;
 		this.position.y += this.vectorVelocity.y;
 	},
@@ -137,8 +129,7 @@ var Body = Base.extend({
 	* @method Body#calculateVDirection
 	* @return {number} The velocity of the ball.
 	*/
-	calculateVelocity: function()
-	{
+	calculateVelocity: function(){
 		var dx = this.vectorVelocity.x;
 		var dy = this.vectorVelocity.y;
 	  	return Math.sqrt( dx * dx + dy * dy );

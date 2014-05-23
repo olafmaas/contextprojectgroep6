@@ -71,9 +71,7 @@ function update(){
   shield.update();
   player.update();
 
-  if(handleCollision(ball, shield)){
-      console.log('hit on server');
-  }
+  handleCollision(ball, shield)
 
   if(handleCollision(ball, pole)){
       pole.isHit();
@@ -87,9 +85,7 @@ function update(){
   shield2.update();
   player2.update();
 
-  if(handleCollision(ball, shield2)){
-      console.log('hit on server');
-  }
+  handleCollision(ball, shield2)
 
   if(handleCollision(ball, pole2)){
       pole2.isHit();
@@ -221,7 +217,6 @@ function connectClient(socket){
       socket.on('shieldAngle', function (angle){
       shield2.setAngle(angle);
     });
-
   }
 
   //Handle Client Disconnet

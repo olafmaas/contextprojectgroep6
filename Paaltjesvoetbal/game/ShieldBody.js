@@ -5,7 +5,6 @@ if(typeof module != 'undefined'){
 	var Body = require('./Body.js');
 	var IDDistributor = require('./IDDistributor.js');
 }  
-
 /**
 *
 *

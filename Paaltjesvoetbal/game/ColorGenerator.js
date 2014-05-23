@@ -12,3 +12,7 @@ var ColorGenerator = {
 		return this.colors[parseInt(Math.random()*this.colors.length)];
 	}
 }
+
+if(typeof module != 'undefined'){
+    module.exports = ColorGenerator;
+} 

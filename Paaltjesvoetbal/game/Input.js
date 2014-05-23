@@ -6,7 +6,6 @@
 * @constructor
 *
 */
-
 var input = {
 	mainPointer: {isActive: true, x: 0, y: 0},
 
