@@ -1,4 +1,7 @@
-
+if(typeof module != 'undefined'){
+	var Ball = require('./Ball.js');
+	var Collision = require('./Collision.js');
+}
 //TOOD: documentation
 //TODO: For now it's just for balls.
 function Group(_type){
@@ -40,11 +43,14 @@ function Group(_type){
 	}
 
 	this.checkWorldBounds = function(_game){
+		var collided = false;
 		if(type == Ball) { //Only check world bounds if it's a ball
 			members.forEach(function (_object){
-				_object.getBody().checkWorldBounds(_game);
+				if(_object.getBody().checkWorldBounds(_game))
+					collided = true;
 			});
 		}
+		return collided;
 	}
 
 	this.addCollision = function(_object1, _object2, _funcAfter, _this){
@@ -65,9 +71,12 @@ function Group(_type){
 	}
 
 	this.checkCollision = function(){
+		var collided = false;
 		collision.forEach(function (_coll) {
-			_coll.execute();
+			if(_coll.execute())
+				collided = true;
 		});
+		return collided;
 	}
 
 	//takes one group in which everything with everything is combined.
@@ -82,4 +91,8 @@ function Group(_type){
 		}
 	}
 
+}
+
+if(typeof module != 'undefined'){
+    module.exports = Group;
 }
