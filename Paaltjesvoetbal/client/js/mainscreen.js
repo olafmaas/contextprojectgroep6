@@ -35,15 +35,8 @@ socket.on('drawShield', function (angle) {
   shield.setAngle(angle);
 });
 
-<<<<<<< HEAD
-socket.on('drawShield2', function (data) {
-  //console.log(data);
-  shield2.setMousePos(data.x, data.y);
-  //console.log(input.getMouseX());
-=======
 socket.on('drawShield2', function (angle) {
   shield2.setAngle(angle);
->>>>>>> origin/multiplayer
 });
 
 socket.on('newCanvasSize', function (data) {
