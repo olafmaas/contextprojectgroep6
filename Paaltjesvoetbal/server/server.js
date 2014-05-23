@@ -3,7 +3,7 @@ io.set('log level', 2);   // 0 - error | 1 - warn | 2 - info | 3 - debug
 var Game = require('../game/Game.js');
 var Ball = require('../game/Ball.js');
 var Pole = require('../game/Pole.js');
-var Shield = require('../game/ShieldServer.js');
+var Shield = require('../game/Shield.js');
 var Player = require('../game/Player.js');
 var handleCollision = require('../game/CollisionDetection.js');
 var input = require('../game/Input.js');
@@ -11,7 +11,6 @@ var input = require('../game/Input.js');
 //////////
 // GAME //
 //////////
-
 
 var game = new Game(loadContent, update, drawToClients);
 
@@ -46,8 +45,6 @@ function loadContent(){
     player.setShield(shield);
 
     pole.setPlayer(player);
-
-
 
     //PLAYER2
     pole2 = new Pole(10);
@@ -112,10 +109,9 @@ function drawToClients(){
 function drawToMainScreen(){
   if(mainScreenSocket){
     mainScreenSocket.emit('drawBall', ball.getPosition());
-    mainScreenSocket.emit('drawShield', {x: shield.getMouseX(), y: shield.getMouseY()});
+    mainScreenSocket.emit('drawShield', shield.getAngle());
     //PLAYER 2
-    console.log({x: shield2.getMouseX(), y: shield2.getMouseY()});
-    mainScreenSocket.emit('drawShield2', {x: shield2.getMouseX(), y: shield2.getMouseY()});
+    mainScreenSocket.emit('drawShield2', shield2.getAngle());
     //PLAYER 2
   }
 };
@@ -216,22 +212,16 @@ function connectClient(socket){
   updateMainScreenCanvasSize();
   log();
 
-  socket.on('shieldHit', function (data){
-    console.log('shildhit on ' + socket.id);
-  });
-
   if(!PLAYER1){
     PLAYER1 = true;
-    socket.on('mouseMove', function (data){
-      //console.log(data)
-      shield.setMousePos(data.x, data.y);
+    socket.on('shieldAngle', function (angle){
+      shield.setAngle(angle);
     });
   } else {
-    console.log('jher')
-      socket.on('mouseMove', function (data){
-      //console.log(data)
-      shield2.setMousePos(data.x+300, data.y);
+      socket.on('shieldAngle', function (angle){
+      shield2.setAngle(angle);
     });
+
   }
 
   //Handle Client Disconnet
@@ -247,4 +237,4 @@ function log(){
   console.log('mainScreenSocket: ' + !!mainScreenSocket);
   console.log('maximumPlayers: '+ maximumPlayers);
   console.log('playerSockets: ' + Object.keys(playerSockets).length);
-}
+};

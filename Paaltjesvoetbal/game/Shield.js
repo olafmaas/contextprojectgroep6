@@ -42,7 +42,10 @@ function Shield(_pole){
 	this.update = function(){
 		if(body instanceof ShieldBody) body.update();
 
-		this.setAngle(this.calculateAngle());
+		//on the server and mainscreen this is done on emit from a client!
+		if(typeof module == 'undefined'){
+			this.setAngle(this.calculateAngle());
+		}
 	}
 
 	/**
@@ -61,7 +64,7 @@ function Shield(_pole){
 	* @return {Float} The angle between the shield and the current mousepointer.
 	*/
 	this.calculateAngle = function(){
-		return Math.atan2(input.getMouseY() - this.getPosition().y, input.getMouseX() - this.getPosition().x);
+		return Math.atan2(mouseY - this.getPosition().y, mouseX - this.getPosition().x);
 	}
 
 	/**
