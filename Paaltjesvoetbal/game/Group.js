@@ -31,4 +31,13 @@ function Group(_type){
 		return members.length;
 	}
 
+	this.checkWorldBounds = function(_game){
+		console.log("check");
+		if(type == Ball) { //Only check world bounds if it's a ball
+			members.forEach(function (_object){
+				_object.getBody().checkWorldBounds(_game);
+			});
+		}
+	}
+
 }

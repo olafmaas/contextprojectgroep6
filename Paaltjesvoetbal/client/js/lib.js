@@ -34,13 +34,14 @@ function loadContent(){
             color = "#00FFFF";
         else
             color = "#FF00FF";
+
         ball.setColor(color);
         ball.getBody().setVelocity(5);
         ball.getBody().setVelocityDirection(1.75 * Math.PI);
         ball.setPosition(50 + (i * 20), 50 + (i * 20));
 
-        group.addMember(ball);
-        console.log(group.getMemberLength());
+        balls.addMember(ball);
+        console.log(balls.getMemberLength());
     }
 
 /*    ball.setColor("green");
@@ -90,6 +91,7 @@ function update(){
  //       ball.getBody().checkWorldBounds(game); //ball1 to worldBounds
  //       ball2.getBody().checkWorldBounds(game); //ball2 to worldBounds
 
+        balls.checkWorldBounds(game);
         
     }
     parentDraw();
@@ -101,6 +103,6 @@ function draw(canvasContext){
   //  ball.draw(canvasContext);
  //   ball2.draw(canvasContext);
     shield.draw(canvasContext);
-    group.draw(canvasContext);
+    balls.draw(canvasContext);
     player.draw(canvasContext); //Draw the score of the player on screen
 }
