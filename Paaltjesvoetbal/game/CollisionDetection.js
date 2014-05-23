@@ -48,25 +48,16 @@ var CollisionDetection ={
 	collides: function(_bodyOne, _bodyTwo){
 		if(_bodyOne instanceof CircularBody) return this.collidesBallWith(_bodyOne, _bodyTwo);
 		if(_bodyOne instanceof ShieldBody) return this.collidesShieldWith(_bodyOne, _bodyTwo);
-
-		//If this code is reached the collision of the _bodyOne type is not implemented
-		//throw "This Collision is not Implemented";
 	},
 
 	collidesBallWith: function(_ball, _other){
 		if(_other instanceof CircularBody) return this.collidesBallWithBall(_ball, _other);
 		if(_other instanceof ShieldBody) return this.collidesBallWithShield(_ball, _other);
-
-		//If this code is reached the collision of the _other type is not implemented
-		//throw "This Collision is not Implemented";
 	},
 
 	collidesShieldWith: function(_shield, _other){
 		if(_other instanceof CircularBody) return this.collidesBallWithShield(_other, _shield);
 		if(_other instanceof ShieldBody) throw "This Collision is not Implemented";
-
-		//If this code is reached the collision of the _other type is not implemented
-		//throw "This Collision is not Implemented";
 	},
 
 	collidesBallWithBall: function(_ball1, _ball2){

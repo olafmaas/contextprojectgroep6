@@ -35,4 +35,3 @@ function Sprite(){
 if(typeof module != 'undefined'){
 	module.exports = Sprite
 }  
-

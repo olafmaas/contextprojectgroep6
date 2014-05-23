@@ -3,7 +3,6 @@ if(typeof module != 'undefined'){
     var ShieldBody = require('./ShieldBody.js');
     var input = require('./Input.js');
 }  
-
 /** 
 * Shield constructor
 *
@@ -195,4 +194,3 @@ function Shield(_pole){
 if(typeof module != 'undefined'){
     module.exports = Shield;
 }  
-

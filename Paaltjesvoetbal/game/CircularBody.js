@@ -91,11 +91,19 @@ var CircularBody = Body.extend({
 		var width = _game.getWidth();
 		var height = _game.getHeight();
 
-		if(nextXPos > width - this.getRadius() || nextXPos < this.getRadius())
-			this.revertXSpeed();
+		var collision = false
 
-		if(nextYPos > height - this.getRadius()|| nextYPos < this.getRadius())
+		if(nextXPos > width - this.getRadius() || nextXPos < this.getRadius()){
+			this.revertXSpeed();
+			collision = true;
+		}
+
+		if(nextYPos > height - this.getRadius()|| nextYPos < this.getRadius()){
 			this.revertYSpeed();
+			collision = true;
+		}
+
+		return collision;
 	},
 
 	getRadius: function(){
