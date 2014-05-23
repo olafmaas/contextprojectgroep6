@@ -1,7 +1,9 @@
 //The circular body class
 if(typeof module != 'undefined'){
 	var Body = require('./Body.js');
+	var ShieldBody = require('./ShieldBody.js');
 	var Ball = require('./Ball.js');
+	var IDDistributor = require('./IDDistributor.js');
 }
 
 /**
@@ -60,17 +62,18 @@ var CircularBody = Body.extend({
 	*/
 	handleBallCollision: function(_other){
 		//Get x and y difference
-		var dx = Math.abs(this.getPosition().x - _other.getPosition().x);
-		var dy = Math.abs(this.getPosition().y - _other.getPosition().y);
+		var dx = this.getPosition().x - _other.getPosition().x;
+		var dy = this.getPosition().y - _other.getPosition().y;
 
 		var tangent = Math.atan2(dx, dy);
+		console.log(tangent);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
 	},
 
 	handleShieldCollision: function(_other){
 		//Get x and y difference
-		var dx = Math.abs(this.getPosition().x - _other.getPosition().x);
-		var dy = Math.abs(this.getPosition().y - _other.getPosition().y);
+		var dx = this.getPosition().x - _other.getPosition().x;
+		var dy = this.getPosition().y - _other.getPosition().y;
 
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());

@@ -1,4 +1,8 @@
-
+if(typeof module != 'undefined'){
+	var CircularBody = require('./CircularBody.js');
+	var Ball = require('./Ball.js');
+	var Timer = require('./Timer.js');
+}
 /**
 * Pole class
 *
@@ -76,3 +80,7 @@ var Pole = Ball.extend({
 	}
 
 });
+
+if(typeof module != 'undefined'){
+    module.exports = Pole;
+}

@@ -41,6 +41,21 @@ var input = {
 	*/
 	mouseDownListener: function(_e){
 		mouseDown = 1 - mouseDown;
+	},
+
+	setMousePos: function(_x,_y){
+		this.mainPointer = {isActive: true, x: _x, y: _y};
+
+		mouseX = _x;
+		mouseY = _y;
+	},
+
+	getMouseX: function(){
+		return mouseX;
+	},
+
+	getMouseY: function(){
+		return mouseY;
 	}
 }
 
@@ -49,8 +64,5 @@ var mouseY = 0;
 var mouseDown = 0;
 
 if(typeof module != 'undefined'){
-	module.exports = mouseX;
-	module.exports = mouseY;
-	module.exports = mouseDown;
-	module.exports = previousVel;
+	module.exports = input;
 }

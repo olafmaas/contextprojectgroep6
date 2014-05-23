@@ -115,3 +115,7 @@ Label = function(_text){
 		color = _color;
 	}
 }
+
+if(typeof module != 'undefined'){
+    module.exports = Label;
+}

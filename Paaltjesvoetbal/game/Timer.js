@@ -114,6 +114,8 @@ function Timer(_player){
 			return "0" + mod;
 		return mod;
 	}
+}
 
-
+if(typeof module != 'undefined'){
+	module.exports = Timer;
 }

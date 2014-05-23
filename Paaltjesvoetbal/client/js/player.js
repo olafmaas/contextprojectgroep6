@@ -46,3 +46,8 @@ socket.on('UpdateBall', function (pos) {
   ball.setPosition(pos.x - left, pos.y - topf);
 })
 
+function handleMouseMove(event) {
+  socket.emit('mouseMove', {x: event.clientX, y: event.clientY})
+}
+
+window.onmousemove = handleMouseMove;

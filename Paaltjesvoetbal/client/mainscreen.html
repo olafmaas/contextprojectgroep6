@@ -5,7 +5,10 @@
     <script src="js/socket.io.min.js"></script> 
     <script src="js/mainscreen.js"></script>
 
+    <script src="../game/IdDistributor.js"></script>
     <script src="../game/Base.js"></script>
+    <script src="../game/Player.js"></script>
+    <script src="../game/Timer.js"></script>
     <script src="../game/Game.js"></script>
     <script src="../game/Sprite.js"></script>
     <script src="../game/Ball.js"></script>
@@ -13,20 +16,101 @@
     <script src="../game/CircularBody.js"></script>
     <script src="../game/ShieldBody.js"></script>       
     <script src="../game/Input.js"></script>
-    <script src="../game/Shield.js"></script>
+    <script src="../game/ShieldServer.js"></script>
+    <script src="../game/Pole.js"></script>
+    <script src="../game/Label.js"></script>
+    <script src="../game/CollisionDetection.js"></script>
+        
     
     <style type="text/css"> 
         body {
             margin: 0;
         }
-		#myCanvas{
+		#gameCanvas{
 			border: 5px solid red;
 		}
 	</style>
 
 </head>
 <body>
+    <script type="text/javascript">
+
+var game = new Game(loadContent, update, draw);
+
+var pole;
+var ball;
+var shield;
+var player;
+
+//PLAYER2
+var pole2;
+var shield2;
+var player2;
+//PLAYER2
+
+function loadContent(){
+
+    pole = new Pole(10);
+    pole.setColor("blue");
+    pole.setPosition(150, 150);
+
+    ball = new Ball(10);
+    ball.setColor("green");
+
+    shield = new Shield(pole);
+    shield.getBody().immovable = true;
+
+    player = new Player("TestUser");
+    player.setPole(pole);
+    player.setShield(shield);
+
+    pole.setPlayer(player);
+
+    //PLAYER2
+    pole2 = new Pole(10);
+    pole2.setColor("blue");
+    pole2.setPosition(450, 150);
+
+    shield2 = new Shield(pole2);
+    shield2.getBody().immovable = true;
+
+    player2 = new Player("TestUser2");
+    player2.setPole(pole2);
+    player2.setShield(shield2);
+
+    pole2.setPlayer(player2);
+    //PLAYER2
+
+    InitializeMainScreen();
+
+}
+
+//Updates the position of the items on the canvas and checks for collisions
+function update(){
+    shield.update();
+    shield2.update();
+  canvas = document.getElementById('gameCanvas');
+  canvas.setAttribute('width', game.getWidth());
+  canvas.setAttribute('height', game.getHeight());
+
+    parentDraw();
+}
+
+//Draws everything on the canvas
+function draw(canvasContext){
+    pole.draw(canvasContext);
+    ball.draw(canvasContext);
+    shield.draw(canvasContext);
+    player.draw(canvasContext);
+
+    //PLAYER2
+    pole2.draw(canvasContext);
+    player2.draw(canvasContext);
+    shield2.draw(canvasContext);
+}
+
+        
+    </script>
 	New gamers connect to: <a href="index.html" target="_blank">localhost/client/index.html</a><br>
-	<canvas width="100" height="100" id="myCanvas"></canvas>
 </body>
 </html>

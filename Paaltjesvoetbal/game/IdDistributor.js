@@ -4,3 +4,8 @@ var IDDistributor = {
 		return this.nextId++;
 	}
 }
+
+if(typeof module != 'undefined'){
+	module.exports = IDDistributor;
+}
+

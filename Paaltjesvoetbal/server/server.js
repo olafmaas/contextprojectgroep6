@@ -2,37 +2,138 @@ var io = require('socket.io').listen(5050);
 io.set('log level', 2);   // 0 - error | 1 - warn | 2 - info | 3 - debug
 var Game = require('../game/Game.js');
 var Ball = require('../game/Ball.js');
+var Pole = require('../game/Pole.js');
+var Shield = require('../game/ShieldServer.js');
+var Player = require('../game/Player.js');
+var handleCollision = require('../game/CollisionDetection.js');
+var input = require('../game/Input.js');
 
 //////////
 // GAME //
 //////////
 
-var ball;
+
 var game = new Game(loadContent, update, drawToClients);
 
+var pole;
+var ball;
+var shield;
+var player;
+
+//PLAYER2
+var pole2;
+var shield2;
+var player2;
+//PLAYER2
+
 function loadContent(){
-  ball = new Ball(10);
-  ball.getBody().setVelocity(5);
-  ball.getBody().setVelocityDirection(-1.5 * Math.PI);
-  ball.setPosition(150, 150);
+
+    pole = new Pole(10);
+    pole.setColor("blue");
+    pole.setPosition(150, 150);
+
+    ball = new Ball(10);
+    ball.setColor("green");
+    ball.getBody().setVelocity(5);
+    ball.getBody().setVelocityDirection(2.1 * Math.PI);
+    ball.setPosition(100, 100);
+
+    shield = new Shield(pole);
+    shield.getBody().immovable = true;
+
+    player = new Player("TestUser");
+    player.setPole(pole);
+    player.setShield(shield);
+
+    pole.setPlayer(player);
+
+
+
+    //PLAYER2
+    pole2 = new Pole(10);
+    pole2.setColor("blue");
+    pole2.setPosition(450, 150);
+
+    shield2 = new Shield(pole2);
+    shield2.getBody().immovable = true;
+
+    player2 = new Player("TestUser2");
+    player2.setPole(pole2);
+    player2.setShield(shield2);
+
+    pole2.setPlayer(player2);
+    //PLAYER2
 }
 
 function update(){
+  //updateGameDimensions();
+  //input.update();
+
   ball.update();
+  pole.update();
+  shield.update();
+  player.update();
+
+  if(handleCollision(ball, shield)){
+      console.log('hit on server');
+  }
+
+  if(handleCollision(ball, pole)){
+      pole.isHit();
+  }
+
   ball.getBody().checkWorldBounds(game);
+
+
+  //PLAYER2
+  pole2.update();
+  shield2.update();
+  player2.update();
+
+  if(handleCollision(ball, shield2)){
+      console.log('hit on server');
+  }
+
+  if(handleCollision(ball, pole2)){
+      pole2.isHit();
+  }
+  //PLAYER2
+
+  //parentDraw();
+
   drawToClients();
+  drawToMainScreen();
 }
 
 function drawToClients(){
   io.of('/player').emit('UpdateBall', ball.getPosition());
+};
+
+function drawToMainScreen(){
   if(mainScreenSocket){
-    mainScreenSocket.emit('draw', ball.getPosition());
+    mainScreenSocket.emit('drawBall', ball.getPosition());
+    mainScreenSocket.emit('drawShield', {x: shield.getMouseX(), y: shield.getMouseY()});
+    //PLAYER 2
+    console.log({x: shield2.getMouseX(), y: shield2.getMouseY()});
+    mainScreenSocket.emit('drawShield2', {x: shield2.getMouseX(), y: shield2.getMouseY()});
+    //PLAYER 2
   }
-}
+};
+
+function updateMainScreenCanvasSize(){
+  game.setWidth(grid[0].length * canvasWidth);
+  game.setHeight(grid.length * canvasHeight);
+  if(mainScreenSocket){
+    mainScreenSocket.emit('newCanvasSize', {width: grid[0].length * canvasWidth, height: grid.length * canvasHeight});
+  }
+};
 
 /////////////////
 // CONNECTIONS //
 /////////////////
+
+//PLAYER2
+var PLAYER1 = false;
 
 var mainScreenSocket;
 var playerSockets = {};
@@ -81,14 +182,6 @@ function connectMainScreen(socket){
   });
 };
 
-function updateMainScreenCanvasSize(){
-  game.setWidth(grid[0].length * canvasWidth);
-  game.setHeight(grid.length * canvasHeight);
-  if(mainScreenSocket){
-    mainScreenSocket.emit('newCanvasSize', {width: grid[0].length * canvasWidth, height: grid.length * canvasHeight});
-  }
-};
-
 function connectClient(socket){ 
   playerSockets[socket.id] = socket;
 
@@ -126,6 +219,20 @@ function connectClient(socket){
   socket.on('shieldHit', function (data){
     console.log('shildhit on ' + socket.id);
   });
+
+  if(!PLAYER1){
+    PLAYER1 = true;
+    socket.on('mouseMove', function (data){
+      //console.log(data)
+      shield.setMousePos(data.x, data.y);
+    });
+  } else {
+    console.log('jher')
+      socket.on('mouseMove', function (data){
+      //console.log(data)
+      shield2.setMousePos(data.x+300, data.y);
+    });
+  }
 
   //Handle Client Disconnet
   socket.on('disconnect', function (data){

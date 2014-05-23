@@ -1,3 +1,8 @@
+if(typeof module != 'undefined'){
+    var ShieldBody = require('./ShieldBody.js');
+    var CircularBody = require('./CircularBody.js');
+}  
+
 var CollisionDetection ={
 	handledCollisions: [],
 
@@ -45,7 +50,7 @@ var CollisionDetection ={
 		if(_bodyOne instanceof ShieldBody) return this.collidesShieldWith(_bodyOne, _bodyTwo);
 
 		//If this code is reached the collision of the _bodyOne type is not implemented
-		throw "This Collision is not Implemented";
+		//throw "This Collision is not Implemented";
 	},
 
 	collidesBallWith: function(_ball, _other){
@@ -53,7 +58,7 @@ var CollisionDetection ={
 		if(_other instanceof ShieldBody) return this.collidesBallWithShield(_ball, _other);
 
 		//If this code is reached the collision of the _other type is not implemented
-		throw "This Collision is not Implemented";
+		//throw "This Collision is not Implemented";
 	},
 
 	collidesShieldWith: function(_shield, _other){
@@ -61,7 +66,7 @@ var CollisionDetection ={
 		if(_other instanceof ShieldBody) throw "This Collision is not Implemented";
 
 		//If this code is reached the collision of the _other type is not implemented
-		throw "This Collision is not Implemented";
+		//throw "This Collision is not Implemented";
 	},
 
 	collidesBallWithBall: function(_ball1, _ball2){
@@ -102,3 +107,7 @@ var CollisionDetection ={
 handleCollision = function(_objectOne, _objectTwo){
 	return CollisionDetection.handleCollision(_objectOne.getBody(), _objectTwo.getBody());
 }
+
+if(typeof module != 'undefined'){
+    module.exports = handleCollision;
+} 

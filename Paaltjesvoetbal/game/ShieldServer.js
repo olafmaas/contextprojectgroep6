@@ -22,6 +22,8 @@ function Shield(_pole){
 	var size = 0.5 * Math.PI; //The size of the shield
 	var color = "#000000"; //Color of the shield
 	var body;
+	var mouseX = 0;
+	var mouseY = 0;
 
 	/**
 	* Draws the shield on the canvas
@@ -61,7 +63,7 @@ function Shield(_pole){
 	* @return {Float} The angle between the shield and the current mousepointer.
 	*/
 	this.calculateAngle = function(){
-		return Math.atan2(input.getMouseY() - this.getPosition().y, input.getMouseX() - this.getPosition().x);
+		return Math.atan2(mouseY- this.getPosition().y, mouseX - this.getPosition().x);
 	}
 
 	/**
@@ -184,6 +186,19 @@ function Shield(_pole){
 	this.getBody = function(){
 		return body;
 	}	
+
+	this.setMousePos = function(_x,_y){
+		mouseX = _x;
+		mouseY = _y;
+	}
+
+	this.getMouseX = function(){
+		return mouseX;
+	}
+
+	this.getMouseY =  function(){
+		return mouseY;
+	}
 
 	//Stuff to execute when constructing
 	this.enableBody();

@@ -1,5 +1,7 @@
 //Player class
-
+if(typeof module != 'undefined'){
+	var Label = require('./Label.js');
+}
 /**
 * Player class
 * @class Player
@@ -181,4 +183,8 @@ function Player(_name){
 	this.getHighscore = function(){
 		return highscore;
 	}
+}
+
+if(typeof module != 'undefined'){
+    module.exports = Player;
 }
