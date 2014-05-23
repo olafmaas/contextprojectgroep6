@@ -73,6 +73,17 @@ function Timer(_player){
 	}
 	
 	/**
+	* Stops the timer
+	*
+	* @method Timer#stop
+	*/
+	this.stop = function(){
+		var savedThis = this;
+		clearInterval(interval);
+		time = 0;
+	}
+	
+	/**
 	* Returns the current time in minutes
 	*
 	* @method Timer#getMinutes

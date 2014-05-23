@@ -18,6 +18,7 @@ function Player(_name){
 	var score = 0; //Current score of the player
 	var highscore = 0; //Highscore of the player
 	var label = new Label("Score: 0 | Time alive: 0:00 | Highscore: 0");
+	var label2 = new Label("Username: " + name);
 	
 	/**
 	* Updates the score label which will be drawn on screen
@@ -26,11 +27,11 @@ function Player(_name){
 	* @method Player#update
 	*/
 	this.update = function(){
+		
 		var lblPosition = {x: 100, y: 500}; //hardcoded position for now..
 		label.setPosition(lblPosition);
 		var min = pole.getTimer().getMinutes();
 		var sec = pole.getTimer().getSeconds();
-
 		label.setText("Score: " + score + " | Time alive: " + min + ":" + sec + " | Highscore: " + highscore);
 	}
 
@@ -42,6 +43,10 @@ function Player(_name){
 	*/
 	this.draw = function(_canvasContext){
 		label.draw(_canvasContext);
+		
+		var lbl2Position = {x: 300, y: 100};
+		label2.setPosition(lbl2Position);
+		label2.draw(_canvasContext);
 	}
 
 	/**

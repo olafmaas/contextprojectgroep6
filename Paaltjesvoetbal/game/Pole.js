@@ -59,6 +59,7 @@ var Pole = Ball.extend({
 		else {
 			this.setColor(this.prevColor); //Revert back to previous color
 			this.hit = false; //remove hit flag
+			this.timer.startTimer();
 		}
 	},
 
@@ -78,7 +79,7 @@ var Pole = Ball.extend({
 			//console.log("Highscore: " + this.player.getHighscore());
 		}
 		this.player.setScore(0); //reset score
-		this.timer.reset(); //reset timer
+		this.timer.stop(); //reset timer
 	},
 
 	getTimer: function(){
