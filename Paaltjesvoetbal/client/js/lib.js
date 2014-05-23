@@ -89,6 +89,7 @@ function update(){
         balls.checkCollision();
         poles.checkCollision();
         shields.checkCollision();
+
         balls.checkWorldBounds(game);     
     }
     parentDraw();
