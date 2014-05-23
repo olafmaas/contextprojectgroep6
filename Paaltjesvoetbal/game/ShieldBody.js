@@ -6,8 +6,11 @@ if(typeof module != 'undefined'){
 	var IDDistributor = require('./IDDistributor.js');
 }  
 /**
-*
-*
+* Constructor for the shield body
+* @class Shieldbody
+* @classdesc Shieldbody class
+* @constructor
+* @param {shield} _parent - The shield object
 */
 var ShieldBody = Body.extend({
 	angle: 0,
@@ -15,17 +18,13 @@ var ShieldBody = Body.extend({
 	parentShield: 0,
 	ID: -1,
 
-	/**
-	* Constructor for the shield body
-	* @method ShieldBody#constructor
-	* @param {shield} _parent - The shield object
-	*/
 	constructor: function(_parent){
 		this.angle = _parent.getAngle();
 		this.radius = _parent.getRadius();
 		this.parentShield = _parent;
 		this.position = _parent.getPosition();
 		this.ID = IDDistributor.getNewId();
+		
 	},
 
 	/**

@@ -1,5 +1,10 @@
 /**
- * A high resolution timer.
+ * A high resolution timer needed for the server.
+ * @class highResolutionTimer
+ * @classdesc A high resolution timer needed to stay in sync with the server.
+ * @constructor
+ * @param {number} delay - The delay between the timer
+ * @param {function} callback - The callback function for the timer.
  */
 function highResolutionTimer(delay, callback){
     // self-reference
@@ -10,8 +15,10 @@ function highResolutionTimer(delay, callback){
     var start = new Date().getTime();
 
     /**
-     * Delayed running of the callback.
-     */
+    * Delays the next call to the timer
+    * 
+    * @method highResolutionTimer#delayed
+    */
     function delayed(){
         callback(delay);
         counter ++;

@@ -5,6 +5,12 @@
 * @constructor
 * @param {Object} _type - The type of objects which are stored in the group.
 */
+if(typeof module != 'undefined'){
+	var Ball = require('./Ball.js');
+	var Collision = require('./Collision.js');
+}
+//TOOD: documentation
+//TODO: For now it's just for balls.
 function Group(_type){
 
 	//Variables
@@ -74,11 +80,14 @@ function Group(_type){
 	* @param {Game} _game - Game object supplies the boundaries
 	*/
 	this.checkWorldBounds = function(_game){
+		var collided = false;
 		if(type == Ball) { //Only check world bounds if it's a ball
 			members.forEach(function (_object){
-				_object.getBody().checkWorldBounds(_game);
+				if(_object.getBody().checkWorldBounds(_game))
+					collided = true;
 			});
 		}
+		return collided;
 	}
 
 	/**
@@ -86,8 +95,8 @@ function Group(_type){
 	* @method Group#addCollision
 	* @param {Object} _object1 - Object 1 for the possible collision
 	* @param {Object} _object2 - Object 2 for the possible collision, can be a list
-	* @param {Function} _funcAfter - 
-	* @param {Object} _this -
+	* @param {Function} _funcAfter - The function that will be triggered after collisionhandling has succeeded (e.g. for pole) (can be null)
+	* @param {Object} _this - The 'this' that will be submitted to the funcAfter function (can be null)
 	*/
 	this.addCollision = function(_object1, _object2, _funcAfter, _this){
 		//In case the second object is a group
@@ -111,16 +120,19 @@ function Group(_type){
 	* @method Group#checkCollision
 	*/
 	this.checkCollision = function(){
+		var collided = false;
 		collision.forEach(function (_coll) {
-			_coll.execute();
+			if(_coll.execute())
+				collided = true;
 		});
+		return collided;
 	}
 
 	//takes one group in which everything with everything is combined.
 	/**
 	* Adds collision between the objects of the same group (is used in the balls group)
 	* @method Group#addCollisionCombineAll
-	* @param {Group} _objectGroup - List of objects
+	* @param {Group} _objectGroup - Group of objects
 	*/
 	this.addCollisionCombineAll = function(_objectGroup){
 		var length = _objectGroup.getMemberLength();

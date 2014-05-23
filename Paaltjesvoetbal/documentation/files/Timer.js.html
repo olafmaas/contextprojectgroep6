@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/Camera.js</title>
+    <title>Timer.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,13 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/Camera.html">Camera</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/Collision.html">Collision</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
                 <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
                 <li><a href="../classes/Shield.html">Shield</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
             
             </ul>
 
@@ -90,34 +110,143 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/Camera.js</h1>
+                        <h1 class="file-heading">File: Timer.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-//Camera class
+//Timer class
 
-//Properties of the camera object
-Camera = function(){
-	var center = {x: 0, y: 0};
-	var zoom - 1;
+/**
+* Timer class
+* @class Timer
+* @classdesc Class which handles the timers used for the scores in game.
+* @constructor
+* @param {Player} _player - The player to which the timer belongs. 
+*/
+function Timer(_player){
+
+	var time = 0;
+	var interval;
+	var player = _player;
+	var paused = false;
 
 	/**
-	* Get the center position of the camera
+	* Starts the timer
 	*
-	* @method getCenter
+	* @method Timer#startTimer
 	*/
-	this.getCenter = function(){
-		return center;
+	this.startTimer = function(){
+		var savedThis = this;
+		interval = setInterval(savedThis.count, 1000);
 	}
 
 	/**
-	* Get the zoom factor of the camera
-	* @method getZoom
+	* Adds one to the current time and updates player score
+	*
+	* @method Timer#count
 	*/
-	this.getZoom = function(){
-		return zoom;
+	this.count = function(){
+		time++;
+		player.incrementScore(1);
+		//console.log(time + &quot; | &quot; + player.getScore());
+	}
+
+	/**
+	* Pauses the timer (but only if it isn&#x27;t paused already)
+	*
+	* @method Timer#pause
+	*/
+	this.pause = function(){
+		if(!paused){
+			clearInterval(interval);
+			paused = true;
+		}
+	}
+
+	/**
+	* Resumes the timer (but only if it was paused at first)
+	*
+	* @method Timer#resume
+	*/
+	this.resume = function(){
+		if(paused){
+			var savedThis = this;
+			interval = setInterval(this.count, 1000);
+			paused = false;
+		}
+	}
+	
+	/**
+	* Resets the timer
+	*
+	* @method Timer#reset
+	*/
+	this.reset = function(){
+		var savedThis = this;
+		clearInterval(interval);
+		time = 0;
+		interval = setInterval(savedThis.count, 1000); //Start counter again.
+	}
+	
+	/**
+	* Stops the timer
+	*
+	* @method Timer#stop
+	*/
+	this.stop = function(){
+		var savedThis = this;
+		clearInterval(interval);
+		time = 0;
+	}
+	
+	/**
+	* Returns the current time in minutes
+	*
+	* @method Timer#getMinutes
+	* @return {number} The amount of minutes rounded down.
+	*/
+	this.getMinutes = function(){
+		return Math.floor(time / 60);
+	}
+
+	/**
+	* Returns the state of the
+	*
+	* @method Timer#isPaused
+	* @return {boolean} Wether the timer is paused
+	*/
+
+	this.isPaused = function(){
+		return paused;
+	}
+
+	/**
+	* Returns the count
+	*
+	* @method Timer#isPaused
+	* @return {number} The current number of seconds.
+	*/
+	this.getTime = function(){
+		return time;
+	}
+	/**
+	* Returns the current time in seconds (between 0 and 59, otherwise it&#x27;s a minute)
+	*
+	* @method Timer#getSeconds
+	* @return {String} The amount of seconds between 0 and 59, formatted on two numbers (so 00, 01, etc)
+	*/
+	this.getSeconds = function(){
+		var mod = time % 60;
+		if(mod &lt; 10)
+			return &quot;0&quot; + mod;
+		return mod;
 	}
 }
+
+if(typeof module != &#x27;undefined&#x27;){
+	module.exports = Timer;
+}
+
     </pre>
 </div>
 

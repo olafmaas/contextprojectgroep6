@@ -49,7 +49,13 @@
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
+                <li><a href="../classes/Collision.html">Collision</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -62,6 +68,8 @@
                 <li><a href="../classes/Shield.html">Shield</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
             
             </ul>
 
@@ -111,8 +119,8 @@ if(typeof module != &#x27;undefined&#x27;){
     var CircularBody = require(&#x27;./CircularBody.js&#x27;);
 	var Input = require(&#x27;./Input.js&#x27;);
 	var Body = require(&#x27;./Body.js&#x27;);
+	var IDDistributor = require(&#x27;./IDDistributor.js&#x27;);
 }  
-
 /**
 *
 *
@@ -121,6 +129,7 @@ var ShieldBody = Body.extend({
 	angle: 0,
 	radius: 1,
 	parentShield: 0,
+	ID: -1,
 
 	/**
 	* Constructor for the shield body
@@ -132,6 +141,7 @@ var ShieldBody = Body.extend({
 		this.radius = _parent.getRadius();
 		this.parentShield = _parent;
 		this.position = _parent.getPosition();
+		this.ID = IDDistributor.getNewId();
 	},
 
 	/**

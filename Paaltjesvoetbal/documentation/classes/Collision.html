@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Pole</title>
+    <title>Collision</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -110,7 +110,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Pole Class</h1>
+                        <h1>Collision Class</h1>
 <div class="box meta">
     
 
@@ -118,7 +118,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/Pole.js.html#l6"><code>Pole.js:6</code></a>
+            Defined in: <a href="../files/Collision.js.html#l1"><code>Collision.js:1</code></a>
         </div>
     
 
@@ -130,15 +130,15 @@
 
 
 <div class="box intro">
-    <p>Pole class</p>
+    <p>Collision class</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Pole" class="method item">
-    <h3 class="name"><code>Pole</code></h3>
+        <div id="method_Collision" class="method item">
+    <h3 class="name"><code>Collision</code></h3>
 
     
         <div class="args">
@@ -146,7 +146,25 @@
             
                 <li class="arg">
                     
-                        <code>_radius</code>
+                        <code>_object1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_object2</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_funcAfter</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_this</code>
                     
                 </li>
             
@@ -179,7 +197,7 @@
             
         
         
-        <a href="../files/Pole.js.html#l6"><code>Pole.js:6</code></a>
+        <a href="../files/Collision.js.html#l1"><code>Collision.js:1</code></a>
         
         </p>
 
@@ -201,15 +219,69 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_radius</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">_object1</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The radius of the pole.</li>
+<li>The first object for the collision (No groups)</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_object2</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The secod object for the collision (Can be a group)</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_funcAfter</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>A function which will be triggered after the collision handling (Optional)</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_this</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The &#39;this&#39; object that will be used as parameter in the function triggered after the collision (Optional)</li>
 </ul>
 
                     </div>
@@ -252,14 +324,7 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Pole#coolDown">Pole#coolDown</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Pole#isHit">Pole#isHit</a>
+                                <a href="#method_Collision#execute">Collision#execute</a>
 
                                 
                                 
@@ -281,8 +346,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Pole#coolDown" class="method item">
-    <h3 class="name"><code>Pole#coolDown</code></h3>
+                    <div id="method_Collision#execute" class="method item">
+    <h3 class="name"><code>Collision#execute</code></h3>
 
     
         <span class="paren">()</span>
@@ -313,7 +378,7 @@
             
         
         
-        <a href="../files/Pole.js.html#l48"><code>Pole.js:48</code></a>
+        <a href="../files/Collision.js.html#l18"><code>Collision.js:18</code></a>
         
         </p>
 
@@ -324,64 +389,9 @@
     </div>
 
     <div class="description">
-        <p>Handles the cooldown period of the pole, which includes a change of color
-and not being able to get hit again for some amount of time.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Pole#isHit" class="method item">
-    <h3 class="name"><code>Pole#isHit</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Pole.js.html#l26"><code>Pole.js:26</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Handles everything when the pole is hit:
-from setting the hit flag, to managing the cooldown of the pole.</p>
+        <p>Executes the collision depending on the parameters that are set.
+In case the funcAfter parameter is set, this function will be triggered 
+when handleCollision returns true;</p>
 
     </div>
 

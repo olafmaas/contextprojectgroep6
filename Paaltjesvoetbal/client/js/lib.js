@@ -1,8 +1,3 @@
-//Vars
-var pole;
-var shield;
-var player;
-
 //Groups
 var balls;
 var poles;
