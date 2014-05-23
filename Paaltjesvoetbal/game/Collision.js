@@ -23,17 +23,25 @@ function Collision(_object1, _object2, _funcAfter, _this){
 	* @method Collision#execute
 	*/
 	this.execute = function(){
-
+		var collided = false;
 		//Execute collision function
 		if(obj2 !== null && obj2 !== undefined){
-			if(handleCollision(obj1, obj2) && func != null){
+			if(handleCollision(obj1, obj2)){
+				if(func != null){
 				//do something after collision
-				func(funcThis);
+					func(funcThis);
+				}
+				collided = true;
 			}
 		}
+		return collided;
 	}
 }
 
 if(typeof module != 'undefined'){
     module.exports = Collision;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/multiplayer
