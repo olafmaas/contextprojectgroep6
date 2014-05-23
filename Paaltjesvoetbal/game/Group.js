@@ -86,8 +86,8 @@ function Group(_type){
 	* @method Group#addCollision
 	* @param {Object} _object1 - Object 1 for the possible collision
 	* @param {Object} _object2 - Object 2 for the possible collision, can be a list
-	* @param {Function} _funcAfter - 
-	* @param {Object} _this -
+	* @param {Function} _funcAfter - The function that will be triggered after collisionhandling has succeeded (e.g. for pole) (can be null)
+	* @param {Object} _this - The 'this' that will be submitted to the funcAfter function (can be null)
 	*/
 	this.addCollision = function(_object1, _object2, _funcAfter, _this){
 		//In case the second object is a group
@@ -120,7 +120,7 @@ function Group(_type){
 	/**
 	* Adds collision between the objects of the same group (is used in the balls group)
 	* @method Group#addCollisionCombineAll
-	* @param {Group} _objectGroup - List of objects
+	* @param {Group} _objectGroup - Group of objects
 	*/
 	this.addCollisionCombineAll = function(_objectGroup){
 		var length = _objectGroup.getMemberLength();
