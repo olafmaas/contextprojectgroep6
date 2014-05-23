@@ -1,5 +1,5 @@
 
-
+//TODO: For now it's just for balls.
 function Group(_type){
 
 	//Variables
@@ -42,23 +42,19 @@ function Group(_type){
 		}
 	}
 
-	this.addCollision = function(_object1, _object2){
+	this.addCollision = function(_object1, _object2, _funcAfter, _this){
 		//In case the second object is a group
 		if(_object2 instanceof Group){
 			var members = _object2.getMembers();
 			for(var i = 0; i < members.length; i++){
-				console.log("a");
 				if(_object1 !== members[i]){
-					console.log("b");
-					var tempObj = new Collision(_object1, members[i]);
-					console.log(tempObj);
+					var tempObj = new Collision(_object1, members[i], _funcAfter, _this);
 					collision.push(tempObj);
 				}
 			}
-		}
-		
+		}	
 		else {
-			var collObj = new Collision(_object1, _object2);
+			var collObj = new Collision(_object1, _object2, _funcAfter, _this);
 			collision.push(collObj);
 		}
 	}
@@ -67,6 +63,18 @@ function Group(_type){
 		collision.forEach(function (_coll) {
 			_coll.execute();
 		});
+	}
+
+	//takes one group in which everything with everything is combined.
+	this.addCollisionCombineAll = function(_objectGroup){
+		var length = _objectGroup.getMemberLength();
+		var members = _objectGroup.getMembers();
+		for(var i = 0; i < length; i++){
+			for(var j = i; j < length; j++){
+				var coll = new Collision(members[i], members[j], null, null);
+				collision.push(coll);
+			}
+		}
 	}
 
 }

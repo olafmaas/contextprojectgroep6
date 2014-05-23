@@ -66,7 +66,6 @@ var CircularBody = Body.extend({
 		var dy = this.getPosition().y - _other.getPosition().y;
 
 		var tangent = Math.atan2(dx, dy);
-		console.log(tangent);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
 	},
 

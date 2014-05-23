@@ -43,18 +43,6 @@ function loadContent(){
         balls.addMember(ball);
     }
 
-/*    ball = new Ball(10);
-    ball.setColor("green");
-    ball.getBody().setVelocity(5);
-    ball.getBody().setVelocityDirection(1.75 * Math.PI);
-    ball.setPosition(150, 150);
-
-    ball2 = new Ball(10);
-    ball2.setColor("black");
-    ball2.getBody().setVelocity(5);
-    ball2.getBody().setVelocityDirection(1.25 * Math.PI);
-    ball2.setPosition(250, 150);
-*/
     shield = new Shield(pole);
     shield.getBody().immovable = true;
 
@@ -64,8 +52,9 @@ function loadContent(){
 
     pole.setPlayer(player);
 
-    balls.addCollision(pole, balls);
-    balls.addCollision(shield, balls);
+    balls.addCollision(pole, balls, pole.isHit, pole);
+    balls.addCollision(shield, balls, null, null);
+    balls.addCollisionCombineAll(balls);
 
     Initialize();
 }
@@ -81,21 +70,8 @@ function update(){
         balls.update();
 
         pole.update();
-   //     ball.update();
-    //    ball2.update();
         shield.update();
         player.update(); //Update score of the player on screen
-
-   /*    handleCollision(ball, ball2);
-        handleCollision(ball, shield);
-        handleCollision(ball2, shield);
-
-        if(handleCollision(ball2, pole) || handleCollision(ball, pole))
-            pole.isHit();
-
-        ball.getBody().checkWorldBounds(game); //ball1 to worldBounds
-        ball2.getBody().checkWorldBounds(game); //ball2 to worldBounds
-*/
 
         balls.checkCollision();
         balls.checkWorldBounds(game);
@@ -107,8 +83,6 @@ function update(){
 //Draws everything on the canvas
 function draw(canvasContext){
     pole.draw(canvasContext);
- //   ball.draw(canvasContext);
- //   ball2.draw(canvasContext);
     shield.draw(canvasContext);
 
     //Draw group
