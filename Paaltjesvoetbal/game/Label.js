@@ -19,6 +19,7 @@ Label = function(_text){
 	* @param {CanvasContext} _canvasContext - The canvascontext which should be drawn.
 	*/
 	this.draw = function(_canvasContext){
+		_canvasContext.fillStyle = this.color;
 		_canvasContext.font = this.getFontSize() + "px " + this.getFont();
 		_canvasContext.fillText(this.getText(), this.getPosition().x, this.getPosition().y)
 	}
