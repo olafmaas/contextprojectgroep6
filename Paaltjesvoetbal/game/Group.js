@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
 * Group class
 * @class Group
@@ -6,14 +5,12 @@
 * @constructor
 * @param {Object} _type - The type of objects which are stored in the group.
 */
-=======
 if(typeof module != 'undefined'){
 	var Ball = require('./Ball.js');
 	var Collision = require('./Collision.js');
 }
 //TOOD: documentation
 //TODO: For now it's just for balls.
->>>>>>> origin/multiplayer
 function Group(_type){
 
 	//Variables
@@ -149,14 +146,6 @@ function Group(_type){
 	}
 }
 
-<<<<<<< HEAD
 if(typeof module != 'undefined'){
     module.exports = Group;
 }
-=======
-}
-
-if(typeof module != 'undefined'){
-    module.exports = Group;
-}
->>>>>>> origin/multiplayer

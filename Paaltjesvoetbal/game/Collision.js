@@ -40,8 +40,4 @@ function Collision(_object1, _object2, _funcAfter, _this){
 
 if(typeof module != 'undefined'){
     module.exports = Collision;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/multiplayer
