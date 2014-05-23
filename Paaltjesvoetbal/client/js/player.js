@@ -45,8 +45,16 @@ socket.on('UpdateBall', function (pos) {
   ball.setPosition(pos.x - left, pos.y - topf);
 })
 
-function sendShieldAngle(event) {
+socket.on('UpdateBallAngle', function (angle) {
+  ball.getBody().setVelocityDirection(angle);
+})
+
+function sendShieldAngle() {
   socket.emit('shieldAngle', shield.getAngle());
 }
 
 window.onmousemove = sendShieldAngle;
+
+function sendBallAngle() {
+	socket.emit('ballAngle', ball.getBody().getVelocityDirection());
+}

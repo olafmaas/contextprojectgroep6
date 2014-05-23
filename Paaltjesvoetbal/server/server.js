@@ -6,7 +6,6 @@ var Pole = require('../game/Pole.js');
 var Shield = require('../game/Shield.js');
 var Player = require('../game/Player.js');
 var handleCollision = require('../game/CollisionDetection.js');
-var input = require('../game/Input.js');
 
 //////////
 // GAME //
@@ -62,7 +61,11 @@ function loadContent(){
     //PLAYER2
 }
 
+//var date = 0;
 function update(){
+
+  //console.log(date - Date.now());
+  //date = Date.now()
   //updateGameDimensions();
   //input.update();
 
@@ -71,15 +74,18 @@ function update(){
   shield.update();
   player.update();
 
-  if(handleCollision(ball, shield)){
-      console.log('hit on server');
-  }
+  //handleCollision(ball, shield)
 
   if(handleCollision(ball, pole)){
       pole.isHit();
+      io.of('/player').emit('UpdateBall', ball.getPosition());
+      io.of('/player').emit('UpdateBallAngle', ball.getBody().getVelocityDirection());
   }
 
-  ball.getBody().checkWorldBounds(game);
+  if(ball.getBody().checkWorldBounds(game)){
+    io.of('/player').emit('UpdateBall', ball.getPosition());
+    io.of('/player').emit('UpdateBallAngle', ball.getBody().getVelocityDirection());
+  }
 
 
   //PLAYER2
@@ -87,9 +93,7 @@ function update(){
   shield2.update();
   player2.update();
 
-  if(handleCollision(ball, shield2)){
-      console.log('hit on server');
-  }
+  handleCollision(ball, shield2)
 
   if(handleCollision(ball, pole2)){
       pole2.isHit();
@@ -98,7 +102,7 @@ function update(){
 
   //parentDraw();
 
-  drawToClients();
+  //drawToClients();
   drawToMainScreen();
 }
 
@@ -225,9 +229,9 @@ function connectClient(socket){
       socket.on('shieldAngle', function (angle){
       shield2.setAngle(angle);
     });
-
   }
 
+<<<<<<< HEAD
   socket.on('userName', function(data){
     if(!playerNames[data.name]) {
       playerNames[data.name] = true;
@@ -238,6 +242,11 @@ function connectClient(socket){
       console.info(data.name);
     }
   })
+=======
+  socket.on('ballAngle', function (velocityDirection){
+    ball.getBody().setVelocityDirection(velocityDirection);
+  });
+>>>>>>> origin/multiplayer
 
   //Handle Client Disconnet
   socket.on('disconnect', function (data){

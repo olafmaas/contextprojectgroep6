@@ -1,5 +1,7 @@
 //Game class
-
+if(typeof module != 'undefined'){
+	var highResolutionTimer = require('./HighResolutionTimer.js');
+}
 /**
 * Game class
 * @class Game
@@ -99,7 +101,7 @@ function Game(load, update, draw){
 	*/
 	Boot = function(){
 		load();
-		setInterval(update, 17);
+		highResolutionTimer(17, update);
 	}
 
 	setTimeout(Boot, 1000);

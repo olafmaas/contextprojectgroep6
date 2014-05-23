@@ -8,4 +8,3 @@ var IDDistributor = {
 if(typeof module != 'undefined'){
 	module.exports = IDDistributor;
 }
-
