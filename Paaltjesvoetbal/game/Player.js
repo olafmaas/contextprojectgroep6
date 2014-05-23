@@ -33,7 +33,7 @@ function Player(_name){
 		var min = pole.getTimer().getMinutes();
 		var sec = pole.getTimer().getSeconds();
 		label.setText("Score: " + score + " | Time alive: " + min + ":" + sec + " | Highscore: " + highscore);
-	
+
 		var lbl2Position = {x: 300, y: 100};
 		label2.setPosition(lbl2Position);
 	}

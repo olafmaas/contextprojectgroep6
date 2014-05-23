@@ -64,6 +64,7 @@ function loadContent(){
         player.setShield(tempShield);
 
         tempPole.setPlayer(player);
+        players.addMember(player);
     }
 
     //Ball to all other balls collision
