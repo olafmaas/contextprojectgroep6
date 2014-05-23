@@ -22,10 +22,6 @@ var NROFPSP = 3; //Nr of Poles, Shields and Players (PSP) which should all be th
 */
 function loadContent(){
 
-    poles = new Group(Pole);
-    shields = new Group(Shield);
-    players = new Group(Player);
-
     //Create groups and fill them:
     createBalls();
     createPoles();
@@ -96,7 +92,7 @@ function createBalls(){
 * @method Lib#createPoles
 */
 function createPoles(){
-    poles = new Group(Poles);
+    poles = new Group(Pole);
 
     for(var i = 0; i < NROFPSP; i++){
         var pole = new Pole(10);
