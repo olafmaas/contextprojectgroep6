@@ -92,10 +92,10 @@ var CircularBody = Body.extend({
 		var width = _game.getWidth();
 		var height = _game.getHeight();
 
-		if(nextXPos > width || nextXPos < 0)
+		if(nextXPos > width - this.getRadius() || nextXPos < this.getRadius())
 			this.revertXSpeed();
 
-		if(nextYPos > height || nextYPos < 0)
+		if(nextYPos > height - this.getRadius()|| nextYPos < this.getRadius())
 			this.revertYSpeed();
 	},
 
