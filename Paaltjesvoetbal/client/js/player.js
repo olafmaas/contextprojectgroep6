@@ -24,6 +24,14 @@ socket.on('disconnect', function(data){
   console.info('Disconnected from server');
 });
 
+socket.on('userName', function(data){
+	if(!data.free){
+		userName = prompt("Please enter your name","User"+Math.floor(Math.random()*10000));
+		player.setName(userName);
+		socket.emit('userName', {name: player.getName()});
+	}
+})
+
 //Game updates
 var left = 0; //MOVE TO SERVER
 var topf = 0; //MOVE TO SERVER

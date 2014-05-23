@@ -135,10 +135,12 @@ var mainScreenSocket;
 var playerSockets = {};
 var maximumPlayers = 0;
 
+
 // GAME EN GRID GEBEUREN
 var canvasWidth = 300;
 var canvasHeight = 300;
 var maximumCol;
+var playerNames = new Array();
 var grid = new Array();
 grid.push(new Array());
 
@@ -208,6 +210,8 @@ function connectClient(socket){
     grid[i].push(socket.id);
   }
   socket.emit('canvasPos', {left: x * canvasWidth, top: y*canvasHeight});
+  socket.emit('userName', {free: false});
+
 
   updateMainScreenCanvasSize();
   log();
@@ -223,6 +227,17 @@ function connectClient(socket){
     });
 
   }
+
+  socket.on('userName', function(data){
+    if(!playerNames[data.name]) {
+      playerNames[data.name] = true;
+      socket.emit('userName', {free: true});
+      console.info("Ok"+data.name);
+    }else{
+      socket.emit('userName', {free: false});
+      console.info(data.name);
+    }
+  })
 
   //Handle Client Disconnet
   socket.on('disconnect', function (data){
