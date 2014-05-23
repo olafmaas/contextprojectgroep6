@@ -1,11 +1,9 @@
-var port = 5050
-var server = 'http://localhost'
+//Make socket.io connection
+var port = 5050;
+var server = 'http://localhost';
 var socket = io.connect(server+":"+port).of('/player');
 
-var left = 0;
-var topf = 0;
-var context;
-
+//Basic socket listeners
 socket.on('connect_failed', function (reason){ 
   console.error('connect_failed: ', reason);
 });
@@ -20,34 +18,27 @@ socket.on('connect', function(){
 
 socket.on('message', function (message, callback) {
     console.log('Message from server: ' + message);
-})
-
-socket.on('disconnect', function(data){
-  console.info('Disconnected from server')
 });
 
+socket.on('disconnect', function(data){
+  console.info('Disconnected from server');
+});
 
+//Game updates
+var left = 0; //MOVE TO SERVER
+var topf = 0; //MOVE TO SERVER
+//MOVE TO SERVER
 socket.on('canvasPos', function (data){
 	left = data.left;
 	topf = data.top;
-})
-
-socket.on('draw', function (data) {
-  context= myCanvas.getContext('2d');
-  context.clearRect(0,0,300,300);
-  context.beginPath();
-  context.fillStyle="#0000ff";
-  context.arc(data.x - left,data.y - topf,20,0,Math.PI*2,true);
-  context.closePath();
-  context.fill();
 })
 
 socket.on('UpdateBall', function (pos) {
   ball.setPosition(pos.x - left, pos.y - topf);
 })
 
-function handleMouseMove(event) {
-  socket.emit('mouseMove', {x: event.clientX, y: event.clientY})
+function sendShieldAngle(event) {
+  socket.emit('shieldAngle', shield.getAngle());
 }
 
-window.onmousemove = handleMouseMove;
+window.onmousemove = sendShieldAngle;

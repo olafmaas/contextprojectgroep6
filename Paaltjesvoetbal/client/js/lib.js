@@ -5,11 +5,15 @@ var ball2;
 var shield;
 var player;
 
+<<<<<<< HEAD
 //Groups
 var balls;
 
 //Nr of balls
 var NROFBALLS = 20;
+=======
+var balls = [];
+>>>>>>> origin/multiplayer
 
 function loadContent(){
 
@@ -55,6 +59,9 @@ function loadContent(){
     ball2.getBody().setVelocityDirection(1.25 * Math.PI);
     ball2.setPosition(250, 150);
 
+    balls.push(ball);
+    balls.push(ball2);
+
     shield = new Shield(pole);
     shield.getBody().immovable = true;
 
@@ -77,8 +84,11 @@ function update(){
         //Update group
    //     balls.update();
         pole.update();
-        ball.update();
-        ball2.update();
+
+        for (var i = 0; i < balls.length; ++i) {
+            balls[i].update();
+        }
+
         shield.update();
         player.update(); //Update score of the player on screen
 
