@@ -231,7 +231,6 @@ function connectClient(socket){
     });
   }
 
-<<<<<<< HEAD
   socket.on('userName', function(data){
     if(!playerNames[data.name]) {
       playerNames[data.name] = true;
@@ -242,11 +241,10 @@ function connectClient(socket){
       console.info(data.name);
     }
   })
-=======
+
   socket.on('ballAngle', function (velocityDirection){
     ball.getBody().setVelocityDirection(velocityDirection);
   });
->>>>>>> origin/multiplayer
 
   //Handle Client Disconnet
   socket.on('disconnect', function (data){
