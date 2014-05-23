@@ -41,21 +41,6 @@ var input = {
 	*/
 	mouseDownListener: function(_e){
 		mouseDown = 1 - mouseDown;
-	},
-
-	setMousePos: function(_x,_y){
-		this.mainPointer = {isActive: true, x: _x, y: _y};
-
-		mouseX = _x;
-		mouseY = _y;
-	},
-
-	getMouseX: function(){
-		return mouseX;
-	},
-
-	getMouseY: function(){
-		return mouseY;
 	}
 }
 

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Canvas test</title>
+        <title>Player</title>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script src="js/socket.io.min.js"></script> 
@@ -30,9 +30,10 @@
             }
         </style>
     </head>
+
     <body>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
 var game = new Game(loadContent, update, draw);
 
@@ -63,7 +64,6 @@ function loadContent(){
     pole.setPlayer(player);
 
     Initialize();
-
 }
 
 //Updates the position of the items on the canvas and checks for collisions
@@ -76,15 +76,13 @@ function update(){
     shield.update();
     player.update();
 
-    if(handleCollision(ball, shield)){
-        socket.emit('shieldHit', 'SHIELDHIT!!');
-    }
+    //handleCollision(ball, shield);
 
-    if(handleCollision(ball, pole)){
-        pole.isHit();
-    }
+    // if(handleCollision(ball, pole)){
+    //     pole.isHit();
+    // }
 
-    ball.getBody().checkWorldBounds(game);
+    // ball.getBody().checkWorldBounds(game);
 
     parentDraw();
 }
@@ -98,7 +96,7 @@ function draw(canvasContext){
 }
 
         
-    </script>
+        </script>
 
     </body>
 </html>
