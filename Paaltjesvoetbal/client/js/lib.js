@@ -3,13 +3,18 @@ var ball;
 var ball2;
 var shield;
 var player;
+var group;
 
 function loadContent(){
+
     pole = new Pole(10);
     pole.setColor("blue");
     pole.setPosition(300, 300);
 
     ball = new Ball(10);
+
+    group = new Group(ball);
+
     ball.setColor("green");
     ball.getBody().setVelocity(5);
     ball.getBody().setVelocityDirection(1.75 * Math.PI);
