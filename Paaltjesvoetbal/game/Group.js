@@ -10,11 +10,25 @@ function Group(_type){
 
 	//Add an object to the group
 	this.addMember = function(_object){
+		console.log(_object instanceof type);
 		if(_object instanceof type)
 			members.push(_object);
 	}
 
+	this.update = function(){
+		members.forEach(function (_object){
+			_object.update();
+		});
+	}
 
+	this.draw = function(_canvasContext){
+		members.forEach(function (_object){
+			_object.draw(_canvasContext);
+		});
+	}
 
+	this.getMemberLength = function(){
+		return members.length;
+	}
 
 }
