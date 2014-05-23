@@ -6,7 +6,6 @@ var Pole = require('../game/Pole.js');
 var Shield = require('../game/Shield.js');
 var Player = require('../game/Player.js');
 var handleCollision = require('../game/CollisionDetection.js');
-var input = require('../game/Input.js');
 
 //////////
 // GAME //
@@ -62,7 +61,11 @@ function loadContent(){
     //PLAYER2
 }
 
+//var date = 0;
 function update(){
+
+  //console.log(date - Date.now());
+  //date = Date.now()
   //updateGameDimensions();
   //input.update();
 
@@ -71,13 +74,18 @@ function update(){
   shield.update();
   player.update();
 
-  handleCollision(ball, shield)
+  //handleCollision(ball, shield)
 
   if(handleCollision(ball, pole)){
       pole.isHit();
+      io.of('/player').emit('UpdateBall', ball.getPosition());
+      io.of('/player').emit('UpdateBallAngle', ball.getBody().getVelocityDirection());
   }
 
-  ball.getBody().checkWorldBounds(game);
+  if(ball.getBody().checkWorldBounds(game)){
+    io.of('/player').emit('UpdateBall', ball.getPosition());
+    io.of('/player').emit('UpdateBallAngle', ball.getBody().getVelocityDirection());
+  }
 
 
   //PLAYER2
@@ -94,7 +102,7 @@ function update(){
 
   //parentDraw();
 
-  drawToClients();
+  //drawToClients();
   drawToMainScreen();
 }
 
@@ -218,6 +226,10 @@ function connectClient(socket){
       shield2.setAngle(angle);
     });
   }
+
+  socket.on('ballAngle', function (velocityDirection){
+    ball.getBody().setVelocityDirection(velocityDirection);
+  });
 
   //Handle Client Disconnet
   socket.on('disconnect', function (data){

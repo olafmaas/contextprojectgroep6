@@ -71,7 +71,8 @@ var Body = Base.extend({
 	/**
 	* Sets the velocity direction (angle) of the ball. 
 	* It also calculates the corresponding speed values for the x and y axis.
-	*
+	* TODO move to CircularBody?
+	* 
 	* @method Body#setVelocityDirection
 	* @param {number} _direction - The direction (angle) of the ball in radians.
 	*/	

@@ -7,7 +7,8 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script src="js/socket.io.min.js"></script> 
         <script src="js/player.js"></script>
-
+        
+        <script src="../game/highResolutionTimer.js"></script>
         <script src="../game/IdDistributor.js"></script>
         <script src="../game/Base.js"></script>
         <script src="../game/Player.js"></script>
@@ -51,9 +52,9 @@ function loadContent(){
 
     ball = new Ball(10);
     ball.setColor("green");
-    //ball.getBody().setVelocity(5);
+    ball.getBody().setVelocity(5);
     //ball.getBody().setVelocityDirection(1.75 * Math.PI);
-    ball.setPosition(10, 10);
+    //ball.setPosition(10, 10);
 
     shield = new Shield(pole);
     shield.getBody().immovable = true;
@@ -77,7 +78,10 @@ function update(){
     shield.update();
     player.update();
 
-    //handleCollision(ball, shield);
+    if(handleCollision(ball, shield)){
+        console.log('hi');
+        sendBallAngle();
+    }
 
     // if(handleCollision(ball, pole)){
     //     pole.isHit();
