@@ -5,6 +5,7 @@ var ball2;
 var shield;
 var player;
 
+//Temporary amount of balls in the screen
 var NROFBALLS = 20;
 
 function loadContent(){
@@ -13,28 +14,14 @@ function loadContent(){
     pole.setColor("blue");
     pole.setPosition(300, 300);
 
-   balls = new Group(Ball);
+    balls = new Group(Ball);
 
     for(var i = 0; i < NROFBALLS; i++){
         ball = new Ball(10);
-        var color = "#000000";
-        if(i % 6 == 0)
-            color = "#FF0000";
-        else if(i % 5 == 0)
-            color = "#00FF00";
-        else if(i % 4 == 0)
-            color = "#0000FF";
-        else if(i % 3 == 0)
-            color = "#FFFF00";
-        else if(i % 2 == 0)
-            color = "#00FFFF";
-        else
-            color = "#FF00FF";
-
-        ball.setColor(color);
+        ball.setColor(ColorGenerator.returnColor());
         ball.getBody().setVelocity(5);
         ball.getBody().setVelocityDirection(1.75 * Math.PI);
-        ball.setPosition(50 + (i * 20), 50 + (i * 20));
+        ball.setPosition(30 + (i * 23), 64 + (i * 22));
 
         balls.addMember(ball);
     }
