@@ -71,8 +71,8 @@ var CollisionDetection ={
 
 	collidesBallWithBall: function(_ball1, _ball2){
 		//Get x and y difference
-		var dx = Math.abs(_ball1.getPosition().x - _ball2.getPosition().x);
-		var dy = Math.abs(_ball1.getPosition().y - _ball2.getPosition().y);
+		var dx = _ball1.getPosition().x - _ball2.getPosition().x;
+		var dy = _ball1.getPosition().y - _ball2.getPosition().y;
 
 		//Calculate the distance with pythagoras
 		var distanceApart = Math.sqrt(dx*dx + dy*dy);
