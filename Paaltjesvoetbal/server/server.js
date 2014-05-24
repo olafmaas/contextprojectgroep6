@@ -52,11 +52,6 @@ function drawToPlayers(){
 function drawToMainScreen(){
 	if(mainScreenSocket){
 		mainScreenSocket.emit('drawBall', balls.getMember(0).getPosition());
-		//TODO
-		if(Object.keys(playerData).length == 2){
-			mainScreenSocket.emit('drawShield', shields.getMember(0).getAngle());
-			mainScreenSocket.emit('drawShield2', shields.getMember(1).getAngle());
-		}
 	}
 };
 
@@ -116,10 +111,16 @@ function connectPlayer(socket){
 	socket.emit('userName', false); //get userName from Player
 	makePlayerObjects(socket);
 	updateGrid(socket);
+	if(mainScreenSocket){
+		mainScreenSocket.emit('newPlayer', {id: playerData[socket.id].player.getName(), polePos: playerData[socket.id].pole.getPosition()});
+	}
 	log();
 
 	socket.on('shieldAngle', function (angle){
 		playerData[socket.id].shield.setAngle(angle);
+		if(mainScreenSocket){
+			mainScreenSocket.emit('drawShield', {id: socket.id, angle: angle});
+		}
 	});
 	
 	socket.on('userName', function(name){
@@ -134,6 +135,7 @@ function connectPlayer(socket){
 
 	socket.on('ballAngle', function (velocityDirection){
 		balls.getMember(0).getBody().setVelocityDirection(velocityDirection);
+		drawToPlayers();
 	});
 
 	//Handle Player Disconnect
@@ -141,7 +143,7 @@ function connectPlayer(socket){
 		console.log('Player disconnected');
 		delete playerData[socket.id]; //TODO remove all stuff
 
-		grid[y][x] = -1;
+		//grid[y][x] = -1;
 	});
 };
 
