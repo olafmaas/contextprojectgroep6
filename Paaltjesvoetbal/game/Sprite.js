@@ -8,7 +8,8 @@ function Sprite(){
 	var texture;
 	this.position = {x: 0, y: 0};
 	this.origin = {x: 0, y: 0}; 
-	this.rotation = 0; //Rotation of the sprite on each draw call
+	this.rotation = 0; //Rotation of the sprite on each draw call (in radians)
+	this.rotate = false; //Whether the rotation should be changed on each draw (let it rotate in 360 degrees)
 	this.scale = {x: 1, y: 1}; //Scale of the sprite
 	this.hooked = false; //Whether the sprite is hooked to an object
 	this.hookedTo; //The object the sprite is hooked to
@@ -31,14 +32,38 @@ function Sprite(){
 	* @param {canvas} _canvasContext - The playing field
 	*/
 	this.draw = function(_canvasContext){
-		var anchor = this.anchor;
-		if(this.hooked){
-			var hPos = this.hookedTo.getPosition();
-			_canvasContext.drawImage(texture, hPos.x + anchor.x, hPos.y + anchor.y, this.size.x, this.size.y);
+		if(this.rotation > 0){
+			this.drawRotated(_canvasContext);
+		}
+		else if(this.hooked){
+			this.drawHooked(_canvasContext);
 		}
 		else {
-			_canvasContext.drawImage(texture, this.position.x + anchor.x, this.position.y + anchor.y, this.size.x, this.size.y);
+			_canvasContext.drawImage(texture, this.position.x, this.position.y, this.size.x, this.size.y);
 		}
+	}
+
+	//TODO make sure that rotated images can be drawn
+	this.drawRotated = function(_canvasContext){
+		if(this.hooked){ //draw with regard to the hooked object
+
+		}
+		else { //draw normally
+
+		}
+		if(this.rotate) this.rotation += this.rotation; //update rotation when 'rotate' is true
+	}
+
+	/**
+	* Function which draws the sprite if it has been hooked to an object
+	* @method Sprite#Draw
+	* @param {canvas} _canvasContext - The playing field
+	*/
+	this.drawHooked = function(_canvasContext){
+		var anchor = this.anchor;
+		var hPos = this.hookedTo.getPosition();
+
+		_canvasContext.drawImage(texture, hPos.x + anchor.x, hPos.y + anchor.y, this.size.x, this.size.y);
 	}
 
 	/**
@@ -91,6 +116,24 @@ function Sprite(){
 	this.setAnchor = function(_anchorPos){
 		this.anchor = _anchorPos;
 	}
+
+	//TODO
+	this.setRotationRadians = function(_rotation){
+		this.rotation = _rotation;
+	}
+
+	//TODO
+	this.setRotationDegrees = function(_rotation){
+		this.rotation = (_rotation * Math.PI) / 180; //convert degrees to radians.
+	}
+
+	//TODO
+	this.setRotate = function(_rotate){
+		this.rotate = _rotate; //true or false
+	}
+
+	//TODO: GETS
+	//getRotationDegrees, radians, anchor, rotate, scale, hooked, etc...
 }
 
 if(typeof module != 'undefined'){

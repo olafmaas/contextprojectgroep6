@@ -39,6 +39,9 @@ function loadContent(){
     var r = balls.getMember(0).getRadius();
     sprite.setSize({x: r*2, y: r*2});
     sprite.setAnchor({x: -r, y: -r}); //circle x y is center, so we anchor the sprite to the top left corner of the circle
+    //sprite.setRotationDegrees(1);
+    //sprite.setRotate(true);
+
     //****End sprite test****
 
     Initialize();
