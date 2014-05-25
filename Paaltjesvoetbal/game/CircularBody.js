@@ -21,7 +21,7 @@ var CircularBody = Body.extend({
 	/**
 	* Constructor for the circular body
 	* @method CircularBody#constructor
-	* @param {_parent} The circle object
+	* @param {circle} _parent - The circle object
 	*/
 	constructor: function(_parent){
 		this.radius = _parent.getRadius();
@@ -69,6 +69,11 @@ var CircularBody = Body.extend({
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
 	},
 
+	/**
+	* Handles the collision of circle and shield
+	* @method CircularBody#handleShieldCollision
+	* @param {shield} _other - Shield object which collides with the circle
+	*/
 	handleShieldCollision: function(_other){
 		//Get x and y difference
 		var dx = this.getPosition().x - _other.getPosition().x;
@@ -106,14 +111,27 @@ var CircularBody = Body.extend({
 		return collision;
 	},
 
+	/**
+	* Returns the radius
+	* @method CircularBody#getRadius
+	*/
 	getRadius: function(){
 		return this.radius;
 	},
-
+	
+	/**
+	* Returns the ball object
+	* @method CircularBody#getParentBall
+	*/
 	getParentBall: function(){
 		return this.parentBall;
 	},
 
+	/**
+	* Sets the radius
+	* @method CircularBody#setRadius
+	* @param {float} _radius - The radius
+	*/
 	setRadius: function(_radius){
 		this.radius = _radius;
 	}

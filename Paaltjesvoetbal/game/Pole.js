@@ -17,6 +17,11 @@ var Pole = Ball.extend({
 	player: 0,
 	timer: 0, //Each pole keeps its own 'alive' time
 
+	/**
+	* Constructor for the Pole class
+	* @method Pole#constructor
+	* @param {float} _radius - The radius of the pole
+	*/
 	constructor: function(_radius){
 		this.radius = _radius;
 		this.enableBody();
@@ -63,14 +68,21 @@ var Pole = Ball.extend({
 		}
 	},
 
-	//Set player
+	/**
+	* Sets the player, assigns a timer and starts the timer.
+	* @method Pole#setPlayer
+	* @param {player} _player - The player object
+	*/
 	setPlayer: function(_player){
 		this.player = _player;
 		this.timer = new Timer(_player);
 		this.timer.startTimer();
 	},
 
-	//Todo: move to player class?
+	/**
+	* Saves the highscore of the player
+	* @method Pole#saveHighScore
+	*/
 	saveHighscore: function(){
 		var currScore = this.player.getScore();
 		var highscore = this.player.getHighscore();
@@ -81,6 +93,10 @@ var Pole = Ball.extend({
 		this.timer.stop(); //reset timer
 	},
 
+	/**
+	* Returns the timer of a certain player
+	* @method Pole#getTimer
+	*/
 	getTimer: function(){
 		return this.timer;
 	}

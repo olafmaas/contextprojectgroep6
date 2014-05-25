@@ -124,18 +124,29 @@ function Sprite(){
 		anchor = _anchorPos;
 	}
 
-	//TODO
+	/**
+	* Sets the rotation of the sprite in radians
+	* @method Sprite#setRotationRadians
+	* @param {float} _rotation - The rotation in radians
+	*/
 	this.setRotationRadians = function(_rotation){
 		rotation = _rotation;
 	}
 
-	//TODO
+	/**
+	* Sets the rotation of the sprite in degrees
+	* @method Sprite#setRotationDegrees
+	* @param {float} _rotation - The adjustment in radians
+	*/
 	this.setRotationDegrees = function(_rotation){
 		rotation = (_rotation * Math.PI) / 180; //convert degrees to radians.
 		//TODO: remove current rotation interval if present
 	}
 
-	//TODO
+	/**
+	* Enables the rotation of the sprite
+	* @method Sprite#enableRotation
+	*/
 	this.enableRotation = function(){
 		if(!rotate){
 			rotate = true; 
@@ -145,7 +156,10 @@ function Sprite(){
 		}
 	}
 
-	//TOOD
+	/**
+	* Disables the rotation of the sprite
+	* @method Sprite#disableRotation
+	*/
 	this.disableRotation = function(){
 		if(rotate){
 			rotate = false;
@@ -153,7 +167,11 @@ function Sprite(){
 		}
 	}
 
-	//TODO
+	/**
+	* Changes the rotation of the sprite
+	* @method Sprite#adjustRotation
+	* @param {float} _adjustment - The adjustment in radians
+	*/
 	this.adjustRotation = function(_adjustment){
 		rotation += _adjustment;
 	}
