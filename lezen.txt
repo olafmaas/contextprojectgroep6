@@ -1,0 +1,5 @@
+Development branch.
+
+Hier alles in zetten en aan het eind van de week (vrijdag ochtend) mergen we deze branch met de master, zodat we altijd op de master een werkend iets hebben waarop we terug kunnen vallen.
+
+Tussendoor dus niks op de master branch zetten en als je een andere branch nodig hebt dan doe je dat vanaf de development branch :D
