@@ -87,6 +87,10 @@ function Game(load, update, draw){
 		canv.onmousedown = input.mouseDownListener;
 	}
 
+	/**
+	* Initializes the mainscreen.
+	* @method Game#initializeMainScreen
+	*/
 	InitializeMainScreen = function(){
 		width = 100;
 		height = 100;
