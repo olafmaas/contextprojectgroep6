@@ -1,3 +1,8 @@
+if(typeof module != 'undefined'){
+	var Ball = require('./Ball.js');
+	var Collision = require('./Collision.js');
+}
+
 /**
 * Group class
 * @class Group
@@ -5,12 +10,6 @@
 * @constructor
 * @param {Object} _type - The type of objects which are stored in the group.
 */
-if(typeof module != 'undefined'){
-	var Ball = require('./Ball.js');
-	var Collision = require('./Collision.js');
-}
-//TOOD: documentation
-//TODO: For now it's just for balls.
 function Group(_type){
 
 	//Variables

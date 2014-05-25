@@ -27,7 +27,6 @@ var input = {
 	*/
 	mouseMoveListener: function(_e){
 		this.mainPointer = {isActive: true, x: _e.clientX, y: _e.clientY};
-		//console.log(this.mainPointer);
 
 		mouseX = this.mainPointer.x;
 		mouseY = this.mainPointer.y;
