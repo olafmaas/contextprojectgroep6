@@ -67,7 +67,7 @@ var CollisionDetection ={
 
 		//Calculate the distance with pythagoras
 		var distanceApart = Math.sqrt(dx*dx + dy*dy);
-
+		
 		//Check if they collide
 		return (distanceApart <= _ball1.radius + _ball2.getRadius());
 	},
@@ -89,7 +89,6 @@ var CollisionDetection ={
 			end: _shield.getAngle() + _shield.getParentShield().getSize() / 2
 		};
 		var collisionAngle = _shield.getAngleTo(_ball);
-
 		return (shieldEnds.begin < collisionAngle && shieldEnds.end > collisionAngle);
 	}
 }
