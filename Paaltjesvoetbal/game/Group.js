@@ -47,11 +47,26 @@ function Group(_type){
 			members.push(_object);
 	}
 
-	//TODO: make sure each object has an unique identifier
-	//Then: finish this method, so a member of the group can be deleted
-	this.removeMember = function(_id){
-		//remove member based on given id
-		//remove any collisions that are depending on this member
+	/**
+	* Removes the specified object from the group, returns -1 if not found or of wrong type.
+	*
+	* @method Group#removeMember 
+	* @param {Object} _object - The object which has to be deleted from the group.
+	*/
+	this.removeMember = function(_object){
+		if(_object instanceof type){
+			var found = false;
+			for(var i = members.length - 1; i >= 0; i--) {
+    			if(members[i].getID() === _object.getID()) {
+       				members.splice(i, 1);
+       				console.log("Found");
+       				found = true;
+    			}
+			}
+			if(!found) return -1;
+			this.removeCollision(_object); //when something has been found and deleted, also remove the corresponding collisions
+		}
+		else return -1; //Else it's another type, which isn't present in this group
 	}
 
 	/**
@@ -95,7 +110,8 @@ function Group(_type){
 		}
 	}
 
-	//TODO: remove collision based on ?
+	//TODO: remove collision based on ID of the object. 
+	//will then remove any collision in which this object is present (either as first or second parameter)
 	this.removeCollision = function(){
 		//remove collision
 	}
