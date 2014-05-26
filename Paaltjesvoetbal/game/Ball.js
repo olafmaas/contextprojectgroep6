@@ -51,6 +51,16 @@ var Ball = Base.extend({
 	},
 
 	/**
+	* Checks whether two objects are equals by comparing their ID's
+	*
+	* @method Ball#equals
+	* @param {Object} _other - The other object with which it is compared.
+	*/
+	equals: function(_other){
+		return (this.ID == _other.getID());
+	},
+
+	/**
 	* Creates the body of the ball
 	* @method Ball#enableBody
 	*/
@@ -139,6 +149,16 @@ var Ball = Base.extend({
 	*/
 	getBody: function(){
 		return this.body;
+	},
+
+	/**
+	* Retrieves the ID of the ball
+	*
+	* @method Ball#getID
+	* @return {number} The unique ID of the ball
+	*/
+	getID: function(){
+		return this.ID;
 	}
 });
 

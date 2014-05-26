@@ -59,6 +59,16 @@ function Shield(_pole){
 	}
 
 	/**
+	* Checks whether two objects are the same by comparing ID's
+	*
+	* @method CircularBody#equals
+	* @param {Object} _other - The other object with which it is compared.
+	*/
+	this.equals = function(_other){
+		return (ID == _other.getID());
+	},
+
+	/**
 	* Calculates the angle of the shield (in radians) depending on the current mouse input
 	*
 	* @method Shield#calculateAngle
@@ -187,6 +197,16 @@ function Shield(_pole){
 	*/
 	this.getBody = function(){
 		return body;
+	},
+
+	/**
+	* Retrieves the ID of the shield
+	*
+	* @method Shield#getID
+	* @return {number} The unique ID of the shield
+	*/
+	getID = function(){
+		return ID;
 	}	
 
 	//Stuff to execute when constructing

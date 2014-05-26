@@ -43,6 +43,16 @@ var ShieldBody = Body.extend({
 	},
 
 	/**
+	* Checks whether two objects are the same by comparing ID's
+	*
+	* @method CircularBody#equals
+	* @param {Object} _other - The other object with which it is compared.
+	*/
+	equals: function(_other){
+		return (this.ID == _other.getID());
+	},
+
+	/**
 	* Method to handle a collision
 	* @method Shieldbody#handleIndividual
 	* @param {Body} _other - The other item that collides
@@ -97,6 +107,16 @@ var ShieldBody = Body.extend({
 	*/
 	setParentShield: function(_parentShield){
 		this.parentShield = _parentShield;
+	},
+
+	/**
+	* Retrieves the ID of the shieldBody
+	*
+	* @method ShieldBody#getID
+	* @return {number} The unique ID of the shieldBody
+	*/
+	getID: function(){
+		return this.ID;
 	}
 });
 
