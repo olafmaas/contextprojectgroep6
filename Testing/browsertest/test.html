@@ -5,6 +5,8 @@
     </head>
     <body>
         <div id="mocha"></div>
+		<div id="messages"></div>
+		<div id="fixtures"></div>
 
         <!--Import Require modules-->
         <script src="../../node_modules/mocha/mocha.js"></script>
@@ -22,7 +24,8 @@
         <script src="../../node_modules/sinon/lib/sinon/assert.js"></script>
         <script src="../../node_modules/sinon/lib/sinon/match.js"></script>
 		<script src="../../node_modules/sinon-chai/lib/sinon-chai.js"></script>
-        <script src="../../Paaltjesvoetbal/game/Base.js"></script>
+		<script src="blanket.min.js" data-cover-only="../../Paaltjesvoetbal/game/" data-cover-adapter="mocha-blanket.js"></script>
+		<script src="../../Paaltjesvoetbal/game/Base.js"></script>
 
         <!--Config Mocha, Chai and Sinon-->
         <script>
