@@ -2,6 +2,7 @@
 if(typeof module != 'undefined'){
 	var CircularBody = require('./CircularBody.js');
 	var Base = require('./Base.js');
+	var IDDistributor = require('./IDDistributor.js');
 }
 
 /** 
@@ -17,9 +18,11 @@ var Ball = Base.extend({
 	radius: 1, //radius of the bal
 	color: "#000000", //The color of the ball
 	body: false,
+	ID: -1,
 
 	constructor: function(_radius){
 		this.radius = _radius;
+		this.ID = IDDistributor.getNewId();
 
 		//Stuff to execute when constructing
 		this.enableBody();

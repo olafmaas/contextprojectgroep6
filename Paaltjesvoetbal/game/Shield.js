@@ -2,6 +2,7 @@
 if(typeof module != 'undefined'){
     var ShieldBody = require('./ShieldBody.js');
     var input = require('./Input.js');
+	var IDDistributor = require('./IDDistributor.js');
 }  
 /** 
 * Shield constructor
@@ -21,6 +22,7 @@ function Shield(_pole){
 	var size = 0.5 * Math.PI; //The size of the shield
 	var color = "#000000"; //Color of the shield
 	var body;
+	var ID = IDDistributor.getNewId();;
 
 	/**
 	* Draws the shield on the canvas

@@ -2,6 +2,7 @@ if(typeof module != 'undefined'){
 	var CircularBody = require('./CircularBody.js');
 	var Ball = require('./Ball.js');
 	var Timer = require('./Timer.js');
+	var IDDistributor = require('./IDDistributor.js');
 }
 /**
 * Pole class
@@ -16,6 +17,7 @@ var Pole = Ball.extend({
 	prevColor: 0,
 	player: 0,
 	timer: 0, //Each pole keeps its own 'alive' time
+	ID: -1,
 
 	/**
 	* Constructor for the Pole class
@@ -26,6 +28,7 @@ var Pole = Ball.extend({
 		this.radius = _radius;
 		this.enableBody();
 		this.body.immovable = true;
+		this.ID = IDDistributor.getNewId();
 	},
 
 	/**
