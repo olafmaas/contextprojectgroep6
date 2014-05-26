@@ -9,7 +9,6 @@ var balls;
 var poles;
 var shields;
 var players;
-var sprite;
 
 //Temporary: amount of balls in the screen (will be handled by the server later)
 var NROFBALLS = 20;
@@ -31,18 +30,6 @@ function loadContent(){
 
     //Add collision from ball to each of the other balls
     balls.addCollisionCombineAll(balls);
-
-    //******Sprite test*******
-    sprite = new Sprite();
-    sprite.loadContent("../img/pokeball.png");
-    sprite.hookTo(balls.getMember(0));
-    var r = balls.getMember(0).getRadius();
-    sprite.setSize({x: r*2, y: r*2});
-    sprite.setAnchor({x: -r, y: -r}); //circle x y is center, so we anchor the sprite to the top left corner of the circle
-    sprite.setRotationDegrees(30);
-    sprite.enableRotation(); 
-
-    //****End sprite test****
 
     Initialize();
 }
@@ -72,7 +59,6 @@ function update(){
 function draw(canvasContext){
     //Draw groups
     balls.draw(canvasContext);
-    sprite.draw(canvasContext);
     poles.draw(canvasContext);
     shields.draw(canvasContext);
     players.draw(canvasContext); //Draw the score of the player on screen
