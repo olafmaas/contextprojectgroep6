@@ -63,10 +63,12 @@ var mainScreenSocket;
 var playerData = {};
 var playerNames = [];
 var maximumNrOfPlayers = 0;
+var nrOfPlayers = 0;
 
 //Grid propperties
-var canvasWidth = 300;
-var canvasHeight = 300;
+var canvasWidth = 450;
+var canvasHeight = 350;
+var nrOfRows = 0;
 var maximumCol;
 var grid = new Array();
 grid.push(new Array());
@@ -162,9 +164,11 @@ function addBall(){
 
 function makePlayerObjects(socket){
 	nrOfPlayers = Object.keys(playerData).length;
+	nrOfRows = Math.floor(nrOfPlayers / maximumCol);
 
 	var pole = new Pole(10);
-	pole.setPosition(150 + (canvasWidth * nrOfPlayers), 150);
+	pole.setPosition(canvasWidth/2 + (canvasWidth * (nrOfPlayers%maximumCol)), canvasHeight / 2 + (canvasHeight * nrOfRows));
+	console.log(pole.getPosition());
 	poles.addMember(pole);
 	poles.addCollision(pole, balls, pole.isHit, pole);
 
