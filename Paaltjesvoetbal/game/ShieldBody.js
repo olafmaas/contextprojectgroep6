@@ -40,6 +40,12 @@ var ShieldBody = Body.extend({
 		this.base();
 		this.setAngle(this.getParentShield().getAngle());
 		this.setRadius(this.getParentShield().getRadius());
+		
+		/*var shieldEnds = {
+			begin: this.getAngle() - this.getParentShield().getSize() / 2, 
+			end: this.getAngle() + this.getParentShield().getSize() / 2
+		};
+		console.log(shieldEnds.begin, shieldEnds.end);*/
 	},
 
 	/**

@@ -85,12 +85,18 @@ var CollisionDetection ={
 
 	preciseCollidesBallWithShield: function(_ball, _shield){
 		var shieldEnds = {
-			begin: _shield.getAngle() - _shield.getParentShield().getSize() / 2, 
-			end: _shield.getAngle() + _shield.getParentShield().getSize() / 2
+			begin: normalizeAngle(_shield.getAngle() - _shield.getParentShield().getSize() / 2), 
+			end: normaleAngle(_shield.getAngle() + _shield.getParentShield().getSize() / 2)
 		};
-		var collisionAngle = _shield.getAngleTo(_ball);
+		
+		var collisionAngle = normalizeAngle(_shield.getAngleTo(_ball));
+		
 		return (shieldEnds.begin < collisionAngle && shieldEnds.end > collisionAngle);
 	}
+}
+
+normalizeAngle = function(_a){
+	return (_a % (Math.PI * 2) + (Math.PI * 2)) % (2*Math.PI);
 }
 
 handleCollision = function(_objectOne, _objectTwo){
