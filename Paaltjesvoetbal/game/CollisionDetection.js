@@ -91,12 +91,17 @@ var CollisionDetection ={
 		
 		var collisionAngle = normalizeAngle(_shield.getAngleTo(_ball));
 		
-		return (shieldEnds.begin < collisionAngle && shieldEnds.end > collisionAngle);
+		if(shieldEnds.begin > shieldEnds.end){
+			return (collisionAngle > shieldEnds.begin || collisionAngle < shieldEnds.end);
+		}
+		else{
+			return (collisionAngle > shieldEnds.begin && collisionAngle < shieldEnds.end);
+		}
 	}
 }
 
 normalizeAngle = function(_angle){
-	return (_angle % (Math.PI * 2) + (Math.PI * 2)) % (2*Math.PI);
+	return (_angle % (Math.PI * 2) + (Math.PI * 2)) % (Math.PI * 2);
 }
 
 handleCollision = function(_objectOne, _objectTwo){
