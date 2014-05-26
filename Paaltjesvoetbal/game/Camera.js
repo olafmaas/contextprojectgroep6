@@ -1,3 +1,6 @@
+if(typeof module != 'undefined'){
+    var Base = require('./Base.js');
+}
 
 /**
 * Camera class
@@ -6,9 +9,9 @@
 * @classdesc Camera class
 * @constructor
 */
-Camera = function(){
-	var center = {x: 0, y: 0};
-	var zoom - 1;
+var Camera = Base.extend({
+	center: {x: 0, y: 0},
+	zoom: 1,
 	
 	/**
 	* Get the center position of the camera
@@ -16,9 +19,9 @@ Camera = function(){
 	* @method Camera#getCenter
 	* @return {number, number} The center, (x, y) coordinates, of the camera.
 	*/
-	this.getCenter = function(){
-		return center;
-	}
+	getCenter: function(){
+		return this.center;
+	},
 	
 	/**
 	* Get the zoom factor of the camera
@@ -26,10 +29,10 @@ Camera = function(){
 	* @method Camera#getZoom
 	* @return {number} The current zoom level of the camera.
 	*/
-	this.getZoom = function(){
-		return zoom;
+	getZoom: function(){
+		return this.zoom;
 	}
-}
+});
 	
 if(typeof module != 'undefined'){
     module.exports = Camera;

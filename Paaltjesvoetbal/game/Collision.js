@@ -1,3 +1,6 @@
+if(typeof module != 'undefined'){
+    var Base = require('./Base.js');
+}
 /**
 * Collision class
 * @class Collision
@@ -8,12 +11,20 @@
 * @param {Function} _funcAfter - A function which will be triggered after the collision handling (Optional)
 * @param {Object} _this - The 'this' object that will be used as parameter in the function triggered after the collision (Optional)
 */
-function Collision(_object1, _object2, _funcAfter, _this){
+var Collision = Base.extend({
+
 	//Properties
-	var obj1 = _object1;
-	var obj2 = _object2; //even if it's null, we just set it here
-	var func = _funcAfter;
-	var funcThis = _this;
+	obj1: null,
+	obj2: null,
+	func: null,
+	funcThis: null,
+
+	constructor: function(_object1, _object2, _funcAfter, _this){
+		this.obj1 = _object1;
+		this.obj2 = _object2; //even if it's null, we just set it here
+		this.func = _funcAfter;
+		this.funcThis = _this;
+	},
 
 	/**
 	* Executes the collision depending on the parameters that are set.
@@ -22,21 +33,21 @@ function Collision(_object1, _object2, _funcAfter, _this){
 	* 
 	* @method Collision#execute
 	*/
-	this.execute = function(){
+	execute: function(){
 		var collided = false;
 		//Execute collision function
-		if(obj2 !== null && obj2 !== undefined){
-			if(handleCollision(obj1, obj2)){
-				if(func != null){
+		if(this.obj2 !== null && this.obj2 !== undefined){
+			if(handleCollision(this.obj1, this.obj2)){
+				if(this.func != null){
 				//do something after collision
-					func(funcThis);
+					this.func(this.funcThis);
 				}
 				collided = true;
 			}
 		}
 		return collided;
 	}
-}
+});
 
 if(typeof module != 'undefined'){
     module.exports = Collision;

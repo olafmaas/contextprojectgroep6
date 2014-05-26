@@ -3,14 +3,15 @@
     <head>
         <meta charset="UTF-8" />
         <title>Player</title>
-
+<script src="../game/Base.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script src="js/socket.io.min.js"></script> 
         <script src="js/PlayerConnection.js"></script>
-        
+         
+                
         <script src="../game/HighResolutionTimer.js"></script>
         <script src="../game/IdDistributor.js"></script>
-        <script src="../game/Base.js"></script>
+
         <script src="../game/Player.js"></script>
         <script src="../game/Timer.js"></script>
         <script src="../game/Game.js"></script>
@@ -73,7 +74,7 @@ function loadContent(){
 //Updates the position of the items on the canvas and checks for collisions
 function update(){
     updateGameDimensions();
-    input.update();
+    //input.update();
 
     ball.update();
     pole.update();
@@ -84,9 +85,9 @@ function update(){
         sendBallAngle();
     }
 
-    // if(handleCollision(ball, pole)){
-    //     pole.isHit();
-    // }
+     if(handleCollision(ball, pole)){
+         pole.isHit();
+     }
 
     // ball.getBody().checkWorldBounds(game);
 

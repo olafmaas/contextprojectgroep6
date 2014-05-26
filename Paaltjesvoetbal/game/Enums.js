@@ -8,10 +8,10 @@
 * Note: Object.freeze is used to prevent accidental overwrites which would render the enums useless.
 */
 var emit = Object.freeze({
-		"updateBall": 0, 
-		"updateBallAngle": 1, 
-		"drawBall": 2,
-		"drawShield": 3,
-		"drawShield2": 4,
-		"newCanvasSize": 5
-	});
+	"updateBall": 0, 
+	"updateBallAngle": 1, 
+	"drawBall": 2,
+	"drawShield": 3,
+	"drawShield2": 4,
+	"newCanvasSize": 5
+});

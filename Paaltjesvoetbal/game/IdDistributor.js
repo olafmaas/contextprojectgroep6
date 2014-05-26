@@ -1,6 +1,6 @@
 /**
 * ID distributor
-* @class IDDistributor
+* @class IdDistributor
 * @classdesc Distributes unique ID's
 * @constructor 
 */

@@ -3,7 +3,7 @@ if(typeof module != 'undefined'){
     var CircularBody = require('./CircularBody.js');
 }  
 
-var CollisionDetection ={
+var CollisionDetection = {
 	handledCollisions: [],
 
 	handleCollision: function(_bodyOne, _bodyTwo){
