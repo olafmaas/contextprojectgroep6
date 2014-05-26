@@ -49,7 +49,13 @@
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
+                <li><a href="../classes/Collision.html">Collision</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -62,6 +68,8 @@
                 <li><a href="../classes/Shield.html">Shield</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
             
             </ul>
 
@@ -107,7 +115,9 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 //Game class
-
+if(typeof module != &#x27;undefined&#x27;){
+	var highResolutionTimer = require(&#x27;./HighResolutionTimer.js&#x27;);
+}
 /**
 * Game class
 * @class Game
@@ -122,6 +132,7 @@ function Game(load, update, draw){
 	var height = 40;
 	var backGroundColor;
 	var canv;
+	var score = 0;
 
 	/**
 	* Draw function
@@ -129,7 +140,7 @@ function Game(load, update, draw){
 	*/
 	parentDraw = function(){
 		var ctx = canv.getContext(&quot;2d&quot;);
-
+		
 		clearCanvas();
 		draw(ctx);
 	}
@@ -192,13 +203,21 @@ function Game(load, update, draw){
 		canv.onmousedown = input.mouseDownListener;
 	}
 
+	InitializeMainScreen = function(){
+		width = 100;
+		height = 100;
+		backGroundColor = &quot;#FFFFFF&quot;;
+
+		canv = createCanvas();
+	}
+
 	/**
 	* Starts up the game itself
 	* @method Game#Boot
 	*/
 	Boot = function(){
 		load();
-		setInterval(update, 17);
+		highResolutionTimer(17, update);
 	}
 
 	setTimeout(Boot, 1000);

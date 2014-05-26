@@ -1,5 +1,7 @@
 //Game class
-
+if(typeof module != 'undefined'){
+	var highResolutionTimer = require('./HighResolutionTimer.js');
+}
 /**
 * Game class
 * @class Game
@@ -85,6 +87,10 @@ function Game(load, update, draw){
 		canv.onmousedown = input.mouseDownListener;
 	}
 
+	/**
+	* Initializes the mainscreen.
+	* @method Game#initializeMainScreen
+	*/
 	InitializeMainScreen = function(){
 		width = 100;
 		height = 100;
@@ -99,7 +105,7 @@ function Game(load, update, draw){
 	*/
 	Boot = function(){
 		load();
-		setInterval(update, 17);
+		highResolutionTimer(17, update);
 	}
 
 	setTimeout(Boot, 1000);

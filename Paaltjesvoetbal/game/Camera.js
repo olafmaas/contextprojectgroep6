@@ -1,4 +1,3 @@
-//Properties of the camera object
 
 /**
 * Camera class
@@ -14,7 +13,7 @@ Camera = function(){
 	/**
 	* Get the center position of the camera
 	*
-	* @method getCenter
+	* @method Camera#getCenter
 	* @return {number, number} The center, (x, y) coordinates, of the camera.
 	*/
 	this.getCenter = function(){
@@ -24,7 +23,7 @@ Camera = function(){
 	/**
 	* Get the zoom factor of the camera
 	*
-	* @method getZoom
+	* @method Camera#getZoom
 	* @return {number} The current zoom level of the camera.
 	*/
 	this.getZoom = function(){

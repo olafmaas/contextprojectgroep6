@@ -5,10 +5,12 @@ if(typeof module != 'undefined'){
 	var Body = require('./Body.js');
 	var IDDistributor = require('./IDDistributor.js');
 }  
-
 /**
-*
-*
+* Constructor for the shield body
+* @class Shieldbody
+* @classdesc Shieldbody class
+* @constructor
+* @param {shield} _parent - The shield object
 */
 var ShieldBody = Body.extend({
 	angle: 0,
@@ -27,6 +29,7 @@ var ShieldBody = Body.extend({
 		this.parentShield = _parent;
 		this.position = _parent.getPosition();
 		this.ID = IDDistributor.getNewId();
+		
 	},
 
 	/**
@@ -48,26 +51,50 @@ var ShieldBody = Body.extend({
 		//If the body is static it shouldn't respond to collision
 	},
 	
+	/**
+	* Returns the angle of the shield
+	* @method ShieldBody#getAngle
+	*/
 	getAngle: function(){
 		return this.angle;
 	},
 
+	/**
+	* Returns the radius of the shield
+	* @method ShieldBody#getRadius
+	*/
 	getRadius: function(){
 		return this.radius;
 	},
 
+	/**
+	* Returns the parent of the shield
+	* @method ShieldBody#getParentShield
+	*/
 	getParentShield: function(){
 		return this.parentShield;
 	},
 
+	/**
+	* Sets the angle of the shield
+	* @method ShieldBody#setAngle
+	*/
 	setAngle: function(_angle){
 		this.angle = _angle;
 	},
 
+	/**
+	* Sets the radius of the shield
+	* @method ShieldBody#setRadius
+	*/
 	setRadius: function(_radius){
 		this.radius = _radius;
 	},
 
+	/**
+	* Sets the parent of the shield
+	* @method ShieldBody#setParentShield
+	*/
 	setParentShield: function(_parentShield){
 		this.parentShield = _parentShield;
 	}

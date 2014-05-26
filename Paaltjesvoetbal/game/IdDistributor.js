@@ -1,3 +1,9 @@
+/**
+* ID distributor
+* @class IDDistributor
+* @classdesc Distributes unique ID's
+* @constructor 
+*/
 var IDDistributor = {
 	nextId: 0,
 	getNewId: function(){
@@ -8,4 +14,3 @@ var IDDistributor = {
 if(typeof module != 'undefined'){
 	module.exports = IDDistributor;
 }
-

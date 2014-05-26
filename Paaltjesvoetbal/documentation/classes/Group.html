@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Label</title>
+    <title>Group</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -110,7 +110,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Label Class</h1>
+                        <h1>Group Class</h1>
 <div class="box meta">
     
 
@@ -118,7 +118,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/Label.js.html#l1"><code>Label.js:1</code></a>
+            Defined in: <a href="../files/Group.js.html#l1"><code>Group.js:1</code></a>
         </div>
     
 
@@ -130,15 +130,15 @@
 
 
 <div class="box intro">
-    <p>A label class for writing text on the screen</p>
+    <p>Group class</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Label" class="method item">
-    <h3 class="name"><code>Label</code></h3>
+        <div id="method_Group" class="method item">
+    <h3 class="name"><code>Group</code></h3>
 
     
         <div class="args">
@@ -146,7 +146,7 @@
             
                 <li class="arg">
                     
-                        <code>_text</code>
+                        <code>_type</code>
                     
                 </li>
             
@@ -179,7 +179,7 @@
             
         
         
-        <a href="../files/Label.js.html#l1"><code>Label.js:1</code></a>
+        <a href="../files/Group.js.html#l1"><code>Group.js:1</code></a>
         
         </p>
 
@@ -201,15 +201,15 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_text</code>
-                        <span class="type">String</span>
+                        <code class="param-name">_type</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>String to write on the screen.</li>
+<li>The type of objects which are stored in the group.</li>
 </ul>
 
                     </div>
@@ -252,77 +252,70 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Label#draw">Label#draw</a>
+                                <a href="#method_Group#addCollision">Group#addCollision</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#getColor">Label#getColor</a>
+                                <a href="#method_Group#addCollisionCombineAll">Group#addCollisionCombineAll</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#getFont">Label#getFont</a>
+                                <a href="#method_Group#addMember">Group#addMember</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#getFontSize">Label#getFontSize</a>
+                                <a href="#method_Group#checkCollision">Group#checkCollision</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#getPosition">Label#getPosition</a>
+                                <a href="#method_Group#checkWorldBounds">Group#checkWorldBounds</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#getText">Label#getText</a>
+                                <a href="#method_Group#draw">Group#draw</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#setColor">Label#setColor</a>
+                                <a href="#method_Group#getMembers">Group#getMembers</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#setFont">Label#setFont</a>
+                                <a href="#method_Group#getMembersLength">Group#getMembersLength</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#setFontSize">Label#setFontSize</a>
+                                <a href="#method_Group#update">Group#update</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Label#setPosition">Label#setPosition</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Label#setText">Label#setText</a>
+                                <a href="#method_Group@getMember">Group@getMember</a>
 
                                 
                                 
@@ -344,8 +337,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Label#draw" class="method item">
-    <h3 class="name"><code>Label#draw</code></h3>
+                    <div id="method_Group#addCollision" class="method item">
+    <h3 class="name"><code>Group#addCollision</code></h3>
 
     
         <div class="args">
@@ -353,7 +346,25 @@
             
                 <li class="arg">
                     
-                        <code>_canvasContext</code>
+                        <code>_object1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_object2</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_funcAfter</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_this</code>
                     
                 </li>
             
@@ -386,7 +397,7 @@
             
         
         
-        <a href="../files/Label.js.html#l16"><code>Label.js:16</code></a>
+        <a href="../files/Group.js.html#l84"><code>Group.js:84</code></a>
         
         </p>
 
@@ -397,7 +408,7 @@
     </div>
 
     <div class="description">
-        <p>Draws the label on the game canvas</p>
+        <p>Adds the correct colission between all the objects of two lists</p>
 
     </div>
 
@@ -409,736 +420,7 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_canvasContext</code>
-                        <span class="type">CanvasContext</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The canvascontext which should be drawn.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Label#getColor" class="method item">
-    <h3 class="name"><code>Label#getColor</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Hexcolor</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Label.js.html#l64"><code>Label.js:64</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Gets the color of the label</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Hexcolor</span>:
-                    
-                    <p>The hex code of the color.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Label#getFont" class="method item">
-    <h3 class="name"><code>Label#getFont</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Label.js.html#l46"><code>Label.js:46</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Gets the name of the font</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">String</span>:
-                    
-                    <p>The name of the font.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Label#getFontSize" class="method item">
-    <h3 class="name"><code>Label#getFontSize</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Label.js.html#l55"><code>Label.js:55</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Gets the font size in pixels</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The font size in pixels.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Label#getPosition" class="method item">
-    <h3 class="name"><code>Label#getPosition</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Object</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Label.js.html#l36"><code>Label.js:36</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Gets the position of the top-left corner of the label</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Object</span>:
-                    
-                    <p>An position object containing and x and y property</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Label#getText" class="method item">
-    <h3 class="name"><code>Label#getText</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Label.js.html#l27"><code>Label.js:27</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Gets the string which is the labels text</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">String</span>:
-                    
-                    <p>The text of the label</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Label#setColor" class="method item">
-    <h3 class="name"><code>Label#setColor</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_color</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Label.js.html#l109"><code>Label.js:109</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Sets the color of the label</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_color</code>
-                        <span class="type">Hexcolor</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The color in hexidecimal form.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Label#setFont" class="method item">
-    <h3 class="name"><code>Label#setFont</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_font</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Label.js.html#l91"><code>Label.js:91</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Sets the font of the label</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_font</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The name of the font.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Label#setFontSize" class="method item">
-    <h3 class="name"><code>Label#setFontSize</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_fontSize</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Label.js.html#l100"><code>Label.js:100</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Sets the font size in pixels</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_fontSize</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The size of the font in pixels.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Label#setPosition" class="method item">
-    <h3 class="name"><code>Label#setPosition</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_position</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Label.js.html#l82"><code>Label.js:82</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Sets the position of the left-top corner of the label where it&#39;s drawn</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_position</code>
+                        <code class="param-name">_object1</code>
                         <span class="type">Object</span>
                     
 
@@ -1146,7 +428,61 @@
 
                     <div class="param-description">
                         <ul>
-<li>An object containing an x and y value</li>
+<li>Object 1 for the possible collision</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_object2</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Object 2 for the possible collision, can be a list</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_funcAfter</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The function that will be triggered after collisionhandling has succeeded (e.g. for pole) (can be null)</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_this</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The &#39;this&#39; that will be submitted to the funcAfter function (can be null)</li>
 </ul>
 
                     </div>
@@ -1164,8 +500,8 @@
 </div>
 
                 
-                    <div id="method_Label#setText" class="method item">
-    <h3 class="name"><code>Label#setText</code></h3>
+                    <div id="method_Group#addCollisionCombineAll" class="method item">
+    <h3 class="name"><code>Group#addCollisionCombineAll</code></h3>
 
     
         <div class="args">
@@ -1173,7 +509,7 @@
             
                 <li class="arg">
                     
-                        <code>_text</code>
+                        <code>_objectGroup</code>
                     
                 </li>
             
@@ -1206,7 +542,7 @@
             
         
         
-        <a href="../files/Label.js.html#l73"><code>Label.js:73</code></a>
+        <a href="../files/Group.js.html#l120"><code>Group.js:120</code></a>
         
         </p>
 
@@ -1217,7 +553,7 @@
     </div>
 
     <div class="description">
-        <p>Sets the string which is the labels text</p>
+        <p>Adds collision between the objects of the same group (is used in the balls group)</p>
 
     </div>
 
@@ -1229,15 +565,563 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_text</code>
-                        <span class="type">String</span>
+                        <code class="param-name">_objectGroup</code>
+                        <span class="type"><a href="../classes/Group.html" class="crosslink">Group</a></span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The text which should be displayed on the label.</li>
+<li>Group of objects</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Group#addMember" class="method item">
+    <h3 class="name"><code>Group#addMember</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_object</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Group.js.html#l16"><code>Group.js:16</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Adds an object to an existing list of members</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_object</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The object which is added to a list of members</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Group#checkCollision" class="method item">
+    <h3 class="name"><code>Group#checkCollision</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Group.js.html#l109"><code>Group.js:109</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks each collision of the possible collisions</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Group#checkWorldBounds" class="method item">
+    <h3 class="name"><code>Group#checkWorldBounds</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_game</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Group.js.html#l71"><code>Group.js:71</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks the world bounds for every ball object</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_game</code>
+                        <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Game object supplies the boundaries</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Group#draw" class="method item">
+    <h3 class="name"><code>Group#draw</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Group.js.html#l36"><code>Group.js:36</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Draws all objects within a list of members</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Group#getMembers" class="method item">
+    <h3 class="name"><code>Group#getMembers</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Group.js.html#l46"><code>Group.js:46</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns a list of members</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Group#getMembersLength" class="method item">
+    <h3 class="name"><code>Group#getMembersLength</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Group.js.html#l63"><code>Group.js:63</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the amount of objects in the list</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Group#update" class="method item">
+    <h3 class="name"><code>Group#update</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Group.js.html#l26"><code>Group.js:26</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Updates al objects within a list of members</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Group@getMember" class="method item">
+    <h3 class="name"><code>Group@getMember</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_index</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/Group.js.html#l54"><code>Group.js:54</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns a specific object from a list of members</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_index</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The index of the object you want to return</li>
 </ul>
 
                     </div>

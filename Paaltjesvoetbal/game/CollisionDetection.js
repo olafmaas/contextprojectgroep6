@@ -48,25 +48,16 @@ var CollisionDetection ={
 	collides: function(_bodyOne, _bodyTwo){
 		if(_bodyOne instanceof CircularBody) return this.collidesBallWith(_bodyOne, _bodyTwo);
 		if(_bodyOne instanceof ShieldBody) return this.collidesShieldWith(_bodyOne, _bodyTwo);
-
-		//If this code is reached the collision of the _bodyOne type is not implemented
-		//throw "This Collision is not Implemented";
 	},
 
 	collidesBallWith: function(_ball, _other){
 		if(_other instanceof CircularBody) return this.collidesBallWithBall(_ball, _other);
 		if(_other instanceof ShieldBody) return this.collidesBallWithShield(_ball, _other);
-
-		//If this code is reached the collision of the _other type is not implemented
-		//throw "This Collision is not Implemented";
 	},
 
 	collidesShieldWith: function(_shield, _other){
 		if(_other instanceof CircularBody) return this.collidesBallWithShield(_other, _shield);
 		if(_other instanceof ShieldBody) throw "This Collision is not Implemented";
-
-		//If this code is reached the collision of the _other type is not implemented
-		//throw "This Collision is not Implemented";
 	},
 
 	collidesBallWithBall: function(_ball1, _ball2){
@@ -76,7 +67,7 @@ var CollisionDetection ={
 
 		//Calculate the distance with pythagoras
 		var distanceApart = Math.sqrt(dx*dx + dy*dy);
-
+		
 		//Check if they collide
 		return (distanceApart <= _ball1.radius + _ball2.getRadius());
 	},
@@ -87,7 +78,6 @@ var CollisionDetection ={
 
 		var maxDist = _shield.getRadius() + _ball.getRadius();
 		var minDist = _shield.getRadius() - _ball.getRadius();
-
 		if(distsq > Math.pow(minDist, 2) && distsq < Math.pow(maxDist, 2)){
 			return this.preciseCollidesBallWithShield(_ball, _shield);
 		}
@@ -99,7 +89,6 @@ var CollisionDetection ={
 			end: _shield.getAngle() + _shield.getParentShield().getSize() / 2
 		};
 		var collisionAngle = _shield.getAngleTo(_ball);
-
 		return (shieldEnds.begin < collisionAngle && shieldEnds.end > collisionAngle);
 	}
 }

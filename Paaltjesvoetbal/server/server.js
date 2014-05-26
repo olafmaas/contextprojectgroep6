@@ -5,251 +5,223 @@ var Ball = require('../game/Ball.js');
 var Pole = require('../game/Pole.js');
 var Shield = require('../game/Shield.js');
 var Player = require('../game/Player.js');
+var Group = require('../game/Group.js');
 var handleCollision = require('../game/CollisionDetection.js');
-var input = require('../game/Input.js');
+var PlayerDataObject = require('./PlayerDataObject.js');
 
 //////////
 // GAME //
 //////////
 
-var game = new Game(loadContent, update, drawToClients);
+var game = new Game(loadContent, update, drawToPlayers);
 
-var pole;
-var ball;
-var shield;
-var player;
-
-//PLAYER2
-var pole2;
-var shield2;
-var player2;
-//PLAYER2
+//Groups
+var balls = new Group(Ball);
+var poles = new Group(Pole);
+var shields = new Group(Shield);
+var players = new Group(Player);
 
 function loadContent(){
-
-    pole = new Pole(10);
-    pole.setColor("blue");
-    pole.setPosition(150, 150);
-
-    ball = new Ball(10);
-    ball.setColor("green");
-    ball.getBody().setVelocity(5);
-    ball.getBody().setVelocityDirection(2.1 * Math.PI);
-    ball.setPosition(100, 100);
-
-    shield = new Shield(pole);
-    shield.getBody().immovable = true;
-
-    player = new Player("TestUser");
-    player.setPole(pole);
-    player.setShield(shield);
-
-    pole.setPlayer(player);
-
-    //PLAYER2
-    pole2 = new Pole(10);
-    pole2.setColor("blue");
-    pole2.setPosition(450, 150);
-
-    shield2 = new Shield(pole2);
-    shield2.getBody().immovable = true;
-
-    player2 = new Player("TestUser2");
-    player2.setPole(pole2);
-    player2.setShield(shield2);
-
-    pole2.setPlayer(player2);
-    //PLAYER2
-}
+	addBall();
+};
 
 function update(){
-  //updateGameDimensions();
-  //input.update();
+	balls.update();
+	poles.update();
+	shields.update();
+	players.update();
 
-  ball.update();
-  pole.update();
-  shield.update();
-  player.update();
+	balls.checkCollision();	
+	//shields.checkCollision(); //Shield collision in handled by the Player/
+	if(poles.checkCollision()){
+		drawToPlayers();	
+	}
+	if(balls.checkWorldBounds(game)){
+		drawToPlayers();
+	}
 
-  if(handleCollision(ball, shield)){
-      console.log('hit on server');
-  }
+	drawToMainScreen();
+};
 
-  if(handleCollision(ball, pole)){
-      pole.isHit();
-  }
-
-  ball.getBody().checkWorldBounds(game);
-
-
-  //PLAYER2
-  pole2.update();
-  shield2.update();
-  player2.update();
-
-  if(handleCollision(ball, shield2)){
-      console.log('hit on server');
-  }
-
-  if(handleCollision(ball, pole2)){
-      pole2.isHit();
-  }
-  //PLAYER2
-
-  //parentDraw();
-
-  drawToClients();
-  drawToMainScreen();
-}
-
-function drawToClients(){
-  io.of('/player').emit('UpdateBall', ball.getPosition());
+//TODO drawToPlayer als er eenbal in zijn scherm komt
+function drawToPlayers(){
+	io.of('/player').emit('UpdateBall', balls.getMember(0).getPosition());
+	io.of('/player').emit('UpdateBallAngle', balls.getMember(0).getBody().getVelocityDirection());
 };
 
 function drawToMainScreen(){
-  if(mainScreenSocket){
-    mainScreenSocket.emit('drawBall', ball.getPosition());
-    mainScreenSocket.emit('drawShield', shield.getAngle());
-    //PLAYER 2
-    mainScreenSocket.emit('drawShield2', shield2.getAngle());
-    //PLAYER 2
-  }
-};
-
-function updateMainScreenCanvasSize(){
-  game.setWidth(grid[0].length * canvasWidth);
-  game.setHeight(grid.length * canvasHeight);
-  if(mainScreenSocket){
-    mainScreenSocket.emit('newCanvasSize', {width: grid[0].length * canvasWidth, height: grid.length * canvasHeight});
-  }
+	if(mainScreenSocket){
+		mainScreenSocket.emit('drawBall', balls.getMember(0).getPosition());
+	}
 };
 
 /////////////////
 // CONNECTIONS //
 /////////////////
 
-//PLAYER2
-var PLAYER1 = false;
-
 var mainScreenSocket;
-var playerSockets = {};
-var maximumPlayers = 0;
+var playerData = {};
+var playerNames = [];
+var maximumNrOfPlayers = 0;
 
-
-// GAME EN GRID GEBEUREN
+//Grid propperties
 var canvasWidth = 300;
 var canvasHeight = 300;
 var maximumCol;
-var playerNames = new Array();
 var grid = new Array();
 grid.push(new Array());
 
 io.of('/mainscreen').on('connection', function (socket) {
-  if(!mainScreenSocket){
-    console.info('MainScreen connected');
-    connectMainScreen(socket);
-  }
+	if(!mainScreenSocket){
+		console.log('MainScreen connected');
+		connectMainScreen(socket);
+	}
 });
 
 io.of('/player').on('connection', function (socket) {
-  if(Object.keys(playerSockets).length < maximumPlayers){
-    console.log('Client connected');
-    connectClient(socket);
-  }
-  else{
-    socket.send('Game is full!');
-    socket.disconnect();
-  } 
+	if(Object.keys(playerData).length < maximumNrOfPlayers){
+		console.log('Player connected');
+		connectPlayer(socket);
+	}
+	else{
+		socket.send('Game is full!');
+		socket.disconnect();
+	} 
 });
 
 function connectMainScreen(socket){
-  mainScreenSocket = socket;
+	mainScreenSocket = socket;
 
-  updateMainScreenCanvasSize();
+	updateMainScreenCanvasSize();
 
-  //Bepaalt het maximaal aantal spelers
-  socket.on('screenSizeMainScreen', function(data){ 
-    maximumPlayers = Math.floor(data.width / canvasWidth) * Math.floor(data.height / canvasHeight);
-    maximumCol = Math.floor(data.width / canvasWidth);
-  });
+	//Bepaalt het maximaal aantal spelers
+	socket.on('screenSizeMainScreen', function(data){ 
+		maximumNrOfPlayers = Math.floor(data.width / canvasWidth) * Math.floor(data.height / canvasHeight);
+		maximumCol = Math.floor(data.width / canvasWidth);
+	});
 
-  //Handle MainScreen Disconnet
-  socket.on('disconnect', function (data){
-    console.log('MainScreen disconnected');
-    mainScreenSocket = null;
-  });
+	//Handle MainScreen Disconnet
+	socket.on('disconnect', function (data){
+		console.log('MainScreen disconnected');
+		mainScreenSocket = null;
+	});
 };
 
-function connectClient(socket){ 
-  playerSockets[socket.id] = socket;
+function connectPlayer(socket){ 	
+	socket.emit('userName', false); //get userName from Player
+	makePlayerObjects(socket);
+	updateGrid(socket);
+	if(mainScreenSocket){
+		mainScreenSocket.emit('newPlayer', {id: playerData[socket.id].player.getName(), polePos: playerData[socket.id].pole.getPosition()});
+	}
+	log();
 
-  //
-  // GRID GEBEUREN
-  //
-  var x;
-  var y;
-  placed = false;
-  for (i = 0; i < grid.length; i++) {
-    if(grid[i].indexOf(-1) >  -1 || grid[i].length < maximumCol) {
-      placed = true;
-      if(grid[i].indexOf(-1) > -1){
-        x = grid[i].indexOf(-1);
-        grid[i][x] = socket.id;
-      }else{
-        x = grid[i].length;
-        grid[i].push(socket.id)
-      }
-      y = i;
-      break;
-    }
-  }
-  if(!placed){
-    grid.push(new Array());
-    x = 0;
-    y = grid.length - 1;
-    grid[i].push(socket.id);
-  }
-  socket.emit('canvasPos', {left: x * canvasWidth, top: y*canvasHeight});
-  socket.emit('userName', {free: false});
+	socket.on('shieldAngle', function (angle){
+		playerData[socket.id].shield.setAngle(angle);
+		if(mainScreenSocket){
+			mainScreenSocket.emit('drawShield', {id: socket.id, angle: angle});
+		}
+	});
+	
+	socket.on('userName', function(name){
+		if(!playerNames[name]) {
+			playerNames[name] = true;
+			playerData[socket.id].name = name;
+			playerData[socket.id].player.setName(name);
+		}else{
+			socket.emit('userName', false);
+		}
+	});
 
+	socket.on('ballAngle', function (velocityDirection){
+		balls.getMember(0).getBody().setVelocityDirection(velocityDirection);
+		drawToPlayers();
+	});
 
-  updateMainScreenCanvasSize();
-  log();
+	//Handle Player Disconnect
+	socket.on('disconnect', function (data){
+		console.log('Player disconnected');
+		delete playerData[socket.id]; //TODO remove all stuff
 
-  if(!PLAYER1){
-    PLAYER1 = true;
-    socket.on('shieldAngle', function (angle){
-      shield.setAngle(angle);
-    });
-  } else {
-      socket.on('shieldAngle', function (angle){
-      shield2.setAngle(angle);
-    });
+		//grid[y][x] = -1;
+	});
+};
 
-  }
+//////////////////////
+// HELPER FUNCTIONS //
+//////////////////////
 
-  socket.on('userName', function(data){
-    if(!playerNames[data.name]) {
-      playerNames[data.name] = true;
-      socket.emit('userName', {free: true});
-      console.info("Ok"+data.name);
-    }else{
-      socket.emit('userName', {free: false});
-      console.info(data.name);
-    }
-  })
+function addBall(){
+	var ball = new Ball(10);
+	ball.getBody().setVelocity(5);
+	ball.getBody().setVelocityDirection(1.70 * Math.PI);
+	ball.setPosition(100, 100);
+	balls.addMember(ball);
+	balls.addCollisionCombineAll(balls); //TODO moet dit hier?
+};
 
-  //Handle Client Disconnet
-  socket.on('disconnect', function (data){
-    console.log('Client disconnected');
-    delete playerSockets[socket.id];
+function makePlayerObjects(socket){
+	nrOfPlayers = Object.keys(playerData).length;
 
-    grid[y][x] = -1;
-  });
+	var pole = new Pole(10);
+	pole.setPosition(150 + (canvasWidth * nrOfPlayers), 150);
+	poles.addMember(pole);
+	poles.addCollision(pole, balls, pole.isHit, pole);
+
+	var shield = new Shield(pole);
+	shield.getBody().immovable = true;
+	shields.addMember(shield);
+	shields.addCollision(shield, balls, null, null);
+
+	var player = new Player(socket.id); //Tijdelijk wordt de socket.id als playername gebruikt
+	player.setPole(pole);
+	player.setShield(shield);
+	pole.setPlayer(player);
+	players.addMember(player);
+
+	playerDataObject = new PlayerDataObject(socket, socket.id, player, pole, shield)
+	playerData[socket.id] = playerDataObject;
+};
+
+function updateGrid(socket){
+	var x;
+	var y;
+	placed = false;
+	for (i = 0; i < grid.length; i++) {
+		if(grid[i].indexOf(-1) >  -1 || grid[i].length < maximumCol) {
+			placed = true;
+			if(grid[i].indexOf(-1) > -1){
+				x = grid[i].indexOf(-1);
+				grid[i][x] = socket.id;
+			}else{
+				x = grid[i].length;
+				grid[i].push(socket.id)
+			}
+			y = i;
+			break;
+		}
+	}
+	if(!placed){
+		grid.push(new Array());
+		x = 0;
+		y = grid.length - 1;
+		grid[i].push(socket.id);
+	}
+	socket.emit('canvasPos', {left: x * canvasWidth, top: y*canvasHeight});
+
+	updateMainScreenCanvasSize();
+};
+
+function updateMainScreenCanvasSize(){
+	game.setWidth(grid[0].length * canvasWidth);
+	game.setHeight(grid.length * canvasHeight);
+	if(mainScreenSocket){
+		mainScreenSocket.emit('newCanvasSize', {width: grid[0].length * canvasWidth, height: grid.length * canvasHeight});
+	}
 };
 
 function log(){
-  console.log('mainScreenSocket: ' + !!mainScreenSocket);
-  console.log('maximumPlayers: '+ maximumPlayers);
-  console.log('playerSockets: ' + Object.keys(playerSockets).length);
+	console.log('mainScreenSocket: ' + !!mainScreenSocket);
+	console.log('maximumNrOfPlayers: '+ maximumNrOfPlayers);
+	console.log('playerSockets: ' + Object.keys(playerData).length);
 };

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/Pole.js</title>
+    <title>ColorGenerator</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,13 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/Camera.html">Camera</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/Collision.html">Collision</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
                 <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
                 <li><a href="../classes/Shield.html">Shield</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
             
             </ul>
 
@@ -90,70 +110,141 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/Pole.js</h1>
+                        <h1>ColorGenerator Class</h1>
+<div class="box meta">
+    
 
-<div class="file">
-    <pre class="code prettyprint linenums">
+    
 
-/**
-* Pole class
-* @class Pole
-* @classdesc A simple pole class which extends Ball
-*/
-var Pole = Ball.extend({
-	hit: false,
-	prevColor: 0,
+    
+        <div class="foundat">
+            Defined in: <a href="../files/ColorGenerator.js.html#l1"><code>ColorGenerator.js:1</code></a>
+        </div>
+    
 
-	/** 
-	* Pole constructor
-	* It automatically sets the pole to be immovable.
-	* @constructor
-	* @param {number} _radius - The radius of the pole.
-	*/
-	constructor: function(_radius){
-		this.radius = _radius;
-		this.enableBody();
-		this.body.immovable = true;
-	},
+    
 
-	/**
-	* Handles everything when the pole is hit:
-	* from setting the hit flag, to managing the cooldown of the pole.
-	* @method Pole#isHit
-	*/
-	isHit: function(){
-		if(!this.hit){
-			this.hit = true;
-			this.prevColor = this.getColor();
-			this.setColor(&quot;darkOrange&quot;);
-			this.coolDown(3000);
-			//TODO:
-			//save highscore
-			//reset score
-			//start cooldown in which player cannot be hit
-		}
-	},
+    
+</div>
 
-	/**
-	* Handles the cooldown period of the pole, which includes a change of color
-	* and not being able to get hit again for some amount of time.
-	* @method Pole#coolDown
-	* @param {interval} of the cool down
-	*/
-	//TODO: iets van laten knipperen? sneller = cooldown bijna afgelopen?
-	coolDown: function(_interval){
-		if(_interval &gt; 0){
-			var savedThis = this;
-			setTimeout( function() { savedThis.coolDown(0); }, _interval);
-		}
-		else {
-			this.setColor(this.prevColor); //Revert back to previous color
-			this.hit = false; //remove hit flag
-		}
-	}
 
-});
-    </pre>
+
+<div class="box intro">
+    <p>Class for a color generator</p>
+
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_ColorGenerator#returnColor">ColorGenerator#returnColor</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_ColorGenerator#returnColor" class="method item">
+    <h3 class="name"><code>ColorGenerator#returnColor</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/ColorGenerator.js.html#l12"><code>ColorGenerator.js:12</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns a random color from the predefined color list above.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
+        
+    </div>
 </div>
 
                     </div>

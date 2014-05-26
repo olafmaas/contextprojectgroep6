@@ -4,9 +4,16 @@
         <title>Main Screen</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="js/socket.io.min.js"></script> 
-        <script src="js/mainscreen.js"></script>
+        <script src="js/MainScreenConnection.js"></script>
+         <script src="../server/PlayerDataObject.js"></script>
 
+        <script src="../game/highResolutionTimer.js"></script>
+        <script src="../game/Enums.js"></script>
         <script src="../game/IdDistributor.js"></script>
+        <script src="../game/ColorGenerator.js"></script>
+        <script src="../game/Collision.js"></script>
+        <script src="../game/HighResolutionTimer.js"></script>
+        <script src="../game/Group.js"></script>
         <script src="../game/Base.js"></script>
         <script src="../game/Player.js"></script>
         <script src="../game/Timer.js"></script>
@@ -21,7 +28,6 @@
         <script src="../game/Pole.js"></script>
         <script src="../game/Label.js"></script>
         <script src="../game/CollisionDetection.js"></script>
-        <script src="../game/ColorGenerator.js"></script>
         
         <style type="text/css"> 
             body {
@@ -39,49 +45,17 @@
 
 var game = new Game(loadContent, update, draw);
 
-var pole;
-var ball;
-var shield;
-var player;
-
-//PLAYER2
-var pole2;
-var shield2;
-var player2;
-//PLAYER2
+var balls = new Group(Ball);
+var poles = new Group(Pole);
+var shields = new Group(Shield);
+var players = new Group(Player);
 
 function loadContent(){
+    var ball = new Ball(10);
+    ball.setColor('green');
+    ball.setPosition(10, 10);
 
-    pole = new Pole(10);
-    pole.setColor("blue");
-    pole.setPosition(150, 150);
-
-    ball = new Ball(10);
-    ball.setColor("green");
-
-    shield = new Shield(pole);
-    shield.getBody().immovable = true;
-
-    player = new Player("TestUser");
-    player.setPole(pole);
-    player.setShield(shield);
-
-    pole.setPlayer(player);
-
-    //PLAYER2
-    pole2 = new Pole(10);
-    pole2.setColor("blue");
-    pole2.setPosition(450, 150);
-
-    shield2 = new Shield(pole2);
-    shield2.getBody().immovable = true;
-
-    player2 = new Player("TestUser2");
-    player2.setPole(pole2);
-    player2.setShield(shield2);
-
-    pole2.setPlayer(player2);
-    //PLAYER2
+    balls.addMember(ball);
 
     InitializeMainScreen();
 }
@@ -97,15 +71,11 @@ function update(){
 
 //Draws everything on the canvas
 function draw(canvasContext){
-    pole.draw(canvasContext);
-    ball.draw(canvasContext);
-    shield.draw(canvasContext);
-    player.draw(canvasContext);
-
-    //PLAYER2
-    pole2.draw(canvasContext);
-    player2.draw(canvasContext);
-    shield2.draw(canvasContext);
+    //Draw groups
+    balls.draw(canvasContext);
+    poles.draw(canvasContext);
+    shields.draw(canvasContext);
+    //players.draw(canvasContext); //Draw the score of the player on screen
 }
       
         </script>

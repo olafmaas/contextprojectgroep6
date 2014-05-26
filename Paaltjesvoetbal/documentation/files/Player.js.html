@@ -49,7 +49,13 @@
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
+                <li><a href="../classes/Collision.html">Collision</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -62,6 +68,8 @@
                 <li><a href="../classes/Shield.html">Shield</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
             
             </ul>
 
@@ -107,11 +115,15 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 //Player class
-
+if(typeof module != &#x27;undefined&#x27;){
+	var Label = require(&#x27;./Label.js&#x27;);
+}
 /**
 * Player class
 * @class Player
 * @classdesc Class to represent players with properties.
+* @constructor
+* @param {String} _name - The name of the player.
 */
 function Player(_name){
 	
@@ -121,7 +133,43 @@ function Player(_name){
 	var points = 5; //Points the player is worth when hit 
 	var score = 0; //Current score of the player
 	var highscore = 0; //Highscore of the player
+	var label = new Label(&quot;Score: 0 | Time alive: 0:00&quot;);
+	var label3 = new Label(&quot;Highscore: 0&quot;);
+	var label2 = new Label(&quot;Username: &quot; + name);
+	
+	/**
+	* Updates the score label which will be drawn on screen
+	* This includes score, time alive and highscore
+	*
+	* @method Player#update
+	*/
+	this.update = function(){
+		
+		var lblPosition = {x: pole.getPosition().x - 150, y: pole.getPosition().y + 200}; //hardcoded position for now..
+		var lbl2Position = {x: pole.getPosition().x - 100, y: pole.getPosition().y - 200};
+		var lbl3Position = {x: pole.getPosition().x - 80, y: pole.getPosition().y + 230}; //hardcoded position for now..
+		
+		label.setPosition(lblPosition);
+		label2.setPosition(lbl2Position);
+		label3.setPosition(lbl3Position);
 
+		var min = pole.getTimer().getMinutes();
+		var sec = pole.getTimer().getSeconds();
+		label.setText(&quot;Score: &quot; + score + &quot; | Time alive: &quot; + min + &quot;:&quot; + sec);
+		label3.setText(&quot;Highscore: &quot; + highscore);
+	}
+
+	/**
+	* Currently it just draws the score, time alive and highscore of the player on the canvas
+	*
+	* @method Player#draw
+	* @param {CanvasContext} _canvasContext - The canvas on which it will be drawn.
+	*/
+	this.draw = function(_canvasContext){
+		label.draw(_canvasContext); //Draw score + time alive
+		label2.draw(_canvasContext); //Draw username
+		label3.draw(_canvasContext); //Draw highscore
+	}
 
 	/**
 	* Increments the current points by the given amounts
@@ -263,6 +311,11 @@ function Player(_name){
 		return highscore;
 	}
 }
+
+if(typeof module != &#x27;undefined&#x27;){
+    module.exports = Player;
+}
+
     </pre>
 </div>
 
