@@ -33,7 +33,7 @@ var CircularBody = Body.extend({
 	* Updates the position of the circle
 	* @method CircularBody#update
 	*/
-	Update: function(){
+	update: function(){
 		this.base();
 		this.parentBall.setPosition(this.position.x, this.position.y);
 	},
