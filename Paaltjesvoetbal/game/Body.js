@@ -24,7 +24,7 @@ var Body = Base.extend({
 	*
 	* @method Body#update
 	*/
-	Update: function(){
+	update: function(){
 		//If the body is static it should be immovable
 		if(this.immovable) return;
 

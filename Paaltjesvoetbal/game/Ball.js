@@ -44,7 +44,7 @@ var Ball = Base.extend({
 	* @method Ball#update
 	*/
 	update: function(){
-		if(this.body instanceof CircularBody) this.body.Update();
+		if(this.body instanceof CircularBody) this.body.update();
 	},
 
 	/**
