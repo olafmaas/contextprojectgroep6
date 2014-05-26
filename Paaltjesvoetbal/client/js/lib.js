@@ -12,8 +12,7 @@ var NROFPLAYERS = 3;
 //Poles / Shields / Players zou gelijk moeten zijn aan elkaar, 
 //dus kunnen ook gewoon 1 variabele ervoor gebruiken
 
-function loadContent(){
-
+function initialize(){
     balls = new Group(Ball);
     poles = new Group(Pole);
     shields = new Group(Shield);
@@ -21,7 +20,7 @@ function loadContent(){
 
     //Create balls
     for(var i = 0; i < NROFBALLS; i++){
-        var ball = new Ball(10);
+        var ball = game.instantiate(new Ball(10));
         ball.setColor(ColorGenerator.returnColor());
         ball.getBody().setVelocity(5);
         ball.getBody().setVelocityDirection(1.75 * Math.PI);
@@ -29,10 +28,14 @@ function loadContent(){
 
         balls.addMember(ball);
     }
+}
+
+function loadContent(){
+    
 
     //Create poles
     for(var i = 0; i < NROFPOLES; i++){
-        var pole = new Pole(10);
+        var pole = game.instantiate(new Pole(10));
         pole.setColor(ColorGenerator.returnColor());
         pole.setPosition(300 + (300*i), 300);
 
