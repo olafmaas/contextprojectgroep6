@@ -7,14 +7,10 @@
 
         
         
-
-    </head>
-    <body>
-          <div id="mocha"></div>
-          <div id="messages"></div>
-          <div id="blanket-main"></div>
-
         <script src="../../node_modules/mocha/mocha.js"></script>
+
+
+
 
         <script src="../../node_modules/chai/chai.js"></script>
         <script src="../../node_modules/sinon/lib/sinon.js"></script>
@@ -37,7 +33,11 @@
             mocha.ui('bdd'); 
             mocha.reporter('html');
             var expect = chai.expect;
+            if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+            else { mocha.run(); }
         </script>
+        <script src="blanket.min.js"></script>
+        <script src="mocha-blanket.js"></script>
         
 
 
@@ -59,10 +59,10 @@
         <script src="poleTest.js"></script>
         <script src="timerTest.js"></script>
         <script src="playerTest.js"></script>
-        <script>
-            if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
-            else { mocha.run(); }
-        </script>
-        </script>
+    </head>
+    <body>
+          <div id="mocha"></div>
+          <div id="messages"></div>
+          <div id="blanket-main"></div>
     </body>
 </html>
