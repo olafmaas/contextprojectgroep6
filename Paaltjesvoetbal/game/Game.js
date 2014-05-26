@@ -85,6 +85,8 @@ function Game(load, update, draw){
 		canv = createCanvas();
 		canv.onmousemove = input.mouseMoveListener;
 		canv.onmousedown = input.mouseDownListener;
+		canv.ontouchstart = input.touchStartListener;
+		canv.ontouchmove = input.touchMoveListener;
 	}
 
 	/**
