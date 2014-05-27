@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Paaltjesvoetbal</title>
+	<style type="text/css">
+		#canv {
+			background-color:#000;
+			margin: 0 auto;
+			float:left;
+		}
+
+		body {
+			margin: 0;
+		}
+	</style>
+
+	
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<!-- Delete navbar -->
+<body onload="setTimeout(function(){window.scrollTo(0,0);},1);">
+<canvas id="canv" width="400px" height="400px"/>
+<script type="text/javascript">
+	 var canvas = document.getElementById('canv');
+    var canvasRatio = canvas.height / canvas.width;
+    var windowRatio = window.innerHeight / window.innerWidth;
+    var width;
+    var height;
+
+    if (windowRatio < canvasRatio) {
+        height = window.innerHeight;
+        width = height / canvasRatio;
+    } else {
+        width = window.innerWidth;
+        height = width * canvasRatio;
+    }
+
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
+</script>
+</body>
+</html>
