@@ -39,6 +39,16 @@ var CircularBody = Body.extend({
 	},
 
 	/**
+	* Checks whether two objects are the same by comparing ID's
+	*
+	* @method CircularBody#equals
+	* @param {Object} _other - The other object with which it is compared.
+	*/
+	equals: function(_other){
+		return (this.ID == _other.getID());
+	},
+
+	/**
 	* This method uses the previous methods to check whether the circle collides
 	* And then handles the collision
 	* @method CircularBody#handleCollision
@@ -134,6 +144,16 @@ var CircularBody = Body.extend({
 	*/
 	setRadius: function(_radius){
 		this.radius = _radius;
+	},
+
+	/**
+	* Retrieves the ID of the circularBody
+	*
+	* @method CircularBody#getID
+	* @return {number} The unique ID of this circularBody
+	*/
+	getID: function(){
+		return this.ID;
 	}
 });
 

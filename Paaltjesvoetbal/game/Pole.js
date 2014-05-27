@@ -2,6 +2,7 @@ if(typeof module != 'undefined'){
 	var CircularBody = require('./CircularBody.js');
 	var Ball = require('./Ball.js');
 	var Timer = require('./Timer.js');
+	var IDDistributor = require('./IDDistributor.js');
 }
 /**
 * Pole class
@@ -16,6 +17,7 @@ var Pole = Ball.extend({
 	prevColor: 0,
 	player: 0,
 	timer: 0, //Each pole keeps its own 'alive' time
+	ID: -1,
 
 	/**
 	* Constructor for the Pole class
@@ -26,6 +28,7 @@ var Pole = Ball.extend({
 		this.radius = _radius;
 		this.enableBody();
 		this.body.immovable = true;
+		this.ID = IDDistributor.getNewId();
 	},
 
 	/**
@@ -69,6 +72,16 @@ var Pole = Ball.extend({
 	},
 
 	/**
+	* Checks whether two objects are the same by comparing ID's
+	*
+	* @method CircularBody#equals
+	* @param {Object} _other - The other object with which it is compared.
+	*/
+	equals: function(_other){
+		return (this.ID == _other.getID());
+	},
+
+	/**
 	* Sets the player, assigns a timer and starts the timer.
 	* @method Pole#setPlayer
 	* @param {player} _player - The player object
@@ -99,6 +112,16 @@ var Pole = Ball.extend({
 	*/
 	getTimer: function(){
 		return this.timer;
+	},
+
+	/**
+	* Retrieves the ID of the pole
+	*
+	* @method Pole#getID
+	* @return {number} The unique ID of the pole
+	*/
+	getID: function(){
+		return this.ID;
 	}
 
 });

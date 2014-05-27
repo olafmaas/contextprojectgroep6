@@ -2,6 +2,7 @@
 if(typeof module != 'undefined'){
 	var CircularBody = require('./CircularBody.js');
 	var Base = require('./Base.js');
+	var IDDistributor = require('./IDDistributor.js');
 }
 
 /** 
@@ -17,9 +18,11 @@ var Ball = Base.extend({
 	radius: 1, //radius of the bal
 	color: "#000000", //The color of the ball
 	body: false,
+	ID: -1,
 
 	constructor: function(_radius){
 		this.radius = _radius;
+		this.ID = IDDistributor.getNewId();
 
 		//Stuff to execute when constructing
 		this.enableBody();
@@ -45,6 +48,16 @@ var Ball = Base.extend({
 	*/
 	update: function(){
 		if(this.body instanceof CircularBody) this.body.update();
+	},
+
+	/**
+	* Checks whether two objects are equals by comparing their ID's
+	*
+	* @method Ball#equals
+	* @param {Object} _other - The other object with which it is compared.
+	*/
+	equals: function(_other){
+		return (this.ID == _other.getID());
 	},
 
 	/**
@@ -136,6 +149,16 @@ var Ball = Base.extend({
 	*/
 	getBody: function(){
 		return this.body;
+	},
+
+	/**
+	* Retrieves the ID of the ball
+	*
+	* @method Ball#getID
+	* @return {number} The unique ID of the ball
+	*/
+	getID: function(){
+		return this.ID;
 	}
 });
 

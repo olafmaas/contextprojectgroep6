@@ -16,6 +16,7 @@ function Sprite(){
 	var hookedTo; //The object the sprite is hooked to
 	var size = {x: 0, y: 0}; //Actual size of the sprite (used in combination with scale)
 	var anchor = {x: 0, y: 0}; //Used to let the sprite be drawn from different position (e.g. with a circle)
+	var ID = -1;
 
 	/**
 	* Function which loads a texture
@@ -92,6 +93,16 @@ function Sprite(){
 		hookedTo = _object;
 		hooked = true;
 		//TODO body naar invisible zetten zodat je alleen de sprite ziet en niet eventueel kleurtje van een bal?
+	}
+
+	/**
+	* Checks whether two objects are equals by comparing their ID's
+	*
+	* @method Ball#equals
+	* @param {Object} _other - The other object with which it is compared.
+	*/
+	this.equals = function(_other){
+		return (ID == _other.getID());
 	}
 
 	/**
@@ -174,6 +185,16 @@ function Sprite(){
 	*/
 	this.adjustRotation = function(_adjustment){
 		rotation += _adjustment;
+	}
+
+	/**
+	* Retrieves the ID of the sprite
+	*
+	* @method Sprite#getID
+	* @return {number} The unique ID of the sprite
+	*/
+	this.getID = function(){
+		return ID;
 	}
 
 	//TODO: GETS

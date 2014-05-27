@@ -2,6 +2,7 @@
 if(typeof module != 'undefined'){
     var ShieldBody = require('./ShieldBody.js');
     var input = require('./Input.js');
+	var IDDistributor = require('./IDDistributor.js');
 }  
 /** 
 * Shield constructor
@@ -21,6 +22,7 @@ function Shield(_pole){
 	var size = 0.5 * Math.PI; //The size of the shield
 	var color = "#000000"; //Color of the shield
 	var body;
+	var ID = IDDistributor.getNewId();;
 
 	/**
 	* Draws the shield on the canvas
@@ -55,6 +57,16 @@ function Shield(_pole){
 	this.enableBody = function(){
 		body = new ShieldBody(this);
 	}
+
+	/**
+	* Checks whether two objects are the same by comparing ID's
+	*
+	* @method CircularBody#equals
+	* @param {Object} _other - The other object with which it is compared.
+	*/
+	this.equals = function(_other){
+		return (ID == _other.getID());
+	},
 
 	/**
 	* Calculates the angle of the shield (in radians) depending on the current mouse input
@@ -185,11 +197,22 @@ function Shield(_pole){
 	*/
 	this.getBody = function(){
 		return body;
+	},
+
+	/**
+	* Retrieves the ID of the shield
+	*
+	* @method Shield#getID
+	* @return {number} The unique ID of the shield
+	*/
+	getID = function(){
+		return ID;
 	}	
 
 	//Stuff to execute when constructing
 	this.enableBody();
 }
+
 
 if(typeof module != 'undefined'){
     module.exports = Shield;

@@ -28,6 +28,7 @@ socket.on('userName', function(free){
 	if(!free){
 		userName = prompt("Please enter your name", "User"+Math.floor(Math.random()*10000));
 		player.setName(userName);
+		console.log(player.getName());
 		socket.emit('userName', player.getName());
 	}
 });
@@ -42,11 +43,11 @@ socket.on('canvasPos', function (data){
 })
 
 socket.on('UpdateBall', function (pos) {
-	ball.setPosition(pos.x - left, pos.y - topf);
+	balls.getMember(0).setPosition(pos.x - left, pos.y - topf);
 })
 
 socket.on('UpdateBallAngle', function (angle) {
-	ball.getBody().setVelocityDirection(angle);
+	balls.getMember(0).getBody().setVelocityDirection(angle);
 })
 
 function sendShieldAngle() {
@@ -56,5 +57,5 @@ function sendShieldAngle() {
 window.onmousemove = sendShieldAngle;
 
 function sendBallAngle() {
-	socket.emit('ballAngle', ball.getBody().getVelocityDirection());
+	socket.emit('ballAngle', balls.getMember(0).getBody().getVelocityDirection());
 }
