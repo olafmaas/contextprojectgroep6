@@ -205,7 +205,7 @@ function Shield(_pole){
 	* @method Shield#getID
 	* @return {number} The unique ID of the shield
 	*/
-	getID = function(){
+	this.getID = function(){
 		return ID;
 	}	
 

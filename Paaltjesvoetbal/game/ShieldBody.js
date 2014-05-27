@@ -29,7 +29,6 @@ var ShieldBody = Body.extend({
 		this.parentShield = _parent;
 		this.position = _parent.getPosition();
 		this.ID = IDDistributor.getNewId();
-		
 	},
 
 	/**

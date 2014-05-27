@@ -46,7 +46,21 @@ var Collision = Base.extend({
 			}
 		}
 		return collided;
+	},
+
+
+	getFirstObject: function(){
+		return this.obj1;
+	},
+
+	getSecondObject: function(){
+		return this.obj2;
+	},
+
+	getFunction: function(){
+		return this.func;
 	}
+
 });
 
 if(typeof module != 'undefined'){

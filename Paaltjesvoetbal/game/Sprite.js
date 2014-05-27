@@ -16,7 +16,7 @@ function Sprite(){
 	var hookedTo; //The object the sprite is hooked to
 	var size = {x: 0, y: 0}; //Actual size of the sprite (used in combination with scale)
 	var anchor = {x: 0, y: 0}; //Used to let the sprite be drawn from different position (e.g. with a circle)
-	var ID = -1;
+	var ID = IDDistributor.getNewId();
 
 	/**
 	* Function which loads a texture

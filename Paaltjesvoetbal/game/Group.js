@@ -59,7 +59,6 @@ function Group(_type){
 			for(var i = members.length - 1; i >= 0; i--) {
     			if(members[i].getID() === _object.getID()) {
        				members.splice(i, 1);
-       				console.log("Found");
        				found = true;
     			}
 			}
@@ -112,8 +111,16 @@ function Group(_type){
 
 	//TODO: remove collision based on ID of the object. 
 	//will then remove any collision in which this object is present (either as first or second parameter)
-	this.removeCollision = function(){
-		//remove collision
+	this.removeCollision = function(_object){
+		var found = false;
+		for(var i = collision.length - 1; i >= 0; i--) {
+			if(collision[i].getFirstObject().getID() === _object.getID() ||
+				collision[i].getSecondObject().getID() === _object.getID()) {
+   				collision.splice(i, 1);
+   				found = true;
+			}
+		}
+		if(!found) return -1;
 	}
 
 	/**
@@ -147,7 +154,7 @@ function Group(_type){
 		var length = _objectGroup.getMemberLength();
 		var members = _objectGroup.getMembers();
 		for(var i = 0; i < length; i++){
-			for(var j = i; j < length; j++){
+			for(var j = i+1; j < length; j++){
 				var coll = new Collision(members[i], members[j], null, null);
 				collision.push(coll);
 			}
@@ -193,6 +200,10 @@ function Group(_type){
 	*/
 	this.getMemberLength = function(){
 		return members.length;
+	}
+
+	this.getCollisionLength = function(){
+		return collision.length;
 	}
 }
 
