@@ -7,11 +7,11 @@
 * @param {string} _text - String to write on the screen.
 */
 Label = function(_text){
-	var text = _text; //Var containing the string
-	var position = {x: 0, y: 0}; //Var for the position
-	var font = "Verdana"; //Var for the font
-	var fontSize = 20; //Var for the font size
-	var color = "#000000" //Var for the font color
+	var text = _text;
+	var position = {x: 0, y: 0};
+	var font = "Verdana";
+	var fontSize = 20;
+	var color = "#000000";
 
 	/**
 	* Draws the label on the game canvas
