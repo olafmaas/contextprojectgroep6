@@ -101,8 +101,6 @@ function RenderEngine(_loadContent, _draw){
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	* Draw function for drawing all the elements in a game
 	* @method RenderEngine#drawGame
 	* @param{CoreGame} _game - the game to be drawn
@@ -116,7 +114,6 @@ function RenderEngine(_loadContent, _draw){
 	}
 
 	/**
->>>>>>> RestructuringMVC
 	* Create function for the game field (canvas)
 	* @method RenderEngine#createCanvas
 	*/

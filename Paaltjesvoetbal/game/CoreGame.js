@@ -57,8 +57,6 @@ function CoreGame(_initialize, _update, _width, _height){
 	//===================
 
 	/*
-<<<<<<< HEAD
-=======
 	* A getter for the game elements
 	*
 	* @method CoreGame#getGameElements
@@ -68,7 +66,6 @@ function CoreGame(_initialize, _update, _width, _height){
 	}
 
 	/*
->>>>>>> RestructuringMVC
 	* A setter for the game dimensions
 	*
 	* @method CoreGame#setDimensions

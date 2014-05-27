@@ -13,7 +13,6 @@ if(typeof module != 'undefined'){
 * @param {function} draw - Draw function
 */
 function Game(_initialize, _loadContent, _update, _draw, _width, _height){
-	var score = 0;
 	var coreGame = new CoreGame(_initialize, _update, _width, _height);
 	var renderEngine = new RenderEngine(_loadContent, _draw);
 
