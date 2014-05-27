@@ -5,7 +5,7 @@ var shields;
 var players;
 
 //Temporary amount of balls in the screen
-var NROFBALLS = 20;
+var NROFBALLS = 1;
 var NROFPOLES = 3;
 var NROFSHIELDS = 3;
 var NROFPLAYERS = 3; 
@@ -28,10 +28,6 @@ function initialize(){
 
         balls.addMember(ball);
     }
-}
-
-function loadContent(){
-    
 
     //Create poles
     for(var i = 0; i < NROFPOLES; i++){
@@ -46,9 +42,9 @@ function loadContent(){
     //Create shields
     for(var i = 0; i < NROFSHIELDS; i++){
         var tempPole = poles.getMember(i);
-        var shield = new Shield(tempPole);
+        var shield = game.instantiate(new Shield(tempPole));
         shield.getBody().immovable = true;
-
+        shield.setColor("white");
         shields.addMember(shield);
         shields.addCollision(shield, balls, null, null); //shield to ball collision
     }
@@ -67,15 +63,16 @@ function loadContent(){
 
     //Ball to all other balls collision
     balls.addCollisionCombineAll(balls);
+}
 
-    Initialize();
+function loadContent(){
+
 }
 
 //Updates the position of the items on the canvas and checks for collisions
 function update(){
     //Used for the pause functionality
     if(!mouseDown){
-        updateGameDimensions();
         input.update();
 
         //Update groups
@@ -90,14 +87,13 @@ function update(){
 
         balls.checkWorldBounds(game);     
     }
-    parentDraw();
 }
 
 //Draws everything on the canvas
-function draw(canvasContext){
-    //Draw groups
-    balls.draw(canvasContext);
-    poles.draw(canvasContext);
-    shields.draw(canvasContext);
-    players.draw(canvasContext); //Draw the score of the player on screen
+function draw(){
+    game.draw();
+}
+
+function not(_param){
+    console.log("UUH HALLO? || _param: " + _param);
 }

@@ -138,7 +138,7 @@ function Group(_type){
 		var length = _objectGroup.getMemberLength();
 		var members = _objectGroup.getMembers();
 		for(var i = 0; i < length; i++){
-			for(var j = i; j < length; j++){
+			for(var j = i + 1; j < length; j++){
 				var coll = new Collision(members[i], members[j], null, null);
 				collision.push(coll);
 			}

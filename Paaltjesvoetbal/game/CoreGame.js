@@ -18,7 +18,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	this.boot = function(){
 		parentInitialize();
 		
-		setInterval(_update, 17);
+		setInterval(parentUpdate, 17);
 	}
 
 	/*
@@ -31,6 +31,15 @@ function CoreGame(_initialize, _update, _width, _height){
 	}
 
 	/*
+	* The parent update function
+	*
+	* @method CoreGame#parentUpdate
+	*/
+	parentUpdate = function(){
+		update();
+	}
+
+	/*
 	* Function to instantiate game elements
 	*
 	* @method CoreGame#instantiate
@@ -40,6 +49,8 @@ function CoreGame(_initialize, _update, _width, _height){
 		elements.push(_element);
 		return _element;
 	}
+
+	setTimeout(this.boot, 1000);
 	
 	//===================
 	//Getters & Setters
