@@ -174,3 +174,6 @@ function RenderEngine(_loadContent, _draw){
 		backGroundColor = _color;
 	}
 }
+if(typeof module != 'undefined'){
+    module.exports = RenderEngine;
+}  

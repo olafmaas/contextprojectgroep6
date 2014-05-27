@@ -85,4 +85,25 @@ function CoreGame(_initialize, _update, _width, _height){
 	this.getDimensions = function(){
 		return dimensions;
 	}
+
+
+	this.setWidth = function(_width){
+		dimensions.width = _width;
+	}
+
+	this.setHeight = function(_height){
+		dimensions.height = _height;
+	}
+
+	this.getWidth = function(){
+		return dimensions.width;
+	}
+
+	this.getHeight = function(){
+		return dimensions.height;
+	}
 }
+
+if(typeof module != 'undefined'){
+    module.exports = CoreGame;
+}  

@@ -1,4 +1,4 @@
-var game = new Game(loadContent, update, draw);
+var game = new Game(function(){},loadContent, update, draw);
 
 var balls = new Group(Ball);
 var poles = new Group(Pole);
@@ -6,11 +6,11 @@ var shields = new Group(Shield);
 var players = new Group(Player);
 
 function loadContent(){
-    var ball = new Ball(10);
+    var ball = game.instantiate(new Ball(10));
     ball.setColor('green');
     balls.addMember(ball);
 
-    InitializeMainScreen();
+    //InitializeMainScreen();
 };
 
 //Updates the position of the items on the canvas and checks for collisions
@@ -25,8 +25,6 @@ function update(){
 //Draws everything on the canvas
 function draw(canvasContext){
     //Draw groups
-    balls.draw(canvasContext);
-    poles.draw(canvasContext);
-    shields.draw(canvasContext);
+    game.draw();
     //players.draw(canvasContext); //Draw the score of the player on screen
 };

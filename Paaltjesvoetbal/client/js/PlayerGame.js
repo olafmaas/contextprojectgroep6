@@ -11,15 +11,15 @@ function loadContent(){
     pole.setColor("blue");
     pole.setPosition(225, 175);
 
-    shield = new Shield(pole);
+    shield = game.instantiate(new Shield(pole));
     shield.getBody().immovable = true;
 
-    player = new Player(-1);
+    player = game.instantiate(new Player(-1));
     player.setPole(pole);
     player.setShield(shield);
     pole.setPlayer(player);
 
-    var ball = new Ball(10);
+    var ball = game.instantiate(new Ball(10));
     ball.setColor("green");
     ball.getBody().setVelocity(5);
     balls.addMember(ball);
@@ -27,7 +27,7 @@ function loadContent(){
     balls.addCollision(shield, balls, null, null);
     balls.addCollision(pole, balls, pole.isHit, pole);
 
-    Initialize();
+    //Initialize();
     updateGameDimensions();
 };
 
