@@ -13,6 +13,8 @@ var NROFPLAYERS = 3;
 //dus kunnen ook gewoon 1 variabele ervoor gebruiken
 
 function initialize(){
+    game.setDimensions(1000, 1000);
+
     balls = new Group(Ball);
     poles = new Group(Pole);
     shields = new Group(Shield);
@@ -76,7 +78,7 @@ function update(){
         input.update();
 
         //Update groups
-        balls.update();
+        balls.update(); 
         poles.update();
         shields.update();
         players.update(); //Update score of the player on screen
@@ -95,5 +97,5 @@ function draw(){
 }
 
 function not(_param){
-    console.log("UUH HALLO? || _param: " + _param);
+    console.log("Notification! :) || _param: " + _param);
 }

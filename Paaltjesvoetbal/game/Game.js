@@ -70,6 +70,10 @@ function Game(_initialize, _loadContent, _update, _draw, _width, _height){
 		return coreGame.getDimensions().height;
 	}
 
+	this.getDimensions = function(){
+		return coreGame.getDimensions();
+	}
+
 	/**
 	* Sets the width of the canvas
 	* @method Game#setWidth
@@ -84,6 +88,10 @@ function Game(_initialize, _loadContent, _update, _draw, _width, _height){
 	*/
 	this.setHeight = function(_height){
 		coreGame.setDimensions(coreGame.getDimensions().width, _height);
+	}
+
+	this.setDimensions = function(_width, _height){
+		coreGame.setDimensions(_width, _height);
 	}
 }
 
