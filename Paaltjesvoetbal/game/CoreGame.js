@@ -9,6 +9,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	var dimensions = {width: (_width || 0), height: (_height || 0)};
 	var initialize = _initialize;
 	var update = _update;
+	var elements = [];
 
 	/*
 	* The boot function to boot the game
@@ -17,7 +18,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	this.boot = function(){
 		parentInitialize();
 		
-		setInterval(_update, 17);
+		setInterval(parentUpdate, 17);
 	}
 
 	/*
@@ -28,12 +29,46 @@ function CoreGame(_initialize, _update, _width, _height){
 	parentInitialize = function(){
 		initialize();
 	}
+
+	/*
+	* The parent update function
+	*
+	* @method CoreGame#parentUpdate
+	*/
+	parentUpdate = function(){
+		update();
+	}
+
+	/*
+	* Function to instantiate game elements
+	*
+	* @method CoreGame#instantiate
+	* @param{object} _element - The element to instantiate
+	*/
+	this.instantiate = function(_element){
+		elements.push(_element);
+		return _element;
+	}
+
+	setTimeout(this.boot, 1000);
 	
 	//===================
 	//Getters & Setters
 	//===================
 
 	/*
+<<<<<<< HEAD
+=======
+	* A getter for the game elements
+	*
+	* @method CoreGame#getGameElements
+	*/
+	this.getGameElements = function(){
+		return elements;
+	}
+
+	/*
+>>>>>>> RestructuringMVC
 	* A setter for the game dimensions
 	*
 	* @method CoreGame#setDimensions

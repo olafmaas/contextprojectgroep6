@@ -7,110 +7,22 @@ if(typeof module != 'undefined'){
 * @class Game
 * @classdesc Game class for setting up the game/field.
 * @constructor
+* @param {function} intialize - Initialize function
 * @param {function} load - Load function
 * @param {function} update - Update function
 * @param {function} draw - Draw function
 */
-function Game(load, update, draw){
-	var width = 40; 
-	var height = 40;
-	var backGroundColor;
-	var canv;
+function Game(_initialize, _loadContent, _update, _draw, _width, _height){
 	var score = 0;
+	var coreGame = new CoreGame(_initialize, _update, _width, _height);
+	var renderEngine = new RenderEngine(_loadContent, _draw);
 
-	/**
-	* Draw function
-	* @method Game#parentDraw
-	*/
-	parentDraw = function(){
-		var ctx = canv.getContext("2d");
-		
-		clearCanvas();
-		draw(ctx);
+	this.instantiate = function(_object){
+		return coreGame.instantiate(_object);
 	}
-
-	/**
-	* Create function for the game field (canvas)
-	* @method Game#createCanvas
-	*/
-	createCanvas = function(){
-		var canv = document.createElement("canvas");
-		canv.id = 'gameCanvas';
-
-		canv.width = width;
-		canv.height = height;
-
-		document.body.appendChild(canv);
-
-		return document.getElementById("gameCanvas");
+	this.draw = function(){
+		renderEngine.drawGame(coreGame);
 	}
-
-	/**
-	* Function which updates the width and height
-	* @method Game#updateGameDimensions
-	*/
-	updateGameDimensions = function(){
-		width=window.innerWidth
-		|| document.documentElement.clientWidth
-		|| document.body.clientWidth;
-
-		height=window.innerHeight
-		|| document.documentElement.clientHeight
-		|| document.body.clientHeight;
-
-		canv.width = width;
-		canv.height = height;
-	}
-
-	/**
-	* Function which clears the playing field
-	* @method Game#clearCanvas
-	*/
-	clearCanvas = function(){
-		var ctx = canv.getContext("2d");
-		ctx.clearRect(0, 0, width, height);
-		ctx.fillStyle = backGroundColor;
-		ctx.fillRect(0, 0, width, height);
-	}
-
-	/**
-	* Initializes the variables
-	* @method Game#Initialize
-	*/
-	Initialize = function(){
-		width = document.body.clientWidth;
-		height = document.body.clientHeight;
-		backGroundColor = "#FFFFFF";
-
-		canv = createCanvas();
-		canv.onmousemove = input.mouseMoveListener;
-		canv.onmousedown = input.mouseDownListener;
-		canv.ontouchstart = input.touchStartListener;
-		canv.ontouchmove = input.touchMoveListener;
-	}
-
-	/**
-	* Initializes the mainscreen.
-	* @method Game#initializeMainScreen
-	*/
-	InitializeMainScreen = function(){
-		width = 100;
-		height = 100;
-		backGroundColor = "#FFFFFF";
-
-		canv = createCanvas();
-	}
-
-	/**
-	* Starts up the game itself
-	* @method Game#Boot
-	*/
-	Boot = function(){
-		load();
-		highResolutionTimer(17, update);
-	}
-
-	setTimeout(Boot, 1000);
 
 	//====================
 	//Section: gets & sets
@@ -130,7 +42,7 @@ function Game(load, update, draw){
 	* @return {backGroundColor} The background color
 	*/
 	this.getBackgroundColor = function(){
-		return backGroundColor;
+		return renderEngine.getBackgroundColor();
 	}
 
 	/**
@@ -138,7 +50,7 @@ function Game(load, update, draw){
 	* @method Game#setBackgroundColor
 	*/
 	this.setBackgroundColor = function(_color){
-		backGroundColor = _color;
+		renderEngine.setBackgroundColor(_color);
 	}
 
 	/**
@@ -146,7 +58,7 @@ function Game(load, update, draw){
 	* @method Game#getWidth
 	*/
 	this.getWidth = function(){
-		return width;
+		return coreGame.getDimensions().width;
 	}
 
 	/**
@@ -154,7 +66,11 @@ function Game(load, update, draw){
 	* @method Game#getHeight
 	*/
 	this.getHeight = function(){
-		return height;
+		return coreGame.getDimensions().height;
+	}
+
+	this.getDimensions = function(){
+		return coreGame.getDimensions();
 	}
 
 	/**
@@ -162,7 +78,7 @@ function Game(load, update, draw){
 	* @method Game#setWidth
 	*/
 	this.setWidth = function(_width){
-		width = _width;
+		coreGame.setDimensions(_width, coreGame.getDimensions().height);
 	}
 
 	/**
@@ -170,7 +86,11 @@ function Game(load, update, draw){
 	* @method Game#setHeight
 	*/
 	this.setHeight = function(_height){
-		height = _height;
+		coreGame.setDimensions(coreGame.getDimensions().width, _height);
+	}
+
+	this.setDimensions = function(_width, _height){
+		coreGame.setDimensions(_width, _height);
 	}
 }
 

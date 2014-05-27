@@ -24,7 +24,8 @@ function RenderEngine(_loadContent, _draw){
 	this.boot = function(){
 		initialize();
 		parentLoadContent();
-		setInterval(draw, 1000/fpsLimit);
+
+		setInterval(parentDraw, 1000/fpsLimit);
 	}
 
 	/**
@@ -35,7 +36,8 @@ function RenderEngine(_loadContent, _draw){
 	initialize = function(){
 		backGroundColor = "black";
 		fpsLimit = fpsLimit || 60;
-		window.onresize = updateCanvasSize();
+		initializeCanvas();
+		initializeListeners();
 	}
 
 	/**
@@ -44,9 +46,29 @@ function RenderEngine(_loadContent, _draw){
 	* @method RenderEngine#parentLoadContent
 	*/
 	parentLoadContent = function(){
-		canvas = createCanvas();
-		canvasContext = canvas.getContext("2d");
+
 		loadContent();
+	}
+
+	/**
+	* Function for setting event listeners
+	*
+	* @method RenderEngine#initializeListeners
+	*/
+	initializeListeners = function(){
+		canvas.onmousemove = input.mouseMoveListener;
+		window.onresize = updateCanvasSize;
+	}
+
+	/**
+	* Function for initializing canvas
+	*
+	* @method RenderEngine#initializeCanvas
+	*/
+	initializeCanvas = function(){
+		canvas = createCanvas();
+		updateCanvasSize();
+		canvasContext = canvas.getContext("2d");
 	}
 
 	/**
@@ -55,6 +77,7 @@ function RenderEngine(_loadContent, _draw){
 	* @method RenderEngine#update
 	*/
 	updateCanvasSize = function(){
+		if(canvas == undefined) return;
 		var width=window.innerWidth
 		|| document.documentElement.clientWidth
 		|| document.body.clientWidth;
@@ -63,29 +86,43 @@ function RenderEngine(_loadContent, _draw){
 		|| document.documentElement.clientHeight
 		|| document.body.clientHeight;
 
-		canv.width = width;
-		canv.height = height;
+
+		canvas.width = width;
+		canvas.height = height;
 	}
 
 	/**
 	* Draw function
 	* @method RenderEngine#parentDraw
 	*/
-	parentDraw = function(){		
+	parentDraw = function(){
 		clearCanvas();
 		draw();
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	* Draw function for drawing all the elements in a game
+	* @method RenderEngine#drawGame
+	* @param{CoreGame} _game - the game to be drawn
+	*/
+	this.drawGame = function(_game){
+		if(!(_game instanceof CoreGame)) throw "The argument is not an instance of Game";
+
+		var elements = _game.getGameElements();
+
+		for(var i = 0; i < elements.length; i++) this.drawElement(elements[i]);
+	}
+
+	/**
+>>>>>>> RestructuringMVC
 	* Create function for the game field (canvas)
 	* @method RenderEngine#createCanvas
 	*/
 	createCanvas = function(){
 		var canv = document.createElement("canvas");
 		canv.id = 'gameCanvas';
-
-		canv.width = width;
-		canv.height = height;
 
 		document.body.appendChild(canv);
 
@@ -97,10 +134,9 @@ function RenderEngine(_loadContent, _draw){
 	* @method RenderEngine#clearCanvas
 	*/
 	clearCanvas = function(){
-		var ctx = canv.getContext("2d");
-		ctx.clearRect(0, 0, width, height);
-		ctx.fillStyle = backGroundColor;
-		ctx.fillRect(0, 0, width, height);
+		canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+		canvasContext.fillStyle = backGroundColor;
+		canvasContext.fillRect(0, 0, canvas.width, canvas.height);
 	}
 
 	/**
@@ -109,8 +145,9 @@ function RenderEngine(_loadContent, _draw){
 	* @method RenderEngine#drawObject
 	* @param{object} _object - The game object to be drawn
 	*/
-	this.drawObject = function(_object){
+	this.drawElement = function(_element){
 		//TODO: draw handling
+		_element.draw(canvasContext);
 	}
 
 	//Make the engine boot 1 second after instantiating

@@ -15,13 +15,8 @@ var sprites;
 var NROFBALLS = 20;
 var NROFPSP = 3; //Nr of Poles, Shields and Players (PSP) which should all be the same, hence one variable.
 
-/**
-* Creates everything (balls, poles, shield) and add them together into groups.
-* Also creates the appropriate collisions that will be checked on each update.
-*
-* @method Lib#loadContent
-*/
-function loadContent(){
+function initialize(){
+    game.setDimensions(1000, 1000);
 
     //Create groups and fill them:
     createBalls();
@@ -32,8 +27,6 @@ function loadContent(){
 
     //Add collision from ball to each of the other balls
     balls.addCollisionCombineAll(balls);
-
-    Initialize();
 }
 
 /**
@@ -50,20 +43,6 @@ function update(){
         checkCollisions();  
     }
     parentDraw();
-}
-
-/**
-* Draws everything on the canvas
-*
-* @method Lib#draw
-*/
-function draw(canvasContext){
-    //Draw groups
-    balls.draw(canvasContext);
-    sprites.draw(canvasContext);
-    poles.draw(canvasContext);
-    shields.draw(canvasContext);
-    players.draw(canvasContext); //Draw the score of the player on screen
 }
 
 /**
@@ -101,7 +80,7 @@ function createBalls(){
     balls = new Group(Ball);
 
     for(var i = 0; i < NROFBALLS; i++){
-        var ball = new Ball(10);
+        var ball = game.instantiate(new Ball(10));
         ball.setColor(ColorGenerator.returnColor());
         ball.getBody().setVelocity(5);
         ball.getBody().setVelocityDirection(1.75 * Math.PI);
@@ -116,7 +95,7 @@ function createSprites(){
 
     var length = balls.getMemberLength();
     for(var i = 0; i < length; i++){
-        var sprite = new Sprite();
+        var sprite = game.instantiate(new Sprite());
         sprite.loadContent("../img/pokeball.png");
         sprite.hookTo(balls.getMember(i));
         var r = balls.getMember(i).getRadius();
@@ -139,7 +118,7 @@ function createPoles(){
     poles = new Group(Pole);
 
     for(var i = 0; i < NROFPSP; i++){
-        var pole = new Pole(10);
+        var pole = game.instantiate(new Pole(10));
         pole.setColor(ColorGenerator.returnColor());
         pole.setPosition(300 + (300*i), 300);
 
@@ -159,9 +138,9 @@ function createShields(){
 
     for(var i = 0; i < NROFPSP; i++){
         var tempPole = poles.getMember(i);
-        var shield = new Shield(tempPole);
+        var shield = game.instantiate(new Shield(tempPole));
         shield.getBody().immovable = true;
-
+        shield.setColor("white");
         shields.addMember(shield);
         shields.addCollision(shield, balls, null, null); //shield to ball collision
     }
@@ -189,3 +168,11 @@ function createPlayers(){
     }
 }
 
+function loadContent(){
+
+}
+
+//Draws everything on the canvas
+function draw(){
+    game.draw();
+}
