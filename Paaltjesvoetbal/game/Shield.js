@@ -213,6 +213,7 @@ function Shield(_pole){
 	this.enableBody();
 }
 
+
 if(typeof module != 'undefined'){
     module.exports = Shield;
 }  

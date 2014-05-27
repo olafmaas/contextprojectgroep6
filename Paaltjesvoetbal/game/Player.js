@@ -39,7 +39,7 @@ var Player = Base.extend({
 	update: function(){
 		
 		var lblPosition = {x: this.pole.getPosition().x - 150, y: this.pole.getPosition().y + 200}; //hardcoded position for now..
-		var lbl2Position = {x: this.pole.getPosition().x - 100, y: this.pole.getPosition().y - 200};
+		var lbl2Position = {x: this.pole.getPosition().x - 100, y: this.pole.getPosition().y - 50};
 		var lbl3Position = {x: this.pole.getPosition().x - 80, y: this.pole.getPosition().y + 230}; //hardcoded position for now..
 		
 		this.label.setPosition(lblPosition);
@@ -50,6 +50,7 @@ var Player = Base.extend({
 		var sec = this.pole.getTimer().getSeconds();
 		this.label.setText("Score: " + this.score + " | Time alive: " + min + ":" + sec);
 		this.label3.setText("Highscore: " + this.highscore);
+		this.label2.setText("Username: " + this.name);
 	},
 
 	/**
