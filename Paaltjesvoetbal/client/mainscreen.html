@@ -1,13 +1,14 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>Main Screen</title>
-        <script src="../game/Base.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="js/socket.io.min.js"></script> 
-        <script src="js/MainScreenConnection.js"></script>
-         <script src="../server/PlayerDataObject.js"></script>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
 
+        <script src="js/socket.io.min.js"></script> 
+
+        <script src="../game/Base.js"></script>
         <script src="../game/HighResolutionTimer.js"></script>
         <script src="../game/Enums.js"></script>
         <script src="../game/IdDistributor.js"></script>
@@ -28,51 +29,23 @@
         <script src="../game/Pole.js"></script>
         <script src="../game/Label.js"></script>
         <script src="../game/CollisionDetection.js"></script>
-        
+
+        <script src="../server/PlayerDataObject.js"></script>
+
+        <script src="js/MainScreenGame.js"></script>
+        <script src="js/MainScreenConnection.js"></script> 
+
         <style type="text/css"> 
             body {
                 margin: 0;
             }
     		#gameCanvas{
-    			border: 5px solid red;
+    			border: 2px solid black;
     		}
     	</style>
 
     </head>
-
     <body>
-        <script type="text/javascript">
-
-var game = new Game(loadContent, update, draw);
-
-var balls = new Group(Ball);
-var poles = new Group(Pole);
-var shields = new Group(Shield);
-var players = new Group(Player);
-
-function loadContent(){
-
-}
-
-//Updates the position of the items on the canvas and checks for collisions
-function update(){
-    canvas = document.getElementById('gameCanvas');
-    canvas.setAttribute('width', game.getWidth());
-    canvas.setAttribute('height', game.getHeight());
-
-    parentDraw();
-}
-
-//Draws everything on the canvas
-function draw(canvasContext){
-    //Draw groups
-    balls.draw(canvasContext);
-    poles.draw(canvasContext);
-    shields.draw(canvasContext);
-    //players.draw(canvasContext); //Draw the score of the player on screen
-}
-      
-        </script>
 
 	   New gamers connect to: <a href="index.html" target="_blank">localhost/client/index.html</a><br>
 
