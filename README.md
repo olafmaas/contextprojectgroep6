@@ -9,5 +9,6 @@ __________               .__   __     __                                   __ __
 Contextproject: Games
 Group: 			6
 Game:			Paaltjesvoetbal - The Game
+Jenkins: http://vps-76938-1774.hosted.at.hostnet.nl:8080/
 
 </pre> 
