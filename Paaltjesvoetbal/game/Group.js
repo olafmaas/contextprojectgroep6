@@ -194,6 +194,15 @@ function Group(_type){
 		return members[_index];
 	}
 
+	this.getMemberByID = function(_id){
+		var length = this.getMemberLength();
+		for(var i = 0; i < length; i++){
+			if(members[i].getID() === _id)
+				return members[i];
+		}
+		return -1;
+	}
+
 	/**
 	* Returns the amount of objects in the list
 	* @method Group#getMembersLength
