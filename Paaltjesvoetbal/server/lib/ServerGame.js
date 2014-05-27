@@ -83,7 +83,7 @@ function Server(debug){
 	}
 
 	this.registerName = function(name, id){
-		playerNames[name] = true;
+		namesList[name] = true;
 		clientList[id].name = name;
 		clientList[id].player.setName(name);
 	}
@@ -101,7 +101,6 @@ function Server(debug){
 		var _height = gameGrid.getHeight()* settings.canvasHeight;
 		game.setWidth(_width);
 		game.setHeight(_height);
-		console.log(gameGrid.getWidth() + " | " + gameGrid.getHeight());
 		return {width: _width, height: _height};
 	}
 
