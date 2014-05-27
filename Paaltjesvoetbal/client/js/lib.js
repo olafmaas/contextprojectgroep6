@@ -37,8 +37,6 @@ function initialize(){
 function update(){
     //Used for the pause functionality
     if(!mouseDown){
-        updateGameDimensions();
-
         updateGroups();
         checkCollisions();  
     }

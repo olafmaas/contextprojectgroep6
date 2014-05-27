@@ -1,4 +1,4 @@
-var game = new Game(loadContent, update, draw);
+var game = new Game(initialize, loadContent, update, draw);
 
 var pole;
 var shield;
@@ -7,7 +7,7 @@ var balls = new Group(Ball);
 
 function loadContent(){
 
-    pole = new Pole(10);
+    pole = game.instantiate(new Pole(10));
     pole.setColor("blue");
     pole.setPosition(225, 175);
 
@@ -46,9 +46,6 @@ function update(){
 };
 
 //Draws everything on the canvas
-function draw(canvasContext){
-    balls.draw(canvasContext);
-    pole.draw(canvasContext);
-    shield.draw(canvasContext);
-    player.draw(canvasContext);
+function draw(){
+    game.draw();
 };
