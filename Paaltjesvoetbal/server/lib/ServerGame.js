@@ -83,7 +83,7 @@ function Server(debug){
 	}
 
 	this.registerName = function(name, id){
-		playerNames[name] = true;
+		namesList[name] = true;
 		clientList[id].name = name;
 		clientList[id].player.setName(name);
 	}
@@ -97,9 +97,11 @@ function Server(debug){
 
 
 	this.updateMainScreenCanvasSize = function(){
-		game.setWidth(gameGrid.getWidth() * settings.canvasWidth);
-		game.setHeight(gameGrid.getHeight()* settings.canvasHeight);
-		return {width: gameGrid.getWidth() * settings.canvasWidth, height: gameGrid.getHeight() * settings.canvasHeight};
+		var _width = gameGrid.getWidth() * settings.canvasWidth;
+		var _height = gameGrid.getHeight()* settings.canvasHeight;
+		game.setWidth(_width);
+		game.setHeight(_height);
+		return {width: _width, height: _height};
 	}
 
 	this.updateGrid = function(socket){

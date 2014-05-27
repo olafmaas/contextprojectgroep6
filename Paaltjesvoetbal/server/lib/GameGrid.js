@@ -4,6 +4,8 @@ function GameGrid(_settings) {
 	var settings = _settings
 
 	this.getWidth = function(){
+		if(grid[0].length == 0)
+			return 1; //Temporary so a screen will be visible when no players are connected yet
 		return grid[0].length;
 	}
 
