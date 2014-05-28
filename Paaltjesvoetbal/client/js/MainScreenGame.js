@@ -1,4 +1,4 @@
-var game = new Game(function(){},loadContent, update, draw, 400, 300);
+var game = new Game(function(){},loadContent, update, draw);
 
 var balls = game.instantiate(new Group(Ball));
 var poles = game.instantiate(new Group(Pole));
