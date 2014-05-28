@@ -110,11 +110,13 @@ function Server(debug){
 
 	addBall = function(){
 		var ball = new Ball(10);
+		ball.setPosition(100, 100);
 		ball.getBody().setVelocity(5);
 		ball.getBody().setVelocityDirection(1.70 * Math.PI);
-		ball.setPosition(100, 100);
+
 		group("Balls").addCollision(ball, group("Balls"), null, null);
 		group("Balls").addMember(ball);
+
 	}
 
 	this.ballAngle = function(socket, velocityDirection){
@@ -128,7 +130,7 @@ function Server(debug){
 
 	this.update = function(){
 		gm.update()
-		group("Balls").checkCollision();	
+		group("Balls").checkCollision(); //TODO: Waarom wordt dit hier gecheckt als het in sockethandler in de update functie ook wordt gedaan?
 	}
 
 	this.createGame = function(_initialize, _update, _width, _height){

@@ -28,7 +28,6 @@ socket.on('disconnect', function (data){
 
 //Game updates
 socket.on('drawBall', function (data) {
-	//console.log("X: " + data.x + "Y: " + data.y + " | (mainscreenconnection:31)");
 	balls.getMember(0).setPosition(data.x, data.y);
 });
 
