@@ -53,7 +53,7 @@ function SocketHandler(_server, _io){
 		socket.emit('canvasPos', res);
 
 		socket.on('userName', function(name){
-			if(server.isNameAvailable(name) == undefined){
+			if(server.isNameAvailable(name)){
 				server.registerName(name, socket.id);
 			}else{
 				server.log('Username already in use');
