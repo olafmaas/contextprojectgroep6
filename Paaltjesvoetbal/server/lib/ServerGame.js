@@ -51,7 +51,6 @@ function Server(debug){
 
 		group("Players").addMember(player);
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield());
-		console.log(clientList[socket.id].pole.getPosition())
 		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition()};
 	}
 
