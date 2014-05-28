@@ -27,7 +27,6 @@ function update(){
 
 //Draws everything on the canvas
 function draw(canvasContext){
-    //Draw groups
+    //Drav everything
     game.draw();
-    //players.draw(canvasContext); //Draw the score of the player on screen
 };
