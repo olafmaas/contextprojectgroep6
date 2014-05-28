@@ -27,7 +27,7 @@ socket.on('disconnect', function(data){
 socket.on('userName', function(free){
 	if(!free){
 		userName = prompt("Please enter your name", "User"+Math.floor(Math.random()*10000));
-		player.setName(userName); //OPMERKING: player is hier undefined.
+		//player.setName(userName); //playername is set in sockethandler:57 (server.registername)
 		socket.emit('userName', userName); //player.getName());
 	}
 });
@@ -44,7 +44,6 @@ socket.on('canvasPos', function (data){
 })
 
 socket.on('UpdateBall', function (pos) {
-
 	balls.getMember(0).setPosition(pos.x - left, pos.y - topf);
 })
 

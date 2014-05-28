@@ -52,7 +52,7 @@ function SocketHandler(_server, _io){
 		updateMainScreenCanvasSize();
 		socket.emit('canvasPos', res);
 
-		socket.on('userName', function(name){
+		socket.on('userName', function (name){
 			if(server.isNameAvailable(name)){
 				server.registerName(name, socket.id);
 			}else{
