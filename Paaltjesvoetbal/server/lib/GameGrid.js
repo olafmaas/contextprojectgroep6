@@ -21,9 +21,11 @@ function GameGrid(_settings) {
 		for (i = 0; i < grid.length; i++) {
 			if(grid[i].indexOf(-1) >  -1 || grid[i].length < maximumCol){
 				if(grid[i].indexOf(-1) > -1){
+					placed = true;
 					x = grid[i].indexOf(-1);
 					grid[i][x] = socket.id;
 				}else{
+					placed = true;
 					x = grid[i].length;
 					grid[i].push(socket.id)
 				}
@@ -39,7 +41,6 @@ function GameGrid(_settings) {
 			y = grid.length - 1;
 			grid[i].push(socket.id);
 		}
-
 		return {left: x * settings.canvasWidth, top: y*settings.canvasHeight};
 	}
 

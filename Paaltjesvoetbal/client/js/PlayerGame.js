@@ -1,9 +1,12 @@
-var game = new Game(initialize, loadContent, update, draw);
 
 var pole;
 var shield;
 var player;
-var balls = new Group(Ball);
+var balls;
+
+function init(){
+    balls = new Group(Ball);
+}
 
 function loadContent(){
 
@@ -13,6 +16,7 @@ function loadContent(){
 
     shield = game.instantiate(new Shield(pole));
     shield.getBody().immovable = true;
+    shield.setColor("white");
 
     player = game.instantiate(new Player(-1));
     player.setPole(pole);
@@ -28,7 +32,7 @@ function loadContent(){
     balls.addCollision(pole, balls, pole.isHit, pole);
 
     //Initialize();
-    updateGameDimensions();
+    //updateGameDimensions();
 };
 
 //Updates the position of the items on the canvas and checks for collisions

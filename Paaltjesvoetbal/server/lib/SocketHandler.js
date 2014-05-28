@@ -56,6 +56,7 @@ function SocketHandler(_server, _io){
 			if(server.isNameAvailable(name)){
 				server.registerName(name, socket.id);
 			}else{
+				server.log('Username already in use');
 				socket.emit('userName', false);
 			}
 		});
@@ -66,7 +67,7 @@ function SocketHandler(_server, _io){
 
 
 		socket.on('ballAngle', function (velocityDirection){
-			drawToPlayers(server.ballAngle(socket, velocityDirection));
+			dh.drawToPlayers(server.ballAngle(socket, velocityDirection));
 		});
 
 		socket.on('disconnect', function (data){
@@ -86,10 +87,10 @@ function SocketHandler(_server, _io){
 	this.update = function(){
 		server.update();
 		if(server.checkGroupCollision("Poles")){
-			dh.drawToPlayers(server.getBallPosition());	//when a pole collides with a ball the player is notified to change te ball direction
+			dh.drawToPlayers(server.getBall());	//when a pole collides with a ball the player is notified to change te ball direction
 		}
 		if(server.checkWorldBounds("Balls")){
-			dh.drawToPlayers(server.getBallPosition());	//when a ball collides with a worldbounds the player is notified to change te ball direction
+			dh.drawToPlayers(server.getBall());	//when a ball collides with a worldbounds the player is notified to change te ball direction
 		}
 
 		dh.drawToMainScreen(server.getBallPosition());	

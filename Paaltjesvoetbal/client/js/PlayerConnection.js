@@ -37,12 +37,15 @@ socket.on('userName', function(free){
 var left = 0; //MOVE TO SERVER
 var topf = 0; //MOVE TO SERVER
 //MOVE TO SERVER
+
 socket.on('canvasPos', function (data){
 	left = data.left;
 	topf = data.top;
+	console.log(topf);
 })
 
 socket.on('UpdateBall', function (pos) {
+
 	balls.getMember(0).setPosition(pos.x - left, pos.y - topf);
 })
 
@@ -51,6 +54,7 @@ socket.on('UpdateBallAngle', function (angle) {
 })
 
 function sendShieldAngle() {
+	console.log("ShieldAngle emitted")
 	socket.emit('shieldAngle', shield.getAngle());
 }
 

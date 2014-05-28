@@ -1,12 +1,12 @@
 var game = new Game(function(){},loadContent, update, draw);
 
-var balls = new Group(Ball);
-var poles = new Group(Pole);
-var shields = new Group(Shield);
-var players = new Group(Player);
+var balls = game.instantiate(new Group(Ball));
+var poles = game.instantiate(new Group(Pole));
+var shields = game.instantiate(new Group(Shield));
+var players = game.instantiate(new Group(Player));
 
 function loadContent(){
-    var ball = game.instantiate(new Ball(10));
+    var ball = new Ball(10);
     ball.setColor('green');
     balls.addMember(ball);
 

@@ -16,7 +16,7 @@ if(typeof module != 'undefined'){
 }
 
 function Server(debug){
-	var clientList = [];
+	var clientList = {};
 	var namesList = []
 	var game; 
 	var mainScreenSocket = {emit:function(){false}} //If the mainscreen is not instantiated this function is used;
@@ -40,7 +40,7 @@ function Server(debug){
 	* @param {socket} The socket associated with the player. 
 	*/
 	this.addClient = function(socket){
-		var player = pf.createPlayer(clientList.length, gameGrid.getHeight(), maxNrOfColumns, socket.id);
+		var player = pf.createPlayer(Object.keys(clientList).length, gameGrid.getHeight(), maxNrOfColumns, socket.id);
 		//setGroupMemberships(player);
 
 		group("Poles").addMember(player.getPole());
@@ -51,15 +51,12 @@ function Server(debug){
 
 		group("Players").addMember(player);
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield());
+		console.log(clientList[socket.id].pole.getPosition())
 		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition()};
 	}
 
 	this.deleteClient = function(socket){
 		delete clientList[socket.id]; //TODO remove all stuff
-	}
-
-	this.update = function(){
-
 	}
 
 	/**
@@ -79,11 +76,11 @@ function Server(debug){
 	}
 
 	this.isNameAvailable = function(name){
-		return namesList[name];
+		return !namesList[name];
 	}
 
 	this.registerName = function(name, id){
-		playerNames[name] = true;
+		namesList[name] = true;
 		clientList[id].name = name;
 		clientList[id].player.setName(name);
 	}
@@ -92,7 +89,6 @@ function Server(debug){
 
 		maxNrOfPlayers = Math.floor(data.width / settings.canvasWidth) * Math.floor(data.height / settings.canvasHeight);
 		maxNrOfColumns = Math.floor(data.width / settings.canvasWidth);
-		console.log(maxNrOfPlayers);
 	}
 
 
@@ -103,7 +99,7 @@ function Server(debug){
 	}
 
 	this.updateGrid = function(socket){
-		return gameGrid.updateGrid(socket);
+		return gameGrid.updateGrid(socket, maxNrOfColumns);
 	}
 
 	this.setAngle = function(socket, angle){
@@ -120,7 +116,7 @@ function Server(debug){
 		group("Balls").addMember(ball);
 	}
 
-	this.ballAngle = function(velocityDirection){
+	this.ballAngle = function(socket, velocityDirection){
 		group("Balls").getMember(0).getBody().setVelocityDirection(velocityDirection);
 		return group("Balls").getMember(0);
 	}
@@ -134,8 +130,8 @@ function Server(debug){
 		group("Balls").checkCollision();	
 	}
 
-	this.createGame = function(_initialize, _update, _draw, _width, _height){
-		game = new CoreGame(_initialize, _update, _draw, _width, _height)
+	this.createGame = function(_initialize, _update, _width, _height){
+		game = new CoreGame(_initialize, _update, _width, _height)
 	}
 
 	this.checkGroupCollision = function(name){
@@ -148,8 +144,7 @@ function Server(debug){
 
 	//Getters and Setters
 	this.getNumberOfPlayers = function(){
-		logHandler.log("cl"+clientList.length);
-		return clientList.length;
+		return Object.keys(clientList).length;
 	}
 
 	this.getClient = function(id){

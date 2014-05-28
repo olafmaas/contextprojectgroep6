@@ -10,9 +10,9 @@ function  GroupManager(){
 	}
 
 	this.update = function(){
-		groups.forEach(function(_object){
-			_object.update();
-		})
+		for(var key in groups){
+			groups[key].update();
+		}
 	}
 
 	this.group = function(name){

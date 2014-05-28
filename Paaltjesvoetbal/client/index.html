@@ -19,6 +19,8 @@
         <script src="../game/Player.js"></script>
         <script src="../game/Timer.js"></script>
         <script src="../game/Game.js"></script>
+        <script src="../game/CoreGame.js"></script>
+        <script src="../game/RenderEngine.js"></script>
         <script src="../game/Sprite.js"></script>
         <script src="../game/Ball.js"></script>
         <script src="../game/Body.js"></script>
@@ -29,9 +31,9 @@
         <script src="../game/Pole.js"></script>
         <script src="../game/Label.js"></script>
         <script src="../game/CollisionDetection.js"></script>
-
-        <script src="js/PlayerConnection.js"></script>
         <script src="js/PlayerGame.js"></script>
+        <script src="js/PlayerConnection.js"></script>
+
 
         
         <style type="text/css">
@@ -41,6 +43,9 @@
         </style>
     </head>
     <body>
-
+<script type="text/javascript">
+    //Start the game
+    var game = new Game(init, loadContent, update, draw, 450, 350);
+    </script>
     </body>
 </html>

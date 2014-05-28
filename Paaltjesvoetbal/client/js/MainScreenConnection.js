@@ -59,6 +59,7 @@ function makePlayerObjects(data){
 	var shield = new Shield(pole);
 	shield.getBody().immovable = true;
 	shields.addMember(shield);
+	shield.setColor("white");
 	shields.addCollision(shield, balls, null, null);
 
 	var player = new Player(data.id);
