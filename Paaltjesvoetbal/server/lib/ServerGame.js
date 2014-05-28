@@ -158,6 +158,10 @@ function Server(debug){
 		return clientList[id];
 	}
 
+	this.getGame = function(){
+		return game;
+	}
+
 	group = function(name){
 		return gm.group(name);
 	}

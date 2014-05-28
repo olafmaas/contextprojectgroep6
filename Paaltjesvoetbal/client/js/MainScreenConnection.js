@@ -28,9 +28,7 @@ socket.on('disconnect', function (data){
 
 //Game updates
 socket.on('drawBall', function (data) {
-	if(balls.getMemberLength() > 0){
-		balls.getMember(0).setPosition(data.x, data.y);
-	}
+	balls.getMember(0).setPosition(data.x, data.y);
 });
 
 socket.on('drawShield', function (data) {
