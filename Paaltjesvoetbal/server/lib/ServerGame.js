@@ -110,11 +110,13 @@ function Server(debug){
 
 	addBall = function(){
 		var ball = new Ball(10);
+		ball.setPosition(100, 100);
 		ball.getBody().setVelocity(5);
 		ball.getBody().setVelocityDirection(1.70 * Math.PI);
-		ball.setPosition(100, 100);
+
 		group("Balls").addCollision(ball, group("Balls"), null, null);
 		group("Balls").addMember(ball);
+
 	}
 
 	this.ballAngle = function(socket, velocityDirection){
@@ -128,17 +130,19 @@ function Server(debug){
 
 	this.update = function(){
 		gm.update()
-		group("Balls").checkCollision();	
+		group("Balls").checkCollision(); //TODO: Waarom wordt dit hier gecheckt als het in sockethandler in de update functie ook wordt gedaan?
 	}
 
 	this.createGame = function(_initialize, _update, _width, _height){
 		game = new CoreGame(_initialize, _update, _width, _height)
 	}
 
+	//TODO: return a list of id's that collide?
 	this.checkGroupCollision = function(name){
 		return group(name).checkCollision();
 	}
 
+	//TODO: return a list of balls (just id's?) that collide with world bounds
 	this.checkWorldBounds = function(name){
 		return group(name).checkWorldBounds(game);
 	}
@@ -169,13 +173,13 @@ function Server(debug){
 		return maxNrOfPlayers;
 	}
 
-	this.getBall = function(){
-		return group("Balls").getMember(0);
+	this.getBall = function(_id){
+		return group("Balls").getMember(_id);
 	}
 
 
-	this.getBallPosition = function(){
-		return group("Balls").getMember(0).getPosition();
+	this.getBallPosition = function(_id){
+		return group("Balls").getMember(_id).getPosition();
 	}
 
 }
