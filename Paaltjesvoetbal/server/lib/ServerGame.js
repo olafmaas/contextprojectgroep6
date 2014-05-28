@@ -44,6 +44,7 @@ function Server(debug){
 		var nrOfRows = Math.floor(nrOfPlayers / maxNrOfColumns);
 		var player = pf.createPlayer(Object.keys(clientList).length, nrOfRows, maxNrOfColumns, socket.id);
 		//setGroupMemberships(player);
+		var ball = addBall();
 
 		group("Poles").addMember(player.getPole());
 		group("Poles").addCollision(player.getPole(), group("Balls"), player.getPole().isHit, player.getPole());
@@ -52,7 +53,7 @@ function Server(debug){
 		group("Shields").addCollision(player.getShield(), group("Balls"), null, null);
 
 		group("Players").addMember(player);
-		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield());
+		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield(), ball);
 
 		nrOfPlayers++;
 		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition()};
@@ -120,7 +121,7 @@ function Server(debug){
 
 		group("Balls").addCollision(ball, group("Balls"), null, null);
 		group("Balls").addMember(ball);
-
+		return ball;
 	}
 
 	this.ballAngle = function(socket, velocityDirection){
