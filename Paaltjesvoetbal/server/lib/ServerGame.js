@@ -22,6 +22,7 @@ function Server(debug){
 	var mainScreenSocket = {emit:function(){false}} //If the mainscreen is not instantiated this function is used;
 	var maxNrOfPlayers = 0;
 	var maxNrOfColumns = 0;
+	var nrOfPlayers = 0; //current amount of active players
 	var settings = new Settings();
 	var logHandler = new Log(debug);
 	var gameGrid = new GameGrid(settings);
@@ -40,7 +41,8 @@ function Server(debug){
 	* @param {socket} The socket associated with the player. 
 	*/
 	this.addClient = function(socket){
-		var player = pf.createPlayer(Object.keys(clientList).length, gameGrid.getHeight(), maxNrOfColumns, socket.id);
+		var nrOfRows = Math.floor(nrOfPlayers / maxNrOfColumns);
+		var player = pf.createPlayer(Object.keys(clientList).length, nrOfRows, maxNrOfColumns, socket.id);
 		//setGroupMemberships(player);
 
 		group("Poles").addMember(player.getPole());
@@ -51,6 +53,8 @@ function Server(debug){
 
 		group("Players").addMember(player);
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield());
+
+		nrOfPlayers++;
 		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition()};
 	}
 

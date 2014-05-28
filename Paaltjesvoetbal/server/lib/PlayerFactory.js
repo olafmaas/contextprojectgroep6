@@ -48,7 +48,7 @@ var PlayerFactory = Base.extend({
 	calculatePolePosition: function(nrOfPlayers, nrOfRows, maxNrOfColumns){
 		console.log(nrOfPlayers);
 		var xpos = this.settings.canvasWidth/2 + (this.settings.canvasWidth * (nrOfPlayers%maxNrOfColumns));
-		var ypos = this.settings.canvasHeight/2 + (this.settings.canvasHeight * (nrOfRows-1));
+		var ypos = this.settings.canvasHeight/2 + (this.settings.canvasHeight * nrOfRows);
 		return {x:xpos, y:ypos};
 	}
 })
