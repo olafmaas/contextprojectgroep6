@@ -1,4 +1,3 @@
-
 var pole;
 var shield;
 var player;

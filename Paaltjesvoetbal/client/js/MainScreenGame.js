@@ -1,4 +1,4 @@
-var game = new Game(function(){},loadContent, update, draw);
+var game = new Game(function(){},loadContent, update, draw, 400, 300);
 
 var balls = game.instantiate(new Group(Ball));
 var poles = game.instantiate(new Group(Pole));
@@ -8,6 +8,8 @@ var players = game.instantiate(new Group(Player));
 function loadContent(){
     var ball = new Ball(10);
     ball.setColor('green');
+    ball.getBody().setVelocity(5);
+    ball.getBody().setVelocityDirection(1.75 * Math.PI);
     balls.addMember(ball);
 
     //InitializeMainScreen();
@@ -19,6 +21,7 @@ function update(){
     canvas.setAttribute('width', game.getWidth());
     canvas.setAttribute('height', game.getHeight());
 
+    balls.update();
     parentDraw();
 };
 

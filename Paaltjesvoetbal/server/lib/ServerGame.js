@@ -93,9 +93,11 @@ function Server(debug){
 
 
 	this.updateMainScreenCanvasSize = function(){
-		game.setWidth(gameGrid.getWidth() * settings.canvasWidth);
-		game.setHeight(gameGrid.getHeight()* settings.canvasHeight);
-		return {width: gameGrid.getWidth() * settings.canvasWidth, height: gameGrid.getHeight() * settings.canvasHeight};
+		var _width = gameGrid.getWidth() * settings.canvasWidth;
+		var _height = gameGrid.getHeight()* settings.canvasHeight;
+		game.setWidth(_width);
+		game.setHeight(_height);
+		return {width: _width, height: _height};
 	}
 
 	this.updateGrid = function(socket){
@@ -149,6 +151,10 @@ function Server(debug){
 
 	this.getClient = function(id){
 		return clientList[id];
+	}
+
+	this.getGame = function(){
+		return game;
 	}
 
 	group = function(name){

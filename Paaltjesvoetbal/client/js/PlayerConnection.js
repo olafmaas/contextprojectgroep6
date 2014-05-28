@@ -27,9 +27,8 @@ socket.on('disconnect', function(data){
 socket.on('userName', function(free){
 	if(!free){
 		userName = prompt("Please enter your name", "User"+Math.floor(Math.random()*10000));
-		player.setName(userName);
-		console.log(player.getName());
-		socket.emit('userName', player.getName());
+		player.setName(userName); //OPMERKING: player is hier undefined.
+		socket.emit('userName', userName); //player.getName());
 	}
 });
 
