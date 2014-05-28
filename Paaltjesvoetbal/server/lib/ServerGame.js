@@ -136,8 +136,8 @@ function Server(debug){
 		group("Balls").checkCollision();	
 	}
 
-	this.createGame = function(_initialize, _update, _draw, _width, _height){
-		game = new CoreGame(_initialize, _update, _draw, _width, _height)
+	this.createGame = function(_initialize, _update, _width, _height){
+		game = new CoreGame(_initialize, _update, _width, _height)
 	}
 
 	this.checkGroupCollision = function(name){
@@ -156,6 +156,10 @@ function Server(debug){
 
 	this.getClient = function(id){
 		return clientList[id];
+	}
+
+	this.getGame = function(){
+		return game;
 	}
 
 	group = function(name){
