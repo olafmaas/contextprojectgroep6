@@ -136,8 +136,8 @@ function Server(debug){
 		group("Balls").checkCollision();	
 	}
 
-	this.createGame = function(_initialize, _update, _draw, _width, _height){
-		game = new CoreGame(_initialize, _update, _draw, _width, _height)
+	this.createGame = function(_initialize, _update, _width, _height){
+		game = new CoreGame(_initialize, _update, _width, _height)
 	}
 
 	this.checkGroupCollision = function(name){

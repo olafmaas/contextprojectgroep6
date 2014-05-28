@@ -27,7 +27,6 @@ var Body = Base.extend({
 	update: function(){
 		//If the body is static it should be immovable
 		if(this.immovable) return;
-
 		//Keep velocityDirection value between 0 and 2pi
 		this.velocityDirection = this.velocityDirection % (2 * Math.PI);
 	

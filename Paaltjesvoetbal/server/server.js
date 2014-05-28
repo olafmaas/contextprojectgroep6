@@ -14,7 +14,7 @@ var server = new Server(true);
 var sh = new SocketHandler(server, io);
 
 
-server.createGame(server.loadContent, sh.update, function(){}, 0, 0);
+server.createGame(server.loadContent, sh.update, 0, 0);
 
 
 io.of('/mainscreen').on('connection', function (socket) {
