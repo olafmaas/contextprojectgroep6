@@ -22,13 +22,19 @@ function DrawHandler(_io){
 		mainScreenSocket = ms;
 	}
 
+	//TODO: ID instead of index
 	this.drawToPlayers = function(ball, index){
 		io.of('/player').emit('UpdateBall', ball.getPosition(), index);
 		io.of('/player').emit('UpdateBallAngle', ball.getBody().getVelocityDirection(), index);
 	}
 
+	//TODO: ID instead of index
 	this.drawToMainScreen = function(ballpos, index){
 		mainScreenSocket.emit('drawBall', ballpos, index)
+	}
+
+	this.ballAdded = function(){
+		io.of('/player').emit('BallAdded');
 	}
 }
 

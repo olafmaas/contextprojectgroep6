@@ -27,6 +27,7 @@ socket.on('disconnect', function (data){
 });
 
 //Game updates
+//TODO: ID instead of index
 socket.on('drawBall', function (data, index) {
 	if(balls.getMember(index) != undefined)
 		balls.getMember(index).setPosition(data.x, data.y);
@@ -47,6 +48,7 @@ socket.on('newPlayer', function (data) {
 
 socket.on('BallAdded', function (){
 	createBall();
+	//TODO: naar client doorsturen dat er een nieuwe bal is..
 });
 
 var playerData = {};

@@ -167,7 +167,6 @@ function Server(debug){
 		return gm.group(name);
 	}
 
-
 	this.log = function(message){
 		logHandler.log(message);
 	}

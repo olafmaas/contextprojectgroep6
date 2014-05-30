@@ -43,19 +43,23 @@ socket.on('canvasPos', function (data){
 	console.log(topf);
 })
 
+//TODO: ID instead of index
 socket.on('UpdateBall', function (pos, index) {
 	if(balls.getMember(index) != null)
 		balls.getMember(index).setPosition(pos.x - left, pos.y - topf);
 })
 
+//TODO: ID instead of index
 socket.on('UpdateBallAngle', function (angle, index) {
 	if(balls.getMember(index) != null)
 		balls.getMember(index).getBody().setVelocityDirection(angle);
 })
 
 function sendShieldAngle() {
-	console.log("ShieldAngle emitted")
-	socket.emit('shieldAngle', shield.getAngle());
+	if(shield != undefined){
+		console.log("ShieldAngle emitted")
+		socket.emit('shieldAngle', shield.getAngle());
+	}
 }
 
 window.onmousemove = sendShieldAngle;
@@ -67,15 +71,14 @@ function sendBallAngle() {
 }
 
 socket.on('BallAdded', function () {
-	console.log("BALL ADDED playerconnection:68");
-	createBalls();
+	createBall();
 })
 
 function createBall(){
 	var ball = game.instantiate(new Ball(10));
 	ball.setPosition(100, 100);
 	ball.setColor(ColorGenerator.returnColor());
-	//ball.getBody().setVelocity(5);
+	ball.getBody().setVelocity(5);
 
 	balls.addCollision(ball, balls, null, null);
 	balls.addCollision(shield, ball, null, null);
