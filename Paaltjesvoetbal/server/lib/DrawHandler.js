@@ -27,8 +27,8 @@ function DrawHandler(_io){
 		io.of('/player').emit('UpdateBallAngle', ball.getBody().getVelocityDirection());
 	}
 
-	this.drawToMainScreen = function(ballpos){
-		mainScreenSocket.emit('drawBall', ballpos)
+	this.drawToMainScreen = function(ballpos, index){
+		mainScreenSocket.emit('drawBall', ballpos, index)
 	}
 }
 

@@ -180,6 +180,9 @@ function Server(debug){
 		return group("Balls").getMember(_id);
 	}
 
+	this.nrOfBalls = function(){
+		return group("Balls").getMemberLength();
+	}
 
 	this.getBallPosition = function(_id){
 		return group("Balls").getMember(_id).getPosition();

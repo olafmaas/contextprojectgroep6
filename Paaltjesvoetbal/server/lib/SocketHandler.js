@@ -78,6 +78,7 @@ function SocketHandler(_server, _io){
 
 	newPlayer = function(socket){
 		mainScreenSocket.emit('newPlayer',server.addClient(socket));
+		mainScreenSocket.emit('BallAdded');
 	}
 
 	updateMainScreenCanvasSize = function(){
@@ -93,7 +94,9 @@ function SocketHandler(_server, _io){
 			dh.drawToPlayers(server.getBall(0));	//when a ball collides with a worldbounds the player is notified to change te ball direction
 		}
 
-		dh.drawToMainScreen(server.getBallPosition(0));	
+		for(var i = 0; i < server.nrOfBalls(); i++){
+			dh.drawToMainScreen(server.getBallPosition(i), i);	
+		}
 	}
 
 
