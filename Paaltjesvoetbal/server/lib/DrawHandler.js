@@ -22,9 +22,9 @@ function DrawHandler(_io){
 		mainScreenSocket = ms;
 	}
 
-	this.drawToPlayers = function(ball){
-		io.of('/player').emit('UpdateBall', ball.getPosition());
-		io.of('/player').emit('UpdateBallAngle', ball.getBody().getVelocityDirection());
+	this.drawToPlayers = function(ball, index){
+		io.of('/player').emit('UpdateBall', ball.getPosition(), index);
+		io.of('/player').emit('UpdateBallAngle', ball.getBody().getVelocityDirection(), index);
 	}
 
 	this.drawToMainScreen = function(ballpos, index){

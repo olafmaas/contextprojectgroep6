@@ -28,7 +28,8 @@ socket.on('disconnect', function (data){
 
 //Game updates
 socket.on('drawBall', function (data, index) {
-	balls.getMember(index).setPosition(data.x, data.y);
+	if(balls.getMember(index) != undefined)
+		balls.getMember(index).setPosition(data.x, data.y);
 });
 
 socket.on('drawShield', function (data) {
@@ -59,7 +60,7 @@ function createBall(){
 	ball.setColor(ColorGenerator.returnColor());
 
 	balls.addCollision(ball, balls, null, null);
-	balls.addCollision(shield, ball, null, null);
+	//shield is handled client-sided
 	balls.addCollision(pole, ball, pole.isHit, pole);
 
 	balls.addMember(ball);

@@ -88,10 +88,14 @@ function SocketHandler(_server, _io){
 	this.update = function(){
 		server.update();
 		if(server.checkGroupCollision("Poles")){
-			dh.drawToPlayers(server.getBall(0));	//when a pole collides with a ball the player is notified to change te ball direction
+			for(var i = 0; i < server.nrOfBalls(); i++){
+				dh.drawToPlayers(server.getBall(i), i);	//when a pole collides with a ball the player is notified to change te ball direction
+			}
 		}
 		if(server.checkWorldBounds("Balls")){
-			dh.drawToPlayers(server.getBall(0));	//when a ball collides with a worldbounds the player is notified to change te ball direction
+			for(var i = 0; i < server.nrOfBalls(); i++){
+				dh.drawToPlayers(server.getBall(i), i);	//when a ball collides with a worldbounds the player is notified to change te ball direction
+			}
 		}
 
 		for(var i = 0; i < server.nrOfBalls(); i++){
