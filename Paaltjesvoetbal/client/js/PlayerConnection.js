@@ -70,21 +70,25 @@ function sendBallAngle() {
 	}
 }
 
-socket.on('BallAdded', function () {
-	createBall();
+socket.on('BallAdded', function (nr) {
+	createBall(nr);
 })
 
-function createBall(){
-	var ball = game.instantiate(new Ball(10));
-	ball.setPosition(100, 100);
-	ball.setColor(ColorGenerator.returnColor());
-	ball.getBody().setVelocity(5);
+//TODO: probleem; playergame.js wordt pas heel laat hierna aangeroepen (geen idee vanaf waar die aanroep komt)
+// en op het moment dat createball hier aangeroepen wordt, bestaan balls / pole / shield dus allemaal nog niet....
+function createBall(nr){
+	for(var i = balls.getMemberLength(); i < nr; i++){
+		var ball = game.instantiate(new Ball(10));
+		ball.setPosition(100, 100);
+		ball.setColor(ColorGenerator.returnColor());
+		ball.getBody().setVelocity(5);
 
-	balls.addCollision(ball, balls, null, null);
-	balls.addCollision(shield, ball, null, null);
-	balls.addCollision(pole, ball, pole.isHit, pole);
+		balls.addCollision(ball, balls, null, null);
+		balls.addCollision(shield, ball, null, null);
+		//balls.addCollision(pole, ball, pole.isHit, pole);
 
-	balls.addMember(ball);
+		balls.addMember(ball);
+	}
 }
 
 //TODO: function to remove balls from the list when they are no longer in the screen of the player.

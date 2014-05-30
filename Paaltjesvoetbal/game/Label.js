@@ -11,7 +11,7 @@ Label = function(_text){
 	var position = {x: 0, y: 0}; //Var for the position
 	var font = "Verdana"; //Var for the font
 	var fontSize = 20; //Var for the font size
-	var color = "#000000" //Var for the font color
+	var color = "#ffffff" //Var for the font color
 
 	/**
 	* Draws the label on the game canvas

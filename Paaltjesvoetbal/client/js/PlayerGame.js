@@ -17,6 +17,7 @@ function loadContent(){
     shield.getBody().immovable = true;
     shield.setColor("white");
 
+    //Username is -1 omdat player hier pas aangemaakt wordt...
     player = game.instantiate(new Player(-1));
     player.setPole(pole);
     player.setShield(shield);
@@ -50,5 +51,5 @@ function update(){
 
 //Draws everything on the canvas
 function draw(){
-    game.draw();
+    game.draw(); //<< welke game is dit?
 };

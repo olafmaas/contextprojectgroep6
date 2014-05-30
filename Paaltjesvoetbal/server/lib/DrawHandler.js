@@ -33,8 +33,8 @@ function DrawHandler(_io){
 		mainScreenSocket.emit('drawBall', ballpos, index)
 	}
 
-	this.ballAdded = function(){
-		io.of('/player').emit('BallAdded');
+	this.ballAdded = function(nr){
+		io.of('/player').emit('BallAdded', nr);
 	}
 }
 
