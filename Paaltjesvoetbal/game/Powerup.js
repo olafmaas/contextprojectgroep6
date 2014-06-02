@@ -2,15 +2,17 @@ if(typeof module != 'undefined'){
 	var Base = require('./Base.js');
 	var CircularBody = require('./CircularBody.js');
 	var IDDistributor = require('./IDDistributor.js');
+	var Timer = require('./Timer.js');
 }
 
 var Powerup = Base.extend({
 
 	body: false,
 	type: null,
-	color: "#000000",
 	radius: 1,
 	ID: -1,
+	timer: 0,
+	color: "#000000",
 
 	constructor: function(_radius, _type){
 		this.radius = _radius;
@@ -52,21 +54,39 @@ var Powerup = Base.extend({
 		return this.color;
 	},
 	
-	getPosition: function(){
-		return this.getBody().getPosition();
-	},
 	
-	getRadius: function (){
-		return this.radius;
+	setType: function(_type){
+		this.type = _type;
 	},
 	
 	getType: function(){
 		return this.type;
 	},
 	
+	
+	setPosition: function(_x, _y){
+		this.body.position = {x: _x, y: _y};
+	},
+	
+	getPosition: function(){
+		return this.getBody().getPosition();
+	},
+	
+	
+	getRadius: function(){
+		return this.radius;
+	},
+	
+	
 	getID: function(){
 		return this.ID;
 	},
+	
+	
+	getTimer: function(){
+		return this.timer;
+	},
+	
 	
 	getBody: function(){
 		return this.body;
