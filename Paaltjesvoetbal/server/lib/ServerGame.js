@@ -126,6 +126,7 @@ function Server(){
 		group("Balls").addMember(ball);
 
 		group("Shields").addCollision(ball, group("Shields"), null, null);
+		group("Poles").addCollision(ball, group("Poles"), null, null);
 
 		return ball;
 	}
