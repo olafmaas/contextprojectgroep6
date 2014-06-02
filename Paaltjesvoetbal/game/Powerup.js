@@ -12,7 +12,7 @@ var Powerup = Base.extend({
 	radius: 1,
 	ID: -1,
 	timer: 0,
-	color: "#000000",
+	color: "red",
 
 	constructor: function(_radius, _type){
 		this.radius = _radius;

@@ -17,9 +17,35 @@ describe("Powerup", function(){
 		var p = new Powerup(10, 2);
 
 		it("Should change the powerup-type from 2 to 1", function() {
-			expect(p.getType()).to.equal(0);
+			expect(p.getType()).to.equal(2);
 			p.setType(1);
 			expect(p.getType()).to.equal(1);
+		})
+	})
+
+	describe("Color", function(){
+		var p = new Powerup(10, 3);
+
+		it("For type 3, the standard color should be red", function(){
+			expect(p.getColor()).to.equal("red");
+		})
+
+		it("Should change the default red color to blue", function(){
+			p.setColor("blue");
+			expect(p.getColor()).to.equal("blue");
+		})
+
+	})
+
+	describe("Position", function(){
+		var p = new Powerup(10, 4);
+
+		it("Should change the position of the powerup", function(){
+			expect(p.getPosition().x).to.equal(0);
+			expect(p.getPosition().y).to.equal(0);
+			p.setPosition(100, 30);
+			expect(p.getPosition().x).to.equal(100);
+			expect(p.getPosition().y).to.equal(30);
 		})
 	})
 
@@ -44,33 +70,6 @@ describe("Powerup", function(){
 			p.startCountdown();
 			p.getTimer().stop();
 			expect(p.isActive()).to.be.false;
-		})
-	})
-
-
-	describe("Color", function(){
-		var p = new Powerup(10, 3);
-
-		it("For type 3, the standard color should be red", function(){
-			expect(p.getColor()).to.equal("red");
-		})
-
-		it("Should change the default red color to blue", function(){
-			p.setColor("blue");
-			expect(p.getColor()).to.equal("blue");
-		})
-
-	})
-
-	describe("Position", function(){
-		var p = new Powerup(10, 4);
-
-		it("Should change the position of the powerup", function(){
-			expect(p.getPosition().x).to.equal(0);
-			expect(p.getPosition().y).to.equal(0);
-			p.setPosition({x: 100, y: 30});
-			expect(p.getPosition().x).to.equal(100);
-			expect(p.getPosition().y).to.equal(30);
 		})
 	})
 
