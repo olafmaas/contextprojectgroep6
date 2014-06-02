@@ -92,25 +92,6 @@ function SocketHandler(_server, _io){
 		server.update();
 
 		//TODO: ID instead of index
-		if(server.checkGroupCollision("Poles")){
-			for(var i = 0; i < server.nrOfBalls(); i++){
-				dh.drawToPlayers(server.getBall(i), i);	//when a pole collides with a ball the player is notified to change te ball direction
-			}
-		}
-		//TODO: ID instead of index
-		if(server.checkWorldBounds("Balls")){
-			for(var i = 0; i < server.nrOfBalls(); i++){
-				dh.drawToPlayers(server.getBall(i), i);	//when a ball collides with a worldbounds the player is notified to change te ball direction
-			}
-		}
-
-		if(server.checkGroupCollision("Shields")){
-			for(var i = 0; i < server.nrOfBalls(); i++){
-				dh.drawToPlayers(server.getBall(i), i);	//when a ball collides with a worldbounds the player is notified to change te ball direction
-			}
-		}
-
-		//TODO: ID instead of index
 		for(var i = 0; i < server.nrOfBalls(); i++){
 			dh.drawToMainScreen(server.getBallPosition(i), i);	
 			dh.drawToPlayers(server.getBall(i), i);	

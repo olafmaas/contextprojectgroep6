@@ -45,12 +45,9 @@ function Server(){
 		var ball = addBall();
 
 		group("Poles").addMember(player.getPole());
-		group("Poles").addCollision(player.getPole(), group("Balls"), player.getPole().isHit, player.getPole());
-
 		group("Shields").addMember(player.getShield());
-		group("Shields").addCollision(player.getShield(), group("Balls"), null, null);
-
 		group("Players").addMember(player);
+
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield(), ball);
 
 		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition()};
@@ -68,11 +65,7 @@ function Server(){
 	*/
 	this.setGroupMemberships = function(player){
 		group("Poles").addMember(player.getPole());
-		group("Poles").addCollision(player.getPole(), group("Balls"), player.getPole().isHit, player.getPole());
-
 		group("Shields").addMember(player.getShield());
-		group("Shields").addCollision(player.getShield(), group("Balls"), null, null);
-
 		group("Players").add(player);
 	}
 
@@ -116,11 +109,7 @@ function Server(){
 		ball.getBody().setVelocity(5);
 		ball.getBody().setVelocityDirection(1.70 * Math.PI);
 
-		group("Balls").addCollision(ball, group("Balls"), null, null);
 		group("Balls").addMember(ball);
-
-		group("Shields").addCollision(ball, group("Shields"), null, null);
-
 		return ball;
 	}
 
@@ -134,8 +123,7 @@ function Server(){
 	}
 
 	this.update = function(){
-		gm.update()
-		group("Balls").checkCollision(); //TODO: Waarom wordt dit hier gecheckt als het in sockethandler in de update functie ook wordt gedaan?
+		
 	}
 
 	this.createGame = function(_initialize, _update, _width, _height){
@@ -145,11 +133,6 @@ function Server(){
 	//TODO: return a list of id's that collide?
 	this.checkGroupCollision = function(name){
 		return group(name).checkCollision();
-	}
-
-	//TODO: return a list of balls (just id's?) that collide with world bounds
-	this.checkWorldBounds = function(name){
-		return group(name).checkWorldBounds(game);
 	}
 
 	//Getters and Setters

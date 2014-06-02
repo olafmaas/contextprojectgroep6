@@ -1,6 +1,5 @@
 if(typeof module != 'undefined'){
 	var Ball = require('./Ball.js');
-	var Collision = require('./Collision.js');
 }
 
 /**

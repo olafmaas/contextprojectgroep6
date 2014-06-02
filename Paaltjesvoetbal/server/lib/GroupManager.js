@@ -9,12 +9,6 @@ function  GroupManager(){
 		groups[name] = new Group(type);
 	}
 
-	this.update = function(){
-		for(var key in groups){
-			groups[key].update();
-		}
-	}
-
 	this.group = function(name){
 		return groups[name];
 	}
