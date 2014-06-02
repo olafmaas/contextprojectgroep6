@@ -96,14 +96,12 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 			|| document.body.clientHeight;
 
         if(hasResolution()){
-        	alert("hoi");
         	if (windowRatio < canvasRatio) {
 	            var height = window.innerHeight;
         	} else {
 	            var width = window.innerWidth;
         	}
         }else{
-        	alert("hoi2");
         	var height = dimensions.height;
         	var width = dimensions.width;
         }
