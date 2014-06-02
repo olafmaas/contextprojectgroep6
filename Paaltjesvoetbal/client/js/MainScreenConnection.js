@@ -27,8 +27,10 @@ socket.on('disconnect', function (data){
 });
 
 //Game updates
-socket.on('drawBall', function (data) {
-	balls.getMember(0).setPosition(data.x, data.y);
+//TODO: ID instead of index
+socket.on('drawBall', function (data, index) {
+	if(balls.getMember(index) != undefined)
+		balls.getMember(index).setPosition(data.x, data.y);
 });
 
 socket.on('drawShield', function (data) {
@@ -44,23 +46,45 @@ socket.on('newPlayer', function (data) {
 	makePlayerObjects(data);
 });
 
+socket.on('BallAdded', function (){
+	createBall();
+});
+
 var playerData = {};
 var canvasWidth = 300;
 var nrOfPlayers = 0;
 
+function createBall(){
+	var ball = game.instantiate(new Ball(10));
+	ball.setPosition(100, 100);
+
+	ball.setColor(ColorGenerator.returnColor());
+
+	balls.addCollision(ball, balls, null, null);
+	//shield is handled client-sided
+	balls.addCollision(pole, ball, pole.isHit, pole);
+
+	balls.addMember(ball);
+}
+
+var pole;
+var shield;
+var player;
+
 function makePlayerObjects(data){
-	var pole = new Pole(10);
+	pole = new Pole(10);
 	pole.setColor("blue");
 	pole.setPosition(data.polePos.x, data.polePos.y);
 	poles.addMember(pole);
 	poles.addCollision(pole, balls, pole.isHit, pole);
 
-	var shield = new Shield(pole);
+	shield = new Shield(pole);
 	shield.getBody().immovable = true;
 	shields.addMember(shield);
+	shield.setColor("white");
 	shields.addCollision(shield, balls, null, null);
 
-	var player = new Player(data.id);
+	player = new Player(data.id);
 	player.setPole(pole);
 	player.setShield(shield);
 	pole.setPlayer(player);

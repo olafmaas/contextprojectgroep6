@@ -107,7 +107,6 @@ var CircularBody = Body.extend({
 		var height = _game.getDimensions().height;
 
 		var collision = false
-
 		if(nextXPos > width - this.getRadius() || nextXPos < this.getRadius()){
 			this.revertXSpeed();
 			collision = true;
