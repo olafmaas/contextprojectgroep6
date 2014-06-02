@@ -33,6 +33,9 @@ function DrawHandler(_io){
 		mainScreenSocket.emit('drawBall', ballpos, index)
 	}
 
+	//Emit message of how many balls are currently present 
+	//For people that are already connected this means an extra ball has been added
+	//For people that are connecting, this indicates how many balls are currently in the game and should be created locally.
 	this.ballAdded = function(nr, colors){
 		io.of('/player').emit('BallAdded', nr, colors);
 	}

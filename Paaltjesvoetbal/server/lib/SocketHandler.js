@@ -80,8 +80,9 @@ function SocketHandler(_server, _io){
 
 	newPlayer = function(socket){
 		mainScreenSocket.emit('newPlayer',server.addClient(socket));
-		mainScreenSocket.emit('BallAdded'); //inform mainscreen of new ball
-		dh.ballAdded(server.nrOfBalls(), server.getBallColors()); //inform players of new ball
+		var colors = server.getBallColors();
+		mainScreenSocket.emit('BallAdded', colors[colors.length-1]); //inform mainscreen of new ball
+		dh.ballAdded(server.nrOfBalls(), colors); //inform players of new ball(s)
 	}
 
 	updateMainScreenCanvasSize = function(){
