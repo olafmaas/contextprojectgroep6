@@ -60,6 +60,10 @@ var Powerup = Base.extend({
 		return this.radius;
 	},
 	
+	getType: function(){
+		return this.type;
+	},
+	
 	getID: function(){
 		return this.ID;
 	},
