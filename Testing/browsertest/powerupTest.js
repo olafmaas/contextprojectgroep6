@@ -13,6 +13,7 @@ describe("Powerup", function(){
 
 
 	describe("Type", function(){
+		
 		var p = new Powerup(10, 2);
 
 		it("Should change the powerup-type from 2 to 1", function() {
@@ -44,17 +45,33 @@ describe("Powerup", function(){
 			p.getTimer().stop();
 			expect(p.isActive()).to.be.false;
 		})
-		//timer opvragen nadat hij is afgelopen
 	})
 
 
 	describe("Color", function(){
-		//kleur aanpassen en opvragen
+		var p = new Powerup(10, 3);
+
+		it("For type 3, the standard color should be red", function(){
+			expect(p.getColor()).to.equal("red");
+		})
+
+		it("Should change the default red color to blue", function(){
+			p.setColor("blue");
+			expect(p.getColor()).to.equal("blue");
+		})
 
 	})
 
 	describe("Position", function(){
-		//positie veranderen en opvragen
+		var p = new Powerup(10, 4);
+
+		it("Should change the position of the powerup", function(){
+			expect(p.getPosition().x).to.equal(0);
+			expect(p.getPosition().y).to.equal(0);
+			p.setPosition({x: 100, y: 30});
+			expect(p.getPosition().x).to.equal(100);
+			expect(p.getPosition().y).to.equal(30);
+		})
 	})
 
 
