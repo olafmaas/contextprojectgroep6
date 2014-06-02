@@ -10,13 +10,13 @@ if(typeof module != 'undefined'){
 * @constructor
 * @param {Powerup} _powerup - The powerup to which the timer belongs
 */
-var PowerupTimer = Timer.extend ({
+var PowerupTimer = Timer.extend({
 
 	powerup: null,
 
 	constructor: function(_powerup, _time){
 		this.powerup = _powerup;
-		this.time = _time.
+		this.time = _time;
 	},
 
 	/**
@@ -34,5 +34,5 @@ var PowerupTimer = Timer.extend ({
 });
 
 if(typeof module != 'undefined'){
-	module.exports = PlayerTimer;
+	module.exports = PowerupTimer;
 }

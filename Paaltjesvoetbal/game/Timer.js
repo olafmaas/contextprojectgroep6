@@ -105,8 +105,8 @@ var Timer = Base.extend ({
 	*/
 
 	isPaused: function(){
-		return paused;
-	}
+		return this.paused;
+	},
 
 	/**
 	* Returns the count

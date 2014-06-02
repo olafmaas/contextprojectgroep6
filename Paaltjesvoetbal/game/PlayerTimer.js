@@ -10,14 +10,14 @@ if(typeof module != 'undefined'){
 * @constructor
 * @param {Player} _player - The player to which the timer belongs
 */
-var PlayerTimer = Timer.extend ({
+var PlayerTimer = Timer.extend({
 
 	player: null,
 
 	constructor: function(_player){
 		this.player = _player;
 	},
-
+	
 	/**
 	* Adds one to the current time and update the player's score
 	*

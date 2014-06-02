@@ -73,6 +73,4 @@ describe("Powerup", function(){
 		})
 	})
 
-
-
 })
