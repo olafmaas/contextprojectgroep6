@@ -103,8 +103,8 @@ var CircularBody = Body.extend({
 		var ballSpeed = this.getXYSpeed();
 		var nextXPos = ballPosition.x + ballSpeed.x;
 		var nextYPos = ballPosition.y + ballSpeed.y;
-		var width = _game.getWidth();
-		var height = _game.getHeight();
+		var width = _game.getDimensions().width;
+		var height = _game.getDimensions().height;
 
 		var collision = false
 

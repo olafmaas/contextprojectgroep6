@@ -15,27 +15,6 @@ function Group(_type){
 	//Variables
 	var type = _type; //The type of objects in the group.
 	var members = []; //Array for the 'members' of the groups, as this could be many.
-	var collision = []; //Array for the collisions, as there could be more than 1 collision to handle per group member.
-
-	/**
-	* Updates al objects within a list of members
-	* @method Group#update
-	*/
-	this.update = function(){
-		members.forEach(function (_object){
-			_object.update();
-		});
-	}
-
-	/**
-	* Draws all objects within a list of members
-	* @method Group#draw
-	*/
-	this.draw = function(_canvasContext){
-		members.forEach(function (_object){
-			_object.draw(_canvasContext);
-		});
-	}
 
 	/**
 	* Adds an object to an existing list of members
@@ -63,7 +42,6 @@ function Group(_type){
     			}
 			}
 			if(!found) return -1;
-			this.removeCollision(_object); //when something has been found and deleted, also remove the corresponding collisions
 		}
 		else return -1; //Else it's another type, which isn't present in this group
 	}
@@ -81,55 +59,6 @@ function Group(_type){
 		//and any references to the old one will still be working or will eventually
 		//created problems.
 		members.length = 0; 
-		collision.length = 0;
-	}
-
-	/**
-	* Adds the correct colission between all the objects of two lists
-	* @method Group#addCollision
-	* @param {Object} _object1 - Object 1 for the possible collision
-	* @param {Object} _object2 - Object 2 for the possible collision, can be a list
-	* @param {Function} _funcAfter - The function that will be triggered after collisionhandling has succeeded (e.g. for pole) (can be null)
-	* @param {Object} _this - The 'this' that will be submitted to the funcAfter function (can be null)
-	*/
-	this.addCollision = function(_object1, _object2, _funcAfter, _this){
-		//In case the second object is a group
-		if(_object2 instanceof Group){
-			var members = _object2.getMembers();
-			for(var i = 0; i < members.length; i++){
-				if(_object1 !== members[i]){
-					var tempObj = new Collision(_object1, members[i], _funcAfter, _this);
-					collision.push(tempObj);
-				}
-			}
-		}	
-		else {
-			var collObj = new Collision(_object1, _object2, _funcAfter, _this);
-			collision.push(collObj);
-		}
-	}
-
-	//TODO: remove collision based on ID of the object. 
-	//will then remove any collision in which this object is present (either as first or second parameter)
-	this.removeCollision = function(_object){
-		var found = false;
-		for(var i = collision.length - 1; i >= 0; i--) {
-			if(collision[i].getFirstObject().getID() === _object.getID() ||
-				collision[i].getSecondObject().getID() === _object.getID()) {
-   				collision.splice(i, 1);
-   				found = true;
-			}
-		}
-		if(!found) return -1;
-	}
-
-	/**
-	* Removes all collisions from the group, but keeps the members.
-	*
-	* @method Group#clearCollisions
-	*/
-	this.clearCollisions = function(){
-		collision.length = 0;
 	}
 
 	/**
@@ -138,27 +67,8 @@ function Group(_type){
 	*/
 	this.checkCollision = function(){
 		var collided = false;
-		collision.forEach(function (_coll) {
-			if(_coll.execute())
-				collided = true;
-		});
-		return collided;
-	}
 
-	/**
-	* Adds collision between all the objects of the same group (is used in the balls group)
-	* @method Group#addCollisionCombineAll
-	* @param {Group} _objectGroup - Group of objects
-	*/
-	this.addCollisionCombineAll = function(_objectGroup){
-		var length = _objectGroup.getMemberLength();
-		var members = _objectGroup.getMembers();
-		for(var i = 0; i < length; i++){
-			for(var j = i + 1; j < length; j++){
-				var coll = new Collision(members[i], members[j], null, null);
-				collision.push(coll);
-			}
-		}
+		return collided;
 	}
 
 	/**

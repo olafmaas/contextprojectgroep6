@@ -24,9 +24,6 @@ function initialize(){
     createPoles();
     createShields();
     createPlayers();
-
-    //Add collision from ball to each of the other balls
-    balls.addCollisionCombineAll(balls);
 }
 
 /**
@@ -38,9 +35,7 @@ function update(){
     //Used for the pause functionality
     if(!mouseDown){
         updateGroups();
-        checkCollisions();  
     }
-    parentDraw();
 }
 
 /**
@@ -49,23 +44,7 @@ function update(){
 * @method Lib#updateGroups
 */
 function updateGroups(){
-    balls.update();
-    poles.update();
-    shields.update();
     players.update(); //Update score of the player on screen   
-}
-
-/**
-* Checks for any collisions available in the group
-*
-* @method Lib#checkCollisions
-*/
-function checkCollisions(){
-    balls.checkCollision();
-    poles.checkCollision();
-    shields.checkCollision();
-
-    balls.checkWorldBounds(game);
 }
 
 /**

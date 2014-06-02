@@ -10,6 +10,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	var initialize = _initialize;
 	var update = _update;
 	var elements = [];
+	var thisGame = this;
 
 	/*
 	* The boot function to boot the game
@@ -36,7 +37,49 @@ function CoreGame(_initialize, _update, _width, _height){
 	* @method CoreGame#parentUpdate
 	*/
 	parentUpdate = function(){
+		//This makes all the elements update individually
+		updateElements();
+		handleCollisions();
+
 		update();
+	}
+
+	/*
+	* Function to update all game elements
+	*
+	* @method CoreGame#updateElements
+	*/
+	updateElements = function(){
+		for(var i = 0; i < elements.length; i++){
+			if(elements[i].update !== undefined) elements[i].update();
+		}
+	}
+
+	/*
+	* Function to handle all game object collisions
+	*
+	* @method CoreGame#handleCollisions
+	*/
+	handleCollisions = function(){
+		for(var i = 0; i < elements.length; i++){
+			for(var j = i + 1; j < elements.length; j++){
+				handleCollision(elements[i], elements[j]);
+			}
+		}
+
+		keepInWorldBounds();
+	}
+
+	/* 
+	* Function to make sure all elements stay in the world bounds
+	* 
+	* @method CoreGame#keepInWorldBounds
+	*/
+	keepInWorldBounds = function(){
+		for(var i = 0; i < elements.length; i++){
+			if(elements[i].getBody !== undefined && elements[i].getBody().checkWorldBounds !== undefined)
+				elements[i].getBody().checkWorldBounds(thisGame);
+		}
 	}
 
 	/*
