@@ -50,6 +50,17 @@ function CoreGame(_initialize, _update, _width, _height){
 		return _element;
 	}
 
+	/*
+	* Function to remove game elements
+	*
+	* @method CoreGame#remove
+	* @param{object} _element - The element to remove
+	*/
+	this.remove = function(_element){
+		elementIndex = elements.indexOf(_element);
+		elements.splice(elementIndex, 1);
+	}
+
 	setTimeout(this.boot, 1000);
 	
 	//===================

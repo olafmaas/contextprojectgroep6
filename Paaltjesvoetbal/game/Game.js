@@ -19,6 +19,11 @@ function Game(_initialize, _loadContent, _update, _draw, _width, _height){
 	this.instantiate = function(_object){
 		return coreGame.instantiate(_object);
 	}
+
+	this.remove = function(_object){
+		coreGame.remove(_object);
+	}
+
 	this.draw = function(){
 		renderEngine.drawGame(coreGame);
 	}
