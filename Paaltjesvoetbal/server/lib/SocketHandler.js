@@ -80,8 +80,9 @@ function SocketHandler(_server, _io){
 
 	newPlayer = function(socket){
 		mainScreenSocket.emit('newPlayer',server.addClient(socket));
-		mainScreenSocket.emit('BallAdded'); //inform mainscreen of new ball
-		dh.ballAdded(server.nrOfBalls()); //inform players of new ball
+		var colors = server.getBallColors();
+		mainScreenSocket.emit('BallAdded', colors[colors.length-1]); //inform mainscreen of new ball
+		dh.ballAdded(server.nrOfBalls(), colors); //inform players of new ball(s)
 	}
 
 	updateMainScreenCanvasSize = function(){
@@ -91,24 +92,10 @@ function SocketHandler(_server, _io){
 	this.update = function(){
 		server.update();
 
-		//TODO: ID instead of index
-		if(server.checkGroupCollision("Poles")){
-			for(var i = 0; i < server.nrOfBalls(); i++){
-				dh.drawToPlayers(server.getBall(i), i);	//when a pole collides with a ball the player is notified to change te ball direction
-			}
-		}
-		//TODO: ID instead of index
-		if(server.checkWorldBounds("Balls")){
-			for(var i = 0; i < server.nrOfBalls(); i++){
-				dh.drawToPlayers(server.getBall(i), i);	//when a ball collides with a worldbounds the player is notified to change te ball direction
-			}
-		}
-
-		if(server.checkGroupCollision("Shields")){
-			for(var i = 0; i < server.nrOfBalls(); i++){
-				dh.drawToPlayers(server.getBall(i), i);	//when a ball collides with a worldbounds the player is notified to change te ball direction
-			}
-		}
+		//Check the collisions
+		server.checkGroupCollision("Poles")
+		server.checkWorldBounds("Balls")
+		server.checkGroupCollision("Shields")
 
 		//TODO: ID instead of index
 		for(var i = 0; i < server.nrOfBalls(); i++){
