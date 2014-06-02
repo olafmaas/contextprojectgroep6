@@ -54,7 +54,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	}
 
 	//this.boot();
-	setTimeout(this.boot, 50);
+	setTimeout(this.boot, 10);
 	
 	//===================
 	//Getters & Setters
