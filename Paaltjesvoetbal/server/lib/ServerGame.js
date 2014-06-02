@@ -1,5 +1,5 @@
 if(typeof module != 'undefined'){
-	var Log = require('./LogHandler.js');
+	var logHandler = require('./LogHandler.js');
 	var Settings = require('./Settings.js');
 	var GameGrid = require('./GameGrid.js');
 	var GroupManager = require('./GroupManager.js');
@@ -15,7 +15,8 @@ if(typeof module != 'undefined'){
 	var handleCollision = require('../../game/CollisionDetection.js');
 }
 
-function Server(debug){
+function Server(){
+	logHandler.log('test');
 	var clientList = {};
 	var namesList = []
 	var game; 
@@ -23,7 +24,6 @@ function Server(debug){
 	var maxNrOfPlayers = 0;
 	var maxNrOfColumns = 0;
 	var settings = new Settings();
-	var logHandler = new Log(debug);
 	var gameGrid = new GameGrid(settings);
 	var gm = new GroupManager();
 	var pf = new PlayerFactory(settings);
