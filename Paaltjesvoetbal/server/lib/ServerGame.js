@@ -13,6 +13,7 @@ if(typeof module != 'undefined'){
 	var Player = require('../../game/Player.js');
 	var Group = require('../../game/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
+	var ColorGenerator = require('../../game/ColorGenerator');
 }
 
 function Server(){
@@ -87,11 +88,9 @@ function Server(){
 	}
 
 	this.setMaxGameSize = function(data){
-
 		maxNrOfPlayers = Math.floor(data.width / settings.canvasWidth) * Math.floor(data.height / settings.canvasHeight);
 		maxNrOfColumns = Math.floor(data.width / settings.canvasWidth);
 	}
-
 
 	this.updateMainScreenCanvasSize = function(){
 		var _width = gameGrid.getWidth() * settings.canvasWidth;
@@ -110,11 +109,21 @@ function Server(){
 		return {id: socket.id, angle: angle};
 	}
 
+	this.getBallColors = function(){
+		var colors = [];
+		var length = group("Balls").getMemberLength();
+		for(var i = 0; i < length; i++){
+			colors.push(group("Balls").getMember(i).getColor());
+		}
+		return colors;
+	}
+
 	addBall = function(){
 		var ball = new Ball(10);
 		ball.setPosition(100, 100);
 		ball.getBody().setVelocity(5);
 		ball.getBody().setVelocityDirection(1.70 * Math.PI);
+		ball.setColor(ColorGenerator.returnColor());
 
 		group("Balls").addCollision(ball, group("Balls"), null, null);
 		group("Balls").addMember(ball);

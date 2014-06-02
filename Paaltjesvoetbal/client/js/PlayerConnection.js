@@ -74,15 +74,15 @@ function sendBallAngle() {
 	}
 }
 
-socket.on('BallAdded', function (nr) {
-	createBall(nr);
+socket.on('BallAdded', function (nr, colors) {
+	createBall(nr, colors);
 })
 
-function createBall(nr){
+function createBall(nr, colors){
 	for(var i = balls.getMemberLength(); i < nr; i++){
 		var ball = game.instantiate(new Ball(10));
 		if(i == nr-1) ball.setPosition(100, 100);
-		ball.setColor(ColorGenerator.returnColor());
+		ball.setColor(colors[i]);
 		//ball.getBody().setVelocity(5);
 
 		balls.addCollision(ball, balls, null, null);
