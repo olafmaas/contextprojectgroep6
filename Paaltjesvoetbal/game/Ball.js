@@ -89,7 +89,7 @@ var Ball = Base.extend({
 	* @param {number} _y - The y coordinate of the center of the ball.
 	*/
 	setPosition: function (_x, _y){
-		this.body.position = {x: _x, y: _y};
+		this.getBody().getPosition() = {x: _x, y: _y};
 	},
 
 	/**
@@ -98,8 +98,8 @@ var Ball = Base.extend({
 	* @param {number} _radius - The radius of the ball in pixels.
 	*/
 	setRadius: function (_radius) {
-		this.radius = _radius;
-		this.body.radius = _radius;
+		this.getRadius() = _radius;
+		this.getBody().getRadius() = _radius;
 	},
 
 	/**
@@ -109,7 +109,7 @@ var Ball = Base.extend({
 	* @param {Hex value} _color - The hex value of the color.
 	*/
 	setColor: function(_color){
-		this.color = _color;
+		this.getColor() = _color;
 	},
 
 	/**
