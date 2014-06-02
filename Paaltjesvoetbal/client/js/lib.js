@@ -79,6 +79,7 @@ function createBalls(){
 
     for(var i = 0; i < NROFBALLS; i++){
         var ball = game.instantiate(new Ball(10));
+        window.testBall = ball;
         ball.setColor(ColorGenerator.returnColor());
         ball.getBody().setVelocity(5);
         ball.getBody().setVelocityDirection(1.75 * Math.PI);

@@ -75,7 +75,6 @@ function makePlayerObjects(data){
 	pole = new Pole(10);
 	pole.setColor("blue");
 	pole.setPosition(data.polePos.x, data.polePos.y);
-
 	poles.addMember(pole);
 	poles.addCollision(pole, balls, pole.isHit, pole);
 
