@@ -8,7 +8,7 @@ describe("CircularBody", function(){
 
 		it("Should update his Ball object on update", function() {
 			cb = new CircularBody(b);
-			cb.Update();
+			cb.update();
 			expect(mockedBall).to.have.been.called;
 		})
 		
