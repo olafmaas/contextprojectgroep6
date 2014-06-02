@@ -38,10 +38,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	*
 	* @method CoreGame#parentUpdate
 	*/
-	var myDate = Date.now();
 	parentUpdate = function(){
-		console.log(Date.now() - myDate);
-		myDate = Date.now();
 		update();
 	}
 

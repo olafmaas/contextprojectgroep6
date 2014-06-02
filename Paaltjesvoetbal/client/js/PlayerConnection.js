@@ -55,6 +55,11 @@ socket.on('UpdateBallAngle', function (angle, index) {
 		balls.getMember(index).getBody().setVelocityDirection(angle);
 })
 
+socket.on('drawBall', function (data, index) {
+	if(balls.getMember(index) != undefined)
+		balls.getMember(index).setPosition(data.x, data.y);
+})
+
 function sendShieldAngle() {
 	if(shield != undefined){
 		socket.emit('shieldAngle', shield.getAngle());
