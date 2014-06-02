@@ -1,3 +1,5 @@
+var game = new Game(init, loadContent, update, draw, 450, 350);
+
 var pole;
 var shield;
 var player;
@@ -23,14 +25,6 @@ function loadContent(){
     player.setShield(shield);
     pole.setPlayer(player);
 
-    var ball = game.instantiate(new Ball(10));
-    ball.setColor("green");
-    ball.getBody().setVelocity(5);
-    balls.addMember(ball);
-
-    balls.addCollision(shield, balls, null, null);
-    balls.addCollision(pole, balls, pole.isHit, pole);
-
     //Initialize();
     //updateGameDimensions();
 };
@@ -42,14 +36,14 @@ function update(){
     shield.update();
     player.update();
 
-    if(balls.checkCollision()){
-        sendBallAngle();
-    }
+    // if(balls.checkCollision()){
+    //     sendBallAngle();
+    // }
 
     parentDraw();
 };
 
 //Draws everything on the canvas
 function draw(){
-    game.draw(); //<< welke game is dit?
+    game.draw(); 
 };

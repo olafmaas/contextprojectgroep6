@@ -55,9 +55,13 @@ socket.on('UpdateBallAngle', function (angle, index) {
 		balls.getMember(index).getBody().setVelocityDirection(angle);
 })
 
+socket.on('drawBall', function (data, index) {
+	if(balls.getMember(index) != undefined)
+		balls.getMember(index).setPosition(data.x, data.y);
+})
+
 function sendShieldAngle() {
 	if(shield != undefined){
-		console.log("ShieldAngle emitted")
 		socket.emit('shieldAngle', shield.getAngle());
 	}
 }
@@ -74,14 +78,12 @@ socket.on('BallAdded', function (nr) {
 	createBall(nr);
 })
 
-//TODO: probleem; playergame.js wordt pas heel laat hierna aangeroepen (geen idee vanaf waar die aanroep komt)
-// en op het moment dat createball hier aangeroepen wordt, bestaan balls / pole / shield dus allemaal nog niet....
 function createBall(nr){
 	for(var i = balls.getMemberLength(); i < nr; i++){
 		var ball = game.instantiate(new Ball(10));
-		ball.setPosition(100, 100);
+		if(i == nr-1) ball.setPosition(100, 100);
 		ball.setColor(ColorGenerator.returnColor());
-		ball.getBody().setVelocity(5);
+		//ball.getBody().setVelocity(5);
 
 		balls.addCollision(ball, balls, null, null);
 		balls.addCollision(shield, ball, null, null);

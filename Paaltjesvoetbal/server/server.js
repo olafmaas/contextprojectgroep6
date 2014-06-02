@@ -10,18 +10,20 @@ var PlayerFactory = require('./lib/PlayerFactory.js');
 var SocketHandler = require('./lib/SocketHandler.js');
 var Server = require('./lib/ServerGame.js');
 
-var server = new Server(true);
+var server = new Server();
 var sh = new SocketHandler(server, io);
 
-
 server.createGame(server.loadContent, sh.update, 0, 0);
-
 
 io.of('/mainscreen').on('connection', function (socket) {
 	if(!sh.hasMainScreen()){
 		console.log('MainScreen connected');
 		sh.handleMainScreen(socket);
-	}
+	} 
+	else{
+		socket.send('There is already a mainScreen.');
+		socket.disconnect();
+	} 
 });
 
 io.of('/player').on('connection', function (socket) {

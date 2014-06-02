@@ -1,5 +1,5 @@
 if(typeof module != 'undefined'){
-	var Log = require('./LogHandler.js');
+	var logHandler = require('./LogHandler.js');
 	var Settings = require('./Settings.js');
 	var GameGrid = require('./GameGrid.js');
 	var GroupManager = require('./GroupManager.js');
@@ -15,7 +15,7 @@ if(typeof module != 'undefined'){
 	var handleCollision = require('../../game/CollisionDetection.js');
 }
 
-function Server(debug){
+function Server(){
 	var clientList = {};
 	var namesList = []
 	var game; 
@@ -23,7 +23,6 @@ function Server(debug){
 	var maxNrOfPlayers = 0;
 	var maxNrOfColumns = 0;
 	var settings = new Settings();
-	var logHandler = new Log(debug);
 	var gameGrid = new GameGrid(settings);
 	var gm = new GroupManager();
 	var pf = new PlayerFactory(settings);
@@ -119,12 +118,15 @@ function Server(debug){
 
 		group("Balls").addCollision(ball, group("Balls"), null, null);
 		group("Balls").addMember(ball);
+
+		group("Shields").addCollision(ball, group("Shields"), null, null);
+
 		return ball;
 	}
 
-	this.ballAngle = function(socket, velocityDirection){
-		group("Balls").getMember(0).getBody().setVelocityDirection(velocityDirection);
-		return group("Balls").getMember(0);
+	this.ballAngle = function(socket, velocityDirection, index){
+		group("Balls").getMember(index).getBody().setVelocityDirection(velocityDirection);
+		return group("Balls").getMember(index);
 	}
 
 	this.loadContent = function(){

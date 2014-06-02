@@ -188,7 +188,9 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	}
 
 	//Make the engine boot 1 second after instantiating
-	setTimeout(this.boot, 1000);
+	//this.boot();
+
+	setTimeout(this.boot, 10);
 
 	//======================
 	// Gets & Sets

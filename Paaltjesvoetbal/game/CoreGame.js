@@ -1,3 +1,6 @@
+if(typeof module != 'undefined'){
+	var highResolutionTimer = require('./HighResolutionTimer.js');
+}
 /*
 * A fully functional game class without any graphical handling
 *
@@ -50,7 +53,8 @@ function CoreGame(_initialize, _update, _width, _height){
 		return _element;
 	}
 
-	setTimeout(this.boot, 1000);
+	//this.boot();
+	setTimeout(this.boot, 10);
 	
 	//===================
 	//Getters & Setters
@@ -85,7 +89,6 @@ function CoreGame(_initialize, _update, _width, _height){
 	this.getDimensions = function(){
 		return dimensions;
 	}
-
 
 	this.setWidth = function(_width){
 		dimensions.width = _width;

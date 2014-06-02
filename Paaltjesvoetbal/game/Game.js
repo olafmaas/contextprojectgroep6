@@ -1,6 +1,5 @@
 //Game class
 if(typeof module != 'undefined'){
-	var highResolutionTimer = require('./HighResolutionTimer.js');
 	var CoreGame = require('./CoreGame.js');
 	var RenderEngine = require('./RenderEngine.js');
 }

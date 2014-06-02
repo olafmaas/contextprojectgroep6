@@ -1,5 +1,5 @@
 if(typeof module != 'undefined'){
-	var Log = require('./LogHandler.js');
+	var logHandler = require('./LogHandler.js');
 	var Settings = require('./Settings.js');
 	var GameGrid = require('./GameGrid.js');
 	var GroupManager = require('./GroupManager.js');
@@ -13,6 +13,7 @@ if(typeof module != 'undefined'){
 	var Group = require('../../game/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
 	var DrawHandler = require('./DrawHandler.js');
+	var e = require('../../game/Enums.js');
 }
 
 function SocketHandler(_server, _io){
@@ -65,9 +66,10 @@ function SocketHandler(_server, _io){
 			mainScreenSocket.emit('drawShield', server.setAngle(socket,angle));
 		});
 
+		//TODO: ID's in plaats van index?
+		socket.on('ballAngle', function (velocityDirection, index){
+			//dh.drawToPlayers(server.ballAngle(socket, velocityDirection, index));
 
-		socket.on('ballAngle', function (velocityDirection){
-			dh.drawToPlayers(server.ballAngle(socket, velocityDirection));
 		});
 
 		socket.on('disconnect', function (data){
@@ -102,9 +104,16 @@ function SocketHandler(_server, _io){
 			}
 		}
 
+		if(server.checkGroupCollision("Shields")){
+			for(var i = 0; i < server.nrOfBalls(); i++){
+				dh.drawToPlayers(server.getBall(i), i);	//when a ball collides with a worldbounds the player is notified to change te ball direction
+			}
+		}
+
 		//TODO: ID instead of index
 		for(var i = 0; i < server.nrOfBalls(); i++){
 			dh.drawToMainScreen(server.getBallPosition(i), i);	
+			dh.drawToPlayers(server.getBall(i), i);	
 		}
 	}
 
