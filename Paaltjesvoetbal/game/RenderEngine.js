@@ -101,13 +101,16 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
         	} else {
 	            var width = window.innerWidth;
         	}
+			canvas.style.width = width + "px";
+			canvas.style.height = height + "px";
         }else{
         	var height = dimensions.height;
         	var width = dimensions.width;
+        	canvas.width = width + "px";
+			canvas.height = height + "px";
         }
 
-		canvas.style.width = width + "px";
-		canvas.style.height = height + "px";
+
 	}
 
 	hasResolution = function() {
