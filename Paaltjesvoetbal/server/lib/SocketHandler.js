@@ -1,5 +1,5 @@
 if(typeof module != 'undefined'){
-	var Log = require('./LogHandler.js');
+	var logHandler = require('./LogHandler.js');
 	var Settings = require('./Settings.js');
 	var GameGrid = require('./GameGrid.js');
 	var GroupManager = require('./GroupManager.js');
@@ -13,6 +13,7 @@ if(typeof module != 'undefined'){
 	var Group = require('../../game/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
 	var DrawHandler = require('./DrawHandler.js');
+	var e = require('../../game/Enums.js');
 }
 
 function SocketHandler(_server, _io){

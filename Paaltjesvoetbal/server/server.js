@@ -13,9 +13,7 @@ var Server = require('./lib/ServerGame.js');
 var server = new Server();
 var sh = new SocketHandler(server, io);
 
-
 server.createGame(server.loadContent, sh.update, 0, 0);
-
 
 io.of('/mainscreen').on('connection', function (socket) {
 	if(!sh.hasMainScreen()){
