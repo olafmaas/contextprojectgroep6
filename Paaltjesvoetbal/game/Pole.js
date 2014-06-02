@@ -1,7 +1,7 @@
 if(typeof module != 'undefined'){
 	var CircularBody = require('./CircularBody.js');
 	var Ball = require('./Ball.js');
-	var Timer = require('./Timer.js');
+	var PlayerTimer = require('./PlayerTimer.js');
 	var IDDistributor = require('./IDDistributor.js');
 }
 /**
@@ -88,7 +88,7 @@ var Pole = Ball.extend({
 	*/
 	setPlayer: function(_player){
 		this.player = _player;
-		this.timer = new Timer(_player);
+		this.timer = new PlayerTimer(_player);
 		this.timer.startTimer();
 	},
 

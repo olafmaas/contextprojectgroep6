@@ -26,15 +26,16 @@ var Timer = Base.extend ({
 	*/
 	startTimer: function(){
 		var savedThis = this;
-		this.interval = setInterval(savedThis.count, 1000);
+		this.interval = setInterval(function() { savedThis.count(savedThis) }, 1000);
 	},
 
 	/**
 	* Adds one to the current time
 	*
 	* @method Timer#count
+	* @param {This} _this - Optional, is needed for playertimer!
 	*/
-	count: function(){
+	count: function(_this){
 		this.time++;
 		//console.log(time + " | " + player.getScore());
 	},

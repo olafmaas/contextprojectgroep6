@@ -22,10 +22,12 @@ var PlayerTimer = Timer.extend({
 	* Adds one to the current time and update the player's score
 	*
 	* @method PlayerTimer#count
+	* @param {This} _this - The pointer to the original 'this', otherwise the object will mess it all up.
 	*/
-	count: function(){
-		this.time++;
-		this.player.incrementScore(1);
+	count: function(_this){
+		_this.time++;
+		_this.player.incrementScore(1);
+		console.log(_this.player.getName() + ": " + _this.player.getScore());
 	}
 
 });
