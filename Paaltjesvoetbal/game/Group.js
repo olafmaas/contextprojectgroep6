@@ -63,28 +63,17 @@ function Group(_type){
 
 	/**
 	* Checks each collision of the possible collisions
+	* 
 	* @method Group#checkCollision
 	*/
 	this.checkCollision = function(){
-		var collided = false;
-
-		return collided;
-	}
-
-	/**
-	* Checks the world bounds for every ball object
-	* @method Group#checkWorldBounds
-	* @param {Game} _game - Game object supplies the boundaries
-	*/
-	this.checkWorldBounds = function(_game){
-		var collided = false;
-		if(type == Ball) { //Only check world bounds if it's a ball
-			members.forEach(function (_object){
-				if(_object.getBody().checkWorldBounds(_game))
-					collided = true;
-			});
+		for (var i = 0; i < members.length; i++) {
+			for (var j = i + 1; j < members.length; j++) {
+				if(CollisionDetection.hasCollision(members[i], members[j])) return true;
+			}
 		}
-		return collided;
+
+		return false;
 	}
 
 	/**

@@ -26,25 +26,22 @@ function initialize(){
     createPlayers();
 }
 
+function loadContent(){
+
+}
+
 /**
 * Updates the position of the items on the canvas and checks for collisions
 *
 * @method Lib#update
 */
 function update(){
-    //Used for the pause functionality
-    if(!mouseDown){
-        updateGroups();
-    }
+    //Nothing to do yet
 }
 
-/**
-* Updates the groups
-*
-* @method Lib#updateGroups
-*/
-function updateGroups(){
-    players.update(); //Update score of the player on screen   
+//Draws everything on the canvas
+function draw(){
+    game.draw();
 }
 
 /**
@@ -101,7 +98,6 @@ function createPoles(){
         pole.setPosition(300 + (300*i), 300);
 
         poles.addMember(pole);
-        poles.addCollision(pole, balls, pole.isHit, pole); //pole to ball collision
     }
 }
 
@@ -120,7 +116,6 @@ function createShields(){
         shield.getBody().immovable = true;
         shield.setColor("white");
         shields.addMember(shield);
-        shields.addCollision(shield, balls, null, null); //shield to ball collision
     }
 }
 
@@ -137,20 +132,11 @@ function createPlayers(){
     for(var i = 0; i < NROFPSP; i++){
         var tempPole = poles.getMember(i);
         var tempShield = shields.getMember(i);
-        var player = new Player("Player" + i);
+        var player = game.instantiate(new Player("Player" + i));
         player.setPole(tempPole);
         player.setShield(tempShield);
 
         tempPole.setPlayer(player);
         players.addMember(player);
     }
-}
-
-function loadContent(){
-
-}
-
-//Draws everything on the canvas
-function draw(){
-    game.draw();
 }

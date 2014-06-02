@@ -156,14 +156,14 @@ var CollisionDetection = {
 		else{
 			return (collisionAngle > shieldEnds.begin && collisionAngle < shieldEnds.end);
 		}
-	}
+	},
 
 	/**
 	* 
 	*
 	*
 	*/
-	this.hasCollision = function(_objectOne, _objectTwo){
+	hasCollision: function(_objectOne, _objectTwo){
 		return handledCollisions.indexOf(_objectOne.getBody().ID + "with" + _objectTwo.getBody().ID) >= 0
 			|| handledCollisions.indexOf(_objectTwo.getBody().ID + "with" + _objectOne.getBody().ID) >= 0;
 	}
