@@ -48,7 +48,6 @@ socket.on('newPlayer', function (data) {
 
 //Listener which waits for an added ball from socketHandler
 socket.on('BallAdded', function (color){
-	//console.log("ADDED");
 	createBall(color);
 });
 

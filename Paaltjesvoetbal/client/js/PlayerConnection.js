@@ -40,7 +40,6 @@ var topf = 0; //MOVE TO SERVER
 socket.on('canvasPos', function (data){
 	left = data.left;
 	topf = data.top;
-	console.log(topf);
 })
 
 //TODO: ID instead of index
@@ -74,10 +73,12 @@ function sendBallAngle() {
 	}
 }
 
+//Waits for a 'BallAdded' emit from sockethandler
 socket.on('BallAdded', function (nr, colors) {
 	createBall(nr, colors);
 })
 
+//Create nr of ball with the corresponding colors in the color-array
 function createBall(nr, colors){
 	for(var i = balls.getMemberLength(); i < nr; i++){
 		var ball = game.instantiate(new Ball(10));

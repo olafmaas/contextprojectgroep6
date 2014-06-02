@@ -136,7 +136,7 @@ function Server(){
 	}
 
 	this.loadContent = function(){
-		addBall();
+
 	}
 
 	this.update = function(){
