@@ -17,7 +17,7 @@ var PlayerTimer = Timer.extend({
 	constructor: function(_player){
 		this.player = _player;
 	},
-	
+
 	/**
 	* Adds one to the current time and update the player's score
 	*
