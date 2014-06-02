@@ -43,21 +43,55 @@ socket.on('canvasPos', function (data){
 	console.log(topf);
 })
 
-socket.on('UpdateBall', function (pos) {
-	balls.getMember(0).setPosition(pos.x - left, pos.y - topf);
+//TODO: ID instead of index
+socket.on('UpdateBall', function (pos, index) {
+	if(balls.getMember(index) != null)
+		balls.getMember(index).setPosition(pos.x - left, pos.y - topf);
 })
 
-socket.on('UpdateBallAngle', function (angle) {
-	balls.getMember(0).getBody().setVelocityDirection(angle);
+//TODO: ID instead of index
+socket.on('UpdateBallAngle', function (angle, index) {
+	if(balls.getMember(index) != null)
+		balls.getMember(index).getBody().setVelocityDirection(angle);
 })
 
 function sendShieldAngle() {
-	console.log("ShieldAngle emitted")
-	socket.emit('shieldAngle', shield.getAngle());
+	if(shield != undefined){
+		console.log("ShieldAngle emitted")
+		socket.emit('shieldAngle', shield.getAngle());
+	}
 }
 
 window.onmousemove = sendShieldAngle;
 
 function sendBallAngle() {
-	socket.emit('ballAngle', balls.getMember(0).getBody().getVelocityDirection());
+	for(var i = 0; i < balls.getMemberLength(); i++){
+		socket.emit('ballAngle', balls.getMember(i).getBody().getVelocityDirection(), i);
+	}
+}
+
+socket.on('BallAdded', function (nr) {
+	createBall(nr);
+})
+
+//TODO: probleem; playergame.js wordt pas heel laat hierna aangeroepen (geen idee vanaf waar die aanroep komt)
+// en op het moment dat createball hier aangeroepen wordt, bestaan balls / pole / shield dus allemaal nog niet....
+function createBall(nr){
+	for(var i = balls.getMemberLength(); i < nr; i++){
+		var ball = game.instantiate(new Ball(10));
+		ball.setPosition(100, 100);
+		ball.setColor(ColorGenerator.returnColor());
+		ball.getBody().setVelocity(5);
+
+		balls.addCollision(ball, balls, null, null);
+		balls.addCollision(shield, ball, null, null);
+		//balls.addCollision(pole, ball, pole.isHit, pole);
+
+		balls.addMember(ball);
+	}
+}
+
+//TODO: function to remove balls from the list when they are no longer in the screen of the player.
+function removeBalls(){
+
 }
