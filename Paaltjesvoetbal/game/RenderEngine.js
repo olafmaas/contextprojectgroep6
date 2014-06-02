@@ -1,3 +1,4 @@
+var scale = 1;
 /*
 * The engine for rendering sprites, balls and other game objects
 * 
@@ -98,8 +99,10 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
         if(hasResolution()){
         	if (windowRatio < canvasRatio) {
 	            var height = window.innerHeight;
+	            scale = window.innerHeight/canvas.height;
         	} else {
 	            var width = window.innerWidth;
+	            scale = window.innerWidth/canvas.width;
         	}
 			canvas.style.width = width + "px";
 			canvas.style.height = height + "px";

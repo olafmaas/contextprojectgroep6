@@ -75,7 +75,10 @@ function Shield(_pole){
 	* @return {Float} The angle between the shield and the current mousepointer.
 	*/
 	this.calculateAngle = function(){
-		return Math.atan2(mouseY - this.getPosition().y, mouseX - this.getPosition().x);
+		if(!scale){
+			scale = 1;
+		}
+		return Math.atan2(mouseY - scale*this.getPosition().y, mouseX - scale*this.getPosition().x);
 	}
 
 	/**
