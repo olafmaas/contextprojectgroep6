@@ -122,9 +122,9 @@ function Server(){
 		return ball;
 	}
 
-	this.ballAngle = function(socket, velocityDirection){
-		group("Balls").getMember(0).getBody().setVelocityDirection(velocityDirection);
-		return group("Balls").getMember(0);
+	this.ballAngle = function(socket, velocityDirection, index){
+		group("Balls").getMember(index).getBody().setVelocityDirection(velocityDirection);
+		return group("Balls").getMember(index);
 	}
 
 	this.loadContent = function(){

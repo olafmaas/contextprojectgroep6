@@ -23,14 +23,6 @@ function loadContent(){
     player.setShield(shield);
     pole.setPlayer(player);
 
-    var ball = game.instantiate(new Ball(10));
-    ball.setColor("green");
-    ball.getBody().setVelocity(5);
-    balls.addMember(ball);
-
-    balls.addCollision(shield, balls, null, null);
-    balls.addCollision(pole, balls, pole.isHit, pole);
-
     //Initialize();
     //updateGameDimensions();
 };

@@ -48,7 +48,6 @@ socket.on('newPlayer', function (data) {
 
 socket.on('BallAdded', function (){
 	createBall();
-	//TODO: naar client doorsturen dat er een nieuwe bal is..
 });
 
 var playerData = {};

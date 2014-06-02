@@ -66,9 +66,9 @@ function SocketHandler(_server, _io){
 			mainScreenSocket.emit('drawShield', server.setAngle(socket,angle));
 		});
 
-
-		socket.on('ballAngle', function (velocityDirection){
-			dh.drawToPlayers(server.ballAngle(socket, velocityDirection));
+		//TODO: ID's in plaats van index?
+		socket.on('ballAngle', function (velocityDirection, index){
+			dh.drawToPlayers(server.ballAngle(socket, velocityDirection, index));
 		});
 
 		socket.on('disconnect', function (data){
