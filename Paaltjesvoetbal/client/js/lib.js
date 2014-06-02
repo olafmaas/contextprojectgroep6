@@ -158,7 +158,7 @@ function createPlayers(){
     for(var i = 0; i < NROFPSP; i++){
         var tempPole = poles.getMember(i);
         var tempShield = shields.getMember(i);
-        var player = new Player("Player" + i);
+        var player = game.instantiate(new Player("Player" + i));
         player.setPole(tempPole);
         player.setShield(tempShield);
 

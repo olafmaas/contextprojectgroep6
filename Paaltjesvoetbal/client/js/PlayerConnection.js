@@ -27,7 +27,7 @@ socket.on('disconnect', function(data){
 socket.on('userName', function(free){
 	if(!free){
 		userName = prompt("Please enter your name", "User"+Math.floor(Math.random()*10000));
-		//player.setName(userName); //playername is set in sockethandler:57 (server.registername)
+		player.setName(userName); 
 		socket.emit('userName', userName); //player.getName());
 	}
 });
