@@ -5,12 +5,13 @@
 * @param{function} _loadContent - The user-defined loadcontent function to be called
 * @param{function} _draw - The user-defined draw function to be called
 */
-function RenderEngine(_loadContent, _draw){
+function RenderEngine(_loadContent, _draw, _width, _height, debug){
 	var loadContent = _loadContent;
 	var draw = _draw;
 
 	var canvas;
 	var canvasContext;
+	var dimensions = {width: (_width || 0), height: (_height || 0)};
 
 	var fpsLimit;
 
@@ -78,17 +79,26 @@ function RenderEngine(_loadContent, _draw){
 	*/
 	updateCanvasSize = function(){
 		if(canvas == undefined) return;
-		var width=window.innerWidth
-		|| document.documentElement.clientWidth
-		|| document.body.clientWidth;
 
-		var height=window.innerHeight
-		|| document.documentElement.clientHeight
-		|| document.body.clientHeight;
-
+		if(!dimensions.height){
+			var width=window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+		}else{
+			var height = dimensions.height;
+		}
+		if(!dimensions.width){
+			var height=window.innerHeight
+			|| document.documentElement.clientHeight
+			|| document.body.clientHeight;
+		}else{
+			var width = dimensions.width;
+		}
 
 		canvas.width = width;
 		canvas.height = height;
+
+
 	}
 
 	/**
@@ -148,7 +158,9 @@ function RenderEngine(_loadContent, _draw){
 	}
 
 	//Make the engine boot 1 second after instantiating
-	setTimeout(this.boot, 1000);
+	//this.boot();
+
+	setTimeout(this.boot, 10);
 
 	//======================
 	// Gets & Sets
@@ -174,3 +186,6 @@ function RenderEngine(_loadContent, _draw){
 		backGroundColor = _color;
 	}
 }
+if(typeof module != 'undefined'){
+    module.exports = RenderEngine;
+}  

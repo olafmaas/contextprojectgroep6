@@ -1,6 +1,7 @@
 //Game class
 if(typeof module != 'undefined'){
-	var highResolutionTimer = require('./HighResolutionTimer.js');
+	var CoreGame = require('./CoreGame.js');
+	var RenderEngine = require('./RenderEngine.js');
 }
 /**
 * Game class
@@ -14,7 +15,7 @@ if(typeof module != 'undefined'){
 */
 function Game(_initialize, _loadContent, _update, _draw, _width, _height){
 	var coreGame = new CoreGame(_initialize, _update, _width, _height);
-	var renderEngine = new RenderEngine(_loadContent, _draw);
+	var renderEngine = new RenderEngine(_loadContent, _draw, _width, _height);
 
 	this.instantiate = function(_object){
 		return coreGame.instantiate(_object);
