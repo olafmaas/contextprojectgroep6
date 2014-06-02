@@ -1,3 +1,5 @@
+var game = new Game(init, loadContent, update, draw, 450, 350);
+
 var pole;
 var shield;
 var player;
@@ -43,5 +45,5 @@ function update(){
 
 //Draws everything on the canvas
 function draw(){
-    game.draw(); //<< welke game is dit?
+    game.draw(); 
 };

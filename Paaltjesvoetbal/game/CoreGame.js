@@ -21,8 +21,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	this.boot = function(){
 		parentInitialize();
 		
-		highResolutionTimer(17, update);
-		//setInterval(parentUpdate, 17);
+		setInterval(parentUpdate, 17);
 	}
 
 	/*
@@ -39,7 +38,10 @@ function CoreGame(_initialize, _update, _width, _height){
 	*
 	* @method CoreGame#parentUpdate
 	*/
+	var myDate = Date.now();
 	parentUpdate = function(){
+		console.log(Date.now() - myDate);
+		myDate = Date.now();
 		update();
 	}
 
@@ -55,7 +57,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	}
 
 	//this.boot();
-	setTimeout(this.boot, 10);
+	setTimeout(this.boot, 50);
 	
 	//===================
 	//Getters & Setters
