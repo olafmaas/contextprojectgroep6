@@ -16,7 +16,6 @@ if(typeof module != 'undefined'){
 }
 
 function Server(){
-	logHandler.log('test');
 	var clientList = {};
 	var namesList = []
 	var game; 

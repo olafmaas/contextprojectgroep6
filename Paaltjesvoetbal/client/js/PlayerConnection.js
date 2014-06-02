@@ -57,7 +57,6 @@ socket.on('UpdateBallAngle', function (angle, index) {
 
 function sendShieldAngle() {
 	if(shield != undefined){
-		console.log("ShieldAngle emitted")
 		socket.emit('shieldAngle', shield.getAngle());
 	}
 }

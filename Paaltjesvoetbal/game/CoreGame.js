@@ -1,3 +1,6 @@
+if(typeof module != 'undefined'){
+	var highResolutionTimer = require('./HighResolutionTimer.js');
+}
 /*
 * A fully functional game class without any graphical handling
 *
@@ -18,7 +21,8 @@ function CoreGame(_initialize, _update, _width, _height){
 	this.boot = function(){
 		parentInitialize();
 		
-		setInterval(parentUpdate, 17);
+		highResolutionTimer(17, update);
+		//setInterval(parentUpdate, 17);
 	}
 
 	/*
@@ -86,7 +90,6 @@ function CoreGame(_initialize, _update, _width, _height){
 	this.getDimensions = function(){
 		return dimensions;
 	}
-
 
 	this.setWidth = function(_width){
 		dimensions.width = _width;
