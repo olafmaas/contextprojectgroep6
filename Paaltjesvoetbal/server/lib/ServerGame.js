@@ -27,6 +27,7 @@ function Server(){
 	var gameGrid = new GameGrid(settings);
 	var gm = new GroupManager();
 	var pf = new PlayerFactory(settings);
+	var colors = [];
 
 	//Create all groups
 	gm.addGroup("Balls", Ball);
@@ -110,11 +111,6 @@ function Server(){
 	}
 
 	this.getBallColors = function(){
-		var colors = [];
-		var length = group("Balls").getMemberLength();
-		for(var i = 0; i < length; i++){
-			colors.push(group("Balls").getMember(i).getColor());
-		}
 		return colors;
 	}
 
@@ -124,6 +120,7 @@ function Server(){
 		ball.getBody().setVelocity(5);
 		ball.getBody().setVelocityDirection(1.70 * Math.PI);
 		ball.setColor(ColorGenerator.returnColor());
+		colors.push(ball.getColor());
 
 		group("Balls").addCollision(ball, group("Balls"), null, null);
 		group("Balls").addMember(ball);
