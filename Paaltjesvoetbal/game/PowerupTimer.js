@@ -23,12 +23,13 @@ var PowerupTimer = Timer.extend({
 	* Counts one down from the initial time for the powerup. When the timer reaches 0, it is stopped
 	*
 	* @method PowerupTimer#count
+	* @param {This} _this - It needs a reference to the original 'this', otherwise the variable will mess it up.
 	*/
-	count: function(){
-		if(this.time > 0)
-			this.time--;
+	count: function(_this){
+		if(_this.time > 0)
+			_this.time--;
 		else 
-			this.stop();
+			_this.stop();
 	}
 
 });

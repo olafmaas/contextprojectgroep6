@@ -33,7 +33,7 @@ var Timer = Base.extend ({
 	* Adds one to the current time
 	*
 	* @method Timer#count
-	* @param {This} _this - Optional, is needed for playertimer!
+	* @param {This} _this - Optional, is needed for playertimer and PowerupTimer!
 	*/
 	count: function(_this){
 		this.time++;
