@@ -36,9 +36,9 @@ function update(){
     shield.update();
     player.update();
 
-    if(balls.checkCollision()){
-        sendBallAngle();
-    }
+    // if(balls.checkCollision()){
+    //     sendBallAngle();
+    // }
 
     parentDraw();
 };

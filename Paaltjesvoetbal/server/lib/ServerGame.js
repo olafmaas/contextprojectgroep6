@@ -118,6 +118,9 @@ function Server(){
 
 		group("Balls").addCollision(ball, group("Balls"), null, null);
 		group("Balls").addMember(ball);
+
+		group("Shields").addCollision(ball, group("Shields"), null, null);
+
 		return ball;
 	}
 

@@ -68,7 +68,8 @@ function SocketHandler(_server, _io){
 
 		//TODO: ID's in plaats van index?
 		socket.on('ballAngle', function (velocityDirection, index){
-			dh.drawToPlayers(server.ballAngle(socket, velocityDirection, index));
+			//dh.drawToPlayers(server.ballAngle(socket, velocityDirection, index));
+
 		});
 
 		socket.on('disconnect', function (data){
@@ -103,9 +104,16 @@ function SocketHandler(_server, _io){
 			}
 		}
 
+		if(server.checkGroupCollision("Shields")){
+			for(var i = 0; i < server.nrOfBalls(); i++){
+				dh.drawToPlayers(server.getBall(i), i);	//when a ball collides with a worldbounds the player is notified to change te ball direction
+			}
+		}
+
 		//TODO: ID instead of index
 		for(var i = 0; i < server.nrOfBalls(); i++){
 			dh.drawToMainScreen(server.getBallPosition(i), i);	
+			dh.drawToPlayers(server.getBall(i), i);	
 		}
 	}
 
