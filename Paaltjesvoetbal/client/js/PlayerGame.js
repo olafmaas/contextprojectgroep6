@@ -1,3 +1,4 @@
+
 var game = new Game(init, loadContent, update, draw, 450, 350, 450, 350);
 
 var pole;
@@ -29,12 +30,12 @@ function loadContent(){
 	//powerup = game.instantiate(new Powerup(10, 0));
 	//powerup.setPosition(300, 300);
 
-    //Testing label, only needed locally as the server keeps track of the actual score values.
+    //Player labels, name is set once again when the user has
     scoreLabel = game.instantiate(new ScoreLabel(player, "Score: 0"));
-    scoreLabel.setPosition({x: 350, y: 340});
+    scoreLabel.setPosition(UserSettings.scorePosition);
 
     nameLabel = game.instantiate(new Label("Placeholder"));
-    nameLabel.setPosition({x: 10, y: 15});
+    nameLabel.setPosition(UserSettings.namePosition);
 };
 
 //Updates the position of the items on the canvas and checks for collisions
