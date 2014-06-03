@@ -47,9 +47,19 @@ socket.on('newPlayer', function (data) {
 });
 
 //Listener which waits for an added ball from socketHandler
-socket.on('BallAdded', function (color){
+socket.on('BallAdded', function (color) {
 	createBall(color);
 });
+
+socket.on('newPowerup', function (data) {
+	makePowerup(data);
+});
+
+function makePowerup(data){
+	data.type = Math.floor(Math.random()*4);
+	var p = game.instantiate(new Powerup(data.radius, data.type));
+	p.setPosition(200, 200);
+}
 
 var playerData = {};
 var canvasWidth = 300;

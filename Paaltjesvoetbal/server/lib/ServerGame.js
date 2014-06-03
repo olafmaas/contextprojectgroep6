@@ -10,6 +10,7 @@ if(typeof module != 'undefined'){
 	var Ball = require('../../game/Ball.js');
 	var Pole = require('../../game/Pole.js');
 	var Shield = require('../../game/Shield.js');
+	var Powerup = require('../../game/Powerup.js');
 	var Player = require('../../game/Player.js');
 	var Group = require('../../game/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
@@ -34,7 +35,11 @@ function Server(){
 	gm.addGroup("Poles", Pole);
 	gm.addGroup("Shields", Shield);
 	gm.addGroup("Players", Player);
-
+	
+	this.dropPowerup = function(socket){
+		return {radius: 10, type: 0};
+	}
+	
 	/**
 	* Add a new client, create a new player, pole and shield. 
 	* @method Server#addClient

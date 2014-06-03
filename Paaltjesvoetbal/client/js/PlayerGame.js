@@ -4,6 +4,7 @@ var pole;
 var shield;
 var player;
 var balls;
+var powerup;
 
 function init(){
     balls = new Group(Ball);
@@ -24,6 +25,9 @@ function loadContent(){
     player.setPole(pole);
     player.setShield(shield);
     pole.setPlayer(player);
+	
+	//powerup = game.instantiate(new Powerup(10, 0));
+	//powerup.setPosition(300, 300);
 
     //Initialize();
     //updateGameDimensions();

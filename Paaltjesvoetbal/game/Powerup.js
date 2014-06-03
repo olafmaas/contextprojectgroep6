@@ -31,16 +31,17 @@ var Powerup = Base.extend({
 		_canvasContext.fill();
 	},
 	
-	equals: function(_other){
-		return (this.ID == _other.getID());
+	update: function(){
+		
+		if(this.body instanceof CircularBody) this.body.update();
 	},
 	
 	enableBody: function(){
 		this.body = new CircularBody(this);
 	},
 	
-	collidesWith: function(_other){
-		return this.body.CollidesWith(_other);
+	equals: function(_other){
+		return (this.ID == _other.getID());
 	},
 	
 	//==================
@@ -91,7 +92,6 @@ var Powerup = Base.extend({
 	getBody: function(){
 		return this.body;
 	}
-	
 });
 
 if(typeof module != 'undefined'){
