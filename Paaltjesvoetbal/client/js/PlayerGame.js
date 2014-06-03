@@ -25,10 +25,9 @@ function loadContent(){
     player.setShield(shield);
     pole.setPlayer(player);
 
+    //Testing label
     label = game.instantiate(new ScoreLabel(player, "Score: 0"));
-
-    //Initialize();
-    //updateGameDimensions();
+    label.setPosition({x: 350, y: 340});
 };
 
 //Updates the position of the items on the canvas and checks for collisions
@@ -38,12 +37,6 @@ function update(){
     shield.update();
     player.update();
     label.update();
-
-    // if(balls.checkCollision()){
-    //     sendBallAngle();
-    // }
-
-    //parentDraw();
 };
 
 //Draws everything on the canvas
