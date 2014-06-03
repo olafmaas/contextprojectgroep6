@@ -47,11 +47,6 @@ socket.on('newBall', function (color){
 	createBall(color);
 });
 
-//Listener for powerup
-socket.on('newPowerup', function (data) {
-	createPowerup(data);
-});
-
 socket.on('removePlayer', function (socketID){		
 	removePlayerObjects(socketID);
 });
@@ -111,10 +106,4 @@ function createBall(color){
 	ball.setPosition(100, 100);
 	ball.setColor(color);
 	balls.addMember(ball);
-};
-
-function createPowerup(data){
-	data.type = Math.floor(Math.random()*4);
-	//var p = game.instantiate(new Powerup(data.radius, data.type));
-	//p.setPosition(data.position.x, data.position.y+30);
 };

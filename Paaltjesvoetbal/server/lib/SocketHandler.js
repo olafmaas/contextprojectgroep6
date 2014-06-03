@@ -47,6 +47,7 @@ function SocketHandler(_server, _io){
 		
 		socket.emit('userName', false);
 		newPlayer(socket);
+		newPowerup(socket);
 
 		//Add player to grid
 		res = server.updateGrid(socket);
@@ -85,11 +86,8 @@ function SocketHandler(_server, _io){
 		dh.ballAdded(server.nrOfBalls(), colors); //inform players of new ball(s)
 	}
 	
-	//Testing purposes
-	//newPowerup(data);
-	
-	newPowerup = function(data){
-		mainScreenSocket.emit('newPowerup', server.dropPowerup(data));
+	newPowerup = function(socket){
+		mainScreenSocket.emit('dropPowerup', server.dropPowerup(socket));
 	}
 
 	updateMainScreenCanvasSize = function(){

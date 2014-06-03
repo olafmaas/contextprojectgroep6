@@ -47,16 +47,22 @@ socket.on('canvasPos', function (data){
 //Waits for a 'newBall' emit from drawhandler
 socket.on('newBall', function (nr, colors) {
 	createBall(nr, colors);
-})
+});
 
 socket.on('updateBall', function (pos, index) { //TODO: ID instead of index
 	if(balls.getMember(index) != null)
 		balls.getMember(index).setPosition(pos.x - leftOffset, pos.y - topOffset);
 });
 
+//Listener for powerup
+socket.on('dropPowerup', function (data) {
+	console.log("kaas");
+	createPowerup(data);
+});
+
 socket.on('removeBall', function (nr, colors) {
 	//TODO
-})
+});
 
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
@@ -77,4 +83,15 @@ function createBall(nr, colors){
 
 		balls.addMember(ball);
 	}
+};
+
+function createPowerup(data){
+	data.type = Math.floor(Math.random()*4);
+	var p = game.instantiate(new Powerup(data.radius, data.type));
+	
+	var deltax = Math.floor(Math.random()*225);
+	var deltay = Math.floor(Math.random()*175);
+	
+	p.setPosition(300, 300);
+	
 };
