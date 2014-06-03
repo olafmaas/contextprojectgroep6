@@ -104,6 +104,6 @@ function makePlayerObjects(data){
 	pole.setPlayer(player);
 	players.addMember(player);
 
-	playerDataObject = new PlayerDataObject(socket, data.id, player, pole, shield)
+	playerDataObject = new Client(socket, data.id, player, pole, shield, null)
 	playerData[data.id] = playerDataObject;
 };
