@@ -28,6 +28,7 @@ function loadContent(){
     //Testing label, only needed locally as the server keeps track of the actual score values.
     label = game.instantiate(new ScoreLabel(player, "Score: 0"));
     label.setPosition({x: 350, y: 340});
+    label.setFontSize(10);
 };
 
 //Updates the position of the items on the canvas and checks for collisions

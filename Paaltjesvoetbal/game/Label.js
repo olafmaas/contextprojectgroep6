@@ -15,7 +15,7 @@ var Label = Base.extend({
 	text: "",
 	position: {x: 0, y: 0},
 	font: "Verdana",
-	fontSize: 60,
+	fontSize: 20,
 	color: "#ffffff",
 
 	constructor: function(_text){
