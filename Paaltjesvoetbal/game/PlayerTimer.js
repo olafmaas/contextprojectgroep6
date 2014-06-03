@@ -27,7 +27,6 @@ var PlayerTimer = Timer.extend({
 	count: function(_this){
 		_this.time++;
 		_this.player.incrementScore(1);
-		console.log(_this.player.getName() + ": " + _this.player.getScore());
 	}
 
 });
