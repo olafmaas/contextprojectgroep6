@@ -25,7 +25,7 @@ function loadContent(){
     player.setShield(shield);
     pole.setPlayer(player);
 
-    //Testing label
+    //Testing label, only needed locally as the server keeps track of the actual score values.
     label = game.instantiate(new ScoreLabel(player, "Score: 0"));
     label.setPosition({x: 350, y: 340});
 };

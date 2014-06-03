@@ -15,7 +15,7 @@ var Label = Base.extend({
 	text: "",
 	position: {x: 0, y: 0},
 	font: "Verdana",
-	fontsize: 60,
+	fontSize: 60,
 	color: "#ffffff",
 
 	constructor: function(_text){
@@ -30,6 +30,7 @@ var Label = Base.extend({
 	draw: function(_canvasContext){
 		_canvasContext.fillStyle = this.color;
 		_canvasContext.font = this.getFontSize() + "px " + this.getFont();
+		console.log(this.getFontSize());
 		_canvasContext.fillText(this.getText(), this.getPosition().x, this.getPosition().y)
 	},
 
