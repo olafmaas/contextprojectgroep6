@@ -48,7 +48,7 @@ describe("Powerup", function(){
 			expect(p.getPosition().y).to.equal(30);
 		})
 	})
-
+/*
 	describe("Timer", function(){
 
 		var p = new Powerup(10, 1);
@@ -72,5 +72,5 @@ describe("Powerup", function(){
 			expect(p.isActive()).to.be.false;
 		})
 	})
-
+*/
 })
