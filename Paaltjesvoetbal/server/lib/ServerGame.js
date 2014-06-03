@@ -42,12 +42,12 @@ function Server(){
 	*/
 	this.addClient = function(socket){
 		var nrOfRows = Math.floor(this.getNumberOfPlayers() / maxNrOfColumns);
-		var player = pf.createPlayer(Object.keys(clientList).length, nrOfRows, maxNrOfColumns, socket.id);
+		var player = game.instantiate(pf.createPlayer(Object.keys(clientList).length, nrOfRows, maxNrOfColumns, socket.id));
 		//setGroupMemberships(player);
 		var ball = addBall();
 
-		group("Poles").addMember(player.getPole());
-		group("Shields").addMember(player.getShield());
+		group("Poles").addMember(game.instantiate(player.getPole()));
+		group("Shields").addMember(game.instantiate(player.getShield()));
 		group("Players").addMember(player);
 
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield(), ball);
@@ -108,7 +108,7 @@ function Server(){
 	}
 
 	addBall = function(){
-		var ball = new Ball(10);
+		var ball = game.instantiate(new Ball(10));
 		ball.setPosition(100, 100);
 		ball.getBody().setVelocity(5);
 		ball.getBody().setVelocityDirection(1.70 * Math.PI);
