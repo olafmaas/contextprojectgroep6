@@ -59,7 +59,12 @@ function Server(){
 	}
 
 	this.deleteClient = function(socket){
-		delete clientList[socket.id]; //TODO remove all stuff
+		var client = clientList[socket.id];
+		group("Balls").removeMember(client.ball);	//TODO remove precies als de bal een scherm verlaat.
+		group("Poles").removeMember(client.pole);
+		group("Shields").removeMember(client.shield);
+		group("Players").removeMember(client.player);
+		delete clientList[socket.id]; 
 	}
 
 	/**

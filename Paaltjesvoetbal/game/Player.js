@@ -2,6 +2,7 @@
 if(typeof module != 'undefined'){
 	var Label = require('./Label.js');
 	var Base = require('./Base.js');
+	var IDDistributor = require('./IDDistributor.js'); 
 }
 /**
 * Player class
@@ -21,9 +22,11 @@ var Player = Base.extend({
 	label: null,
 	label3: null,
 	label2: null,
+	ID: -1,
 
 	constructor: function(_name){
 		this.name = _name
+		this.ID = IDDistributor.getNewId();
 
 		this.label = new Label("Score: 0 | Time alive: 0:00");
 		this.label3 = new Label("Highscore: 0");
@@ -203,6 +206,16 @@ var Player = Base.extend({
 	*/
 	getHighscore: function(){
 		return this.highscore;
+	},
+
+		/**
+	* Retrieves the ID of the Player
+	*
+	* @method Ball#getID
+	* @return {number} The unique ID of the Player
+	*/
+	getID: function(){
+		return this.ID;
 	}
 });
 
