@@ -8,11 +8,21 @@
 * Note: Object.freeze is used to prevent accidental overwrites which would render the enums useless.
 */
 var e = Object.freeze({
-	"updateBall": 0, 
-	"updateBallAngle": 1, 
-	"drawBall": 2,
-	"drawShield": 3,
-	"newCanvasSize": 4
+	
+	//Powerups
+	"smallShield": 0,
+	"bigShield": 1,
+	"smallPole": 2,
+	"bigPole": 3,
+	"bigBall": 4,
+
+	//Server
+	"updateBall": 10, 
+	"updateBallAngle": 11, 
+	"drawBall": 12,
+	"drawShield": 13,
+	"newCanvasSize": 14
+
 });
 
 if(typeof module != 'undefined'){
