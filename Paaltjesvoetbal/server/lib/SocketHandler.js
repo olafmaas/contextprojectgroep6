@@ -88,7 +88,7 @@ function SocketHandler(_server, _io){
 	}
 	
 	newPowerup = function(socket){
-		mainScreenSocket.emit('dropPowerup', server.dropPowerup(socket));
+		io.of('/player').emit('dropPowerup', server.dropPowerup(socket));
 	}
 
 	updateMainScreenCanvasSize = function(){

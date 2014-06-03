@@ -26,9 +26,6 @@ function loadContent(){
     player.setPole(pole);
     player.setShield(shield);
     pole.setPlayer(player);
-	
-	//powerup = game.instantiate(new Powerup(10, 0));
-	//powerup.setPosition(300, 300);
 
     //Player labels, name is set once again when the user has
     scoreLabel = game.instantiate(new ScoreLabel(player, "Score: 0"));

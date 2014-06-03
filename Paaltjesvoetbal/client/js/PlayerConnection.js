@@ -61,7 +61,6 @@ socket.on('updateBall', function (pos, index) { //TODO: ID instead of index
 
 //Listener for powerup
 socket.on('dropPowerup', function (data) {
-	console.log("kaas");
 	createPowerup(data);
 });
 
@@ -93,10 +92,6 @@ function createBall(nr, colors){
 function createPowerup(data){
 	data.type = Math.floor(Math.random()*4);
 	var p = game.instantiate(new Powerup(data.radius, data.type));
-	
-	var deltax = Math.floor(Math.random()*225);
-	var deltay = Math.floor(Math.random()*175);
-	
 	p.setPosition(300, 300);
 	
 };
