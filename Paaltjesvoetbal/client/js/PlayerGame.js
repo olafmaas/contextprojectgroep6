@@ -31,16 +31,7 @@ function loadContent(){
 
 //Updates the position of the items on the canvas and checks for collisions
 function update(){
-    balls.update();
-    pole.update();
-    shield.update();
-    player.update();
-
-    // if(balls.checkCollision()){
-    //     sendBallAngle();
-    // }
-
-    parentDraw();
+    
 };
 
 //Draws everything on the canvas

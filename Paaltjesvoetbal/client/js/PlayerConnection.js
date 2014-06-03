@@ -87,10 +87,6 @@ function createBall(nr, colors){
 		ball.setColor(colors[i]);
 		//ball.getBody().setVelocity(5);
 
-		balls.addCollision(ball, balls, null, null);
-		balls.addCollision(shield, ball, null, null);
-		//balls.addCollision(pole, ball, pole.isHit, pole);
-
 		balls.addMember(ball);
 	}
 }

@@ -24,9 +24,10 @@ function initialize(){
     createPoles();
     createShields();
     createPlayers();
+}
 
-    //Add collision from ball to each of the other balls
-    balls.addCollisionCombineAll(balls);
+function loadContent(){
+
 }
 
 /**
@@ -35,37 +36,12 @@ function initialize(){
 * @method Lib#update
 */
 function update(){
-    //Used for the pause functionality
-    if(!mouseDown){
-        updateGroups();
-        checkCollisions();  
-    }
-    parentDraw();
+    //Nothing to do yet
 }
 
-/**
-* Updates the groups
-*
-* @method Lib#updateGroups
-*/
-function updateGroups(){
-    balls.update();
-    poles.update();
-    shields.update();
-    players.update(); //Update score of the player on screen   
-}
-
-/**
-* Checks for any collisions available in the group
-*
-* @method Lib#checkCollisions
-*/
-function checkCollisions(){
-    balls.checkCollision();
-    poles.checkCollision();
-    shields.checkCollision();
-
-    balls.checkWorldBounds(game);
+//Draws everything on the canvas
+function draw(){
+    game.draw();
 }
 
 /**
@@ -122,7 +98,6 @@ function createPoles(){
         pole.setPosition(300 + (300*i), 300);
 
         poles.addMember(pole);
-        poles.addCollision(pole, balls, pole.isHit, pole); //pole to ball collision
     }
 }
 
@@ -141,7 +116,6 @@ function createShields(){
         shield.getBody().immovable = true;
         shield.setColor("white");
         shields.addMember(shield);
-        shields.addCollision(shield, balls, null, null); //shield to ball collision
     }
 }
 
@@ -165,13 +139,4 @@ function createPlayers(){
         tempPole.setPlayer(player);
         players.addMember(player);
     }
-}
-
-function loadContent(){
-
-}
-
-//Draws everything on the canvas
-function draw(){
-    game.draw();
 }

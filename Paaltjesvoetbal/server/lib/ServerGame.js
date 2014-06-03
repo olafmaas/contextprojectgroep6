@@ -42,24 +42,28 @@ function Server(){
 	*/
 	this.addClient = function(socket){
 		var nrOfRows = Math.floor(this.getNumberOfPlayers() / maxNrOfColumns);
-		var player = pf.createPlayer(Object.keys(clientList).length, nrOfRows, maxNrOfColumns, socket.id);
+		var player = game.instantiate(pf.createPlayer(Object.keys(clientList).length, nrOfRows, maxNrOfColumns, socket.id));
 		//setGroupMemberships(player);
 		var ball = addBall();
 
-		group("Poles").addMember(player.getPole());
-		group("Poles").addCollision(player.getPole(), group("Balls"), player.getPole().isHit, player.getPole());
-
-		group("Shields").addMember(player.getShield());
-		group("Shields").addCollision(player.getShield(), group("Balls"), null, null);
-
+		group("Poles").addMember(game.instantiate(player.getPole()));
+		group("Shields").addMember(game.instantiate(player.getShield()));
 		group("Players").addMember(player);
+
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield(), ball);
 
 		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition()};
 	}
 
-	this.deleteClient = function(socket){
-		delete clientList[socket.id]; //TODO remove all stuff
+	this.deleteClient = function(socketID){
+		var client = clientList[socketID];
+		group("Balls").removeMember(client.ball);	//TODO remove precies als de bal een scherm verlaat.
+		group("Poles").removeMember(client.pole);
+		group("Shields").removeMember(client.shield);
+		group("Players").removeMember(client.player);
+		//name stays in nameList because it has to stay in the highscore
+		gameGrid.remove(socketID);
+		delete clientList[socketID]; 
 	}
 
 	/**
@@ -70,11 +74,7 @@ function Server(){
 	*/
 	this.setGroupMemberships = function(player){
 		group("Poles").addMember(player.getPole());
-		group("Poles").addCollision(player.getPole(), group("Balls"), player.getPole().isHit, player.getPole());
-
 		group("Shields").addMember(player.getShield());
-		group("Shields").addCollision(player.getShield(), group("Balls"), null, null);
-
 		group("Players").add(player);
 	}
 
@@ -115,19 +115,15 @@ function Server(){
 	}
 
 	addBall = function(){
-		var ball = new Ball(10);
+		var ball = game.instantiate(new Ball(10));
 		ball.setPosition(100, 100);
 		ball.getBody().setVelocity(5);
 		ball.getBody().setVelocityDirection(1.70 * Math.PI);
 		ball.setColor(ColorGenerator.returnColor());
 		colors.push(ball.getColor());
 
-		group("Balls").addCollision(ball, group("Balls"), null, null);
 		group("Balls").addMember(ball);
-
-		group("Shields").addCollision(ball, group("Shields"), null, null);
-		group("Poles").addCollision(ball, group("Poles"), null, null);
-
+		
 		return ball;
 	}
 
@@ -141,8 +137,7 @@ function Server(){
 	}
 
 	this.update = function(){
-		gm.update()
-		group("Balls").checkCollision(); //TODO: Waarom wordt dit hier gecheckt als het in sockethandler in de update functie ook wordt gedaan?
+		
 	}
 
 	this.createGame = function(_initialize, _update, _width, _height){
@@ -152,11 +147,6 @@ function Server(){
 	//TODO: return a list of id's that collide?
 	this.checkGroupCollision = function(name){
 		return group(name).checkCollision();
-	}
-
-	//TODO: return a list of balls (just id's?) that collide with world bounds
-	this.checkWorldBounds = function(name){
-		return group(name).checkWorldBounds(game);
 	}
 
 	//Getters and Setters

@@ -98,7 +98,7 @@ var CollisionDetection = {
 	*/
 	collidesShieldWith: function(_shield, _other){
 		if(_other instanceof CircularBody) return this.collidesBallWithShield(_other, _shield);
-		if(_other instanceof ShieldBody) throw "This Collision is not Implemented";
+		if(_other instanceof ShieldBody) return false;
 	},
 
 	/**
@@ -156,6 +156,16 @@ var CollisionDetection = {
 		else{
 			return (collisionAngle > shieldEnds.begin && collisionAngle < shieldEnds.end);
 		}
+	},
+
+	/**
+	* 
+	*
+	*
+	*/
+	hasCollision: function(_objectOne, _objectTwo){
+		return handledCollisions.indexOf(_objectOne.getBody().ID + "with" + _objectTwo.getBody().ID) >= 0
+			|| handledCollisions.indexOf(_objectTwo.getBody().ID + "with" + _objectOne.getBody().ID) >= 0;
 	}
 }
 
@@ -175,6 +185,9 @@ normalizeAngle = function(_angle){
 * @param {object} _objectTwo - Object 2
 */
 handleCollision = function(_objectOne, _objectTwo){
+	//Guard
+	if (_objectOne.getBody === undefined || _objectTwo.getBody === undefined) return false;
+
 	return CollisionDetection.handleCollision(_objectOne.getBody(), _objectTwo.getBody());
 }
 
