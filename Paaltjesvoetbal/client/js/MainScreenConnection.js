@@ -1,7 +1,3 @@
-//Make socket.io connection
-var port = 5050;
-var server = 'http://localhost';
-var socket = io.connect(server+":"+port).of('/mainscreen');
 
 //Basic socket listeners
 socket.on('connect_failed', function (reason){ 
