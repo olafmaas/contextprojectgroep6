@@ -65,6 +65,7 @@ function Server(){
 		group("Shields").removeMember(client.shield);
 		group("Players").removeMember(client.player);
 		//name stays in nameList because it has to stay in the highscore
+		gameGrid.remove(socketID);
 		delete clientList[socketID]; 
 	}
 

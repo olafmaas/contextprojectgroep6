@@ -13,7 +13,6 @@ function GameGrid(_settings) {
 		return grid.length;
 	} 
 
-
 	this.updateGrid = function(socket, maximumCol){
 		var x;
 		var y;
@@ -46,7 +45,19 @@ function GameGrid(_settings) {
 		return {left: x * settings.canvasWidth, top: y*settings.canvasHeight};
 	}
 
+	this.remove = function(socketID){
+		for (i = 0; i < grid.length; i++) {
+			for(j = 0; j < grid[i].length; j++){
+				if(socketID == grid[i][j]){
+					grid[i][j] = -1;
+				}
+			}
+
+		}
+	}
+
 }
+
 if(typeof module != 'undefined'){
     module.exports = GameGrid;
 }
