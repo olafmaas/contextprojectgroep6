@@ -18,16 +18,21 @@ var Player = Base.extend({
 	points: 5, //Points the player is worth when hit 
 	score: 0, //Current score of the player
 	highscore: 0, //Highscore of the player
+
+	/*	
 	label: null,
 	label3: null,
 	label2: null,
+	*/
 
 	constructor: function(_name){
 		this.name = _name
 
+		/*
 		this.label = new Label("Score: 0 | Time alive: 0:00");
 		this.label3 = new Label("Highscore: 0");
 		this.label2 = new Label("Username: " + this.name);
+		*/
 	},
 	
 	/**
@@ -38,6 +43,7 @@ var Player = Base.extend({
 	*/
 	update: function(){
 		
+		/*
 		var lblPosition = {x: this.pole.getPosition().x - 150, y: this.pole.getPosition().y + 200}; //hardcoded position for now..
 		var lbl2Position = {x: this.pole.getPosition().x - 100, y: this.pole.getPosition().y - 100};
 		var lbl3Position = {x: this.pole.getPosition().x - 80, y: this.pole.getPosition().y + 230}; //hardcoded position for now..
@@ -51,6 +57,7 @@ var Player = Base.extend({
 		this.label.setText("Score: " + this.score + " | Time alive: " + min + ":" + sec);
 		this.label3.setText("Highscore: " + this.highscore);
 		this.label2.setText("Username: " + this.name);
+		*/
 	},
 
 	/**
@@ -60,9 +67,11 @@ var Player = Base.extend({
 	* @param {CanvasContext} _canvasContext - The canvas on which it will be drawn.
 	*/
 	draw: function(_canvasContext){
+		/*
 		this.label.draw(_canvasContext); //Draw score + time alive
 		this.label2.draw(_canvasContext); //Draw username
 		this.label3.draw(_canvasContext); //Draw highscore
+		*/
 	},
 
 	/**
@@ -203,6 +212,15 @@ var Player = Base.extend({
 	*/
 	getHighscore: function(){
 		return this.highscore;
+	},
+
+	//TODO: documentation
+	//returns the current time as a string in MM:SS format
+	getTime: function(){
+		var min = this.pole.getTimer().getMinutes();
+		var sec = this.pole.getTimer().getSeconds();
+
+		return min + ":" + sec;
 	}
 });
 

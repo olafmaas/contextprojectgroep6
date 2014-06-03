@@ -4,9 +4,11 @@ var pole;
 var shield;
 var player;
 var balls;
+var labels;
 
 function init(){
     balls = new Group(Ball);
+    labels = new Group(Label);
 }
 
 function loadContent(){
@@ -24,6 +26,8 @@ function loadContent(){
     player.setPole(pole);
     player.setShield(shield);
     pole.setPlayer(player);
+
+
 
     //Initialize();
     //updateGameDimensions();
