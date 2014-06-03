@@ -1,5 +1,5 @@
 if(typeof module != 'undefined'){
-	var Ball = require('./Ball.js');
+	var Ball = require('../Ball.js');
 }
 
 /**

@@ -1,5 +1,5 @@
 if(typeof module != 'undefined'){
-	var Group = require('../../game/Group.js');
+	var Group = require('../../game/util/Group.js');
 }
 
 function  GroupManager(){

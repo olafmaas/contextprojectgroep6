@@ -1,5 +1,5 @@
 if(typeof module != 'undefined'){
-    var Base = require('./Base.js');
+    var Base = require('./util/Base.js');
 }
 
 /** 

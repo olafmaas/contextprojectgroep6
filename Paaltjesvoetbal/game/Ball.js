@@ -1,8 +1,8 @@
 //A simple ball class
 if(typeof module != 'undefined'){
 	var CircularBody = require('./CircularBody.js');
-	var Base = require('./Base.js');
-	var IDDistributor = require('./IDDistributor.js');
+	var Base = require('./util/Base.js');
+	var IDDistributor = require('./util/IDDistributor.js');
 }
 
 /** 

@@ -1,8 +1,8 @@
 //Player class
 if(typeof module != 'undefined'){
 	var Label = require('./Label.js');
-	var Base = require('./Base.js');
-	var IDDistributor = require('./IDDistributor.js'); 
+	var Base = require('./util/Base.js');
+	var IDDistributor = require('./util/IDDistributor.js'); 
 }
 /**
 * Player class
