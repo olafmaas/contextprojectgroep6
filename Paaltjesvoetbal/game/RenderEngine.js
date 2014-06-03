@@ -258,10 +258,10 @@ Drawer = function(_canvasContext){
 	canvasContext = _canvasContext;
 
 	this.draw = function(_element){
-		if(_element instanceof Ball) drawBall(_element);
-		else if(_element instanceof Pole) drawBall(_element);
-		else if(_element instanceof Shield) drawShield(_element);
-		else if(_element instanceof Label) drawLabel(_element);
+		if(_element instanceof Ball) this.drawBall(_element);
+		else if(_element instanceof Pole) this.drawBall(_element);
+		else if(_element instanceof Shield) this.drawShield(_element);
+		else if(_element instanceof Label) this.drawLabel(_element);
 	};
 
 	this.drawBall = function(_ball){
@@ -280,7 +280,7 @@ Drawer = function(_canvasContext){
 	this.drawShield = function(_shield){
 		canvasContext.beginPath();
   		canvasContext.arc(_shield.getPosition().x, _shield.getPosition().y, _shield.getRadius(), _shield.getAngle() - (_shield.getSize() / 2), _shield.getAngle() + (_shield.getSize() / 2));
-  		canvasContext.strokeStyle = color;
+  		canvasContext.strokeStyle = _shield.getColor();
   		canvasContext.stroke();
 	};
 
