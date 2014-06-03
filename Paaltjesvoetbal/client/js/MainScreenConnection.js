@@ -46,20 +46,20 @@ socket.on('newPlayer', function (data) {
 	makePlayerObjects(data);
 });
 
-socket.on('BallAdded', function (){
-	createBall();
+//Listener which waits for an added ball from socketHandler
+socket.on('BallAdded', function (color){
+	createBall(color);
 });
 
 var playerData = {};
 var canvasWidth = 300;
 var nrOfPlayers = 0;
 
-function createBall(){
+function createBall(color){
 	var ball = game.instantiate(new Ball(10));
 	ball.setPosition(100, 100);
 
-	ball.setColor(ColorGenerator.returnColor());
-
+	ball.setColor(color);
 	balls.addCollision(ball, balls, null, null);
 	//shield is handled client-sided
 	balls.addCollision(pole, ball, pole.isHit, pole);

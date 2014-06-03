@@ -6,13 +6,12 @@ var shields = game.instantiate(new Group(Shield));
 var players = game.instantiate(new Group(Player));
 
 function loadContent(){
-    var ball = new Ball(10);
-    ball.setColor('green');
+    //var ball = new Ball(10);
 
     //NOTE: Setvelocity en direction zorgen voor dat spastische karakter van de bal. Dit wordt afgehandeld aan de server kant (servergame.addball)
     //ball.getBody().setVelocity(5); 
     //ball.getBody().setVelocityDirection(1.70 * Math.PI);
-    balls.addMember(ball);
+    //balls.addMember(ball);
 
     //InitializeMainScreen();
 };

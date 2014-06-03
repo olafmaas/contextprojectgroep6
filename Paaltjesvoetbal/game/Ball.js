@@ -128,7 +128,7 @@ var Ball = Base.extend({
 	* @method Ball#getRadius
 	* @return {number} The radius of the ball.
 	*/
-	getRadius: function (){
+	getRadius: function(){
 		return this.radius;
 	},
 

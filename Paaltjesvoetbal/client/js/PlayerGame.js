@@ -1,4 +1,4 @@
-var game = new Game(init, loadContent, update, draw, 450, 350);
+var game = new Game(init, loadContent, update, draw, 450, 350, 450, 350);
 
 var pole;
 var shield;

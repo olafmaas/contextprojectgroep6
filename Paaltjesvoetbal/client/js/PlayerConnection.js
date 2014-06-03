@@ -27,7 +27,7 @@ socket.on('disconnect', function(data){
 socket.on('userName', function(free){
 	if(!free){
 		userName = prompt("Please enter your name", "User"+Math.floor(Math.random()*10000));
-		//player.setName(userName); //playername is set in sockethandler:57 (server.registername)
+		player.setName(userName); 
 		socket.emit('userName', userName); //player.getName());
 	}
 });
@@ -40,7 +40,6 @@ var topf = 0; //MOVE TO SERVER
 socket.on('canvasPos', function (data){
 	left = data.left;
 	topf = data.top;
-	console.log(topf);
 })
 
 //TODO: ID instead of index
@@ -74,15 +73,17 @@ function sendBallAngle() {
 	}
 }
 
-socket.on('BallAdded', function (nr) {
-	createBall(nr);
+//Waits for a 'BallAdded' emit from sockethandler
+socket.on('BallAdded', function (nr, colors) {
+	createBall(nr, colors);
 })
 
-function createBall(nr){
+//Create nr of ball with the corresponding colors in the color-array
+function createBall(nr, colors){
 	for(var i = balls.getMemberLength(); i < nr; i++){
 		var ball = game.instantiate(new Ball(10));
 		if(i == nr-1) ball.setPosition(100, 100);
-		ball.setColor(ColorGenerator.returnColor());
+		ball.setColor(colors[i]);
 		//ball.getBody().setVelocity(5);
 
 		balls.addCollision(ball, balls, null, null);

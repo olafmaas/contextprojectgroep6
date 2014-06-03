@@ -12,20 +12,20 @@ describe("Body", function(){
 
 		it("Should ignore the velocity if the object is immovable", function(){
 			b.immovable = true;
-			b.Update();
+			b.update();
 			expect(b.position.x).to.equal(50);
 			expect(b.position.y).to.equal(50);
 		})
 
 		it("Should change the velocity if the object is movable in the x-direction", function(){
-			b.Update();
+			b.update();
 			expect(b.position.x).to.equal(60);
 			expect(b.position.y).to.equal(50);
 		})
 
 		it("Should change the velocity if the object is movable in the y-direction", function(){
 			b.setVelocityDirection(0.5*Math.PI)
-			b.Update();
+			b.update();
 			expect(b.position.x).to.equal(50);
 			expect(b.position.y).to.equal(40);
 		})

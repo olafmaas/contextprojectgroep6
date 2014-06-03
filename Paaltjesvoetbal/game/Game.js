@@ -13,9 +13,9 @@ if(typeof module != 'undefined'){
 * @param {function} update - Update function
 * @param {function} draw - Draw function
 */
-function Game(_initialize, _loadContent, _update, _draw, _width, _height){
+function Game(_initialize, _loadContent, _update, _draw, _width, _height, _resW, _resH){
 	var coreGame = new CoreGame(_initialize, _update, _width, _height);
-	var renderEngine = new RenderEngine(_loadContent, _draw, _width, _height);
+	var renderEngine = new RenderEngine(_loadContent, _draw, _width, _height, _resW, _resH);
 
 	this.instantiate = function(_object){
 		return coreGame.instantiate(_object);

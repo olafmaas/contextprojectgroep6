@@ -1,3 +1,4 @@
+var scale = 1;
 /*
 * The engine for rendering sprites, balls and other game objects
 * 
@@ -5,13 +6,14 @@
 * @param{function} _loadContent - The user-defined loadcontent function to be called
 * @param{function} _draw - The user-defined draw function to be called
 */
-function RenderEngine(_loadContent, _draw, _width, _height, debug){
+function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeight ,debug){
 	var loadContent = _loadContent;
 	var draw = _draw;
 
 	var canvas;
 	var canvasContext;
 	var dimensions = {width: (_width || 0), height: (_height || 0)};
+	var resolution = {width: (_resWidth || 0), height: (_resHeight || 0)}
 
 	var fpsLimit;
 
@@ -58,7 +60,11 @@ function RenderEngine(_loadContent, _draw, _width, _height, debug){
 	*/
 	initializeListeners = function(){
 		canvas.onmousemove = input.mouseMoveListener;
-		window.onresize = updateCanvasSize;
+		if(hasResolution()){
+			window.onresize = updateCanvasSize;
+			window.onorientationchange = checkOrientation;
+		}
+
 	}
 
 	/**
@@ -80,27 +86,52 @@ function RenderEngine(_loadContent, _draw, _width, _height, debug){
 	updateCanvasSize = function(){
 		if(canvas == undefined) return;
 
-		if(!dimensions.height){
-			var width=window.innerWidth
+		var canvasRatio = canvas.height / canvas.width;
+		var windowRatio = window.innerHeight / window.innerWidth;
+		var windowWidth= window.innerWidth
 			|| document.documentElement.clientWidth
 			|| document.body.clientWidth;
-		}else{
-			var height = dimensions.height;
-		}
-		if(!dimensions.width){
-			var height=window.innerHeight
+
+		var windowHeight = window.innerHeight
 			|| document.documentElement.clientHeight
 			|| document.body.clientHeight;
-		}else{
-			var width = dimensions.width;
-		}
 
-		canvas.width = width;
-		canvas.height = height;
+        if(hasResolution()){
+        	if (windowRatio < canvasRatio) {
+	            var height = window.innerHeight;
+	            scale = window.innerHeight/canvas.height;
+        	} else {
+	            var width = window.innerWidth;
+	            scale = window.innerWidth/canvas.width;
+        	}
+			canvas.style.width = width + "px";
+			canvas.style.height = height + "px";
+        }else{
+        	var height = dimensions.height;
+        	var width = dimensions.width;
+        	canvas.width = width + "px";
+			canvas.height = height + "px";
+        }
 
 
 	}
 
+	hasResolution = function() {
+		return resolution.height && resolution.width;
+	}
+
+	/**
+	* Checks the orientation and change the canvas size. 
+	*
+	* @method RenderEngine#update
+	*/
+	checkOrientation = function(){
+		if(Math.abs(window.orientation) == 90){
+            updateCanvasSize();
+        }else{
+            alert("For an optimal experience please hold your device horizontal.");
+        }
+	}
 	/**
 	* Draw function
 	* @method RenderEngine#parentDraw
@@ -131,10 +162,15 @@ function RenderEngine(_loadContent, _draw, _width, _height, debug){
 		var canv = document.createElement("canvas");
 		canv.id = 'gameCanvas';
 
+		if(hasResolution()){
+			canv.setAttribute("height", resolution.height + "px");
+			canv.setAttribute("width", resolution.width + "px");
+		}
 		document.body.appendChild(canv);
 
 		return document.getElementById("gameCanvas");
 	}
+
 
 	/**
 	* Function which clears the canvas
