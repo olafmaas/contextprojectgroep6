@@ -63,8 +63,7 @@ describe("CircularBody", function(){
 			cb = new CircularBody(b);
 			cb.setVelocity(1);
 			si = function(){
-				this.getWidth = function(){return 1000;}
-				this.getHeight = function(){return 1000;}
+				this.getDimensions = function(){ return {width: 1000, height: 1000} }
 			};
 			cb.checkWorldBounds(new si());
 			expect(cb.getVelocity()).to.equal(1);
@@ -75,8 +74,7 @@ describe("CircularBody", function(){
 			cb = new CircularBody(b);
 			cb.setVelocity(1);
 			si = function(){
-				this.getWidth = function(){return 0;}
-				this.getHeight = function(){return 0;}
+				this.getDimensions = function(){ return {width: 1000, height: 1000} }
 			};
 			cb.checkWorldBounds(new si());
 			expect(cb.getVelocity()).to.equal(1);
