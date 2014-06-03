@@ -3,7 +3,7 @@ if(typeof module != 'undefined'){
     var CircularBody = require('./CircularBody.js');
 	var Input = require('./Input.js');
 	var Body = require('./Body.js');
-	var IDDistributor = require('./IDDistributor.js');
+	var IDDistributor = require('./IdDistributor.js');
 }  
 /**
 * Constructor for the shield body
