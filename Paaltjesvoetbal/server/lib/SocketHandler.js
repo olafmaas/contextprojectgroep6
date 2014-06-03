@@ -52,7 +52,6 @@ function SocketHandler(_server, _io){
 		
 		socket.emit('userName', false);
 		newPlayer(socket);
-		newPowerup(socket);
 
 		//Add player to grid
 		res = server.updateGrid(socket);
@@ -92,8 +91,8 @@ function SocketHandler(_server, _io){
 		dh.ballAdded(server.nrOfBalls(), colors); //inform players of new ball(s)
 	}
 	
-	newPowerup = function(socket){
-		io.of('/player').emit('dropPowerup', server.dropPowerup(socket));
+	newPowerup = function(){
+		io.of('/player').emit('dropPowerup', server.dropPowerup());
 	}
 
 	updateMainScreenCanvasSize = function(){
@@ -114,9 +113,12 @@ function SocketHandler(_server, _io){
 		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
 		console.log(timer.getTime());
 		if(timer != null && timer.hasStopped()){
-			console.log("Stopped");
+			timer = null;
+
+			newPowerup();
+
 			timer = new RandomTimer(settings.minTime, settings.maxTime); //start a new timer for the next powerup
-			//server moet op een of andere manier kunnen doorgeven dat een powerup geplaatst kan worden.
+			timer.startTimer();
 		}
 
 	}

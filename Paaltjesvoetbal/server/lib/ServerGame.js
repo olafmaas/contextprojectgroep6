@@ -36,13 +36,14 @@ function Server(){
 	gm.addGroup("Shields", Shield);
 	gm.addGroup("Players", Player);
 	
-	this.dropPowerup = function(data){	
-		var nrOfPlayers = group("Players").getMemberLength();
-		var index = Math.floor(Math.random()*nrOfPlayers);
+	this.dropPowerup = function(){	
+		var index = Math.floor(Math.random()*this.getNumberOfPlayers);
 		var member = group("Players").getMember(index);
+		
 		var pole = member.getPole();
 		var xpos = pole.getBody().getPosition().x;
 		var ypos = pole.getBody().getPosition().y
+
 		return {radius: 10, type: 0, position: {x: xpos, y: ypos} };
 	}
 	
@@ -144,7 +145,7 @@ function Server(){
 	}
 
 	this.loadContent = function(){
-		
+
 	}
 
 	this.update = function(){
