@@ -3,6 +3,8 @@ if(typeof module != 'undefined'){
 	var CircularBody = require('./CircularBody.js');
 	var IDDistributor = require('./IDDistributor.js');
 	var Timer = require('./Timer.js');
+	var e = require('./Enums.js');
+	var UserSettings = require('./UserSettings.js');
 }
 
 var Powerup = Base.extend({
@@ -18,7 +20,8 @@ var Powerup = Base.extend({
 		this.radius = _radius;
 		this.type = _type;
 		this.ID = IDDistributor.getNewId();
-		
+		this.timer = this.createTimer(_type);
+
 		this.enableBody();
 	},
 
@@ -41,6 +44,28 @@ var Powerup = Base.extend({
 	
 	collidesWith: function(_other){
 		return this.body.CollidesWith(_other);
+	},
+
+	//TODO: zorgen dat er echt 'powerups' worden gemaakt zodat ze ook iets gaan doen.
+	//Voor nu zijn het alleen de timers
+	createTimer: function(_type){
+		switch(_type){
+			case e.smallShield:
+			this.timer = new PowerupTimer(UserSettings.smallShieldTime)
+
+			case e.bigShield:
+			this.timer = new PowerupTimer(UserSettings.bigShieldTime)
+
+			case e.smallPole:
+			this.timer = new PowerupTimer(UserSettings.smallPoleTime)
+
+			case e.bigPole:
+			this.timer = new PowerupTimer(UserSettings.bigPoleTime)
+
+			case e.bigBall:
+			this.timer = new PowerupTimer(UserSettings.bigBallTime)
+			
+		}
 	},
 	
 	//==================
