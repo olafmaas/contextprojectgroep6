@@ -30,7 +30,7 @@ function DrawHandler(_io){
 
 	//TODO: ID instead of index
 	this.drawToMainScreen = function(ballpos, index){
-		mainScreenSocket.emit('drawBall', ballpos, index)
+		mainScreenSocket.emit('updateBall', ballpos, index)
 	}
 
 	//Emit message of how many balls are currently present 

@@ -4,7 +4,7 @@ function Client (socket, name, player, pole, shield, ball){
 	this.player = player;
 	this.pole = pole;
 	this.shield = shield;
-	this.ball = ball;
+	this.ball = ball; //waarom wordt een ball gekoppeld aan een speler?
 }
 
 if(typeof module != 'undefined'){
