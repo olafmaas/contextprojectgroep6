@@ -10,10 +10,10 @@ if(typeof module != 'undefined'){
 	var Pole = require('../../game/Pole.js');
 	var Shield = require('../../game/Shield.js');
 	var Player = require('../../game/Player.js');
-	var Group = require('../../game/Group.js');
+	var Group = require('../../game/util/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
 	var DrawHandler = require('./DrawHandler.js');
-	var e = require('../../game/Enums.js');
+	var e = require('../../game/util/Enums.js');
 }
 
 function SocketHandler(_server, _io){

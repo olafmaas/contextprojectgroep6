@@ -12,9 +12,9 @@ if(typeof module != 'undefined'){
 	var Shield = require('../../game/Shield.js');
 	var Powerup = require('../../game/Powerup.js');
 	var Player = require('../../game/Player.js');
-	var Group = require('../../game/Group.js');
+	var Group = require('../../game/util/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
-	var ColorGenerator = require('../../game/ColorGenerator');
+	var ColorGenerator = require('../../game/util/ColorGenerator');
 }
 
 function Server(){
