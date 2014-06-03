@@ -8,14 +8,13 @@ if(typeof module != 'undefined'){
 * @class PowerupTimer
 * @classdesc Class which handles the timers used for the powerups in the game. It counts down instead of up!
 * @constructor
-* @param {Powerup} _powerup - The powerup to which the timer belongs
+* @param {Time} _time - The time from which will be counted down.
 */
 var PowerupTimer = Timer.extend({
 
 	powerup: null,
 
-	constructor: function(_powerup, _time){
-		this.powerup = _powerup;
+	constructor: function(_time){
 		this.time = _time;
 	},
 
