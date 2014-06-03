@@ -1,25 +1,23 @@
 function GameGrid(_settings) {
-	var grid = new Array();
-	grid.push(new Array());
+	var grid = new Array();	//vertical
+	grid.push(new Array());	//horizontal (first row)
 	var settings = _settings
-
-	this.getWidth = function(){
-		if(grid[0].length == 0)
-			return 1; //Temporary so a screen will be visible when no players are connected yet
-		return grid[0].length;
-	}
 
 	this.getHeight = function(){
 		return grid.length;
 	} 
 
+	this.getWidth = function(){
+		return grid[0].length;
+	}
+
 	this.updateGrid = function(socket, maximumCol){
 		var x;
 		var y;
-		placed = false;
+		var placed = false;
 
 		//Look for an available spot
-		for (i = 0; i < grid.length; i++) {
+		for (i = 0; i < this.getHeight(); i++) {
 			if(grid[i].indexOf(-1) >  -1 || grid[i].length < maximumCol){
 				if(grid[i].indexOf(-1) > -1){
 					placed = true;
@@ -45,14 +43,14 @@ function GameGrid(_settings) {
 		return {left: x * settings.canvasWidth, top: y*settings.canvasHeight};
 	}
 
+	//TODO doet nog niks
 	this.remove = function(socketID){
 		for (i = 0; i < grid.length; i++) {
 			for(j = 0; j < grid[i].length; j++){
 				if(socketID == grid[i][j]){
-					grid[i][j] = -1;
+					grid[i][j] = false;
 				}
 			}
-
 		}
 	}
 
