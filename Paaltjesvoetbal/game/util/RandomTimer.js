@@ -41,5 +41,5 @@ var RandomTimer = Timer.extend({
 });
 
 if(typeof module != 'undefined'){
-	module.exports = PowerupTimer;
+	module.exports = RandomTimer;
 }
