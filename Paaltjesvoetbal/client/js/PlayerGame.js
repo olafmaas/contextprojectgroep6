@@ -4,6 +4,8 @@ var pole;
 var shield;
 var player;
 var balls;
+var powerup;
+var label;
 
 function init(){
     balls = new Group(Ball);
@@ -19,19 +21,28 @@ function loadContent(){
     shield.getBody().immovable = true;
     shield.setColor("white");
 
-    //Username is -1 omdat player hier pas aangemaakt wordt...
-    player = game.instantiate(new Player(-1));
+    player = game.instantiate(new Player(""));
     player.setPole(pole);
     player.setShield(shield);
     pole.setPlayer(player);
+	
+	//powerup = game.instantiate(new Powerup(10, 0));
+	//powerup.setPosition(300, 300);
 
-    //Initialize();
-    //updateGameDimensions();
+    //Testing label, only needed locally as the server keeps track of the actual score values.
+    label = game.instantiate(new ScoreLabel(player, "Score: 0"));
+    label.setPosition({x: 350, y: 340});
+    label.setFontSize(10);
 };
 
 //Updates the position of the items on the canvas and checks for collisions
 function update(){
-    
+
+    balls.update();
+    pole.update();
+    shield.update();
+    player.update();
+    label.update();
 };
 
 //Draws everything on the canvas

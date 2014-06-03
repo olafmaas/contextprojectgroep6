@@ -63,6 +63,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	*/
 	initializeListeners = function(){
 		canvas.onmousemove = input.mouseMoveListener;
+		canvas.ontouchmove = input.touchMoveListener;
 		if(hasResolution()){
 			window.onresize = updateCanvasSize;
 			window.onorientationchange = checkOrientation;

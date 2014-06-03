@@ -10,6 +10,7 @@ if(typeof module != 'undefined'){
 	var Ball = require('../../game/Ball.js');
 	var Pole = require('../../game/Pole.js');
 	var Shield = require('../../game/Shield.js');
+	var Powerup = require('../../game/Powerup.js');
 	var Player = require('../../game/Player.js');
 	var Group = require('../../game/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
@@ -34,7 +35,11 @@ function Server(){
 	gm.addGroup("Poles", Pole);
 	gm.addGroup("Shields", Shield);
 	gm.addGroup("Players", Player);
-
+	
+	this.dropPowerup = function(socket){
+		return {radius: 10, type: 0};
+	}
+	
 	/**
 	* Add a new client, create a new player, pole and shield. 
 	* @method Server#addClient
@@ -55,8 +60,15 @@ function Server(){
 		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition()};
 	}
 
-	this.deleteClient = function(socket){
-		delete clientList[socket.id]; //TODO remove all stuff
+	this.deleteClient = function(socketID){
+		var client = clientList[socketID];
+		group("Balls").removeMember(client.ball);	//TODO remove precies als de bal een scherm verlaat.
+		group("Poles").removeMember(client.pole);
+		group("Shields").removeMember(client.shield);
+		group("Players").removeMember(client.player);
+		//name stays in nameList because it has to stay in the highscore
+		gameGrid.remove(socketID);
+		delete clientList[socketID]; 
 	}
 
 	/**

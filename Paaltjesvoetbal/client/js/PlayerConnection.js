@@ -1,6 +1,3 @@
-//Make socket.io connection
-var port = 5050;
-var server = 'http://localhost';
 var socket = io.connect(server+":"+port).of('/player');
 
 //Basic socket listeners
@@ -66,6 +63,7 @@ function sendShieldAngle() {
 }
 
 window.onmousemove = sendShieldAngle;
+window.ontouchmove = sendShieldAngle;
 
 function sendBallAngle() {
 	for(var i = 0; i < balls.getMemberLength(); i++){
