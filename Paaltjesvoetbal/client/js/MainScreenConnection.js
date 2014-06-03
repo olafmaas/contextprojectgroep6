@@ -51,6 +51,15 @@ socket.on('BallAdded', function (color){
 	createBall(color);
 });
 
+socket.on('removePlayer', function (socketID){	
+	var client = playerData[socketID];
+	// //group("Balls").removeMember(client.ball);	//TODO remove ball
+	poles.removeMember(client.pole);
+	shields.removeMember(client.shield);
+	players.removeMember(client.player);
+	delete playerData[socketID]; 
+});
+
 var playerData = {};
 var canvasWidth = 300;
 var nrOfPlayers = 0;

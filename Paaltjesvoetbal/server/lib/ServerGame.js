@@ -55,8 +55,15 @@ function Server(){
 		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition()};
 	}
 
-	this.deleteClient = function(socket){
-		delete clientList[socket.id]; //TODO remove all stuff
+	this.deleteClient = function(socketID){
+		var client = clientList[socketID];
+		group("Balls").removeMember(client.ball);	//TODO remove precies als de bal een scherm verlaat.
+		group("Poles").removeMember(client.pole);
+		group("Shields").removeMember(client.shield);
+		group("Players").removeMember(client.player);
+		//name stays in nameList because it has to stay in the highscore
+		gameGrid.remove(socketID);
+		delete clientList[socketID]; 
 	}
 
 	/**

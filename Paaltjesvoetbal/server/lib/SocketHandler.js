@@ -74,8 +74,13 @@ function SocketHandler(_server, _io){
 
 		socket.on('disconnect', function (data){
 			server.log('Player disconnected');
-			server.deleteClient(socket);
+			removeFromMainScreen(socket.id);
+			server.deleteClient(socket.id);
 		});
+	};
+
+	removeFromMainScreen = function(socketID){
+		mainScreenSocket.emit('removePlayer', socketID);
 	}
 
 	newPlayer = function(socket){
