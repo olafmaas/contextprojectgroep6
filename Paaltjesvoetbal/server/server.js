@@ -22,7 +22,7 @@ io.of('/mainscreen').on('connection', function (socket) {
 
 io.of('/player').on('connection', function (socket) {
 	if(server.getNumberOfPlayers() < server.getMaxNrOfPlayers()){
-		console.log('Player connected');
+		console.log('Player #' + (server.getNumberOfPlayers() + 1) + ' connected');
 		sh.handlePlayerConnection(socket);
 	}
 	else{
