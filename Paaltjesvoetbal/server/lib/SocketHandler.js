@@ -76,7 +76,7 @@ function SocketHandler(_server, _io){
 		});
 
 		socket.on('disconnect', function (data){
-			server.log('Player disconnected');
+			server.log('Player disconnected - id: ' + socket.id);
 			removeFromMainScreen(socket.id);
 			server.deleteClient(socket.id);
 		});
