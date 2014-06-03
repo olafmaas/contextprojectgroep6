@@ -19,8 +19,13 @@ function loadContent(){
 //Updates the position of the items on the canvas and checks for collisions
 function update(){
     canvas = document.getElementById('gameCanvas');
-    canvas.setAttribute('width', game.getWidth());
-    canvas.setAttribute('height', game.getHeight());
+
+    if(canvas.getAttribute('width') != game.getWidth() ||
+        canvas.getAttribute('height') != game.getHeight()){
+        canvas.setAttribute('width', game.getWidth());
+        canvas.setAttribute('height', game.getHeight());
+    }
+
 };
 
 //Draws everything on the canvas

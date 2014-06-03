@@ -17,8 +17,6 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	var fpsLimit;
 
-	var backGroundColor;
-
 	/**
 	* Function for booting the RenderEngine
 	* 
@@ -166,6 +164,10 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 			canv.setAttribute("height", resolution.height + "px");
 			canv.setAttribute("width", resolution.width + "px");
 		}
+
+		//Wait for body to initialize
+		while(document.body == null);
+
 		document.body.appendChild(canv);
 
 		return document.getElementById("gameCanvas");

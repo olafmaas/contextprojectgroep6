@@ -60,9 +60,6 @@ function createBall(color){
 	ball.setPosition(100, 100);
 
 	ball.setColor(color);
-	balls.addCollision(ball, balls, null, null);
-	//shield is handled client-sided
-	balls.addCollision(pole, ball, pole.isHit, pole);
 
 	balls.addMember(ball);
 }
@@ -72,19 +69,17 @@ var shield;
 var player;
 
 function makePlayerObjects(data){
-	pole = new Pole(10);
+	pole = game.instantiate(new Pole(10));
 	pole.setColor("blue");
 	pole.setPosition(data.polePos.x, data.polePos.y);
 	poles.addMember(pole);
-	poles.addCollision(pole, balls, pole.isHit, pole);
 
-	shield = new Shield(pole);
+	shield = game.instantiate(new Shield(pole));
 	shield.getBody().immovable = true;
 	shields.addMember(shield);
 	shield.setColor("white");
-	shields.addCollision(shield, balls, null, null);
 
-	player = new Player(data.id);
+	player = game.instantiate(new Player(data.id));
 	player.setPole(pole);
 	player.setShield(shield);
 	pole.setPlayer(player);
