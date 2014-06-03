@@ -49,7 +49,7 @@ function SocketHandler(_server, _io){
 		newPlayer(socket);
 		
 		//Testing purposes, commented so you guys don't notice it. :)
-		//newPowerup(socket);
+		newPowerup(socket);
 
 		//Add player to grid
 		res = server.updateGrid(socket);

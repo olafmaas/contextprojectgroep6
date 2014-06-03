@@ -36,8 +36,15 @@ function Server(){
 	gm.addGroup("Shields", Shield);
 	gm.addGroup("Players", Player);
 	
-	this.dropPowerup = function(socket){
-		return {radius: 10, type: 0};
+	this.dropPowerup = function(data){
+		
+		var nrOfPlayers = group("Players").getMemberLength();
+		var index = Math.floor(Math.random()*nrOfPlayers);
+		var member = group("Players").getMember(index);
+		var pole = member.getPole();
+		var xpos = pole.getBody().getPosition().x;
+		var ypos = pole.getBody().getPosition().y
+		return {radius: 10, type: 0, position: {x: xpos, y: ypos} };
 	}
 	
 	/**
