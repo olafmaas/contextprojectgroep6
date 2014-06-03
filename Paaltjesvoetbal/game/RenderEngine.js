@@ -12,6 +12,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	var canvas;
 	var canvasContext;
+	var drawer;
 	var dimensions = {width: (_width || 0), height: (_height || 0)};
 	var resolution = {width: (_resWidth || 0), height: (_resHeight || 0)}
 
@@ -41,6 +42,8 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 		fpsLimit = fpsLimit || 60;
 		initializeCanvas();
 		initializeListeners();
+
+		drawer = new Drawer(canvasContext);
 	}
 
 	/**
@@ -147,6 +150,8 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	* @param{CoreGame} _game - the game to be drawn
 	*/
 	this.drawGame = function(_game){
+		if(!drawing) return;
+
 		if(!(_game instanceof CoreGame)) throw "The argument is not an instance of Game";
 
 		var elements = _game.getGameElements();
@@ -193,10 +198,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	* @param{object} _object - The game object to be drawn
 	*/
 	this.drawElement = function(_element){
-		if(_element.draw === undefined) return;
-
-		//TODO: draw handling
-		_element.draw(canvasContext);
+		drawer.draw(_element);
 	}
 
 	//Make the engine boot 1 second after instantiating
@@ -250,4 +252,41 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 }
 if(typeof module != 'undefined'){
     module.exports = RenderEngine;
-}  
+}
+
+Drawer = function(_canvasContext){
+	canvasContext = _canvasContext;
+
+	this.draw = function(_element){
+		if(_element instanceof Ball) drawBall(_element);
+		else if(_element instanceof Pole) drawBall(_element);
+		else if(_element instanceof Shield) drawShield(_element);
+		else if(_element instanceof Label) drawLabel(_element);
+	};
+
+	this.drawBall = function(_ball){
+		canvasContext.beginPath();
+		canvasContext.arc(_ball.getBody().position.x, _ball.getBody().position.y, _ball.radius, 0, Math.PI*2, true);
+		canvasContext.closePath();
+
+		canvasContext.fillStyle = _ball.color;
+		canvasContext.fill();
+	};
+
+	this.drawSprite = function(_sprite){
+		throw "Unimplemented - Check Sprite.js, the sets and gets are not finished";
+	};
+
+	this.drawShield = function(_shield){
+		canvasContext.beginPath();
+  		canvasContext.arc(_shield.getPosition().x, _shield.getPosition().y, _shield.getRadius(), _shield.getAngle() - (_shield.getSize() / 2), _shield.getAngle() + (_shield.getSize() / 2));
+  		canvasContext.strokeStyle = color;
+  		canvasContext.stroke();
+	};
+
+	this.drawLabel = function(_label){
+		canvasContext.fillStyle = _label.getColor();
+		canvasContext.font = _label.getFontSize() + "px " + _label.getFont();
+		canvasContext.fillText(_label.getText(), _label.getPosition().x, _label.getPosition().y);
+	};
+}
