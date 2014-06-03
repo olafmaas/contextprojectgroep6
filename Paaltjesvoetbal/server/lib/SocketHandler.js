@@ -66,7 +66,7 @@ function SocketHandler(_server, _io){
 		});
 
 		socket.on('shieldAngle', function (angle){
-			mainScreenSocket.emit('drawShield', server.setAngle(socket,angle));
+			mainScreenSocket.emit('updateShieldAngle', server.setAngle(socket,angle));
 		});
 
 		//TODO: ID's in plaats van index?
@@ -89,7 +89,7 @@ function SocketHandler(_server, _io){
 	newPlayer = function(socket){
 		mainScreenSocket.emit('newPlayer',server.addClient(socket));
 		var colors = server.getBallColors();
-		mainScreenSocket.emit('BallAdded', colors[colors.length-1]); //inform mainscreen of new ball
+		mainScreenSocket.emit('newBall', colors[colors.length-1]); //inform mainscreen of new ball
 		dh.ballAdded(server.nrOfBalls(), colors); //inform players of new ball(s)
 	}
 	
@@ -98,7 +98,7 @@ function SocketHandler(_server, _io){
 	}
 
 	updateMainScreenCanvasSize = function(){
-		mainScreenSocket.emit("newCanvasSize", server.updateMainScreenCanvasSize());
+		mainScreenSocket.emit("updateCanvasSize", server.updateMainScreenCanvasSize());
 	}
 
 	this.update = function(){
