@@ -19,7 +19,7 @@ var Ball = Base.extend({
 	color: "#000000", //The color of the ball
 	body: false,
 	ID: -1,
-	serverId: -1,
+	globalID: -1,
 
 	constructor: function(_radius){
 		this.radius = _radius;
@@ -90,6 +90,15 @@ var Ball = Base.extend({
 	},
 
 	/**
+	* Sets the global id of the ball. 
+	* @method Ball#GlobalID
+	* @param {number} _id - The new GlobalID of the ball
+	*/
+	setGlobalID: function (_id) {
+		this.globalID = _id;
+	},
+
+	/**
 	* Sets the color of the ball.
 	*
 	* @method Ball#setColor
@@ -147,6 +156,16 @@ var Ball = Base.extend({
 	*/
 	getID: function(){
 		return this.ID;
+	},
+
+	/**
+	* Retrieves the global ID of the ball
+	*
+	* @method Ball#getGlobalID
+	* @return {number} The unique GlobalID of the ball
+	*/
+	getGlobalID: function(){
+		return this.globalID;
 	}
 });
 

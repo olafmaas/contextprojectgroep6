@@ -43,8 +43,8 @@ socket.on('newPlayer', function (data) {
 });
 
 //Listener which waits for an added ball from socketHandler
-socket.on('newBall', function (color){
-	createBall(color);
+socket.on('newBall', function (data){
+	createBall(data);
 });
 
 //Listener for powerup
@@ -56,8 +56,8 @@ socket.on('removePlayer', function (socketID){
 	removePlayerObjects(socketID);
 });
 
-socket.on('removeBall', function (){
-	//TODO
+socket.on('removeBall', function (globalID){
+	removeBall(globalID);
 })
 
 socket.on('updateBall', function (data, index) { //TODO: ID instead of index
@@ -95,23 +95,39 @@ function createPlayerObjects(data){
 };
 
 function removePlayerObjects(socketID){
+
 	var client = playerData[socketID];
-	// //group("Balls").removeMember(client.ball);	//TODO remove ball
+
 	poles.removeMember(client.pole);
 	shields.removeMember(client.shield);
 	players.removeMember(client.player);
+
 	game.remove(client.pole);
 	game.remove(client.shield);
 	game.remove(client.player);
 	delete playerData[socketID]; 
 };
 
-function createBall(color){
+function createBall(data){
 	var ball = game.instantiate(new Ball(10));
 	ball.setPosition(100, 100);
-	ball.setColor(color);
+	ball.setColor(data.color);
+	ball.setGlobalID(data.gid);
 	balls.addMember(ball);
 };
+
+function removeBall(globalID){
+	var members = balls.getMembers();
+	for(var i = 0; i < members.length; i++){
+		if(members[i].getGlobalID() === globalID){
+			game.remove(members[i]);
+			balls.removeMember(members[i]);
+			return;
+		}
+	}
+	console.log("404 Ball not found")
+	return;
+}
 
 function createPowerup(data){
 	data.type = Math.floor(Math.random()*4);

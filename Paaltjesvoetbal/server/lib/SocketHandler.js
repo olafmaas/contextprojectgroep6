@@ -71,7 +71,10 @@ function SocketHandler(_server, _io){
 		socket.on('disconnect', function (data){
 			server.log('Player disconnected - id: ' + socket.id);
 			removeFromMainScreen(socket.id);
-			server.deleteClient(socket.id);
+
+			gid = server.deleteClient(socket.id);
+			mainScreenSocket.emit('removeBall', gid);
+			
 		});
 	};
 
@@ -80,9 +83,11 @@ function SocketHandler(_server, _io){
 	}
 
 	newPlayer = function(socket, polePos){
-		mainScreenSocket.emit('newPlayer',server.addClient(socket, polePos));
+		var np = server.addClient(socket, polePos);
+		mainScreenSocket.emit('newPlayer', np);
+
 		var colors = server.getBallColors();
-		mainScreenSocket.emit('newBall', colors[colors.length-1]); //inform mainscreen of new ball
+		mainScreenSocket.emit('newBall', {color: colors[colors.length-1], gid: np.gid}); //inform mainscreen of new ball
 		dh.ballAdded(server.nrOfBalls(), colors); //inform players of new ball(s)
 	}
 	
