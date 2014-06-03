@@ -24,8 +24,7 @@ function DrawHandler(_io){
 
 	//TODO: ID instead of index
 	this.drawToPlayers = function(ball, index){
-		io.of('/player').emit('UpdateBall', ball.getPosition(), index);
-		io.of('/player').emit('UpdateBallAngle', ball.getBody().getVelocityDirection(), index);
+		io.of('/player').emit('updateBall', ball.getPosition(), index);
 	}
 
 	//TODO: ID instead of index
@@ -37,7 +36,7 @@ function DrawHandler(_io){
 	//For people that are already connected this means an extra ball has been added
 	//For people that are connecting, this indicates how many balls are currently in the game and should be created locally.
 	this.ballAdded = function(nr, colors){
-		io.of('/player').emit('BallAdded', nr, colors);
+		io.of('/player').emit('newBall', nr, colors);
 	}
 }
 

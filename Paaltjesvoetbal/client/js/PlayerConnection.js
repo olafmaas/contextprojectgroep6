@@ -1,6 +1,9 @@
 var socket = io.connect(server+":"+port).of('/player');
 
-//Basic socket listeners
+////////////////////////////
+// Basic socket listeners //
+////////////////////////////
+
 socket.on('connect_failed', function (reason){ 
 	console.error('connect_failed: ', reason);
 });
@@ -29,52 +32,40 @@ socket.on('userName', function(free){
 	}
 });
 
-//Game updates
-var left = 0; //MOVE TO SERVER
-var topf = 0; //MOVE TO SERVER
-//MOVE TO SERVER
+//////////////////
+// Game updates //
+//////////////////
+
+var leftOffset = 0; 
+var topOffset = 0;
 
 socket.on('canvasPos', function (data){
-	left = data.left;
-	topf = data.top;
+	leftOffset = data.left;
+	topOffset = data.top;
+});
+
+//Waits for a 'newBall' emit from drawhandler
+socket.on('newBall', function (nr, colors) {
+	createBall(nr, colors);
 })
 
-//TODO: ID instead of index
-socket.on('UpdateBall', function (pos, index) {
+socket.on('updateBall', function (pos, index) { //TODO: ID instead of index
 	if(balls.getMember(index) != null)
-		balls.getMember(index).setPosition(pos.x - left, pos.y - topf);
+		balls.getMember(index).setPosition(pos.x - leftOffset, pos.y - topOffset);
+});
+
+socket.on('removeBall', function (nr, colors) {
+	//TODO
 })
 
-//TODO: ID instead of index
-socket.on('UpdateBallAngle', function (angle, index) {
-	if(balls.getMember(index) != null)
-		balls.getMember(index).getBody().setVelocityDirection(angle);
-})
-
-socket.on('drawBall', function (data, index) {
-	if(balls.getMember(index) != undefined)
-		balls.getMember(index).setPosition(data.x, data.y);
-})
+window.onmousemove = sendShieldAngle;
+window.ontouchmove = sendShieldAngle;
 
 function sendShieldAngle() {
 	if(shield != undefined){
 		socket.emit('shieldAngle', shield.getAngle());
 	}
-}
-
-window.onmousemove = sendShieldAngle;
-window.ontouchmove = sendShieldAngle;
-
-function sendBallAngle() {
-	for(var i = 0; i < balls.getMemberLength(); i++){
-		socket.emit('ballAngle', balls.getMember(i).getBody().getVelocityDirection(), i);
-	}
-}
-
-//Waits for a 'BallAdded' emit from sockethandler
-socket.on('BallAdded', function (nr, colors) {
-	createBall(nr, colors);
-})
+};
 
 //Create nr of ball with the corresponding colors in the color-array
 function createBall(nr, colors){
@@ -86,9 +77,4 @@ function createBall(nr, colors){
 
 		balls.addMember(ball);
 	}
-}
-
-//TODO: function to remove balls from the list when they are no longer in the screen of the player.
-function removeBalls(){
-
-}
+};

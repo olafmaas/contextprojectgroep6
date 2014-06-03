@@ -69,11 +69,6 @@ function SocketHandler(_server, _io){
 			mainScreenSocket.emit('updateShieldAngle', server.setAngle(socket,angle));
 		});
 
-		//TODO: ID's in plaats van index?
-		socket.on('ballAngle', function (velocityDirection, index){
-			//dh.drawToPlayers(server.ballAngle(socket, velocityDirection, index));
-
-		});
 
 		socket.on('disconnect', function (data){
 			server.log('Player disconnected - id: ' + socket.id);
