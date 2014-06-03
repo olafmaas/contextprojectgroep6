@@ -66,6 +66,7 @@ function sendShieldAngle() {
 }
 
 window.onmousemove = sendShieldAngle;
+window.ontouchmove = sendShieldAngle;
 
 function sendBallAngle() {
 	for(var i = 0; i < balls.getMemberLength(); i++){
