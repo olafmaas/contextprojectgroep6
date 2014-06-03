@@ -14,6 +14,7 @@ if(typeof module != 'undefined'){
 	var handleCollision = require('../../game/CollisionDetection.js');
 	var DrawHandler = require('./DrawHandler.js');
 	var e = require('../../game/util/Enums.js');
+	var RandomTimer = require('../../game/util/RandomTimer');
 }
 
 function SocketHandler(_server, _io){
@@ -22,10 +23,14 @@ function SocketHandler(_server, _io){
 	var io = _io;
 	var mainScreenSocket = {emit:function(){false}}; //If the mainscreen is not instantiated this function is used;
 	var debug;
+	var settings = new Settings();
+	var timer = new RandomTimer(settings.minTime, settings.maxTime);
 
 	this.handleMainScreen = function(socket){
 		mainScreenSocket = socket;
 		dh.setMainScreenSocket(socket);
+
+		timer.startTimer(); //Start powerup timer when the mainscreen is connected.
 
 		updateMainScreenCanvasSize();
 
@@ -103,6 +108,17 @@ function SocketHandler(_server, _io){
 			dh.drawToMainScreen(server.getBallPosition(i), i);	
 			dh.drawToPlayers(server.getBall(i), i);	
 		}
+
+		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
+		//TODO: timer eerder af laten lopen als er meer spelers zijn, dus settings aanpassen, of
+		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
+		console.log(timer.getTime());
+		if(timer != null && timer.hasStopped()){
+			console.log("Stopped");
+			timer = new RandomTimer(settings.minTime, settings.maxTime); //start a new timer for the next powerup
+			//server moet op een of andere manier kunnen doorgeven dat een powerup geplaatst kan worden.
+		}
+
 	}
 
 
