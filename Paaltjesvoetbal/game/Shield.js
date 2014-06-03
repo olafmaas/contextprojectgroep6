@@ -22,19 +22,7 @@ function Shield(_pole){
 	var size = 0.5 * Math.PI; //The size of the shield
 	var color = "#000000"; //Color of the shield
 	var body;
-	var ID = IDDistributor.getNewId();;
-
-	/**
-	* Draws the shield on the canvas
-	* @method Shield#draw
-	* @param {CanvasContext} _canvasContext - The canvas context on which the shield will be drawn.
-	*/
-	this.draw = function (_canvasContext){
-		_canvasContext.beginPath();
-  		_canvasContext.arc(position.x, position.y, radius, angle - (size / 2), angle + (size / 2));
-  		_canvasContext.strokeStyle = color;
-  		_canvasContext.stroke();
-	}
+	var ID = IDDistributor.getNewId();
 
 	/**
 	* Updates the position of the shield

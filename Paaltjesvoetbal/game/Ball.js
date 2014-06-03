@@ -27,20 +27,6 @@ var Ball = Base.extend({
 		//Stuff to execute when constructing
 		this.enableBody();
 	},
-	
-	/**
-	* Draws the ball on the canvas
-	* @method Ball#draw
-	* @param {CanvasContext} _canvasContext - The canvas context on which the ball will be drawn.
-	*/
-	draw: function (_canvasContext){
-		_canvasContext.beginPath();
-		_canvasContext.arc(this.getBody().position.x, this.getBody().position.y, this.radius, 0, Math.PI*2, true);
-		_canvasContext.closePath();
-
-		_canvasContext.fillStyle = this.color;
-		_canvasContext.fill();
-	},
 
 	/**
 	* Updates the position of the ball

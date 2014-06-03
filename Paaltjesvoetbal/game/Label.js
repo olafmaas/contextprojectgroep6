@@ -14,17 +14,6 @@ Label = function(_text){
 	var color = "#ffffff" //Var for the font color
 
 	/**
-	* Draws the label on the game canvas
-	* @method Label#draw
-	* @param {CanvasContext} _canvasContext - The canvascontext which should be drawn.
-	*/
-	this.draw = function(_canvasContext){
-		_canvasContext.fillStyle = color;
-		_canvasContext.font = this.getFontSize() + "px " + this.getFont();
-		_canvasContext.fillText(this.getText(), this.getPosition().x, this.getPosition().y)
-	}
-
-	/**
 	* Gets the string which is the labels text
 	* @method Label#getText
 	* @return {string} The text of the label
