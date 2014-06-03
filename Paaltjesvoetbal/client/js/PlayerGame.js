@@ -4,11 +4,9 @@ var pole;
 var shield;
 var player;
 var balls;
-var labels;
 
 function init(){
     balls = new Group(Ball);
-    labels = new Group(Label);
 }
 
 function loadContent(){
@@ -21,13 +19,10 @@ function loadContent(){
     shield.getBody().immovable = true;
     shield.setColor("white");
 
-    //Username is -1 omdat player hier pas aangemaakt wordt...
     player = game.instantiate(new Player(-1));
     player.setPole(pole);
     player.setShield(shield);
     pole.setPlayer(player);
-
-
 
     //Initialize();
     //updateGameDimensions();
@@ -39,6 +34,7 @@ function update(){
     pole.update();
     shield.update();
     player.update();
+    label.update();
 
     // if(balls.checkCollision()){
     //     sendBallAngle();
