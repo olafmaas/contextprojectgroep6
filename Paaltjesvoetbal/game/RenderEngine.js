@@ -17,6 +17,8 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	var fpsLimit;
 
+	var drawing = true;
+
 	/**
 	* Function for booting the RenderEngine
 	* 
@@ -217,6 +219,16 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	}
 
 	/**
+	* Getter for the drawing state of the renderengine
+	*
+	* @method RenderEngine#getDrawing
+	* @return{boolean} The drawing state
+	*/
+	this.getDrawing = function(){
+		return drawing;
+	}
+
+	/**
 	* Setter for the background color
 	*
 	* @method RenderEngine#setBackgroundColor
@@ -224,6 +236,16 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	*/
 	this.setBackgroundColor = function(_color){
 		backGroundColor = _color;
+	}
+
+	/**
+	* Setter for the drawing state of the renderengine
+	*
+	* @method RenderEngine#setDrawing
+	* @return{boolean} The drawing state
+	*/
+	this.getDrawing = function(_drawing){
+		drawing = _drawing;
 	}
 }
 if(typeof module != 'undefined'){

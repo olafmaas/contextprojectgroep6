@@ -15,6 +15,8 @@ function CoreGame(_initialize, _update, _width, _height){
 	var elements = [];
 	var thisGame = this;
 
+	var updating = true;
+
 	/*
 	* The boot function to boot the game
 	* @method CoreGame#boot
@@ -40,9 +42,12 @@ function CoreGame(_initialize, _update, _width, _height){
 	* @method CoreGame#parentUpdate
 	*/
 	parentUpdate = function(){
-		//This makes all the elements update individually
-		updateElements();
-		handleCollisions();
+		//Guard
+		if(updating){
+			//This makes all the elements update individually
+			updateElements();
+			handleCollisions();
+		}
 
 		update();
 	}
@@ -123,6 +128,15 @@ function CoreGame(_initialize, _update, _width, _height){
 		return elements;
 	}
 
+	/**
+	* Returns the boolean which represents if the game is updating or not
+	* @method CoreGame#getUpdating
+	* @return{boolean} The value
+	*/
+	this.getUpdating = function(){
+		return updating;
+	}
+
 	/*
 	* A setter for the game dimensions
 	*
@@ -150,6 +164,15 @@ function CoreGame(_initialize, _update, _width, _height){
 
 	this.setHeight = function(_height){
 		dimensions.height = _height;
+	}
+
+	/**
+	* Setter for the updating variable
+	* @method CoreGame#setUpdating
+	* @param{boolean} _updating - The value
+	*/
+	this.setUpdating = function(_updating){
+		updating = _updating;
 	}
 
 	this.getWidth = function(){
