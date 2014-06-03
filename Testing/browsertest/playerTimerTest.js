@@ -18,7 +18,7 @@ describe("PlayerTimer", function(){
 		it("Should increase the time by one and update the player's score by 1", function() {
 			t = new PlayerTimer(p);
 			expect(p.getScore()).to.equal(0);
-			t.count();
+			t.count(t);
 			expect(t.getTime()).to.equal(1);
 			expect(p.getScore()).to.equal(1);
 		})
