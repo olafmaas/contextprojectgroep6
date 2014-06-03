@@ -263,6 +263,7 @@ Drawer = function(_canvasContext){
 		else if(_element instanceof Pole) this.drawBall(_element);
 		else if(_element instanceof Shield) this.drawShield(_element);
 		else if(_element instanceof Label) this.drawLabel(_element);
+		else if(_element instanceof Powerup) this.drawPowerup(_element);
 	};
 
 	this.drawBall = function(_ball){
@@ -289,5 +290,14 @@ Drawer = function(_canvasContext){
 		canvasContext.fillStyle = _label.getColor();
 		canvasContext.font = _label.getFontSize() + "px " + _label.getFont();
 		canvasContext.fillText(_label.getText(), _label.getPosition().x, _label.getPosition().y);
+	};
+
+	this.drawPowerup = function (_powerup){
+		canvasContext.beginPath();
+		canvasContext.arc(_powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius(), 0, Math.PI*2, true);
+		canvasContext.closePath();
+		
+		canvasContext.fillStyle = _powerup.getColor();
+		canvasContext.fill();
 	};
 }

@@ -1,3 +1,4 @@
+
 var game = new Game(init, loadContent, update, draw, 450, 350, 450, 350);
 
 var pole;
@@ -5,7 +6,8 @@ var shield;
 var player;
 var balls;
 var powerup;
-var label;
+var scoreLabel;
+var nameLabel;
 
 function init(){
     balls = new Group(Ball);
@@ -24,14 +26,13 @@ function loadContent(){
     player.setPole(pole);
     player.setShield(shield);
     pole.setPlayer(player);
-	
-	//powerup = game.instantiate(new Powerup(10, 0));
-	//powerup.setPosition(300, 300);
 
-    //Testing label, only needed locally as the server keeps track of the actual score values.
-    label = game.instantiate(new ScoreLabel(player, "Score: 0"));
-    label.setPosition({x: 350, y: 340});
-    label.setFontSize(10);
+    //Player labels, name is set once again when the user has
+    scoreLabel = game.instantiate(new ScoreLabel(player, "Score: 0"));
+    scoreLabel.setPosition(UserSettings.scorePosition);
+
+    nameLabel = game.instantiate(new Label("Unknown Player"));
+    nameLabel.setPosition(UserSettings.namePosition);
 };
 
 //Updates the position of the items on the canvas and checks for collisions

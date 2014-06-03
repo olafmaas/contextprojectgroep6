@@ -47,11 +47,6 @@ socket.on('newBall', function (data){
 	createBall(data);
 });
 
-//Listener for powerup
-socket.on('newPowerup', function (data) {
-	createPowerup(data);
-});
-
 socket.on('removePlayer', function (socketID){		
 	removePlayerObjects(socketID);
 });

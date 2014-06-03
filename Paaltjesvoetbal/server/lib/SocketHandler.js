@@ -46,8 +46,7 @@ function SocketHandler(_server, _io){
 	this.handlePlayerConnection = function(socket){
 		
 		socket.emit('userName', false);
-
-
+		newPowerup(socket);
 		res = server.updateGrid(socket);
 		newPlayer(socket, res);
 
@@ -57,6 +56,7 @@ function SocketHandler(_server, _io){
 		socket.on('userName', function (name){
 			if(server.isNameAvailable(name)){
 				server.registerName(name, socket.id);
+				socket.emit('showPlayerName');
 			}else{
 				server.log('Username already in use');
 				socket.emit('userName', false);
@@ -91,11 +91,8 @@ function SocketHandler(_server, _io){
 		dh.ballAdded(server.nrOfBalls(), colors); //inform players of new ball(s)
 	}
 	
-	//Testing purposes
-	//newPowerup(data);
-	
-	newPowerup = function(data){
-		mainScreenSocket.emit('newPowerup', server.dropPowerup(data));
+	newPowerup = function(socket){
+		io.of('/player').emit('dropPowerup', server.dropPowerup(socket));
 	}
 
 	updateMainScreenCanvasSize = function(){
