@@ -53,6 +53,9 @@ socket.on('removePlayer', function (socketID){
 	poles.removeMember(client.pole);
 	shields.removeMember(client.shield);
 	players.removeMember(client.player);
+	game.remove(client.pole);
+	game.remove(client.shield);
+	game.remove(client.player);
 	delete playerData[socketID]; 
 });
 
