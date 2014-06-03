@@ -195,6 +195,7 @@ var Player = Base.extend({
 	*/
 	getID: function(){
 		return this.ID;
+	},
 
 	//TODO: documentation
 	//returns the current time as a string in MM:SS format
