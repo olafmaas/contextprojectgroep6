@@ -15,6 +15,7 @@ if(typeof module != 'undefined'){
 	var Group = require('../../game/util/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
 	var ColorGenerator = require('../../game/util/ColorGenerator');
+	var RandomTimer = require('../../game/util/RandomTimer');
 }
 
 function Server(){
@@ -29,15 +30,14 @@ function Server(){
 	var gm = new GroupManager();
 	var pf = new PlayerFactory(settings);
 	var colors = [];
-
+	var timer = new RandomTimer(settings.minTime, settings.maxTime);
 	//Create all groups
 	gm.addGroup("Balls", Ball);
 	gm.addGroup("Poles", Pole);
 	gm.addGroup("Shields", Shield);
 	gm.addGroup("Players", Player);
 	
-	this.dropPowerup = function(data){
-		
+	this.dropPowerup = function(data){	
 		var nrOfPlayers = group("Players").getMemberLength();
 		var index = Math.floor(Math.random()*nrOfPlayers);
 		var member = group("Players").getMember(index);
@@ -145,11 +145,18 @@ function Server(){
 	}
 
 	this.loadContent = function(){
-
+		timer.startTimer();
 	}
 
 	this.update = function(){
-		
+		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
+		//TODO: timer eerder af laten lopen als er meer spelers zijn, dus settings aanpassen, of
+		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
+		if(timer != null && timer.hasStopped()){
+			console.log("Stopped");
+			timer = new RandomTimer(settings.minTime, settings.maxTime); //start a new timer for the next powerup
+		}
+
 	}
 
 	this.createGame = function(_initialize, _update, _width, _height){

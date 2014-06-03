@@ -13,7 +13,7 @@ if(typeof module != 'undefined'){
 */
 var RandomTimer = Timer.extend({
 
-	time = 0;
+	time: 0,
 
 	constructor: function(_min, _max){
 		this.time = Math.floor(Math.random() * (_max - _min + 1) + _min);
