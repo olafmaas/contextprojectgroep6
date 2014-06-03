@@ -37,9 +37,9 @@ function Server(){
 	gm.addGroup("Players", Player);
 	
 	this.dropPowerup = function(){	
-		var index = Math.floor(Math.random()*this.getNumberOfPlayers);
+		var index = Math.floor(Math.random()*this.getNumberOfPlayers());
 		var member = group("Players").getMember(index);
-		
+
 		var pole = member.getPole();
 		var xpos = pole.getBody().getPosition().x;
 		var ypos = pole.getBody().getPosition().y
