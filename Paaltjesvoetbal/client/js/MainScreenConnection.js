@@ -52,23 +52,6 @@ socket.on('newPowerup', function (data) {
 	createPowerup(data);
 });
 
-function makePowerup(data){
-	data.type = Math.floor(Math.random()*4);
-	var p = game.instantiate(new Powerup(data.radius, data.type));
-	p.setPosition(data.position.x, data.position.y+30);
-}
-
-socket.on('removePlayer', function (socketID){	
-	var client = playerData[socketID];
-	// //group("Balls").removeMember(client.ball);	//TODO remove ball
-	poles.removeMember(client.pole);
-	shields.removeMember(client.shield);
-	players.removeMember(client.player);
-	game.remove(client.pole);
-	game.remove(client.shield);
-	game.remove(client.player);
-	delete playerData[socketID]; 
-	
 socket.on('removePlayer', function (socketID){		
 	removePlayerObjects(socketID);
 });
