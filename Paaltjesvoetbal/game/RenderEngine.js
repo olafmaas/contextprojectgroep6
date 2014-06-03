@@ -153,6 +153,8 @@ function RenderEngine(_loadContent, _draw, _width, _height, debug){
 	* @param{object} _object - The game object to be drawn
 	*/
 	this.drawElement = function(_element){
+		if(_element.draw === undefined) return;
+
 		//TODO: draw handling
 		_element.draw(canvasContext);
 	}

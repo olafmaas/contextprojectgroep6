@@ -22,9 +22,6 @@ function update(){
     canvas = document.getElementById('gameCanvas');
     canvas.setAttribute('width', game.getWidth());
     canvas.setAttribute('height', game.getHeight());
-
-    balls.update();
-    parentDraw();
 };
 
 //Draws everything on the canvas
