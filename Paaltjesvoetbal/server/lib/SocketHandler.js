@@ -56,6 +56,7 @@ function SocketHandler(_server, _io){
 		socket.on('userName', function (name){
 			if(server.isNameAvailable(name)){
 				server.registerName(name, socket.id);
+				socket.emit('showPlayerName');
 			}else{
 				server.log('Username already in use');
 				socket.emit('userName', false);

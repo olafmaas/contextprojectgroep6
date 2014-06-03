@@ -34,7 +34,7 @@ function loadContent(){
     scoreLabel = game.instantiate(new ScoreLabel(player, "Score: 0"));
     scoreLabel.setPosition(UserSettings.scorePosition);
 
-    nameLabel = game.instantiate(new Label("Placeholder"));
+    nameLabel = game.instantiate(new Label("Unknown Player"));
     nameLabel.setPosition(UserSettings.namePosition);
 };
 
