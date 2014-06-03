@@ -24,15 +24,6 @@ var Powerup = Base.extend({
 
 		this.enableBody();
 	},
-
-	draw: function (_canvasContext){
-		_canvasContext.beginPath();
-		_canvasContext.arc(this.getBody().position.x, this.getBody().position.y, this.radius, 0, Math.PI*2, true);
-		_canvasContext.closePath();
-		
-		_canvasContext.fillStyle = this.color;
-		_canvasContext.fill();
-	},
 	
 	update: function(){
 		
