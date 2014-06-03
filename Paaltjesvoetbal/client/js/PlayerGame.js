@@ -9,10 +9,9 @@ var label;
 
 function init(){
     balls = new Group(Ball);
-}
+};
 
 function loadContent(){
-
     pole = game.instantiate(new Pole(10));
     pole.setColor("blue");
     pole.setPosition(225, 175);

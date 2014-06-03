@@ -1,4 +1,4 @@
-var game = new Game(initialize,loadContent, update, draw);
+var game = new Game(initialize, loadContent, update, draw);
 
 var balls = game.instantiate(new Group(Ball));
 var poles = game.instantiate(new Group(Pole));
@@ -27,6 +27,5 @@ function update(){
 
 //Draws everything on the canvas
 function draw(canvasContext){
-    //Drav everything
     game.draw();
 };
