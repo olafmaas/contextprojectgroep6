@@ -18,15 +18,24 @@ var Label = Base.extend({
 	fontsize: 20,
 	color: "#ffffff",
 
+	constructor: function(_text){
+		this.text = _text;
+	},
+
 	/**
 	* Draws the label on the game canvas
 	* @method Label#draw
 	* @param {CanvasContext} _canvasContext - The canvascontext which should be drawn.
 	*/
-	draw: function(){
+	draw: function(_canvasContext){
 		_canvasContext.fillStyle = this.color;
 		_canvasContext.font = this.getFontSize() + "px " + this.getFont();
 		_canvasContext.fillText(this.getText(), this.getPosition().x, this.getPosition().y)
+	},
+
+	//Dummy update function
+	update: function(){
+
 	},
 
 	/**
@@ -80,7 +89,7 @@ var Label = Base.extend({
 	* @method Label#setText
 	* @param {string} _text - The text which should be displayed on the label.
 	*/
-	setText: function(){
+	setText: function(_text){
 		this.text = _text;
 	},
 
@@ -89,7 +98,7 @@ var Label = Base.extend({
 	* @method Label#setPosition
 	* @param {object} _position - An object containing an x and y value
 	*/
-	setPosition: function(){
+	setPosition: function(_position){
 		this.position = _position;
 	},
 
@@ -98,7 +107,7 @@ var Label = Base.extend({
 	* @method Label#setFont
 	* @param {string} _font - The name of the font.
 	*/
-	setFont: function(){
+	setFont: function(_font){
 		this.font = _font;
 	},
 
@@ -107,7 +116,7 @@ var Label = Base.extend({
 	* @method Label#setFontSize
 	* @param {number} _fontSize - The size of the font in pixels.
 	*/
-	setFontSize: function(){
+	setFontSize: function(_fontSize){
 		this.fontSize = _fontSize;
 	},
 
@@ -116,7 +125,7 @@ var Label = Base.extend({
 	* @method Label#setColor
 	* @param {hexcolor} _color - The color in hexidecimal form.
 	*/
-	setColor: function(){
+	setColor: function(_color){
 		this.color = _color;
 	}
 

@@ -4,6 +4,7 @@ var pole;
 var shield;
 var player;
 var balls;
+var label;
 
 function init(){
     balls = new Group(Ball);
@@ -19,10 +20,12 @@ function loadContent(){
     shield.getBody().immovable = true;
     shield.setColor("white");
 
-    player = game.instantiate(new Player(-1));
+    player = game.instantiate(new Player(""));
     player.setPole(pole);
     player.setShield(shield);
     pole.setPlayer(player);
+
+    label = game.instantiate(new ScoreLabel(player, "Score: 0"));
 
     //Initialize();
     //updateGameDimensions();
@@ -40,7 +43,7 @@ function update(){
     //     sendBallAngle();
     // }
 
-    parentDraw();
+    //parentDraw();
 };
 
 //Draws everything on the canvas
