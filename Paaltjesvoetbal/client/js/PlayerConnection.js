@@ -32,6 +32,11 @@ socket.on('userName', function(free){
 	}
 });
 
+//Sets the name label whenever a valid name is chosen by the player
+socket.on('showPlayerName', function(){
+	nameLabel.setText(player.getName());
+});
+
 //////////////////
 // Game updates //
 //////////////////
