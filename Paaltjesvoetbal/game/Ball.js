@@ -19,6 +19,7 @@ var Ball = Base.extend({
 	color: "#000000", //The color of the ball
 	body: false,
 	ID: -1,
+	serverId: -1,
 
 	constructor: function(_radius){
 		this.radius = _radius;

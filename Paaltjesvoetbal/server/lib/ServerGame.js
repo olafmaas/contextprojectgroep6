@@ -52,9 +52,8 @@ function Server(){
 	* @method Server#addClient
 	* @param {socket} The socket associated with the player. 
 	*/
-	this.addClient = function(socket){
-		var nrOfRows = Math.floor(this.getNumberOfPlayers() / maxNrOfColumns);
-		var player = game.instantiate(pf.createPlayer(Object.keys(clientList).length, nrOfRows, maxNrOfColumns, socket.id));
+	this.addClient = function(socket, positionOfPole){
+		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
 		//setGroupMemberships(player);
 		var ball = addBall();
 
@@ -73,6 +72,11 @@ function Server(){
 		group("Poles").removeMember(client.pole);
 		group("Shields").removeMember(client.shield);
 		group("Players").removeMember(client.player);
+
+		game.remove(client.ball);
+		game.remove(client.pole);
+		game.remove(client.shield);
+		game.remove(client.player);
 		//name stays in nameList because it has to stay in the highscore
 		gameGrid.remove(socketID);
 		delete clientList[socketID]; 
@@ -149,7 +153,7 @@ function Server(){
 	}
 
 	this.update = function(){
-		
+
 	}
 
 	this.createGame = function(_initialize, _update, _width, _height){

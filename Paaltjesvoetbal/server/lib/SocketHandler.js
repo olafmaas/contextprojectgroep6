@@ -46,10 +46,11 @@ function SocketHandler(_server, _io){
 	this.handlePlayerConnection = function(socket){
 		
 		socket.emit('userName', false);
-		newPlayer(socket);
 
-		//Add player to grid
+
 		res = server.updateGrid(socket);
+		newPlayer(socket, res);
+
 		updateMainScreenCanvasSize();
 		socket.emit('canvasPos', res);
 
@@ -78,8 +79,8 @@ function SocketHandler(_server, _io){
 		mainScreenSocket.emit('removePlayer', socketID);
 	}
 
-	newPlayer = function(socket){
-		mainScreenSocket.emit('newPlayer',server.addClient(socket));
+	newPlayer = function(socket, polePos){
+		mainScreenSocket.emit('newPlayer',server.addClient(socket, polePos));
 		var colors = server.getBallColors();
 		mainScreenSocket.emit('newBall', colors[colors.length-1]); //inform mainscreen of new ball
 		dh.ballAdded(server.nrOfBalls(), colors); //inform players of new ball(s)
