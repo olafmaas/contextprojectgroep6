@@ -54,8 +54,8 @@ socket.on('newPowerup', function (data) {
 
 function makePowerup(data){
 	data.type = Math.floor(Math.random()*4);
-	//var p = game.instantiate(new Powerup(data.radius, data.type));
-	//p.setPosition(data.position.x, data.position.y+30);
+	var p = game.instantiate(new Powerup(data.radius, data.type));
+	p.setPosition(data.position.x, data.position.y+30);
 }
 
 socket.on('removePlayer', function (socketID){	
