@@ -17,7 +17,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	var fpsLimit;
 
-	var backGroundColor;
+	var drawing = true;
 
 	/**
 	* Function for booting the RenderEngine
@@ -60,6 +60,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	*/
 	initializeListeners = function(){
 		canvas.onmousemove = input.mouseMoveListener;
+		canvas.ontouchmove = input.touchMoveListener;
 		if(hasResolution()){
 			window.onresize = updateCanvasSize;
 			window.onorientationchange = checkOrientation;
@@ -166,6 +167,10 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 			canv.setAttribute("height", resolution.height + "px");
 			canv.setAttribute("width", resolution.width + "px");
 		}
+
+		//Wait for body to initialize
+		while(document.body == null);
+
 		document.body.appendChild(canv);
 
 		return document.getElementById("gameCanvas");
@@ -189,6 +194,8 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	* @param{object} _object - The game object to be drawn
 	*/
 	this.drawElement = function(_element){
+		if(_element.draw === undefined) return;
+
 		//TODO: draw handling
 		_element.draw(canvasContext);
 	}
@@ -213,6 +220,16 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	}
 
 	/**
+	* Getter for the drawing state of the renderengine
+	*
+	* @method RenderEngine#getDrawing
+	* @return{boolean} The drawing state
+	*/
+	this.getDrawing = function(){
+		return drawing;
+	}
+
+	/**
 	* Setter for the background color
 	*
 	* @method RenderEngine#setBackgroundColor
@@ -220,6 +237,16 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	*/
 	this.setBackgroundColor = function(_color){
 		backGroundColor = _color;
+	}
+
+	/**
+	* Setter for the drawing state of the renderengine
+	*
+	* @method RenderEngine#setDrawing
+	* @return{boolean} The drawing state
+	*/
+	this.getDrawing = function(_drawing){
+		drawing = _drawing;
 	}
 }
 if(typeof module != 'undefined'){

@@ -66,6 +66,7 @@ function sendShieldAngle() {
 }
 
 window.onmousemove = sendShieldAngle;
+window.ontouchmove = sendShieldAngle;
 
 function sendBallAngle() {
 	for(var i = 0; i < balls.getMemberLength(); i++){
@@ -85,10 +86,6 @@ function createBall(nr, colors){
 		if(i == nr-1) ball.setPosition(100, 100);
 		ball.setColor(colors[i]);
 		//ball.getBody().setVelocity(5);
-
-		balls.addCollision(ball, balls, null, null);
-		balls.addCollision(shield, ball, null, null);
-		//balls.addCollision(pole, ball, pole.isHit, pole);
 
 		balls.addMember(ball);
 	}

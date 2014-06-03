@@ -47,10 +47,11 @@ socket.on('newPlayer', function (data) {
 });
 
 //Listener which waits for an added ball from socketHandler
-socket.on('BallAdded', function (color) {
+socket.on('BallAdded', function (color){
 	createBall(color);
 });
 
+//Listener for powerup
 socket.on('newPowerup', function (data) {
 	makePowerup(data);
 });
@@ -61,6 +62,18 @@ function makePowerup(data){
 	p.setPosition(200, 200);
 }
 
+socket.on('removePlayer', function (socketID){	
+	var client = playerData[socketID];
+	// //group("Balls").removeMember(client.ball);	//TODO remove ball
+	poles.removeMember(client.pole);
+	shields.removeMember(client.shield);
+	players.removeMember(client.player);
+	game.remove(client.pole);
+	game.remove(client.shield);
+	game.remove(client.player);
+	delete playerData[socketID]; 
+});
+
 var playerData = {};
 var canvasWidth = 300;
 var nrOfPlayers = 0;
@@ -70,9 +83,6 @@ function createBall(color){
 	ball.setPosition(100, 100);
 
 	ball.setColor(color);
-	balls.addCollision(ball, balls, null, null);
-	//shield is handled client-sided
-	balls.addCollision(pole, ball, pole.isHit, pole);
 
 	balls.addMember(ball);
 }
@@ -82,19 +92,17 @@ var shield;
 var player;
 
 function makePlayerObjects(data){
-	pole = new Pole(10);
+	pole = game.instantiate(new Pole(10));
 	pole.setColor("blue");
 	pole.setPosition(data.polePos.x, data.polePos.y);
 	poles.addMember(pole);
-	poles.addCollision(pole, balls, pole.isHit, pole);
 
-	shield = new Shield(pole);
+	shield = game.instantiate(new Shield(pole));
 	shield.getBody().immovable = true;
 	shields.addMember(shield);
 	shield.setColor("white");
-	shields.addCollision(shield, balls, null, null);
 
-	player = new Player(data.id);
+	player = game.instantiate(new Player(data.id));
 	player.setPole(pole);
 	player.setShield(shield);
 	pole.setPlayer(player);

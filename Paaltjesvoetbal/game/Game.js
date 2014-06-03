@@ -44,10 +44,29 @@ function Game(_initialize, _loadContent, _update, _draw, _width, _height, _resW,
 	/**
 	* Returns the background color
 	* @method Game#getBackgroundColor
-	* @return {backGroundColor} The background color
+	* @return{color} The background color
 	*/
 	this.getBackgroundColor = function(){
 		return renderEngine.getBackgroundColor();
+	}
+
+	/**
+	* Returns the boolean which represents if the game is updating or not
+	* @method Game#getUpdating
+	* @return{boolean} The value
+	*/
+	this.getUpdating = function(){
+		return coreGame.getUpdating();
+	}
+
+	/**
+	* Getter for the drawing state of the renderengine
+	*
+	* @method Game#getDrawing
+	* @return{color} The background color
+	*/
+	this.getDrawing = function(){
+		return renderEngine.getDrawing();
 	}
 
 	/**
@@ -96,6 +115,14 @@ function Game(_initialize, _loadContent, _update, _draw, _width, _height, _resW,
 
 	this.setDimensions = function(_width, _height){
 		coreGame.setDimensions(_width, _height);
+	}
+
+	this.setUpdating = function(_updating){
+		coreGame.setUpdating(_updating);
+	}
+
+	this.setDrawing = function(_drawing){
+		coreGame.setDrawing(_drawing);
 	}
 }
 

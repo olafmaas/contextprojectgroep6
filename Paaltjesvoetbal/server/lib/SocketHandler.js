@@ -77,8 +77,13 @@ function SocketHandler(_server, _io){
 
 		socket.on('disconnect', function (data){
 			server.log('Player disconnected');
-			server.deleteClient(socket);
+			removeFromMainScreen(socket.id);
+			server.deleteClient(socket.id);
 		});
+	};
+
+	removeFromMainScreen = function(socketID){
+		mainScreenSocket.emit('removePlayer', socketID);
 	}
 
 	newPlayer = function(socket){
@@ -98,11 +103,6 @@ function SocketHandler(_server, _io){
 
 	this.update = function(){
 		server.update();
-
-		//Check the collisions
-		server.checkGroupCollision("Poles")
-		server.checkWorldBounds("Balls")
-		server.checkGroupCollision("Shields")
 
 		//TODO: ID instead of index
 		for(var i = 0; i < server.nrOfBalls(); i++){
