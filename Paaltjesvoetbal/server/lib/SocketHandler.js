@@ -10,10 +10,10 @@ if(typeof module != 'undefined'){
 	var Pole = require('../../game/Pole.js');
 	var Shield = require('../../game/Shield.js');
 	var Player = require('../../game/Player.js');
-	var Group = require('../../game/Group.js');
+	var Group = require('../../game/util/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
 	var DrawHandler = require('./DrawHandler.js');
-	var e = require('../../game/Enums.js');
+	var e = require('../../game/util/Enums.js');
 }
 
 function SocketHandler(_server, _io){
@@ -47,9 +47,6 @@ function SocketHandler(_server, _io){
 		
 		socket.emit('userName', false);
 		newPlayer(socket);
-		
-		//Testing purposes, commented so you guys don't notice it. :)
-		newPowerup(socket);
 
 		//Add player to grid
 		res = server.updateGrid(socket);
@@ -88,8 +85,11 @@ function SocketHandler(_server, _io){
 		dh.ballAdded(server.nrOfBalls(), colors); //inform players of new ball(s)
 	}
 	
-	newPowerup = function(socket){
-		mainScreenSocket.emit('newPowerup', server.dropPowerup(socket));
+	//Testing purposes
+	//newPowerup(data);
+	
+	newPowerup = function(data){
+		mainScreenSocket.emit('newPowerup', server.dropPowerup(data));
 	}
 
 	updateMainScreenCanvasSize = function(){

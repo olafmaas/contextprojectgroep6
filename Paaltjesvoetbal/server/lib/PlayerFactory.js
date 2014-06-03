@@ -1,5 +1,5 @@
 if(typeof module != 'undefined'){
-	var Base = require('../../game/Base.js');
+	var Base = require('../../game/util/Base.js');
 	var Player = require('../../game/Player.js');
 	var Pole = require('../../game/Pole.js');
 	var Shield = require('../../game/Shield.js');
