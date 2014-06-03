@@ -92,6 +92,12 @@ function createBall(nr, colors){
 function createPowerup(data){
 	data.type = Math.floor(Math.random()*4);
 	var p = game.instantiate(new Powerup(data.radius, data.type));
-	p.setPosition(300, 300);
+	
+	var dx = Math.floor(Math.random()*225)
+	var dy = Math.floor(Math.random()*175)
+	dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+	dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+	
+	p.setPosition(data.position.x + dx, data.position.y + dy);
 	
 };
