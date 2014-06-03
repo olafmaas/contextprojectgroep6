@@ -23,23 +23,6 @@ var Label = Base.extend({
 	},
 
 	/**
-	* Draws the label on the game canvas
-	* @method Label#draw
-	* @param {CanvasContext} _canvasContext - The canvascontext which should be drawn.
-	*/
-	draw: function(_canvasContext){
-		_canvasContext.fillStyle = this.color;
-		_canvasContext.font = this.getFontSize() + "px " + this.getFont();
-		console.log(this.getFontSize());
-		_canvasContext.fillText(this.getText(), this.getPosition().x, this.getPosition().y)
-	},
-
-	//Dummy update function
-	update: function(){
-
-	},
-
-	/**
 	* Gets the string which is the labels text
 	* @method Label#getText
 	* @return {string} The text of the label
