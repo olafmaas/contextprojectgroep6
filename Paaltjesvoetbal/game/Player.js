@@ -187,7 +187,6 @@ var Player = Base.extend({
 		return this.highscore;
 	},
 
-<<<<<<< HEAD
 		/**
 	* Retrieves the ID of the Player
 	*
@@ -196,7 +195,7 @@ var Player = Base.extend({
 	*/
 	getID: function(){
 		return this.ID;
-=======
+
 	//TODO: documentation
 	//returns the current time as a string in MM:SS format
 	getTime: function(){
@@ -204,7 +203,6 @@ var Player = Base.extend({
 		var sec = this.pole.getTimer().getSeconds();
 
 		return min + ":" + sec;
->>>>>>> label_breakdown
 	}
 });
 
