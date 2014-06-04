@@ -90,14 +90,16 @@ function createBall(nr, colors){
 };
 
 function createPowerup(data){
-	data.type = Math.floor(Math.random()*4);
-	var p = game.instantiate(new Powerup(data.radius, data.type));
+
+	if(player.getID() == data.id){
+		var type = Math.floor(Math.random()*4);
+		powerup = game.instantiate(new Powerup(10, type));
 	
-	var dx = Math.floor(Math.random()*225)
-	var dy = Math.floor(Math.random()*175)
-	dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-	dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+		var dx = Math.floor(Math.random() * (450-305) + 250);
+		var dy = Math.floor(Math.random() * (350-255) + 200);
+		dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+		dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 	
-	p.setPosition(data.position.x + dx, data.position.y + dy);
-	
+		powerup.setPosition(data.position.x + dx, data.position.y + dy);
+	}
 };
