@@ -65,13 +65,14 @@ function Server(){
 
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield());
 
-		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID()};
+		return {id: clientList[socket.id].player.getName(), color: ball.getColor(),
+			polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID()};
 	}
 
 	this.deleteClient = function(socketID){
 		var client = clientList[socketID];
-		var b = group("Balls").getMember(group("Balls").getMemberLength()-1)
-		group("Balls").removeMember(b);	//TODO remove precies als de bal een scherm verlaat.
+		var b = group("Balls").getFilteredMember(group("Balls").getFilteredMemberLength()-1)
+		group("Balls").removeMemberOnPosition(b.getGlobalID());	//TODO remove precies als de bal een scherm verlaat.
 		group("Poles").removeMember(client.pole);
 		group("Shields").removeMember(client.shield);
 		group("Players").removeMember(client.player);
@@ -183,7 +184,7 @@ function Server(){
 	}
 
 	this.nrOfBalls = function(){
-		return group("Balls").getMemberLength();
+		return group("Balls").getFilteredMemberLength();
 	}
 
 	this.getBallPosition = function(_id){

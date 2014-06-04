@@ -140,6 +140,14 @@ function Group(_type){
 		return members.length;
 	}
 
+	/**
+	* Returns the amount of objects in the list if it is filled with addMemberOnPosition
+	* @method Group#getFilteredMemberLength
+	*/
+	this.getFilteredMemberLength = function(){
+		return this.getFilteredMembers().length;
+	}
+
 	this.getCollisionLength = function(){
 		return collision.length;
 	}
