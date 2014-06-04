@@ -134,6 +134,8 @@ function checkPowerup(e){
 			//powerup type + playerID nodig voor server
 			powerup.isClicked();
 			player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
+
+			socket.emit('powerupClicked', player.getGlobalID(), powerup.getType());
 		}
 	}
 };
