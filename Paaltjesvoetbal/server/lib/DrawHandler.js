@@ -38,6 +38,7 @@ function DrawHandler(_io){
 	this.ballAdded = function(nr, colors){
 		io.of('/player').emit('newBall', nr, colors);
 	}
+
 }
 
 if(typeof module != 'undefined'){

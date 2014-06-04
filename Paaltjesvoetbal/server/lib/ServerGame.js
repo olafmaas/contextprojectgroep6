@@ -20,9 +20,9 @@ if(typeof module != 'undefined'){
 
 function Server(){
 	var clientList = {};
+	var playerIDs = {};
 	var namesList = []
 	var game; 
-	var mainScreenSocket = {emit:function(){false}} //If the mainscreen is not instantiated this function is used;
 	var maxNrOfPlayers = 0;
 	var maxNrOfColumns = 0;
 	var settings = new Settings();
@@ -64,6 +64,7 @@ function Server(){
 		group("Players").addMember(player);
 
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield(), ball);
+		playerIDs[player.getID()] = socket.id;
 
 		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID(), gpid: player.getGlobalID()};
 	}
@@ -177,6 +178,10 @@ function Server(){
 		logHandler.log(message);
 	}
 
+	this.getGroup = function(_group){
+		return group(_group);
+	}
+
 	this.getMaxNrOfPlayers = function(){
 		return maxNrOfPlayers;
 	}
@@ -191,6 +196,10 @@ function Server(){
 
 	this.getBallPosition = function(_id){
 		return group("Balls").getMember(_id).getPosition();
+	}
+
+	this.getSocketFromPlayerID = function(_playerID){
+		return clientList[playerIDs[_playerID]].socket;
 	}
 
 }
