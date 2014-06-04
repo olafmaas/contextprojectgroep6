@@ -65,25 +65,26 @@ function Server(){
 		group("Shields").addMember(game.instantiate(player.getShield()));
 		group("Players").addMember(player);
 
-		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield(), ball);
+		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield());
 
 		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID()};
 	}
 
 	this.deleteClient = function(socketID){
 		var client = clientList[socketID];
-		group("Balls").removeMember(client.ball);	//TODO remove precies als de bal een scherm verlaat.
+		var b = group("Balls").getMember(group("Balls").getMemberLength()-1)
+		group("Balls").removeMember(b);	//TODO remove precies als de bal een scherm verlaat.
 		group("Poles").removeMember(client.pole);
 		group("Shields").removeMember(client.shield);
 		group("Players").removeMember(client.player);
 
-		game.remove(client.ball);
+		game.remove(b);
 		game.remove(client.pole);
 		game.remove(client.shield);
 		game.remove(client.player);
 		//name stays in nameList because it has to stay in the highscore
 		gameGrid.remove(socketID);
-		ret = client.ball.getGlobalID();
+		ret = b.getGlobalID();
 		delete clientList[socketID]; 
 		return ret;
 	}
