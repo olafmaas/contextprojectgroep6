@@ -15,6 +15,7 @@ var Powerup = Base.extend({
 	ID: -1,
 	timer: 0,
 	color: "red",
+	visible: true,
 
 	constructor: function(_radius, _type){
 		this.radius = _radius;
@@ -25,8 +26,7 @@ var Powerup = Base.extend({
 		this.enableBody();
 	},
 	
-	update: function(){
-		
+	update: function(){		
 		if(this.body instanceof CircularBody) this.body.update();
 	},
 	
@@ -58,6 +58,16 @@ var Powerup = Base.extend({
 			this.timer = new PowerupTimer(UserSettings.bigBallTime)
 			
 		}
+	},
+
+	isClicked: function(){
+		//make sure the player gets the powerup when he clicks on it.
+		//and make sure the powerup dissapears from the screen.
+		visible = false;
+	},
+
+	isVisible: function(){
+		return this.visible;
 	},
 	
 	//==================

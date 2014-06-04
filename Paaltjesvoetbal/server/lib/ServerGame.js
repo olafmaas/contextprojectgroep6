@@ -42,11 +42,13 @@ function Server(){
 		var index = Math.floor(Math.random()*this.getNumberOfPlayers());
 		var member = group("Players").getMember(index);
 
-		var pole = member.getPole();
-		var xpos = pole.getBody().getPosition().x;
-		var ypos = pole.getBody().getPosition().y
+		if(member != null && member != undefined){
+			var pole = member.getPole();
+			var xpos = pole.getBody().getPosition().x;
+			var ypos = pole.getBody().getPosition().y
 
-		return {radius: 10, type: 0, position: {x: xpos, y: ypos} };
+			return {radius: 10, type: 0, position: {x: xpos, y: ypos} };
+		}
 	}
 	
 	/**

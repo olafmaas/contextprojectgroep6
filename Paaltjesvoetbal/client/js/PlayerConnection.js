@@ -71,7 +71,7 @@ socket.on('removeBall', function (nr, colors) {
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
 
-window.click = checkPowerup;
+window.onmousedown = checkPowerup;
 
 function sendShieldAngle() {
 	if(shield != undefined){
@@ -104,3 +104,19 @@ function createPowerup(data){
 	
 };
 
+function checkPowerup(e){
+	input.mouseMoveListener(e);
+
+	var powerupPos = powerup.getPosition();
+
+	//Check whether distance between powerup center and click is less than radius
+
+	var inX = Math.abs(powerupPos.x - mouseX) <= powerup.getRadius();
+	var inY = Math.abs(powerupPos.y - mouseY) <= powerup.getRadius();
+
+	console.log("PX: " + powerupPos.x + " | PY: " + powerupPos.y);
+	console.log("MX: " + mouseX + " | MY: " + mouseY);
+	console.log("X: " + inX + " | Y: " + inY);
+
+
+};
