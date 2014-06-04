@@ -19,7 +19,7 @@ var Player = Base.extend({
 	points: 5, //Points the player is worth when hit 
 	score: 0, //Current score of the player
 	highscore: 0, //Highscore of the player
-
+	globalID: -1,
 	ID: -1,
 
 	constructor: function(_name){
@@ -65,6 +65,16 @@ var Player = Base.extend({
 	*/
 	incrementScore: function(_score){
 		this.score += _score;
+	},
+	
+	/**
+	* Sets a global ID for the player
+	* 
+	* @method Player#setGlobalID
+	* @param {number} _id - The unique id to assign to the player.
+	*/
+	setGlobalID: function (_id) {
+		this.globalID = _id;
 	},
 
 	/**
@@ -186,12 +196,22 @@ var Player = Base.extend({
 	getHighscore: function(){
 		return this.highscore;
 	},
-
-		/**
-	* Retrieves the ID of the Player
+	
+	/**
+	* Retrieves the global ID of the player
 	*
-	* @method Ball#getID
-	* @return {number} The unique ID of the Player
+	* @method Player#getGlobalID
+	* @return {number} The unique GlobalID of the player
+	*/
+	getGlobalID: function(){
+		return this.globalID;
+	}
+
+	/**
+	* Retrieves the ID of the player
+	*
+	* @method Player#getID
+	* @return {number} The ID of the player
 	*/
 	getID: function(){
 		return this.ID;
