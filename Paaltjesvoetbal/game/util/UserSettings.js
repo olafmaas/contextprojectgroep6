@@ -7,8 +7,13 @@ var UserSettings = ({
 	bigPoleTime: 7,
 	bigBallTime: 15,
 
+	nrOfPowerups: 5,
+
 	scorePosition: {x: 355, y: 340},
-	namePosition: {x: 10, y: 15}
+	namePosition: {x: 10, y: 15},
+
+	canvasWidth: 450,
+	canvasHeight: 350
 
 });
 

@@ -56,9 +56,6 @@ function SocketHandler(_server, _io){
 		res = server.updateGrid(socket);
 		newPlayer(socket, res);
 
-		res = server.updateGrid(socket);
-		newPlayer(socket, res);
-
 		updateMainScreenCanvasSize();
 		socket.emit('canvasPos', res);
 
@@ -75,7 +72,6 @@ function SocketHandler(_server, _io){
 		socket.on('shieldAngle', function (angle){
 			mainScreenSocket.emit('updateShieldAngle', server.setAngle(socket,angle));
 		});
-
 
 		socket.on('disconnect', function (data){
 			server.log('Player disconnected - id: ' + socket.id);
@@ -120,7 +116,6 @@ function SocketHandler(_server, _io){
 		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
 		//TODO: timer eerder af laten lopen als er meer spelers zijn, dus settings aanpassen, of
 		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
-		console.log(timer.getTime());
 		if(timer != null && timer.hasStopped()){
 			timer = null;
 

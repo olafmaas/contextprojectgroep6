@@ -33,6 +33,7 @@ function loadContent(){
 
     nameLabel = game.instantiate(new Label("Unknown Player"));
     nameLabel.setPosition(UserSettings.namePosition);
+
 };
 
 //Updates the position of the items on the canvas and checks for collisions

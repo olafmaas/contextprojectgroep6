@@ -71,6 +71,8 @@ socket.on('removeBall', function (nr, colors) {
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
 
+window.click = checkPowerup;
+
 function sendShieldAngle() {
 	if(shield != undefined){
 		socket.emit('shieldAngle', shield.getAngle());
@@ -90,14 +92,15 @@ function createBall(nr, colors){
 };
 
 function createPowerup(data){
-	data.type = Math.floor(Math.random()*4);
-	var p = game.instantiate(new Powerup(data.radius, data.type));
+	var type = Math.floor(Math.random()*UserSettings.nrOfPowerups-1);
+	powerup = game.instantiate(new Powerup(data.radius, type));
 	
-	var dx = Math.floor(Math.random()*225)
-	var dy = Math.floor(Math.random()*175)
+	var dx = Math.floor(Math.random()* UserSettings.canvasWidth/2)
+	var dy = Math.floor(Math.random()* UserSettings.canvasHeight/2)
 	dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 	dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 	
-	p.setPosition(data.position.x + dx, data.position.y + dy);
+	powerup.setPosition(data.position.x + dx, data.position.y + dy);
 	
 };
+
