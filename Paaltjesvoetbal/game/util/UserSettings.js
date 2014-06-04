@@ -3,18 +3,20 @@ var UserSettings = ({
 
 	//Powerup attributes
 	//TODO: powerup voor dubbele score
+	//NOTE: time mag niet groter zijn dan de minimale spawntijd voor een nieuwe powerup.
+	//want anders wordt de oude powerup overschreden met de nieuwe timer :D hier nog een fix voor zoeken.
 	smallShield: {
 		time: 7,
 		length: 3
 	},
 
 	bigShield: {
-		time: 15,
+		time: 12,
 		length: 1.5
 	},
 
 	smallPole: {
-		time: 15,
+		time: 12,
 		radius: 5
 	},
 
@@ -24,7 +26,7 @@ var UserSettings = ({
 	},
 
 	revertShield: {
-		time: 5,
+		time: 10,
 	},
 
 	//Amount of powerups

@@ -29,6 +29,10 @@ var PowerupTimer = Timer.extend({
 			_this.time--;
 		else 
 			_this.stop();
+	},
+
+	hasStopped: function(){
+		return this.time == 0;
 	}
 
 });

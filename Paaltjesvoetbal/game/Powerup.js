@@ -28,7 +28,8 @@ var Powerup = Base.extend({
 		this.enableBody();
 	},
 	
-	update: function(){		
+	update: function(){	
+		if(this.timer.hasStopped()) console.log("STOPPED");
 		if(this.body instanceof CircularBody) this.body.update();
 	},
 	
@@ -42,6 +43,7 @@ var Powerup = Base.extend({
 
 	execute: function(_player){
 		if(this.power != null){
+			this.timer.startTimer();
 			this.power(_player);
 		}
 	},
@@ -91,8 +93,7 @@ var Powerup = Base.extend({
 	},
 
 	isClicked: function(){
-		//make sure the player gets the powerup when he clicks on it.
-		//and make sure the powerup dissapears from the screen.
+		//make sure the powerup disappears from the screen.
 		this.visible = false;
 	},
 

@@ -101,7 +101,6 @@ var Player = Base.extend({
 			length: savedThis.getShield().getShieldLength(),
 			radius: savedThis.getPole().getRadius(),
 		};
-		console.log(this.originalState.revert);
 	},
 
 	/**
