@@ -91,7 +91,7 @@ function createBall(nr, colors){
 
 function createPowerup(data){
 
-	if(player.getID() == data.id){
+	if(player.getGlobalID() == data.id){
 		var type = Math.floor(Math.random()*4);
 		powerup = game.instantiate(new Powerup(10, type));
 	

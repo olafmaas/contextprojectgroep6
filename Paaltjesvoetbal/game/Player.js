@@ -205,7 +205,7 @@ var Player = Base.extend({
 	*/
 	getGlobalID: function(){
 		return this.globalID;
-	}
+	},
 
 	/**
 	* Retrieves the ID of the player
