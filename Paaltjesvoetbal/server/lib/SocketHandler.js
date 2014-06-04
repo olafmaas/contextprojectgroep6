@@ -121,8 +121,8 @@ function SocketHandler(_server, _io){
 
 			newPowerup();
 
-			//timer = new RandomTimer(settings.minTime, settings.maxTime); //start a new timer for the next powerup
-			//timer.startTimer();
+			timer = new RandomTimer(settings.minTime, settings.maxTime); //start a new timer for the next powerup
+			timer.startTimer();
 		}
 
 	}

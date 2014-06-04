@@ -91,6 +91,8 @@ function createBall(nr, colors){
 };
 
 function createPowerup(data){
+	if(powerup != null) game.remove(powerup);
+
 	var type = Math.floor(Math.random()*UserSettings.nrOfPowerups-1);
 	powerup = game.instantiate(new Powerup(data.radius, type));
 	
@@ -99,8 +101,7 @@ function createPowerup(data){
 	dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 	dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 	
-	powerup.setPosition(data.position.x + dx, data.position.y + dy);
-	
+	powerup.setPosition(data.position.x + dx, data.position.y + dy);	
 };
 
 function checkPowerup(e){
