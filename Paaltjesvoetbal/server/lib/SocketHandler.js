@@ -91,6 +91,7 @@ function SocketHandler(_server, _io){
 	newPlayer = function(socket, polePos){
 		var np = server.addClient(socket, polePos);
 		mainScreenSocket.emit('newPlayer', np);
+		io.of('/player').emit('newPlayer', np);
 
 		var colors = server.getBallColors();
 		mainScreenSocket.emit('newBall', {color: colors[colors.length-1], gid: np.gid}); //inform mainscreen of new ball

@@ -54,6 +54,10 @@ socket.on('newBall', function (nr, colors) {
 	createBall(nr, colors);
 });
 
+socket.on('newPlayer', function (data){
+	player.setGlobalID(data.gpid);
+});
+
 socket.on('updateBall', function (pos, index) { //TODO: ID instead of index
 	if(balls.getMember(index) != null)
 		balls.getMember(index).setPosition(pos.x - leftOffset, pos.y - topOffset);
@@ -92,14 +96,17 @@ function createBall(nr, colors){
 function createPowerup(data){
 
 	if(player.getGlobalID() == data.id){
+		console.log('kaas');
 		var type = Math.floor(Math.random()*4);
 		powerup = game.instantiate(new Powerup(10, type));
 	
-		var dx = Math.floor(Math.random() * (450-305) + 250);
-		var dy = Math.floor(Math.random() * (350-255) + 200);
+		var dx = Math.round(Math.random() * (450-295) + 70);
+		var dy = Math.round(Math.random() * (350-245) + 70);
 		dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 		dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-	
+		console.log(dx, dy);
+		
 		powerup.setPosition(data.position.x + dx, data.position.y + dy);
+		//console.log(powerup.getPosition().x, powerup.getPosition().y);
 	}
 };

@@ -82,6 +82,7 @@ function createPlayerObjects(data){
 	player = game.instantiate(new Player(data.id));
 	player.setPole(pole);
 	player.setShield(shield);
+	player.setGlobalID(data.gpid);
 	pole.setPlayer(player);
 	players.addMember(player);
 

@@ -46,7 +46,7 @@ function Server(){
 			var pole = member.getPole();
 			var xpos = pole.getBody().getPosition().x;
 			var ypos = pole.getBody().getPosition().y;
-			return { id: member.getID(), position: {x: xpos, y: ypos} };
+			return { id: member.getGlobalID(), position: {x: xpos, y: ypos} };
 		}
 	}
 	
@@ -68,7 +68,7 @@ function Server(){
 
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield(), ball);
 
-		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID()};
+		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID(), gpid: player.getGlobalID()};
 	}
 
 	this.deleteClient = function(socketID){
