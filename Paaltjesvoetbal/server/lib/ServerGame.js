@@ -31,22 +31,22 @@ function Server(){
 	var pf = new PlayerFactory(settings);
 	var bf = new BallFactory();
 	var colors = [];
-
+	
 	//Create all groups
 	gm.addGroup("Balls", Ball);
 	gm.addGroup("Poles", Pole);
 	gm.addGroup("Shields", Shield);
 	gm.addGroup("Players", Player);
 	
-	this.dropPowerup = function(){	
+	this.dropPowerup = function(){
 		var index = Math.floor(Math.random()*this.getNumberOfPlayers());
 		var member = group("Players").getMember(index);
-
-		var pole = member.getPole();
-		var xpos = pole.getBody().getPosition().x;
-		var ypos = pole.getBody().getPosition().y
-
-		return {radius: 10, type: 0, position: {x: xpos, y: ypos} };
+		if(member != undefined && member != null){
+			var pole = member.getPole();
+			var xpos = pole.getBody().getPosition().x;
+			var ypos = pole.getBody().getPosition().y
+			return {radius: 10, type: 0, position: {x: xpos, y: ypos} };
+		}
 	}
 	
 	/**
