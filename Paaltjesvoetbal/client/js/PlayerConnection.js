@@ -94,9 +94,10 @@ function createBall(nr, colors){
 };
 
 function createPowerup(data){
-
+	
+	console.log(player.getGlobalID());
+	console.log(data.id);
 	if(player.getGlobalID() == data.id){
-		console.log('kaas');
 		var type = Math.floor(Math.random()*4);
 		powerup = game.instantiate(new Powerup(10, type));
 		
