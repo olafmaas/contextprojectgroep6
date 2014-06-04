@@ -101,6 +101,15 @@ function Group(_type){
 		return -1;
 	}
 
+	this.getMemberByGlobalID = function(_id){
+		var length = this.getMemberLength();
+		for(var i = 0; i < length; i++){
+			if(members[i].getGlobalID() === _id)
+				return members[i];
+		}
+		return -1;
+	}
+
 	/**
 	* Returns the amount of objects in the list
 	* @method Group#getMembersLength

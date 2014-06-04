@@ -6,22 +6,22 @@ var UserSettings = ({
 	//NOTE: time mag niet groter zijn dan de minimale spawntijd voor een nieuwe powerup.
 	//want anders wordt de oude powerup overschreden met de nieuwe timer :D hier nog een fix voor zoeken.
 	smallShield: {
-		time: 7,
-		length: 3
+		time: 10,
+		length: 4
 	},
 
 	bigShield: {
-		time: 12,
-		length: 1.5
+		time: 15,
+		length: 1
 	},
 
 	smallPole: {
-		time: 12,
+		time: 15,
 		radius: 5
 	},
 
 	bigPole: {
-		time: 7,
+		time: 10,
 		radius: 20
 	},
 

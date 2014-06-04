@@ -5,6 +5,7 @@ if(typeof module != 'undefined'){
 	var Timer = require('./util/Timer.js');
 	var e = require('./util/Enums.js');
 	var UserSettings = require('./util/UserSettings.js');
+	var PowerupTimer = require('./util/PowerupTimer.js');
 }
 
 var Powerup = Base.extend({

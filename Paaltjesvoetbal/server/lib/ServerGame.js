@@ -15,7 +15,7 @@ if(typeof module != 'undefined'){
 	var Player = require('../../game/Player.js');
 	var Group = require('../../game/util/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
-	var ColorGenerator = require('../../game/util/ColorGenerator');
+	var ColorGenerator = require('../../game/util/ColorGenerator.js');
 }
 
 function Server(){
@@ -138,6 +138,14 @@ function Server(){
 	this.ballAngle = function(socket, velocityDirection, index){
 		group("Balls").getMember(index).getBody().setVelocityDirection(velocityDirection);
 		return group("Balls").getMember(index);
+	}
+
+	this.setPowerup = function(_playerID, _powerupType){
+		var player = group("Players").getMemberByGlobalID(_playerID);
+		if(player != -1){ //if player has been found
+			var powerup = new Powerup(10, _powerupType); //NOT game.instantiate!!, as it should not exists outside this function!
+			player.setPowerup(powerup);
+		}
 	}
 
 	this.loadContent = function(){
