@@ -23,6 +23,7 @@ var Powerup = Base.extend({
 		this.type = _type;
 		this.ID = IDDistributor.getNewId();
 		this.timer = this.createTimer(_type);
+		this.power = this.createPower(_type);
 
 		this.enableBody();
 	},
@@ -51,24 +52,41 @@ var Powerup = Base.extend({
 		switch(_type){
 			case e.smallShield:
 			this.timer = new PowerupTimer(UserSettings.smallShield.time)
-			this.power = function(_player) { _player.getShield().setRadius(UserSettings.smallShield.radius); }
 
 			case e.bigShield:
 			this.timer = new PowerupTimer(UserSettings.bigShield.time)
-			this.power = function(_player) { _player.getShield().setRadius(UserSettings.bigShield.radius); }
 
 			case e.smallPole:
 			this.timer = new PowerupTimer(UserSettings.smallPole.time)
-			this.power = function(_player) { _player.getPole().setRadius(UserSettings.smallPole.radius); }
 
 			case e.bigPole:
 			this.timer = new PowerupTimer(UserSettings.bigPole.time);
-			this.power = function(_player) { _player.getPole().setRadius(UserSettings.bigPole.radius); }
 
 			//Ball waarschijnlijk geen goed idee voor powerup.. meer player achtige dingen aanpassen
 			//In plaats van dit shield reverten.
 			case e.bigBall:
 			this.timer = new PowerupTimer(UserSettings.bigBall.time)
+			
+		}
+	},
+
+	createPower: function(_type){
+		switch(_type){
+			case e.smallShield:
+			return function(_player) { _player.getShield().setShieldLength(UserSettings.smallShield.length); }
+
+			case e.bigShield:
+			return function(_player) { _player.getShield().setShieldLength(UserSettings.bigShield.length); }
+
+			case e.smallPole:
+			return function(_player) { _player.getPole().setRadius(UserSettings.smallPole.radius); }
+
+			case e.bigPole:
+			return function(_player) { _player.getPole().setRadius(UserSettings.bigPole.radius); }
+
+			//Ball waarschijnlijk geen goed idee voor powerup.. meer player achtige dingen aanpassen
+			//In plaats van dit shield reverten.
+			case e.bigBall:
 			
 		}
 	},

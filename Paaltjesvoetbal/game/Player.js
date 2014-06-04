@@ -69,11 +69,13 @@ var Player = Base.extend({
 	},
 
 	setPowerup: function(_powerup){
+		console.log("setPowerup: " + _powerup.getType());
 		//If another powerup was active at this point, make sure the old one is deprecated
 		if(this.activePowerup != null){
 			this.deletePowerup();
 		}
 		this.activePowerup = _powerup;
+		console.log(this.activePowerup);
 		//TODO: Save current state, so the player can go back.
 		this.activePowerup.execute(this); //immediatly execute the powerup 
 	},

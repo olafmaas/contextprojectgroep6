@@ -3,11 +3,13 @@ var UserSettings = ({
 
 	//Powerup attributes
 	smallShield: {
-		time: 7
+		time: 7,
+		length: 3
 	},
 
 	bigShield: {
-		time: 15
+		time: 15,
+		length: 1.5
 	},
 
 	smallPole: {

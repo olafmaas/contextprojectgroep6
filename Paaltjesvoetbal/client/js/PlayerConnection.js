@@ -94,7 +94,6 @@ function createPowerup(data){
 	if(powerup != null) game.remove(powerup);
 
 	var type = Math.floor(Math.random()*(UserSettings.nrOfPowerups-1));
-	console.log(type);
 	powerup = game.instantiate(new Powerup(data.radius, type));
 	
 	var dx = Math.floor(Math.random()* UserSettings.canvasWidth/2)
