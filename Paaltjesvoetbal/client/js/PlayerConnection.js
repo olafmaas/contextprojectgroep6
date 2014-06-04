@@ -85,7 +85,6 @@ function createBall(nr, colors){
 		var ball = game.instantiate(new Ball(10));
 		if(i == nr-1) ball.setPosition(100, 100);
 		ball.setColor(colors[i]);
-		//ball.getBody().setVelocity(5);
 
 		balls.addMember(ball);
 	}
@@ -105,16 +104,18 @@ function createPowerup(data){
 };
 
 function checkPowerup(e){
-	input.mouseMoveListener(e);
+	if(powerup != null){ //only when a powerup is present!
+		input.mouseMoveListener(e);
 
-	if(!scale) scale = 1;
-	var powerupPos = powerup.getPosition();
+		if(!scale) scale = 1;
+		var powerupPos = powerup.getPosition();
 
-	//Check whether distance between powerup center and click is less than radius
-	var inX = Math.abs(powerupPos.x*scale - mouseX) <= powerup.getRadius();
-	var inY = Math.abs(powerupPos.y*scale - mouseY) <= powerup.getRadius();
+		//Check whether distance between powerup center and click is less than radius
+		var inX = Math.abs(powerupPos.x*scale - mouseX) <= powerup.getRadius();
+		var inY = Math.abs(powerupPos.y*scale - mouseY) <= powerup.getRadius();
 
-	if(inX && inY){
-		powerup.isClicked();
+		if(inX && inY){
+			powerup.isClicked();
+		}
 	}
 };
