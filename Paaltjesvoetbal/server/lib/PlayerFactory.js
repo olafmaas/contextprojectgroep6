@@ -14,9 +14,9 @@ var PlayerFactory = Base.extend({
 		this.settings = _settings;
 	},
 
-	createPlayer: function(nrOfPlayers, nrOfRows, maxNrOfColumns, id){
+	createPlayer: function(polePos, id){
 		var player = new Player(id)
-		var pole = this.createPole(nrOfPlayers, nrOfRows, maxNrOfColumns);
+		var pole = this.createPole(polePos);
 		var shield = this.createShield(pole);
 		player.setPole(pole);
 		player.setShield(shield);
@@ -30,10 +30,9 @@ var PlayerFactory = Base.extend({
 	* @method Group#update
 	* @param {GroupManager} gm, group manager used to add pole
 	*/
-	createPole: function(nrOfPlayers, nrOfRows, maxNrOfColumns){
+	createPole: function(polePos){
 		var pole = new Pole(10);
-		polePos = this.calculatePolePosition(nrOfPlayers, nrOfRows, maxNrOfColumns);
-		pole.setPosition(polePos.x, polePos.y);
+		pole.setPosition(polePos.left + this.settings.canvasWidth/2, polePos.top + this.settings.canvasHeight/2);
 
 		return pole;
 	},
@@ -44,12 +43,6 @@ var PlayerFactory = Base.extend({
 
 		return shield;
 	},
-
-	calculatePolePosition: function(nrOfPlayers, nrOfRows, maxNrOfColumns){
-		var xpos = this.settings.canvasWidth/2 + (this.settings.canvasWidth * (nrOfPlayers%maxNrOfColumns));
-		var ypos = this.settings.canvasHeight/2 + (this.settings.canvasHeight * nrOfRows);
-		return {x:xpos, y:ypos};
-	}
 })
 
 if(typeof module != 'undefined'){

@@ -4,6 +4,7 @@ if(typeof module != 'undefined'){
 	var GameGrid = require('./GameGrid.js');
 	var GroupManager = require('./GroupManager.js');
 	var PlayerFactory = require('./PlayerFactory.js');
+	var BallFactory = require('./BallFactory.js');
 	var Client = require('./Client.js');
 	var Game = require('../../game/Game.js');
 	var CoreGame = require('../../game/CoreGame.js');
@@ -28,6 +29,7 @@ function Server(){
 	var gameGrid = new GameGrid(settings);
 	var gm = new GroupManager();
 	var pf = new PlayerFactory(settings);
+	var bf = new BallFactory();
 	var colors = [];
 
 	//Create all groups
@@ -36,14 +38,14 @@ function Server(){
 	gm.addGroup("Shields", Shield);
 	gm.addGroup("Players", Player);
 	
-	this.dropPowerup = function(data){
-		
-		var nrOfPlayers = group("Players").getMemberLength();
-		var index = Math.floor(Math.random()*nrOfPlayers);
+	this.dropPowerup = function(){	
+		var index = Math.floor(Math.random()*this.getNumberOfPlayers());
 		var member = group("Players").getMember(index);
+
 		var pole = member.getPole();
 		var xpos = pole.getBody().getPosition().x;
 		var ypos = pole.getBody().getPosition().y
+
 		return {radius: 10, type: 0, position: {x: xpos, y: ypos} };
 	}
 	
@@ -52,19 +54,20 @@ function Server(){
 	* @method Server#addClient
 	* @param {socket} The socket associated with the player. 
 	*/
-	this.addClient = function(socket){
-		var nrOfRows = Math.floor(this.getNumberOfPlayers() / maxNrOfColumns);
-		var player = game.instantiate(pf.createPlayer(Object.keys(clientList).length, nrOfRows, maxNrOfColumns, socket.id));
+	this.addClient = function(socket, positionOfPole){
+		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
 		//setGroupMemberships(player);
-		var ball = addBall();
-
+		var ball = game.instantiate(bf.createNewBall(10));
+		colors.push(ball.getColor())
+		
+		group("Balls").addMember(ball);
 		group("Poles").addMember(game.instantiate(player.getPole()));
 		group("Shields").addMember(game.instantiate(player.getShield()));
 		group("Players").addMember(player);
 
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield(), ball);
 
-		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition()};
+		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID()};
 	}
 
 	this.deleteClient = function(socketID){
@@ -73,9 +76,16 @@ function Server(){
 		group("Poles").removeMember(client.pole);
 		group("Shields").removeMember(client.shield);
 		group("Players").removeMember(client.player);
+
+		game.remove(client.ball);
+		game.remove(client.pole);
+		game.remove(client.shield);
+		game.remove(client.player);
 		//name stays in nameList because it has to stay in the highscore
 		gameGrid.remove(socketID);
+		ret = client.ball.getGlobalID();
 		delete clientList[socketID]; 
+		return ret;
 	}
 
 	/**
@@ -126,19 +136,6 @@ function Server(){
 		return colors;
 	}
 
-	addBall = function(){
-		var ball = game.instantiate(new Ball(10));
-		ball.setPosition(100, 100);
-		ball.getBody().setVelocity(5);
-		ball.getBody().setVelocityDirection(1.70 * Math.PI);
-		ball.setColor(ColorGenerator.returnColor());
-		colors.push(ball.getColor());
-
-		group("Balls").addMember(ball);
-		
-		return ball;
-	}
-
 	this.ballAngle = function(socket, velocityDirection, index){
 		group("Balls").getMember(index).getBody().setVelocityDirection(velocityDirection);
 		return group("Balls").getMember(index);
@@ -149,7 +146,7 @@ function Server(){
 	}
 
 	this.update = function(){
-		
+
 	}
 
 	this.createGame = function(_initialize, _update, _width, _height){

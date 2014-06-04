@@ -112,6 +112,11 @@ function Group(_type){
 	this.getCollisionLength = function(){
 		return collision.length;
 	}
+
+	this.getRandomElement = function(){
+		randInt = Math.floor(Math.random()*members.length)-1
+		return members[randInt]
+	}
 }
 
 if(typeof module != 'undefined'){

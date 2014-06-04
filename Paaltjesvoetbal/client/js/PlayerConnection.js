@@ -32,6 +32,11 @@ socket.on('userName', function(free){
 	}
 });
 
+//Sets the name label whenever a valid name is chosen by the player
+socket.on('showPlayerName', function(){
+	nameLabel.setText(player.getName());
+});
+
 //////////////////
 // Game updates //
 //////////////////
@@ -47,16 +52,21 @@ socket.on('canvasPos', function (data){
 //Waits for a 'newBall' emit from drawhandler
 socket.on('newBall', function (nr, colors) {
 	createBall(nr, colors);
-})
+});
 
 socket.on('updateBall', function (pos, index) { //TODO: ID instead of index
 	if(balls.getMember(index) != null)
 		balls.getMember(index).setPosition(pos.x - leftOffset, pos.y - topOffset);
 });
 
+//Listener for powerup
+socket.on('dropPowerup', function (data) {
+	createPowerup(data);
+});
+
 socket.on('removeBall', function (nr, colors) {
 	//TODO
-})
+});
 
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
@@ -77,4 +87,17 @@ function createBall(nr, colors){
 
 		balls.addMember(ball);
 	}
+};
+
+function createPowerup(data){
+	data.type = Math.floor(Math.random()*4);
+	var p = game.instantiate(new Powerup(data.radius, data.type));
+	
+	var dx = Math.floor(Math.random()*225)
+	var dy = Math.floor(Math.random()*175)
+	dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+	dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+	
+	p.setPosition(data.position.x + dx, data.position.y + dy);
+	
 };

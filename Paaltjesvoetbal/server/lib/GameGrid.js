@@ -43,12 +43,11 @@ function GameGrid(_settings) {
 		return {left: x * settings.canvasWidth, top: y*settings.canvasHeight};
 	}
 
-	//TODO doet nog niks
 	this.remove = function(socketID){
 		for (i = 0; i < grid.length; i++) {
 			for(j = 0; j < grid[i].length; j++){
 				if(socketID == grid[i][j]){
-					grid[i][j] = false;
+					grid[i][j] = -1;
 				}
 			}
 		}

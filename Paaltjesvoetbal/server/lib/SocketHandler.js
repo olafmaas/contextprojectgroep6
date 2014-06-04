@@ -14,6 +14,7 @@ if(typeof module != 'undefined'){
 	var handleCollision = require('../../game/CollisionDetection.js');
 	var DrawHandler = require('./DrawHandler.js');
 	var e = require('../../game/util/Enums.js');
+	var RandomTimer = require('../../game/util/RandomTimer');
 }
 
 function SocketHandler(_server, _io){
@@ -22,10 +23,14 @@ function SocketHandler(_server, _io){
 	var io = _io;
 	var mainScreenSocket = {emit:function(){false}}; //If the mainscreen is not instantiated this function is used;
 	var debug;
+	var settings = new Settings();
+	var timer = new RandomTimer(settings.minTime, settings.maxTime);
 
 	this.handleMainScreen = function(socket){
 		mainScreenSocket = socket;
 		dh.setMainScreenSocket(socket);
+
+		timer.startTimer(); //Start powerup timer when the mainscreen is connected.
 
 		updateMainScreenCanvasSize();
 
@@ -46,16 +51,18 @@ function SocketHandler(_server, _io){
 	this.handlePlayerConnection = function(socket){
 		
 		socket.emit('userName', false);
-		newPlayer(socket);
 
 		//Add player to grid
 		res = server.updateGrid(socket);
+		newPlayer(socket, res);
+
 		updateMainScreenCanvasSize();
 		socket.emit('canvasPos', res);
 
 		socket.on('userName', function (name){
 			if(server.isNameAvailable(name)){
 				server.registerName(name, socket.id);
+				socket.emit('showPlayerName');
 			}else{
 				server.log('Username already in use');
 				socket.emit('userName', false);
@@ -70,7 +77,10 @@ function SocketHandler(_server, _io){
 		socket.on('disconnect', function (data){
 			server.log('Player disconnected - id: ' + socket.id);
 			removeFromMainScreen(socket.id);
-			server.deleteClient(socket.id);
+
+			gid = server.deleteClient(socket.id);
+			mainScreenSocket.emit('removeBall', gid);
+			
 		});
 	};
 
@@ -78,18 +88,17 @@ function SocketHandler(_server, _io){
 		mainScreenSocket.emit('removePlayer', socketID);
 	}
 
-	newPlayer = function(socket){
-		mainScreenSocket.emit('newPlayer',server.addClient(socket));
+	newPlayer = function(socket, polePos){
+		var np = server.addClient(socket, polePos);
+		mainScreenSocket.emit('newPlayer', np);
+
 		var colors = server.getBallColors();
-		mainScreenSocket.emit('newBall', colors[colors.length-1]); //inform mainscreen of new ball
+		mainScreenSocket.emit('newBall', {color: colors[colors.length-1], gid: np.gid}); //inform mainscreen of new ball
 		dh.ballAdded(server.nrOfBalls(), colors); //inform players of new ball(s)
 	}
 	
-	//Testing purposes
-	//newPowerup(data);
-	
-	newPowerup = function(data){
-		mainScreenSocket.emit('newPowerup', server.dropPowerup(data));
+	newPowerup = function(){
+		io.of('/player').emit('dropPowerup', server.dropPowerup());
 	}
 
 	updateMainScreenCanvasSize = function(){
@@ -104,6 +113,19 @@ function SocketHandler(_server, _io){
 			dh.drawToMainScreen(server.getBallPosition(i), i);	
 			dh.drawToPlayers(server.getBall(i), i);	
 		}
+
+		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
+		//TODO: timer eerder af laten lopen als er meer spelers zijn, dus settings aanpassen, of
+		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
+		if(timer != null && timer.hasStopped()){
+			timer = null;
+
+			newPowerup();
+
+			timer = new RandomTimer(settings.minTime, settings.maxTime); //start a new timer for the next powerup
+			timer.startTimer();
+		}
+
 	}
 
 
