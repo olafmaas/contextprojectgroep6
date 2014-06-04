@@ -38,6 +38,10 @@ function DrawHandler(_io){
 	this.ballAdded = function(nr, colors){
 		io.of('/player').emit('newBall', nr, colors);
 	}
+
+	this.poleHitToPlayer = function(socket){
+		socket.emit('poleIsHit', true);
+	}
 }
 
 if(typeof module != 'undefined'){

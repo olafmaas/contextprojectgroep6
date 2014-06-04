@@ -22,7 +22,6 @@ function Server(){
 	var clientList = {};
 	var namesList = []
 	var game; 
-	var mainScreenSocket = {emit:function(){false}} //If the mainscreen is not instantiated this function is used;
 	var maxNrOfPlayers = 0;
 	var maxNrOfColumns = 0;
 	var settings = new Settings();
@@ -177,6 +176,10 @@ function Server(){
 
 	this.log = function(message){
 		logHandler.log(message);
+	}
+
+	this.getGroup = function(_group){
+		return group(_group);
 	}
 
 	this.getMaxNrOfPlayers = function(){

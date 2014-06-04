@@ -37,20 +37,13 @@ var Pole = Ball.extend({
 	*
 	* @method Pole#isHit
 	*/
-	isHit: function(_this){
-		if(_this != null  && _this != undefined){
-			savedThis = _this;
-		}
-		else {
-			savedThis = this;
-		}
-		if(!savedThis.hit){
-			savedThis.hit = true; //set hit flag
-			savedThis.prevColor = savedThis.getColor(); //retrieve original color
-			savedThis.setColor("darkOrange"); //set new color to indicate being hit
-			savedThis.saveHighscore(); //Save current score if highscore
-			savedThis.coolDown(3000); //set cooldown period
-		}
+	isHit: function(){
+		prevColor = this.getColor(); //retrieve original color
+		this.setColor("darkOrange"); //set new color to indicate being hit
+		this.saveHighscore(); //Save current score if highscore
+		this.hit = false; //remove hit flag
+		setTimeout(this.coolDown(this), 3000); //set cooldown period
+
 	},
 
 	/**
@@ -59,16 +52,9 @@ var Pole = Ball.extend({
 	* @method Pole#coolDown
 	*/
 	//TODO: iets van laten knipperen? sneller = cooldown bijna afgelopen?
-	coolDown: function(_interval){
-		if(_interval > 0){
-			var savedThis = this;
-			setTimeout( function() { savedThis.coolDown(0); }, _interval);
-		}
-		else {
-			this.setColor(this.prevColor); //Revert back to previous color
-			this.hit = false; //remove hit flag
-			this.timer.startTimer();
-		}
+	coolDown: function(_this){
+		_this.setColor(_this.prevColor); //Revert back to previous color
+		//_this.hit = false; //remove hit flag
 	},
 
 	/**

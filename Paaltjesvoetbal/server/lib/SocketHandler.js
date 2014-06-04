@@ -126,6 +126,15 @@ function SocketHandler(_server, _io){
 			timer.startTimer();
 		}
 
+		for(var i = 0; i < server.getNumberOfPlayers(); i++){
+			if(server.getGroup("Poles").getMember(i).hit){
+				console.log(server.getGroup("Poles").getMember(i).hit + 'is Hit')
+				server.getGroup("Poles").getMember(i).isHit();
+				mainScreenSocket.send('POLE IS HIT MOTHERFUCKERS')
+				//server.getGroup("Poles").getMember(i).hit = false;
+			}
+		}
+
 	}
 
 
