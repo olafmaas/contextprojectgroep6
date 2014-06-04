@@ -293,7 +293,7 @@ Drawer = function(_canvasContext){
 	};
 
 	this.drawPowerup = function (_powerup){
-		if(_powerup.isVisible){
+		if(_powerup.isVisible()){
 			canvasContext.beginPath();
 			canvasContext.arc(_powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius(), 0, Math.PI*2, true);
 			canvasContext.closePath();

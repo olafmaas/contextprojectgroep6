@@ -107,16 +107,14 @@ function createPowerup(data){
 function checkPowerup(e){
 	input.mouseMoveListener(e);
 
+	if(!scale) scale = 1;
 	var powerupPos = powerup.getPosition();
 
 	//Check whether distance between powerup center and click is less than radius
+	var inX = Math.abs(powerupPos.x*scale - mouseX) <= powerup.getRadius();
+	var inY = Math.abs(powerupPos.y*scale - mouseY) <= powerup.getRadius();
 
-	var inX = Math.abs(powerupPos.x - mouseX) <= powerup.getRadius();
-	var inY = Math.abs(powerupPos.y - mouseY) <= powerup.getRadius();
-
-	console.log("PX: " + powerupPos.x + " | PY: " + powerupPos.y);
-	console.log("MX: " + mouseX + " | MY: " + mouseY);
-	console.log("X: " + inX + " | Y: " + inY);
-
-
+	if(inX && inY){
+		powerup.isClicked();
+	}
 };

@@ -63,7 +63,7 @@ var Powerup = Base.extend({
 	isClicked: function(){
 		//make sure the player gets the powerup when he clicks on it.
 		//and make sure the powerup dissapears from the screen.
-		visible = false;
+		this.visible = false;
 	},
 
 	isVisible: function(){
