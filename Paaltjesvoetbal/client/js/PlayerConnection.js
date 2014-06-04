@@ -99,12 +99,23 @@ function createPowerup(data){
 		console.log('kaas');
 		var type = Math.floor(Math.random()*4);
 		powerup = game.instantiate(new Powerup(10, type));
-	
-		var dx = Math.round(Math.random() * (UserSettings.canvasWidth - data.position.x + 70) + 70);
-		var dy = Math.round(Math.random() * (UserSettings.canvasHeight - data.position.y + 70) + 70);
+		
+		var chooser = 1;
+		chooser *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+		
+		if(chooser == 1){
+			var dx = Math.round(Math.random() * (UserSettings.canvasWidth-(data.position.x+70)) + 70);
+			var dy = Math.round(Math.random() * (UserSettings.canvasHeight-data.position.y));
+		
+		}
+		else{
+			var dx = Math.round(Math.random() * (UserSettings.canvasWidth-data.position.x));
+			var dy = Math.round(Math.random() * (UserSettings.canvasHeight-(data.position.y+70)) + 70);
+		}
+		
 		dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 		dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-		console.log(dx, dy);
+		
 		powerup.setPosition(data.position.x + dx, data.position.y + dy);
 	}
 };
