@@ -38,7 +38,7 @@ function Server(){
 	gm.addGroup("Shields", Shield);
 	gm.addGroup("Players", Player);
 	
-	this.dropPowerup = function(){
+	this.addPowerup = function(){
 		var index = Math.floor(Math.random()*this.getNumberOfPlayers());
 		var member = group("Players").getMember(index);
 		if(member != undefined && member != null){

@@ -60,7 +60,7 @@ socket.on('updateBall', function (pos, index) { //TODO: ID instead of index
 });
 
 //Listener for powerup
-socket.on('dropPowerup', function (data) {
+socket.on('addPowerup', function (data) {
 	createPowerup(data);
 });
 
