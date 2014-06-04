@@ -2,6 +2,7 @@
 var UserSettings = ({
 
 	//Powerup attributes
+	//TODO: powerup voor dubbele score
 	smallShield: {
 		time: 7,
 		length: 3

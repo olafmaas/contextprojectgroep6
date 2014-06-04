@@ -20,6 +20,7 @@ var Player = Base.extend({
 	score: 0, //Current score of the player
 	highscore: 0, //Highscore of the player
 	activePowerup: null, //The currently active powerup
+	originalState: {},
 
 	ID: -1,
 
@@ -28,9 +29,7 @@ var Player = Base.extend({
 		this.ID = IDDistributor.getNewId();
 	},
 	
-	/**
-	* Updates the score label which will be drawn on screen
-	* This includes score, time alive and highscore
+	/* Dummy method
 	*
 	* @method Player#update
 	*/
@@ -38,11 +37,9 @@ var Player = Base.extend({
 
 	},
 
-	/**
-	* Currently it just draws the score, time alive and highscore of the player on the canvas
+	/* Dummy method
 	*
 	* @method Player#draw
-	* @param {CanvasContext} _canvasContext - The canvas on which it will be drawn.
 	*/
 	draw: function(_canvasContext){
 
@@ -68,22 +65,43 @@ var Player = Base.extend({
 		this.score += _score;
 	},
 
+	//TODO
 	setPowerup: function(_powerup){
 		//If another powerup was active at this point, make sure the old one is deprecated
 		if(this.activePowerup != null){
 			this.deletePowerup();
 		}
 		this.activePowerup = _powerup;
-		//TODO: Save current state, so the player can go back.
+		this.saveState(); //Save original playerstate
 		this.activePowerup.execute(this); //immediatly execute the powerup 
 	},
 
+	//TODO
 	deletePowerup: function(){
-		//TODO: remove execution of current powerup.
+		this.activePowerup.stop();
+		this.activePowerup = null;
+		this.revert(); //revert to original playerstate
 	},	
 
+	//TODO
+	//revert back to original state before the last powerup
+	//met nieuwe powerups moet deze functie ook worden aangepast!
 	revert: function(){
-		//TODO: revert to how the player was before the powerup!
+		this.getShield().revertShield(this.originalState.revert);
+		this.getShield().setShieldLength(this.originalState.length);
+		this.getPole().setRadius(this.originalState.radius);
+	},
+
+	//TODO
+	//met nieuwe powerups moet deze functie ook worden aangepast!
+	saveState: function(){
+		var savedThis = this;
+		this.originalState = {
+			revert: savedThis.getShield().isRevert(),
+			length: savedThis.getShield().getShieldLength(),
+			radius: savedThis.getPole().getRadius(),
+		};
+		console.log(this.originalState.revert);
 	},
 
 	/**

@@ -46,6 +46,10 @@ var Powerup = Base.extend({
 		}
 	},
 
+	stop: function(){
+		this.power = null;
+	},
+
 	//Create timers
 	createTimer: function(_type){
 		switch(_type){
