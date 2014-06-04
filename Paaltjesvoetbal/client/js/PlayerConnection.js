@@ -102,25 +102,17 @@ function createPowerup(data){
 	if(player.getGlobalID() == data.id){
 
 		if(powerup != null) game.remove(powerup);
-
-		var type = Math.floor(Math.random() * UserSettings.nrOfPowerups);
+		var type = Math.floor(Math.random() * UserSettings.nrOfPowerups); //choose a radom type
 		powerup = game.instantiate(new Powerup(UserSettings.powerupSize, type));
 		
-		var chooser = 1;
-		chooser *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+		var chooser = Math.round(Math.random()); //random 0 or 1
+		var dx = Math.round(Math.random() * (UserSettings.canvasWidth - (UserSettings.canvasWidth/2 + 70)) + (70*(1-chooser)));
+		var dy = Math.round(Math.random() * (UserSettings.canvasHeight - (UserSettings.canvasHeight/2 + 70)) + (70*chooser));
 		
-		if(chooser == 1){
-			var dx = Math.round(Math.random() * (UserSettings.canvasWidth - (UserSettings.canvasWidth/2 + 70)) + 70);
-			var dy = Math.round(Math.random() * (UserSettings.canvasHeight - UserSettings.canvasHeight/2));
-		
-		}
-		else{
-			var dx = Math.round(Math.random() * (UserSettings.canvasWidth - UserSettings.canvasWidth/2));
-			var dy = Math.round(Math.random() * (UserSettings.canvasHeight - (UserSettings.canvasHeight/2 + 70)) + 70);
-		}
-		
-		dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-		dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+		if(Math.round(Math.random())) //randomly decide whether to make x-coordinate negative
+			dx *= -1;
+		if(Math.round(Math.random())) //randomly decide whether to make y-coordinate negative
+			dy *= -1;
 
 		powerup.setPosition(UserSettings.canvasWidth/2 + dx, UserSettings.canvasHeight/2 + dy);
 	}
