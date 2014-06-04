@@ -48,29 +48,23 @@ describe("Powerup", function(){
 			expect(p.getPosition().y).to.equal(30);
 		})
 	})
-/*
+
 	describe("Timer", function(){
-
 		var p = new Powerup(10, 1);
-		var mockedTimer = sinon.stub(p.getTimer(), 'count');
 
-		it("For type 1, the powerup timer is 30 sec and should be set on creation", function(){
-			expect(p.getTimeLeft()).to.equal(30);
-			expect(p.isActive()).to.be.false;
-		})
-
-		it("When a powerup timer is started, it should count down", function(){
-			expect(p.isActive()).to.be.false;
-			p.startCountdown();
-			expect(mockedTimer).to.have.been.called;
-			excpect(p.isActive()).to.be.true;
-		})
-
-		it("When the timer has finished, the powerup should not be active anymore", function(){
-			p.startCountdown();
-			p.getTimer().stop();
-			expect(p.isActive()).to.be.false;
+		it("Check if the timer is created.", function(){
+			expect(p.getTimer()).to.be.not.null;
 		})
 	})
-*/
+
+	describe("isClicked", function(){
+		var p = new Powerup(10, 1);
+
+		it("The powerup should not be visible anymore", function(){
+			expect(p.isVisible()).to.be.true;
+			p.isClicked();
+			expect(p.isVisible()).to.be.false;
+		})
+	})
+
 })
