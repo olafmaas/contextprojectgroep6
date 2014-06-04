@@ -16,7 +16,7 @@ function Group(_type){
 	var members = []; //Array for the 'members' of the groups, as this could be many.
 
 	/**
-	* Adds an object to an existing list of members
+	* Adds an object to an existing list of members. Don't use this function in combination with AddMemberOnPosition.
 	* @method Group#addMember
 	* @param {Object} _object - The object which is added to a list of members
 	*/
@@ -26,10 +26,11 @@ function Group(_type){
 	}
 
 	/**
-	* Adds an object to an existing list of members on a certain position.
+	* Adds an object to an existing list of members on a certain position. Don't use this function
+	* in combination with AddMember.
 	* @method Group#addMemberOnPosition
 	* @param {Object} _object - The object which is added to a list of members
-	* @param {Integer} _index - The position on which the object should be added. Usually a globalID. 
+	* @param {Integer} _index - The position on which the object should be added. Usually a globalID.
 	*/
 	this.addMemberOnPosition = function(_object, _index){
 		if(_object instanceof type)
@@ -63,7 +64,7 @@ function Group(_type){
 	* @param {Integer} _index - The index of the object which has to be deleted from the group.
 	*/
 	this.removeMemberOnIndex = function(_index){
-		members.splice(i, 1);
+		members[_index] = undefined;
 	}
 
 	/**
@@ -103,6 +104,15 @@ function Group(_type){
 	this.getMembers = function(){
 		return members;
 	}
+
+	/**
+	* Returns a list of members, without undefined members.
+	* @method Group#getMembers
+	*/
+	this.getFilteredMembers = function(){
+		return members.filter(function(o){ return o != undefined });
+	}
+
 
 	/**
 	* Returns a specific object from a list of members

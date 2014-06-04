@@ -30,7 +30,6 @@ function Server(){
 	var gm = new GroupManager();
 	var pf = new PlayerFactory(settings);
 	var bf = new BallFactory();
-	var colors = [];
 
 	//Create all groups
 	gm.addGroup("Balls", Ball);
@@ -58,9 +57,8 @@ function Server(){
 		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
 		//setGroupMemberships(player);
 		var ball = game.instantiate(bf.createNewBall(10));
-		colors.push(new BallTO(ball.getColor(), ball.getGlobalID))
 		
-		group("Balls").addMember(ball);
+		group("Balls").addMemberOnPosition(ball, ball.getGlobalID());
 		group("Poles").addMember(game.instantiate(player.getPole()));
 		group("Shields").addMember(game.instantiate(player.getShield()));
 		group("Players").addMember(player);
@@ -131,10 +129,6 @@ function Server(){
 	this.setAngle = function(socket, angle){
 		clientList[socket.id].shield.setAngle(angle);
 		return {id: socket.id, angle: angle};
-	}
-
-	this.getBallColors = function(){
-		return colors;
 	}
 
 	this.ballAngle = function(socket, velocityDirection, index){
