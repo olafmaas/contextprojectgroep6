@@ -79,6 +79,8 @@ socket.on('poleIsHit', function (data){
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
 
+window.onmousedown = checkPowerup;
+
 function sendShieldAngle() {
 	if(shield != undefined){
 		socket.emit('shieldAngle', shield.getAngle());
@@ -91,18 +93,18 @@ function createBall(nr, colors){
 		var ball = game.instantiate(new Ball(10));
 		if(i == nr-1) ball.setPosition(100, 100);
 		ball.setColor(colors[i]);
-		//ball.getBody().setVelocity(5);
 
 		balls.addMember(ball);
 	}
 };
 
 function createPowerup(data){
-	
 	if(player.getGlobalID() == data.id){
 
-		var type = Math.floor(Math.random()*4);
-		powerup = game.instantiate(new Powerup(10, type));
+		if(powerup != null) game.remove(powerup);
+
+		var type = Math.floor(Math.random() * UserSettings.nrOfPowerups);
+		powerup = game.instantiate(new Powerup(UserSettings.powerupSize, type));
 		
 		var chooser = 1;
 		chooser *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
@@ -121,5 +123,25 @@ function createPowerup(data){
 		dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 
 		powerup.setPosition(UserSettings.canvasWidth/2 + dx, UserSettings.canvasHeight/2 + dy);
+	}
+};
+
+function checkPowerup(e){
+	if(powerup != null){ //only when a powerup is present!
+		input.mouseMoveListener(e);
+
+		if(!scale) scale = 1;
+		var powerupPos = powerup.getPosition();
+
+		//Check whether distance between powerup center and click is less than radius
+		var inX = Math.abs(powerupPos.x*scale - mouseX) <= powerup.getRadius();
+		var inY = Math.abs(powerupPos.y*scale - mouseY) <= powerup.getRadius();
+
+		if(inX && inY){
+			//TODO emit naar server (met playerID om aan te geven welke natuurlijk ;D)
+			//powerup type + playerID nodig voor server
+			powerup.isClicked();
+			player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
+		}
 	}
 };

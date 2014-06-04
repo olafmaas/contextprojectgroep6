@@ -15,18 +15,20 @@ var Powerup = Base.extend({
 	ID: -1,
 	timer: 0,
 	color: "red",
+	visible: true,
+	power: null, //function that contains what the powerup will do
 
 	constructor: function(_radius, _type){
 		this.radius = _radius;
 		this.type = _type;
 		this.ID = IDDistributor.getNewId();
 		this.timer = this.createTimer(_type);
+		this.power = this.createPower(_type);
 
 		this.enableBody();
 	},
 	
-	update: function(){
-		
+	update: function(){	
 		if(this.body instanceof CircularBody) this.body.update();
 	},
 	
@@ -38,26 +40,63 @@ var Powerup = Base.extend({
 		return (this.ID == _other.getID());
 	},
 
-	//TODO: zorgen dat er echt 'powerups' worden gemaakt zodat ze ook iets gaan doen.
-	//Voor nu zijn het alleen de timers
+	execute: function(_player){
+		if(this.power != null){
+			this.power(_player);
+		}
+	},
+
+	stop: function(){
+		this.power = null;
+	},
+
+	//Create timers
 	createTimer: function(_type){
 		switch(_type){
 			case e.smallShield:
-			this.timer = new PowerupTimer(UserSettings.smallShieldTime)
+			return new PowerupTimer(UserSettings.smallShield.time)
 
 			case e.bigShield:
-			this.timer = new PowerupTimer(UserSettings.bigShieldTime)
+			return new PowerupTimer(UserSettings.bigShield.time)
 
 			case e.smallPole:
-			this.timer = new PowerupTimer(UserSettings.smallPoleTime)
+			return new PowerupTimer(UserSettings.smallPole.time)
 
 			case e.bigPole:
-			this.timer = new PowerupTimer(UserSettings.bigPoleTime)
+			return new PowerupTimer(UserSettings.bigPole.time);
 
-			case e.bigBall:
-			this.timer = new PowerupTimer(UserSettings.bigBallTime)
-			
+			case e.revertShield:
+			return new PowerupTimer(UserSettings.revertShield.time)		
 		}
+	},
+
+	//Create powers
+	createPower: function(_type){
+		switch(_type){
+			case e.smallShield:
+			return function(_player) { _player.getShield().setShieldLength(UserSettings.smallShield.length); };
+
+			case e.bigShield:
+			return function(_player) { _player.getShield().setShieldLength(UserSettings.bigShield.length); };
+
+			case e.smallPole:
+			return function(_player) { _player.getPole().setRadius(UserSettings.smallPole.radius); };
+
+			case e.bigPole:
+			return function(_player) { _player.getPole().setRadius(UserSettings.bigPole.radius); };
+
+			case e.revertShield: 
+			return function(_player) { _player.getShield().revertShield(true); };		
+		}
+	},
+
+	isClicked: function(){
+		//make sure the powerup disappears from the screen.
+		this.visible = false;
+	},
+
+	isVisible: function(){
+		return this.visible;
 	},
 	
 	//==================

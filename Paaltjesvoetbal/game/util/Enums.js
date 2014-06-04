@@ -14,7 +14,7 @@ var e = Object.freeze({
 	"bigShield": 1,
 	"smallPole": 2,
 	"bigPole": 3,
-	"bigBall": 4,
+	"revertShield": 4,
 
 	//Server
 	"updateBall": 10, 

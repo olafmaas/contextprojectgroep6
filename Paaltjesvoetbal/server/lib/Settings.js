@@ -4,7 +4,7 @@ function Settings(){
 
 	this.radius = 10;
 	this.minTime = 1;
-	this.maxTime = 5;
+	this.maxTime = 3;
 }
 
 if(typeof module != 'undefined'){
