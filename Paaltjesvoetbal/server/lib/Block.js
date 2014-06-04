@@ -99,8 +99,7 @@ var Block= Base.extend({
 		for(i= 0; i < this.balls.length; i++){
 			this.sendToList(this.blocksToSendBallTo(this.balls[i]), this.balls[i]);
 			if(this.shouldBeRemoved(ball)){
-				remove(this.ball[i])
-				this.balls.splice(i, 1);
+				remove(this.ball[i], i)
 			}
 		}
 
@@ -116,10 +115,25 @@ var Block= Base.extend({
 		this.neighbours[direction].ballIncoming(ball);
 	},
 
-	remove: function(ball){
+	remove: function(ball, i){
 		if(socket){
 			socket.emit("removeBall", ball.getGlobalID())
 		}
+
+		if(i == -1){
+			this.balls.splice(this.getBallIndex(), 1);
+		}else{
+			this.balls.splice(i, 1);
+		}
+	},
+
+	getBallIndex: function(ball){
+		for(var i = 0; i < this.balls.length; i++){
+			if(balls[i].getGlobalID() == ball.getGlobalID()){
+				return i;
+			}
+		}
+		return -1;
 	},
 
 	setPlayer: function(_socket){
@@ -136,7 +150,7 @@ var Block= Base.extend({
 
 	hasBall: function(_ball){
 		for(var i = 0; i < this.balls.length; i++){
-			if(balls[i].getGlobalID == ball.getGlobalID()){
+			if(balls[i].getGlobalID() == ball.getGlobalID()){
 				return true;
 			}
 		}
@@ -144,3 +158,7 @@ var Block= Base.extend({
 	}
 
 })
+
+if(typeof module != 'undefined'){
+    module.exports = Block;
+}

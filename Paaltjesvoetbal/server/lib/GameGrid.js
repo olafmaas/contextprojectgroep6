@@ -6,7 +6,9 @@ function GameGrid(_settings) {
 	var grid = new Array();	//vertical
 	grid.push(new Array());	//horizontal (first row)
 	var settings = _settings;
-	var maximumCol = maximumCol;
+	var maximumCol = 0;
+	var gridc: new GridCalc();
+
 
 	this.addRow = function(){
 		var l = grid.length;
@@ -36,13 +38,14 @@ function GameGrid(_settings) {
 		return grid[0].length;
 	}
 
-	this.updateGrid = function(socket, maximumCol){
+	this.updateGrid = function(socket, maxCol, ball){
 		var x;
 		var y;
+		maxmumCol = maxCol;
 
 		//Look for an available spot
 		for (i = 0; i < this.getHeight(); i++) {
-			x = checkrow(socket , i);
+			x = checkrow(socket , i, ball);
 			if(x != -1){
 				y = i;
 				break
@@ -53,12 +56,13 @@ function GameGrid(_settings) {
 		if(x < 0){
 			this.addRow();
 			grid[grid.length][0].setPlayer(socket);
+			grid[grid.length][0].addBall(ball);
 		}
 
 		return {left: x * settings.canvasWidth, top: y*settings.canvasHeight}; 
 	}
 
-	checkrow = function(socket, i){
+	checkrow = function(socket, i, ball){
 		for(j = 0; j < maximumCol; j++){
 				if(grid[i].length == j){
 					grid[i].push(new Block(socket ,x * settings.canvasWidth, y*settings.canvasHeight))
@@ -79,6 +83,21 @@ function GameGrid(_settings) {
 				}
 			}
 		}
+	}
+
+	this.removeBall = function(ball){
+		blocksWithBall = gridc.inBlock(ball);
+		blocksWithBall.forEach(function(b){
+			grid[b.x][b.y].remove(ball, -1);
+		})
+	}
+
+	this.update = function(){
+		grid.forEach(function(r){
+			r.forEach(function(b){
+				b.update;
+			})
+		})
 	}
 
 }
