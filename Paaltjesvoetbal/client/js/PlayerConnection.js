@@ -43,6 +43,7 @@ socket.on('showPlayerName', function(){
 
 var leftOffset = 0; 
 var topOffset = 0;
+var lastBall;
 
 socket.on('canvasPos', function (data){
 	leftOffset = data.left;
@@ -50,13 +51,19 @@ socket.on('canvasPos', function (data){
 });
 
 //Waits for a 'newBall' emit from drawhandler
-socket.on('newBall', function (nr, colors) {
-	createBall(nr, colors);
+socket.on('addBall', function (data) {
+	console.log("Ball Added")
+	createBall(data);
 });
 
-socket.on('updateBall', function (pos, index) { //TODO: ID instead of index
-	if(balls.getMember(index) != null)
-		balls.getMember(index).setPosition(pos.x - leftOffset, pos.y - topOffset);
+socket.on('updateBalls', function (ballData) { //TODO: ID instead of index
+	lastBall = ballData;
+	var d = new Date();
+	var n = d.getTime();
+	console.log("Update Received" + n);
+	for(var b in ballData){
+		getBall(b).setPosition(ballData[b].x - leftOffset, ballData[b].y - topOffset);
+	}
 });
 
 //Listener for powerup
@@ -77,16 +84,23 @@ function sendShieldAngle() {
 	}
 };
 
-//Create nr of ball with the corresponding colors in the color-array
-function createBall(nr, colors){
-	for(var i = balls.getMemberLength(); i < nr; i++){
-		var ball = game.instantiate(new Ball(10));
-		if(i == nr-1) ball.setPosition(100, 100);
-		ball.setColor(colors[i]);
-		//ball.getBody().setVelocity(5);
-
-		balls.addMember(ball);
+function getBall(_gid) {
+	for(i = 0; i < balls.getMember.length; i++){
+		if(balls.getMember(i).getGlobalID() == _gid){
+			return balls.getMember(i);
+		}
 	}
+}
+
+//Create nr of ball with the corresponding colors in the color-array
+function createBall(data){
+	var ball = game.instantiate(new Ball(10));
+	ball.setPosition(data.pos.x, data.pos.y);
+	ball.setColor(data.color);
+	ball.setGlobalID(data.gid);
+	//ball.getBody().setVelocity(5);
+
+	balls.addMember(ball);
 };
 
 function createPowerup(data){

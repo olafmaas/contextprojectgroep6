@@ -1,3 +1,8 @@
+if(typeof module != 'undefined'){
+	var Base = require('../../game/util/Base.js');
+	var Settings = require('./Settings.js');
+}
+
 var GridCalc= Base.extend({
 
 	setting: new Settings(),
@@ -40,7 +45,7 @@ var GridCalc= Base.extend({
 		y = (ball.getPosition().y - yPosInBlock)/settings.canvasWidth;
 		ret.push(y);
 
-		if((yPosInBlock < ball.getRadius()) && (ball.getBody().getVectorVelocity().y < 0){
+		if((yPosInBlock < ball.getRadius()) && (ball.getBody().getVectorVelocity().y < 0)){
 			ret.push(y-1);
 		}
 
@@ -51,3 +56,7 @@ var GridCalc= Base.extend({
 	},
 
 })
+
+if(typeof module != 'undefined'){
+    module.exports = GridCalc;
+}

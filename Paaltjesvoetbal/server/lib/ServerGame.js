@@ -16,6 +16,7 @@ if(typeof module != 'undefined'){
 	var Group = require('../../game/util/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
 	var ColorGenerator = require('../../game/util/ColorGenerator');
+	var BallFactory = require('./BallFactory.js');
 }
 
 function Server(){
@@ -53,17 +54,24 @@ function Server(){
 	* @method Server#addClient
 	* @param {socket} The socket associated with the player. 
 	*/
-	this.addClient = function(socket, positionOfPole){
-		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
-		//setGroupMemberships(player);
+	this.addClient = function(socket){
+
 		var ball = game.instantiate(bf.createNewBall(10));
+		var positionOfPole = gameGrid.updateGrid(socket, maxNrOfColumns, ball)
+
+		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
+
+		//setGroupMemberships(player);
 		
-		group("Balls").addMemberOnPosition(ball, ball.getGlobalID());
+		
+		group("Balls").addMember(ball);
 		group("Poles").addMember(game.instantiate(player.getPole()));
 		group("Shields").addMember(game.instantiate(player.getShield()));
 		group("Players").addMember(player);
 
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield());
+
+		
 
 		return {id: clientList[socket.id].player.getName(), color: ball.getColor(),
 			polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID()};
@@ -71,7 +79,7 @@ function Server(){
 
 	this.deleteClient = function(socketID){
 		var client = clientList[socketID];
-		var b = group("Balls").getFilteredMember(group("Balls").getFilteredMemberLength()-1)
+		var b = group("Balls").getMember(group("Balls").getMemberLength()-1)
 		group("Balls").removeMemberOnPosition(b.getGlobalID());	//TODO remove precies als de bal een scherm verlaat.
 		group("Poles").removeMember(client.pole);
 		group("Shields").removeMember(client.shield);
@@ -123,9 +131,6 @@ function Server(){
 		return {width: _width, height: _height};
 	}
 
-	this.updateGrid = function(socket){
-		return gameGrid.updateGrid(socket, maxNrOfColumns);
-	}
 
 	this.setAngle = function(socket, angle){
 		clientList[socket.id].shield.setAngle(angle);
@@ -142,7 +147,7 @@ function Server(){
 	}
 
 	this.update = function(){
-
+		gameGrid.update()
 	}
 
 	this.createGame = function(_initialize, _update, _width, _height){
@@ -184,7 +189,7 @@ function Server(){
 	}
 
 	this.nrOfBalls = function(){
-		return group("Balls").getFilteredMemberLength();
+		return group("Balls").getMemberLength();
 	}
 
 	this.getBallPosition = function(_id){

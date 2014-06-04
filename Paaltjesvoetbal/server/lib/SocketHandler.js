@@ -50,14 +50,13 @@ function SocketHandler(_server, _io){
 
 	this.handlePlayerConnection = function(socket){
 		
+		//Ask for userName
 		socket.emit('userName', false);
 
 		//Add player to grid
-		res = server.updateGrid(socket);
-		newPlayer(socket, res);
-
+		newPlayer(socket);
 		updateMainScreenCanvasSize();
-		socket.emit('canvasPos', res);
+		
 
 		socket.on('userName', function (name){
 			if(server.isNameAvailable(name)){
@@ -93,7 +92,8 @@ function SocketHandler(_server, _io){
 		mainScreenSocket.emit('newPlayer', np);
 
 		mainScreenSocket.emit('newBall', {color: np.color, gid: np.gid}); //inform mainscreen of new ball
-		dh.ballAdded(server.getTransportList()); //inform players of new ball(s)
+
+		return 
 	}
 	
 	newPowerup = function(){
@@ -105,12 +105,12 @@ function SocketHandler(_server, _io){
 	}
 
 	this.update = function(){
+		//Update Balls is done in Block
 		server.update();
 
 		//TODO: ID instead of index
 		for(var i = 0; i < server.nrOfBalls(); i++){
 			dh.drawToMainScreen(server.getBallPosition(i), i);	
-			dh.drawToPlayers(server.getBall(i), i);	
 		}
 
 		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.

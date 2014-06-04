@@ -7,18 +7,19 @@ if(typeof module != 'undefined'){
 }
 
 
-var Block= Base.extend({
+var Block = Base.extend({
 
-	balls: [],
+	ballsList: null,
 	socket: false,
 	neighbours: {top: undefined, bottom: undefined, left: undefined, right: undefined},
 	position: {top: 0, left: 0},
 	setting: new Settings(),
 
-	constructor: function(_socket, _top, _left){
-		socket = _socket;
+	constructor: function(_socket, _left, _top){
+		this.socket = _socket;
 		this.position.top = _top;
 		this.position.left = _left;
+		this.ballsList = [];
 	},
 
 	setNeighbour: function(_position, _object){
@@ -26,17 +27,22 @@ var Block= Base.extend({
 	},
 
 	addBall: function(ball){
-		this.balls.push(ball);
+		console.log("Ball Pushed in:" + this.position.left + " " + this.position.top)
+		this.ballsList.push(ball);
+		console.log(this.ballsList.length);
+		this.sendNewBallToPlayer(ball);
 	},
 
 	ballIncoming: function(ball){
-		if(!hasBall(ball)){
-			this.balls.push(ball);
+		if(!this.hasBall(ball)){
+			this.sendNewBallToPlayer(ball);
+			this.ballsList.push(ball);
+			console.log("Ball Came in:" + ball.getPosition() + " " + this.position.left + " " + this.position.top)
 		}
 	},
 
 	sendNewBallToPlayer: function(ball){
-		socket.emit("removeBall", ball.getGlobalID())
+		this.socket.emit("addBall", {pos: ball.getPosition(), gid: ball.getGlobalID(), color: ball.getColor()})
 	},
 
 	blocksToSendBallTo: function(ball){
@@ -45,7 +51,7 @@ var Block= Base.extend({
 		var yPosInBlock = ball.getPosition().y - this.top;
 
 		//Top
-		if((yPosInBlock < ball.getRadius()) && (ball.getBody().getVectorVelocity().y < 0){
+		if((yPosInBlock < ball.getRadius()) && (ball.getBody().getVectorVelocity().y < 0)){
 			sendTo.push("top");
 		}
 
@@ -96,18 +102,24 @@ var Block= Base.extend({
 	},
 
 	update: function(){
-		for(i= 0; i < this.balls.length; i++){
-			this.sendToList(this.blocksToSendBallTo(this.balls[i]), this.balls[i]);
+		var posList = {};
+		for(var i = 0; i < this.ballsList.length; i++){
+			//console.log(this.position.left + " " +this.balls[i].getPosition())
+			this.sendToList(this.blocksToSendBallTo(this.ballsList[i]), this.ballsList[i]);
 			if(this.shouldBeRemoved(ball)){
-				remove(this.ball[i], i)
+				removeBall(this.ballsList[i], i)
+			}else{
+				posList[this.ballsList[i].getGlobalID()] = this.ballsList[i].getPosition();
 			}
 		}
 
+
+		this.socket.emit('updateBalls', posList);
 	},
 
 	sendToList: function(list, ball){
-		for(i= 0; i < list.length; i++){
-			this.sendToBlock(list[i], ball);
+		for(var j= 0; j < list.length; j++){
+			this.sendToBlock(list[j], ball);
 		}
 	},
 
@@ -115,21 +127,21 @@ var Block= Base.extend({
 		this.neighbours[direction].ballIncoming(ball);
 	},
 
-	remove: function(ball, i){
-		if(socket){
-			socket.emit("removeBall", ball.getGlobalID())
+	removeBall: function(ball, i){
+		if(this.socket){
+			this.socket.emit("removeBall", ball.getGlobalID())
 		}
 
 		if(i == -1){
-			this.balls.splice(this.getBallIndex(), 1);
+			this.ballsList.splice(this.getBallIndex(ball), 1);
 		}else{
-			this.balls.splice(i, 1);
+			this.ballsList.splice(i, 1);
 		}
 	},
 
 	getBallIndex: function(ball){
-		for(var i = 0; i < this.balls.length; i++){
-			if(balls[i].getGlobalID() == ball.getGlobalID()){
+		for(var i = 0; i < this.ballsList.length; i++){
+			if(this.ballsList[i].getGlobalID() == ball.getGlobalID()){
 				return i;
 			}
 		}
@@ -138,6 +150,7 @@ var Block= Base.extend({
 
 	setPlayer: function(_socket){
 		this.socket = _socket;
+		this.socket.emit('canvasPos', {left: this.position.left, top: this.position.top});
 	},
 
 	removePlayer: function(){
@@ -145,12 +158,12 @@ var Block= Base.extend({
 	},
 
 	hasPlayer: function(){
-		return socket != false;
+		return this.socket != false;
 	},
 
 	hasBall: function(_ball){
-		for(var i = 0; i < this.balls.length; i++){
-			if(balls[i].getGlobalID() == ball.getGlobalID()){
+		for(var i = 0; i < this.ballsList.length; i++){
+			if(this.ballsList[i].getGlobalID() == ball.getGlobalID()){
 				return true;
 			}
 		}

@@ -185,7 +185,7 @@ var Body = Base.extend({
 	*/
 	getVelocityDirection: function(){
 		return this.velocityDirection;
-	}
+	},
 
 	getVectorVelocity: function(){
 		return this.vectorVelocity;
