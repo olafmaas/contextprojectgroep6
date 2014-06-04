@@ -38,6 +38,10 @@ socket.on('updateCanvasSize', function (data) {
 	game.setHeight(data.height);
 });
 
+socket.on('updateScores', function (highScores){
+	document.getElementById("highScores").innerHTML = JSON.stringify(highScores);
+});
+
 socket.on('newPlayer', function (data) {
 	createPlayerObjects(data);
 });

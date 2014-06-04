@@ -34,6 +34,8 @@ function SocketHandler(_server, _io){
 
 		updateMainScreenCanvasSize();
 
+		setInterval(this.updateScores, 1000);
+
 		socket.on('screenSizeMainScreen', function (data){
 			server.setMaxGameSize(data)
 		});
@@ -134,10 +136,16 @@ function SocketHandler(_server, _io){
 				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);
 			}
 		}
-
 	}
 
-
+	this.updateScores = function(){
+		var highScores = {};
+		for(var i = 0; i < server.getNumberOfPlayers(); i++){
+			var player = server.getGroup("Players").getMember(i);
+			highScores[player.score] = player.name;
+		}
+		mainScreenSocket.emit('updateScores', highScores);
+	};
 }
 
 if(typeof module != 'undefined'){
