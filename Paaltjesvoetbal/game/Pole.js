@@ -14,6 +14,7 @@ if(typeof module != 'undefined'){
 */
 var Pole = Ball.extend({
 	hit: false,
+	coolDown: false,
 	prevColor: 0,
 	player: 0,
 	timer: 0, //Each pole keeps its own 'alive' time
@@ -34,22 +35,18 @@ var Pole = Ball.extend({
 	/**
 	* Handles everything when the pole is hit:
 	* from setting the hit flag, to managing the cooldown of the pole.
-	*
+	* zie commit 15f21808bd1c8d0f708674a6f142c768ba3119da voor de oude versie.
 	* @method Pole#isHit
 	*/
-	isHit: function(_this){
-		if(_this != null  && _this != undefined){
-			savedThis = _this;
-		}
-		else {
-			savedThis = this;
-		}
-		if(!savedThis.hit){
-			savedThis.hit = true; //set hit flag
-			savedThis.prevColor = savedThis.getColor(); //retrieve original color
-			savedThis.setColor("darkOrange"); //set new color to indicate being hit
-			savedThis.saveHighscore(); //Save current score if highscore
-			savedThis.coolDown(3000); //set cooldown period
+	isHit: function(){
+		if(!this.coolDown){
+			this.coolDown = true;
+			this.prevColor = this.getColor(); //retrieve original color
+			this.setColor("darkOrange"); //set new color to indicate being hit
+			this.saveHighscore(); //Save current score if highscore
+			this.hit = false; //remove hit flag
+			var savedThis = this;
+			setTimeout(function() { savedThis.setColor(savedThis.prevColor); savedThis.coolDown = false  }, 1000); //set cooldown period
 		}
 	},
 
@@ -59,17 +56,18 @@ var Pole = Ball.extend({
 	* @method Pole#coolDown
 	*/
 	//TODO: iets van laten knipperen? sneller = cooldown bijna afgelopen?
-	coolDown: function(_interval){
-		if(_interval > 0){
-			var savedThis = this;
-			setTimeout( function() { savedThis.coolDown(0); }, _interval);
-		}
-		else {
-			this.setColor(this.prevColor); //Revert back to previous color
-			this.hit = false; //remove hit flag
-			this.timer.startTimer();
-		}
-	},
+	// coolDown: function(_interval){
+	// 	// if(_interval > 0){
+	// 	// 	var savedThis = this;
+	// 	// 	setTimeout( function() { savedThis.coolDown(0); }, _interval);
+	// 	// }
+	// 	// else {
+	// 	// 	this.setColor(this.prevColor); //Revert back to previous color
+	// 	// 	this.hit = false; //remove hit flag
+	// 	// 	this.timer.startTimer();
+	// 	// }
+	// },
+
 
 	/**
 	* Checks whether two objects are the same by comparing ID's
@@ -104,6 +102,7 @@ var Pole = Ball.extend({
 		}
 		this.player.setScore(0); //reset score
 		this.timer.stop(); //reset timer
+		this.timer.startTimer(); //restart timer gebeurde vroeger in de cooldown
 	},
 
 	/**
