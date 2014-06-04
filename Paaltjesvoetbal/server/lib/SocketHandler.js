@@ -56,9 +56,6 @@ function SocketHandler(_server, _io){
 		res = server.updateGrid(socket);
 		newPlayer(socket, res);
 
-		res = server.updateGrid(socket);
-		newPlayer(socket, res);
-
 		updateMainScreenCanvasSize();
 		socket.emit('canvasPos', res);
 
