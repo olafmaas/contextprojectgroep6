@@ -43,10 +43,7 @@ function Server(){
 		var member = group("Players").getMember(index);
 		
 		if(member != undefined && member != null){
-			var pole = member.getPole();
-			var xpos = pole.getBody().getPosition().x;
-			var ypos = pole.getBody().getPosition().y;
-			return { id: member.getGlobalID(), position: {x: xpos, y: ypos} };
+			return { id: member.getGlobalID() };
 		}
 	}
 	

@@ -95,9 +95,8 @@ function createBall(nr, colors){
 
 function createPowerup(data){
 	
-	console.log(player.getGlobalID());
-	console.log(data.id);
 	if(player.getGlobalID() == data.id){
+
 		var type = Math.floor(Math.random()*4);
 		powerup = game.instantiate(new Powerup(10, type));
 		
@@ -105,18 +104,18 @@ function createPowerup(data){
 		chooser *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 		
 		if(chooser == 1){
-			var dx = Math.round(Math.random() * (UserSettings.canvasWidth-(data.position.x+70)) + 70);
-			var dy = Math.round(Math.random() * (UserSettings.canvasHeight-data.position.y));
+			var dx = Math.round(Math.random() * (UserSettings.canvasWidth - (UserSettings.canvasWidth/2 + 70)) + 70);
+			var dy = Math.round(Math.random() * (UserSettings.canvasHeight - UserSettings.canvasHeight/2));
 		
 		}
 		else{
-			var dx = Math.round(Math.random() * (UserSettings.canvasWidth-data.position.x));
-			var dy = Math.round(Math.random() * (UserSettings.canvasHeight-(data.position.y+70)) + 70);
+			var dx = Math.round(Math.random() * (UserSettings.canvasWidth - UserSettings.canvasWidth/2));
+			var dy = Math.round(Math.random() * (UserSettings.canvasHeight - (UserSettings.canvasHeight/2 + 70)) + 70);
 		}
 		
 		dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 		dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-		
-		powerup.setPosition(data.position.x + dx, data.position.y + dy);
+
+		powerup.setPosition(UserSettings.canvasWidth/2 + dx, UserSettings.canvasHeight/2 + dy);
 	}
 };
