@@ -58,7 +58,7 @@ function Server(){
 		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
 		//setGroupMemberships(player);
 		var ball = game.instantiate(bf.createNewBall(10));
-		colors.push(ball.getColor())
+		colors.push(new BallTO(ball.getColor(), ball.getGlobalID))
 		
 		group("Balls").addMember(ball);
 		group("Poles").addMember(game.instantiate(player.getPole()));

@@ -26,6 +26,17 @@ function Group(_type){
 	}
 
 	/**
+	* Adds an object to an existing list of members on a certain position.
+	* @method Group#addMemberOnPosition
+	* @param {Object} _object - The object which is added to a list of members
+	* @param {Integer} _index - The position on which the object should be added. Usually a globalID. 
+	*/
+	this.addMemberOnPosition = function(_object, _index){
+		if(_object instanceof type)
+			member[_index] = _object;
+	}
+
+	/**
 	* Removes the specified object from the group, returns -1 if not found or of wrong type.
 	*
 	* @method Group#removeMember 
@@ -43,6 +54,16 @@ function Group(_type){
 			if(!found) return -1;
 		}
 		else return -1; //Else it's another type, which isn't present in this group
+	}
+
+	/**
+	* Removes the object on the specified index from the group.
+	*
+	* @method Group#removeMember 
+	* @param {Integer} _index - The index of the object which has to be deleted from the group.
+	*/
+	this.removeMemberOnIndex = function(_index){
+		members.splice(i, 1);
 	}
 
 	/**
