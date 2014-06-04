@@ -34,16 +34,16 @@ var Pole = Ball.extend({
 	/**
 	* Handles everything when the pole is hit:
 	* from setting the hit flag, to managing the cooldown of the pole.
-	*
+	* zie commit 15f21808bd1c8d0f708674a6f142c768ba3119da voor de oude versie.
 	* @method Pole#isHit
 	*/
 	isHit: function(){
-		prevColor = this.getColor(); //retrieve original color
+		this.prevColor = this.getColor(); //retrieve original color
 		this.setColor("darkOrange"); //set new color to indicate being hit
 		this.saveHighscore(); //Save current score if highscore
 		this.hit = false; //remove hit flag
-		setTimeout(this.coolDown(this), 3000); //set cooldown period
-
+		var saveThis = this;
+		setTimeout(function() { saveThis.setColor(saveThis.prevColor) }, 1000); //set cooldown period
 	},
 
 	/**
@@ -52,10 +52,18 @@ var Pole = Ball.extend({
 	* @method Pole#coolDown
 	*/
 	//TODO: iets van laten knipperen? sneller = cooldown bijna afgelopen?
-	coolDown: function(_this){
-		_this.setColor(_this.prevColor); //Revert back to previous color
-		//_this.hit = false; //remove hit flag
+	coolDown: function(_interval){
+		// if(_interval > 0){
+		// 	var savedThis = this;
+		// 	setTimeout( function() { savedThis.coolDown(0); }, _interval);
+		// }
+		// else {
+		// 	this.setColor(this.prevColor); //Revert back to previous color
+		// 	this.hit = false; //remove hit flag
+		// 	this.timer.startTimer();
+		// }
 	},
+
 
 	/**
 	* Checks whether two objects are the same by comparing ID's
@@ -90,6 +98,7 @@ var Pole = Ball.extend({
 		}
 		this.player.setScore(0); //reset score
 		this.timer.stop(); //reset timer
+		this.timer.startTimer(); //restart timer gebeurde vroeger in de cooldown
 	},
 
 	/**

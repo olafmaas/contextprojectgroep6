@@ -68,6 +68,10 @@ socket.on('removeBall', function (nr, colors) {
 	//TODO
 });
 
+socket.on('poleIsHit', function (data){
+	if(data) pole.isHit();
+})
+
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
 
