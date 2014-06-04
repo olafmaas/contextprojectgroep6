@@ -16,6 +16,7 @@ var Powerup = Base.extend({
 	timer: 0,
 	color: "red",
 	visible: true,
+	power: null, //function that contains what the powerup will do
 
 	constructor: function(_radius, _type){
 		this.radius = _radius;
@@ -38,6 +39,14 @@ var Powerup = Base.extend({
 		return (this.ID == _other.getID());
 	},
 
+	execute: function(_player){
+		console.log(this.power);
+		if(this.power != null){
+			
+			this.power(_player);
+		}
+	},
+
 	//TODO: zorgen dat er echt 'powerups' worden gemaakt zodat ze ook iets gaan doen.
 	//Voor nu zijn het alleen de timers
 	createTimer: function(_type){
@@ -52,7 +61,8 @@ var Powerup = Base.extend({
 			this.timer = new PowerupTimer(UserSettings.smallPoleTime)
 
 			case e.bigPole:
-			this.timer = new PowerupTimer(UserSettings.bigPoleTime)
+			this.timer = new PowerupTimer(UserSettings.bigPoleTime);
+			this.power = function(_player) { _player.getPole().setRadius(20); }
 
 			case e.bigBall:
 			this.timer = new PowerupTimer(UserSettings.bigBallTime)

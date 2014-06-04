@@ -93,7 +93,8 @@ function createBall(nr, colors){
 function createPowerup(data){
 	if(powerup != null) game.remove(powerup);
 
-	var type = Math.floor(Math.random()*UserSettings.nrOfPowerups-1);
+	//var type = Math.floor(Math.random()*UserSettings.nrOfPowerups-1);
+	var type = 3; //TEMPORARY
 	powerup = game.instantiate(new Powerup(data.radius, type));
 	
 	var dx = Math.floor(Math.random()* UserSettings.canvasWidth/2)
@@ -117,6 +118,7 @@ function checkPowerup(e){
 
 		if(inX && inY){
 			powerup.isClicked();
+			player.setPowerup(powerup); 
 		}
 	}
 };

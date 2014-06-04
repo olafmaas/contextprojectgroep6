@@ -19,6 +19,7 @@ var Player = Base.extend({
 	points: 5, //Points the player is worth when hit 
 	score: 0, //Current score of the player
 	highscore: 0, //Highscore of the player
+	activePowerup: null, //The currently active powerup
 
 	ID: -1,
 
@@ -65,6 +66,24 @@ var Player = Base.extend({
 	*/
 	incrementScore: function(_score){
 		this.score += _score;
+	},
+
+	setPowerup: function(_powerup){
+		//If another powerup was active at this point, make sure the old one is deprecated
+		if(this.activePowerup != null){
+			this.deletePowerup();
+		}
+		this.activePowerup = _powerup;
+		//TODO: Save current state, so the player can go back.
+		this.activePowerup.execute(this); //immediatly execute the powerup 
+	},
+
+	deletePowerup: function(){
+		//TODO: remove execution of current powerup.
+	},	
+
+	revert: function(){
+		//TODO: revert to how the player was before the powerup!
 	},
 
 	/**
