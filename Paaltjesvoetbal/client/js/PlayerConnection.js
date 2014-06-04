@@ -91,7 +91,7 @@ function sendShieldAngle() {
 function createBall(nr, colors){
 	for(var i = balls.getMemberLength(); i < nr; i++){
 		var ball = game.instantiate(new Ball(10));
-		if(i == nr-1) ball.setPosition(100, 100);
+		if(i == nr-1) ball.setPosition(UserSettings.ballX, UserSettings.ballY);
 		ball.setColor(colors[i]);
 
 		balls.addMember(ball);

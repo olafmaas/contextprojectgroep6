@@ -37,9 +37,14 @@ var UserSettings = ({
 	scorePosition: {x: 355, y: 340},
 	namePosition: {x: 10, y: 15},
 
+	//Positions of initial ball
+	ballX: 100,
+	ballY: 100,
+
 	//Canvas properties
 	canvasWidth: 450,
 	canvasHeight: 350
+
 
 });
 

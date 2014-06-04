@@ -75,15 +75,19 @@ var Powerup = Base.extend({
 	createPower: function(_type){
 		switch(_type){
 			case e.smallShield:
+			this.color = "greenyellow";
 			return function(_player) { _player.getShield().setShieldLength(UserSettings.smallShield.length); };
 
 			case e.bigShield:
+			this.color = "violet";
 			return function(_player) { _player.getShield().setShieldLength(UserSettings.bigShield.length); };
 
 			case e.smallPole:
+			this.color = "yellow";
 			return function(_player) { _player.getPole().setRadius(UserSettings.smallPole.radius); };
 
 			case e.bigPole:
+			this.color = "aqua";
 			return function(_player) { _player.getPole().setRadius(UserSettings.bigPole.radius); };
 
 			case e.revertShield: 
