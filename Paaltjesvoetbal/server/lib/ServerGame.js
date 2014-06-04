@@ -20,6 +20,7 @@ if(typeof module != 'undefined'){
 
 function Server(){
 	var clientList = {};
+	var playerIDs = {};
 	var namesList = []
 	var game; 
 	var maxNrOfPlayers = 0;
@@ -65,6 +66,7 @@ function Server(){
 		group("Players").addMember(player);
 
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield(), ball);
+		playerIDs[player.getID()] = socket.id;
 
 		return {id: clientList[socket.id].player.getName(), polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID()};
 	}
@@ -196,6 +198,10 @@ function Server(){
 
 	this.getBallPosition = function(_id){
 		return group("Balls").getMember(_id).getPosition();
+	}
+
+	this.getSocketFromPlayerID = function(_playerID){
+		return clientList[playerIDs[_playerID]].socket;
 	}
 
 }

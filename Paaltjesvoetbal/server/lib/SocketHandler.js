@@ -127,11 +127,10 @@ function SocketHandler(_server, _io){
 		}
 
 		for(var i = 0; i < server.getNumberOfPlayers(); i++){
-			if(server.getGroup("Poles").getMember(i).hit){
-				console.log(server.getGroup("Poles").getMember(i).hit + 'is Hit')
+			var pole = server.getGroup("Poles").getMember(i);
+			if(pole.hit){
 				server.getGroup("Poles").getMember(i).isHit();
-				mainScreenSocket.send('POLE IS HIT MOTHERFUCKERS')
-				//server.getGroup("Poles").getMember(i).hit = false;
+				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);
 			}
 		}
 

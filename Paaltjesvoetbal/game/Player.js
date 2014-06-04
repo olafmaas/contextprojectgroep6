@@ -19,7 +19,7 @@ var Player = Base.extend({
 	points: 5, //Points the player is worth when hit 
 	score: 0, //Current score of the player
 	highscore: 0, //Highscore of the player
-
+	
 	ID: -1,
 
 	constructor: function(_name){
