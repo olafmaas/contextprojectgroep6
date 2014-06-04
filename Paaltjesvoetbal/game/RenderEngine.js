@@ -280,8 +280,11 @@ Drawer = function(_canvasContext){
 	};
 
 	this.drawShield = function(_shield){
+		var revert = 1;
+		if(_shield.isRevert()) revert = -1;
+
 		canvasContext.beginPath();
-  		canvasContext.arc(_shield.getPosition().x, _shield.getPosition().y, _shield.getRadius(), _shield.getAngle() - (_shield.getSize() / _shield.getShieldLength()), _shield.getAngle() + (_shield.getSize() / _shield.getShieldLength()));
+  		canvasContext.arc(_shield.getPosition().x, _shield.getPosition().y, _shield.getRadius(), (revert * _shield.getAngle()) - (_shield.getSize() / _shield.getShieldLength()), (revert * _shield.getAngle()) + (_shield.getSize() / _shield.getShieldLength()));
   		canvasContext.strokeStyle = _shield.getColor();
   		canvasContext.stroke();
 	};

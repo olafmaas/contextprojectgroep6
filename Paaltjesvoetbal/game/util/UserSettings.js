@@ -22,9 +22,8 @@ var UserSettings = ({
 		radius: 20
 	},
 
-	bigBall: {
+	revertShield: {
 		time: 5,
-		radius: 20
 	},
 
 	//Amount of powerups

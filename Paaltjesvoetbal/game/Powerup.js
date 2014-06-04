@@ -46,48 +46,43 @@ var Powerup = Base.extend({
 		}
 	},
 
-	//TODO: zorgen dat er echt 'powerups' worden gemaakt zodat ze ook iets gaan doen.
-	//Voor nu zijn het alleen de timers
+	//Create timers
 	createTimer: function(_type){
 		switch(_type){
 			case e.smallShield:
-			this.timer = new PowerupTimer(UserSettings.smallShield.time)
+			return new PowerupTimer(UserSettings.smallShield.time)
 
 			case e.bigShield:
-			this.timer = new PowerupTimer(UserSettings.bigShield.time)
+			return new PowerupTimer(UserSettings.bigShield.time)
 
 			case e.smallPole:
-			this.timer = new PowerupTimer(UserSettings.smallPole.time)
+			return new PowerupTimer(UserSettings.smallPole.time)
 
 			case e.bigPole:
-			this.timer = new PowerupTimer(UserSettings.bigPole.time);
+			return new PowerupTimer(UserSettings.bigPole.time);
 
-			//Ball waarschijnlijk geen goed idee voor powerup.. meer player achtige dingen aanpassen
-			//In plaats van dit shield reverten.
-			case e.bigBall:
-			this.timer = new PowerupTimer(UserSettings.bigBall.time)
-			
+			case e.revertShield:
+			return new PowerupTimer(UserSettings.revertShield.time)		
 		}
 	},
 
+	//Create powers
 	createPower: function(_type){
 		switch(_type){
 			case e.smallShield:
-			return function(_player) { _player.getShield().setShieldLength(UserSettings.smallShield.length); }
+			return function(_player) { _player.getShield().setShieldLength(UserSettings.smallShield.length); };
 
 			case e.bigShield:
-			return function(_player) { _player.getShield().setShieldLength(UserSettings.bigShield.length); }
+			return function(_player) { _player.getShield().setShieldLength(UserSettings.bigShield.length); };
 
 			case e.smallPole:
-			return function(_player) { _player.getPole().setRadius(UserSettings.smallPole.radius); }
+			return function(_player) { _player.getPole().setRadius(UserSettings.smallPole.radius); };
 
 			case e.bigPole:
-			return function(_player) { _player.getPole().setRadius(UserSettings.bigPole.radius); }
+			return function(_player) { _player.getPole().setRadius(UserSettings.bigPole.radius); };
 
-			//Ball waarschijnlijk geen goed idee voor powerup.. meer player achtige dingen aanpassen
-			//In plaats van dit shield reverten.
-			case e.bigBall:
-			
+			case e.revertShield: 
+			return function(_player) { _player.getShield().revertShield(true); };		
 		}
 	},
 

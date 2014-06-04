@@ -24,6 +24,7 @@ function Shield(_pole){
 	var body;
 	var ID = IDDistributor.getNewId();
 	var length = 2;
+	var revert = false;
 
 	/**
 	* Updates the position of the shield
@@ -83,6 +84,16 @@ function Shield(_pole){
 	//TODO
 	this.setShieldLength = function (_length){
 		length = _length;
+	}
+
+	//TODO:
+	this.isRevert = function(){
+		return revert;
+	}
+
+	//TODO: _revert true = irritant getekend, revert false = gewoon getekend.
+	this.revertShield = function(_revert){
+		revert = _revert;
 	}
 
 	/**
