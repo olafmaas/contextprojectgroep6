@@ -281,7 +281,7 @@ Drawer = function(_canvasContext){
 
 	this.drawShield = function(_shield){
 		canvasContext.beginPath();
-  		canvasContext.arc(_shield.getPosition().x, _shield.getPosition().y, _shield.getRadius(), _shield.getAngle() - (_shield.getSize() / 2), _shield.getAngle() + (_shield.getSize() / 2));
+  		canvasContext.arc(_shield.getPosition().x, _shield.getPosition().y, _shield.getRadius(), _shield.getAngle() - (_shield.getSize() / _shield.getShieldLength()), _shield.getAngle() + (_shield.getSize() / _shield.getShieldLength()));
   		canvasContext.strokeStyle = _shield.getColor();
   		canvasContext.stroke();
 	};

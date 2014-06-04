@@ -93,8 +93,8 @@ function createBall(nr, colors){
 function createPowerup(data){
 	if(powerup != null) game.remove(powerup);
 
-	//var type = Math.floor(Math.random()*UserSettings.nrOfPowerups-1);
-	var type = 3; //TEMPORARY
+	var type = Math.floor(Math.random()*(UserSettings.nrOfPowerups-1));
+	console.log(type);
 	powerup = game.instantiate(new Powerup(data.radius, type));
 	
 	var dx = Math.floor(Math.random()* UserSettings.canvasWidth/2)
@@ -117,8 +117,10 @@ function checkPowerup(e){
 		var inY = Math.abs(powerupPos.y*scale - mouseY) <= powerup.getRadius();
 
 		if(inX && inY){
+			//TODO emit naar server (met playerID om aan te geven welke natuurlijk ;D)
+			//powerup type + playerID nodig voor server
 			powerup.isClicked();
-			player.setPowerup(powerup); 
+			player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
 		}
 	}
 };

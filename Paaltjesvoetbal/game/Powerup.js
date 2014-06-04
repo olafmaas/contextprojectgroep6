@@ -40,9 +40,7 @@ var Powerup = Base.extend({
 	},
 
 	execute: function(_player){
-		console.log(this.power);
 		if(this.power != null){
-			
 			this.power(_player);
 		}
 	},
@@ -52,20 +50,25 @@ var Powerup = Base.extend({
 	createTimer: function(_type){
 		switch(_type){
 			case e.smallShield:
-			this.timer = new PowerupTimer(UserSettings.smallShieldTime)
+			this.timer = new PowerupTimer(UserSettings.smallShield.time)
+			this.power = function(_player) { _player.getShield().setRadius(UserSettings.smallShield.radius); }
 
 			case e.bigShield:
-			this.timer = new PowerupTimer(UserSettings.bigShieldTime)
+			this.timer = new PowerupTimer(UserSettings.bigShield.time)
+			this.power = function(_player) { _player.getShield().setRadius(UserSettings.bigShield.radius); }
 
 			case e.smallPole:
-			this.timer = new PowerupTimer(UserSettings.smallPoleTime)
+			this.timer = new PowerupTimer(UserSettings.smallPole.time)
+			this.power = function(_player) { _player.getPole().setRadius(UserSettings.smallPole.radius); }
 
 			case e.bigPole:
-			this.timer = new PowerupTimer(UserSettings.bigPoleTime);
-			this.power = function(_player) { _player.getPole().setRadius(20); }
+			this.timer = new PowerupTimer(UserSettings.bigPole.time);
+			this.power = function(_player) { _player.getPole().setRadius(UserSettings.bigPole.radius); }
 
+			//Ball waarschijnlijk geen goed idee voor powerup.. meer player achtige dingen aanpassen
+			//In plaats van dit shield reverten.
 			case e.bigBall:
-			this.timer = new PowerupTimer(UserSettings.bigBallTime)
+			this.timer = new PowerupTimer(UserSettings.bigBall.time)
 			
 		}
 	},
