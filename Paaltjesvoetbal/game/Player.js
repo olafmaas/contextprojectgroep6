@@ -21,6 +21,7 @@ var Player = Base.extend({
 	highscore: 0, //Highscore of the player
 	activePowerup: null, //The currently active powerup
 	originalState: {},
+	timer: null,
 
 	ID: -1,
 
@@ -29,12 +30,15 @@ var Player = Base.extend({
 		this.ID = IDDistributor.getNewId();
 	},
 	
-	/* Dummy method
+	/* Checks timer and removes powerup if necesarry.
 	*
 	* @method Player#update
 	*/
 	update: function(){
-
+		if(this.timer != null){
+			if(this.timer.hasStopped())
+				this.deletePowerup();
+		}
 	},
 
 	/* Dummy method
@@ -74,12 +78,16 @@ var Player = Base.extend({
 		this.activePowerup = _powerup;
 		this.saveState(); //Save original playerstate
 		this.activePowerup.execute(this); //immediatly execute the powerup 
+		this.timer = _powerup.getTimer();
+		this.timer.startTimer();
 	},
 
 	//TODO
 	deletePowerup: function(){
 		this.activePowerup.stop();
 		this.activePowerup = null;
+		this.timer.stop();
+		this.timer = null;
 		this.revert(); //revert to original playerstate
 	},	
 
@@ -101,6 +109,16 @@ var Player = Base.extend({
 			length: savedThis.getShield().getShieldLength(),
 			radius: savedThis.getPole().getRadius(),
 		};
+	},
+
+	//TODO
+	setTimer: function(_timer){
+		this.timer = _timer;
+	},
+
+	//TODO
+	getTimer: function(){
+		return this.timer;
 	},
 
 	/**

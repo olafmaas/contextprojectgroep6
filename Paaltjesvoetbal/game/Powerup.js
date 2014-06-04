@@ -29,7 +29,6 @@ var Powerup = Base.extend({
 	},
 	
 	update: function(){	
-		if(this.timer.hasStopped()) console.log("STOPPED");
 		if(this.body instanceof CircularBody) this.body.update();
 	},
 	
@@ -43,7 +42,6 @@ var Powerup = Base.extend({
 
 	execute: function(_player){
 		if(this.power != null){
-			this.timer.startTimer();
 			this.power(_player);
 		}
 	},
