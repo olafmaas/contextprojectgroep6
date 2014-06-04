@@ -7,7 +7,7 @@ var UserSettings = ({
 	//want anders wordt de oude powerup overschreden met de nieuwe timer :D hier nog een fix voor zoeken.
 	smallShield: {
 		time: 10,
-		length: 4
+		length: 3.5
 	},
 
 	bigShield: {
