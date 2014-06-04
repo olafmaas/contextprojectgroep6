@@ -14,6 +14,7 @@ if(typeof module != 'undefined'){
 */
 var Pole = Ball.extend({
 	hit: false,
+	coolDown: false,
 	prevColor: 0,
 	player: 0,
 	timer: 0, //Each pole keeps its own 'alive' time
@@ -38,12 +39,15 @@ var Pole = Ball.extend({
 	* @method Pole#isHit
 	*/
 	isHit: function(){
-		this.prevColor = this.getColor(); //retrieve original color
-		this.setColor("darkOrange"); //set new color to indicate being hit
-		this.saveHighscore(); //Save current score if highscore
-		this.hit = false; //remove hit flag
-		var saveThis = this;
-		setTimeout(function() { saveThis.setColor(saveThis.prevColor) }, 1000); //set cooldown period
+		if(!this.coolDown){
+			this.coolDown = true;
+			this.prevColor = this.getColor(); //retrieve original color
+			this.setColor("darkOrange"); //set new color to indicate being hit
+			this.saveHighscore(); //Save current score if highscore
+			this.hit = false; //remove hit flag
+			var savedThis = this;
+			setTimeout(function() { savedThis.setColor(savedThis.prevColor); savedThis.coolDown = false  }, 1000); //set cooldown period
+		}
 	},
 
 	/**
@@ -52,17 +56,17 @@ var Pole = Ball.extend({
 	* @method Pole#coolDown
 	*/
 	//TODO: iets van laten knipperen? sneller = cooldown bijna afgelopen?
-	coolDown: function(_interval){
-		// if(_interval > 0){
-		// 	var savedThis = this;
-		// 	setTimeout( function() { savedThis.coolDown(0); }, _interval);
-		// }
-		// else {
-		// 	this.setColor(this.prevColor); //Revert back to previous color
-		// 	this.hit = false; //remove hit flag
-		// 	this.timer.startTimer();
-		// }
-	},
+	// coolDown: function(_interval){
+	// 	// if(_interval > 0){
+	// 	// 	var savedThis = this;
+	// 	// 	setTimeout( function() { savedThis.coolDown(0); }, _interval);
+	// 	// }
+	// 	// else {
+	// 	// 	this.setColor(this.prevColor); //Revert back to previous color
+	// 	// 	this.hit = false; //remove hit flag
+	// 	// 	this.timer.startTimer();
+	// 	// }
+	// },
 
 
 	/**

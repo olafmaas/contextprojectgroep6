@@ -126,6 +126,7 @@ function SocketHandler(_server, _io){
 			timer.startTimer();
 		}
 
+		//Call isHit() when a pole is hit and send this event to the player
 		for(var i = 0; i < server.getNumberOfPlayers(); i++){
 			var pole = server.getGroup("Poles").getMember(i);
 			if(pole.hit){
