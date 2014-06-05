@@ -69,7 +69,6 @@ socket.on('updateShieldAngle', function (data) {
 });
 
 socket.on('powerupClicked', function (_pid, _ptype) {
-	console.log("asdf");
 	var player = players.getMemberByGlobalID(_pid);
 	if(player != -1){ //if player has been found
 		var powerup = new Powerup(10, _ptype); //NOT game.instantiate!!, as it should not exists outside this function!
