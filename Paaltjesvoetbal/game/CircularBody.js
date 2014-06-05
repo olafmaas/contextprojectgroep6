@@ -56,7 +56,9 @@ var CircularBody = Body.extend({
 	*/
 	handleCollision: function(_other){
 		//If the body is static it shouldn't respond to collision, but should respond to getting hit in case it's the pole
-		if(this.immovable || this.hit) {
+		if(this.immovable) { 
+			//this.parentBall is de Pole
+			this.parentBall.hit = true;
 			return;
 		}
 

@@ -19,7 +19,10 @@ var Player = Base.extend({
 	points: 5, //Points the player is worth when hit 
 	score: 0, //Current score of the player
 	highscore: 0, //Highscore of the player
-
+	globalID: -1,
+	activePowerup: null, //The currently active powerup
+	originalState: {},
+	timer: null,
 	ID: -1,
 
 	constructor: function(_name){
@@ -27,21 +30,20 @@ var Player = Base.extend({
 		this.ID = IDDistributor.getNewId();
 	},
 	
-	/**
-	* Updates the score label which will be drawn on screen
-	* This includes score, time alive and highscore
+	/* Checks timer and removes powerup if necesarry.
 	*
 	* @method Player#update
 	*/
 	update: function(){
-
+		if(this.timer != null){
+			if(this.timer.hasStopped())
+				this.deletePowerup();
+		}
 	},
 
-	/**
-	* Currently it just draws the score, time alive and highscore of the player on the canvas
+	/* Dummy method
 	*
 	* @method Player#draw
-	* @param {CanvasContext} _canvasContext - The canvas on which it will be drawn.
 	*/
 	draw: function(_canvasContext){
 
@@ -65,6 +67,68 @@ var Player = Base.extend({
 	*/
 	incrementScore: function(_score){
 		this.score += _score;
+	},
+	
+	/**
+	* Sets a global ID for the player
+	* 
+	* @method Player#setGlobalID
+	* @param {number} _id - The unique id to assign to the player.
+	*/
+	setGlobalID: function (_id) {
+		this.globalID = _id;
+	},
+
+	//TODO
+	setPowerup: function(_powerup){
+		//If another powerup was active at this point, make sure the old one is deprecated
+		if(this.activePowerup != null){
+			this.deletePowerup();
+		}
+		this.activePowerup = _powerup;
+		this.saveState(); //Save original playerstate
+		this.activePowerup.execute(this); //immediatly execute the powerup 
+		this.timer = _powerup.getTimer();
+		this.timer.startTimer();
+	},
+
+	//TODO
+	deletePowerup: function(){
+		this.activePowerup.stop();
+		this.activePowerup = null;
+		this.timer.stop();
+		this.timer = null;
+		this.revert(); //revert to original playerstate
+	},	
+
+	//TODO
+	//revert back to original state before the last powerup
+	//met nieuwe powerups moet deze functie ook worden aangepast!
+	revert: function(){
+		this.getShield().revertShield(this.originalState.revert);
+		this.getShield().setShieldLength(this.originalState.length);
+		this.getPole().setRadius(this.originalState.radius);
+	},
+
+	//TODO
+	//met nieuwe powerups moet deze functie ook worden aangepast!
+	saveState: function(){
+		var savedThis = this;
+		this.originalState = {
+			revert: savedThis.getShield().isRevert(),
+			length: savedThis.getShield().getShieldLength(),
+			radius: savedThis.getPole().getRadius(),
+		};
+	},
+
+	//TODO
+	setTimer: function(_timer){
+		this.timer = _timer;
+	},
+
+	//TODO
+	getTimer: function(){
+		return this.timer;
 	},
 
 	/**
@@ -186,12 +250,22 @@ var Player = Base.extend({
 	getHighscore: function(){
 		return this.highscore;
 	},
-
-		/**
-	* Retrieves the ID of the Player
+	
+	/**
+	* Retrieves the global ID of the player
 	*
-	* @method Ball#getID
-	* @return {number} The unique ID of the Player
+	* @method Player#getGlobalID
+	* @return {number} The unique GlobalID of the player
+	*/
+	getGlobalID: function(){
+		return this.globalID;
+	},
+
+	/**
+	* Retrieves the ID of the player
+	*
+	* @method Player#getID
+	* @return {number} The ID of the player
 	*/
 	getID: function(){
 		return this.ID;

@@ -58,6 +58,7 @@ socket.on('addBall', function (data) {
 	}
 });
 
+
 socket.on('updateBalls', function (ballData) { //TODO: ID instead of index
 	lastBall = ballData;
 	var d = new Date();
@@ -70,10 +71,15 @@ socket.on('updateBalls', function (ballData) { //TODO: ID instead of index
 			console.log("Ball with gid" + b + "not found.")
 		}
 	}
+})
+
+socket.on('newPlayer', function (data){
+	player.setGlobalID(data.gpid);
 });
 
+
 //Listener for powerup
-socket.on('dropPowerup', function (data) {
+socket.on('addPowerup', function (data) {
 	createPowerup(data);
 });
 
@@ -81,8 +87,14 @@ socket.on('removeBall', function (gid) {
 	removeBall(gid);
 });
 
+socket.on('poleIsHit', function (data){
+	if(data) pole.isHit();
+})
+
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
+
+window.onmousedown = checkPowerup;
 
 function sendShieldAngle() {
 	if(shield != undefined){
@@ -90,15 +102,16 @@ function sendShieldAngle() {
 	}
 };
 
+
 function getBallIndex(_gid) {
 	for(var i = 0; i < balls.getMembers().length; i++){
 		if(balls.getMember(i).getGlobalID() == _gid){
 			return i;
 		}
 	}
-
-	return -1;
+	return -1; 
 }
+
 
 function removeBall(_gid) {
 	var ind = getBallIndex(_gid);
@@ -124,14 +137,43 @@ function createBall(data){
 };
 
 function createPowerup(data){
-	data.type = Math.floor(Math.random()*4);
-	var p = game.instantiate(new Powerup(data.radius, data.type));
-	
-	var dx = Math.floor(Math.random()*225)
-	var dy = Math.floor(Math.random()*175)
-	dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-	dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-	
-	p.setPosition(data.position.x + dx, data.position.y + dy);
-	
+	if(player.getGlobalID() == data.id){
+
+		if(powerup != null) game.remove(powerup);
+		var type = Math.floor(Math.random() * UserSettings.nrOfPowerups); //choose a radom type
+		powerup = game.instantiate(new Powerup(UserSettings.powerupSize, type));
+		
+		var chooser = Math.round(Math.random()); //random 0 or 1
+		var dx = Math.round(Math.random() * (UserSettings.canvasWidth - (UserSettings.canvasWidth/2 + 70)) + (70*(1-chooser)));
+		var dy = Math.round(Math.random() * (UserSettings.canvasHeight - (UserSettings.canvasHeight/2 + 70)) + (70*chooser));
+		
+		if(Math.round(Math.random())) //randomly decide whether to make x-coordinate negative
+			dx *= -1;
+		if(Math.round(Math.random())) //randomly decide whether to make y-coordinate negative
+			dy *= -1;
+
+		powerup.setPosition(UserSettings.canvasWidth/2 + dx, UserSettings.canvasHeight/2 + dy);
+	}
+};
+
+function checkPowerup(e){
+	if(powerup != null){ //only when a powerup is present!
+		input.mouseMoveListener(e);
+
+		if(!scale) scale = 1;
+		var powerupPos = powerup.getPosition();
+
+		//Check whether distance between powerup center and click is less than radius
+		var inX = Math.abs(powerupPos.x*scale - mouseX) <= powerup.getRadius();
+		var inY = Math.abs(powerupPos.y*scale - mouseY) <= powerup.getRadius();
+
+		if(inX && inY){
+			//TODO emit naar server (met playerID om aan te geven welke natuurlijk ;D)
+			//powerup type + playerID nodig voor server
+			powerup.isClicked();
+			player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
+
+			socket.emit('powerupClicked', player.getGlobalID(), powerup.getType());
+		}
+	}
 };

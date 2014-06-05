@@ -24,7 +24,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	this.boot = function(){
 		parentInitialize();
 		
-		setInterval(parentUpdate, 8);
+		setInterval(parentUpdate, 17);
 	}
 
 	/*

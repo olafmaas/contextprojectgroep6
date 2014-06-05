@@ -38,6 +38,10 @@ socket.on('updateCanvasSize', function (data) {
 	game.setHeight(data.height);
 });
 
+socket.on('updateScores', function (highScores){
+	document.getElementById("highScores").innerHTML = JSON.stringify(highScores);
+});
+
 socket.on('newPlayer', function (data) {
 	createPlayerObjects(data);
 });
@@ -82,6 +86,7 @@ function createPlayerObjects(data){
 	player = game.instantiate(new Player(data.id));
 	player.setPole(pole);
 	player.setShield(shield);
+	player.setGlobalID(data.gpid);
 	pole.setPlayer(player);
 	players.addMember(player);
 

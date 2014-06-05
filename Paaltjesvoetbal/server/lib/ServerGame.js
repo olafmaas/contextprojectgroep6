@@ -21,9 +21,9 @@ if(typeof module != 'undefined'){
 
 function Server(){
 	var clientList = {};
+	var playerIDs = {};
 	var namesList = []
 	var game; 
-	var mainScreenSocket = {emit:function(){false}} //If the mainscreen is not instantiated this function is used;
 	var maxNrOfPlayers = 0;
 	var maxNrOfColumns = 0;
 	var settings = new Settings();
@@ -38,15 +38,13 @@ function Server(){
 	gm.addGroup("Shields", Shield);
 	gm.addGroup("Players", Player);
 	
-	this.dropPowerup = function(){	
+	this.addPowerup = function(){
 		var index = Math.floor(Math.random()*this.getNumberOfPlayers());
 		var member = group("Players").getMember(index);
-
-		var pole = member.getPole();
-		var xpos = pole.getBody().getPosition().x;
-		var ypos = pole.getBody().getPosition().y
-
-		return {radius: 10, type: 0, position: {x: xpos, y: ypos} };
+		
+		if(member != undefined && member != null){
+			return { id: member.getGlobalID() };
+		}
 	}
 	
 	/**
@@ -70,11 +68,12 @@ function Server(){
 		group("Players").addMember(player);
 
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield());
-
+		playerIDs[player.getID()] = socket.id;
 		
 
 		return {id: clientList[socket.id].player.getName(), color: ball.getColor(),
 			polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID()};
+
 	}
 
 	this.deleteClient = function(socketID){
@@ -143,6 +142,14 @@ function Server(){
 		return group("Balls").getMember(index);
 	}
 
+	this.setPowerup = function(_playerID, _powerupType){
+		var player = group("Players").getMemberByGlobalID(_playerID);
+		if(player != -1){ //if player has been found
+			var powerup = new Powerup(10, _powerupType); //NOT game.instantiate!!, as it should not exists outside this function!
+			player.setPowerup(powerup);
+		}
+	}
+
 	this.loadContent = function(){
 
 	}
@@ -181,6 +188,10 @@ function Server(){
 		logHandler.log(message);
 	}
 
+	this.getGroup = function(_group){
+		return group(_group);
+	}
+
 	this.getMaxNrOfPlayers = function(){
 		return maxNrOfPlayers;
 	}
@@ -195,6 +206,10 @@ function Server(){
 
 	this.getBallPosition = function(_id){
 		return group("Balls").getMember(_id).getPosition();
+	}
+
+	this.getSocketFromPlayerID = function(_playerID){
+		return clientList[playerIDs[_playerID]].socket;
 	}
 
 }

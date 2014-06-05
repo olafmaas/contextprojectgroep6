@@ -2,8 +2,9 @@ function Settings(){
 	this.canvasWidth = 450;
 	this.canvasHeight = 350;
 
-	this.minTime = 30;
-	this.maxTime = 90;
+	this.radius = 10;
+	this.minTime = 15;
+	this.maxTime = 30;
 }
 
 if(typeof module != 'undefined'){

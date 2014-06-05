@@ -3,7 +3,7 @@ if(typeof module != 'undefined'){
 	var Player = require('../../game/Player.js');
 	var Pole = require('../../game/Pole.js');
 	var Shield = require('../../game/Shield.js');
-
+	var IDDistributor = require('../../game/util/IDDistributor.js');
 }
 
 var PlayerFactory = Base.extend({
@@ -21,7 +21,7 @@ var PlayerFactory = Base.extend({
 		player.setPole(pole);
 		player.setShield(shield);
 		pole.setPlayer(player);
-
+		player.setGlobalID(IDDistributor.getNewId());
 		return player;
 	},
 

@@ -280,8 +280,11 @@ Drawer = function(_canvasContext){
 	};
 
 	this.drawShield = function(_shield){
+		var revert = 1;
+		if(_shield.isRevert()) revert = -1;
+
 		canvasContext.beginPath();
-  		canvasContext.arc(_shield.getPosition().x, _shield.getPosition().y, _shield.getRadius(), _shield.getAngle() - (_shield.getSize() / 2), _shield.getAngle() + (_shield.getSize() / 2));
+  		canvasContext.arc(_shield.getPosition().x, _shield.getPosition().y, _shield.getRadius(), (revert * _shield.getAngle()) - (_shield.getSize() / _shield.getShieldLength()), (revert * _shield.getAngle()) + (_shield.getSize() / _shield.getShieldLength()));
   		canvasContext.strokeStyle = _shield.getColor();
   		canvasContext.stroke();
 	};
@@ -293,11 +296,13 @@ Drawer = function(_canvasContext){
 	};
 
 	this.drawPowerup = function (_powerup){
-		canvasContext.beginPath();
-		canvasContext.arc(_powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius(), 0, Math.PI*2, true);
-		canvasContext.closePath();
-		
-		canvasContext.fillStyle = _powerup.getColor();
-		canvasContext.fill();
+		if(_powerup.isVisible()){
+			canvasContext.beginPath();
+			canvasContext.arc(_powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius(), 0, Math.PI*2, true);
+			canvasContext.closePath();
+			
+			canvasContext.fillStyle = _powerup.getColor();
+			canvasContext.fill();
+		}
 	};
 }
