@@ -81,7 +81,7 @@ var Block = Base.extend({
 		var yPosInBlock = _ball.getPosition().y - this.position.top;
 
 		//top
-		if(yPosInBlock < -_ball.getRadius() && _ball.getBody().getVectorVelocity().y < 0){
+		if((yPosInBlock < -_ball.getRadius()) && (_ball.getBody().getVectorVelocity().y < 0)){
 			console.log("Top Del")
 			del = true;
 		}
@@ -137,16 +137,20 @@ var Block = Base.extend({
 	},
 
 	removeBall: function(_ball, index){
-		console.log("Ball removed: {gid:" +_ball.getGlobalID() + ", pos: x, " + _ball.getPosition().x + " y, " + _ball.getPosition().y + "} on " + this.position.left);
+		console.log("Ball removed: {gid:" +_ball.getGlobalID() + ", pos: x, " + _ball.getPosition().x + " y, " + _ball.getPosition().y + "} on " + this.position.left + " " + this.position.top);
 		if(this.socket){
 			this.socket.emit("removeBall", _ball.getGlobalID())
 		}
 
+		
 		if(index == -1){
+			console.log("Ball wordt verwijderd.")
 			this.ballsList.splice(this.getBallIndex(ball), 1);
+			console.log("Done")
 		}else{
 			this.ballsList.splice(index, 1);
 		}
+		
 	},
 
 	getBallIndex: function(_ball){
@@ -164,7 +168,7 @@ var Block = Base.extend({
 
 		//Send all balls in block to player
 		for(var i = 0; i < this.ballsList.length; i++){
-			sendNewBallToPlayer(this.ballsList[i]);
+			this.sendNewBallToPlayer(this.ballsList[i]);
 		}
 	},
 
@@ -187,6 +191,10 @@ var Block = Base.extend({
 
 	getPosition: function(){
 		return this.position;
+	},
+
+	getPlayer: function(){
+		return this.socket;
 	}
 
 })

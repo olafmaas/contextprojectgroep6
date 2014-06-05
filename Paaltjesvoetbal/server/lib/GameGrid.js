@@ -17,16 +17,17 @@ function GameGrid(_settings) {
 		for(var i = 0; i < maximumCol; i++){
 			var b = new Block(false ,i * settings.canvasWidth, l*settings.canvasHeight)
 
-			grid[l].push(b)
+			
 			
 			//Set vertical Neighbours
 			grid[l-1][i].setNeighbour("bottom", b);
 			b.setNeighbour("top", grid[l-1][i]);
+			grid[l].push(b)
 
 			//Set horizontal Neighbours
 			if(i > 0){
 				grid[l][i-1].setNeighbour("right", b);
-				b.setNeighbour("left", grid[i-1][i]);
+				b.setNeighbour("left", grid[l][i-1]);
 			}
 		}
 
@@ -91,18 +92,26 @@ function GameGrid(_settings) {
 
 	this.remove = function(socketID){
 		for (var i = 0; i < grid.length; i++) {
-			for(j = 0; j < grid[i].length; j++){
-				if(socketID == grid[i][j].getPlayer()){
-					grid[i][j].removePlayer();
+			for(var j = 0; j < grid[i].length; j++){
+				if(grid[i][j].getPlayer()){
+					if(socketID == grid[i][j].getPlayer().id){
+						grid[i][j].removePlayer();
+					}
 				}
 			}
 		}
 	}
 
 	this.removeBall = function(ball){
+		console.log("BeforeCalc")
 		blocksWithBall = gridc.inBlock(ball);
+		console.log("beforeEach")
 		blocksWithBall.forEach(function(b){
-			grid[b.x][b.y].remove(ball, -1);
+			if(b.x < grid.length){
+				if(b.y < grid[b.x].length){
+					grid[b.x][b.y].removeBall(ball, -1);
+				}
+			}
 		})
 	}
 

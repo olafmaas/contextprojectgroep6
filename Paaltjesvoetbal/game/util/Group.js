@@ -26,18 +26,6 @@ function Group(_type){
 	}
 
 	/**
-	* Adds an object to an existing list of members on a certain position. Don't use this function
-	* in combination with AddMember.
-	* @method Group#addMemberOnPosition
-	* @param {Object} _object - The object which is added to a list of members
-	* @param {Integer} _index - The position on which the object should be added. Usually a globalID.
-	*/
-	this.addMemberOnPosition = function(_object, _index){
-		if(_object instanceof type)
-			member[_index] = _object;
-	}
-
-	/**
 	* Removes the specified object from the group, returns -1 if not found or of wrong type.
 	*
 	* @method Group#removeMember 
@@ -106,15 +94,6 @@ function Group(_type){
 	}
 
 	/**
-	* Returns a list of members, without undefined members.
-	* @method Group#getMembers
-	*/
-	this.getFilteredMembers = function(){
-		return members.filter(function(o){ return o != undefined });
-	}
-
-
-	/**
 	* Returns a specific object from a list of members
 	* @method Group@getMember
 	* @param {int} _index - The index of the object you want to return
@@ -138,14 +117,6 @@ function Group(_type){
 	*/
 	this.getMemberLength = function(){
 		return members.length;
-	}
-
-	/**
-	* Returns the amount of objects in the list if it is filled with addMemberOnPosition
-	* @method Group#getFilteredMemberLength
-	*/
-	this.getFilteredMemberLength = function(){
-		return this.getFilteredMembers().length;
 	}
 
 	this.getCollisionLength = function(){

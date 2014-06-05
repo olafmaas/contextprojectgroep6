@@ -7,6 +7,8 @@ var GridCalc= Base.extend({
 
 	setting: new Settings(),
 
+
+
 	inBlock: function(ball){
 		var arr = new Array();
 
@@ -14,8 +16,8 @@ var GridCalc= Base.extend({
 		yList = this.inVerticalBlock(ball);
 
 		for(i = 0; i < xList.length; i++){
-			for(j = 0; j< yList.length; y++){
-				arr.push({x: xList[i], y: yList[i]});
+			for(j = 0; j< yList.length; j++){
+				arr.push({x: xList[i], y: yList[j]});
 			}
 		}
 
@@ -25,8 +27,8 @@ var GridCalc= Base.extend({
 	inHorizontalBlock: function(ball){
 		var ret = new Array();
 
-		var xPosInBlock = ball.getPosition().x % settings.canvasWidth;
-		x = (ball.getPosition().x - xPosInBlock)/settings.canvasWidth;
+		var xPosInBlock = ball.getPosition().x % this.setting.canvasWidth;
+		x = (ball.getPosition().x - xPosInBlock)/this.setting.canvasWidth;
 		ret.push(x);
 
 		if((xPosInBlock < ball.getRadius()) && (ball.getBody().getVectorVelocity().x < 0)){
@@ -41,8 +43,8 @@ var GridCalc= Base.extend({
 	inVerticalBlock: function(ball){
 		var ret = new Array();
 
-		var yPosInBlock = ball.getPosition().y % settings.canvasWidth;
-		y = (ball.getPosition().y - yPosInBlock)/settings.canvasWidth;
+		var yPosInBlock = ball.getPosition().y % this.setting.canvasWidth;
+		y = (ball.getPosition().y - yPosInBlock)/this.setting.canvasWidth;
 		ret.push(y);
 
 		if((yPosInBlock < ball.getRadius()) && (ball.getBody().getVectorVelocity().y < 0)){
@@ -53,6 +55,8 @@ var GridCalc= Base.extend({
 		if((yPosInBlock > (this.setting.canvasHeight - ball.getRadius())) && (ball.getBody().getVectorVelocity().y > 0)){
 			ret.push(y+1);
 		}
+
+		return ret;
 	},
 
 })

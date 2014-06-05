@@ -80,7 +80,7 @@ function Server(){
 	this.deleteClient = function(socketID){
 		var client = clientList[socketID];
 		var b = group("Balls").getMember(group("Balls").getMemberLength()-1)
-		group("Balls").removeMemberOnPosition(b.getGlobalID());	//TODO remove precies als de bal een scherm verlaat.
+		group("Balls").removeMember(b);	//TODO remove precies als de bal een scherm verlaat.
 		group("Poles").removeMember(client.pole);
 		group("Shields").removeMember(client.shield);
 		group("Players").removeMember(client.player);
@@ -91,6 +91,7 @@ function Server(){
 		game.remove(client.player);
 		//name stays in nameList because it has to stay in the highscore
 		gameGrid.remove(socketID);
+		gameGrid.removeBall(b)
 		ret = b.getGlobalID();
 		delete clientList[socketID]; 
 		return ret;
