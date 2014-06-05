@@ -14,21 +14,23 @@ function GameGrid(_settings) {
 	this.addRow = function(){
 		var l = grid.length;
 		grid.push(new Array());
-		for(i = 0; i < maximumCol; i++){
+		for(var i = 0; i < maximumCol; i++){
 			var b = new Block(false ,i * settings.canvasWidth, l*settings.canvasHeight)
 
 			grid[l].push(b)
 			
 			//Set vertical Neighbours
 			grid[l-1][i].setNeighbour("bottom", b);
-			b.setNeighbour("top", grid[l-1]);
+			b.setNeighbour("top", grid[l-1][i]);
 
 			//Set horizontal Neighbours
 			if(i > 0){
 				grid[l][i-1].setNeighbour("right", b);
-				b.setNeighbour("left", grid[i-1]);
+				b.setNeighbour("left", grid[i-1][i]);
 			}
 		}
+
+		return l;
 	}
 
 	this.getHeight = function(){
@@ -45,7 +47,7 @@ function GameGrid(_settings) {
 		maximumCol = maxCol;
 
 		//Look for an available spot
-		for (i = 0; i < this.getHeight(); i++) {
+		for (var i = 0; i < this.getHeight(); i++) {
 			x = checkrow(socket , i, ball);
 			if(x != -1){
 				y = i;
@@ -55,7 +57,8 @@ function GameGrid(_settings) {
 
 		//If no available spot is found add new row
 		if(x < 0){
-			this.addRow();
+			y = this.addRow();
+			x = 0;
 			grid[grid.length-1][0].setPlayer(socket);
 			grid[grid.length-1][0].addBall(ball);
 		}
@@ -73,6 +76,8 @@ function GameGrid(_settings) {
 					if(j > 0){
 						grid[i][j-1].setNeighbour("right", grid[i][j]);
 						grid[i][j].setNeighbour("left", grid[i][j-1]);
+
+						//console.log("NB set" +  grid[i][j-1].getPosition().left + " ")
 					}
 					return j;
 				}else if(!grid[i][j].hasPlayer()){
@@ -85,7 +90,7 @@ function GameGrid(_settings) {
 	}
 
 	this.remove = function(socketID){
-		for (i = 0; i < grid.length; i++) {
+		for (var i = 0; i < grid.length; i++) {
 			for(j = 0; j < grid[i].length; j++){
 				if(socketID == grid[i][j].getPlayer()){
 					grid[i][j].removePlayer();

@@ -52,17 +52,23 @@ socket.on('canvasPos', function (data){
 
 //Waits for a 'newBall' emit from drawhandler
 socket.on('addBall', function (data) {
-	console.log("Ball Added")
-	createBall(data);
+	if(getBallIndex(data.gid) == -1){
+		console.log("Ball Added")
+		createBall(data);
+	}
 });
 
 socket.on('updateBalls', function (ballData) { //TODO: ID instead of index
 	lastBall = ballData;
 	var d = new Date();
 	var n = d.getTime();
-	console.log("Update Received" + n);
 	for(var b in ballData){
-		getBall(b).setPosition(ballData[b].x - leftOffset, ballData[b].y - topOffset);
+		var i = getBallIndex(b)
+		if(i > -1){
+			balls.getMember(i).setPosition(ballData[b].x - leftOffset, ballData[b].y - topOffset);
+		}else{
+			console.log("Ball with gid" + b + "not found.")
+		}
 	}
 });
 
@@ -71,8 +77,8 @@ socket.on('dropPowerup', function (data) {
 	createPowerup(data);
 });
 
-socket.on('removeBall', function (nr, colors) {
-	//TODO
+socket.on('removeBall', function (gid) {
+	removeBall(gid);
 });
 
 window.onmousemove = sendShieldAngle;
@@ -84,12 +90,26 @@ function sendShieldAngle() {
 	}
 };
 
-function getBall(_gid) {
-	for(i = 0; i < balls.getMember.length; i++){
+function getBallIndex(_gid) {
+	for(var i = 0; i < balls.getMembers().length; i++){
 		if(balls.getMember(i).getGlobalID() == _gid){
-			return balls.getMember(i);
+			return i;
 		}
 	}
+
+	return -1;
+}
+
+function removeBall(_gid) {
+	var ind = getBallIndex(_gid);
+	if(ind > -1){
+		game.remove(balls.getMembers()[ind]);
+		balls.removeMember(balls.getMembers()[ind]);
+		console.log("Ball " + _gid + "removed")
+	}else{
+		console.log("404 Ball Not Found");
+	}
+	return;
 }
 
 //Create nr of ball with the corresponding colors in the color-array
