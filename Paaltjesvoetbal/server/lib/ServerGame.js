@@ -72,7 +72,7 @@ function Server(){
 		
 
 		return {id: clientList[socket.id].player.getName(), color: ball.getColor(),
-			polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID()};
+			polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID(), gpid: player.getGlobalID()};
 
 	}
 

@@ -73,8 +73,9 @@ socket.on('updateBalls', function (ballData) { //TODO: ID instead of index
 	}
 })
 
-socket.on('newPlayer', function (data){
-	player.setGlobalID(data.gpid);
+socket.on('newPlayer', function (_id){
+	console.log(_id);
+	player.setGlobalID(_id);
 });
 
 
