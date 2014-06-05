@@ -26,11 +26,11 @@ describe("Powerup", function(){
 	describe("Color", function(){
 		var p = new Powerup(10, 3);
 
-		it("For type 3, the standard color should be red", function(){
-			expect(p.getColor()).to.equal("red");
+		it("For type 3, the standard color should be aqua instead of red", function(){
+			expect(p.getColor()).to.equal("aqua");
 		})
 
-		it("Should change the default red color to blue", function(){
+		it("Should change the default aqua color to blue", function(){
 			p.setColor("blue");
 			expect(p.getColor()).to.equal("blue");
 		})
