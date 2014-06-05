@@ -96,6 +96,7 @@ window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
 
 window.onmousedown = checkPowerup;
+window.ontouchdown = checkPowerup;
 
 function sendShieldAngle() {
 	if(shield != undefined){
