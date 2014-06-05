@@ -44,6 +44,7 @@ socket.on('showPlayerName', function(){
 var leftOffset = 0; 
 var topOffset = 0;
 var lastBall;
+var powerupRemovalTimer = null;
 
 socket.on('canvasPos', function (data){
 	leftOffset = data.left;
@@ -74,7 +75,6 @@ socket.on('updateBalls', function (ballData) { //TODO: ID instead of index
 })
 
 socket.on('newPlayer', function (_id){
-	console.log(_id);
 	player.setGlobalID(_id);
 });
 
@@ -154,6 +154,7 @@ function createPowerup(data){
 			dy *= -1;
 
 		powerup.setPosition(UserSettings.canvasWidth/2 + dx, UserSettings.canvasHeight/2 + dy);
+		powerupRemovalTimer = setTimeout(removePowerup, UserSettings.removalTime); //set timer so powerup is removed after x seconds.
 	}
 };
 
@@ -169,6 +170,7 @@ function checkPowerup(e){
 		var inY = Math.abs(powerupPos.y*scale - mouseY) <= powerup.getRadius();
 
 		if(inX && inY){
+			clearTimeout(powerupRemovalTimer); //remove the timer
 			//TODO emit naar server (met playerID om aan te geven welke natuurlijk ;D)
 			//powerup type + playerID nodig voor server
 			powerup.isClicked();
@@ -178,3 +180,10 @@ function checkPowerup(e){
 		}
 	}
 };
+
+function removePowerup(){
+	if(powerup != null){
+		game.remove(powerup);
+		powerup = null;
+	}
+}

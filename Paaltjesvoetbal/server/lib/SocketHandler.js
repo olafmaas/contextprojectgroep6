@@ -144,7 +144,7 @@ function SocketHandler(_server, _io){
 	}
 
 	this.updateScores = function(){
-		var highScores = [];
+		var highScores = {};
 		for(var i = 0; i < server.getNumberOfPlayers(); i++){
 			var player = server.getGroup("Players").getMember(i);
 			var score = Math.max(player.getScore(), player.getHighscore());
