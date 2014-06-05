@@ -146,7 +146,8 @@ function SocketHandler(_server, _io){
 		var highScores = {};
 		for(var i = 0; i < server.getNumberOfPlayers(); i++){
 			var player = server.getGroup("Players").getMember(i);
-			highScores[player.score] = player.name;
+			var score = Math.max(player.getScore(), player.getHighscore());
+			highScores[score] = player.name;
 		}
 		mainScreenSocket.emit('updateScores', highScores);
 	};
