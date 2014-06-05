@@ -144,14 +144,30 @@ function SocketHandler(_server, _io){
 	}
 
 	this.updateScores = function(){
-		var highScores = {};
+		var highScores = [];
 		for(var i = 0; i < server.getNumberOfPlayers(); i++){
 			var player = server.getGroup("Players").getMember(i);
 			var score = Math.max(player.getScore(), player.getHighscore());
-			highScores[score] = player.name;
+			highScores.push({ Score: score, Name: player.name, ID: player.getGlobalID()});
 		}
-		mainScreenSocket.emit('updateScores', highScores);
+
+		if(highScores.length > 0){
+			var serializedScores = JSON.stringify(highScores);
+			var hs = JSON.parse(serializedScores);
+			hs.sort(function(a, b) {return b.Score - a.Score;});
+
+			mainScreenSocket.emit('updateScores', hs);
+			reviseTop5(highScores.splice(0, 5)); //only send top 5 (or less)
+		}
+
 	};
+
+	//TODO:
+	reviseTop5 = function(_hs){
+		//No nog player kleur aanpassen op het mainscreen
+		//Dus iets op verzinnen qua doorzenden en hoe je het weer terugzet als de speler van positie
+		//verandert in de top 5 (niet zo handig als hij altijd de kleur houdt namelijk)
+	}
 
 }
 

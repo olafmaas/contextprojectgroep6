@@ -38,8 +38,15 @@ socket.on('updateCanvasSize', function (data) {
 	game.setHeight(data.height);
 });
 
-socket.on('updateScores', function (highScores){
-	document.getElementById("highScores").innerHTML = JSON.stringify(highScores);
+socket.on('updateScores', function (scores){
+
+    //scores.sort(function(a, b) {return b.Score - a.Score;});
+    var scoreText = "";
+    for (i=0; i < scores.length; ++i) {
+        scoreText += scores[i].Score + ': ' + scores[i].Name + " |----| ";
+    }
+
+	document.getElementById("highScores").innerHTML = scoreText; //JSON.stringify(highScores);
 });
 
 socket.on('newPlayer', function (data) {
