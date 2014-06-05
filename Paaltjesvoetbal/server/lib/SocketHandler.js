@@ -77,6 +77,7 @@ function SocketHandler(_server, _io){
 
 		socket.on('powerupClicked', function (_playerID, _powerupType){
 			server.setPowerup(_playerID, _powerupType);
+			mainScreenSocket.emit('powerupClicked', _playerID, _powerupType);
 		});
 
 		socket.on('disconnect', function (data){
@@ -151,6 +152,7 @@ function SocketHandler(_server, _io){
 		}
 		mainScreenSocket.emit('updateScores', highScores);
 	};
+
 }
 
 if(typeof module != 'undefined'){
