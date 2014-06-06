@@ -76,10 +76,10 @@ socket.on('updateShieldAngle', function (data) {
 });
 
 socket.on('powerupClicked', function (_pid, _ptype) {
-	var player = players.getMemberByGlobalID(_pid);
-	if(player != -1){ //if player has been found
+	var p = players.getMemberByGlobalID(_pid);
+	if(p != -1){ //if player has been found
 		var powerup = new Powerup(10, _ptype); //NOT game.instantiate!!, as it should not exists outside this function!
-		player.setPowerup(powerup);
+		p.setPowerup(powerup);
 	}
 });
 
@@ -142,10 +142,4 @@ function removeBall(globalID){
 	}
 	console.log("404 Ball not found")
 	return;
-}
-
-function createPowerup(data){
-	data.type = Math.floor(Math.random()*4);
-	//var p = game.instantiate(new Powerup(data.radius, data.type));
-	//p.setPosition(data.position.x, data.position.y+30);
 };
