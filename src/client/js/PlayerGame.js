@@ -14,7 +14,7 @@ var tempImage;
 function init(){
     balls = new Group(Ball);
     audioManager = new AudioManager()
-    audioManager.addTrack("ballCollision", "./assets/ballCollision.wav")
+    audioManager.addTrack("ballCollision", "./assets/collide.wav")
 };
 
 function createTempImage(){

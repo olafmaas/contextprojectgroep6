@@ -37,6 +37,7 @@ var Block = Base.extend({
 		if(!this.hasBall(_ball)){
 			this.sendNewBallToPlayer(_ball);
 			this.ballsList.push(_ball);
+			_ball.getBody().setCollisionCallback(this.playAudio, this);
 		}
 	},
 
