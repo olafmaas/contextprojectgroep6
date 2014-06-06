@@ -29,9 +29,11 @@ var Block = Base.extend({
 	addBall: function(_ball){
 		console.log("Ball Pushed in:" + this.position.left + " " + this.position.top)
 		this.ballsList.push(_ball);
+		_ball.getBody().setCollisionCallback(this.playAudio, this);
 
 		this.sendNewBallToPlayer(_ball);
 	},
+
 
 	ballIncoming: function(_ball){
 		if(!this.hasBall(_ball)){
@@ -195,6 +197,10 @@ var Block = Base.extend({
 
 	getPlayer: function(){
 		return this.socket;
+	},
+
+	playAudio: function(){
+		this.socket.emit("playAudio", "ballCollision")
 	}
 
 })

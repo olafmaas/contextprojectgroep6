@@ -17,6 +17,7 @@ var CircularBody = Body.extend({
 	radius: 1,
 	parentBall: 0,
 	ID: -1,
+	collisionCallBack: 0, 
 	
 	/**
 	* Constructor for the circular body
@@ -27,6 +28,7 @@ var CircularBody = Body.extend({
 		this.radius = _parent.getRadius();
 		this.parentBall = _parent;
 		this.ID = IDDistributor.getNewId();
+		this.collisionCallBack = {callback:function(){return}, context: undefined};
 	},
 
 	/**
@@ -79,6 +81,7 @@ var CircularBody = Body.extend({
 
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
+		collisionCallBack.callback.call(collisionCallBack.context);
 	},
 
 	/**
@@ -155,6 +158,10 @@ var CircularBody = Body.extend({
 	*/
 	getID: function(){
 		return this.ID;
+	},
+
+	setCollisionCallback: function(_callback, _this){
+		collisionCallBack = {callback: _callback, context: _this};
 	}
 });
 

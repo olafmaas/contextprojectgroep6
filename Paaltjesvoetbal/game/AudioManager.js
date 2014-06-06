@@ -5,19 +5,19 @@ if(typeof module != 'undefined'){
 
 var AudioManager = Base.extend({
 
-	urls: 0,
+	tracks: 0,
 
 
 	constructor: function(){
-		urls = {};
+		tracks = {};
 	},
 
 	addTrack: function(name, _url){
-		urls[name] = new Audio(_url);
+		tracks[name] = new Audio(_url);
 	},
 
 	play: function(name){
-		urls[name].play();
+		tracks[name].play();
 	}
 });
 

@@ -92,6 +92,11 @@ socket.on('poleIsHit', function (data){
 	if(data) pole.isHit();
 })
 
+socket.on('playAudio', function (trackName){
+	audioManager.play(trackName);
+	console.log("play");
+})
+
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
 

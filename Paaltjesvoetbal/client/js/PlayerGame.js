@@ -8,9 +8,12 @@ var balls;
 var powerup = null;
 var scoreLabel;
 var nameLabel;
+var audioManager
 
 function init(){
     balls = new Group(Ball);
+    audioManager = new AudioManager()
+    audioManager.addTrack("ballCollision", "./assets/ballCollision.wav")
 };
 
 function loadContent(){
