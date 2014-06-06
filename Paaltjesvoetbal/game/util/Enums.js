@@ -17,7 +17,8 @@ var e = Object.freeze({
 	"revertShield": 4,
 
 	//Server
-	"updateBall": 10, 
+	"updateBall": 5, //in use
+	"updateBalls": 6, //in use
 	"updateBallAngle": 11, 
 	"drawBall": 12,
 	"drawShield": 13,

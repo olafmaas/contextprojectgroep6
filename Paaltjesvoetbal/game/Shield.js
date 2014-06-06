@@ -25,6 +25,7 @@ function Shield(_pole){
 	var ID = IDDistributor.getNewId();
 	var length = 2;
 	var revert = false;
+	var calculate = true; //whether the angle should be calculated locally or not
 
 	/**
 	* Updates the position of the shield
@@ -34,7 +35,7 @@ function Shield(_pole){
 		if(body instanceof ShieldBody) body.update();
 
 		//on the server and mainscreen this is done on emit from a client!
-		if(typeof module == 'undefined'){
+		if(typeof module == 'undefined' && calculate){
 			this.setAngle(this.calculateAngle());
 		}
 	}
@@ -57,6 +58,10 @@ function Shield(_pole){
 	this.equals = function(_other){
 		return (ID == _other.getID());
 	},
+
+	this.noCalc = function(){
+		calculate = false;
+	}
 
 	/**
 	* Calculates the angle of the shield (in radians) depending on the current mouse input
@@ -169,7 +174,7 @@ function Shield(_pole){
 	* @return {number} The angle of the shield in radians.
 	*/
 	this.getAngle = function (){
-		return angle;
+		return Math.round(angle * 100) / 100;
 	}
 
 	/**

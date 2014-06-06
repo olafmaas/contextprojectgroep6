@@ -4,6 +4,7 @@ if(typeof module != 'undefined'){
 	var Settings = require('./Settings.js');
 	var IDDistributor = require('../../game/util/IDDistributor.js');
 	var ColorGenerator = require('../../game/util/ColorGenerator');
+	var e = require('../../game/util/Enums.js');
 }
 
 
@@ -116,7 +117,7 @@ var Block = Base.extend({
 		}
 
 		if(this.socket){
-			this.socket.emit('updateBalls', posList);
+			this.socket.emit(e.updateBalls, posList);
 		}
 	},
 

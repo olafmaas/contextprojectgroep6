@@ -66,7 +66,7 @@ socket.on('removeBall', function (globalID){
 	removeBall(globalID);
 })
 
-socket.on('updateBall', function (data, index) { //TODO: ID instead of index
+socket.on(e.updateBall, function (data, index) { //TODO: ID instead of index
 	if(balls.getMember(index) != undefined)
 		balls.getMember(index).setPosition(data.x, data.y);
 });
@@ -96,6 +96,7 @@ function createPlayerObjects(data){
 	shield = game.instantiate(new Shield(pole));
 	shield.getBody().immovable = true;
 	shields.addMember(shield);
+	shield.noCalc();
 	shield.setColor("white");
 
 	player = game.instantiate(new Player(data.id));

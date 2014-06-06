@@ -59,7 +59,7 @@ socket.on('addBall', function (data) {
 });
 
 
-socket.on('updateBalls', function (ballData) { //TODO: ID instead of index
+socket.on(e.updateBalls, function (ballData) { //TODO: ID instead of index
 	lastBall = ballData;
 	var d = new Date();
 	var n = d.getTime();
@@ -100,6 +100,7 @@ window.ontouchmove = sendShieldAngle;
 
 window.onmousedown = checkPowerup;
 window.ontouchdown = checkPowerup;
+window.ondblclick = checkPowerup;
 
 function sendShieldAngle() {
 	if(shield != undefined){
