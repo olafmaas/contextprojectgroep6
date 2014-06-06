@@ -1,8 +1,9 @@
 if(typeof module != 'undefined'){
-	var Base = require('../../game/util/Base.js');
+	var Base = require('../../lib/Base.js');
+
+	var e = require('../../game/util/Enums.js');
 	var Ball = require('../../game/Ball.js');
 	var Settings = require('../Settings.js');
-	var e = require('../../game/util/Enums.js');
 }
 
 var Block = Base.extend({

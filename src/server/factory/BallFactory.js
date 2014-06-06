@@ -1,8 +1,10 @@
 if(typeof module != 'undefined'){
-	var Base = require('../../game/util/Base.js');
-	var Ball = require('../../game/Ball.js');
+	var Base = require('../../lib/Base.js');
+
 	var IDDistributor = require('../../game/util/IDDistributor.js');
 	var ColorGenerator = require('../../game/util/ColorGenerator');
+
+	var Ball = require('../../game/Ball.js');
 }
 
 var BallFactory = Base.extend({
