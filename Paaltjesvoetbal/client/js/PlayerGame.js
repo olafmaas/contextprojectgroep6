@@ -50,8 +50,8 @@ function loadContent(){
     nameLabel = game.instantiate(new Label("Unknown Player"));
     nameLabel.setPosition(UserSettings.namePosition);
 
-    createTempImage();
-    setInterval(deleteTempImage, 3000);
+    tempImage = createTempImage();
+    setTimeout(deleteTempImage, 3000);
 
 };
 
