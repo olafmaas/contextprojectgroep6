@@ -1,6 +1,6 @@
 if(typeof module != 'undefined'){
 	var Base = require('../../game/util/Base.js');
-	var Settings = require('./Settings.js');
+	var Settings = require('../Settings.js');
 }
 
 var GridCalc= Base.extend({
