@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title> Tests </title>
+        <link rel="stylesheet" href="../../node_modules/mocha/mocha.css" />
+
+        <!--Import Required modules-->
+
+        
+        
+
+    </head>
+    <body>
+          <div id="mocha"></div>
+          <div id="messages"></div>
+          <div id="blanket-main"></div>
+
+        <script src="../../node_modules/mocha/mocha.js"></script>
+
+        <script src="../../node_modules/chai/chai.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/spy.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/call.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/behavior.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/stub.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/mock.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/collection.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/assert.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/test.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/test_case.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/assert.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/match.js"></script>
+        <script src="../../node_modules/sinon-chai/lib/sinon-chai.js"></script>
+                <!--Config Mocha, Chai and Sinon-->
+
+        <script src="../../src/game/util/Base.js"></script>
+        <script>
+            mocha.ui('bdd'); 
+            mocha.reporter('html');
+            var expect = chai.expect;
+        </script>
+        
+
+
+        <!--Import Game Framework-->
+        <script src="../../src/game/util/IDDistributor.js" data-cover></script>
+        <script src="../../src/game/Body.js" data-cover></script>
+        <script src="../../src/game/CircularBody.js" data-cover></script>
+        <script src="../../src/game/Ball.js" data-cover></script>
+        <script src="../../src/game/Shield.js" data-cover></script>
+        <script src="../../src/game/ShieldBody.js" data-cover></script>
+        <script src="../../src/game/Label.js" data-cover></script>
+        <script src="../../src/game/util/Timer.js" data-cover></script>
+        <script src="../../src/game/Player.js" data-cover></script>
+        <script src="../../src/game/Pole.js" data-cover></script>
+        <script src="../../src/game/util/Enums.js" data-cover></script>
+        <script src="../../src/game/util/UserSettings.js" data-cover></script>
+        <script src="../../src/game/Powerup.js" data-cover></script>
+        <script src="../../src/game/util/PlayerTimer.js" data-cover></script>
+        <script src="../../src/game/util/PowerupTimer.js" data-cover></script>
+
+        <!--Import Test-->
+        <script src="bodyTest.js"></script>
+        <script src="circularBodyTest.js"></script>
+        <script src="poleTest.js"></script>
+        <script src="timerTest.js"></script>
+        <script src="playerTest.js"></script>
+        <script src="playerTimerTest.js"></script>
+        <script src="powerupTimerTest.js"></script>
+        <script src="powerupTest.js"></script>
+
+
+        <script>
+            if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+            else { mocha.run(); }
+        </script>
+        </script>
+    </body>
+</html>

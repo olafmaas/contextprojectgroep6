@@ -1,13 +1,35 @@
-<pre>
-__________               .__   __     __                                   __ ___.          .__   
-\______   \_____  _____  |  |_/  |_  |__| ____   _________  ______   _____/  |\_ |__ _____  |  |  
- |     ___/\__  \ \__  \ |  |\   __\ |  |/ __ \ /  ___/\  \/ /  _ \_/ __ \   __\ __ \\__  \ |  |  
- |    |     / __ \_/ __ \|  |_|  |   |  \  ___/ \___ \  \   (  (_) )  ___/|  | | \_\ \/ __ \|  |__
- |____|    (____  (____  /____/__/\__|  |\___  >____  >  \_/ \____/ \___  >__| |___  (____  /____/
-                \/     \/        \______|    \/     \/                  \/         \/     \/      
+# Paaltjevoetbal 0.3
 
-Contextproject: Games
-Group: 			6
-Game:			Paaltjesvoetbal - The Game
+Paaltjesvoetbal is a game that is played on mobile devices and a mainscreen.
 
-</pre> 
+## Project
+
+Games
+
+## Group
+
+Contextproject groep 6
+
+## Tech
+
+### Libs
+
+Node.js
+socket.io
+Base.js
+
+### Game
+
+src/game
+
+### Server
+
+src/server
+
+### Client
+
+src/client
+
+## Test
+
+## Docs
