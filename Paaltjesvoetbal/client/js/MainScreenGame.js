@@ -6,7 +6,6 @@ var shields = game.instantiate(new Group(Shield));
 var players = game.instantiate(new Group(Player));
 
 function initialize(){
-    game.setUpdating(false);
 };
 
 function loadContent(){

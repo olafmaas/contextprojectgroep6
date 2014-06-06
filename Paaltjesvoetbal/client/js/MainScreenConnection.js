@@ -96,6 +96,7 @@ function createPlayerObjects(data){
 	shield = game.instantiate(new Shield(pole));
 	shield.getBody().immovable = true;
 	shields.addMember(shield);
+	shield.noCalc();
 	shield.setColor("white");
 
 	player = game.instantiate(new Player(data.id));
