@@ -71,6 +71,7 @@ function Sprite(){
 		var hPos = hookedTo.getPosition();
 
 		_canvasContext.drawImage(texture, hPos.x + anchor.x, hPos.y + anchor.y, size.x, size.y);
+
 	}
 
 	/**
