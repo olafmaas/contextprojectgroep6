@@ -1,8 +1,8 @@
 //A simple shield class
 if(typeof module != 'undefined'){
     var ShieldBody = require('./ShieldBody.js');
-    var input = require('./Input.js');
-	var IDDistributor = require('./util/IDDistributor.js');
+    var input = require('../Input.js');
+	var IDDistributor = require('../util/IDDistributor.js');
 }  
 /** 
 * Shield constructor

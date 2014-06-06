@@ -1,6 +1,6 @@
 if(typeof module != 'undefined'){
-	var Base = require('./util/Base.js');
-	var Howl = require('./lib/howler.min.js');
+	var Base = require('../../../lib/Base.js');
+	var Howl = require('../../../lib/howler.min.js');
 }
 
 var AudioManager = Base.extend({
