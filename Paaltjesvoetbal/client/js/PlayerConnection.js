@@ -146,8 +146,8 @@ function createPowerup(data){
 		powerup = game.instantiate(new Powerup(UserSettings.powerupSize, type));
 		
 		var chooser = Math.round(Math.random()); //random 0 or 1
-		var dx = Math.round(Math.random() * (UserSettings.canvasWidth - (UserSettings.canvasWidth/2 + 70)) + (70*(1-chooser)));
-		var dy = Math.round(Math.random() * (UserSettings.canvasHeight - (UserSettings.canvasHeight/2 + 70)) + (70*chooser));
+		var dx = Math.round(Math.random() * (UserSettings.canvasWidth - (UserSettings.canvasWidth/2 + UserSettings.shieldRadius + 2*UserSettings.ballRadius)) + (UserSettings.shieldRadius*(1-chooser)));
+		var dy = Math.round(Math.random() * (UserSettings.canvasHeight - (UserSettings.canvasHeight/2 + UserSettings.shieldRadius + 2*UserSettings.ballRadius)) + (UserSettings.shieldRadius*chooser));
 		
 		if(Math.round(Math.random())) //randomly decide whether to make x-coordinate negative
 			dx *= -1;

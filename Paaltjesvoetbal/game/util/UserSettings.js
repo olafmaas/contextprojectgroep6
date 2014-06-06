@@ -44,9 +44,11 @@ var UserSettings = ({
 
 	//Canvas properties
 	canvasWidth: 450,
-	canvasHeight: 350
-
-
+	canvasHeight: 350,
+	
+	//Shield and ball radius 
+	shieldRadius: 70,
+	ballRadius: 10
 });
 
 if(typeof module != 'undefined'){
