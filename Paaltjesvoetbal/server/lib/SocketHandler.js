@@ -25,6 +25,7 @@ function SocketHandler(_server, _io){
 	var debug;
 	var settings = new Settings();
 	var timer = new RandomTimer(settings.minTime, settings.maxTime);
+	var oldranking = [];
 
 	this.handleMainScreen = function(socket){
 		mainScreenSocket = socket;
@@ -34,7 +35,7 @@ function SocketHandler(_server, _io){
 
 		updateMainScreenCanvasSize();
 
-		setInterval(this.updateScores, 1000);
+		setInterval(this.updateScores, 5000);
 
 		socket.on('screenSizeMainScreen', function (data){
 			server.setMaxGameSize(data)
@@ -145,10 +146,12 @@ function SocketHandler(_server, _io){
 
 	this.updateScores = function(){
 		var highScores = [];
+		var top5 = [];
+		
 		for(var i = 0; i < server.getNumberOfPlayers(); i++){
 			var player = server.getGroup("Players").getMember(i);
 			var score = Math.max(player.getScore(), player.getHighscore());
-			highScores.push({ Score: score, Name: player.name, ID: player.getGlobalID()});
+			highScores.push({ Score: score, Name: player.name, ID: player.getGlobalID() });
 		}
 
 		if(highScores.length > 0){
@@ -157,18 +160,25 @@ function SocketHandler(_server, _io){
 			hs.sort(function(a, b) {return b.Score - a.Score;});
 
 			mainScreenSocket.emit('updateScores', hs);
-			reviseTop5(highScores.splice(0, 5)); //only send top 5 (or less)
+			reviseTop5(hs.splice(0, 1), oldranking); //only send top 5 (or less)
 		}
-
-	};
-
-	//TODO:
-	reviseTop5 = function(_hs){
-		//No nog player kleur aanpassen op het mainscreen
-		//Dus iets op verzinnen qua doorzenden en hoe je het weer terugzet als de speler van positie
-		//verandert in de top 5 (niet zo handig als hij altijd de kleur houdt namelijk)
 	}
 
+	//TODO:
+	reviseTop5 = function(hs, prevHs){
+		//Nu nog player kleur aanpassen op het mainscreen
+		//Dus iets op verzinnen qua doorzenden en hoe je het weer terugzet als de speler van positie
+		//verandert in de top 5 (niet zo handig als hij altijd de kleur houdt namelijk)
+		
+		var top5 = [];
+		for(i = 0; i < hs.length; i++){
+			top5.push(hs[i].ID);
+		}
+		
+		data = { hs: top5, old: prevHs };
+		mainScreenSocket.emit('updateTop', data);
+		oldranking = hs;
+	};
 }
 
 if(typeof module != 'undefined'){
