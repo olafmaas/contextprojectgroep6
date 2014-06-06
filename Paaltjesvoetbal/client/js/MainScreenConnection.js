@@ -43,19 +43,19 @@ socket.on('updateScores', function (scores){
     var scoreText = "";
     for (i=0; i < scores.length; ++i) {
         scoreText += scores[i].Score + ': ' + scores[i].Name + " |----| ";
-    }	
+    }
 	document.getElementById("highScores").innerHTML = scoreText; //JSON.stringify(highScores);
 });
 
 socket.on('updateTop', function (data) {
 	
-	for(i = 0; i < data.old.length; i++){
-		var player = players.getMemberByGlobalID(data.old[i]);
-		player.getPole().setColor('Yellow');
+	for(i = 0; i < data.oldhs.length; i++){
+		var player = players.getMemberByGlobalID(data.oldhs[i]);
+		player.getPole().setColor('Blue');
 	}
 	
-	for(i = 0; i < data.hs.length; i++){
-		var player = players.getMemberByGlobalID(data.hs[i]);
+	for(i = 0; i < data.newhs.length; i++){
+		var player = players.getMemberByGlobalID(data.newhs[i]);
 		player.getPole().setColor('White');
 	}
 });

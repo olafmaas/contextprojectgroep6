@@ -160,24 +160,21 @@ function SocketHandler(_server, _io){
 			hs.sort(function(a, b) {return b.Score - a.Score;});
 
 			mainScreenSocket.emit('updateScores', hs);
-			reviseTop5(hs.splice(0, 1), oldranking); //only send top 5 (or less)
+			reviseTop5(hs.splice(0, 5), oldranking); //only send top 5 (or less for testing!)
 		}
 	}
 
-	//TODO:
-	reviseTop5 = function(hs, prevHs){
-		//Nu nog player kleur aanpassen op het mainscreen
-		//Dus iets op verzinnen qua doorzenden en hoe je het weer terugzet als de speler van positie
-		//verandert in de top 5 (niet zo handig als hij altijd de kleur houdt namelijk)
+	reviseTop5 = function(hs, old){
 		
-		var top5 = [];
+		//So only the ID's are sent
+		var newranking = [];
 		for(i = 0; i < hs.length; i++){
-			top5.push(hs[i].ID);
+			newranking.push(hs[i].ID);
 		}
 		
-		data = { hs: top5, old: prevHs };
+		data = { newhs: newranking, oldhs: old };
 		mainScreenSocket.emit('updateTop', data);
-		oldranking = hs;
+		oldranking = newranking;
 	};
 }
 
