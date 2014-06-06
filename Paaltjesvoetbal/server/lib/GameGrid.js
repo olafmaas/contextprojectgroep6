@@ -73,12 +73,9 @@ function GameGrid(_settings) {
 					grid[i].push(new Block(socket ,j * settings.canvasWidth, i*settings.canvasHeight))
 					grid[i][j].setPlayer(socket)
 					grid[i][j].addBall(ball);
-					console.log(i+" "+j);
 					if(j > 0){
 						grid[i][j-1].setNeighbour("right", grid[i][j]);
 						grid[i][j].setNeighbour("left", grid[i][j-1]);
-
-						//console.log("NB set" +  grid[i][j-1].getPosition().left + " ")
 					}
 					return j;
 				}else if(!grid[i][j].hasPlayer()){
@@ -103,9 +100,7 @@ function GameGrid(_settings) {
 	}
 
 	this.removeBall = function(ball){
-		console.log("BeforeCalc")
 		blocksWithBall = gridc.inBlock(ball);
-		console.log("beforeEach")
 		blocksWithBall.forEach(function(b){
 			if(b.x < grid.length){
 				if(b.y < grid[b.x].length){
