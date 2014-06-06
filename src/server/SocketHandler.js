@@ -1,18 +1,18 @@
 if(typeof module != 'undefined'){
 	var Settings = require('./Settings.js');
-	var GameGrid = require('./GameGrid.js');
-	var GroupManager = require('./GroupManager.js');
-	var PlayerFactory = require('./PlayerFactory.js');
-	var Game = require('../../game/Game.js');
-	var CoreGame = require('../../game/CoreGame.js');
-	var Ball = require('../../game/Ball.js');
-	var Pole = require('../../game/Pole.js');
-	var Shield = require('../../game/Shield.js');
-	var Player = require('../../game/Player.js');
-	var Group = require('../../game/util/Group.js');
-	var handleCollision = require('../../game/CollisionDetection.js');
-	var e = require('../../game/util/Enums.js');
-	var RandomTimer = require('../../game/util/RandomTimer');
+	var GameGrid = require('./grid/GameGrid.js');
+	var GroupManager = require('./util/GroupManager.js');
+	var PlayerFactory = require('./factory/PlayerFactory.js');
+	var Game = require('../game/Game.js');
+	var CoreGame = require('../game/CoreGame.js');
+	var Ball = require('../game/Ball.js');
+	var Pole = require('../game/Pole.js');
+	var Shield = require('../game/Shield.js');
+	var Player = require('../game/Player.js');
+	var Group = require('../game/util/Group.js');
+	var handleCollision = require('../game/CollisionDetection.js');
+	var e = require('../game/util/Enums.js');
+	var RandomTimer = require('../game/util/RandomTimer');
 }
 
 function SocketHandler(_server, _io){

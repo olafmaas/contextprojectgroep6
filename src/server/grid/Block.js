@@ -1,7 +1,7 @@
 if(typeof module != 'undefined'){
 	var Base = require('../../game/util/Base.js');
 	var Ball = require('../../game/Ball.js');
-	var Settings = require('./Settings.js');
+	var Settings = require('../Settings.js');
 	var e = require('../../game/util/Enums.js');
 }
 
