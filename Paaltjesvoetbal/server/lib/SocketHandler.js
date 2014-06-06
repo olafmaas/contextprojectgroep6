@@ -12,13 +12,11 @@ if(typeof module != 'undefined'){
 	var Player = require('../../game/Player.js');
 	var Group = require('../../game/util/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
-	var DrawHandler = require('./DrawHandler.js');
 	var e = require('../../game/util/Enums.js');
 	var RandomTimer = require('../../game/util/RandomTimer');
 }
 
 function SocketHandler(_server, _io){
-	var dh = new DrawHandler(_io);
 	var server = _server;
 	var io = _io;
 	var mainScreenSocket = {emit:function(){false}}; //If the mainscreen is not instantiated this function is used;
@@ -28,7 +26,6 @@ function SocketHandler(_server, _io){
 
 	this.handleMainScreen = function(socket){
 		mainScreenSocket = socket;
-		dh.setMainScreenSocket(socket);
 
 		timer.startTimer(); //Start powerup timer when the mainscreen is connected.
 
@@ -118,7 +115,7 @@ function SocketHandler(_server, _io){
 
 		//TODO: ID instead of index
 		for(var i = 0; i < server.nrOfBalls(); i++){
-			dh.drawToMainScreen(server.getBallPosition(i), i);	
+			mainScreenSocket.emit(e.updateBall, server.getBallPosition(i), i)
 		}
 
 		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
