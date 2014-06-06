@@ -190,7 +190,9 @@ var Block = Base.extend({
 	},
 
 	playAudio: function(){
-		this.socket.emit("playAudio", "ballCollision")
+		if(this.socket){
+			this.socket.emit("playAudio", "ballCollision")
+		}
 	}
 
 });

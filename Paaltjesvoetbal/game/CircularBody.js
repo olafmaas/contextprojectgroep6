@@ -81,7 +81,7 @@ var CircularBody = Body.extend({
 
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
-		collisionCallBack.callback.call(collisionCallBack.context);
+		this.collisionCallBack.callback.call(this.collisionCallBack.context);
 	},
 
 	/**
@@ -161,7 +161,7 @@ var CircularBody = Body.extend({
 	},
 
 	setCollisionCallback: function(_callback, _this){
-		collisionCallBack = {callback: _callback, context: _this};
+		this.collisionCallBack = {callback: _callback, context: _this};
 	}
 });
 
