@@ -1,6 +1,3 @@
-if(typeof module != 'undefined'){
-	var highResolutionTimer = require('./util/HighResolutionTimer.js');
-}
 /*
 * A fully functional game class without any graphical handling
 *
