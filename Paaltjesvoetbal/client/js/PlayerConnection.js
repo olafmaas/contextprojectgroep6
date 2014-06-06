@@ -145,7 +145,7 @@ function createPowerup(data){
 
 		if(powerup != null) game.remove(powerup);
 		var type = Math.floor(Math.random() * UserSettings.nrOfPowerups); //choose a radom type
-		powerup = game.instantiate(new Powerup(30, type));
+		powerup = game.instantiate(new Powerup(UserSettings.powerupSize, type));
 		
 		var chooser = Math.round(Math.random()); //random 0 or 1
 		var dx = Math.round(Math.random() * (UserSettings.canvasWidth - (UserSettings.canvasWidth/2 + 70)) + (70*(1-chooser)));

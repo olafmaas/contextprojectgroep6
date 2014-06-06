@@ -31,7 +31,7 @@ var UserSettings = ({
 
 	//Amount of powerups & global size & how long they are available on screen
 	nrOfPowerups: 5,
-	powerupSize: 30,
+	powerupSize: 20,
 	removalTime: 2000, //in ms
 
 	//Positions of labels
