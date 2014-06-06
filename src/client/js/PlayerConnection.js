@@ -95,11 +95,11 @@ socket.on('playAudio', function (trackName){
 	audioManager.play(trackName);
 })
 
+window.ontouchstart = handleTouchStart;
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
 
-window.ontouchdown = checkPowerup;
-window.onmousedown = checkPowerup;
+window.onmousedown = handleMouseDown;
 
 function sendShieldAngle() {
 	if(shield != undefined){
@@ -161,16 +161,25 @@ function createPowerup(data){
 	}
 };
 
-function checkPowerup(e){
-	if(powerup != null){ //only when a powerup is present!
-		input.mouseMoveListener(e);
+function handleMouseDown(e){
+	input.mouseMoveListener(e);
+	checkPowerup(mouseX, mouseY);
+};
 
+function handleTouchStart(e){
+	var touch = e.changedTouches[0]; //only first finger will be registered.
+	checkPowerup(touch.screenX, touch.screenY);
+}
+
+
+function checkPowerup(_x, _y){
+	if(powerup != null){ //only when a powerup is present!
 		if(!scale) scale = 1;
 		var powerupPos = powerup.getPosition();
 
 		//Check whether distance between powerup center and click is less than radius
-		var inX = Math.abs(powerupPos.x*scale - mouseX) <= powerup.getRadius();
-		var inY = Math.abs(powerupPos.y*scale - mouseY) <= powerup.getRadius();
+		var inX = Math.abs(powerupPos.x*scale - _x) <= powerup.getRadius();
+		var inY = Math.abs(powerupPos.y*scale - _y) <= powerup.getRadius();
 
 		if(inX && inY){
 			clearTimeout(powerupRemovalTimer); //remove the timer
@@ -180,6 +189,7 @@ function checkPowerup(e){
 			player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
 
 			socket.emit('powerupClicked', player.getGlobalID(), powerup.getType());
+			powerup = null;
 		}
 	}
 };
