@@ -1,4 +1,3 @@
-
 if(typeof module != 'undefined'){
 	var Timer = require('./Timer.js');
 }

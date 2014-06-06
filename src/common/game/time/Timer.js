@@ -1,6 +1,6 @@
 //Timer class
 if(typeof module != 'undefined'){
-	var Base = require('./Base.js');
+	var Base = require('../../../lib/Base.js');
 }
 
 /**
