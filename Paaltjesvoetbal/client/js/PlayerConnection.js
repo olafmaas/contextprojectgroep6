@@ -189,6 +189,7 @@ function checkPowerup(_x, _y){
 			player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
 
 			socket.emit('powerupClicked', player.getGlobalID(), powerup.getType());
+			powerup = null;
 		}
 	}
 };
