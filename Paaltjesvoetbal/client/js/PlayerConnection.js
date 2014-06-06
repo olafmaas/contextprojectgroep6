@@ -167,7 +167,8 @@ function handleMouseDown(e){
 };
 
 function handleTouchStart(e){
-	alert(e.changedTouches[0].screenX);
+	var touch = e.changedTouches[0]; //only first finger will be registered.
+	checkPowerup(touch.screenX, touch.screenY);
 }
 
 
