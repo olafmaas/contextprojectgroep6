@@ -164,7 +164,7 @@ var Body = Base.extend({
 	* @return {number, number} The x and y coordinate the position of the body.
 	*/
 	getPosition: function (){
-		return this.position;
+		return {x: Math.round(this.position.x), y: Math.round(this.position.y)};
 	},
 
 	/**

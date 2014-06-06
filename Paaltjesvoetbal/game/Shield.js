@@ -174,7 +174,7 @@ function Shield(_pole){
 	* @return {number} The angle of the shield in radians.
 	*/
 	this.getAngle = function (){
-		return angle;
+		return Math.round(angle * 100) / 100;
 	}
 
 	/**
