@@ -7,8 +7,6 @@ var GridCalc= Base.extend({
 
 	setting: new Settings(),
 
-
-
 	inBlock: function(ball){
 		var arr = new Array();
 
@@ -59,7 +57,7 @@ var GridCalc= Base.extend({
 		return ret;
 	},
 
-})
+});
 
 if(typeof module != 'undefined'){
     module.exports = GridCalc;
