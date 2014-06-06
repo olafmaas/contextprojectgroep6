@@ -264,6 +264,7 @@ Drawer = function(_canvasContext){
 		else if(_element instanceof Shield) this.drawShield(_element);
 		else if(_element instanceof Label) this.drawLabel(_element);
 		else if(_element instanceof Powerup) this.drawPowerup(_element);
+		else if(_element instanceof Sprite) this.drawSprite(_element);
 	};
 
 	this.drawBall = function(_ball){
@@ -276,7 +277,7 @@ Drawer = function(_canvasContext){
 	};
 
 	this.drawSprite = function(_sprite){
-		throw "Unimplemented - Check Sprite.js, the sets and gets are not finished";
+		_sprite.draw(canvasContext);
 	};
 
 	this.drawShield = function(_shield){

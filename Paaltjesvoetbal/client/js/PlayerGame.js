@@ -9,12 +9,25 @@ var powerup = null;
 var scoreLabel;
 var nameLabel;
 var audioManager
+var tempImage;
 
 function init(){
     balls = new Group(Ball);
     audioManager = new AudioManager()
     audioManager.addTrack("ballCollision", "./assets/ballCollision.wav")
 };
+
+function createTempImage(){
+    sprite = new Sprite();
+    sprite.loadContent('./img/beginplaatje.svg');
+    sprite.setPosition({x: UserSettings.canvasWidth/2 - 110, y: UserSettings.canvasHeight/2 - 110});
+    sprite.setSize({x: 200, y: 200});
+    return game.instantiate(sprite);
+}
+
+function deleteTempImage(){
+    game.remove(tempImage);
+}
 
 function loadContent(){
     pole = game.instantiate(new Pole(10));
@@ -36,6 +49,9 @@ function loadContent(){
 
     nameLabel = game.instantiate(new Label("Unknown Player"));
     nameLabel.setPosition(UserSettings.namePosition);
+
+    createTempImage();
+    setInterval(deleteTempImage, 3000);
 
 };
 

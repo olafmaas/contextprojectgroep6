@@ -98,9 +98,8 @@ socket.on('playAudio', function (trackName){
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
 
-window.onmousedown = checkPowerup;
 window.ontouchdown = checkPowerup;
-window.ondblclick = checkPowerup;
+window.onmousedown = checkPowerup;
 
 function sendShieldAngle() {
 	if(shield != undefined){
