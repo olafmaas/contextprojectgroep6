@@ -66,7 +66,7 @@ socket.on('removeBall', function (globalID){
 	removeBall(globalID);
 })
 
-socket.on('updateBall', function (data, index) { //TODO: ID instead of index
+socket.on(e.updateBall, function (data, index) { //TODO: ID instead of index
 	if(balls.getMember(index) != undefined)
 		balls.getMember(index).setPosition(data.x, data.y);
 });

@@ -12,6 +12,7 @@ if(typeof module != 'undefined'){
 	var Player = require('../../game/Player.js');
 	var Group = require('../../game/util/Group.js');
 	var handleCollision = require('../../game/CollisionDetection.js');
+	var e = require('../../game/util/Enums.js');
 }
 
 function DrawHandler(_io){
@@ -24,12 +25,12 @@ function DrawHandler(_io){
 
 	//TODO: ID instead of index
 	this.drawToPlayers = function(ball, index){
-		io.of('/player').emit('updateBall', ball.getPosition(), index);
+		io.of('/player').emit(e.updateBall, ball.getPosition(), index);
 	}
 
 	//TODO: ID instead of index
 	this.drawToMainScreen = function(ballpos, index){
-		mainScreenSocket.emit('updateBall', ballpos, index)
+		mainScreenSocket.emit(e.updateBall, ballpos, index)
 	}
 
 	//Emit message of how many balls are currently present 
