@@ -91,17 +91,6 @@ function Server(){
 		return ret;
 	};
 
-	/**
-	* Adds the pole, shield and player to the correct groups and 
-	* sets the collision. 
-	* @method Server#addClient
-	* @param {socket} The socket associated with the player. 
-	*/
-	this.setGroupMemberships = function(player){
-		group("Poles").addMember(player.getPole());
-		group("Shields").addMember(player.getShield());
-		group("Players").add(player);
-	};
 
 	this.isNameAvailable = function(name){
 		return !namesList[name];
@@ -156,41 +145,23 @@ function Server(){
 		return Object.keys(clientList).length;
 	};
 
-	this.getClient = function(id){
-		return clientList[id];
-	};
+	this.getClient = function(id){ return clientList[id];};
 
-	this.getGame = function(){
-		return game;
-	};
+	this.getGame = function(){ return game; };
 
-	group = function(name){
-		return gm.group(name);
-	};
+	group = function(name){ return gm.group(name);};
 
-	this.getGroup = function(_group){
-		return group(_group);
-	};
+	this.getGroup = function(_group){ return group(_group);};
 
-	this.getMaxNrOfPlayers = function(){
-		return maxNrOfPlayers;
-	};
+	this.getMaxNrOfPlayers = function(){return maxNrOfPlayers;};
 
-	this.getBall = function(_id){
-		return group("Balls").getMember(_id);
-	};
+	this.getBall = function(_id){return group("Balls").getMember(_id);};
 
-	this.nrOfBalls = function(){
-		return group("Balls").getMemberLength();
-	};
+	this.nrOfBalls = function(){return group("Balls").getMemberLength();};
 
-	this.getBallPosition = function(_id){
-		return group("Balls").getMember(_id).getPosition();
-	};
+	this.getBallPosition = function(_id){return group("Balls").getMember(_id).getPosition();};
 
-	this.getSocketFromPlayerID = function(_playerID){
-		return clientList[playerIDs[_playerID]].socket;
-	};
+	this.getSocketFromPlayerID = function(_playerID){return clientList[playerIDs[_playerID]].socket;};
 
 }
 
