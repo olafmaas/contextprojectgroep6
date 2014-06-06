@@ -27,7 +27,7 @@ var Block = Base.extend({
 	},
 
 	addBall: function(_ball){
-		console.log("Ball Pushed in:" + this.position.left + " " + this.position.top)
+
 		this.ballsList.push(_ball);
 		_ball.getBody().setCollisionCallback(this.playAudio, this);
 
@@ -39,7 +39,6 @@ var Block = Base.extend({
 		if(!this.hasBall(_ball)){
 			this.sendNewBallToPlayer(_ball);
 			this.ballsList.push(_ball);
-			console.log("Ball Came in:" + _ball.getGlobalID() + " " + this.position.left + " " + this.position.top)
 		}
 	},
 
@@ -84,25 +83,21 @@ var Block = Base.extend({
 
 		//top
 		if((yPosInBlock < -_ball.getRadius()) && (_ball.getBody().getVectorVelocity().y < 0)){
-			console.log("Top Del")
 			del = true;
 		}
 
 		//Bottom
 		if((yPosInBlock > (_ball.getRadius() + this.setting.canvasHeight)) && (_ball.getBody().getVectorVelocity().y > 0)){
-			console.log("Bottom Del")
 			del = true;
 		}
 
 		//left
 		if((xPosInBlock < -_ball.getRadius()) && (_ball.getBody().getVectorVelocity().x < 0)){
-			console.log("Left Del"+ xPosInBlock + " "+ _ball.getPosition().x +" "  + _ball.getGlobalID() + " " + _ball.getBody().getVectorVelocity().x)
 			del = true;
 		}
 
 		//right
 		if((xPosInBlock > (_ball.getRadius() + this.setting.canvasWidth)) && (_ball.getBody().getVectorVelocity().x > 0)){
-			console.log("Right Del"+ xPosInBlock + " "+ _ball.getPosition().x +" " + _ball.getGlobalID() + " " + _ball.getBody().getVectorVelocity().x)
 			del = true;
 		}
 
@@ -139,16 +134,13 @@ var Block = Base.extend({
 	},
 
 	removeBall: function(_ball, index){
-		console.log("Ball removed: {gid:" +_ball.getGlobalID() + ", pos: x, " + _ball.getPosition().x + " y, " + _ball.getPosition().y + "} on " + this.position.left + " " + this.position.top);
 		if(this.socket){
 			this.socket.emit("removeBall", _ball.getGlobalID())
 		}
 
 		
 		if(index == -1){
-			console.log("Ball wordt verwijderd.")
 			this.ballsList.splice(this.getBallIndex(ball), 1);
-			console.log("Done")
 		}else{
 			this.ballsList.splice(index, 1);
 		}
