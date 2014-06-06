@@ -54,7 +54,6 @@ socket.on('canvasPos', function (data){
 //Waits for a 'newBall' emit from drawhandler
 socket.on('addBall', function (data) {
 	if(getBallIndex(data.gid) == -1){
-		console.log("Ball Added")
 		createBall(data);
 	}
 });
@@ -92,6 +91,10 @@ socket.on('poleIsHit', function (data){
 	if(data) pole.isHit();
 })
 
+socket.on('playAudio', function (trackName){
+	audioManager.play(trackName);
+})
+
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
 
@@ -120,7 +123,6 @@ function removeBall(_gid) {
 	if(ind > -1){
 		game.remove(balls.getMembers()[ind]);
 		balls.removeMember(balls.getMembers()[ind]);
-		console.log("Ball " + _gid + "removed")
 	}else{
 		console.log("404 Ball Not Found");
 	}

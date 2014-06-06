@@ -55,6 +55,7 @@ function Server(){
 	this.addClient = function(socket){
 
 		var ball = game.instantiate(bf.createNewBall(10));
+		
 		var positionOfPole = gameGrid.updateGrid(socket, maxNrOfColumns, ball)
 
 		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
