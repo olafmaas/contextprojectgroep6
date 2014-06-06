@@ -1,5 +1,4 @@
 if(typeof module != 'undefined'){
-	var logHandler = require('./LogHandler.js');
 	var Settings = require('./Settings.js');
 	var GameGrid = require('./GameGrid.js');
 	var GroupManager = require('./GroupManager.js');
@@ -38,14 +37,14 @@ function SocketHandler(_server, _io){
 		});
 
 		socket.on('disconnect', function (data){
-			server.log('MainScreen disconnected');
+			console.log('MainScreen disconnected');
 			mainScreenSocket = {emit: function(){false}};
 		});
-	}
+	};
 
 	this.hasMainScreen = function(){
 		return mainScreenSocket.emit();
-	}
+	};
 
 	this.handlePlayerConnection = function(socket){
 		
@@ -63,7 +62,7 @@ function SocketHandler(_server, _io){
 				server.registerName(name, socket.id);
 				socket.emit('showPlayerName');
 			}else{
-				server.log('Username already in use');
+				console.log('Username already in use');
 				socket.emit('userName', false);
 			}
 		});
@@ -78,7 +77,7 @@ function SocketHandler(_server, _io){
 		});
 
 		socket.on('disconnect', function (data){
-			server.log('Player disconnected - id: ' + socket.id);
+			console.log('Player disconnected - id: ' + socket.id);
 			removeFromMainScreen(socket.id);
 
 			gid = server.deleteClient(socket.id);
@@ -89,7 +88,7 @@ function SocketHandler(_server, _io){
 
 	removeFromMainScreen = function(socketID){
 		mainScreenSocket.emit('removePlayer', socketID);
-	}
+	};
 
 	newPlayer = function(socket, polePos){
 		var np = server.addClient(socket, polePos);
@@ -98,16 +97,15 @@ function SocketHandler(_server, _io){
 		mainScreenSocket.emit('newBall', {color: np.color, gid: np.gid}); //inform mainscreen of new ball
 
 		return 
-
-	}
+	};
 	
 	newPowerup = function(){
 		io.of('/player').emit('addPowerup', server.addPowerup());
-	}
+	};
 
 	updateMainScreenCanvasSize = function(){
 		mainScreenSocket.emit("updateCanvasSize", server.updateMainScreenCanvasSize());
-	}
+	};
 
 	this.update = function(){
 		//Update Balls is done in Block
@@ -138,7 +136,7 @@ function SocketHandler(_server, _io){
 				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);
 			}
 		}
-	}
+	};
 
 	this.updateScores = function(){
 		var highScores = [];
@@ -164,9 +162,9 @@ function SocketHandler(_server, _io){
 		//No nog player kleur aanpassen op het mainscreen
 		//Dus iets op verzinnen qua doorzenden en hoe je het weer terugzet als de speler van positie
 		//verandert in de top 5 (niet zo handig als hij altijd de kleur houdt namelijk)
-	}
+	};
 
-}
+};
 
 if(typeof module != 'undefined'){
     module.exports = SocketHandler;

@@ -7,7 +7,6 @@ if(typeof module != 'undefined'){
 
 var BallFactory = Base.extend({
 
-
 	createNewBall: function(_radius){
 		ball = new Ball(_radius);
 		ball.setPosition(100, 100);
@@ -18,7 +17,7 @@ var BallFactory = Base.extend({
 
 		return ball;
 	}
-})
+});
 
 if(typeof module != 'undefined'){
     module.exports = BallFactory;

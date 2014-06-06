@@ -1,5 +1,4 @@
 if(typeof module != 'undefined'){
-	var logHandler = require('./LogHandler.js');
 	var Settings = require('./Settings.js');
 	var GameGrid = require('./GameGrid.js');
 	var GroupManager = require('./GroupManager.js');
@@ -168,10 +167,6 @@ function Server(){
 
 	group = function(name){
 		return gm.group(name);
-	};
-
-	this.log = function(message){
-		logHandler.log(message);
 	};
 
 	this.getGroup = function(_group){

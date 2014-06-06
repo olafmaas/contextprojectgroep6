@@ -43,7 +43,7 @@ var PlayerFactory = Base.extend({
 
 		return shield;
 	},
-})
+});
 
 if(typeof module != 'undefined'){
     module.exports = PlayerFactory;
