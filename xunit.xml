@@ -1,3 +1,0 @@
-<testsuite name="Mocha Tests" tests="1" failures="0" errors="0" skipped="0" timestamp="Wed, 21 May 2014 12:32:57 GMT" time="0.02">
-<testcase classname="Array #indexOf()" name="should return -1 when the value is not present" time="0.001"/>
-</testsuite>
