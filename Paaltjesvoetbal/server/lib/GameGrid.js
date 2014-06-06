@@ -32,15 +32,15 @@ function GameGrid(_settings) {
 		}
 
 		return l;
-	}
+	};
 
 	this.getHeight = function(){
 		return grid.length;
-	} 
+	};
 
 	this.getWidth = function(){
 		return grid[0].length;
-	}
+	};
 
 	this.updateGrid = function(socket, maxCol, ball){
 		var x;
@@ -65,7 +65,7 @@ function GameGrid(_settings) {
 		}
 
 		return {left: x * settings.canvasWidth, top: y*settings.canvasHeight}; 
-	}
+	};
 
 	checkrow = function(socket, i, ball){
 		for(var j = 0; j < maximumCol; j++){
@@ -85,7 +85,7 @@ function GameGrid(_settings) {
 				}
 		}
 		return -1;
-	}
+	};
 
 	this.remove = function(socketID){
 		for (var i = 0; i < grid.length; i++) {
@@ -97,7 +97,7 @@ function GameGrid(_settings) {
 				}
 			}
 		}
-	}
+	};
 
 	this.removeBall = function(ball){
 		blocksWithBall = gridc.inBlock(ball);
@@ -108,7 +108,7 @@ function GameGrid(_settings) {
 				}
 			}
 		})
-	}
+	};
 
 	this.update = function(){
 		for(var i = 0; i < grid.length; i++){
@@ -116,9 +116,9 @@ function GameGrid(_settings) {
 				grid[i][j].update()
 			}
 		}
-	}
+	};
 
-}
+};
 
 if(typeof module != 'undefined'){
     module.exports = GameGrid;

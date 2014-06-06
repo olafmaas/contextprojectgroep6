@@ -1,5 +1,4 @@
 if(typeof module != 'undefined'){
-	var logHandler = require('./LogHandler.js');
 	var Settings = require('./Settings.js');
 	var GameGrid = require('./GameGrid.js');
 	var GroupManager = require('./GroupManager.js');
@@ -22,8 +21,8 @@ if(typeof module != 'undefined'){
 function Server(){
 	var clientList = {};
 	var playerIDs = {};
-	var namesList = []
-	var game; 
+	var namesList = [];
+	var game;
 	var maxNrOfPlayers = 0;
 	var maxNrOfColumns = 0;
 	var settings = new Settings();
@@ -45,7 +44,7 @@ function Server(){
 		if(member != undefined && member != null){
 			return { id: member.getGlobalID() };
 		}
-	}
+	};
 	
 	/**
 	* Add a new client, create a new player, pole and shield. 
@@ -59,9 +58,6 @@ function Server(){
 		var positionOfPole = gameGrid.updateGrid(socket, maxNrOfColumns, ball)
 
 		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
-
-		//setGroupMemberships(player);
-		
 		
 		group("Balls").addMember(ball);
 		group("Poles").addMember(game.instantiate(player.getPole()));
@@ -74,8 +70,7 @@ function Server(){
 
 		return {id: clientList[socket.id].player.getName(), color: ball.getColor(),
 			polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID(), gpid: player.getGlobalID()};
-
-	}
+	};
 
 	this.deleteClient = function(socketID){
 		var client = clientList[socketID];
@@ -95,7 +90,7 @@ function Server(){
 		ret = b.getGlobalID();
 		delete clientList[socketID]; 
 		return ret;
-	}
+	};
 
 	/**
 	* Adds the pole, shield and player to the correct groups and 
@@ -107,22 +102,22 @@ function Server(){
 		group("Poles").addMember(player.getPole());
 		group("Shields").addMember(player.getShield());
 		group("Players").add(player);
-	}
+	};
 
 	this.isNameAvailable = function(name){
 		return !namesList[name];
-	}
+	};
 
 	this.registerName = function(name, id){
 		namesList[name] = true;
 		clientList[id].name = name;
 		clientList[id].player.setName(name);
-	}
+	};
 
 	this.setMaxGameSize = function(data){
 		maxNrOfPlayers = Math.floor(data.width / settings.canvasWidth) * Math.floor(data.height / settings.canvasHeight);
 		maxNrOfColumns = Math.floor(data.width / settings.canvasWidth);
-	}
+	};
 
 	this.updateMainScreenCanvasSize = function(){
 		var _width = gameGrid.getWidth() * settings.canvasWidth;
@@ -130,18 +125,12 @@ function Server(){
 		game.setWidth(_width);
 		game.setHeight(_height);
 		return {width: _width, height: _height};
-	}
-
+	};
 
 	this.setAngle = function(socket, angle){
 		clientList[socket.id].shield.setAngle(angle);
 		return {id: socket.id, angle: angle};
-	}
-
-	this.ballAngle = function(socket, velocityDirection, index){
-		group("Balls").getMember(index).getBody().setVelocityDirection(velocityDirection);
-		return group("Balls").getMember(index);
-	}
+	};
 
 	this.setPowerup = function(_playerID, _powerupType){
 		var player = group("Players").getMemberByGlobalID(_playerID);
@@ -149,11 +138,11 @@ function Server(){
 			var powerup = new Powerup(10, _powerupType); //NOT game.instantiate!!, as it should not exists outside this function!
 			player.setPowerup(powerup);
 		}
-	}
+	};
 
 	this.loadContent = function(){
 
-	}
+	};
 
 	this.update = function(){
 		gameGrid.update()
@@ -161,57 +150,48 @@ function Server(){
 
 	this.createGame = function(_initialize, _update, _width, _height){
 		game = new CoreGame(_initialize, _update, _width, _height)
-	}
-
-	//TODO: return a list of id's that collide?
-	this.checkGroupCollision = function(name){
-		return group(name).checkCollision();
-	}
+	};
 
 	//Getters and Setters
 	this.getNumberOfPlayers = function(){
 		return Object.keys(clientList).length;
-	}
+	};
 
 	this.getClient = function(id){
 		return clientList[id];
-	}
+	};
 
 	this.getGame = function(){
 		return game;
-	}
+	};
 
 	group = function(name){
 		return gm.group(name);
-	}
-
-	this.log = function(message){
-		logHandler.log(message);
-	}
+	};
 
 	this.getGroup = function(_group){
 		return group(_group);
-	}
+	};
 
 	this.getMaxNrOfPlayers = function(){
 		return maxNrOfPlayers;
-	}
+	};
 
 	this.getBall = function(_id){
 		return group("Balls").getMember(_id);
-	}
+	};
 
 	this.nrOfBalls = function(){
 		return group("Balls").getMemberLength();
-	}
+	};
 
 	this.getBallPosition = function(_id){
 		return group("Balls").getMember(_id).getPosition();
-	}
+	};
 
 	this.getSocketFromPlayerID = function(_playerID){
 		return clientList[playerIDs[_playerID]].socket;
-	}
+	};
 
 }
 

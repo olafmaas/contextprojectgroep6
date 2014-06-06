@@ -2,11 +2,8 @@ if(typeof module != 'undefined'){
 	var Base = require('../../game/util/Base.js');
 	var Ball = require('../../game/Ball.js');
 	var Settings = require('./Settings.js');
-	var IDDistributor = require('../../game/util/IDDistributor.js');
-	var ColorGenerator = require('../../game/util/ColorGenerator');
 	var e = require('../../game/util/Enums.js');
 }
-
 
 var Block = Base.extend({
 
@@ -196,7 +193,7 @@ var Block = Base.extend({
 		this.socket.emit("playAudio", "ballCollision")
 	}
 
-})
+});
 
 if(typeof module != 'undefined'){
     module.exports = Block;
