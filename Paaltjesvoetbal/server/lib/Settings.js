@@ -3,8 +3,8 @@ function Settings(){
 	this.canvasHeight = 350;
 
 	this.radius = 10;
-	this.minTime = 10;
-	this.maxTime = 30;
+	this.minTime = 1;
+	this.maxTime = 1;
 }
 
 if(typeof module != 'undefined'){
