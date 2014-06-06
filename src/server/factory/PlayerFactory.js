@@ -1,11 +1,10 @@
 if(typeof module != 'undefined'){
 	var Base = require('../../lib/Base.js');
 
-	var IDDistributor = require('../../game/util/IDDistributor.js');
-
-	var Player = require('../../game/Player.js');
-	var Pole = require('../../game/Pole.js');
-	var Shield = require('../../game/Shield.js');
+	var IDDistributor = require('../../common/game/util/IDDistributor.js');
+	var Player = require('../../common/game/gameobjects/Player.js');
+	var Pole = require('../../common/game/gameobjects/Pole.js');
+	var Shield = require('../../common/game/gameobjects/Shield.js');
 }
 
 var PlayerFactory = Base.extend({

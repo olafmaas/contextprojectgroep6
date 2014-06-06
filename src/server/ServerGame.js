@@ -1,20 +1,22 @@
 if(typeof module != 'undefined'){
+	var ColorGenerator = require('../common/game/util/ColorGenerator');
+	var Group = require('../common/game/util/Group.js');
+	var Ball = require('../common/game/gameobjects/Ball.js');
+	var Pole = require('../common/game/gameobjects/Pole.js');
+	var Shield = require('../common/game/gameobjects/Shield.js');
+	var Powerup = require('../common/game/gameobjects/Powerup.js');
+	var Player = require('../common/game/gameobjects/Player.js');
+	var handleCollision = require('../common/game/CollisionDetection.js');
+	var Game = require('../common/game/Game.js');
+	var CoreGame = require('../common/game/CoreGame.js');
+
+	var Client = require('../common/Client.js');
+
 	var Settings = require('./Settings.js');
-	var GameGrid = require('./grid/GameGrid.js');
 	var GroupManager = require('./util/GroupManager.js');
+	var GameGrid = require('./grid/GameGrid.js');
 	var PlayerFactory = require('./factory/PlayerFactory.js');
 	var BallFactory = require('./factory/BallFactory.js');
-	var Client = require('./Client.js');
-	var Game = require('../game/Game.js');
-	var CoreGame = require('../game/CoreGame.js');
-	var Ball = require('../game/Ball.js');
-	var Pole = require('../game/Pole.js');
-	var Shield = require('../game/Shield.js');
-	var Powerup = require('../game/Powerup.js');
-	var Player = require('../game/Player.js');
-	var Group = require('../game/util/Group.js');
-	var handleCollision = require('../game/CollisionDetection.js');
-	var ColorGenerator = require('../game/util/ColorGenerator');
 }
 
 function Server(){

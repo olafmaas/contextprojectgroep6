@@ -1,5 +1,6 @@
 if(typeof module != 'undefined'){
 	var Base = require('../../lib/Base.js');
+	
 	var Settings = require('../Settings.js');
 }
 
