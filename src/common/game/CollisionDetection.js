@@ -1,6 +1,6 @@
 if(typeof module != 'undefined'){
-    var ShieldBody = require('./ShieldBody.js');
-    var CircularBody = require('./CircularBody.js');
+    var ShieldBody = require('./gameobjects/ShieldBody.js');
+    var CircularBody = require('./gameobjects/CircularBody.js');
 }  
 
 /**
