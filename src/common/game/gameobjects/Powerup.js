@@ -1,11 +1,13 @@
 if(typeof module != 'undefined'){
-	var Base = require('./util/Base.js');
+	var Base = require('../../../lib/Base.js');
+
+	var e = require('../../Enums.js');
+
 	var CircularBody = require('./CircularBody.js');
-	var IDDistributor = require('./util/IDDistributor.js');
-	var Timer = require('./util/Timer.js');
-	var e = require('./util/Enums.js');
-	var UserSettings = require('./util/UserSettings.js');
-	var PowerupTimer = require('./util/PowerupTimer.js');
+	var IDDistributor = require('../util/IDDistributor.js');
+	var Timer = require('../util/Timer.js');
+	var UserSettings = require('../util/UserSettings.js');
+	var PowerupTimer = require('../util/PowerupTimer.js');
 }
 
 var Powerup = Base.extend({

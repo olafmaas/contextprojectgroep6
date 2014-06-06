@@ -3,7 +3,7 @@ if(typeof module != 'undefined'){
 	var Body = require('./Body.js');
 	var ShieldBody = require('./ShieldBody.js');
 	var Ball = require('./Ball.js');
-	var IDDistributor = require('./util/IDDistributor.js');
+	var IDDistributor = require('../util/IDDistributor.js');
 }
 
 /**

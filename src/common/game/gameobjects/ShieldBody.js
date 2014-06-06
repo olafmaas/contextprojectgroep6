@@ -1,9 +1,9 @@
 //The shield body class
 if(typeof module != 'undefined'){
     var CircularBody = require('./CircularBody.js');
-	var Input = require('./Input.js');
 	var Body = require('./Body.js');
-	var IDDistributor = require('./util/IDDistributor.js');
+	var Input = require('../Input.js');
+	var IDDistributor = require('../util/IDDistributor.js');
 }  
 /**
 * Constructor for the shield body
