@@ -95,10 +95,10 @@ socket.on('playAudio', function (trackName){
 	audioManager.play(trackName);
 })
 
+window.ontouchstart = checkPowerup;
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
 
-window.ontouchdown = checkPowerup;
 window.onmousedown = checkPowerup;
 
 function sendShieldAngle() {
