@@ -22,25 +22,6 @@ var Sprite = Base.extend({
 	},
 
 	/**
-	* Function which loads a texture
-	* @method Sprite#LoadContent
-	* @param {string} texturePath - texture's path
-	*/
-	loadContent: function(_texturePath){
-		this.texture = new Image();
-		this.texture.src = _texturePath;
-	},
-
-	/**
-	* Function which draws the sprite
-	* @method Sprite#Draw
-	* @param {canvas} _canvasContext - The playing field
-	*/
-	draw: function(_canvasContext){
-		_canvasContext.drawImage(this.texture, this.position.x, this.position.y, this.size.x, this.size.y);
-	},
-
-	/**
 	* Function which draws the sprite if it has been hooked to an object
 	* @method Sprite#Draw
 	* @param {canvas} _canvasContext - The playing field
@@ -120,6 +101,22 @@ var Sprite = Base.extend({
 	*/
 	getID: function(){
 		return this.ID;
+	},
+
+	getTexture: function(){
+		return this.texture;
+	},
+
+	getPosition: function(){
+		return this.position;
+	},
+
+	getScale: function(){
+		return this.scale;
+	},
+
+	getSize: function(){
+		return this.size;
 	}
 
 	//TODO: GETS

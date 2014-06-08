@@ -18,8 +18,7 @@ function init(){
 };
 
 function createTempImage(){
-    sprite = new Sprite();
-    sprite.loadContent('./img/beginplaatje.svg');
+    sprite = new Sprite('./img/beginplaatje.svg');
     sprite.setPosition({x: UserSettings.canvasWidth/2 - 110, y: UserSettings.canvasHeight/2 - 110});
     sprite.setSize({x: 200, y: 200});
     return game.instantiate(sprite);
