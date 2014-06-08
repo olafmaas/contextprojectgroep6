@@ -1,7 +1,7 @@
 if(typeof module != 'undefined'){
 	var CircularBody = require('./CircularBody.js');
 	var Ball = require('./Ball.js');
-	var PlayerTimer = require('../util/PlayerTimer.js');
+	var PlayerTimer = require('../time/PlayerTimer.js');
 	var IDDistributor = require('../util/IDDistributor.js');
 }
 /**

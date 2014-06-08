@@ -5,9 +5,9 @@ if(typeof module != 'undefined'){
 
 	var CircularBody = require('./CircularBody.js');
 	var IDDistributor = require('../util/IDDistributor.js');
-	var Timer = require('../util/Timer.js');
+	var Timer = require('../time/Timer.js');
 	var UserSettings = require('../util/UserSettings.js');
-	var PowerupTimer = require('../util/PowerupTimer.js');
+	var PowerupTimer = require('../time/PowerupTimer.js');
 }
 
 var Powerup = Base.extend({
