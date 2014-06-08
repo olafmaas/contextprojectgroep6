@@ -1,3 +1,8 @@
+if(typeof module != 'undefined'){
+	var Base = require('../../../lib/Base.js');
+	var IDDistributor = require('../util/IDDistributor.js');
+}
+
 /**
 * Sprite class
 * @class Sprite

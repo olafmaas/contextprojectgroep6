@@ -163,6 +163,8 @@ function createPowerup(data){
 			dy *= -1;
 
 		powerup.setPosition(UserSettings.canvasWidth/2 + dx, UserSettings.canvasHeight/2 + dy);
+		createIcon(powerup, type); //add appropriate icon to the powerup
+
 		powerupRemovalTimer = setTimeout(removePowerup, UserSettings.removalTime); //set timer so powerup is removed after x seconds.
 	}
 };
@@ -175,6 +177,11 @@ function handleMouseDown(e){
 function handleTouchStart(e){
 	var touch = e.changedTouches[0]; //only first finger will be registered.
 	checkPowerup(touch.screenX, touch.screenY);
+}
+
+function createIcon(_type){
+	var powerupIcon = game.instantiate(powerup.createIcon(_type));
+	powerupIcon.setPosition({x: UserSettings.canvasWidth/2 + dx, y: UserSettings.canvasHeight/2 + dy})
 }
 
 
@@ -202,6 +209,7 @@ function checkPowerup(_x, _y){
 
 function removePowerup(){
 	if(powerup != null){
+		game.remove(powerup.getIcon()); //also remove the icon of the powerup
 		game.remove(powerup);
 		powerup = null;
 	}
