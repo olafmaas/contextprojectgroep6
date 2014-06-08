@@ -1,7 +1,7 @@
 if(typeof module != 'undefined'){
 	var ColorGenerator = require('../common/game/util/ColorGenerator');
 	var Group = require('../common/game/util/Group.js');
-	var RandomTimer = require('../game/util/RandomTimer');
+	var RandomTimer = require('../common/game/time/RandomTimer');
 	var Ball = require('../common/game/gameobjects/Ball.js');
 	var Pole = require('../common/game/gameobjects/Pole.js');
 	var Shield = require('../common/game/gameobjects/Shield.js');
