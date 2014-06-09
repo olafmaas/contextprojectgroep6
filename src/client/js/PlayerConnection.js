@@ -148,6 +148,7 @@ function createBall(data){
 	balls.addMember(ball);
 };
 
+//The powerup stuff should be placed somewhere else I think..
 function createPowerup(data){
 	if(player.getGlobalID() == data.id){
 
@@ -177,9 +178,26 @@ function createPowerup(data){
 	}
 };
 
+//
 function createIcon(_type){
+	switch(_type){
+		case e.smallShield:
+		icon = game.instantiate(new Sprite(UserSettings.smallShield.path));
+
+		case e.bigShield:
+		icon = game.instantiate(new Sprite(UserSettings.bigShield.path));
+
+		case e.smallPole:
+		icon = game.instantiate(new Sprite(UserSettings.smallPole.path));
+
+		case e.bigPole:
+		icon = game.instantiate(new Sprite(UserSettings.bigPole.path));
+
+		case e.revertShield: 
+		icon = game.instantiate(new Sprite(UserSettings.revertShield.path));
+	}
+
 	var size = UserSettings.powerupSize;
-	icon = game.instantiate(new Sprite("../client/img/pokeball.png"));
 	icon.setPosition(powerup.getPosition());
 	icon.setSize({x: size*2, y: size*2});
 	icon.setAnchor({x: -size, y: -size});
@@ -196,7 +214,6 @@ function checkPowerup(_x, _y){
 
 		if(inX && inY){
 			clearTimeout(powerupRemovalTimer); //remove the timer
-			
 			powerup.isClicked();
 			player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
 

@@ -21,7 +21,9 @@ var Powerup = Base.extend({
 	color: "red",
 	visible: true,
 	power: null, //function that contains what the powerup will do
+/*	
 	icon: null,
+*/
 
 	constructor: function(_radius, _type){
 		this.radius = _radius;
@@ -99,28 +101,30 @@ var Powerup = Base.extend({
 		}
 	},
 
-	createIcon: function(_type){
+/* //DEPRECATED FOR NOW
+	createIcon: function(_type, _game){
 		var sprite = null;
 		switch(_type){
 			case e.smallShield:
-			sprite = new Sprite(UserSettings.smallShield.path);
+			sprite = _game.instantiate(new Sprite(UserSettings.smallShield.path));
 
 			case e.bigShield:
-			sprite = new Sprite(UserSettings.bigShield.path);
+			sprite = _game.instantiate(new Sprite(UserSettings.bigShield.path));
 
 			case e.smallPole:
-			sprite = new Sprite(UserSettings.smallPole.path);
+			sprite = _game.instantiate(new Sprite(UserSettings.smallPole.path));
 
 			case e.bigPole:
-			sprite = new Sprite(UserSettings.bigPole.path);
+			sprite = _game.instantiate(new Sprite(UserSettings.bigPole.path));
 
 			case e.revertShield: 
-			sprite = new Sprite(UserSettings.revertShield.path);
+			sprite = _game.instantiate(new Sprite(UserSettings.revertShield.path));
 		}
 		sprite.setSize({x: UserSettings.powerupSize*2, y: UserSettings.powerupSize*2}); //sprite must cover the whole powerup
 		sprite.setAnchor({x: -UserSettings.powerupSize, y: -UserSettings.powerupSize}); //anchor it to the top right 
 		return sprite;
 	},
+*/
 
 	setIcon: function(_icon){
 		this.icon = _icon;
@@ -146,10 +150,11 @@ var Powerup = Base.extend({
 		return this.color;
 	},
 
+/*
 	getIcon: function(){
 		return this.icon;
 	},
-		
+*/		
 	setType: function(_type){
 		this.type = _type;
 	},
