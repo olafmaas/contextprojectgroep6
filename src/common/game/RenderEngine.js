@@ -277,7 +277,6 @@ Drawer = function(_canvasContext){
 	};
 
 	this.drawSprite = function(_sprite){
-		console.log("asdf");
 		canvasContext.drawImage(_sprite.getTexture(), _sprite.getPosition().x, _sprite.getPosition().y, _sprite.getSize().x, _sprite.getSize().y);
 	};
 

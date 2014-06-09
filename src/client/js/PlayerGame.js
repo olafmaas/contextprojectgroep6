@@ -18,13 +18,13 @@ function init(){
 };
 
 function createTempImage(){
-    sprite = game.instantiate(new Sprite('./img/beginplaatje.svg'));
-    sprite.setPosition({x: UserSettings.canvasWidth/2 - 110, y: UserSettings.canvasHeight/2 - 110});
-    sprite.setSize({x: 200, y: 200});
-    return game.instantiate(sprite);
+    tempImage = game.instantiate(new Sprite('./img/beginplaatje.svg'));
+    tempImage.setPosition({x: UserSettings.canvasWidth/2 - 110, y: UserSettings.canvasHeight/2 - 110});
+    tempImage.setSize({x: 200, y: 200});
 }
 
 function deleteTempImage(){
+    console.log("Delete");
     game.remove(tempImage);
 }
 
@@ -49,7 +49,7 @@ function loadContent(){
     nameLabel = game.instantiate(new Label("Unknown Player"));
     nameLabel.setPosition(UserSettings.namePosition);
 
-    tempImage = createTempImage();
+    createTempImage();
     setTimeout(deleteTempImage, 3000);
 
 };
