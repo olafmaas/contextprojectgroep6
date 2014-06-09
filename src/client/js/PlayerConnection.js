@@ -45,6 +45,7 @@ var leftOffset = 0;
 var topOffset = 0;
 var lastBall;
 var powerupRemovalTimer = null;
+var icon = null;
 
 socket.on('canvasPos', function (data){
 	leftOffset = data.left;
@@ -98,15 +99,23 @@ socket.on('playAudio', function (trackName){
 window.ontouchstart = handleTouchStart;
 window.onmousemove = sendShieldAngle;
 window.ontouchmove = sendShieldAngle;
-
 window.onmousedown = handleMouseDown;
+
+function handleMouseDown(e){
+	input.mouseMoveListener(e);
+	checkPowerup(mouseX, mouseY);
+};
+
+function handleTouchStart(e){
+	var touch = e.changedTouches[0]; //only first finger will be registered.
+	checkPowerup(touch.screenX, touch.screenY);
+};
 
 function sendShieldAngle() {
 	if(shield != undefined){
 		socket.emit('shieldAngle', shield.getAngle());
 	}
 };
-
 
 function getBallIndex(_gid) {
 	for(var i = 0; i < balls.getMembers().length; i++){
@@ -116,7 +125,6 @@ function getBallIndex(_gid) {
 	}
 	return -1; 
 }
-
 
 function removeBall(_gid) {
 	var ind = getBallIndex(_gid);
@@ -163,20 +171,19 @@ function createPowerup(data){
 			dy *= -1;
 
 		powerup.setPosition(UserSettings.canvasWidth/2 + dx, UserSettings.canvasHeight/2 + dy);
+		createIcon(type);
 
 		powerupRemovalTimer = setTimeout(removePowerup, UserSettings.removalTime); //set timer so powerup is removed after x seconds.
 	}
 };
 
-function handleMouseDown(e){
-	input.mouseMoveListener(e);
-	checkPowerup(mouseX, mouseY);
+function createIcon(_type){
+	var size = UserSettings.powerupSize;
+	icon = game.instantiate(new Sprite("../client/img/pokeball.png"));
+	icon.setPosition(powerup.getPosition());
+	icon.setSize({x: size*2, y: size*2});
+	icon.setAnchor({x: -size, y: -size});
 };
-
-function handleTouchStart(e){
-	var touch = e.changedTouches[0]; //only first finger will be registered.
-	checkPowerup(touch.screenX, touch.screenY);
-}
 
 function checkPowerup(_x, _y){
 	if(powerup != null){ //only when a powerup is present!
@@ -189,19 +196,19 @@ function checkPowerup(_x, _y){
 
 		if(inX && inY){
 			clearTimeout(powerupRemovalTimer); //remove the timer
-			//TODO emit naar server (met playerID om aan te geven welke natuurlijk ;D)
-			//powerup type + playerID nodig voor server
+			
 			powerup.isClicked();
 			player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
 
 			socket.emit('powerupClicked', player.getGlobalID(), powerup.getType());
-			powerup = null;
+			removePowerup();
 		}
 	}
 };
 
 function removePowerup(){
 	if(powerup != null){
+		game.remove(icon); 
 		game.remove(powerup);
 		powerup = null;
 	}
