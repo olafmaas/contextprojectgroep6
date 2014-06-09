@@ -277,7 +277,7 @@ Drawer = function(_canvasContext){
 	};
 
 	this.drawSprite = function(_sprite){
-		canvasContext.drawImage(_sprite.getTexture(), _sprite.getPosition().x, _sprite.getPosition().y, _sprite.getSize().x, _sprite.getSize().y);
+		canvasContext.drawImage(_sprite.getTexture(), _sprite.getPosition().x + _sprite.getAnchor().x, _sprite.getPosition().y + _sprite.getAnchor().y, _sprite.getSize().x, _sprite.getSize().y);
 	};
 
 	this.drawShield = function(_shield){

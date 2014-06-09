@@ -24,7 +24,6 @@ function createTempImage(){
 }
 
 function deleteTempImage(){
-    console.log("Delete");
     game.remove(tempImage);
 }
 

@@ -122,6 +122,10 @@ var Sprite = Base.extend({
 
 	getSize: function(){
 		return this.size;
+	},
+
+	getAnchor: function(){
+		return this.anchor;
 	}
 
 	//TODO: GETS
