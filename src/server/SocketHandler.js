@@ -1,6 +1,7 @@
 if(typeof module != 'undefined'){
 	var ColorGenerator = require('../common/game/util/ColorGenerator');
 	var Group = require('../common/game/util/Group.js');
+	var UserSettings = require('../common/game/util/UserSettings.js');
 	var RandomTimer = require('../common/game/time/RandomTimer');
 	var Ball = require('../common/game/gameobjects/Ball.js');
 	var Pole = require('../common/game/gameobjects/Pole.js');
@@ -161,11 +162,21 @@ function SocketHandler(_server, _io){
 			hs.sort(function(a, b) {return b.Score - a.Score;});
 
 			mainScreenSocket.emit('updateScores', hs);
-			reviseTop5(hs.splice(0, 5), oldranking); //only send top 5 (or less for testing!)
+			
+			//determine to use top 3 or top 5
+			if(server.getNumberOfPlayers() < 20){
+				var hslength = UserSettings.hsLength3;
+			}
+			else{
+				var hslength = UserSettings.hsLength5;
+			}
+			
+			//only send top 5 (or less)
+			reviseTopx(hs.splice(0, hslength), oldranking); 
 		}
 	}
 
-	reviseTop5 = function(hs, old){
+	reviseTopx = function(hs, old){
 		
 		//So only the ID's are sent
 		var newranking = [];
@@ -175,6 +186,8 @@ function SocketHandler(_server, _io){
 		
 		data = { newhs: newranking, oldhs: old };
 		mainScreenSocket.emit('updateTop', data);
+		io.of('/player').emit('updateTop', data);
+		
 		oldranking = newranking;
 	};
 };

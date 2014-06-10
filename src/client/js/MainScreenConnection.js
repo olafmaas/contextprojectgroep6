@@ -54,7 +54,8 @@ socket.on('updateTop', function (data) {
 		player.getPole().setColor('Blue');
 	}
 	
-	if(players.getMemberLength < 20){
+	//Determine to use top 3 or top 5 for extending radius
+	if(data.newhs.length == 3){
 		var count = UserSettings.hsLength3;
 	}
 	else{

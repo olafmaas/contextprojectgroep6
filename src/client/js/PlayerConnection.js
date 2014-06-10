@@ -59,7 +59,6 @@ socket.on('addBall', function (data) {
 	}
 });
 
-
 socket.on(e.updateBalls, function (ballData) { //TODO: ID instead of index
 	lastBall = ballData;
 	var d = new Date();
@@ -72,7 +71,7 @@ socket.on(e.updateBalls, function (ballData) { //TODO: ID instead of index
 			console.log("Ball with gid" + b + "not found.")
 		}
 	}
-})
+});
 
 socket.on('newPlayer', function (_id){
 	player.setGlobalID(_id);
@@ -95,6 +94,32 @@ socket.on('poleIsHit', function (data){
 socket.on('playAudio', function (trackName){
 	audioManager.play(trackName);
 })
+
+socket.on('updateTop', function (data) {
+	
+	for(i = 0; i < data.oldhs.length; i++){
+		if(player.getGlobalID() == data.oldhs[i]){
+			player.getPole().setColor('Blue');
+		}
+	}
+	
+	//Determine to use top 3 or top 5 for extending radius
+	if(data.newhs.length == 3){
+		var count = UserSettings.hsLength3;
+	}
+	else{
+		var count = UserSettings.hsLength5;
+	}
+	
+	for(i = 0; i < data.newhs.length; i++){
+		if(player.getGlobalID() == data.newhs[i]){
+			player.getPole().setColor('White');
+			player.getPole().setRadius(UserSettings.poleRadius + count*2);
+		}
+		count--;
+	}
+});
+
 
 window.ontouchstart = handleTouchStart;
 window.onmousemove = sendShieldAngle;
