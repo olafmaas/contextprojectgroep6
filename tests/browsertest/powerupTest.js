@@ -57,14 +57,4 @@ describe("Powerup", function(){
 		})
 	})
 
-	describe("isClicked", function(){
-		var p = new Powerup(10, 1);
-
-		it("The powerup should not be visible anymore", function(){
-			expect(p.isVisible()).to.be.true;
-			p.isClicked();
-			expect(p.isVisible()).to.be.false;
-		})
-	})
-
 })

@@ -118,4 +118,5 @@ describe("Body", function(){
 			expect(b.getVelocityDirection()).to.equal(-0.25*Math.PI);
 		})
 	})
+
 })
