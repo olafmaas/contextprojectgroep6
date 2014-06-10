@@ -2,6 +2,7 @@ var Settings = {
 
 	//Initial boot time
 	bootTime: 10,
+	updateInterval: 17,
 
 	//Server connection properties
 	server: 'http://localhost',

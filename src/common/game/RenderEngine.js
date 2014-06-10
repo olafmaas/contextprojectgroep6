@@ -251,6 +251,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 		drawing = _drawing;
 	}
 }
+
 if(typeof module != 'undefined'){
     module.exports = RenderEngine;
 }
