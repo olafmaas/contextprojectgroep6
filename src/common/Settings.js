@@ -58,8 +58,9 @@ var Settings = {
 
 	/**** LABEL POSITIONS ****/
 	label: {
-		score: {x: 355, y: 340},
-		name: {x: 10, y: 15}
+		score: {x: 720, y: 425},
+		name: {x: 10, y: 15},
+		highscore: {x: 720, y: 440}
 	}, 
 
 	/**** CANVAS PROPERTIES ****/
@@ -76,7 +77,7 @@ var Settings = {
 	shield: {
 		radius: 70,
 		shieldWidth: 2,
-		color: "yellow"
+		color: "green"
 	},
 
 	/**** BALL ****/

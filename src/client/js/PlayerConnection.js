@@ -41,6 +41,10 @@ socket.on('showPlayerName', function(){
 	nameLabel.setText(player.getName());
 });
 
+socket.on('updateHighscore', function(){
+	highscoreLabel.setText('Highscore: ' + player.getHighscore());
+})
+
 //////////////////
 // Game updates //
 //////////////////
