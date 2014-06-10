@@ -158,7 +158,10 @@ function Server(){
 		for(i = 0; i < highscore.newhs.length; i++){
 			var player = group("Players").getMemberByGlobalID(highscore.newhs[i]);
 			player.getPole().setColor(colors[i]);
-			player.getPole().setRadius(S.pole.size + count*2);
+			
+			if(player.getPowerup() == null){
+				player.getPole().setRadius(S.pole.size + count*2);
+			}
 			count--;
 		}
 	};
