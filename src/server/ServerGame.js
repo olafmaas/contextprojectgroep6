@@ -147,7 +147,7 @@ function Server(){
 		for(i = 0; i < highscore.newhs.length; i++){
 			var player = group("Players").getMemberByGlobalID(highscore.newhs[i]);
 			player.getPole().setColor('White');
-			player.getPole().setRadius(Settings.poleRadius + count*2);
+			player.getPole().setRadius(Settings.pole.size + count*2);
 			count--;
 		}
 	};

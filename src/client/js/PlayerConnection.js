@@ -108,7 +108,7 @@ socket.on('updateTop', function (data) {
 	for(i = 0; i < data.newhs.length; i++){
 		if(player.getGlobalID() == data.newhs[i]){
 			player.getPole().setColor('White');
-			player.getPole().setRadius(Settings.poleRadius + count*2);
+			player.getPole().setRadius(Settings.pole.size + count*2);
 		}
 		count--;
 	}

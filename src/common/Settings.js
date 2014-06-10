@@ -87,12 +87,17 @@ var Settings = {
 		y: 100
 	},
 
-	highScore: {
+	highScore3: {
 		updateInterval: 5000,
-		top: 3, //not in use!
+		top: 3,
+		colors: ["#66CCFF", "#3399FF", "#0066FF"] //not in use, from blue to light-blue
+	},
+	
+	highScore5: {
+		updateInterval: 5000,
+		top: 5,
 		colors: ["#66CCFF", "#3399FF", "#0066FF"] //not in use, from blue to light-blue
 	}
-
 }
 
 if(typeof module != 'undefined'){
