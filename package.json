@@ -5,5 +5,8 @@
     "mocha-phantomjs": "^3.4.1",
     "sinon": "^1.9.1",
     "sinon-chai": "^2.5.0"
+  },
+  "dependencies": {
+    "screenfull": "^1.2.1"
   }
 }
