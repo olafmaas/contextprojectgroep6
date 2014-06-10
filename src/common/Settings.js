@@ -88,7 +88,7 @@ var Settings = {
 
 	highScore: {
 		updateInterval: 5000,
-		top: 3 //not in use!
+		top: 3, //not in use!
 		colors: ["#66CCFF", "#3399FF", "#0066FF"] //not in use, from blue to light-blue
 	}
 
