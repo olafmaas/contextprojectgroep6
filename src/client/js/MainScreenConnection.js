@@ -54,9 +54,18 @@ socket.on('updateTop', function (data) {
 		player.getPole().setColor('Blue');
 	}
 	
+	if(players.getMemberLength < 20){
+		var count = UserSettings.hsLength3;
+	}
+	else{
+		var count = UserSettings.hsLength5;
+	}
+	
 	for(i = 0; i < data.newhs.length; i++){
 		var player = players.getMemberByGlobalID(data.newhs[i]);
 		player.getPole().setColor('White');
+		player.getPole().setRadius(UserSettings.poleRadius + count*2);
+		count--;
 	}
 });
 

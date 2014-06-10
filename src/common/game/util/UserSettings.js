@@ -51,8 +51,14 @@ var UserSettings = ({
 	canvasWidth: 450,
 	canvasHeight: 350,
 	
-	//Shield radius 
-	shieldRadius: 70
+	//Highscore length if there aren't many players
+	hsLength3: 3,
+	//Highscore length if there are a reasonable amount of players
+	hsLength5: 5,
+	
+	//Radius of shield/pole 
+	shieldRadius: 70,
+	poleRadius: 10
 });
 
 if(typeof module != 'undefined'){
