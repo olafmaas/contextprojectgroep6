@@ -1,11 +1,6 @@
 if(typeof module != 'undefined'){
-	//var Group = require('../common/game/util/Group.js');
 	var RandomTimer = require('../common/game/time/RandomTimer');
 	var Ball = require('../common/game/gameobjects/Ball.js');
-	var Pole = require('../common/game/gameobjects/Pole.js');
-	var Shield = require('../common/game/gameobjects/Shield.js');
-	var Player = require('../common/game/gameobjects/Player.js');
-	var Powerup = require('../common/game/gameobjects/Powerup.js');
 
 	var handleCollision = require('../common/game/CollisionDetection.js');
 	var Game = require('../common/game/Game.js');
@@ -14,11 +9,6 @@ if(typeof module != 'undefined'){
 	var Client = require('../common/Client.js');
 	var e = require('../common/Enums.js');
 	var S = require('../common/Settings.js');
-
-	var GroupManager = require('./util/GroupManager.js');
-	var GameGrid = require('./grid/GameGrid.js');
-	var PlayerFactory = require('./factory/PlayerFactory.js');
-	var BallFactory = require('./factory/BallFactory.js');
 }
 
 function SocketHandler(_server, _io){
