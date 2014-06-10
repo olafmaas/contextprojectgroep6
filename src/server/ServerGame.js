@@ -139,24 +139,24 @@ function Server(){
 		for(i = 0; i < highscore.oldhs.length; i++){
 			var player = group("Players").getMemberByGlobalID(highscore.oldhs[i]);
 			
-			if(player != -1 && player != undefined){
-				//player.getPole().setColor(S.pole.color);
+			if(player != -1){
+				if(player.getPowerup() == null){
+					player.getPole().setRadius(S.pole.size);
+				}
 			}
 		}
 
 		var count = S.highScore.top;
-		var colors = S.highScore.colors;
 		
 		for(i = 0; i < highscore.newhs.length; i++){
 			var player = group("Players").getMemberByGlobalID(highscore.newhs[i]);
-			if(player != -1){
-				player.getPole().setColor(colors[i]);
 			
+			if(player != -1){
 				if(player.getPowerup() == null){
 					player.getPole().setRadius(S.pole.size + count*2);
 				}
-			count--;
 			}
+			count--;
 		}
 	};
 
