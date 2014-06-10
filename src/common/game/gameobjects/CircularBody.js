@@ -46,10 +46,9 @@ var CircularBody = Body.extend({
 	* @method CircularBody#equals
 	* @param {Object} _other - The other object with which it is compared.
 	*/
-	equals: function(_other){
-		return (this.ID == _other.getID());
-	},
+	equals: function(_other){ return (this.ID == _other.getID()); },
 
+/************ MOET ER ALLEMAAL UIT T/M LINE 126 **************/
 	/**
 	* This method uses the previous methods to check whether the circle collides
 	* And then handles the collision
@@ -124,31 +123,36 @@ var CircularBody = Body.extend({
 
 		return collision;
 	},
-
-	/**
-	* Returns the radius
-	* @method CircularBody#getRadius
-	*/
-	getRadius: function(){
-		return this.radius;
-	},
-	
-	/**
-	* Returns the ball object
-	* @method CircularBody#getParentBall
-	*/
-	getParentBall: function(){
-		return this.parentBall;
-	},
+/********* TOT HIER DUS ALLES ERUIT *******/
 
 	/**
 	* Sets the radius
 	* @method CircularBody#setRadius
 	* @param {float} _radius - The radius
 	*/
-	setRadius: function(_radius){
-		this.radius = _radius;
-	},
+	setRadius: function(_radius){ this.radius = _radius; },
+
+	/**
+	* Sets the collision callback
+	* @method CircularBody#setCollisionCallback
+	* @param {function} _callback - The callback function
+	* @param {Object} _this - The 'this' object on which the callback function will be called
+	*/
+	setCollisionCallback: function(_callback, _this){ this.collisionCallBack = {callback: _callback, context: _this}; }
+
+	/**
+	* Returns the radius
+	* @method CircularBody#getRadius
+	* @return {number} The radius of the circularBody
+	*/
+	getRadius: function(){ return this.radius; },
+	
+	/**
+	* Returns the ball object
+	* @method CircularBody#getParentBall
+	* @return {Object} The ball to which the circularBody belongs
+	*/
+	getParentBall: function(){ return this.parentBall; },
 
 	/**
 	* Retrieves the ID of the circularBody
@@ -156,13 +160,8 @@ var CircularBody = Body.extend({
 	* @method CircularBody#getID
 	* @return {number} The unique ID of this circularBody
 	*/
-	getID: function(){
-		return this.ID;
-	},
+	getID: function(){ return this.ID; },
 
-	setCollisionCallback: function(_callback, _this){
-		this.collisionCallBack = {callback: _callback, context: _this};
-	}
 });
 
 if(typeof module != 'undefined'){
