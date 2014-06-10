@@ -8,30 +8,30 @@ var UserSettings = ({
 	smallShield: {
 		time: 10,
 		length: 3.5,
-		path: "../client/img/pokeball.png"
+		path: ""
 	},
 
 	bigShield: {
 		time: 15,
 		length: 1,
-		path: "../client/img/pokeball.png"
+		path: ""
 	},
 
 	smallPole: {
 		time: 15,
 		radius: 5,
-		path: "../client/img/pokeball.png"
+		path: ""
 	},
 
 	bigPole: {
 		time: 10,
 		radius: 20,
-		path: "../client/img/pokeball.png"
+		path: ""
 	},
 
 	revertShield: {
 		time: 10,
-		path: "../client/img/pokeball.png"
+		path: ""
 	},
 
 	//Amount of powerups & global size & how long they are available on screen
