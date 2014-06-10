@@ -17,34 +17,34 @@ var Settings = {
 		time: 10,
 		color: "greenyellow",
 		length: 3.5,
-		path: ""
+		path: "../client/img/pokeball.png"
 	},
 
 	bigShield: {
 		time: 15,
 		color: "violet",
 		length: 1,
-		path: ""
+		path: "../client/img/pokeball.png"
 	},
 
 	smallPole: {
 		time: 15,
 		color: "yellow",
 		radius: 5,
-		path: ""
+		path: "../client/img/pokeball.png"
 	},
 
 	bigPole: {
 		time: 10,
 		color: "aqua",
 		radius: 20,
-		path: ""
+		path: "../client/img/pokeball.png"
 	},
 
 	revertShield: {
 		time: 10,
 		color: "red",
-		path: ""
+		path: "../client/img/pokeball.png"
 	},
 
 	//Amount of powerups & global size & how long they are available on screen

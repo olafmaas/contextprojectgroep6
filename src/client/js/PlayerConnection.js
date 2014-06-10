@@ -160,7 +160,7 @@ function createPowerup(data){
 		
 		var width = Settings.canvasWidth;
 		var height = Settings.canvasHeight;
-		var shieldRadius = Settings.shieldRadius;
+		var shieldRadius = Settings.shield.radius;
 		var powerupSize = Settings.powerupSize;
 		
 		var dx = Math.round(Math.random() * ((width - powerupSize) - (width/2 + shieldRadius + 2*powerupSize)) + ((shieldRadius + 2*powerupSize) * (1-chooser)));
@@ -172,7 +172,7 @@ function createPowerup(data){
 			dy *= -1;
 
 		powerup.setPosition(Settings.canvasWidth/2 + dx, Settings.canvasHeight/2 + dy);
-		createIcon(type);
+		//createIcon(type); //temporarily disabled
 
 		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime); //set timer so powerup is removed after x seconds.
 	}
@@ -225,8 +225,11 @@ function checkPowerup(_x, _y){
 
 function removePowerup(){
 	if(powerup != null){
-		game.remove(icon); 
 		game.remove(powerup);
 		powerup = null;
+	}
+	if(icon != null) { 
+		game.remove(icon);
+		icon = null;
 	}
 }
