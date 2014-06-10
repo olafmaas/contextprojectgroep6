@@ -288,6 +288,7 @@ Drawer = function(_canvasContext){
 		canvasContext.beginPath();
   		canvasContext.arc(_shield.getPosition().x, _shield.getPosition().y, _shield.getRadius(), (revert * _shield.getAngle()) - (_shield.getSize() / _shield.getShieldLength()), (revert * _shield.getAngle()) + (_shield.getSize() / _shield.getShieldLength()));
   		canvasContext.strokeStyle = _shield.getColor();
+  		canvasContext.lineWidth = Settings.shield.shieldWidth;
   		canvasContext.stroke();
 	};
 

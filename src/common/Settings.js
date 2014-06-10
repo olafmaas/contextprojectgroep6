@@ -73,6 +73,7 @@ var Settings = {
 	//Shield properties
 	shield: {
 		radius: 70,
+		shieldWidth: 2,
 		color: "yellow"
 	},
 
