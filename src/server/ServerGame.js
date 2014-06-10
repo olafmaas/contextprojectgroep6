@@ -141,16 +141,20 @@ function Server(){
 			player.getPole().setColor('Blue');
 		}
 
-		if(highscore.newhs.length < 5){
+		/*if(data.newhs.length < 5){
 			var count = S.highScore3.top;
+			var colors = S.highScore3.colors;
 		}
 		else{
 			var count = S.highScore.top;
-		}
+			var colors = S.highScore.colors;
+		}*/
+		var count = S.highScore.top;
+		var colors = S.highScore.colors;
 		
 		for(i = 0; i < highscore.newhs.length; i++){
 			var player = group("Players").getMemberByGlobalID(highscore.newhs[i]);
-			player.getPole().setColor('White');
+			player.getPole().setColor(colors[i]);
 			player.getPole().setRadius(S.pole.size + count*2);
 			count--;
 		}

@@ -54,16 +54,20 @@ socket.on('updateTop', function (data) {
 		player.getPole().setColor('Blue');
 	}
 	
-	if(data.newhs.length < 5){
+	/*if(data.newhs.length < 5){
 		var count = Settings.highScore3.top;
+		var colors = Settings.highScore3.colors;
 	}
 	else{
 		var count = Settings.highScore.top;
-	}
+		var colors = Settings.highScore.colors;
+	}*/
+	var count = Settings.highScore.top;
+	var colors = Settings.highScore.colors;
 	
 	for(i = 0; i < data.newhs.length; i++){
 		var player = players.getMemberByGlobalID(data.newhs[i]);
-		player.getPole().setColor('White');
+		player.getPole().setColor(colors[i]);
 		player.getPole().setRadius(Settings.pole.size + count*2);
 		count--;
 	}

@@ -90,13 +90,13 @@ var Settings = {
 	highScore3: {
 		updateInterval: 5000,
 		top: 3,
-		colors: ["#66CCFF", "#3399FF", "#0066FF"] //not in use, from blue to light-blue
+		colors: ["#B8E6E6", "#66CCFF", "#3399FF"] //from blue to light-blue
 	},
 	
 	highScore: {
 		updateInterval: 5000,
 		top: 5,
-		colors: ["#66CCFF", "#3399FF", "#0066FF"] //not in use, from blue to light-blue
+		colors: ["#B8E6E6", "#66CCFF", "#3399FF", "#0066FF", "#0000FF"] //from blue to light-blue
 	}
 }
 
