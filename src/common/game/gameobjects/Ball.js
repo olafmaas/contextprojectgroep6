@@ -81,7 +81,7 @@ var Ball = Base.extend({
 
 	/**
 	* Sets the global id of the ball. 
-	* @method Ball#GlobalID
+	* @method Ball#setGlobalID
 	* @param {number} _id - The new GlobalID of the ball
 	*/
 	setGlobalID: function (_id) { this.globalID = _id; },

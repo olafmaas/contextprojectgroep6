@@ -10,7 +10,15 @@ if(typeof module != 'undefined'){
 	var PowerupTimer = require('../time/PowerupTimer.js');
 	var Sprite = require('./Sprite.js');
 }
-
+/**
+* Powerup class
+*
+* @class Powerup
+* @classdesc A simple powerup class 
+* @constructor Creates a powerup with a specific type and power.
+* @param {number} _radius - The radius of the powerup.
+* @param {number} _type - The type of the powerup
+*/
 var Powerup = Base.extend({
 
 	body: false,
@@ -21,9 +29,6 @@ var Powerup = Base.extend({
 	color: "red",
 	visible: true,
 	power: null, //function that contains what the powerup will do
-/*	
-	icon: null,
-*/
 
 	constructor: function(_radius, _type){
 		this.radius = _radius;
@@ -35,6 +40,10 @@ var Powerup = Base.extend({
 		this.enableBody();
 	},
 	
+	/**
+	* Updates the position of the ball
+	* @method Powerup#update
+	*/
 	update: function(){	
 		if(this.body instanceof CircularBody) this.body.update();
 	},
@@ -102,31 +111,6 @@ var Powerup = Base.extend({
 		}
 	},
 
-/* //DEPRECATED FOR NOW
-	createIcon: function(_type, _game){
-		var sprite = null;
-		switch(_type){
-			case e.smallShield:
-			sprite = _game.instantiate(new Sprite(Settings.smallShield.path));
-
-			case e.bigShield:
-			sprite = _game.instantiate(new Sprite(Settings.bigShield.path));
-
-			case e.smallPole:
-			sprite = _game.instantiate(new Sprite(Settings.smallPole.path));
-
-			case e.bigPole:
-			sprite = _game.instantiate(new Sprite(Settings.bigPole.path));
-
-			case e.revertShield: 
-			sprite = _game.instantiate(new Sprite(Settings.revertShield.path));
-		}
-		sprite.setSize({x: Settings.powerupSize*2, y: Settings.powerupSize*2}); //sprite must cover the whole powerup
-		sprite.setAnchor({x: -Settings.powerupSize, y: -Settings.powerupSize}); //anchor it to the top right 
-		return sprite;
-	},
-*/
-
 	setIcon: function(_icon){
 		this.icon = _icon;
 	},
@@ -150,12 +134,7 @@ var Powerup = Base.extend({
 	getColor: function(){
 		return this.color;
 	},
-
-/*
-	getIcon: function(){
-		return this.icon;
-	},
-*/		
+		
 	setType: function(_type){
 		this.type = _type;
 	},
@@ -175,7 +154,6 @@ var Powerup = Base.extend({
 	getRadius: function(){
 		return this.radius;
 	},
-	
 	
 	getID: function(){
 		return this.ID;

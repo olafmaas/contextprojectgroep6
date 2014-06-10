@@ -41,7 +41,7 @@ var Body = Base.extend({
 	/**
 	* Gets the angle from this object to another object
 	*
-	* @method getAngleToObject
+	* @method Body#getAngleTo
 	* @param _other {Body} the body of the other object
 	*/
 	getAngleTo: function(_other){
