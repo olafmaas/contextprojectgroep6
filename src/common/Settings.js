@@ -56,8 +56,9 @@ var Settings = {
 
 	//Positions of labels
 	label: {
-		score: {x: 355, y: 340},
-		name: {x: 10, y: 15}
+		score: {x: 730, y: 425},
+		name: {x: 10, y: 15},
+		highscore: {x: 730, y: 440}
 	}, 
 
 	//Canvas properties

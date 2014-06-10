@@ -130,6 +130,7 @@ function SocketHandler(_server, _io){
 			if(pole.hit){
 				server.getGroup("Poles").getMember(i).isHit();
 				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);
+				server.getSocketFromPlayerID(pole.player.getID()).emit('updateHighscore', pole.player.getHighscore());
 			}
 		}
 	};

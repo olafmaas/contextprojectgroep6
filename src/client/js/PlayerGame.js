@@ -8,6 +8,7 @@ var balls;
 var powerup = null;
 var scoreLabel;
 var nameLabel;
+var highscoreLabel;
 var audioManager
 var tempImage;
 
@@ -47,6 +48,9 @@ function loadContent(){
 
     nameLabel = game.instantiate(new Label("Unknown Player"));
     nameLabel.setPosition(Settings.label.name);
+
+    highscoreLabel = game.instantiate(new Label("Highscore: 0"));
+    highscoreLabel.setPosition(Settings.label.highscore);
 
     createTempImage();
     setTimeout(deleteTempImage, 3000);
