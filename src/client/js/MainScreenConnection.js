@@ -1,4 +1,4 @@
-var socket = io.connect(server+":"+port).of('/mainscreen');
+var socket = io.connect(Settings.server+":"+Settings.port).of('/mainscreen');
 
 ////////////////////////////
 // Basic socket listeners //
