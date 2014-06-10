@@ -1,5 +1,7 @@
 var Settings = {
-	
+
+	server: 'http://localhost',
+	port: 5050,
 	
 	canvasWidth: 450,
 	canvasHeight: 350,

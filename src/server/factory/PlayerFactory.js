@@ -5,14 +5,13 @@ if(typeof module != 'undefined'){
 	var Player = require('../../common/game/gameobjects/Player.js');
 	var Pole = require('../../common/game/gameobjects/Pole.js');
 	var Shield = require('../../common/game/gameobjects/Shield.js');
+
+	var S = require('../common/Settings.js');
 }
 
 var PlayerFactory = Base.extend({
-	settings: false,
 
-
-	constructor: function(_settings){
-		this.settings = _settings;
+	constructor: function(){
 	},
 
 	createPlayer: function(polePos, id){
@@ -33,7 +32,7 @@ var PlayerFactory = Base.extend({
 	*/
 	createPole: function(polePos){
 		var pole = new Pole(10);
-		pole.setPosition(polePos.left + this.settings.canvasWidth/2, polePos.top + this.settings.canvasHeight/2);
+		pole.setPosition(polePos.left + S.canvasWidth/2, polePos.top + S.canvasHeight/2);
 
 		return pole;
 	},

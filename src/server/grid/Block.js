@@ -3,8 +3,7 @@ if(typeof module != 'undefined'){
 
 	var e = require('../../common/Enums.js');
 	var Ball = require('../../common/game/gameobjects/Ball.js');
-	
-	var Settings = require('../Settings.js');
+	var S = require('../common/Settings.js');
 }
 
 var Block = Base.extend({
@@ -13,7 +12,6 @@ var Block = Base.extend({
 	socket: false,
 	neighbours: null,
 	position: null,
-	setting: new Settings(),
 
 	constructor: function(_socket, _left, _top){
 		this.socket = _socket;

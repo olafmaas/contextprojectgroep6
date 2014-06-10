@@ -11,8 +11,8 @@ if(typeof module != 'undefined'){
 	var CoreGame = require('../common/game/CoreGame.js');
 
 	var Client = require('../common/Client.js');
+	var S = require('../common/Settings.js');
 
-	var Settings = require('./Settings.js');
 	var GroupManager = require('./util/GroupManager.js');
 	var GameGrid = require('./grid/GameGrid.js');
 	var PlayerFactory = require('./factory/PlayerFactory.js');
@@ -26,10 +26,9 @@ function Server(){
 	var game;
 	var maxNrOfPlayers = 0;
 	var maxNrOfColumns = 0;
-	var settings = new Settings();
-	var gameGrid = new GameGrid(settings);
+	var gameGrid = new GameGrid();
 	var gm = new GroupManager();
-	var pf = new PlayerFactory(settings);
+	var pf = new PlayerFactory();
 	var bf = new BallFactory();
 
 	//Create all groups
@@ -105,13 +104,13 @@ function Server(){
 	};
 
 	this.setMaxGameSize = function(data){
-		maxNrOfPlayers = Math.floor(data.width / settings.canvasWidth) * Math.floor(data.height / settings.canvasHeight);
-		maxNrOfColumns = Math.floor(data.width / settings.canvasWidth);
+		maxNrOfPlayers = Math.floor(data.width / S.canvasWidth) * Math.floor(data.height / S.canvasHeight);
+		maxNrOfColumns = Math.floor(data.width / S.canvasWidth);
 	};
 
 	this.updateMainScreenCanvasSize = function(){
-		var _width = gameGrid.getWidth() * settings.canvasWidth;
-		var _height = gameGrid.getHeight()* settings.canvasHeight;
+		var _width = gameGrid.getWidth() * S.canvasWidth;
+		var _height = gameGrid.getHeight()* S.canvasHeight;
 		game.setWidth(_width);
 		game.setHeight(_height);
 		return {width: _width, height: _height};
