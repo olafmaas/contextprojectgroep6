@@ -1,4 +1,4 @@
-var socket = io.connect(server+":"+port).of('/player');
+var socket = io.connect(Settings.server+":"+Settings.port).of('/player');
 
 ////////////////////////////
 // Basic socket listeners //
@@ -108,7 +108,7 @@ socket.on('updateTop', function (data) {
 	for(i = 0; i < data.newhs.length; i++){
 		if(player.getGlobalID() == data.newhs[i]){
 			player.getPole().setColor('White');
-			player.getPole().setRadius(UserSettings.poleRadius + count*2);
+			player.getPole().setRadius(Settings.poleRadius + count*2);
 		}
 		count--;
 	}
@@ -158,7 +158,7 @@ function removeBall(_gid) {
 
 //Create nr of ball with the corresponding colors in the color-array
 function createBall(data){
-	var ball = game.instantiate(new Ball(10));
+	var ball = game.instantiate(new Ball(Settings.ball.size));
 	ball.setPosition(data.pos.x, data.pos.y);
 	ball.setColor(data.color);
 	ball.setGlobalID(data.gid);
@@ -172,15 +172,15 @@ function createPowerup(data){
 	if(player.getGlobalID() == data.id){
 
 		if(powerup != null) game.remove(powerup);
-		var type = Math.floor(Math.random() * UserSettings.nrOfPowerups); //choose a radom type
-		powerup = game.instantiate(new Powerup(UserSettings.powerupSize, type));
+		var type = Math.floor(Math.random() * Settings.nrOfPowerups); //choose a radom type
+		powerup = game.instantiate(new Powerup(Settings.powerupSize, type));
 		
 		var chooser = Math.round(Math.random()); //random 0 or 1
 		
-		var width = UserSettings.canvasWidth;
-		var height = UserSettings.canvasHeight;
-		var shieldRadius = UserSettings.shieldRadius;
-		var powerupSize = UserSettings.powerupSize;
+		var width = Settings.canvasWidth;
+		var height = Settings.canvasHeight;
+		var shieldRadius = Settings.shieldRadius;
+		var powerupSize = Settings.powerupSize;
 		
 		var dx = Math.round(Math.random() * ((width - powerupSize) - (width/2 + shieldRadius + 2*powerupSize)) + ((shieldRadius + 2*powerupSize) * (1-chooser)));
 		var dy = Math.round(Math.random() * ((height - powerupSize) - (height/2 + shieldRadius + 2*powerupSize)) + ((shieldRadius + 2*powerupSize) * chooser));
@@ -190,10 +190,10 @@ function createPowerup(data){
 		if(Math.round(Math.random())) //randomly decide whether to make y-coordinate negative
 			dy *= -1;
 
-		powerup.setPosition(UserSettings.canvasWidth/2 + dx, UserSettings.canvasHeight/2 + dy);
+		powerup.setPosition(Settings.canvasWidth/2 + dx, Settings.canvasHeight/2 + dy);
 		createIcon(type);
 
-		powerupRemovalTimer = setTimeout(removePowerup, UserSettings.removalTime); //set timer so powerup is removed after x seconds.
+		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime); //set timer so powerup is removed after x seconds.
 	}
 };
 
@@ -201,22 +201,22 @@ function createPowerup(data){
 function createIcon(_type){
 	switch(_type){
 		case e.smallShield:
-		icon = game.instantiate(new Sprite(UserSettings.smallShield.path));
+		icon = game.instantiate(new Sprite(Settings.smallShield.path));
 
 		case e.bigShield:
-		icon = game.instantiate(new Sprite(UserSettings.bigShield.path));
+		icon = game.instantiate(new Sprite(Settings.bigShield.path));
 
 		case e.smallPole:
-		icon = game.instantiate(new Sprite(UserSettings.smallPole.path));
+		icon = game.instantiate(new Sprite(Settings.smallPole.path));
 
 		case e.bigPole:
-		icon = game.instantiate(new Sprite(UserSettings.bigPole.path));
+		icon = game.instantiate(new Sprite(Settings.bigPole.path));
 
 		case e.revertShield: 
-		icon = game.instantiate(new Sprite(UserSettings.revertShield.path));
+		icon = game.instantiate(new Sprite(Settings.revertShield.path));
 	}
 
-	var size = UserSettings.powerupSize;
+	var size = Settings.powerupSize;
 	icon.setPosition(powerup.getPosition());
 	icon.setSize({x: size*2, y: size*2});
 	icon.setAnchor({x: -size, y: -size});

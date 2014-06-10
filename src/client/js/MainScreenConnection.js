@@ -1,4 +1,4 @@
-var socket = io.connect(server+":"+port).of('/mainscreen');
+var socket = io.connect(Settings.server+":"+Settings.port).of('/mainscreen');
 
 ////////////////////////////
 // Basic socket listeners //
@@ -93,7 +93,7 @@ socket.on('updateShieldAngle', function (data) {
 socket.on('powerupClicked', function (_pid, _ptype) {
 	var p = players.getMemberByGlobalID(_pid);
 	if(p != -1){ //if player has been found
-		var powerup = new Powerup(10, _ptype); //NOT game.instantiate!!, as it should not exists outside this function!
+		var powerup = new Powerup(Settings.powerupSize, _ptype); //NOT game.instantiate!!, as it should not exists outside this function!
 		p.setPowerup(powerup);
 	}
 });
@@ -103,8 +103,8 @@ function createPlayerObjects(data){
 	var shield;
 	var player;
 
-	pole = game.instantiate(new Pole(10));
-	pole.setColor("blue");
+	pole = game.instantiate(new Pole(Settings.pole.size));
+	pole.setColor(Settings.pole.color);
 	pole.setPosition(data.polePos.x, data.polePos.y);
 	poles.addMember(pole);
 
@@ -112,7 +112,7 @@ function createPlayerObjects(data){
 	shield.getBody().immovable = true;
 	shields.addMember(shield);
 	shield.noCalc();
-	shield.setColor("white");
+	shield.setColor(Settings.shield.color);
 
 	player = game.instantiate(new Player(data.id));
 	player.setPole(pole);
@@ -140,8 +140,8 @@ function removePlayerObjects(socketID){
 };
 
 function createBall(data){
-	var ball = game.instantiate(new Ball(10));
-	ball.setPosition(100, 100);
+	var ball = game.instantiate(new Ball(Settings.ball.size));
+	ball.setPosition(Settings.ball.x, Settings.ball.y);
 	ball.setColor(data.color);
 	ball.setGlobalID(data.gid);
 	balls.addMember(ball);

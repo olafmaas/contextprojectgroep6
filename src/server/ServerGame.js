@@ -1,19 +1,16 @@
 if(typeof module != 'undefined'){
-	var ColorGenerator = require('../common/game/util/ColorGenerator');
 	var Group = require('../common/game/util/Group.js');
 	var UserSettings = require('../common/game/util/UserSettings.js');
 	var Ball = require('../common/game/gameobjects/Ball.js');
 	var Pole = require('../common/game/gameobjects/Pole.js');
 	var Shield = require('../common/game/gameobjects/Shield.js');
-	var Powerup = require('../common/game/gameobjects/Powerup.js');
 	var Player = require('../common/game/gameobjects/Player.js');
-	var handleCollision = require('../common/game/CollisionDetection.js');
-	var Game = require('../common/game/Game.js');
+	var Powerup = require('../common/game/gameobjects/Powerup.js');
 	var CoreGame = require('../common/game/CoreGame.js');
 
 	var Client = require('../common/Client.js');
+	var S = require('../common/Settings.js');
 
-	var Settings = require('./Settings.js');
 	var GroupManager = require('./util/GroupManager.js');
 	var GameGrid = require('./grid/GameGrid.js');
 	var PlayerFactory = require('./factory/PlayerFactory.js');
@@ -27,10 +24,9 @@ function Server(){
 	var game;
 	var maxNrOfPlayers = 0;
 	var maxNrOfColumns = 0;
-	var settings = new Settings();
-	var gameGrid = new GameGrid(settings);
+	var gameGrid = new GameGrid();
 	var gm = new GroupManager();
-	var pf = new PlayerFactory(settings);
+	var pf = new PlayerFactory();
 	var bf = new BallFactory();
 
 	//Create all groups
@@ -55,7 +51,7 @@ function Server(){
 	*/
 	this.addClient = function(socket){
 
-		var ball = game.instantiate(bf.createNewBall(10));
+		var ball = game.instantiate(bf.createNewBall(S.ball.size));
 		
 		var positionOfPole = gameGrid.updateGrid(socket, maxNrOfColumns, ball)
 
@@ -106,13 +102,13 @@ function Server(){
 	};
 
 	this.setMaxGameSize = function(data){
-		maxNrOfPlayers = Math.floor(data.width / settings.canvasWidth) * Math.floor(data.height / settings.canvasHeight);
-		maxNrOfColumns = Math.floor(data.width / settings.canvasWidth);
+		maxNrOfPlayers = Math.floor(data.width / S.canvasWidth) * Math.floor(data.height / S.canvasHeight);
+		maxNrOfColumns = Math.floor(data.width / S.canvasWidth);
 	};
 
 	this.updateMainScreenCanvasSize = function(){
-		var _width = gameGrid.getWidth() * settings.canvasWidth;
-		var _height = gameGrid.getHeight()* settings.canvasHeight;
+		var _width = gameGrid.getWidth() * S.canvasWidth;
+		var _height = gameGrid.getHeight()* S.canvasHeight;
 		game.setWidth(_width);
 		game.setHeight(_height);
 		return {width: _width, height: _height};
@@ -126,7 +122,7 @@ function Server(){
 	this.setPowerup = function(_playerID, _powerupType){
 		var player = group("Players").getMemberByGlobalID(_playerID);
 		if(player != -1){ //if player has been found
-			var powerup = new Powerup(10, _powerupType); //NOT game.instantiate!!, as it should not exists outside this function!
+			var powerup = new Powerup(S.powerupSize, _powerupType); //NOT game.instantiate!!, as it should not exists outside this function!
 			player.setPowerup(powerup);
 		}
 	};
@@ -151,7 +147,7 @@ function Server(){
 		for(i = 0; i < highscore.newhs.length; i++){
 			var player = group("Players").getMemberByGlobalID(highscore.newhs[i]);
 			player.getPole().setColor('White');
-			player.getPole().setRadius(UserSettings.poleRadius + count*2);
+			player.getPole().setRadius(Settings.poleRadius + count*2);
 			count--;
 		}
 	};
