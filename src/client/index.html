@@ -76,11 +76,13 @@
         function startPlaying() {
             startSocket();
             //screenfull.request();
+            var elem = document.getElementById('startButton');
+            elem.parentNode.removeChild(elem);
         }
         </script>
 
     </head>
     <body>
-        <button id"startButton" onclick="startPlaying()">Start Playing!</button>
+        <button id="startButton" onclick="startPlaying()">Start Playing!</button>
     </body>
 </html>
