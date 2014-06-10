@@ -1,5 +1,5 @@
 
-var game = new Game(init, loadContent, update, draw, 450, 350, 450, 350);
+var game = new Game(init, loadContent, update, draw, Settings.canvasWidth, Settings.canvasHeight, Settings.canvasWidth, Settings.canvasHeight);
 
 var pole;
 var shield;
@@ -19,7 +19,7 @@ function init(){
 
 function createTempImage(){
     tempImage = game.instantiate(new Sprite('./img/beginplaatje.svg'));
-    tempImage.setPosition({x: UserSettings.canvasWidth/2 - 110, y: UserSettings.canvasHeight/2 - 110});
+    tempImage.setPosition({x: Settings.canvasWidth/2 - 110, y: Settings.canvasHeight/2 - 110});
     tempImage.setSize({x: 200, y: 200});
 }
 
@@ -28,9 +28,9 @@ function deleteTempImage(){
 }
 
 function loadContent(){
-    pole = game.instantiate(new Pole(10));
+    pole = game.instantiate(new Pole(Settings.poleSize));
     pole.setColor("blue");
-    pole.setPosition(225, 175);
+    pole.setPosition(Settings.canvasWidth /2 , Settings.canvasHeight /2);
 
     shield = game.instantiate(new Shield(pole));
     shield.getBody().immovable = true;
@@ -43,10 +43,10 @@ function loadContent(){
 
     //Player labels, name is set once again when the user has
     scoreLabel = game.instantiate(new ScoreLabel(player, "Score: 0"));
-    scoreLabel.setPosition(UserSettings.scorePosition);
+    scoreLabel.setPosition(Settings.scorePosition);
 
     nameLabel = game.instantiate(new Label("Unknown Player"));
-    nameLabel.setPosition(UserSettings.namePosition);
+    nameLabel.setPosition(Settings.namePosition);
 
     createTempImage();
     setTimeout(deleteTempImage, 3000);

@@ -89,7 +89,7 @@ socket.on('updateShieldAngle', function (data) {
 socket.on('powerupClicked', function (_pid, _ptype) {
 	var p = players.getMemberByGlobalID(_pid);
 	if(p != -1){ //if player has been found
-		var powerup = new Powerup(10, _ptype); //NOT game.instantiate!!, as it should not exists outside this function!
+		var powerup = new Powerup(Settings.powerupSize, _ptype); //NOT game.instantiate!!, as it should not exists outside this function!
 		p.setPowerup(powerup);
 	}
 });

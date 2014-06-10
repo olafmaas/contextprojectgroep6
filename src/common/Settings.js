@@ -1,5 +1,6 @@
 var Settings = {
 	
+	bootTime: 10,
 	
 	canvasWidth: 450,
 	canvasHeight: 350,
@@ -7,36 +8,43 @@ var Settings = {
 	minTime: 10,
 	maxTime: 30,
 
+	poleSize: 10,
+
 	//Powerup attributes
 	//TODO: powerup voor dubbele score?
 	//NOTE: time mag niet groter zijn dan de minimale spawntijd voor een nieuwe powerup.
 	//want anders wordt de oude powerup overschreden met de nieuwe timer :D hier nog een fix voor zoeken.
 	smallShield: {
 		time: 10,
+		color: "greenyellow",
 		length: 3.5,
 		path: ""
 	},
 
 	bigShield: {
 		time: 15,
+		color: "violet",
 		length: 1,
 		path: ""
 	},
 
 	smallPole: {
 		time: 15,
+		color: "yellow",
 		radius: 5,
 		path: ""
 	},
 
 	bigPole: {
 		time: 10,
+		color: "aqua",
 		radius: 20,
 		path: ""
 	},
 
 	revertShield: {
 		time: 10,
+		color: "red",
 		path: ""
 	},
 
