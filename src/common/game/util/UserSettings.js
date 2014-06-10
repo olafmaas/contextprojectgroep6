@@ -1,5 +1,5 @@
 
-var UserSettings = ({
+var UserSettings = {
 
 	//Powerup attributes
 	//TODO: powerup voor dubbele score
@@ -53,7 +53,7 @@ var UserSettings = ({
 	
 	//Shield radius 
 	shieldRadius: 70
-});
+};
 
 if(typeof module != 'undefined'){
     module.exports = UserSettings;
