@@ -99,8 +99,8 @@ function createPlayerObjects(data){
 	var shield;
 	var player;
 
-	pole = game.instantiate(new Pole(10));
-	pole.setColor("blue");
+	pole = game.instantiate(new Pole(Settings.pole.size));
+	pole.setColor(Settings.pole.color);
 	pole.setPosition(data.polePos.x, data.polePos.y);
 	poles.addMember(pole);
 
@@ -108,7 +108,7 @@ function createPlayerObjects(data){
 	shield.getBody().immovable = true;
 	shields.addMember(shield);
 	shield.noCalc();
-	shield.setColor("white");
+	shield.setColor(Settings.shield.color);
 
 	player = game.instantiate(new Player(data.id));
 	player.setPole(pole);
@@ -136,8 +136,8 @@ function removePlayerObjects(socketID){
 };
 
 function createBall(data){
-	var ball = game.instantiate(new Ball(10));
-	ball.setPosition(100, 100);
+	var ball = game.instantiate(new Ball(Settings.ball.size));
+	ball.setPosition(Settings.ball.x, Settings.ball.y);
 	ball.setColor(data.color);
 	ball.setGlobalID(data.gid);
 	balls.addMember(ball);
