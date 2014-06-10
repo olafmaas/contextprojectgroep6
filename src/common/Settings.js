@@ -6,7 +6,7 @@ var Settings = {
 
 	//Server connection properties
 	server: 'http://localhost',
-	//server = 'http://vps-76938-1774.hosted.at.hostnet.nl';	//Server Olaf
+	//server: 'http://vps-76938-1774.hosted.at.hostnet.nl',	//Server Olaf
 	port: 5050,
 
 	//Powerups 
