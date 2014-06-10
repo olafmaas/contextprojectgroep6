@@ -205,7 +205,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	//Make the engine boot 1 second after instantiating
 	//this.boot();
 
-	setTimeout(this.boot, 10);
+	setTimeout(this.boot, Settings.bootTime);
 
 	//======================
 	// Gets & Sets
@@ -251,6 +251,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 		drawing = _drawing;
 	}
 }
+
 if(typeof module != 'undefined'){
     module.exports = RenderEngine;
 }
@@ -287,6 +288,7 @@ Drawer = function(_canvasContext){
 		canvasContext.beginPath();
   		canvasContext.arc(_shield.getPosition().x, _shield.getPosition().y, _shield.getRadius(), (revert * _shield.getAngle()) - (_shield.getSize() / _shield.getShieldLength()), (revert * _shield.getAngle()) + (_shield.getSize() / _shield.getShieldLength()));
   		canvasContext.strokeStyle = _shield.getColor();
+  		canvasContext.lineWidth = Settings.shield.shieldWidth;
   		canvasContext.stroke();
 	};
 

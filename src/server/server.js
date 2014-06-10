@@ -1,9 +1,8 @@
+var S = require('../common/Settings.js');
 var SocketHandler = require('./SocketHandler.js');
 var Server = require('./ServerGame.js');
-var io = require('socket.io').listen(5050);
+var io = require('socket.io').listen(S.port);
 io.set('log level', 2);   // 0 - error | 1 - warn | 2 - info | 3 - debug
-
-
 
 var server = new Server();
 var sh = new SocketHandler(server, io);

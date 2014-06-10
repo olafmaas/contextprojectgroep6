@@ -1,24 +1,14 @@
 if(typeof module != 'undefined'){
-	var ColorGenerator = require('../common/game/util/ColorGenerator');
-	var Group = require('../common/game/util/Group.js');
 	var RandomTimer = require('../common/game/time/RandomTimer');
 	var Ball = require('../common/game/gameobjects/Ball.js');
-	var Pole = require('../common/game/gameobjects/Pole.js');
-	var Shield = require('../common/game/gameobjects/Shield.js');
-	var Powerup = require('../common/game/gameobjects/Powerup.js');
-	var Player = require('../common/game/gameobjects/Player.js');
+
 	var handleCollision = require('../common/game/CollisionDetection.js');
 	var Game = require('../common/game/Game.js');
 	var CoreGame = require('../common/game/CoreGame.js');
 
 	var Client = require('../common/Client.js');
 	var e = require('../common/Enums.js');
-
-	var Settings = require('./Settings.js');
-	var GroupManager = require('./util/GroupManager.js');
-	var GameGrid = require('./grid/GameGrid.js');
-	var PlayerFactory = require('./factory/PlayerFactory.js');
-	var BallFactory = require('./factory/BallFactory.js');
+	var S = require('../common/Settings.js');
 }
 
 function SocketHandler(_server, _io){
@@ -26,8 +16,7 @@ function SocketHandler(_server, _io){
 	var io = _io;
 	var mainScreenSocket = {emit:function(){false}}; //If the mainscreen is not instantiated this function is used;
 	var debug;
-	var settings = new Settings();
-	var timer = new RandomTimer(settings.minTime, settings.maxTime);
+	var timer = new RandomTimer(S.minTime, S.maxTime);
 	var oldranking = [];
 
 	this.handleMainScreen = function(socket){
@@ -37,7 +26,7 @@ function SocketHandler(_server, _io){
 
 		updateMainScreenCanvasSize();
 
-		setInterval(this.updateScores, 5000);
+		setInterval(this.updateScores, S.highScore.updateInterval);
 
 		socket.on('screenSizeMainScreen', function (data){
 			server.setMaxGameSize(data)
@@ -131,7 +120,7 @@ function SocketHandler(_server, _io){
 
 			newPowerup();
 
-			timer = new RandomTimer(settings.minTime, settings.maxTime); //start a new timer for the next powerup
+			timer = new RandomTimer(S.minTime, S.maxTime); //start a new timer for the next powerup
 			timer.startTimer();
 		}
 

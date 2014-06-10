@@ -1,12 +1,13 @@
 if(typeof module != 'undefined'){
+	var S = require('../../common/Settings.js');
+
 	var Block = require('./Block.js');
 	var GridCalc = require('./GridCalc.js');
 }
 
-function GameGrid(_settings) {
+function GameGrid() {
 	var grid = new Array();	//vertical
 	grid.push(new Array());	//horizontal (first row)
-	var settings = _settings;
 	var maximumCol = 0;
 	var gridc = new GridCalc();
 
@@ -15,7 +16,7 @@ function GameGrid(_settings) {
 		var l = grid.length;
 		grid.push(new Array());
 		for(var i = 0; i < maximumCol; i++){
-			var b = new Block(false ,i * settings.canvasWidth, l*settings.canvasHeight)
+			var b = new Block(false ,i * S.canvasWidth, l * S.canvasHeight)
 
 			
 			
@@ -64,13 +65,13 @@ function GameGrid(_settings) {
 			grid[grid.length-1][0].addBall(ball);
 		}
 
-		return {left: x * settings.canvasWidth, top: y*settings.canvasHeight}; 
+		return {left: x * S.canvasWidth, top: y * S.canvasHeight}; 
 	};
 
 	checkrow = function(socket, i, ball){
 		for(var j = 0; j < maximumCol; j++){
 				if(grid[i].length == j){
-					grid[i].push(new Block(socket ,j * settings.canvasWidth, i*settings.canvasHeight))
+					grid[i].push(new Block(socket ,j * S.canvasWidth, i * S.canvasHeight))
 					grid[i][j].setPlayer(socket)
 					grid[i][j].addBall(ball);
 					if(j > 0){

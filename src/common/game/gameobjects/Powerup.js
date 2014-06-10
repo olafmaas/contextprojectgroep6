@@ -6,7 +6,7 @@ if(typeof module != 'undefined'){
 	var CircularBody = require('./CircularBody.js');
 	var IDDistributor = require('../util/IDDistributor.js');
 	var Timer = require('../time/Timer.js');
-	var UserSettings = require('../util/UserSettings.js');
+	var Settings = require('../../Settings.js');
 	var PowerupTimer = require('../time/PowerupTimer.js');
 	var Sprite = require('./Sprite.js');
 }
@@ -61,19 +61,19 @@ var Powerup = Base.extend({
 	createTimer: function(_type){
 		switch(_type){
 			case e.smallShield:
-			return new PowerupTimer(UserSettings.smallShield.time)
+			return new PowerupTimer(Settings.smallShield.time)
 
 			case e.bigShield:
-			return new PowerupTimer(UserSettings.bigShield.time)
+			return new PowerupTimer(Settings.bigShield.time)
 
 			case e.smallPole:
-			return new PowerupTimer(UserSettings.smallPole.time)
+			return new PowerupTimer(Settings.smallPole.time)
 
 			case e.bigPole:
-			return new PowerupTimer(UserSettings.bigPole.time);
+			return new PowerupTimer(Settings.bigPole.time);
 
 			case e.revertShield:
-			return new PowerupTimer(UserSettings.revertShield.time)		
+			return new PowerupTimer(Settings.revertShield.time)		
 		}
 	},
 
@@ -81,22 +81,23 @@ var Powerup = Base.extend({
 	createPower: function(_type){
 		switch(_type){
 			case e.smallShield:
-			this.color = "greenyellow";
-			return function(_player) { _player.getShield().setShieldLength(UserSettings.smallShield.length); };
+			this.color = Settings.smallShield.color;
+			return function(_player) { _player.getShield().setShieldLength(Settings.smallShield.length); };
 
 			case e.bigShield:
-			this.color = "violet";
-			return function(_player) { _player.getShield().setShieldLength(UserSettings.bigShield.length); };
+			this.color = Settings.bigShield.color;
+			return function(_player) { _player.getShield().setShieldLength(Settings.bigShield.length); };
 
 			case e.smallPole:
-			this.color = "yellow";
-			return function(_player) { _player.getPole().setRadius(UserSettings.smallPole.radius); };
+			this.color = Settings.smallPole.color;
+			return function(_player) { _player.getPole().setRadius(Settings.smallPole.radius); };
 
 			case e.bigPole:
-			this.color = "aqua";
-			return function(_player) { _player.getPole().setRadius(UserSettings.bigPole.radius); };
+			this.color = Settings.bigPole.color;
+			return function(_player) { _player.getPole().setRadius(Settings.bigPole.radius); };
 
 			case e.revertShield: 
+			this.color = Settings.revertShield.color;
 			return function(_player) { _player.getShield().revertShield(true); };		
 		}
 	},
@@ -106,22 +107,22 @@ var Powerup = Base.extend({
 		var sprite = null;
 		switch(_type){
 			case e.smallShield:
-			sprite = _game.instantiate(new Sprite(UserSettings.smallShield.path));
+			sprite = _game.instantiate(new Sprite(Settings.smallShield.path));
 
 			case e.bigShield:
-			sprite = _game.instantiate(new Sprite(UserSettings.bigShield.path));
+			sprite = _game.instantiate(new Sprite(Settings.bigShield.path));
 
 			case e.smallPole:
-			sprite = _game.instantiate(new Sprite(UserSettings.smallPole.path));
+			sprite = _game.instantiate(new Sprite(Settings.smallPole.path));
 
 			case e.bigPole:
-			sprite = _game.instantiate(new Sprite(UserSettings.bigPole.path));
+			sprite = _game.instantiate(new Sprite(Settings.bigPole.path));
 
 			case e.revertShield: 
-			sprite = _game.instantiate(new Sprite(UserSettings.revertShield.path));
+			sprite = _game.instantiate(new Sprite(Settings.revertShield.path));
 		}
-		sprite.setSize({x: UserSettings.powerupSize*2, y: UserSettings.powerupSize*2}); //sprite must cover the whole powerup
-		sprite.setAnchor({x: -UserSettings.powerupSize, y: -UserSettings.powerupSize}); //anchor it to the top right 
+		sprite.setSize({x: Settings.powerupSize*2, y: Settings.powerupSize*2}); //sprite must cover the whole powerup
+		sprite.setAnchor({x: -Settings.powerupSize, y: -Settings.powerupSize}); //anchor it to the top right 
 		return sprite;
 	},
 */

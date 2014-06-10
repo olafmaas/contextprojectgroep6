@@ -3,8 +3,7 @@ if(typeof module != 'undefined'){
 
 	var e = require('../../common/Enums.js');
 	var Ball = require('../../common/game/gameobjects/Ball.js');
-	
-	var Settings = require('../Settings.js');
+	var S = require('../../common/Settings.js');
 }
 
 var Block = Base.extend({
@@ -13,7 +12,6 @@ var Block = Base.extend({
 	socket: false,
 	neighbours: null,
 	position: null,
-	setting: new Settings(),
 
 	constructor: function(_socket, _left, _top){
 		this.socket = _socket;
@@ -60,7 +58,7 @@ var Block = Base.extend({
 		}
 
 		//Bottom
-		if((yPosInBlock > (this.setting.canvasHeight - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().y > 0)){
+		if((yPosInBlock > (S.canvasHeight - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().y > 0)){
 			sendTo.push("bottom")
 		}
 
@@ -70,7 +68,7 @@ var Block = Base.extend({
 		}
 
 		//right
-		if((xPosInBlock > (this.setting.canvasWidth - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().x > 0)){
+		if((xPosInBlock > (S.canvasWidth - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().x > 0)){
 			sendTo.push("right")
 		}
 
@@ -88,7 +86,7 @@ var Block = Base.extend({
 		}
 
 		//Bottom
-		if((yPosInBlock > (_ball.getRadius() + this.setting.canvasHeight)) && (_ball.getBody().getVectorVelocity().y > 0)){
+		if((yPosInBlock > (_ball.getRadius() + S.canvasHeight)) && (_ball.getBody().getVectorVelocity().y > 0)){
 			del = true;
 		}
 
@@ -98,7 +96,7 @@ var Block = Base.extend({
 		}
 
 		//right
-		if((xPosInBlock > (_ball.getRadius() + this.setting.canvasWidth)) && (_ball.getBody().getVectorVelocity().x > 0)){
+		if((xPosInBlock > (_ball.getRadius() + S.canvasWidth)) && (_ball.getBody().getVectorVelocity().x > 0)){
 			del = true;
 		}
 
