@@ -1,3 +1,8 @@
+if(typeof module != 'undefined'){
+	var Base = require('../../../lib/Base.js');
+	var IDDistributor = require('../util/IDDistributor.js');
+}
+
 /**
 * Sprite class
 * @class Sprite
@@ -117,6 +122,10 @@ var Sprite = Base.extend({
 
 	getSize: function(){
 		return this.size;
+	},
+
+	getAnchor: function(){
+		return this.anchor;
 	}
 
 	//TODO: GETS

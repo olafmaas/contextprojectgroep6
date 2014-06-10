@@ -5,8 +5,11 @@ var RotatingSprite = Sprite.extend({
 	rotate: false, //Whether the rotation should be changed on each draw (let it rotate in 360 degrees)
 	rotationInterval: 0,
 
-	constructor: function(){
-
+	constructor: function(_texturePath, _rotation){
+		this.texture = new Image();
+		this.texture.src = _texturePath;
+		this.rotate = true;
+		this.rotation = _rotation;
 	},
 
 	draw: function(){

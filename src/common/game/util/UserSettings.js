@@ -7,26 +7,31 @@ var UserSettings = ({
 	//want anders wordt de oude powerup overschreden met de nieuwe timer :D hier nog een fix voor zoeken.
 	smallShield: {
 		time: 10,
-		length: 3.5
+		length: 3.5,
+		path: ""
 	},
 
 	bigShield: {
 		time: 15,
-		length: 1
+		length: 1,
+		path: ""
 	},
 
 	smallPole: {
 		time: 15,
-		radius: 5
+		radius: 5,
+		path: ""
 	},
 
 	bigPole: {
 		time: 10,
-		radius: 20
+		radius: 20,
+		path: ""
 	},
 
 	revertShield: {
 		time: 10,
+		path: ""
 	},
 
 	//Amount of powerups & global size & how long they are available on screen
