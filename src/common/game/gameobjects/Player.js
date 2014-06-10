@@ -41,14 +41,6 @@ var Player = Base.extend({
 		}
 	},
 
-	/* Dummy method
-	*
-	* @method Player#draw
-	*/
-	draw: function(_canvasContext){
-
-	},
-
 	/**
 	* Increments the current points by the given amounts
 	*
@@ -68,6 +60,48 @@ var Player = Base.extend({
 	incrementScore: function(_score){
 		this.score += _score;
 	},
+
+	/**
+	* Reverts the player back to the (original) saved state before a powerup was activated.
+	* Note: When new powerups are added, this function should be updated accordingly!
+	*
+	* @method Player#revert
+	*/
+	//met nieuwe powerups moet deze functie ook worden aangepast!
+	revert: function(){
+		this.getShield().revertShield(this.originalState.revert);
+		this.getShield().setShieldLength(this.originalState.length);
+		this.getPole().setRadius(this.originalState.radius);
+	},
+
+	/**
+	* Saves the current (original) state of the player.
+	* Note: When new powerups are added, this function should be updated accordingly!
+	*
+	* @method Player#saveState
+	*/
+	saveState: function(){
+		var savedThis = this;
+		this.originalState = {
+			revert: savedThis.getShield().isRevert(),
+			length: savedThis.getShield().getShieldLength(),
+			radius: savedThis.getPole().getRadius(),
+		};
+	},
+
+	/**
+	* Deletes the currently active powerup, stops the timer and reverts the 
+	* player back to his original state.
+	*
+	* @method Player#deletePowerup
+	*/
+	deletePowerup: function(){
+		this.activePowerup.stop();
+		this.activePowerup = null;
+		this.timer.stop();
+		this.timer = null;
+		this.revert(); //revert to original playerstate
+	},	
 	
 	/**
 	* Sets a global ID for the player
@@ -75,11 +109,15 @@ var Player = Base.extend({
 	* @method Player#setGlobalID
 	* @param {number} _id - The unique id to assign to the player.
 	*/
-	setGlobalID: function (_id) {
-		this.globalID = _id;
-	},
+	setGlobalID: function (_id) { this.globalID = _id; },
 
-	//TODO
+	/**
+	* Sets a new powerup and activates it.
+	* In case there was already a powerup active, that powerup is deleted first.
+	*
+	* @method Player#setPowerup
+	* @param {Powerup} _powerup - The powerup that will be set.
+	*/
 	setPowerup: function(_powerup){
 		//If another powerup was active at this point, make sure the old one is deprecated
 		if(this.activePowerup != null){
@@ -92,44 +130,13 @@ var Player = Base.extend({
 		this.timer.startTimer();
 	},
 
-	//TODO
-	deletePowerup: function(){
-		this.activePowerup.stop();
-		this.activePowerup = null;
-		this.timer.stop();
-		this.timer = null;
-		this.revert(); //revert to original playerstate
-	},	
-
-	//TODO
-	//revert back to original state before the last powerup
-	//met nieuwe powerups moet deze functie ook worden aangepast!
-	revert: function(){
-		this.getShield().revertShield(this.originalState.revert);
-		this.getShield().setShieldLength(this.originalState.length);
-		this.getPole().setRadius(this.originalState.radius);
-	},
-
-	//TODO
-	//met nieuwe powerups moet deze functie ook worden aangepast!
-	saveState: function(){
-		var savedThis = this;
-		this.originalState = {
-			revert: savedThis.getShield().isRevert(),
-			length: savedThis.getShield().getShieldLength(),
-			radius: savedThis.getPole().getRadius(),
-		};
-	},
-
-	//TODO
-	setTimer: function(_timer){
-		this.timer = _timer;
-	},
-
-	//TODO
-	getTimer: function(){
-		return this.timer;
-	},
+	/**
+	* Sets the timer belonging to the powerup.
+	*
+	* @method Player#setTimer
+	* @param {Timer} _timer - The timer that will be set.
+	*/
+	setTimer: function(_timer){ this.timer = _timer; },
 
 	/**
 	* Sets the name of the player
@@ -137,9 +144,7 @@ var Player = Base.extend({
 	* @method Player#setName
 	* @param {String} _name - The name of the player.
 	*/
-	setName: function(_name){
-		this.name = _name;
-	},
+	setName: function(_name){ this.name = _name; },
 
 	/**
 	* Sets theh pole belonging to the player
@@ -147,9 +152,7 @@ var Player = Base.extend({
 	* @method Player#setPole
 	* @param {Pole} _pole - The pole belonging to the player
 	*/
-	setPole: function(_pole){
-		this.pole = _pole;
-	},
+	setPole: function(_pole){ this.pole = _pole; },
 
 	/**
 	* Sets the shield belonging to the player
@@ -157,9 +160,7 @@ var Player = Base.extend({
 	* @method Player#setShield
 	* @param {Shield} _shield - The shield belonging to the player.
 	*/
-	setShield: function(_shield){
-		this.shield = _shield;
-	},
+	setShield: function(_shield){ this.shield = _shield; },
 
 	/**
 	* Sets the amount of poits the player is worth
@@ -167,9 +168,7 @@ var Player = Base.extend({
 	* @method Player#setPoints
 	* @param {number} _points - The amount of points.
 	*/
-	setPoints: function(_points){
-		this.points = _points;
-	},
+	setPoints: function(_points){ this.points = _points; },
 
 	/**
 	* Sets the current score of the player
@@ -177,9 +176,7 @@ var Player = Base.extend({
 	* @method Player#setScore
 	* @param {number} _score - The score
 	*/
-	setScore: function(_score){
-		this.score = _score;
-	},
+	setScore: function(_score){ this.score = _score; },
 
 	/**
 	* Sets the highscore of the player
@@ -187,9 +184,7 @@ var Player = Base.extend({
 	* @method Player#setHighscore
 	* @param {number} _highscore - The highscore
 	*/
-	setHighscore: function(_highscore){
-		this.highscore = _highscore;
-	},
+	setHighscore: function(_highscore){ this.highscore = _highscore; },
 
 	/**
 	* Returns the name of the player
@@ -197,9 +192,21 @@ var Player = Base.extend({
 	* @method Player#getName
 	* @return {String} The name of the player
 	*/
-	getName: function(){
-		return this.name;
-	},
+	getName: function(){ return this.name; },
+
+	/**
+	* Returns the current timer belonging to the powerup, or null if no timer is present.
+	*
+	* @method Player#getTimer
+	*/
+	getTimer: function(){ return this.timer; },
+
+	/**
+	* Returns the currently active powerup, or null if no powerup is active.
+	*
+	* @method Player#getPowerup
+	*/
+	getPowerup: function(){ return this.activePowerup; },
 
 	/**
 	* Returns the pole belonging to the player
@@ -207,9 +214,7 @@ var Player = Base.extend({
 	* @method Player#getPole
 	* @return {Pole} The pole belonging to the player.
 	*/
-	getPole: function(){
-		return this.pole;
-	},
+	getPole: function(){ return this.pole; },
 
 	/**
 	* Returns the shield belonging to the player
@@ -217,9 +222,7 @@ var Player = Base.extend({
 	* @method Player#getShield
 	* @return {Shield} The shield belonging to the player.
 	*/
-	getShield: function(){
-		return this.shield;
-	},
+	getShield: function(){ return this.shield; },
 
 	/**
 	* Returns the points the player is worth on hit.
@@ -227,9 +230,7 @@ var Player = Base.extend({
 	* @method Player#getPoints
 	* @return {number} The points the player is currently worth.
 	*/
-	getPoints: function(){
-		return this.points;
-	},
+	getPoints: function(){ return this.points; },
 
 	/**
 	* Returns the current score of the player
@@ -237,9 +238,7 @@ var Player = Base.extend({
 	* @method Player#getScore
 	* @return {number} The current score of the player.
 	*/
-	getScore: function(){
-		return this.score;
-	},
+	getScore: function(){ return this.score; },
 
 	/**
 	* Returns the current highscore of the player
@@ -247,9 +246,7 @@ var Player = Base.extend({
 	* @method Player#getHighscore
 	* @return {number} The current highscore of the player.
 	*/
-	getHighscore: function(){
-		return this.highscore;
-	},
+	getHighscore: function(){ return this.highscore; },
 	
 	/**
 	* Retrieves the global ID of the player
@@ -257,9 +254,7 @@ var Player = Base.extend({
 	* @method Player#getGlobalID
 	* @return {number} The unique GlobalID of the player
 	*/
-	getGlobalID: function(){
-		return this.globalID;
-	},
+	getGlobalID: function(){ return this.globalID; },
 
 	/**
 	* Retrieves the ID of the player
@@ -267,17 +262,7 @@ var Player = Base.extend({
 	* @method Player#getID
 	* @return {number} The ID of the player
 	*/
-	getID: function(){
-		return this.ID;
-	},
-
-	//TODO: documentation
-	//returns the current time as a string in MM:SS format
-	getTime: function(){
-		var min = this.pole.getTimer().getMinutes();
-		var sec = this.pole.getTimer().getSeconds();
-
-		return min + ":" + sec;
+	getID: function(){ return this.ID;
 	}
 });
 
