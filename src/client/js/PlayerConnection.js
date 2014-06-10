@@ -139,7 +139,7 @@ function removeBall(_gid) {
 
 //Create nr of ball with the corresponding colors in the color-array
 function createBall(data){
-	var ball = game.instantiate(new Ball(10));
+	var ball = game.instantiate(new Ball(Settings.ball.size));
 	ball.setPosition(data.pos.x, data.pos.y);
 	ball.setColor(data.color);
 	ball.setGlobalID(data.gid);

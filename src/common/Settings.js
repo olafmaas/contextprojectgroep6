@@ -53,8 +53,10 @@ var Settings = {
 	maxTime: 30, //in ms
 
 	//Positions of labels
-	scorePosition: {x: 355, y: 340},
-	namePosition: {x: 10, y: 15},
+	label: {
+		score: {x: 355, y: 340},
+		name: {x: 10, y: 15}
+	}, 
 
 	//Canvas properties
 	canvasWidth: 450,
@@ -66,18 +68,20 @@ var Settings = {
 		color: "blue"
 	},
 
+	//Shield properties
 	shield: {
 		radius: 70,
 		color: "white"
 	},
 
+	//Ball properties
 	ball: {
 		size: 10,
 		velocity: 5,
+		velocityDirection: 1.70 * Math.PI,
 		//Positions of initial ball
 		x: 100,
-		y: 100,
-		velocityDirection: 1.70 * Math.PI
+		y: 100
 	},
 
 	highScore: {
