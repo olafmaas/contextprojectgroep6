@@ -138,7 +138,10 @@ function Server(){
 	
 		for(i = 0; i < highscore.oldhs.length; i++){
 			var player = group("Players").getMemberByGlobalID(highscore.oldhs[i]);
-			player.getPole().setColor('Blue');
+			
+			if(player != -1 && player != undefined){
+				player.getPole().setColor('Blue');
+			}
 		}
 
 		/*if(data.newhs.length < 5){
