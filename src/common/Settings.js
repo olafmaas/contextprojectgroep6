@@ -77,7 +77,7 @@ var Settings = {
 	shield: {
 		radius: 70,
 		shieldWidth: 2,
-		color: "green"
+		color: "yellow"
 	},
 
 	/**** BALL ****/
