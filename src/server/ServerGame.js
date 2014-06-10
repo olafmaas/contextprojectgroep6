@@ -140,18 +140,10 @@ function Server(){
 			var player = group("Players").getMemberByGlobalID(highscore.oldhs[i]);
 			
 			if(player != -1 && player != undefined){
-				player.getPole().setColor('Blue');
+				player.getPole().setColor(S.pole.color);
 			}
 		}
 
-		/*if(data.newhs.length < 5){
-			var count = S.highScore3.top;
-			var colors = S.highScore3.colors;
-		}
-		else{
-			var count = S.highScore.top;
-			var colors = S.highScore.colors;
-		}*/
 		var count = S.highScore.top;
 		var colors = S.highScore.colors;
 		

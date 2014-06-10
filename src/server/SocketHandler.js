@@ -106,12 +106,19 @@ function SocketHandler(_server, _io){
 	this.update = function(){
 		//Update Balls is done in Block
 		server.update();
+		updateBalls();
+		updatePowerups();
+		updatePoles();
+	};
 
+	updateBalls = function() {
 		//TODO: ID instead of index
 		for(var i = 0; i < server.nrOfBalls(); i++){
 			mainScreenSocket.emit(e.updateBall, server.getBallPosition(i), i)
 		}
+	};
 
+	updatePowerups = function() {
 		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
 		//TODO: timer eerder af laten lopen als er meer spelers zijn, dus settings aanpassen, of
 		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
@@ -123,7 +130,9 @@ function SocketHandler(_server, _io){
 			timer = new RandomTimer(S.minTime, S.maxTime); //start a new timer for the next powerup
 			timer.startTimer();
 		}
+	};
 
+	updatePoles = function() {
 		//Call isHit() when a pole is hit and send this event to the player
 		for(var i = 0; i < server.getNumberOfPlayers(); i++){
 			var pole = server.getGroup("Poles").getMember(i);
@@ -132,7 +141,7 @@ function SocketHandler(_server, _io){
 				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);
 			}
 		}
-	};
+	}
 
 	this.updateScores = function(){
 		var highScores = [];
