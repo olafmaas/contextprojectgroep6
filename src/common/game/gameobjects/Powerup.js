@@ -124,11 +124,11 @@ var Powerup = Base.extend({
 
 			case e.smallPole:
 			this.color = Settings.smallPole.color;
-			return function(_player) { _player.getPole().setRadius(Settings.smallPole.radius); };
+			return function(_player) { _player.getPole().setRadius(_player.getPole().getRadius() / Settings.smallPole.radius); };
 
 			case e.bigPole:
 			this.color = Settings.bigPole.color;
-			return function(_player) { _player.getPole().setRadius(Settings.bigPole.radius); };
+			return function(_player) { _player.getPole().setRadius(_player.getPole().getRadius() * Settings.bigPole.radius); };
 
 			case e.revertShield: 
 			this.color = Settings.revertShield.color;

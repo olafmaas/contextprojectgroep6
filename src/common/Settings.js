@@ -32,14 +32,14 @@ var Settings = {
 	smallPole: {
 		time: 15,
 		color: "yellow",
-		radius: 5,
+		radius: 2, //by which factor the pole will be divided
 		path: "../client/img/pokeball.png"
 	},
 
 	bigPole: {
 		time: 10,
 		color: "aqua",
-		radius: 20,
+		radius: 1.5, //by which factor the pole will be multiplied
 		path: "../client/img/pokeball.png"
 	},
 
