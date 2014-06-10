@@ -9,6 +9,7 @@ if(typeof module != 'undefined'){
 * @class Player
 * @classdesc Class to represent players with properties.
 * @constructor
+* @extends Base
 * @param {String} _name - The name of the player.
 */
 var Player = Base.extend({

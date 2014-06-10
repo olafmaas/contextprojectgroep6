@@ -8,6 +8,7 @@ if(typeof module != 'undefined'){
 * @class Body
 * @classdesc The bass class from which the other bodies inherit.
 * @constructor
+* @extends Base
 */
 var Body = Base.extend({
 	

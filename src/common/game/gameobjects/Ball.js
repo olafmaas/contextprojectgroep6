@@ -11,6 +11,7 @@ if(typeof module != 'undefined'){
 * @class Ball
 * @classdesc Ball constructor.
 * @constructor
+* @extends Base
 * @param {number} _radius - The radius of the ball.
 */
 var Ball = Base.extend({

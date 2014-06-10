@@ -9,6 +9,7 @@ if(typeof module != 'undefined'){
 * @classdesc Label class specifically aimed at showing the score of the player
 * @constructor
 * @param {Player} _player - The player for which the label should display the score
+* @extends Label
 * @param {string} _text - Initial string to write on the screen
 */
 var ScoreLabel = Label.extend({

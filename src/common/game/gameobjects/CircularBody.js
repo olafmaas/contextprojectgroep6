@@ -11,6 +11,7 @@ if(typeof module != 'undefined'){
 * @class CircularBody
 * @classdesc CircularBody class which extends the Body class.
 * @constructor
+* @extends Body
 * @param {ball} _parent - Ball or pole object to which the body is assigned.
 */
 var CircularBody = Body.extend({

@@ -8,6 +8,7 @@ if(typeof module != 'undefined'){
 * @class Sprite
 * @classdesc Sprite class for loading textures
 * @constructor
+* @extends Base
 * @param {String} _texturePath - The relative path to the image.
 */
 var Sprite = Base.extend({

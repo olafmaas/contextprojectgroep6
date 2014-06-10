@@ -16,6 +16,7 @@ if(typeof module != 'undefined'){
 * @class Powerup
 * @classdesc A simple powerup class 
 * @constructor Creates a powerup with a specific type and power.
+* @extends Base
 * @param {number} _radius - The radius of the powerup.
 * @param {number} _type - The type of the powerup
 */

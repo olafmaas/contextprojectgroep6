@@ -10,6 +10,7 @@ if(typeof module != 'undefined'){
 * @class Pole
 * @classdesc A simple pole class which extends Ball
 * @constructor It automatically sets the pole to be immovable when constructed.
+* @extends Ball
 * @param {number} _radius - The radius of the pole.
 */
 var Pole = Ball.extend({

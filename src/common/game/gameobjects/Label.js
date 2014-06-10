@@ -8,6 +8,7 @@ if(typeof module != 'undefined'){
 * @class Label
 * @classdesc Label class for writing text on the screen.
 * @constructor
+* @extends Base
 * @param {string} _text - String to write on the screen.
 */
 var Label = Base.extend({

@@ -10,6 +10,7 @@ if(typeof module != 'undefined'){
 * @class Shieldbody
 * @classdesc Shieldbody class
 * @constructor
+* @extends Body
 * @param {shield} _parent - The shield object
 */
 var ShieldBody = Body.extend({
