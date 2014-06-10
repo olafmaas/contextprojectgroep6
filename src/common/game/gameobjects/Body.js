@@ -34,6 +34,10 @@ var Body = Base.extend({
 		this.position.y += this.vectorVelocity.y;
 	},
 
+	handleCollision: function(_other){
+		//TODO: deze functie wordt dus nog aangeroepen door CollisionDetection:24
+	},
+
 	/**
 	* Gets the angle from this object to another object
 	*
@@ -47,8 +51,46 @@ var Body = Base.extend({
 		return angle;
 	},
 
-	handleCollision: function(_other){
-		//Here collisions should be handled
+	/**
+	* Calculates the velocity direction (angle) in which the ball is moving, by using the current x and y speed of the ball.
+	* 
+	* @method Body#calculateVDirection
+	* @return {number} The angle in radians.
+	*/
+	calculateVDirection: function (){ return -Math.atan2(this.vectorVelocity.y, this.vectorVelocity.x);},
+
+	/**
+	* Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.
+	*
+	* @method Body#calculateVelocity
+	* @return {number} The velocity of the ball.
+	*/
+	calculateVelocity: function(){
+		var dx = this.vectorVelocity.x;
+		var dy = this.vectorVelocity.y;
+	  	return Math.sqrt( dx * dx + dy * dy );
+	},
+
+	/**
+	* Reverts the y speed (positive to negative and vice versa).
+	* It also calculates the new angle (speed remains the same).
+	*
+	* @method Body#revertYSpeed
+	*/
+	revertYSpeed: function (){
+		this.vectorVelocity.y = -this.vectorVelocity.y;
+		this.velocityDirection = this.calculateVDirection();
+	},
+
+	/**
+	* Reverts the x speed (positive to negative and vice versa).
+	* It also calculates the new angle (speed remains the same).
+	*
+	* @method Body#revertXSpeed
+	*/
+	revertXSpeed: function (){
+		this.vectorVelocity.x = -this.vectorVelocity.x;
+		this.velocityDirection = this.calculateVDirection();		
 	},
 
 	/**
@@ -109,53 +151,7 @@ var Body = Base.extend({
 	* @method Body#getXYSpeed
 	* @return {number, number} The x and y speeds of the body.
 	*/
-	getXYSpeed: function(){
-		return this.vectorVelocity;
-	},
-
-	/**
-	* Calculates the velocity direction (angle) in which the ball is moving, by using the current x and y speed of the ball.
-	* 
-	* @method Body#calculateVelocity
-	* @return {number} The angle in radians.
-	*/
-	calculateVDirection: function (){
-		return -Math.atan2(this.vectorVelocity.y, this.vectorVelocity.x);
-	},
-
-	/**
-	* Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.
-	*
-	* @method Body#calculateVDirection
-	* @return {number} The velocity of the ball.
-	*/
-	calculateVelocity: function(){
-		var dx = this.vectorVelocity.x;
-		var dy = this.vectorVelocity.y;
-	  	return Math.sqrt( dx * dx + dy * dy );
-	},
-
-	/**
-	* Reverts the y speed (positive to negative and vice versa).
-	* It also calculates the new angle (speed remains the same).
-	*
-	* @method Body#revertYSpeed
-	*/
-	revertYSpeed: function (){
-		this.vectorVelocity.y = -this.vectorVelocity.y;
-		this.velocityDirection = this.calculateVDirection();
-	},
-
-	/**
-	* Reverts the x speed (positive to negative and vice versa).
-	* It also calculates the new angle (speed remains the same).
-	*
-	* @method Body#revertXSpeed
-	*/
-	revertXSpeed: function (){
-		this.vectorVelocity.x = -this.vectorVelocity.x;
-		this.velocityDirection = this.calculateVDirection();		
-	},
+	getXYSpeed: function(){ return this.vectorVelocity; },
 
 	/**
 	* Retrieves the position.
@@ -163,9 +159,7 @@ var Body = Base.extend({
 	* @method Body#getPosition
 	* @return {number, number} The x and y coordinate the position of the body.
 	*/
-	getPosition: function (){
-		return {x: Math.round(this.position.x), y: Math.round(this.position.y)};
-	},
+	getPosition: function (){ return {x: Math.round(this.position.x), y: Math.round(this.position.y)}; },
 
 	/**
 	* Retrieves the velocity of the body.
@@ -173,23 +167,23 @@ var Body = Base.extend({
 	* @method Body#getVelocity
 	* @return {number} The current velocity of the body.
 	*/
-	getVelocity: function (){
-		return this.velocity;
-	},
+	getVelocity: function (){ return this.velocity; },
 
 	/**
 	* Retrieves the velocity direction (angle) of the body.
 	*
-	* @method Body#getAngle
+	* @method Body#getVelocityDirection
 	* @return {number} The current angle of the body in radians.
 	*/
-	getVelocityDirection: function(){
-		return this.velocityDirection;
-	},
+	getVelocityDirection: function(){ return this.velocityDirection; },
 
-	getVectorVelocity: function(){
-		return this.vectorVelocity;
-	}
+	/**
+	* Retrieves the velocity of the body.
+	*
+	* @method Body#getVectorVelocity
+	* @return {number, number} The x and y velocities of the body.
+	*/
+	getVectorVelocity: function(){ return this.vectorVelocity; }
 });
 
 if(typeof module != 'undefined'){
