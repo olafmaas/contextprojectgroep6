@@ -13,8 +13,8 @@ if(typeof module != 'undefined'){
 
 	var Client = require('../common/Client.js');
 	var e = require('../common/Enums.js');
+	var S = require('../commonSettings.js');
 
-	var Settings = require('./Settings.js');
 	var GroupManager = require('./util/GroupManager.js');
 	var GameGrid = require('./grid/GameGrid.js');
 	var PlayerFactory = require('./factory/PlayerFactory.js');
@@ -26,8 +26,7 @@ function SocketHandler(_server, _io){
 	var io = _io;
 	var mainScreenSocket = {emit:function(){false}}; //If the mainscreen is not instantiated this function is used;
 	var debug;
-	var settings = new Settings();
-	var timer = new RandomTimer(settings.minTime, settings.maxTime);
+	var timer = new RandomTimer(S.minTime, S.maxTime);
 	var oldranking = [];
 
 	this.handleMainScreen = function(socket){
@@ -131,7 +130,7 @@ function SocketHandler(_server, _io){
 
 			newPowerup();
 
-			timer = new RandomTimer(settings.minTime, settings.maxTime); //start a new timer for the next powerup
+			timer = new RandomTimer(S.minTime, S.maxTime); //start a new timer for the next powerup
 			timer.startTimer();
 		}
 

@@ -1,12 +1,10 @@
 if(typeof module != 'undefined'){
 	var Base = require('../../lib/Base.js');
 	
-	var Settings = require('../Settings.js');
+	var S = require('../common/Settings.js');
 }
 
 var GridCalc= Base.extend({
-
-	setting: new Settings(),
 
 	inBlock: function(ball){
 		var arr = new Array();
