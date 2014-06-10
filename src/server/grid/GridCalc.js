@@ -1,7 +1,7 @@
 if(typeof module != 'undefined'){
 	var Base = require('../../lib/Base.js');
 	
-	var S = require('../common/Settings.js');
+	var S = require('../../common/Settings.js');
 }
 
 var GridCalc= Base.extend({

@@ -13,7 +13,7 @@ if(typeof module != 'undefined'){
 
 	var Client = require('../common/Client.js');
 	var e = require('../common/Enums.js');
-	var S = require('../commonSettings.js');
+	var S = require('../common/Settings.js');
 
 	var GroupManager = require('./util/GroupManager.js');
 	var GameGrid = require('./grid/GameGrid.js');

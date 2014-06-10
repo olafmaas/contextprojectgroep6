@@ -3,7 +3,7 @@ if(typeof module != 'undefined'){
 
 	var e = require('../../common/Enums.js');
 	var Ball = require('../../common/game/gameobjects/Ball.js');
-	var S = require('../common/Settings.js');
+	var S = require('../../common/Settings.js');
 }
 
 var Block = Base.extend({

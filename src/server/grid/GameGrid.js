@@ -1,6 +1,6 @@
 if(typeof module != 'undefined'){
-	var S = require('../common/Settings.js');
-	
+	var S = require('../../common/Settings.js');
+
 	var Block = require('./Block.js');
 	var GridCalc = require('./GridCalc.js');
 }

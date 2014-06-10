@@ -6,7 +6,7 @@ if(typeof module != 'undefined'){
 	var Pole = require('../../common/game/gameobjects/Pole.js');
 	var Shield = require('../../common/game/gameobjects/Shield.js');
 
-	var S = require('../common/Settings.js');
+	var S = require('../../common/Settings.js');
 }
 
 var PlayerFactory = Base.extend({
