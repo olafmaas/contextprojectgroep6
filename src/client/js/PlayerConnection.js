@@ -29,12 +29,6 @@ socket.on('disconnect', function(data){
 	console.info('Disconnected from server');
 });
 
-socket.on('updateHighscore', function(_score){
-	if(_score >= player.getHighscore()){
-		highscoreLabel.setText("Highscore: " + _score);
-	}
-});
-
 socket.on('userName', function(free){
 	if(!free){
 		socket.emit('userName', userName); //player.getName());
@@ -46,6 +40,10 @@ socket.on('userName', function(free){
 socket.on('showPlayerName', function(){
 	nameLabel.setText(player.getName());
 });
+
+socket.on('updateHighscore', function(){
+	highscoreLabel.setText('Highscore: ' + player.getHighscore());
+})
 
 //////////////////
 // Game updates //
