@@ -59,8 +59,8 @@ var Settings = {
 	}, 
 
 	//Canvas properties
-	canvasWidth: 450,
-	canvasHeight: 350,
+	canvasWidth: 800,
+	canvasHeight: 450,
 	
 	//Pole properties
 	pole: {
