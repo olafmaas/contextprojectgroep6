@@ -1,6 +1,8 @@
 var userName = prompt("Please enter your name", "User"+Math.floor(Math.random()*10000));
 if(userName == null) userName = "User"+Math.floor(Math.random()*10000);
 
+function startSocket() {
+
 var socket = io.connect(Settings.server+":"+Settings.port).of('/player');
 
 ////////////////////////////
@@ -262,4 +264,6 @@ function removePowerup(){
 		game.remove(icon);
 		icon = null;
 	}
+}
+
 }
