@@ -138,7 +138,7 @@ var CircularBody = Body.extend({
 	* @param {function} _callback - The callback function
 	* @param {Object} _this - The 'this' object on which the callback function will be called
 	*/
-	setCollisionCallback: function(_callback, _this){ this.collisionCallBack = {callback: _callback, context: _this}; }
+	setCollisionCallback: function(_callback, _this){ this.collisionCallBack = {callback: _callback, context: _this}; },
 
 	/**
 	* Returns the radius
@@ -160,7 +160,7 @@ var CircularBody = Body.extend({
 	* @method CircularBody#getID
 	* @return {number} The unique ID of this circularBody
 	*/
-	getID: function(){ return this.ID; },
+	getID: function(){ return this.ID; }
 
 });
 
