@@ -246,7 +246,6 @@ function checkPowerup(_x, _y){
 
 		if(inX && inY){
 			clearTimeout(powerupRemovalTimer); //remove the timer
-			powerup.isClicked();
 			player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
 
 			socket.emit('powerupClicked', player.getGlobalID(), powerup.getType());
