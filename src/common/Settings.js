@@ -1,19 +1,13 @@
 var Settings = {
 
+	//Initial boot time
 	bootTime: 10,
 
+	//Server connection properties
 	server: 'http://localhost',
 	port: 5050,
-	
-	canvasWidth: 450,
-	canvasHeight: 350,
-	
-	minTime: 10,
-	maxTime: 30,
 
-	poleSize: 10,
-
-	//Powerup attributes
+	//Powerups 
 	//TODO: powerup voor dubbele score?
 	//NOTE: time mag niet groter zijn dan de minimale spawntijd voor een nieuwe powerup.
 	//want anders wordt de oude powerup overschreden met de nieuwe timer :D hier nog een fix voor zoeken.
@@ -55,6 +49,8 @@ var Settings = {
 	nrOfPowerups: 5,
 	powerupSize: 10,
 	removalTime: 2000, //in ms
+	minTime: 10, //in ms
+	maxTime: 30, //in ms
 
 	//Positions of labels
 	scorePosition: {x: 355, y: 340},
@@ -68,8 +64,10 @@ var Settings = {
 	canvasWidth: 450,
 	canvasHeight: 350,
 	
-	//Shield radius 
-	shieldRadius: 70
+	//Pole / shield / ball properties
+	shieldRadius: 70,
+	ballSize: 10,
+	poleSize: 10
 
 }
 
