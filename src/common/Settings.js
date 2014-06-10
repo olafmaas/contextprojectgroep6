@@ -56,10 +56,6 @@ var Settings = {
 	scorePosition: {x: 355, y: 340},
 	namePosition: {x: 10, y: 15},
 
-	//Positions of initial ball
-	ballX: 100,
-	ballY: 100,
-
 	//Canvas properties
 	canvasWidth: 450,
 	canvasHeight: 350,
@@ -77,6 +73,16 @@ var Settings = {
 
 	ball: {
 		size: 10,
+		velocity: 5,
+		//Positions of initial ball
+		x: 100,
+		y: 100,
+		velocityDirection: 1.70 * Math.PI
+	},
+
+	highScore: {
+		updateInterval: 5000,
+		top: 3 //not in use!
 	}
 
 }

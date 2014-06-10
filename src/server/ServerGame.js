@@ -50,7 +50,7 @@ function Server(){
 	*/
 	this.addClient = function(socket){
 
-		var ball = game.instantiate(bf.createNewBall(10));
+		var ball = game.instantiate(bf.createNewBall(S.ball.size));
 		
 		var positionOfPole = gameGrid.updateGrid(socket, maxNrOfColumns, ball)
 
@@ -121,7 +121,7 @@ function Server(){
 	this.setPowerup = function(_playerID, _powerupType){
 		var player = group("Players").getMemberByGlobalID(_playerID);
 		if(player != -1){ //if player has been found
-			var powerup = new Powerup(10, _powerupType); //NOT game.instantiate!!, as it should not exists outside this function!
+			var powerup = new Powerup(S.powerupSize, _powerupType); //NOT game.instantiate!!, as it should not exists outside this function!
 			player.setPowerup(powerup);
 		}
 	};

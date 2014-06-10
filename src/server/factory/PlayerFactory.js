@@ -11,9 +11,6 @@ if(typeof module != 'undefined'){
 
 var PlayerFactory = Base.extend({
 
-	constructor: function(){
-	},
-
 	createPlayer: function(polePos, id){
 		var player = new Player(id)
 		var pole = this.createPole(polePos);
@@ -31,7 +28,7 @@ var PlayerFactory = Base.extend({
 	* @param {GroupManager} gm, group manager used to add pole
 	*/
 	createPole: function(polePos){
-		var pole = new Pole(10);
+		var pole = new Pole(S.pole.size);
 		pole.setPosition(polePos.left + S.canvasWidth/2, polePos.top + S.canvasHeight/2);
 
 		return pole;

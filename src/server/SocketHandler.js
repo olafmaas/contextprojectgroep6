@@ -26,7 +26,7 @@ function SocketHandler(_server, _io){
 
 		updateMainScreenCanvasSize();
 
-		setInterval(this.updateScores, 5000);
+		setInterval(this.updateScores, S.highScore.updateInterval);
 
 		socket.on('screenSizeMainScreen', function (data){
 			server.setMaxGameSize(data)
