@@ -135,26 +135,59 @@ var Powerup = Base.extend({
 		}
 	},
 	
+	/**
+	* @method Powerup#setRadius
+	*/
 	setRadius: function(_radius_) { this.radius = _radius; },
 
+	/**
+	* @method Powerup#setColor
+	*/
 	setColor: function(_color){ this.color = _color; },
-			
+	
+	/**
+	* @method Powerup#setPosition
+	*/		
 	setPosition: function(_x, _y){ this.body.position = {x: _x, y: _y}; },
 
+	/**
+	* @method Powerup#setType
+	*/
 	setType: function(_type){ this.type = _type; },
 
+	/**
+	* @method Powerup#getColor
+	*/
 	getColor: function(){ return this.color; },
-	
+
+	/**
+	* @method Powerup#getType
+	*/	
 	getType: function(){ return this.type; },
-	
+
+	/**
+	* @method Powerup#getPosition
+	*/	
 	getPosition: function(){ return this.getBody().getPosition(); },
-		
+
+	/**
+	* @method Powerup#getRadius
+	*/		
 	getRadius: function(){ return this.radius; },
-	
+
+	/**
+	* @method Powerup#getID
+	*/	
 	getID: function(){ return this.ID; },
-	
+
+	/**
+	* @method Powerup#getTimer
+	*/	
 	getTimer: function(){ return this.timer; },
-	
+
+	/**
+	* @method Powerup#getBody
+	*/	
 	getBody: function(){ return this.body; }
 });
 
