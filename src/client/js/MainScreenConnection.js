@@ -54,7 +54,7 @@ socket.on('updateTop', function (data) {
 		player.getPole().setColor('Blue');
 	}
 	
-	if(players.getMemberLength() < 20){
+	if(data.newhs.length < 5){
 		var count = Settings.highScore3.top;
 	}
 	else{

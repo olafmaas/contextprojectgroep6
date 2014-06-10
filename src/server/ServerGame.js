@@ -141,7 +141,7 @@ function Server(){
 			player.getPole().setColor('Blue');
 		}
 
-		if(group("Players").getMemberLength() < 20){
+		if(highscore.newhs.length < 5){
 			var count = S.highScore3.top;
 		}
 		else{
