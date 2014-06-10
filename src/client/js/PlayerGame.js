@@ -29,12 +29,12 @@ function deleteTempImage(){
 
 function loadContent(){
     pole = game.instantiate(new Pole(Settings.pole.size));
-    pole.setColor("blue");
+    pole.setColor(Settings.pole.color);
     pole.setPosition(Settings.canvasWidth /2 , Settings.canvasHeight /2);
 
     shield = game.instantiate(new Shield(pole));
     shield.getBody().immovable = true;
-    shield.setColor("white");
+    shield.setColor(Settings.shield.color);
 
     player = game.instantiate(new Player(""));
     player.setPole(pole);
@@ -43,10 +43,10 @@ function loadContent(){
 
     //Player labels, name is set once again when the user has
     scoreLabel = game.instantiate(new ScoreLabel(player, "Score: 0"));
-    scoreLabel.setPosition(Settings.scorePosition);
+    scoreLabel.setPosition(Settings.label.score);
 
     nameLabel = game.instantiate(new Label("Unknown Player"));
-    nameLabel.setPosition(Settings.namePosition);
+    nameLabel.setPosition(Settings.label.name);
 
     createTempImage();
     setTimeout(deleteTempImage, 3000);
