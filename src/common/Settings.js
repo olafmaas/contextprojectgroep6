@@ -89,13 +89,7 @@ var Settings = {
 		y: 100
 	},
 
-	/**** HIGHSCORE PROPERTIES ****/
-	highScore3: {
-		updateInterval: 5000,
-		top: 3,
-		colors: ["#B8E6E6", "#66CCFF", "#3399FF"] //from blue to light-blue
-	},
-	
+	/**** HIGHSCORE PROPERTIES ****/	
 	highScore: {
 		updateInterval: 5000,
 		top: 5,

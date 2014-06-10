@@ -140,7 +140,7 @@ function Server(){
 			var player = group("Players").getMemberByGlobalID(highscore.oldhs[i]);
 			
 			if(player != -1 && player != undefined){
-				player.getPole().setColor(S.pole.color);
+				//player.getPole().setColor(S.pole.color);
 			}
 		}
 
@@ -149,12 +149,14 @@ function Server(){
 		
 		for(i = 0; i < highscore.newhs.length; i++){
 			var player = group("Players").getMemberByGlobalID(highscore.newhs[i]);
-			player.getPole().setColor(colors[i]);
+			if(player != -1){
+				player.getPole().setColor(colors[i]);
 			
-			if(player.getPowerup() == null){
-				player.getPole().setRadius(S.pole.size + count*2);
-			}
+				if(player.getPowerup() == null){
+					player.getPole().setRadius(S.pole.size + count*2);
+				}
 			count--;
+			}
 		}
 	};
 

@@ -53,18 +53,10 @@ socket.on('updateTop', function (data) {
 		var player = players.getMemberByGlobalID(data.oldhs[i]);
 		
 		if(player != -1 && player != undefined){
-			player.getPole().setColor('Blue');
+			player.getPole().setColor(Settings.pole.color);
 		}
 	}
-	
-	/*if(data.newhs.length < 5){
-		var count = Settings.highScore3.top;
-		var colors = Settings.highScore3.colors;
-	}
-	else{
-		var count = Settings.highScore.top;
-		var colors = Settings.highScore.colors;
-	}*/
+
 	var count = Settings.highScore.top;
 	var colors = Settings.highScore.colors;
 	

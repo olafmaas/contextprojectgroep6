@@ -19,6 +19,92 @@ function SocketHandler(_server, _io){
 	var timer = new RandomTimer(S.minTime, S.maxTime);
 	var oldranking = [];
 
+	//Update function
+	this.update = function(){
+		//Update Balls is done in Block
+		server.update();
+		updateBalls();
+		updatePowerups();
+		updatePoles();
+	};
+
+	//Opgedeelde update functies
+	updateBalls = function() {
+		//TODO: ID instead of index
+		for(var i = 0; i < server.nrOfBalls(); i++){
+			mainScreenSocket.emit(e.updateBall, server.getBallPosition(i), i)
+		}
+	};
+
+	updatePowerups = function() {
+		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
+		//TODO: timer eerder af laten lopen als er meer spelers zijn, dus settings aanpassen, of
+		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
+		if(timer != null && timer.hasStopped()){
+			timer = null;
+
+			newPowerup();
+
+			timer = new RandomTimer(S.minTime, S.maxTime); //start a new timer for the next powerup
+			timer.startTimer();
+		}
+	};
+
+	updatePoles = function() {
+		//Call isHit() when a pole is hit and send this event to the player
+		for(var i = 0; i < server.getNumberOfPlayers(); i++){
+			var pole = server.getGroup("Poles").getMember(i);
+			if(pole.hit){
+				server.getGroup("Poles").getMember(i).isHit();
+				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);
+			}
+		}
+	};
+
+	//Returns a list of the players with their highscores
+	getScores = function(){
+		var temp = [];
+		//Retrieve the highest scores of all the players
+		for(var i = 0; i < server.getNumberOfPlayers(); i++){
+			var player = server.getGroup("Players").getMember(i);
+			var score = Math.max(player.getScore(), player.getHighscore());
+			temp.push({ Score: score, Name: player.name, ID: player.getGlobalID() });
+		}
+		return temp;
+	};
+
+	//Updates the highscores on the mainscreen + informs players when they are in the top x
+	this.updateScores = function(){
+		var highScores = getScores();
+		
+		if(highScores.length > 0){
+			var serializedScores = JSON.stringify(highScores);
+			var hs = JSON.parse(serializedScores);
+			//Sort the scores (highest to lowest)
+			hs.sort(function(a, b) {return b.Score - a.Score;});
+
+			//Send current highscore list to the mainscreen
+			mainScreenSocket.emit('updateScores', hs);		
+			reviseTop(hs.splice(0, S.highScore.top)); 
+		}
+	};
+
+	reviseTop = function(_top){
+		var newRanking = [];
+		//Retrieve the id's of the top players
+		for(i = 0; i < _top.length; i++){
+			newRanking.push(_top[i].ID);
+		}
+		data = { newhs: newRanking, oldhs: oldranking };
+
+		mainScreenSocket.emit('updateTop', data);
+		io.of('/player').emit('updateTop', data);
+		server.updateHighscore(data);
+		
+		oldranking = newRanking;
+	};
+
+	//Handles mainscreen connection and listeners
 	this.handleMainScreen = function(socket){
 		mainScreenSocket = socket;
 
@@ -38,10 +124,9 @@ function SocketHandler(_server, _io){
 		});
 	};
 
-	this.hasMainScreen = function(){
-		return mainScreenSocket.emit();
-	};
+	this.hasMainScreen = function(){ return mainScreenSocket.emit(); };
 
+	//Handles player connection and listeners
 	this.handlePlayerConnection = function(socket){
 		
 		//Ask for userName
@@ -82,113 +167,28 @@ function SocketHandler(_server, _io){
 		});
 	};
 
-	removeFromMainScreen = function(socketID){
-		mainScreenSocket.emit('removePlayer', socketID);
-	};
+	//Removes player from mainscreen
+	removeFromMainScreen = function(socketID){ mainScreenSocket.emit('removePlayer', socketID); };
 
+	//Adds a new player (+ all other stuff belonging to a player) to the mainscreen
 	newPlayer = function(socket, polePos){
 		var np = server.addClient(socket, polePos);
 		mainScreenSocket.emit('newPlayer', np);
 		socket.emit('newPlayer', np.gpid);
 		mainScreenSocket.emit('newBall', {color: np.color, gid: np.gid}); //inform mainscreen of new ball
-
 		return 
 	};
 	
+	//Adds a new powerup to the user
 	newPowerup = function(){
 		io.of('/player').emit('addPowerup', server.addPowerup());
 	};
 
+	//Updates the mainscreen canvassize
 	updateMainScreenCanvasSize = function(){
 		mainScreenSocket.emit("updateCanvasSize", server.updateMainScreenCanvasSize());
 	};
 
-	this.update = function(){
-		//Update Balls is done in Block
-		server.update();
-		updateBalls();
-		updatePowerups();
-		updatePoles();
-	};
-
-	updateBalls = function() {
-		//TODO: ID instead of index
-		for(var i = 0; i < server.nrOfBalls(); i++){
-			mainScreenSocket.emit(e.updateBall, server.getBallPosition(i), i)
-		}
-	};
-
-	updatePowerups = function() {
-		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
-		//TODO: timer eerder af laten lopen als er meer spelers zijn, dus settings aanpassen, of
-		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
-		if(timer != null && timer.hasStopped()){
-			timer = null;
-
-			newPowerup();
-
-			timer = new RandomTimer(S.minTime, S.maxTime); //start a new timer for the next powerup
-			timer.startTimer();
-		}
-	};
-
-	updatePoles = function() {
-		//Call isHit() when a pole is hit and send this event to the player
-		for(var i = 0; i < server.getNumberOfPlayers(); i++){
-			var pole = server.getGroup("Poles").getMember(i);
-			if(pole.hit){
-				server.getGroup("Poles").getMember(i).isHit();
-				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);
-			}
-		}
-	}
-
-	this.updateScores = function(){
-		var highScores = [];
-		var top5 = [];
-		
-		for(var i = 0; i < server.getNumberOfPlayers(); i++){
-			var player = server.getGroup("Players").getMember(i);
-			var score = Math.max(player.getScore(), player.getHighscore());
-			highScores.push({ Score: score, Name: player.name, ID: player.getGlobalID() });
-		}
-
-		if(highScores.length > 0){
-			var serializedScores = JSON.stringify(highScores);
-			var hs = JSON.parse(serializedScores);
-			hs.sort(function(a, b) {return b.Score - a.Score;});
-
-			mainScreenSocket.emit('updateScores', hs);
-			
-			//determine to use top 3 or top 5
-			if(server.getNumberOfPlayers() < 20){
-				var hslength = S.highScore3.top;
-			}
-			else{
-				var hslength = S.highScore.top;
-			}
-			
-			//only send top 5 (or less)
-			reviseTopx(hs.splice(0, hslength), oldranking); 
-		}
-	}
-
-	reviseTopx = function(hs, old){
-		
-		//So only the ID's are sent
-		var newranking = [];
-		for(i = 0; i < hs.length; i++){
-			newranking.push(hs[i].ID);
-		}
-		
-		data = { newhs: newranking, oldhs: old };
-		
-		mainScreenSocket.emit('updateTop', data);
-		io.of('/player').emit('updateTop', data);
-		server.updateHighscore(data);
-		
-		oldranking = newranking;
-	};
 };
 
 if(typeof module != 'undefined'){
