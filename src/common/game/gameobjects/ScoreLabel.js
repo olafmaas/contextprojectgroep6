@@ -2,8 +2,16 @@ if(typeof module != 'undefined'){
 	var Label = require('./Label.js');
 }
 
-//TODO: documentation
-
+/**
+* A label class for showing user's score on screen
+*
+* @class ScoreLabel
+* @classdesc Label class specifically aimed at showing the score of the player
+* @constructor
+* @param {Player} _player - The player for which the label should display the score
+* @extends Label
+* @param {string} _text - Initial string to write on the screen
+*/
 var ScoreLabel = Label.extend({
 
 	player: null,
@@ -13,11 +21,13 @@ var ScoreLabel = Label.extend({
 		this.text = _text;
 	},
 
-	//Score update function (will update user's score)
-	//TODO: checken of 'this' goed is hier..
+	/**
+	* Updates the score displayed on the label
+	*
+	* @method ScoreLabel#update
+	*/
 	update: function(){
 		var score = this.player.getScore();
-
 		this.setText("Score: " + score);
 	}
 

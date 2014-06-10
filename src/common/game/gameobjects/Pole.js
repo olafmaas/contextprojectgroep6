@@ -10,6 +10,7 @@ if(typeof module != 'undefined'){
 * @class Pole
 * @classdesc A simple pole class which extends Ball
 * @constructor It automatically sets the pole to be immovable when constructed.
+* @extends Ball
 * @param {number} _radius - The radius of the pole.
 */
 var Pole = Ball.extend({
@@ -51,47 +52,15 @@ var Pole = Ball.extend({
 	},
 
 	/**
-	* Handles the cooldown period of the pole, which includes a change of color
-	* and not being able to get hit again for some amount of time.
-	* @method Pole#coolDown
-	*/
-	//TODO: iets van laten knipperen? sneller = cooldown bijna afgelopen?
-	// coolDown: function(_interval){
-	// 	// if(_interval > 0){
-	// 	// 	var savedThis = this;
-	// 	// 	setTimeout( function() { savedThis.coolDown(0); }, _interval);
-	// 	// }
-	// 	// else {
-	// 	// 	this.setColor(this.prevColor); //Revert back to previous color
-	// 	// 	this.hit = false; //remove hit flag
-	// 	// 	this.timer.startTimer();
-	// 	// }
-	// },
-
-
-	/**
 	* Checks whether two objects are the same by comparing ID's
 	*
-	* @method CircularBody#equals
+	* @method Pole#equals
 	* @param {Object} _other - The other object with which it is compared.
 	*/
-	equals: function(_other){
-		return (this.ID == _other.getID());
-	},
-
+	equals: function(_other){ return (this.ID == _other.getID()); },
+	
 	/**
-	* Sets the player, assigns a timer and starts the timer.
-	* @method Pole#setPlayer
-	* @param {player} _player - The player object
-	*/
-	setPlayer: function(_player){
-		this.player = _player;
-		this.timer = new PlayerTimer(_player);
-		this.timer.startTimer();
-	},
-
-	/**
-	* Saves the highscore of the player
+	* Saves the highscore of the player, resets the score and restarts the timer
 	* @method Pole#saveHighScore
 	*/
 	saveHighscore: function(){
@@ -106,12 +75,22 @@ var Pole = Ball.extend({
 	},
 
 	/**
-	* Returns the timer of a certain player
-	* @method Pole#getTimer
+	* Sets the player, assigns a timer and starts the timer.
+	* @method Pole#setPlayer
+	* @param {player} _player - The player object
 	*/
-	getTimer: function(){
-		return this.timer;
+	setPlayer: function(_player){
+		this.player = _player;
+		this.timer = new PlayerTimer(_player);
+		this.timer.startTimer();
 	},
+
+	/**
+	* Returns the timer of a certain pole
+	* @method Pole#getTimer
+	* @return {Timer} - The timer belonging to the pole
+	*/
+	getTimer: function(){ return this.timer; },
 
 	/**
 	* Retrieves the ID of the pole
@@ -119,9 +98,7 @@ var Pole = Ball.extend({
 	* @method Pole#getID
 	* @return {number} The unique ID of the pole
 	*/
-	getID: function(){
-		return this.ID;
-	}
+	getID: function(){ return this.ID; }
 
 });
 

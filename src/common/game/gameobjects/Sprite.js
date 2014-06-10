@@ -8,6 +8,8 @@ if(typeof module != 'undefined'){
 * @class Sprite
 * @classdesc Sprite class for loading textures
 * @constructor
+* @extends Base
+* @param {String} _texturePath - The relative path to the image.
 */
 var Sprite = Base.extend({
 	
@@ -27,36 +29,12 @@ var Sprite = Base.extend({
 	},
 
 	/**
-	* Function which draws the sprite if it has been hooked to an object
-	* @method Sprite#Draw
-	* @param {canvas} _canvasContext - The playing field
-	*/
-	drawHooked: function(_canvasContext){
-		var hPos = this.hookedTo.getPosition();
-		_canvasContext.drawImage(this.texture, hPos.x + this.anchor.x, hPos.y + this.anchor.y, this.size.x, this.size.y);
-	},
-
-	/**
-	* Hooks the sprite to an object.
-	*
-	* @method Sprite#hookTo
-	* @param {Object} _object - The object to which the sprite will be hooked.
-	*/
-	hookTo: function(_object){
-		this.hookedTo = _object;
-		this.hooked = true;
-		//TODO body naar invisible zetten zodat je alleen de sprite ziet en niet eventueel kleurtje van een bal?
-	},
-
-	/**
 	* Checks whether two objects are equals by comparing their ID's
 	*
 	* @method Ball#equals
 	* @param {Object} _other - The other object with which it is compared.
 	*/
-	equals: function(_other){
-		return (this.ID == _other.getID());
-	},
+	equals: function(_other){ return (this.ID == _other.getID()); },
 
 	/**
 	* Sets the position of the sprite (top left) from which it will be drawn
@@ -64,9 +42,7 @@ var Sprite = Base.extend({
 	* @method Sprite#setPosition
 	* @param {number, number} _position - The x and y coordinates of the top left corner.
 	*/
-	setPosition: function(_position){
-		this.position = _position;
-	},
+	setPosition: function(_position){this.position = _position;},
 
 	/**
 	* Sets the scale of the sprite.
@@ -74,9 +50,7 @@ var Sprite = Base.extend({
 	* @method Sprite#setScale
 	* @param {number} _scale - The scale by which the sprite will be drawn.
 	*/
-	setScale: function(_scale){
-		this.scale = _scale;
-	},
+	setScale: function(_scale){this.scale = _scale;},
 
 	/**
 	* Sets the original size at which the sprite will be drawn
@@ -84,9 +58,7 @@ var Sprite = Base.extend({
 	* @method Sprite#setSize
 	* @param {number, number} _size - The width and height at which the sprite will be drawn.
 	*/
-	setSize: function(_size){
-		this.size = _size;
-	},
+	setSize: function(_size){this.size = _size;},
 
 	/**
 	* Anchors the origin of the sprite at a specific place relative to the x and y position.
@@ -94,9 +66,7 @@ var Sprite = Base.extend({
 	* @method Sprite#setAnchor
 	* @param {number, number} _anchorPos - The x and y coordinates that will be added up to the original x and y positon. (can be negative)
 	*/
-	setAnchor: function(_anchorPos){
-		this.anchor = _anchorPos;
-	},
+	setAnchor: function(_anchorPos){this.anchor = _anchorPos; },
 
 	/**
 	* Retrieves the ID of the sprite
@@ -104,32 +74,48 @@ var Sprite = Base.extend({
 	* @method Sprite#getID
 	* @return {number} The unique ID of the sprite
 	*/
-	getID: function(){
-		return this.ID;
-	},
+	getID: function(){ return this.ID; },
 
-	getTexture: function(){
-		return this.texture;
-	},
+	/**
+	* Retrieves the texturepath of the sprite
+	*
+	* @method Sprite#getTexture
+	* @return {String} The relative path to the texture
+	*/
+	getTexture: function(){ return this.texture; },
 
-	getPosition: function(){
-		return this.position;
-	},
+	/**
+	* Retrieves the position of the sprite
+	*
+	* @method Sprite#getPosition
+	* @return {number, number} The x and y coordinates of the sprite
+	*/
+	getPosition: function(){ return this.position; },
 
-	getScale: function(){
-		return this.scale;
-	},
+	/**
+	* Retrieves the scale of the sprite
+	*
+	* @method Sprite#getScale
+	* @return {number} The current scale in which the sprite is drawn.
+	*/
+	getScale: function(){ return this.scale; },
 
-	getSize: function(){
-		return this.size;
-	},
+	/**
+	* Retrieves the size of the sprite
+	*
+	* @method Sprite#getSize
+	* @return {number, number} The x and y dimensions in which the sprite is drawn
+	*/
+	getSize: function(){ return this.size; },
 
-	getAnchor: function(){
-		return this.anchor;
-	}
+	/**
+	* Retrieves the anchor of the sprite
+	*
+	* @method Sprite#getAnchor
+	* @return {number, number} The x and y coordinates to which the sprite is anchored, relative to the position of the sprite
+	*/
+	getAnchor: function(){ return this.anchor; }
 
-	//TODO: GETS
-	//getRotationDegrees, radians, anchor, rotate, scale, hooked, etc...
 });
 
 if(typeof module != 'undefined'){

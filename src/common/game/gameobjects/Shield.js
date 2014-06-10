@@ -45,23 +45,23 @@ function Shield(_pole){
 	*
 	* @method Shield#enableBody
 	*/
-	this.enableBody = function(){
-		body = new ShieldBody(this);
-	}
+	this.enableBody = function(){ body = new ShieldBody(this); }
 
 	/**
 	* Checks whether two objects are the same by comparing ID's
 	*
-	* @method CircularBody#equals
+	* @method Shield#equals
 	* @param {Object} _other - The other object with which it is compared.
 	*/
-	this.equals = function(_other){
-		return (ID == _other.getID());
-	},
+	this.equals = function(_other){ return (ID == _other.getID()); },
 
-	this.noCalc = function(){
-		calculate = false;
-	}
+	/**
+	* Sets calculate to false so the angle of the shield will not be calculated in the update function
+	* Note: used for mainscreen to get rid of the shieldangles that are otherwise calculated
+	*
+	* @method Shield#noCalc
+	*/
+	this.noCalc = function(){ calculate = false; }
 
 	/**
 	* Calculates the angle of the shield (in radians) depending on the current mouse input
@@ -77,6 +77,22 @@ function Shield(_pole){
 	}
 
 	/**
+	* Reverts the way in which the shield is drawn
+	*
+	* @method Shield#revertShield
+	* @param {Boolean} _revert - True or false with false being drawn normally
+	*/
+	this.revertShield = function(_revert){ revert = _revert; }
+
+	/**
+	* Returns whether the shield is reverted or not
+	*
+	* @method Shield#isRevert
+	* @return {Boolean} - Returns true if the shield is revert
+	*/
+	this.isRevert = function(){ return revert; }
+
+	/**
 	* Sets the angle of the shield.
 	* @method Shield#setAngle
 	* @param {number} _angle - The angle of the shield in radians.
@@ -86,20 +102,13 @@ function Shield(_pole){
 		body.angle = _angle;
 	}
 
-	//TODO
-	this.setShieldLength = function (_length){
-		length = _length;
-	}
-
-	//TODO:
-	this.isRevert = function(){
-		return revert;
-	}
-
-	//TODO: _revert true = irritant getekend, revert false = gewoon getekend.
-	this.revertShield = function(_revert){
-		revert = _revert;
-	}
+	/**
+	* Sets the length of the shield
+	*
+	* @method Shield#setShieldLength
+	* @param {number} _length - The length of the shield 
+	*/
+	this.setShieldLength = function (_length){ length = _length; }
 
 	/**
 	* Sets the radius of the shield.
@@ -116,18 +125,14 @@ function Shield(_pole){
 	* @method Shield#setColor
 	* @param {hex} _color - The color of the shield in hex value.
 	*/
-	this.setColor = function(_color){
-		color = _color;
-	}
+	this.setColor = function(_color){ color = _color; }
 
 	/**
 	* Sets the size of the shield.
 	* @method Shield#setSize
 	* @param {number} _size - The size of the shield.
 	*/
-	this.setSize = function(_size){
-		size = _size;
-	}
+	this.setSize = function(_size){ size = _size; }
 
 	/**
 	* Sets the position of the shield in the canvas.
@@ -148,14 +153,15 @@ function Shield(_pole){
 	* @method Shield#getPosition
 	* @return {number, number} The x and y coordinate of the middle of the shield.
 	*/
-	this.getPosition = function(){
-		return position;
-	}
+	this.getPosition = function(){ return position; }
 
-	//TODO
-	this.getShieldLength = function(){
-		return length;
-	}
+	/**
+	* Returns the length of the shield
+	*
+	* @method Shield#getShieldLength
+	* @return {number} - The length of the shield
+	*/
+	this.getShieldLength = function(){ return length; }
 
 	/**
 	* Retrieves the pole belonging to the shield.
@@ -163,9 +169,7 @@ function Shield(_pole){
 	* @method Shield#getPole
 	* @return {pole} The pole the shield protects.
 	*/
-	this.getPole = function (){
-		return pole;
-	}
+	this.getPole = function (){ return pole; }
 
 	/**
 	* Retrieves the current angle of the shield.
@@ -173,9 +177,7 @@ function Shield(_pole){
 	* @method Shield#getAngle
 	* @return {number} The angle of the shield in radians.
 	*/
-	this.getAngle = function (){
-		return Math.round(angle * 100) / 100;
-	}
+	this.getAngle = function (){ return Math.round(angle * 100) / 100; }
 
 	/**
 	* Retrieves the size of the radius of the shield.
@@ -183,9 +185,7 @@ function Shield(_pole){
 	* @method Shield#getRadius
 	* @return {number} Radius of the shield.
 	*/
-	this.getRadius = function (){
-		return radius;
-	}
+	this.getRadius = function (){ return radius; }
 
 	/**
 	* Retrieves the color of the shield.
@@ -193,9 +193,7 @@ function Shield(_pole){
 	* @method Shield#getColor
 	* @return {hex} The color of the shield in hex value
 	*/
-	this.getColor = function(){
-		return color;
-	}
+	this.getColor = function(){ return color; }
 
 	/**
 	* Retrieves the size of the shield (circle)
@@ -203,9 +201,7 @@ function Shield(_pole){
 	* @method Shield#getSize
 	* @return {number} Size of the shield.
 	*/
-	this.getSize = function(){
-		return size;
-	}
+	this.getSize = function(){ return size; }
 
 	/**
 	* Retrieves the body of the shield.
@@ -213,9 +209,7 @@ function Shield(_pole){
 	* @method Shield#getBody
 	* @return {body} The body of the shield.
 	*/
-	this.getBody = function(){
-		return body;
-	},
+	this.getBody = function(){ return body; },
 
 	/**
 	* Retrieves the ID of the shield
@@ -223,9 +217,7 @@ function Shield(_pole){
 	* @method Shield#getID
 	* @return {number} The unique ID of the shield
 	*/
-	this.getID = function(){
-		return ID;
-	}	
+	this.getID = function(){ return ID; }	
 
 	//Stuff to execute when constructing
 	this.enableBody();

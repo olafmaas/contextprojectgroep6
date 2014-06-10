@@ -1,16 +1,18 @@
+/*
+* A settings file from which the game retrieves information.
+*/
 var Settings = {
 
-	//Initial boot time
-	bootTime: 10,
+	/**** GAME ****/
+	bootTime: 10, 
 	updateInterval: 17,
 
-	//Server connection properties
+	/**** SERVER CONNECTION ****/
 	server: 'http://localhost',
 	//server: 'http://vps-76938-1774.hosted.at.hostnet.nl',	//Server Olaf
 	port: 5050,
 
-	//Powerups 
-	//TODO: powerup voor dubbele score?
+	/**** POWERUP TYPES ****/
 	//NOTE: time mag niet groter zijn dan de minimale spawntijd voor een nieuwe powerup.
 	//want anders wordt de oude powerup overschreden met de nieuwe timer :D hier nog een fix voor zoeken.
 	smallShield: {
@@ -47,38 +49,38 @@ var Settings = {
 		path: "../client/img/pokeball.png"
 	},
 
-	//Amount of powerups & global size & how long they are available on screen
+	/**** POWERUP PROPERTIES ****/
 	nrOfPowerups: 5,
 	powerupSize: 10,
-	removalTime: 2000, //in ms
-	minTime: 10, //in ms
-	maxTime: 30, //in ms
+	removalTime: 2000, //in ms, how long a powerup is present on screen.
+	minTime: 10, //in ms, minimum time between powerup spawns.
+	maxTime: 30, //in ms, maximum time between powerup spawns.
 
-	//Positions of labels
+	/**** LABEL POSITIONS ****/
 	label: {
 		score: {x: 730, y: 425},
 		name: {x: 10, y: 15},
 		highscore: {x: 730, y: 440}
 	}, 
 
-	//Canvas properties
+	/**** CANVAS PROPERTIES ****/
 	canvasWidth: 800,
 	canvasHeight: 450,
 	
-	//Pole properties
+	/**** POLE ****/
 	pole: {
 		size: 10,
 		color: "blue"
 	},
 
-	//Shield properties
+	/**** SHIELD ****/
 	shield: {
 		radius: 70,
 		shieldWidth: 2,
 		color: "yellow"
 	},
 
-	//Ball properties
+	/**** BALL ****/
 	ball: {
 		size: 10,
 		velocity: 5,
@@ -88,12 +90,12 @@ var Settings = {
 		y: 100
 	},
 
+	/**** HIGHSCORE PROPERTIES ****/	
 	highScore: {
 		updateInterval: 5000,
-		top: 3, //not in use!
-		colors: ["#66CCFF", "#3399FF", "#0066FF"] //not in use, from blue to light-blue
+		top: 5,
+		colors: ["#B8E6E6", "#66CCFF", "#3399FF", "#0066FF", "#0000FF"] //from blue to light-blue
 	}
-
 }
 
 if(typeof module != 'undefined'){

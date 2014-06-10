@@ -51,12 +51,23 @@ socket.on('updateTop', function (data) {
 	
 	for(i = 0; i < data.oldhs.length; i++){
 		var player = players.getMemberByGlobalID(data.oldhs[i]);
-		player.getPole().setColor('Blue');
+		
+		if(player != -1 && player != undefined){
+			player.getPole().setColor(Settings.pole.color);
+		}
 	}
+
+	var count = Settings.highScore.top;
+	var colors = Settings.highScore.colors;
 	
 	for(i = 0; i < data.newhs.length; i++){
 		var player = players.getMemberByGlobalID(data.newhs[i]);
-		player.getPole().setColor('White');
+		player.getPole().setColor(colors[i]);
+		
+		if(player.getPowerup() == null){
+			player.getPole().setRadius(Settings.pole.size + count*2);
+		}
+		count--;
 	}
 });
 

@@ -1,3 +1,8 @@
+var userName = prompt("Please enter your name", "User"+Math.floor(Math.random()*10000));
+if(userName == null) userName = "User"+Math.floor(Math.random()*10000);
+
+function startSocket() {
+
 var socket = io.connect(Settings.server+":"+Settings.port).of('/player');
 
 ////////////////////////////
@@ -32,12 +37,8 @@ socket.on('updateHighscore', function(_score){
 
 socket.on('userName', function(free){
 	if(!free){
-		userName = prompt("Please enter your name", "User"+Math.floor(Math.random()*10000));
-
-		if(userName == null) userName = "User"+Math.floor(Math.random()*10000);
-
-		player.setName(userName); 
 		socket.emit('userName', userName); //player.getName());
+		player.setName(userName); 
 	}
 });
 
@@ -68,7 +69,6 @@ socket.on('addBall', function (data) {
 	}
 });
 
-
 socket.on(e.updateBalls, function (ballData) { //TODO: ID instead of index
 	lastBall = ballData;
 	var d = new Date();
@@ -81,7 +81,7 @@ socket.on(e.updateBalls, function (ballData) { //TODO: ID instead of index
 			console.log("Ball with gid" + b + "not found.")
 		}
 	}
-})
+});
 
 socket.on('newPlayer', function (_id){
 	player.setGlobalID(_id);
@@ -104,6 +104,38 @@ socket.on('poleIsHit', function (data){
 socket.on('playAudio', function (trackName){
 	audioManager.play(trackName);
 })
+
+socket.on('updateTop', function (data) {
+	
+	for(i = 0; i < data.oldhs.length; i++){
+		if(player.getGlobalID() == data.oldhs[i]){
+			player.getPole().setColor('Blue');
+		}
+	}
+	
+	/*if(data.newhs.length < 5){
+		var count = Settings.highScore3.top;
+		var colors = Settings.highScore3.colors;
+	}
+	else{
+		var count = Settings.highScore.top;
+		var colors = Settings.highScore.colors;
+	}*/
+	var count = Settings.highScore.top;
+	var colors = Settings.highScore.colors;
+	
+	for(i = 0; i < data.newhs.length; i++){
+		if(player.getGlobalID() == data.newhs[i]){
+			player.getPole().setColor(colors[i]);
+			
+			if(player.getPowerup() == null){
+				player.getPole().setRadius(Settings.pole.size + count*2);
+			}
+		}
+		count--;
+	}
+});
+
 
 window.ontouchstart = handleTouchStart;
 window.onmousemove = sendShieldAngle;
@@ -223,7 +255,6 @@ function checkPowerup(_x, _y){
 
 		if(inX && inY){
 			clearTimeout(powerupRemovalTimer); //remove the timer
-			powerup.isClicked();
 			player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
 
 			socket.emit('powerupClicked', player.getGlobalID(), powerup.getType());
@@ -241,4 +272,6 @@ function removePowerup(){
 		game.remove(icon);
 		icon = null;
 	}
+}
+
 }
