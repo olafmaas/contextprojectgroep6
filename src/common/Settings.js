@@ -72,7 +72,7 @@ var Settings = {
 	//Shield properties
 	shield: {
 		radius: 70,
-		color: "white"
+		color: "yellow"
 	},
 
 	//Ball properties
