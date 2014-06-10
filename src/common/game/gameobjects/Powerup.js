@@ -27,7 +27,6 @@ var Powerup = Base.extend({
 	ID: -1,
 	timer: 0,
 	color: "red",
-	visible: true,
 	power: null, //function that contains what the powerup will do
 
 	constructor: function(_radius, _type){
@@ -41,32 +40,52 @@ var Powerup = Base.extend({
 	},
 	
 	/**
-	* Updates the position of the ball
+	* Updates the position of the powerup
 	* @method Powerup#update
 	*/
-	update: function(){	
-		if(this.body instanceof CircularBody) this.body.update();
-	},
+	update: function(){	 if(this.body instanceof CircularBody) this.body.update(); },
 	
-	enableBody: function(){
-		this.body = new CircularBody(this);
-	},
+	/**
+	* Creates the body of the powerup
+	* @method Powerup#enableBody
+	*/
+	enableBody: function(){ this.body = new CircularBody(this); },
 	
-	equals: function(_other){
-		return (this.ID == _other.getID());
-	},
+	/**
+	* Checks whether two objects are equals by comparing their ID's
+	*
+	* @method Powerup#equals
+	* @param {Object} _other - The other object with which it is compared.
+	*/
+	equals: function(_other){ return (this.ID == _other.getID()); },
 
+	/**
+	* Executes the powerup on the given player
+	*
+	* @method Powerup#execute
+	* @param {Player} _player - The player on which the powerup will be executed
+	*/
 	execute: function(_player){
 		if(this.power != null){
 			this.power(_player);
 		}
 	},
 
+	/**
+	* Stops the powerup
+	*
+	* @method Powerup#stop
+	*/
 	stop: function(){
 		this.power = null;
 	},
 
-	//Create timers
+	/**
+	* Creates the timer according to the given type of the powerup
+	*
+	* @method Powerup#createTimer
+	* @param {number} _type - The type of the powerup
+	*/
 	createTimer: function(_type){
 		switch(_type){
 			case e.smallShield:
@@ -86,7 +105,12 @@ var Powerup = Base.extend({
 		}
 	},
 
-	//Create powers
+	/**
+	* Creates the actual functionality of the powerup (the "power") depending on the given type.
+	*
+	* @method Powerup#createPower
+	* @param {number} _type - The type of the powerup
+	*/
 	createPower: function(_type){
 		switch(_type){
 			case e.smallShield:
@@ -110,62 +134,61 @@ var Powerup = Base.extend({
 			return function(_player) { _player.getShield().revertShield(true); };		
 		}
 	},
+	
+	/**
+	* @method Powerup#setRadius
+	*/
+	setRadius: function(_radius_) { this.radius = _radius; },
 
-	setIcon: function(_icon){
-		this.icon = _icon;
-	},
+	/**
+	* @method Powerup#setColor
+	*/
+	setColor: function(_color){ this.color = _color; },
+	
+	/**
+	* @method Powerup#setPosition
+	*/		
+	setPosition: function(_x, _y){ this.body.position = {x: _x, y: _y}; },
 
-	isClicked: function(){
-		//make sure the powerup disappears from the screen.
-		this.visible = false;
-	},
+	/**
+	* @method Powerup#setType
+	*/
+	setType: function(_type){ this.type = _type; },
 
-	isVisible: function(){
-		return this.visible;
-	},
-	
-	//==================
-	//SECTION: Get & sets
-	
-	setColor: function(_color){
-		this.color = _color;
-	},
-	
-	getColor: function(){
-		return this.color;
-	},
-		
-	setType: function(_type){
-		this.type = _type;
-	},
-	
-	getType: function(){
-		return this.type;
-	},
-		
-	setPosition: function(_x, _y){
-		this.body.position = {x: _x, y: _y};
-	},
-	
-	getPosition: function(){
-		return this.getBody().getPosition();
-	},
-		
-	getRadius: function(){
-		return this.radius;
-	},
-	
-	getID: function(){
-		return this.ID;
-	},
-	
-	getTimer: function(){
-		return this.timer;
-	},
-	
-	getBody: function(){
-		return this.body;
-	}
+	/**
+	* @method Powerup#getColor
+	*/
+	getColor: function(){ return this.color; },
+
+	/**
+	* @method Powerup#getType
+	*/	
+	getType: function(){ return this.type; },
+
+	/**
+	* @method Powerup#getPosition
+	*/	
+	getPosition: function(){ return this.getBody().getPosition(); },
+
+	/**
+	* @method Powerup#getRadius
+	*/		
+	getRadius: function(){ return this.radius; },
+
+	/**
+	* @method Powerup#getID
+	*/	
+	getID: function(){ return this.ID; },
+
+	/**
+	* @method Powerup#getTimer
+	*/	
+	getTimer: function(){ return this.timer; },
+
+	/**
+	* @method Powerup#getBody
+	*/	
+	getBody: function(){ return this.body; }
 });
 
 if(typeof module != 'undefined'){

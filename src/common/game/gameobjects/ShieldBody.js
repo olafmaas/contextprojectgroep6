@@ -44,13 +44,12 @@ var ShieldBody = Body.extend({
 	/**
 	* Checks whether two objects are the same by comparing ID's
 	*
-	* @method CircularBody#equals
+	* @method ShieldBody#equals
 	* @param {Object} _other - The other object with which it is compared.
 	*/
-	equals: function(_other){
-		return (this.ID == _other.getID());
-	},
+	equals: function(_other){ return (this.ID == _other.getID()); },
 
+/******** WEGHALEN ******/
 	/**
 	* Method to handle a collision
 	* @method Shieldbody#handleIndividual
@@ -59,54 +58,49 @@ var ShieldBody = Body.extend({
 	handleIndividual: function(_other){
 		//If the body is static it shouldn't respond to collision
 	},
-	
-	/**
-	* Returns the angle of the shield
-	* @method ShieldBody#getAngle
-	*/
-	getAngle: function(){
-		return this.angle;
-	},
-
-	/**
-	* Returns the radius of the shield
-	* @method ShieldBody#getRadius
-	*/
-	getRadius: function(){
-		return this.radius;
-	},
-
-	/**
-	* Returns the parent of the shield
-	* @method ShieldBody#getParentShield
-	*/
-	getParentShield: function(){
-		return this.parentShield;
-	},
+/****** EINDE WEGHALEN *****/	
 
 	/**
 	* Sets the angle of the shield
 	* @method ShieldBody#setAngle
+	* @param {number} _angle - The angle of the shieldbody in radians.
 	*/
-	setAngle: function(_angle){
-		this.angle = _angle;
-	},
+	setAngle: function(_angle){ this.angle = _angle; },
 
 	/**
 	* Sets the radius of the shield
 	* @method ShieldBody#setRadius
+	* @param {number} _radius - The radius of the shieldbody.
 	*/
-	setRadius: function(_radius){
-		this.radius = _radius;
-	},
+	setRadius: function(_radius){ this.radius = _radius; },
 
 	/**
 	* Sets the parent of the shield
 	* @method ShieldBody#setParentShield
+	* @param {Shield} _parentShield - The shield to which the body belongs.
 	*/
-	setParentShield: function(_parentShield){
-		this.parentShield = _parentShield;
-	},
+	setParentShield: function(_parentShield){ this.parentShield = _parentShield; },
+
+	/**
+	* Returns the angle of the shield
+	* @method ShieldBody#getAngle
+	* @return {number} - The angle in radians
+	*/
+	getAngle: function(){ return this.angle; },
+
+	/**
+	* Returns the radius of the shield
+	* @method ShieldBody#getRadius
+	* @return {number} - The radius of the shieldbody
+	*/
+	getRadius: function(){ return this.radius; },
+
+	/**
+	* Returns the parent of the shield
+	* @method ShieldBody#getParentShield
+	* @return {Shield} - The shield belonging to this shieldbody
+	*/
+	getParentShield: function(){ return this.parentShield; },
 
 	/**
 	* Retrieves the ID of the shieldBody
@@ -114,9 +108,7 @@ var ShieldBody = Body.extend({
 	* @method ShieldBody#getID
 	* @return {number} The unique ID of the shieldBody
 	*/
-	getID: function(){
-		return this.ID;
-	}
+	getID: function(){ return this.ID; }
 });
 
 if(typeof module != 'undefined'){
