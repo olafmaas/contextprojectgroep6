@@ -11,8 +11,7 @@ describe("Powerup", function(){
 
 	})
 
-
-	describe("Type", function(){
+	describe("#Type", function(){
 		
 		var p = new Powerup(10, 2);
 
@@ -23,7 +22,7 @@ describe("Powerup", function(){
 		})
 	})
 
-	describe("Color", function(){
+	describe("#Color", function(){
 		var p = new Powerup(10, 3);
 
 		it("For type 3, the standard color should be aqua instead of red", function(){
@@ -37,7 +36,7 @@ describe("Powerup", function(){
 
 	})
 
-	describe("Position", function(){
+	describe("#Position", function(){
 		var p = new Powerup(10, 4);
 
 		it("Should change the position of the powerup", function(){
@@ -49,7 +48,7 @@ describe("Powerup", function(){
 		})
 	})
 
-	describe("Timer", function(){
+	describe("#Timer", function(){
 		var p = new Powerup(10, 1);
 
 		it("Check if the timer is created.", function(){

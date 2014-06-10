@@ -1,17 +1,6 @@
 describe("Ball", function(){
 
-	//constructor
-	//update -> body
-	//equals
-	//enablebody
-	//set/getposition
-	//set/getradius
-	//set/getglobalID
-	//set/getcolor
-	//getbody
-	//getID
-
-	describe("#Constructor()", function(){
+	describe("#Constructor", function(){
 		var b = new Ball(10);
 
 		it("It should have created a new ball with radius 10, an ID and a circularBody.", function(){
@@ -21,7 +10,7 @@ describe("Ball", function(){
 		})		
 	})
 
-	describe("#Equals()", function() {
+	describe("#Equals", function() {
 		var b = new Ball(10);
 
 		it("The ball should be equal with itself", function(){
@@ -34,7 +23,7 @@ describe("Ball", function(){
 		})
 	})
 
-	describe("#EnableBody()", function(){
+	describe("#EnableBody", function(){
 		var b = new Ball(10);
 
 		it("The body that is instantiated should be of the type 'CircularBody' ", function(){
