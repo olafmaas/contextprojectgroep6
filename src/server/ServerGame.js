@@ -1,13 +1,10 @@
 if(typeof module != 'undefined'){
-	var ColorGenerator = require('../common/game/util/ColorGenerator');
 	var Group = require('../common/game/util/Group.js');
 	var Ball = require('../common/game/gameobjects/Ball.js');
 	var Pole = require('../common/game/gameobjects/Pole.js');
 	var Shield = require('../common/game/gameobjects/Shield.js');
-	var Powerup = require('../common/game/gameobjects/Powerup.js');
 	var Player = require('../common/game/gameobjects/Player.js');
-	var handleCollision = require('../common/game/CollisionDetection.js');
-	var Game = require('../common/game/Game.js');
+	var Powerup = require('../common/game/gameobjects/Powerup.js');
 	var CoreGame = require('../common/game/CoreGame.js');
 
 	var Client = require('../common/Client.js');
