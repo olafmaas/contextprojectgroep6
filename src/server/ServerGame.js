@@ -1,6 +1,7 @@
 if(typeof module != 'undefined'){
 	var ColorGenerator = require('../common/game/util/ColorGenerator');
 	var Group = require('../common/game/util/Group.js');
+	var UserSettings = require('../common/game/util/UserSettings.js');
 	var Ball = require('../common/game/gameobjects/Ball.js');
 	var Pole = require('../common/game/gameobjects/Pole.js');
 	var Shield = require('../common/game/gameobjects/Shield.js');
@@ -136,7 +137,24 @@ function Server(){
 
 	this.update = function(){
 		gameGrid.update()
-	}
+	};
+	
+	this.updateHighscore = function(highscore){
+	
+		for(i = 0; i < highscore.oldhs.length; i++){
+			var player = group("Players").getMemberByGlobalID(highscore.oldhs[i]);
+			player.getPole().setColor('Blue');
+		}
+
+		var count = highscore.newhs.length;
+		
+		for(i = 0; i < highscore.newhs.length; i++){
+			var player = group("Players").getMemberByGlobalID(highscore.newhs[i]);
+			player.getPole().setColor('White');
+			player.getPole().setRadius(UserSettings.poleRadius + count*2);
+			count--;
+		}
+	};
 
 	this.createGame = function(_initialize, _update, _width, _height){
 		game = new CoreGame(_initialize, _update, _width, _height)
@@ -164,7 +182,6 @@ function Server(){
 	this.getBallPosition = function(_id){return group("Balls").getMember(_id).getPosition();};
 
 	this.getSocketFromPlayerID = function(_playerID){return clientList[playerIDs[_playerID]].socket;};
-
 }
 
 if(typeof module != 'undefined'){

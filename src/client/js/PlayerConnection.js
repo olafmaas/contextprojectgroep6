@@ -103,13 +103,7 @@ socket.on('updateTop', function (data) {
 		}
 	}
 	
-	//Determine to use top 3 or top 5 for extending radius
-	if(data.newhs.length == 3){
-		var count = UserSettings.hsLength3;
-	}
-	else{
-		var count = UserSettings.hsLength5;
-	}
+	var count = data.newhs.length;
 	
 	for(i = 0; i < data.newhs.length; i++){
 		if(player.getGlobalID() == data.newhs[i]){

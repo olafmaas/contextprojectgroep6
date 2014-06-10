@@ -185,8 +185,10 @@ function SocketHandler(_server, _io){
 		}
 		
 		data = { newhs: newranking, oldhs: old };
+		
 		mainScreenSocket.emit('updateTop', data);
 		io.of('/player').emit('updateTop', data);
+		server.updateHighscore(data);
 		
 		oldranking = newranking;
 	};
