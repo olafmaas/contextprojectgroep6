@@ -1,6 +1,5 @@
 if(typeof module != 'undefined'){
 	var Group = require('../common/game/util/Group.js');
-	var UserSettings = require('../common/game/util/UserSettings.js');
 	var Ball = require('../common/game/gameobjects/Ball.js');
 	var Pole = require('../common/game/gameobjects/Pole.js');
 	var Shield = require('../common/game/gameobjects/Shield.js');
