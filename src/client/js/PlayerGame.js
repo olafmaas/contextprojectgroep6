@@ -28,7 +28,7 @@ function deleteTempImage(){
 }
 
 function loadContent(){
-    pole = game.instantiate(new Pole(Settings.poleSize));
+    pole = game.instantiate(new Pole(Settings.pole.size));
     pole.setColor("blue");
     pole.setPosition(Settings.canvasWidth /2 , Settings.canvasHeight /2);
 

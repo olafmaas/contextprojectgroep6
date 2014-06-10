@@ -64,10 +64,20 @@ var Settings = {
 	canvasWidth: 450,
 	canvasHeight: 350,
 	
-	//Pole / shield / ball properties
-	shieldRadius: 70,
-	ballSize: 10,
-	poleSize: 10
+	//Pole properties
+	pole: {
+		size: 10,
+		color: "blue"
+	},
+
+	shield: {
+		radius: 70,
+		color: "white"
+	},
+
+	ball: {
+		size: 10,
+	}
 
 }
 
