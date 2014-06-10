@@ -153,10 +153,10 @@ function SocketHandler(_server, _io){
 			
 			//determine to use top 3 or top 5
 			if(server.getNumberOfPlayers() < 20){
-				var hslength = Settings.highScore3;
+				var hslength = S.highScore3.top;
 			}
 			else{
-				var hslength = Settings.highScore5;
+				var hslength = S.highScore.top;
 			}
 			
 			//only send top 5 (or less)

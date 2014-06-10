@@ -103,7 +103,12 @@ socket.on('updateTop', function (data) {
 		}
 	}
 	
-	var count = data.newhs.length;
+	if(data.newhs.length < 5){
+		var count = Settings.highScore3.top;
+	}
+	else{
+		var count = Settings.highScore.top;
+	}
 	
 	for(i = 0; i < data.newhs.length; i++){
 		if(player.getGlobalID() == data.newhs[i]){

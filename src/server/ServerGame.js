@@ -141,12 +141,17 @@ function Server(){
 			player.getPole().setColor('Blue');
 		}
 
-		var count = highscore.newhs.length;
+		if(group("Players").getMemberLength() < 20){
+			var count = S.highScore3.top;
+		}
+		else{
+			var count = S.highScore.top;
+		}
 		
 		for(i = 0; i < highscore.newhs.length; i++){
 			var player = group("Players").getMemberByGlobalID(highscore.newhs[i]);
 			player.getPole().setColor('White');
-			player.getPole().setRadius(Settings.pole.size + count*2);
+			player.getPole().setRadius(S.pole.size + count*2);
 			count--;
 		}
 	};

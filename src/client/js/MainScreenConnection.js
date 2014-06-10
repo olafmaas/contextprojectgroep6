@@ -54,7 +54,12 @@ socket.on('updateTop', function (data) {
 		player.getPole().setColor('Blue');
 	}
 	
-	var count = data.newhs.length;
+	if(players.getMemberLength() < 20){
+		var count = Settings.highScore3.top;
+	}
+	else{
+		var count = Settings.highScore.top;
+	}
 	
 	for(i = 0; i < data.newhs.length; i++){
 		var player = players.getMemberByGlobalID(data.newhs[i]);

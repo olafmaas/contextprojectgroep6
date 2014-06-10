@@ -93,7 +93,7 @@ var Settings = {
 		colors: ["#66CCFF", "#3399FF", "#0066FF"] //not in use, from blue to light-blue
 	},
 	
-	highScore5: {
+	highScore: {
 		updateInterval: 5000,
 		top: 5,
 		colors: ["#66CCFF", "#3399FF", "#0066FF"] //not in use, from blue to light-blue
