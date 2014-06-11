@@ -210,7 +210,7 @@ function createPowerup(data){
 			dy *= -1;
 
 		powerup.setPosition(Settings.canvasWidth/2 + dx, Settings.canvasHeight/2 + dy);
-		//createIcon(type); //temporarily disabled
+		createIcon(type); //temporarily disabled
 
 		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime); //set timer so powerup is removed after x seconds.
 	}
@@ -235,7 +235,7 @@ function createIcon(_type){
 		icon = game.instantiate(new Sprite(Settings.revertShield.path));
 	}
 
-	var size = Settings.powerupSize;
+	var size = Settings.powerupSize-2;
 	icon.setPosition(powerup.getPosition());
 	icon.setSize({x: size*2, y: size*2});
 	icon.setAnchor({x: -size, y: -size});
