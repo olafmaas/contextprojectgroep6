@@ -35,6 +35,7 @@ socket.on('userName', function(free){
 
 		socket.emit('userName', userName); //player.getName());
 		player.setName(userName); 
+		player.setScore(0); //Reset score so it's equivalent with server's score
 	}
 });
 
