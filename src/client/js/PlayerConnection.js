@@ -1,5 +1,3 @@
-var userName = prompt("Please enter your name", "User"+Math.floor(Math.random()*10000));
-if(userName == null) userName = "User"+Math.floor(Math.random()*10000);
 
 function startSocket() {
 
@@ -31,6 +29,10 @@ socket.on('disconnect', function(data){
 
 socket.on('userName', function(free){
 	if(!free){
+		var randomName = "User" + Math.floor(Math.random()*10000);
+		var userName = prompt("Please enter your name", randomName);
+		if(userName == null) userName = randomName;
+
 		socket.emit('userName', userName); //player.getName());
 		player.setName(userName); 
 	}
@@ -114,15 +116,7 @@ socket.on('updateTop', function (data) {
 			}
 		}
 	}
-	
-	/*if(data.newhs.length < 5){
-		var count = Settings.highScore3.top;
-		var colors = Settings.highScore3.colors;
-	}
-	else{
-		var count = Settings.highScore.top;
-		var colors = Settings.highScore.colors;
-	}*/
+
 	var count = Settings.highScore.top;
 	var colors = Settings.highScore.colors;
 	

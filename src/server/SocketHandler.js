@@ -133,14 +133,9 @@ function SocketHandler(_server, _io){
 		//Ask for userName
 		socket.emit('userName', false);
 
-		//Add player to grid
-		newPlayer(socket);
-
-		updateMainScreenCanvasSize();
-		
-
 		socket.on('userName', function (name){
 			if(server.isNameAvailable(name)){
+				playerConnection(socket);
 				server.registerName(name, socket.id);
 				socket.emit('showPlayerName');
 			}else{
@@ -167,6 +162,12 @@ function SocketHandler(_server, _io){
 			
 		});
 	};
+
+	playerConnection = function(socket){
+		//Add player to grid
+		newPlayer(socket);
+		updateMainScreenCanvasSize();
+	}
 
 	//Removes player from mainscreen
 	removeFromMainScreen = function(socketID){ mainScreenSocket.emit('removePlayer', socketID); };
