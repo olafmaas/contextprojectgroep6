@@ -5,13 +5,22 @@ if(typeof module != 'undefined'){
 	var GridCalc = require('./GridCalc.js');
 }
 
+/**
+* GameGrid Class
+* @class GameGrid
+* @classdesc GameGrid is the class which contains all blocks. 
+* @constructor 
+*/
 function GameGrid() {
 	var grid = new Array();	//vertical
 	grid.push(new Array());	//horizontal (first row)
 	var maximumCol = 0;
 	var gridc = new GridCalc();
 
-
+	/**
+	* Add a new row to the grid. The row is filled with new blocks. 
+	* @method GameGrid#addRow
+	*/
 	this.addRow = function(){
 		var l = grid.length;
 		grid.push(new Array());
@@ -43,6 +52,16 @@ function GameGrid() {
 		return grid[0].length;
 	};
 
+	/**
+	* Add a new player to the grid, and adds ball to 
+	* the palyer's screen. The player is placed on the
+	* first available spot. 
+	* @method GameGrid#updateGrid
+	* @param {socket} socket - The socket that will be placed in the block.
+	* @param {integer} maxcol - The maximum number of columns
+	* @param {ball} _ball - 
+	* @return {object} An object with the left and top boundary of the block in pixels. 
+	*/
 	this.updateGrid = function(socket, maxCol, ball){
 		var x;
 		var y;
@@ -68,6 +87,14 @@ function GameGrid() {
 		return {left: x * S.canvasWidth, top: y * S.canvasHeight}; 
 	};
 
+	/**
+	* Check if there is place available in row i. 
+	* @method GameGrid#checkrow 
+	* @param {socket} socket - The socket that will be placed in the block.
+	* @param {integer} i - The index of the row.
+	* @param {ball} _ball - 
+	* @return {array} The index of the first availble spot. -1 otherwise. 
+	*/
 	checkrow = function(socket, i, ball){
 		for(var j = 0; j < maximumCol; j++){
 				if(grid[i].length == j){
@@ -88,6 +115,11 @@ function GameGrid() {
 		return -1;
 	};
 
+	/**
+	* Delete the player from the grid. 
+	* @method GameGrid#remove  
+	* @param {socket} socket - The socket that will be removed
+	*/
 	this.remove = function(socketID){
 		for (var i = 0; i < grid.length; i++) {
 			for(var j = 0; j < grid[i].length; j++){
@@ -100,6 +132,11 @@ function GameGrid() {
 		}
 	};
 
+	/**
+	* Delete a ball from the grid.  
+	* @method GameGrid#removeBall
+	* @param {ball} ball - The ball that will be removed.
+	*/
 	this.removeBall = function(ball){
 		blocksWithBall = gridc.inBlock(ball);
 		blocksWithBall.forEach(function(b){
@@ -111,6 +148,10 @@ function GameGrid() {
 		})
 	};
 
+	/**
+	* Update all the blocks in the grid. 
+	* @method GameGrid#rupdate
+	*/
 	this.update = function(){
 		for(var i = 0; i < grid.length; i++){
 			for(var j = 0; j < grid[i].length; j++){

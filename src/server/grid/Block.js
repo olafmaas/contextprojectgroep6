@@ -6,6 +6,18 @@ if(typeof module != 'undefined'){
 	var S = require('../../common/Settings.js');
 }
 
+
+/**
+* Block Class
+* @class Block
+* @classdesc Block is a class which handles the screen of one player. 
+* @constructor 
+* @extends Body
+* @param {socket} _socket - The socket of the player in this block, use false 
+* if a player is not yet assigned.
+* @param {int} _left - The left bound of this block in pixels.
+* @param {int} _top - The top bound of this block. 
+*/
 var Block = Base.extend({
 
 	ballsList: null,
@@ -24,15 +36,28 @@ var Block = Base.extend({
 		this.neighbours[_position] = _object;
 	},
 
+
+	/**
+	* Add ball to this block.
+	* @method Block#addBall
+	* @param {ball} _ball - The ball that should be added to the block.
+	*/
 	addBall: function(_ball){
 
 		this.ballsList.push(_ball);
+
 		_ball.getBody().setCollisionCallback(this.playAudio, this);
 
 		this.sendNewBallToPlayer(_ball);
 	},
 
-
+	/**
+	* A method that is called by other blocks to tell a ball is traveling towards this
+	* block. Checks wether this block already has this ball in his list. If the ball
+	* is not found the ball will be added.
+	* @method Block#ballIncoming
+	* @param {ball} _ball - The ball that should be added to the block.
+	*/
 	ballIncoming: function(_ball){
 		if(!this.hasBall(_ball)){
 			this.sendNewBallToPlayer(_ball);
@@ -41,12 +66,23 @@ var Block = Base.extend({
 		}
 	},
 
+	/**
+	* Notify the player about the ball.
+	* @method Block#sendNewBallToPlayer
+	* @param {ball} _ball - The ball the player should be notified about. 
+	*/
 	sendNewBallToPlayer: function(_ball){
 		if(this.socket){
 			this.socket.emit("addBall", {pos: _ball.getPosition(), gid: _ball.getGlobalID(), color: _ball.getColor()})
 		}
 	},
 
+	/**
+	* Calculates in which directions a ball should be send. 
+	* @method Block#blocksToSendBallTo
+	* @param {ball} _ball
+	* @return {array} - An array with the directions. (top, bottom, left, right)
+	*/
 	blocksToSendBallTo: function(_ball){
 		var sendTo = [];
 		var xPosInBlock = _ball.getPosition().x - this.position.left;
@@ -75,6 +111,12 @@ var Block = Base.extend({
 		return sendTo;
 	},
 
+	/**
+	* Calculates wether a ball should be removed
+	* @method Block#shouldBeRemoved
+	* @param {ball} _ball
+	* @return {boolean} - A boolean which is true if the ball should be removed. 
+	*/
 	shouldBeRemoved: function(_ball){
 		var del = false;
 		var xPosInBlock = _ball.getPosition().x - this.position.left;
@@ -103,6 +145,11 @@ var Block = Base.extend({
 		return del;
 	},
 
+	/**
+	* Updates the block. Send balls to other players, remove balls and emits all the new positions to the player. 
+	* @method Block#update
+	* @return {boolean} - A boolean which is true if the ball should be removed. 
+	*/
 	update: function(){
 		var posList = {};
 		for(var ind = 0; ind < this.ballsList.length; ind++){
@@ -119,12 +166,24 @@ var Block = Base.extend({
 		}
 	},
 
+	/**
+	* Sends ball to everey direction in the list
+	* @method Block#sendToList
+	* @param {Array} list - the list with directions the ball should be send to.
+	* @param {Ball} _ball - 
+	* @return {boolean} - A boolean which is true if the ball should be removed. 
+	*/
 	sendToList: function(list, _ball){
 		for(var j= 0; j < list.length; j++){
 			this.sendToBlock(list[j], _ball);
 		}
 	},
 
+	/**
+	* Send to the list.
+	* @method Block#sendTobBlock
+	* @return {boolean} - A boolean which is true if the ball should be removed. 
+	*/
 	sendToBlock: function(direction, _ball){
 		if(this.neighbours[direction] != undefined){
 			this.neighbours[direction].ballIncoming(_ball);
@@ -132,6 +191,13 @@ var Block = Base.extend({
 		
 	},
 
+	/**
+	* Remove ball from the block. If an index is known this method can
+	* be much faster. Send index -1 if the index is unknown. 
+	* @method Block#removeball
+	* @param {Ball} _ball - The ball that should be removed. 
+	* @param {integer} index - The index of the ball in the ballList. -1 if unknown. 
+	*/
 	removeBall: function(_ball, index){
 		if(this.socket){
 			this.socket.emit("removeBall", _ball.getGlobalID())
@@ -146,6 +212,14 @@ var Block = Base.extend({
 		
 	},
 
+
+	/**
+	* A search method, which returns the index of the ball in the ballsList.
+	* The balls are compared on GlobalID. 
+	* @method Block#getBallIndex
+	* @param {Ball} _ball - The ball that should be found. 
+	* @return {integer} - the index of the ball, or -1 if the ball is not found. 
+	*/
 	getBallIndex: function(_ball){
 		for(var j = 0; j < this.ballsList.length; j++){
 			if(this.ballsList[j].getGlobalID() == _ball.getGlobalID()){
@@ -155,6 +229,13 @@ var Block = Base.extend({
 		return -1;
 	},
 
+	/**
+	* Change the current player. Emit the canvasPosition and send all
+	* balls which are currently in this block to the player.
+	* @method Block#setPlayer
+	* @param {Socket} _socket - The ball that should be found. 
+	* @return {integer} - the index of the ball, or -1 if the ball is not found. 
+	*/
 	setPlayer: function(_socket){
 		this.socket = _socket;
 		this.socket.emit('canvasPos', {left: this.position.left, top: this.position.top});
@@ -165,6 +246,10 @@ var Block = Base.extend({
 		}
 	},
 
+	/**
+	* Remove the current player by setting it to false. 
+	* @method Block#removePlayer
+	*/
 	removePlayer: function(){
 		this.socket = false;
 	},
@@ -174,12 +259,7 @@ var Block = Base.extend({
 	},
 
 	hasBall: function(_ball){
-		for(var i = 0; i < this.ballsList.length; i++){
-			if(this.ballsList[i].getGlobalID() == _ball.getGlobalID()){
-				return true;
-			}
-		}
-		return false;
+		return this.getBallIndex(_ball) != -1;
 	},
 
 	getPosition: function(){
@@ -190,10 +270,19 @@ var Block = Base.extend({
 		return this.socket;
 	},
 
+	/**
+	* Emits the message playAudio to a player. If the player receives this 
+	* message audio will be played. 
+	* @method Block#removePlayer
+	*/
 	playAudio: function(){
 		if(this.socket){
 			this.socket.emit("playAudio", "ballCollision")
 		}
+	},
+
+	getBallsList: function(){
+		return this.ballsList;
 	}
 
 });

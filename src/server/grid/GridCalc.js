@@ -4,8 +4,20 @@ if(typeof module != 'undefined'){
 	var S = require('../../common/Settings.js');
 }
 
+/**
+* GridCalc Class
+* @class GridCalc
+* @classdesc GridCalcis is an helper class.
+* @constructor 
+*/
 var GridCalc= Base.extend({
 
+	/**
+	* Calculates in which blocks the ball could be.
+	* @method GridCalc#inBlock
+	* @param {ball} ball
+	* @return {array} An array with objects which contains the x and y coordinates of the blocks. 
+	*/
 	inBlock: function(ball){
 		var arr = new Array();
 
@@ -21,6 +33,14 @@ var GridCalc= Base.extend({
 		return arr;
 	},
 
+
+
+	/**
+	* Calculates in which rows the ball could be.
+	* @method GridCalc#inHorizontalBlock
+	* @param {ball} ball
+	* @return {array} An array with objects which contains the x coordinates of the blocks. 
+	*/
 	inHorizontalBlock: function(ball){
 		var ret = new Array();
 
@@ -37,6 +57,13 @@ var GridCalc= Base.extend({
 		return ret;
 	},
 
+
+	/**
+	* Calculates in which columns the ball could be.
+	* @method GridCalc#inVerticalBlock
+	* @param {ball} ball
+	* @return {array} An array with objects which contains the y coordinates of the blocks. 
+	*/
 	inVerticalBlock: function(ball){
 		var ret = new Array();
 
