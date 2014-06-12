@@ -97,7 +97,7 @@ var CircularBody = Body.extend({
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
 
-		this.setLastHitBy(_other.getPole().player.getGlobalID()); //Save person that last hit this ball
+		this.setLastHitBy(_other.getParentShield().getPole().player.getGlobalID()); //Save person that last hit this ball
 	},
 
 	/**
