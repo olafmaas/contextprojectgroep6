@@ -22,7 +22,6 @@ var Ball = Base.extend({
 	body: false,
 	ID: -1,
 	globalID: -1,
-	lastHitBy: -1,
 
 	constructor: function(_radius){
 		this.radius = _radius;
@@ -89,14 +88,6 @@ var Ball = Base.extend({
 	setGlobalID: function (_id) { this.globalID = _id; },
 
 	/**
-	* Sets the global id of the player that last hit this ball. 
-	* Note: 'Hit' means that the ball has bounced of the shield of the player
-	* @method Ball#setLastHitBy
-	* @param {number} _id - The GlobalID of the player that hit the ball
-	*/
-	setLastHitBy: function (_id) { this.lastHitBy = _id; },
-
-	/**
 	* Sets the color of the ball.
 	*
 	* @method Ball#setColor
@@ -150,15 +141,8 @@ var Ball = Base.extend({
 	* @method Ball#getGlobalID
 	* @return {number} The unique GlobalID of the ball
 	*/
-	getGlobalID: function(){ return this.globalID; },
+	getGlobalID: function(){ return this.globalID; }
 
-	/**
-	* Retrieves the global ID of the player that last hit the ball
-	*
-	* @method Ball#getLastHitBy
-	* @return {number} The unique GlobalID of the player that last hit the ball
-	*/
-	getLastHitBy: function() { return this.lastHitBy; }
 });
 
 if(typeof module != 'undefined'){
