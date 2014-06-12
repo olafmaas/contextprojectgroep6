@@ -47,6 +47,7 @@ var Pole = Ball.extend({
 			this.setColor("darkOrange"); //set new color to indicate being hit
 			this.saveHighscore(); //Save current score if highscore
 			this.hit = false; //remove hit flag
+			this.hitBy = -1; //remove hitBy
 			var savedThis = this;
 			setTimeout(function() { savedThis.setColor(savedThis.prevColor); savedThis.coolDown = false  }, 1000); //set cooldown period
 		}

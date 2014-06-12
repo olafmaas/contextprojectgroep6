@@ -42,7 +42,6 @@ function SocketHandler(_server, _io){
 		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
 		if(timer != null && timer.hasStopped()){
 			timer = null;
-
 			newPowerup();
 
 			timer = new RandomTimer(S.minTime, S.maxTime); //start a new timer for the next powerup
@@ -56,15 +55,27 @@ function SocketHandler(_server, _io){
 			var pole = server.getGroup("Poles").getMember(i);
 			var player = server.getGroup("Players").getMemberByGlobalID(pole.getHitBy());
 			if(pole.hit){
-				//TODO: nog ervoor zorgen dat een speler geen punten krijgt als hij zichzelf raakt!
-				if(player != -1) { 
-					player.incrementScore(pole.player.getPoints()); //Increment score 
-					server.getSocketFromPlayerID(player.getID()).emit('updateScoreHit', pole.player.getPoints());
-				}
+				incrementScore(player, pole);
 				pole.isHit();
-				mainScreenSocket.emit('poleIsHit', pole.player.getGlobalID());
-				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);
-				server.getSocketFromPlayerID(pole.player.getID()).emit('updateHighscore');
+				hitEmit(pole);
+			}
+		}
+	};
+
+	//Emit to mainscreen and player if he is hit + update highscore accordingly
+	hitEmit = function(_pole){
+		mainScreenSocket.emit('poleIsHit', _pole.player.getGlobalID());
+		server.getSocketFromPlayerID(_pole.player.getID()).emit('poleIsHit', true);
+		server.getSocketFromPlayerID(_pole.player.getID()).emit('updateHighscore');
+	};
+
+	//Increments score when a player hits another player
+	incrementScore = function (_player, _pole) {
+		//TODO: nog ervoor zorgen dat een speler geen punten krijgt als hij zichzelf raakt!
+		if(_player != -1) { 
+			if(_player.getGlobalID() != _pole.player.getGlobalID()) { //check if the player doesn't hit himself 
+				_player.incrementScore(_pole.player.getPoints()); //Increment score 
+				server.getSocketFromPlayerID(_player.getID()).emit('updateScoreHit', _pole.player.getPoints());
 			}
 		}
 	};

@@ -91,8 +91,8 @@ var Settings = {
 	},
 
 	player: {
-		points: 5,
-		step: 15
+		points: 15,
+		step: 10
 	},
 
 	/**** HIGHSCORE PROPERTIES ****/	
