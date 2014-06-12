@@ -57,7 +57,10 @@ function SocketHandler(_server, _io){
 			var player = server.getGroup("Players").getMemberByGlobalID(pole.getHitBy());
 			if(pole.hit){
 				//TODO: nog ervoor zorgen dat een speler geen punten krijgt als hij zichzelf raakt!
-				if(player != -1) { player.incrementScore(pole.player.getPoints()); }
+				if(player != -1) { 
+					player.incrementScore(pole.player.getPoints()); //Increment score 
+					server.getSocketFromPlayerID(player.getID()).emit('updateScoreHit', pole.player.getPoints());
+				}
 				pole.isHit();
 				mainScreenSocket.emit('poleIsHit', pole.player.getGlobalID());
 				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);

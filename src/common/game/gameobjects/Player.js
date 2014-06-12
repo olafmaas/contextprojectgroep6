@@ -2,7 +2,8 @@
 if(typeof module != 'undefined'){
 	var Base = require('../../../lib/Base.js');
 	var Label = require('./Label.js');
-	var IDDistributor = require('../util/IDDistributor.js'); 
+	var IDDistributor = require('../util/IDDistributor.js');
+	var Settings = require('../../Settings.js'); 
 }
 /**
 * Player class
@@ -17,7 +18,7 @@ var Player = Base.extend({
 	name: null, //Name of the player
 	pole: null, //Pole belonging to the player
 	shield: null, //Shield belonging to the player
-	points: 5, //Points the player is worth when hit 
+	points: Settings.player.points, //Points the player is worth when hit 
 	score: 0, //Current score of the player
 	highscore: 0, //Highscore of the player
 	globalID: -1,
