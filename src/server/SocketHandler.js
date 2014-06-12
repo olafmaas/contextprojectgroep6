@@ -56,6 +56,7 @@ function SocketHandler(_server, _io){
 			var pole = server.getGroup("Poles").getMember(i);
 			if(pole.hit){
 				server.getGroup("Poles").getMember(i).isHit();
+				mainScreenSocket.emit('poleIsHit', pole.player.getGlobalID());
 				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);
 				server.getSocketFromPlayerID(pole.player.getID()).emit('updateHighscore');
 			}

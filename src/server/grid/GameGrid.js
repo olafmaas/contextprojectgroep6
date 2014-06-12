@@ -26,9 +26,7 @@ function GameGrid() {
 		grid.push(new Array());
 		for(var i = 0; i < maximumCol; i++){
 			var b = new Block(false ,i * S.canvasWidth, l * S.canvasHeight)
-
-			
-			
+		
 			//Set vertical Neighbours
 			grid[l-1][i].setNeighbour("bottom", b);
 			b.setNeighbour("top", grid[l-1][i]);
@@ -44,13 +42,9 @@ function GameGrid() {
 		return l;
 	};
 
-	this.getHeight = function(){
-		return grid.length;
-	};
+	this.getHeight = function(){ return grid.length; };
 
-	this.getWidth = function(){
-		return grid[0].length;
-	};
+	this.getWidth = function(){ return grid[0].length; };
 
 	/**
 	* Add a new player to the grid, and adds ball to 

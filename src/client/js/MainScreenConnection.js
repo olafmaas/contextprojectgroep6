@@ -104,6 +104,13 @@ socket.on('updateShieldAngle', function (data) {
 	playerData[data.id].shield.setAngle(data.angle);
 });
 
+socket.on('poleIsHit', function (_pid) {
+	var p = players.getMemberByGlobalID(_pid);
+	if(p != -1){
+		p.getPole().isHit();
+	}
+});
+
 socket.on('powerupClicked', function (_pid, _ptype) {
 	var p = players.getMemberByGlobalID(_pid);
 	if(p != -1){ //if player has been found
