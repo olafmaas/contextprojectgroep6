@@ -133,9 +133,7 @@ function GameGrid() {
 	*/
 	this.removeBall = function(ball){
 		blocksWithBall = gridc.inBlock(ball);
-		console.log("Befor Remove");
 		blocksWithBall.forEach(function(b){
-			console.log("{x"+ b.x + ", y" + b.y+ "}")
 			if(b.y < grid.length){
 				if(b.x < grid[b.y].length){
 					grid[b.y][b.x].removeBall(ball, -1);

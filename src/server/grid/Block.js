@@ -45,9 +45,7 @@ var Block = Base.extend({
 	addBall: function(_ball){
 
 		this.ballsList.push(_ball);
-
 		_ball.getBody().setCollisionCallback(this.playAudio, this);
-
 		this.sendNewBallToPlayer(_ball);
 	},
 
@@ -203,16 +201,12 @@ var Block = Base.extend({
 			this.socket.emit("removeBall", _ball.getGlobalID())
 		}
 
-		console.log("HOi")
 		if(index == -1){
-			console.log("Ball: " + _ball.getGlobalID());
 			this.ballsList.splice(this.getBallIndex(_ball), 1);
 		}else{
 			this.ballsList.splice(index, 1);
-		}
-		
+		}		
 	},
-
 
 	/**
 	* A search method, which returns the index of the ball in the ballsList.
