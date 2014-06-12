@@ -16,7 +16,7 @@ describe("Shield", function(){
 		})
 
 		it("should set the good position", function(){
-			expect(shield.getPosition()).to.equals({x: 0, y: 0});
+			expect(shield.getPosition()).to.deep.equals({x: 0, y: 0});
 		})
 
 		it("should have a body", function(){
