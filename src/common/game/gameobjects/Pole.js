@@ -15,6 +15,7 @@ if(typeof module != 'undefined'){
 */
 var Pole = Ball.extend({
 	hit: false,
+	hitBy: -1,
 	coolDown: false,
 	prevColor: 0,
 	player: 0,
@@ -85,6 +86,8 @@ var Pole = Ball.extend({
 		this.timer.startTimer();
 	},
 
+	setHitBy: function(_id) { this.hitBy = _id; },
+
 	/**
 	* Returns the timer of a certain pole
 	* @method Pole#getTimer
@@ -98,7 +101,9 @@ var Pole = Ball.extend({
 	* @method Pole#getID
 	* @return {number} The unique ID of the pole
 	*/
-	getID: function(){ return this.ID; }
+	getID: function(){ return this.ID; },
+
+	getHitBy: function() { return this.hitBy; }
 
 });
 

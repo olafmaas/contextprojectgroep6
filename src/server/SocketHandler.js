@@ -54,8 +54,11 @@ function SocketHandler(_server, _io){
 		//Call isHit() when a pole is hit and send this event to the player
 		for(var i = 0; i < server.getNumberOfPlayers(); i++){
 			var pole = server.getGroup("Poles").getMember(i);
+			var player = server.getGroup("Players").getMemberByGlobalID(pole.getHitBy());
 			if(pole.hit){
-				server.getGroup("Poles").getMember(i).isHit();
+				//TODO: nog ervoor zorgen dat een speler geen punten krijgt als hij zichzelf raakt!
+				if(player != -1) { player.incrementScore(pole.player.getPoints()); }
+				pole.isHit();
 				mainScreenSocket.emit('poleIsHit', pole.player.getGlobalID());
 				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);
 				server.getSocketFromPlayerID(pole.player.getID()).emit('updateHighscore');

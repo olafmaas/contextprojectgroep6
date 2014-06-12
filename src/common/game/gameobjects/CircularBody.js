@@ -61,6 +61,7 @@ var CircularBody = Body.extend({
 		if(this.immovable) { 
 			//this.parentBall is de Pole
 			this.parentBall.hit = true;
+			this.parentBall.setHitBy(_other.getLastHitBy());
 			return;
 		}
 
@@ -97,7 +98,8 @@ var CircularBody = Body.extend({
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
 
-		this.setLastHitBy(_other.getParentShield().getPole().player.getGlobalID()); //Save person that last hit this ball
+		var p = _other.getParentShield().getPole().player;
+		this.setLastHitBy(p.getGlobalID()); //Save person that last hit this ball
 	},
 
 	/**
