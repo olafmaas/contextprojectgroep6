@@ -87,6 +87,12 @@ var Pole = Ball.extend({
 		this.timer.startTimer();
 	},
 
+	/**
+	* Sets the ID of the player that hit the pole
+	*
+	* @method Pole#setHitBy
+	* @param {number} _id - The global ID of the player
+	*/
 	setHitBy: function(_id) { this.hitBy = _id; },
 
 	/**
@@ -104,6 +110,12 @@ var Pole = Ball.extend({
 	*/
 	getID: function(){ return this.ID; },
 
+	/**
+	* Retrieves the global ID of the player that hit the pole
+	*
+	* @method Pole#getHitBy
+	* @return {number} - The global ID of the player
+	*/
 	getHitBy: function() { return this.hitBy; }
 
 });

@@ -71,7 +71,6 @@ function SocketHandler(_server, _io){
 
 	//Increments score when a player hits another player
 	incrementScore = function (_player, _pole) {
-		//TODO: nog ervoor zorgen dat een speler geen punten krijgt als hij zichzelf raakt!
 		if(_player != -1) { 
 			if(_player.getGlobalID() != _pole.player.getGlobalID()) { //check if the player doesn't hit himself 
 				_player.incrementScore(_pole.player.getPoints()); //Increment score 
@@ -126,11 +125,8 @@ function SocketHandler(_server, _io){
 	//Handles mainscreen connection and listeners
 	this.handleMainScreen = function(socket){
 		mainScreenSocket = socket;
-
 		timer.startTimer(); //Start powerup timer when the mainscreen is connected.
-
 		updateMainScreenCanvasSize();
-
 		setInterval(this.updateScores, S.highScore.updateInterval);
 
 		socket.on('screenSizeMainScreen', function (data){
