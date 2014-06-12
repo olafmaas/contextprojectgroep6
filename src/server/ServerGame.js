@@ -132,6 +132,7 @@ function Server(){
 	
 		for(i = 0; i < highscore.oldhs.length; i++){
 			var player = group("Players").getMemberByGlobalID(highscore.oldhs[i]);
+			player.setPoints(S.player.points); //Reset points to a normal player
 			
 			if(player != -1){
 				if(player.getPowerup() == null){
@@ -144,6 +145,7 @@ function Server(){
 		
 		for(i = 0; i < highscore.newhs.length; i++){
 			var player = group("Players").getMemberByGlobalID(highscore.newhs[i]);
+			player.setPoints(S.player.points + (S.player.step * count)); //Set points according to position in the highscore top
 			
 			if(player != -1){
 				if(player.getPowerup() == null){

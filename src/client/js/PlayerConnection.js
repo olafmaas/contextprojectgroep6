@@ -45,6 +45,7 @@ socket.on('showPlayerName', function (){
 });
 
 socket.on('updateScoreHit', function (_score){
+	console.log("Score: " + _score);
 	player.incrementScore(_score);
 });
 
@@ -115,6 +116,7 @@ socket.on('updateTop', function (data) {
 	for(i = 0; i < data.oldhs.length; i++){
 		if(player.getGlobalID() == data.oldhs[i]){
 			player.getPole().setColor(Settings.pole.color);
+			player.setPoints(Settings.player.points); //Reset points to a normal player
 			
 			if(player.getPowerup() == null){
 				player.getPole().setRadius(Settings.pole.size);
@@ -128,6 +130,7 @@ socket.on('updateTop', function (data) {
 	for(i = 0; i < data.newhs.length; i++){
 		if(player.getGlobalID() == data.newhs[i]){
 			player.getPole().setColor(colors[i]);
+			player.setPoints(Settings.player.points + (Settings.player.step * count)); //Set points according to position in the highscore top
 			
 			if(player.getPowerup() == null){
 				player.getPole().setRadius(Settings.pole.size + count*2);
