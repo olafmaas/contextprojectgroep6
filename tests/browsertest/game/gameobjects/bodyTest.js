@@ -119,4 +119,23 @@ describe("Body", function(){
 		})
 	})
 
+	describe("#getAngleTo()", function(){
+		var b = new Body();
+		b.position = {x: 50, y: 50};
+		
+		beforeEach(function(){
+			b.position = {x: 50, y:50};
+			b.immovable = false;
+		})
+
+		it("Should return the correct angle of another object"){
+			var t = {
+				getPosition: function(){
+					return {x: 0, y: 0};
+				}
+			}
+
+			expect(b.getAngleTo(t)).to.equal(0.75*Math.PI);
+		}
+	})
 })
