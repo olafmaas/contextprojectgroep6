@@ -11,11 +11,11 @@ socket.on('connect_failed', function (reason){
 	console.error('connect_failed: ', reason);
 });
 
-socket.on('error', function(reason){
+socket.on('error', function (reason){
 	console.error('Error: ', reason);
 });
 
-socket.on('connect', function(){
+socket.on('connect', function (){
 	console.info('Successfully established a working connection');
 });
 
@@ -23,11 +23,11 @@ socket.on('message', function (message, callback) {
     console.log('Message from server: ' + message);
 });
 
-socket.on('disconnect', function(data){
+socket.on('disconnect', function (data){
 	console.info('Disconnected from server');
 });
 
-socket.on('userName', function(free){
+socket.on('userName', function (free){
 	if(!free){
 		var randomName = "User" + Math.floor(Math.random()*10000);
 		var userName = prompt("Please enter your name", randomName);
@@ -40,11 +40,16 @@ socket.on('userName', function(free){
 });
 
 //Sets the name label whenever a valid name is chosen by the player
-socket.on('showPlayerName', function(){
+socket.on('showPlayerName', function (){
 	nameLabel.setText(player.getName());
 });
 
-socket.on('updateHighscore', function(){
+socket.on('updateScoreHit', function (_score){
+	console.log("Score: " + _score);
+	player.incrementScore(_score);
+});
+
+socket.on('updateHighscore', function (){
 	highscoreLabel.setText('Highscore: ' + player.getHighscore());
 })
 
@@ -111,6 +116,7 @@ socket.on('updateTop', function (data) {
 	//for(i = 0; i < data.oldhs.length; i++){
 		//if(player.getGlobalID() == data.oldhs[i]){
 			player.getPole().setColor(Settings.pole.color);
+			player.setPoints(Settings.player.points); //Reset points to a normal player
 			
 			if(player.getPowerup() == null){
 				player.getPole().setRadius(Settings.pole.size);
@@ -124,6 +130,7 @@ socket.on('updateTop', function (data) {
 	for(i = 0; i < data.newhs.length; i++){
 		if(player.getGlobalID() == data.newhs[i]){
 			player.getPole().setColor(colors[i]);
+			player.setPoints(Settings.player.points + (Settings.player.step * count)); //Set points according to position in the highscore top
 			
 			if(player.getPowerup() == null){
 				player.getPole().setRadius(Settings.pole.size + count*2);

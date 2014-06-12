@@ -142,6 +142,7 @@ var Ball = Base.extend({
 	* @return {number} The unique GlobalID of the ball
 	*/
 	getGlobalID: function(){ return this.globalID; }
+
 });
 
 if(typeof module != 'undefined'){

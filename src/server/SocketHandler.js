@@ -42,7 +42,6 @@ function SocketHandler(_server, _io){
 		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
 		if(timer != null && timer.hasStopped()){
 			timer = null;
-
 			newPowerup();
 
 			timer = new RandomTimer(S.minTime, S.maxTime); //start a new timer for the next powerup
@@ -54,11 +53,28 @@ function SocketHandler(_server, _io){
 		//Call isHit() when a pole is hit and send this event to the player
 		for(var i = 0; i < server.getNumberOfPlayers(); i++){
 			var pole = server.getGroup("Poles").getMember(i);
+			var player = server.getGroup("Players").getMemberByGlobalID(pole.getHitBy());
 			if(pole.hit){
-				server.getGroup("Poles").getMember(i).isHit();
-				mainScreenSocket.emit('poleIsHit', pole.player.getGlobalID());
-				server.getSocketFromPlayerID(pole.player.getID()).emit('poleIsHit', true);
-				server.getSocketFromPlayerID(pole.player.getID()).emit('updateHighscore');
+				incrementScore(player, pole);
+				pole.isHit();
+				hitEmit(pole);
+			}
+		}
+	};
+
+	//Emit to mainscreen and player if he is hit + update highscore accordingly
+	hitEmit = function(_pole){
+		mainScreenSocket.emit('poleIsHit', _pole.player.getGlobalID());
+		server.getSocketFromPlayerID(_pole.player.getID()).emit('poleIsHit', true);
+		server.getSocketFromPlayerID(_pole.player.getID()).emit('updateHighscore');
+	};
+
+	//Increments score when a player hits another player
+	incrementScore = function (_player, _pole) {
+		if(_player != -1) { 
+			if(_player.getGlobalID() != _pole.player.getGlobalID()) { //check if the player doesn't hit himself 
+				_player.incrementScore(_pole.player.getPoints()); //Increment score 
+				server.getSocketFromPlayerID(_player.getID()).emit('updateScoreHit', _pole.player.getPoints());
 			}
 		}
 	};
@@ -97,6 +113,7 @@ function SocketHandler(_server, _io){
 		for(i = 0; i < _top.length; i++){
 			newRanking.push(_top[i].ID);
 		}
+		//TODO: oldhs kan hier nu toch uit? wordt namelijk niet meer gebruikt nu alles gewoon teruggezet wordt.
 		data = { newhs: newRanking, oldhs: oldranking };
 
 		mainScreenSocket.emit('updateTop', data);
@@ -109,11 +126,8 @@ function SocketHandler(_server, _io){
 	//Handles mainscreen connection and listeners
 	this.handleMainScreen = function(socket){
 		mainScreenSocket = socket;
-
 		timer.startTimer(); //Start powerup timer when the mainscreen is connected.
-
 		updateMainScreenCanvasSize();
-
 		setInterval(this.updateScores, S.highScore.updateInterval);
 
 		socket.on('screenSizeMainScreen', function (data){

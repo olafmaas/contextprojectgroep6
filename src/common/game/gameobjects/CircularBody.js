@@ -19,6 +19,7 @@ var CircularBody = Body.extend({
 	parentBall: 0,
 	ID: -1,
 	collisionCallBack: 0, 
+	lastHitBy: -1,
 	
 	/**
 	* Constructor for the circular body
@@ -49,7 +50,6 @@ var CircularBody = Body.extend({
 	*/
 	equals: function(_other){ return (this.ID == _other.getID()); },
 
-/************ MOET ER ALLEMAAL UIT T/M LINE 126 **************/
 	/**
 	* This method uses the previous methods to check whether the circle collides
 	* And then handles the collision
@@ -61,6 +61,7 @@ var CircularBody = Body.extend({
 		if(this.immovable) { 
 			//this.parentBall is de Pole
 			this.parentBall.hit = true;
+			this.parentBall.setHitBy(_other.getLastHitBy());
 			return;
 		}
 
@@ -96,6 +97,9 @@ var CircularBody = Body.extend({
 
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
+
+		var p = _other.getParentShield().getPole().player;
+		this.setLastHitBy(p.getGlobalID()); //Save person that last hit this ball
 	},
 
 	/**
@@ -124,7 +128,6 @@ var CircularBody = Body.extend({
 
 		return collision;
 	},
-/********* TOT HIER DUS ALLES ERUIT *******/
 
 	/**
 	* Sets the radius
@@ -140,6 +143,14 @@ var CircularBody = Body.extend({
 	* @param {Object} _this - The 'this' object on which the callback function will be called
 	*/
 	setCollisionCallback: function(_callback, _this){ this.collisionCallBack = {callback: _callback, context: _this}; },
+
+	/**
+	* Sets the global id of the player that last hit this ball. 
+	* Note: 'Hit' means that the ball has bounced of the shield of the player
+	* @method Ball#setLastHitBy
+	* @param {number} _id - The GlobalID of the player that hit the ball
+	*/
+	setLastHitBy: function (_id) { this.lastHitBy = _id; },
 
 	/**
 	* Returns the radius
@@ -161,7 +172,15 @@ var CircularBody = Body.extend({
 	* @method CircularBody#getID
 	* @return {number} The unique ID of this circularBody
 	*/
-	getID: function(){ return this.ID; }
+	getID: function(){ return this.ID; },
+
+	/**
+	* Retrieves the global ID of the player that last hit the ball
+	*
+	* @method Ball#getLastHitBy
+	* @return {number} The unique GlobalID of the player that last hit the ball
+	*/
+	getLastHitBy: function() { return this.lastHitBy; }
 
 });
 

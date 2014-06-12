@@ -90,6 +90,11 @@ var Settings = {
 		y: 100
 	},
 
+	player: {
+		points: 10,
+		step: 5 //step by which the score is incremented 
+	},
+
 	/**** HIGHSCORE PROPERTIES ****/	
 	highScore: {
 		updateInterval: 5000,

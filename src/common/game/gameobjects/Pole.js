@@ -15,6 +15,7 @@ if(typeof module != 'undefined'){
 */
 var Pole = Ball.extend({
 	hit: false,
+	hitBy: -1,
 	coolDown: false,
 	prevColor: 0,
 	player: 0,
@@ -46,6 +47,7 @@ var Pole = Ball.extend({
 			this.setColor("darkOrange"); //set new color to indicate being hit
 			this.saveHighscore(); //Save current score if highscore
 			this.hit = false; //remove hit flag
+			this.hitBy = -1; //remove hitBy
 			var savedThis = this;
 			setTimeout(function() { savedThis.setColor(savedThis.prevColor); savedThis.coolDown = false  }, 1000); //set cooldown period
 		}
@@ -86,6 +88,14 @@ var Pole = Ball.extend({
 	},
 
 	/**
+	* Sets the ID of the player that hit the pole
+	*
+	* @method Pole#setHitBy
+	* @param {number} _id - The global ID of the player
+	*/
+	setHitBy: function(_id) { this.hitBy = _id; },
+
+	/**
 	* Returns the timer of a certain pole
 	* @method Pole#getTimer
 	* @return {Timer} - The timer belonging to the pole
@@ -98,7 +108,15 @@ var Pole = Ball.extend({
 	* @method Pole#getID
 	* @return {number} The unique ID of the pole
 	*/
-	getID: function(){ return this.ID; }
+	getID: function(){ return this.ID; },
+
+	/**
+	* Retrieves the global ID of the player that hit the pole
+	*
+	* @method Pole#getHitBy
+	* @return {number} - The global ID of the player
+	*/
+	getHitBy: function() { return this.hitBy; }
 
 });
 
