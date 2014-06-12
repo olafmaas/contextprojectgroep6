@@ -133,8 +133,8 @@ function Server(){
 	
 	this.updateHighscore = function(highscore){
 	
-		for(i = 0; i < highscore.oldhs.length; i++){
-			var player = group("Players").getMemberByGlobalID(highscore.oldhs[i]);
+		for(i = 0; i < group("Players").getMemberLength(); i++){
+			var player = group("Players").getMember(i);
 			
 			if(player != -1){
 				if(player.getPowerup() == null){

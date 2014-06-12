@@ -49,8 +49,8 @@ socket.on('updateScores', function (scores){
 
 socket.on('updateTop', function (data) {
 	
-	for(i = 0; i < data.oldhs.length; i++){
-		var player = players.getMemberByGlobalID(data.oldhs[i]);
+	for(i = 0; i < players.getMemberLength(); i++){
+		var player = players.getMember(i);
 		
 		if(player != -1){
 			player.getPole().setColor(Settings.pole.color);
