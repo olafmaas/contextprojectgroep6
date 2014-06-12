@@ -203,9 +203,10 @@ var Block = Base.extend({
 			this.socket.emit("removeBall", _ball.getGlobalID())
 		}
 
-		
+		console.log("HOi")
 		if(index == -1){
-			this.ballsList.splice(this.getBallIndex(ball), 1);
+			console.log("Ball: " + _ball.getGlobalID());
+			this.ballsList.splice(this.getBallIndex(_ball), 1);
 		}else{
 			this.ballsList.splice(index, 1);
 		}

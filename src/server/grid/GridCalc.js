@@ -24,8 +24,8 @@ var GridCalc= Base.extend({
 		xList = this.inHorizontalBlock(ball);
 		yList = this.inVerticalBlock(ball);
 
-		for(i = 0; i < xList.length; i++){
-			for(j = 0; j< yList.length; j++){
+		for(var i = 0; i < xList.length; i++){
+			for(var j = 0; j < yList.length; j++){
 				arr.push({x: xList[i], y: yList[j]});
 			}
 		}
@@ -50,7 +50,9 @@ var GridCalc= Base.extend({
 
 		if((xPosInBlock < ball.getRadius()) && (ball.getBody().getVectorVelocity().x < 0)){
 			ret.push(x-1);
-		}else if((xPosInBlock > (S.canvasWidth - ball.getRadius())) && (ball.getBody().getVectorVelocity().x > 0)){
+		}
+
+		if((xPosInBlock > (S.canvasWidth - ball.getRadius())) && (ball.getBody().getVectorVelocity().x > 0)){
 			ret.push(x+1);
 		}
 
