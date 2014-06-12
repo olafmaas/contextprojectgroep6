@@ -19,39 +19,39 @@ var Settings = {
 		time: 10,
 		color: "greenyellow",
 		length: 3.5,
-		path: "../client/img/pokeball.png"
+		path: "../client/img/powerup.png"
 	},
 
 	bigShield: {
 		time: 15,
 		color: "violet",
 		length: 1,
-		path: "../client/img/pokeball.png"
+		path: "../client/img/powerup.png"
 	},
 
 	smallPole: {
 		time: 15,
 		color: "yellow",
 		radius: 2, //by which factor the pole will be divided
-		path: "../client/img/pokeball.png"
+		path: "../client/img/powerup.png"
 	},
 
 	bigPole: {
 		time: 10,
 		color: "aqua",
 		radius: 1.5, //by which factor the pole will be multiplied
-		path: "../client/img/pokeball.png"
+		path: "../client/img/powerup.png"
 	},
 
 	revertShield: {
 		time: 10,
 		color: "red",
-		path: "../client/img/pokeball.png"
+		path: "../client/img/powerup.png"
 	},
 
 	/**** POWERUP PROPERTIES ****/
 	nrOfPowerups: 5,
-	powerupSize: 10,
+	powerupSize: 20,
 	removalTime: 2000, //in ms, how long a powerup is present on screen.
 	minTime: 10, //in ms, minimum time between powerup spawns.
 	maxTime: 30, //in ms, maximum time between powerup spawns.
@@ -93,7 +93,7 @@ var Settings = {
 	/**** HIGHSCORE PROPERTIES ****/	
 	highScore: {
 		updateInterval: 5000,
-		top: 5,
+		top: 3,
 		colors: ["#B8E6E6", "#66CCFF", "#3399FF", "#0066FF", "#0000FF"] //from blue to light-blue
 	}
 }

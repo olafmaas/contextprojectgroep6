@@ -1,5 +1,3 @@
-var userName = prompt("Please enter your name", "User"+Math.floor(Math.random()*10000));
-if(userName == null) userName = "User"+Math.floor(Math.random()*10000);
 
 function startSocket() {
 
@@ -31,8 +29,13 @@ socket.on('disconnect', function(data){
 
 socket.on('userName', function(free){
 	if(!free){
+		var randomName = "User" + Math.floor(Math.random()*10000);
+		var userName = prompt("Please enter your name", randomName);
+		if(userName == null) userName = randomName;
+
 		socket.emit('userName', userName); //player.getName());
 		player.setName(userName); 
+		player.setScore(0); //Reset score so it's equivalent with server's score
 	}
 });
 
@@ -114,15 +117,7 @@ socket.on('updateTop', function (data) {
 			}
 		}
 	}
-	
-	/*if(data.newhs.length < 5){
-		var count = Settings.highScore3.top;
-		var colors = Settings.highScore3.colors;
-	}
-	else{
-		var count = Settings.highScore.top;
-		var colors = Settings.highScore.colors;
-	}*/
+
 	var count = Settings.highScore.top;
 	var colors = Settings.highScore.colors;
 	
@@ -215,7 +210,7 @@ function createPowerup(data){
 			dy *= -1;
 
 		powerup.setPosition(Settings.canvasWidth/2 + dx, Settings.canvasHeight/2 + dy);
-		//createIcon(type); //temporarily disabled
+		createIcon(type); //temporarily disabled
 
 		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime); //set timer so powerup is removed after x seconds.
 	}
@@ -240,7 +235,7 @@ function createIcon(_type){
 		icon = game.instantiate(new Sprite(Settings.revertShield.path));
 	}
 
-	var size = Settings.powerupSize;
+	var size = Settings.powerupSize-2;
 	icon.setPosition(powerup.getPosition());
 	icon.setSize({x: size*2, y: size*2});
 	icon.setAnchor({x: -size, y: -size});
