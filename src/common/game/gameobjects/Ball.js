@@ -9,7 +9,7 @@ if(typeof module != 'undefined'){
 /** 
 * Ball constructor
 * @class Ball
-* @classdesc Ball constructor.
+* @classdesc Ball class.
 * @constructor
 * @extends Base
 * @param {number} _radius - The radius of the ball.

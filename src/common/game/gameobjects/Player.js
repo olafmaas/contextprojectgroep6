@@ -31,7 +31,7 @@ var Player = Base.extend({
 		this.ID = IDDistributor.getNewId();
 	},
 	
-	/* Checks timer and removes powerup if necesarry.
+	/** Checks timer and removes powerup if necesarry.
 	*
 	* @method Player#update
 	*/

@@ -1,7 +1,8 @@
 if(typeof module != 'undefined'){
 	var Settings = require('../Settings.js');
 }
-/*
+
+/**
 * A fully functional game class without any graphical handling
 *
 * @class CoreGame
@@ -17,7 +18,7 @@ function CoreGame(_initialize, _update, _width, _height){
 
 	var updating = true;
 
-	/*
+	/**
 	* The boot function to boot the game
 	* @method CoreGame#boot
 	*/
@@ -27,7 +28,7 @@ function CoreGame(_initialize, _update, _width, _height){
 		setInterval(parentUpdate, Settings.updateInterval);
 	}
 
-	/*
+	/**
 	* The parent initialize function
 	* 
 	* @method CoreGame#parentInitialize
@@ -36,7 +37,7 @@ function CoreGame(_initialize, _update, _width, _height){
 		initialize();
 	}
 
-	/*
+	/**
 	* The parent update function
 	*
 	* @method CoreGame#parentUpdate
@@ -52,7 +53,7 @@ function CoreGame(_initialize, _update, _width, _height){
 		update();
 	}
 
-	/*
+	/**
 	* Function to update all game elements
 	*
 	* @method CoreGame#updateElements
@@ -63,7 +64,7 @@ function CoreGame(_initialize, _update, _width, _height){
 		}
 	}
 
-	/*
+	/**
 	* Function to handle all game object collisions
 	*
 	* @method CoreGame#handleCollisions
@@ -78,7 +79,7 @@ function CoreGame(_initialize, _update, _width, _height){
 		keepInWorldBounds();
 	}
 
-	/* 
+	/**
 	* Function to make sure all elements stay in the world bounds
 	* 
 	* @method CoreGame#keepInWorldBounds
@@ -90,7 +91,7 @@ function CoreGame(_initialize, _update, _width, _height){
 		}
 	}
 
-	/*
+	/**
 	* Function to instantiate game elements
 	*
 	* @method CoreGame#instantiate
@@ -101,7 +102,7 @@ function CoreGame(_initialize, _update, _width, _height){
 		return _element;
 	}
 
-	/*
+	/**
 	* Function to remove game elements
 	*
 	* @method CoreGame#remove
@@ -115,11 +116,12 @@ function CoreGame(_initialize, _update, _width, _height){
 	//this.boot();
 	setTimeout(this.boot, 10);
 	
+	
 	//===================
 	//Getters & Setters
 	//===================
 
-	/*
+	/**
 	* A getter for the game elements
 	*
 	* @method CoreGame#getGameElements
@@ -137,7 +139,7 @@ function CoreGame(_initialize, _update, _width, _height){
 		return updating;
 	}
 
-	/*
+	/**
 	* A setter for the game dimensions
 	*
 	* @method CoreGame#setDimensions
@@ -148,7 +150,7 @@ function CoreGame(_initialize, _update, _width, _height){
 		dimensions = {width: _width, height: _height};
 	}
 
-	/*
+	/**
 	* A getter for the game dimensions
 	*
 	* @method CoreGame#getDimensions

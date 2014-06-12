@@ -1,10 +1,12 @@
 var scale = 1;
-/*
+
+/**
 * The engine for rendering sprites, balls and other game objects
 * 
 * @class RenderEngine
-* @param{function} _loadContent - The user-defined loadcontent function to be called
-* @param{function} _draw - The user-defined draw function to be called
+* @param {function} _loadContent - The user-defined loadcontent function to be called
+* @param {function} _draw - The user-defined draw function to be called
+* Other parameters are optional
 */
 function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeight ,debug){
 	var loadContent = _loadContent;
@@ -22,8 +24,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	/**
 	* Function for booting the RenderEngine
-	* 
-	* @method RenderEngine#sboot
+	* @method RenderEngine#boot
 	*/
 	this.boot = function(){
 		initialize();
@@ -34,8 +35,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	/**
 	* Function for initializing class variables
-	* 
-	* @class RenderEngine#initialize
+	* @method RenderEngine#initialize
 	*/
 	initialize = function(){
 		backGroundColor = "black";
@@ -48,17 +48,14 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	/**
 	* Function for loading class-internal and external content
-	*
 	* @method RenderEngine#parentLoadContent
 	*/
 	parentLoadContent = function(){
-
 		loadContent();
 	}
 
 	/**
 	* Function for setting event listeners
-	*
 	* @method RenderEngine#initializeListeners
 	*/
 	initializeListeners = function(){
@@ -73,7 +70,6 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	/**
 	* Function for initializing canvas
-	*
 	* @method RenderEngine#initializeCanvas
 	*/
 	initializeCanvas = function(){
@@ -84,15 +80,14 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	/**
 	* Update function for the RenderEngine
-	*
-	* @method RenderEngine#update
+	* @method RenderEngine#updateCanvasSize
 	*/
 	updateCanvasSize = function(){
 		if(canvas == undefined) return;
 
 		var canvasRatio = canvas.height / canvas.width;
 		var windowRatio = window.innerHeight / window.innerWidth;
-		var windowWidth= window.innerWidth
+		var windowWidth = window.innerWidth
 			|| document.documentElement.clientWidth
 			|| document.body.clientWidth;
 
@@ -104,7 +99,8 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
         	if (windowRatio < canvasRatio) {
 	            var height = window.innerHeight;
 	            scale = window.innerHeight/canvas.height;
-        	} else {
+        	} 
+			else {
 	            var width = window.innerWidth;
 	            scale = window.innerWidth/canvas.width;
         	}
@@ -116,18 +112,20 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
         	canvas.width = width + "px";
 			canvas.height = height + "px";
         }
-
-
 	}
 
+	/**
+	* Method which returns if the resolution is correct.
+	* @method RenderEngine#hasResolution
+	* @return {boolean} - True or False
+	*/
 	hasResolution = function() {
 		return resolution.height && resolution.width;
 	}
 
 	/**
-	* Checks the orientation and change the canvas size. 
-	*
-	* @method RenderEngine#update
+	* Checks the orientation and change of the canvas size. 
+	* @method RenderEngine#checkOrientation
 	*/
 	checkOrientation = function(){
 		if(Math.abs(window.orientation) == 90){
@@ -146,9 +144,9 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	}
 
 	/**
-	* Draw function for drawing all the elements in a game
+	* Draw function for drawing all the elements in a game.
 	* @method RenderEngine#drawGame
-	* @param{CoreGame} _game - the game to be drawn
+	* @param{CoreGame} _game - The game to be drawn.
 	*/
 	this.drawGame = function(_game){
 		if(!drawing) return;
@@ -195,8 +193,8 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	/**
 	* Function which draws the specified object to the game canvas
 	*
-	* @method RenderEngine#drawObject
-	* @param{object} _object - The game object to be drawn
+	* @method RenderEngine#drawElement
+	* @param {object} _element - The game object to be drawn
 	*/
 	this.drawElement = function(_element){
 		drawer.draw(_element);
@@ -204,9 +202,10 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	//Make the engine boot 1 second after instantiating
 	//this.boot();
-
 	setTimeout(this.boot, Settings.bootTime);
 
+	
+	
 	//======================
 	// Gets & Sets
 	//======================
