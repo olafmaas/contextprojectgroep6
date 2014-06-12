@@ -6,11 +6,7 @@ var fakeSok = new StubSock();
 
 describe("Body", function(){
 	describe("#addBall", function(){
-		it("It should add a ball and emit it to the player", function(){
-			function StubSock(){
-				this.emit = function(x, y){return 0}
-			}
-
+		it("Should add a ball and emit it to the player", function(){
 			_socket = sinon.stub(fakeSok, "emit");
 			b = new Block(fakeSok, 0, 0) 
 			ball = new Ball(10);
@@ -22,7 +18,7 @@ describe("Body", function(){
 	})
 
 	describe("#ballIncoming", function(){
-		it("It should add a ball if it is not already in the ball list", function(){
+		it("Should add a ball if it is not already in the ball list", function(){
 			b = new Block(fakeSok, 0, 0) 
 			ball = new Ball(10);
 			b.ballIncoming(ball);
@@ -31,7 +27,7 @@ describe("Body", function(){
 			expect(b.getBallIndex(ball) > -1);
 		})
 
-		it("It should not add the ball if it isalready in the ball list", function(){
+		it("Should not add the ball if it isalready in the ball list", function(){
 			b = new Block(fakeSok, 0, 0) 
 			ball = new Ball(10);
 			b.ballIncoming(ball);
@@ -43,8 +39,19 @@ describe("Body", function(){
 	})
 
 	describe("#blocksToSendBallTo", function(){
-		it("It should add a ball if it is not already in the ball list")
+		it("Should add a ball if it is not already in the ball list")
 
-		it("It should not add the ball if it isalready in the ball list")
+		it("Should not add the ball if it isalready in the ball list")
+	})
+
+	describe("#update", function(){
+		it("Should check if a ball should be removed.", function(){
+			b = new Block(fakeSok, 0, 0) 
+			ball = new Ball(10);
+			var stubbedRemove = sinon.stub(b, "shouldBeRemoved")
+			b.addBall(ball);
+			b.update();
+			expect(stubbedRemove).to.be.called;
+		})
 	})
 })
