@@ -135,7 +135,7 @@ describe("Body", function(){
 				}
 			}
 
-			expect(b.getAngleTo(t)).to.equal(0.75*Math.PI);
+			expect(b.getAngleTo(t)).to.equal(-0.75*Math.PI);
 		})
 	})
 })

@@ -4,7 +4,7 @@ function StubSock(){
 
 var fakeSok = new StubSock();
 
-describe("Body", function(){
+describe("Block", function(){
 	describe("#addBall", function(){
 		it("Should add a ball and emit it to the player", function(){
 			_socket = sinon.stub(fakeSok, "emit");
@@ -41,7 +41,7 @@ describe("Body", function(){
 	describe("#blocksToSendBallTo", function(){
 		it("Should add a ball if it is not already in the ball list")
 
-		it("Should not add the ball if it isalready in the ball list")
+		it("Should not add the ball if it is already in the ball list")
 	})
 
 	describe("#update", function(){
