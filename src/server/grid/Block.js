@@ -12,7 +12,7 @@ if(typeof module != 'undefined'){
 * @class Block
 * @classdesc Block is a class which handles the screen of one player. 
 * @constructor 
-* @extends Body
+* @extends Base
 * @param {socket} _socket - The socket of the player in this block, use false 
 * if a player is not yet assigned.
 * @param {int} _left - The left bound of this block in pixels.

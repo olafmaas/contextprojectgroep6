@@ -90,9 +90,7 @@ function Server(){
 	};
 
 
-	this.isNameAvailable = function(name){
-		return !namesList[name];
-	};
+	this.isNameAvailable = function(name){ return !namesList[name]; };
 
 	this.registerName = function(name, id){
 		namesList[name] = true;
@@ -126,13 +124,9 @@ function Server(){
 		}
 	};
 
-	this.loadContent = function(){
+	this.loadContent = function(){};
 
-	};
-
-	this.update = function(){
-		gameGrid.update()
-	};
+	this.update = function(){ gameGrid.update() };
 	
 	this.updateHighscore = function(highscore){
 	
@@ -165,27 +159,25 @@ function Server(){
 	};
 
 	//Getters and Setters
-	this.getNumberOfPlayers = function(){
-		return Object.keys(clientList).length;
-	};
+	this.getNumberOfPlayers = function(){ return Object.keys(clientList).length; };
 
-	this.getClient = function(id){ return clientList[id];};
+	this.getClient = function(id){ return clientList[id]; };
 
 	this.getGame = function(){ return game; };
 
 	group = function(name){ return gm.group(name);};
 
-	this.getGroup = function(_group){ return group(_group);};
+	this.getGroup = function(_group){ return group(_group); };
 
-	this.getMaxNrOfPlayers = function(){return maxNrOfPlayers;};
+	this.getMaxNrOfPlayers = function(){ return maxNrOfPlayers; };
 
-	this.getBall = function(_id){return group("Balls").getMember(_id);};
+	this.getBall = function(_id){ return group("Balls").getMember(_id); };
 
-	this.nrOfBalls = function(){return group("Balls").getMemberLength();};
+	this.nrOfBalls = function(){ return group("Balls").getMemberLength(); };
 
-	this.getBallPosition = function(_id){return group("Balls").getMember(_id).getPosition();};
+	this.getBallPosition = function(_id){ return group("Balls").getMember(_id).getPosition(); };
 
-	this.getSocketFromPlayerID = function(_playerID){return clientList[playerIDs[_playerID]].socket;};
+	this.getSocketFromPlayerID = function(_playerID){ return clientList[playerIDs[_playerID]].socket; };
 }
 
 if(typeof module != 'undefined'){
