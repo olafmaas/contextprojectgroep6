@@ -5,7 +5,7 @@ describe("Player", function(){
 		it("Should increment the number of points by the given amount", function(){
 			p = new Player("Jan");
 			p.incrementPoints(10);
-			expect(p.getPoints()).to.equal(15);
+			expect(p.getPoints()).to.equal(20);
 		})
 	})
 

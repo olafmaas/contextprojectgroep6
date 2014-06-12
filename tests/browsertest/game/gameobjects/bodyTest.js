@@ -128,7 +128,7 @@ describe("Body", function(){
 			b.immovable = false;
 		})
 
-		it("Should return the correct angle of another object"){
+		it("Should return the correct angle of another object", function(){
 			var t = {
 				getPosition: function(){
 					return {x: 0, y: 0};
@@ -136,6 +136,6 @@ describe("Body", function(){
 			}
 
 			expect(b.getAngleTo(t)).to.equal(0.75*Math.PI);
-		}
+		})
 	})
 })
