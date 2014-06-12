@@ -61,6 +61,7 @@ function Server(){
 		group("Shields").addMember(game.instantiate(player.getShield()));
 		group("Players").addMember(player);
 
+		console.log(socket.id + "SG");
 		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield());
 		playerIDs[player.getID()] = socket.id;
 		
@@ -112,7 +113,9 @@ function Server(){
 	};
 
 	this.setAngle = function(socket, angle){
-		clientList[socket.id].shield.setAngle(angle);
+		if(clientList[socket.id]){
+			clientList[socket.id].shield.setAngle(angle);
+		}
 		return {id: socket.id, angle: angle};
 	};
 
