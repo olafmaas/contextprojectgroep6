@@ -45,7 +45,6 @@ socket.on('showPlayerName', function (){
 });
 
 socket.on('updateScoreHit', function (_score){
-	console.log("Score: " + _score);
 	player.incrementScore(_score);
 });
 
