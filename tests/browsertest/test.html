@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <title> Tests </title>
+        <link rel="stylesheet" href="../../node_modules/mocha/mocha.css" />
+
+        <!--Import Required modules-->
+
+        
+        
+
+    </head>
+    <body>
+          <div id="mocha"></div>
+          <div id="messages"></div>
+          <div id="blanket-main"></div>
+
+        <!--Config Mocha, Chai and Sinon-->
+        <script src="../../node_modules/mocha/mocha.js"></script>
+
+        <script src="../../node_modules/chai/chai.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/spy.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/call.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/behavior.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/stub.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/mock.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/collection.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/assert.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/test.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/test_case.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/assert.js"></script>
+        <script src="../../node_modules/sinon/lib/sinon/match.js"></script>
+        <script src="../../node_modules/sinon-chai/lib/sinon-chai.js"></script>
+                
+
+        <script>
+            mocha.ui('bdd'); 
+            mocha.reporter('html');
+            var expect = chai.expect;
+        </script>
+        
+
+
+        <!--Import Game Framework-->
+        <!-- lib --> 
+        <script src="../../src/lib/socket.io.min.js"></script>  
+        <script src="../../src/lib/Base.js"></script>
+        <script src="../../src/lib/howler.min.js"></script>
+
+        <!-- enum -->
+        <script src="../../src/common/Enums.js"></script>
+
+        <!-- utils -->
+        <script src="../../src/common/game/util/IDDistributor.js"></script>
+        <script src="../../src/common/game/util/ColorGenerator.js"></script>
+        <script src="../../src/common/game/util/Group.js"></script>
+
+        <!-- settings -->
+        <script src="../../src/common/Settings.js"></script>  
+
+        <!-- timers -->
+        <script src="../../src/common/game/time/Timer.js"></script>
+        <script src="../../src/common/game/time/PlayerTimer.js"></script>
+        <script src="../../src/common/game/time/PowerupTimer.js"></script>
+        <script src="../../src/common/game/time/RandomTimer.js"></script>
+       
+        <!-- game engine -->
+        <script src="../../src/common/game/Game.js"></script>
+        <script src="../../src/common/game/RenderEngine.js"></script>
+        <script src="../../src/common/game/CoreGame.js"></script>
+        <script src="../../src/common/game/Input.js"></script>
+        <script src="../../src/common/game/CollisionDetection.js"></script>
+        <script src="../../src/common/game/Drawer.js"></script>
+
+        <!-- game objects -->
+        <script src="../../src/common/game/gameobjects/Sprite.js"></script>
+        <script src="../../src/common/game/gameobjects/Player.js"></script>
+        <script src="../../src/common/game/gameobjects/Ball.js"></script>
+        <script src="../../src/common/game/gameobjects/Body.js"></script>
+        <script src="../../src/common/game/gameobjects/CircularBody.js"></script>
+        <script src="../../src/common/game/gameobjects/ShieldBody.js"></script>       
+        <script src="../../src/common/game/gameobjects/Shield.js"></script>
+        <script src="../../src/common/game/gameobjects/Pole.js"></script>
+        <script src="../../src/common/game/gameobjects/Powerup.js"></script>
+        <script src="../../src/common/game/gameobjects/Label.js"></script>
+        <script src="../../src/common/game/gameobjects/Powerup.js"></script>    
+        <script src="../../src/common/game/gameobjects/ScoreLabel.js"></script>
+        <script src="../../src/common/Settings.js"></script>
+        <script src="../../src/server/grid/Block.js"></script>
+
+
+
+        <!-- this game and connection -->
+        <script src="../../src/common/Client.js"></script>
+
+        <!--Import Test-->
+        <script src="game/gameobjects/ballTest.js"></script>
+        <script src="game/gameobjects/bodyTest.js"></script>
+        <script src="game/gameobjects/circularBodyTest.js"></script>
+        <script src="game/gameobjects/labelTest.js"></script>
+        <script src="game/gameobjects/poleTest.js"></script>
+        <script src="game/gameobjects/playerTest.js"></script>
+        <script src="game/gameobjects/powerupTest.js"></script>
+        <script src="game/gameobjects/scoreLabelTest.js"></script>
+        <script src="game/gameobjects/shieldTest.js"></script>
+        
+        <script src="game/time/playerTimerTest.js"></script>
+        <script src="game/time/powerupTimerTest.js"></script>
+        <script src="game/time/timerTest.js"></script>
+        <script src="server/grid/blockTest.js"></script>
+
+        <script>
+            if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+            else { mocha.run(); }
+        </script>
+        </script>
+    </body>
+</html>
