@@ -83,6 +83,7 @@ function Server(){
 		gameGrid.remove(socketID);
 		gameGrid.removeBall(b)
 		ret = b.getGlobalID();
+		namesList[client.player.getName()] = client.player.getHighscore(); //retrieve highscore and save it.
 		delete activeClients[client.name]; //remove from active clients list
 		delete clientList[socketID]; 
 		return ret;
@@ -92,10 +93,12 @@ function Server(){
 	this.isNameAvailable = function(name){ return !activeClients[name]; };
 
 	this.registerName = function(name, id){
-		namesList[name] = true;
-		activeClients[name] = true;
 		clientList[id].name = name;
 		clientList[id].player.setName(name);
+		activeClients[name] = true;
+
+		if(namesList[name]){ clientList[id].player.setHighscore(namesList[name]); }
+		else { namesList[name] = 1; }
 	};
 
 	this.setMaxGameSize = function(data){
