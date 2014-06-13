@@ -223,6 +223,7 @@ function createPowerup(data){
 };
 
 function randomPowerType(){
+
 	var random = Math.random();
 	var chanceOfSmallShield = Settings.smallShield.chance;
 	var chanceOfBigShield = Settings.bigShield.chance;
@@ -230,20 +231,22 @@ function randomPowerType(){
 	var chanceOfBigPole = Settings.bigPole.chance;
 	var archanceOfRevert = Settings.revertShield.chance;
 	
-	if(random < chanceOfSmallShield){
-	 return 0;
+	var sum = chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole + chanceOfBigPole + archanceOfRevert;
+	
+	if(random < chanceOfSmallShield/sum){
+	 return e.smallShield;
 	}
-	else if(random < chanceOfSmallShield + chanceOfBigShield){
-		return 1;
+	else if(random < chanceOfSmallShield/sum + chanceOfBigShield/sum){
+		return e.bigShield;
 	}
-	else if(random < chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole){
-		return 2;
+	else if(random < chanceOfSmallShield/sum + chanceOfBigShield/sum + chanceOfSmallPole/sum){
+		return e.smallPole;
 	}
-	else if(random < chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole + chanceOfBigPole){
-		return 3;
+	else if(random < chanceOfSmallShield/sum + chanceOfBigShield/sum + chanceOfSmallPole/sum + chanceOfBigPole/sum){
+		return e.bigPole;
 	}
 	else{
-		return 4;
+		return e.revertShield;
 	}
 };
 
