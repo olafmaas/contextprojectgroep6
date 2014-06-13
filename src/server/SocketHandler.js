@@ -52,7 +52,7 @@ function SocketHandler(_io){
 		socket.on('disconnect', function (data){
 			console.log('Player disconnected - id: ' + socket.id);
 			serverGame.deleteClient(socket.id);
-			mainScreenSocket.emit('removePlayer', socketID);
+			mainScreenSocket.emit('removePlayer', socket.id);
 		});
 	};
 
@@ -115,7 +115,6 @@ function SocketHandler(_io){
 	this.removeBall = function(globalBallID){
 		mainScreenSocket.emit('removeBall', globalBallID);			
 	};
-
 
 
 	//Used by server.js when a new mainScreen tries to connect.
