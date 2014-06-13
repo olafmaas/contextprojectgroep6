@@ -74,23 +74,27 @@
                 margin-top: 10px;
                 margin-left: 5px;
             }
-            #error {
-                color: "red";
-            }
         </style>
 
     </head>
     <body>
-        <div id="usernameBox"> Username: <input type="text" name="firstname" id="firstname"> <button id="startButton" onclick="startPlaying()">Start Playing!</button> <span id="error"> </span></div>
+        <div id="usernameBox"> Username: <input type="text" name="firstname" id="firstname"> <button id="startButton" onclick="startPlaying()">Start Playing!</button> <span id="error" style="color: red;"> </span></div>
     </body>
 
     <script>
         var s = new startSocket();
         function startPlaying() {
             var n = document.getElementById("firstname").value;
+            var error = document.getElementById("error");
 
-            if(n != null && n != ""){
-                s.checkName(n);
+            if(n != null && n.length > 0){
+                if(n.length < Settings.player.maxNameLength)
+                     s.checkName(n);
+                 else{
+                    error.innerHTML = "Username is too long.";
+                 }
+            } else {
+                error.innerHTML = "Username cannot be empty.";
             }
         }
     </script>
