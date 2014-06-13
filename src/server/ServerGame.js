@@ -18,6 +18,7 @@ if(typeof module != 'undefined'){
 
 function Server(){
 	var clientList = {};
+	var activeClients = [];
 	var playerIDs = {};
 	var namesList = [];
 	var game;
@@ -82,15 +83,17 @@ function Server(){
 		gameGrid.remove(socketID);
 		gameGrid.removeBall(b)
 		ret = b.getGlobalID();
+		delete activeClients[client.name]; //remove from active clients list
 		delete clientList[socketID]; 
 		return ret;
 	};
 
 
-	this.isNameAvailable = function(name){ return !namesList[name]; };
+	this.isNameAvailable = function(name){ return !activeClients[name]; };
 
 	this.registerName = function(name, id){
 		namesList[name] = true;
+		activeClients[name] = true;
 		clientList[id].name = name;
 		clientList[id].player.setName(name);
 	};
