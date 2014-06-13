@@ -20,6 +20,7 @@ if(typeof module != 'undefined'){
 function ServerGame(_socketHandler){
 	var sh = _socketHandler;
 	var clientList = {};
+	var activeClients = [];
 	var playerIDs = {};
 	var namesList = [];
 	var game;
@@ -90,7 +91,6 @@ function ServerGame(_socketHandler){
 		data = { newhs: newRanking, oldhs: oldranking };
 
 		sh.updateTop(data);
-
 		updateHighscore(data);
 		
 		oldranking = newRanking;
@@ -160,19 +160,24 @@ function ServerGame(_socketHandler){
 		game.remove(client.player);
 		//name stays in nameList because it has to stay in the highscore
 		gameGrid.remove(socketID);
-		gameGrid.removeBall(b)
-		
+		gameGrid.removeBall(b)		
 		sh.removeBall(b.getGlobalID());
+
+		namesList[client.player.getName()] = client.player.getHighscore(); //retrieve highscore and save it.
+		delete activeClients[client.name]; //remove from active clients list
 		delete clientList[socketID]; 
 	};
 
 
-	this.isNameAvailable = function(name){ return !namesList[name]; };
+	this.isNameAvailable = function(name){ return !activeClients[name]; };
 
 	this.registerName = function(name, id){
-		namesList[name] = true;
 		clientList[id].name = name;
 		clientList[id].player.setName(name);
+		activeClients[name] = true;
+
+		if(namesList[name]){ clientList[id].player.setHighscore(namesList[name]); }
+		else { namesList[name] = 1; }
 	};
 
 	this.setMaxGameSize = function(data){
@@ -278,6 +283,8 @@ function ServerGame(_socketHandler){
 		game = new CoreGame(_initialize, _update, _width, _height)
 	};
 
+	//TODO: hier de dubbele functies nog weghalen 
+	//NOTE: als je er "function" voor zet zijn ze private, this.function is public, zonder function/this ervoor = global
 	//Getters and Setters
 	this.getNumberOfPlayers = function(){ return Object.keys(clientList).length; };
 

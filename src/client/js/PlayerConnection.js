@@ -3,6 +3,16 @@ function startSocket() {
 
 var socket = io.connect(Settings.server+":"+Settings.port).of('/player');
 
+this.checkName = function (_name){
+	//Emit to sockethandler
+	socket.emit('userName', _name);
+}
+
+function showError (_error){
+	var elem = document.getElementById("error");
+	elem.innerHTML = _error;
+}
+
 ////////////////////////////
 // Basic socket listeners //
 ////////////////////////////
@@ -27,21 +37,17 @@ socket.on('disconnect', function (data){
 	console.info('Disconnected from server');
 });
 
-socket.on('userName', function (free){
-	if(!free){
-		var randomName = "User" + Math.floor(Math.random()*10000);
-		var userName = prompt("Please enter your name", randomName);
-		if(userName == null) userName = randomName;
-
-		socket.emit('userName', userName); //player.getName());
-		player.setName(userName); 
-		player.setScore(0); //Reset score so it's equivalent with server's score
-	}
+socket.on('userNameInUse', function (){
+	showError("Username is already in use");
 });
 
-//Sets the name label whenever a valid name is chosen by the player
-socket.on('showPlayerName', function (){
-	nameLabel.setText(player.getName());
+socket.on('showPlayerName', function (_name){
+	player.setName(_name);
+	player.setScore(0);
+	nameLabel.setText(_name);
+
+	var elem = document.getElementById("usernameBox");
+	elem.outerHTML = "";
 });
 
 socket.on('updateScoreHit', function (_score){
@@ -91,7 +97,6 @@ socket.on(e.updateBalls, function (ballData) { //TODO: ID instead of index
 socket.on('newPlayer', function (_id){
 	player.setGlobalID(_id);
 });
-
 
 //Listener for powerup
 socket.on('addPowerup', function (data) {

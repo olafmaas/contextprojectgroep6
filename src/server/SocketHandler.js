@@ -27,15 +27,15 @@ function SocketHandler(_io){
 	this.setClientListeners = function(socket, serverGame){
 		clientSockets[socket.id] = socket;
 		//Ask for userName
-		socket.emit('userName', false);
+		//socket.emit('userName', false);
 
 		socket.on('userName', function (name){
 			if(serverGame.isNameAvailable(name)){
 				serverGame.registerName(name, socket.id);
-				socket.emit('showPlayerName');
+				socket.emit('showPlayerName', name);
 			}else{
 				console.log('Username already in use');
-				socket.emit('userName', false);
+				socket.emit('userNameInUse');
 			}
 		});
 
@@ -49,7 +49,7 @@ function SocketHandler(_io){
 			mainScreenSocket.emit('powerupClicked', _playerID, _powerupType);
 		});
 
-		socket.on('disconnect', function (data){
+		socket.on('disconnect', function (data){ //<< waarom wordt er 'data' doorgegeven als dit vervolgens niet wordt gebruikt?
 			console.log('Player disconnected - id: ' + socket.id);
 			serverGame.deleteClient(socket.id);
 			mainScreenSocket.emit('removePlayer', socket.id);
