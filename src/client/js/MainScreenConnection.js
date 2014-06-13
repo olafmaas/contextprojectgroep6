@@ -180,3 +180,8 @@ function removeBall(globalID){
 	console.log("404 Ball not found")
 	return;
 };
+
+
+function updateScale(data){
+	
+}

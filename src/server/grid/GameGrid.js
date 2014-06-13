@@ -14,8 +14,10 @@ if(typeof module != 'undefined'){
 function GameGrid() {
 	var grid = new Array();	//vertical
 	grid.push(new Array());	//horizontal (first row)
+
 	var gridWidth = 1;
 	var gridHeight = 1;
+
 	var gridc = new GridCalc();
 
 	/**
@@ -52,10 +54,10 @@ function GameGrid() {
 
 		for(var x = 0; x < gridWidth; x++){
 			var b = new Block(false ,x * S.canvasWidth, y * S.canvasHeight)
-		
+			
 			//Set vertical Neighbours
-			grid[y-1][i].setNeighbour("bottom", b);
-			b.setNeighbour("top", grid[y-1][i]);
+			grid[y-1][x].setNeighbour("bottom", b);
+			b.setNeighbour("top", grid[y-1][x]);
 			grid[y].push(b)
 
 			//Set horizontal Neighbours
@@ -82,7 +84,7 @@ function GameGrid() {
 	* @param {ball} _ball - 
 	* @return {object} An object with the left and top boundary of the block in pixels. 
 	*/
-	this.updateGrid = function(socket, maxCol, ball){
+	this.updateGrid = function(socket, ball){
 		var x;
 		var y;
 
@@ -102,13 +104,13 @@ function GameGrid() {
 				//Add column
 				this.addColumn()
 				y = 0;
-				x = gridWidth-1;
+				x = gridWidth - 1;
 				grid[y][x].setPlayer(socket);
 				grid[y][x].addBall(ball);
 			}else{
 				//Add row
 				this.addRow();
-				y = gridHeight - 1
+				y = gridHeight - 1; 
 				x = 0;
 				grid[y][x].setPlayer(socket);
 				grid[y][x].addBall(ball);

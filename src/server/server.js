@@ -21,12 +21,12 @@ io.of('/mainscreen').on('connection', function (socket) {
 });
 
 io.of('/player').on('connection', function (socket) {
-	if(server.getNumberOfPlayers() < server.getMaxNrOfPlayers()){
+	if(sh.hasMainScreen()){
 		console.log('Player connected - id: ' + socket.id);
 		sh.handlePlayerConnection(socket);
 	}
 	else{
-		socket.send('Game is full!');
+		socket.send('404: MainScreen not found!');
 		socket.disconnect();
 	} 
 });

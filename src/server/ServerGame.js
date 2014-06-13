@@ -48,7 +48,7 @@ function Server(){
 	*/
 	this.addClient = function(socket){
 		var ball = game.instantiate(bf.createNewBall(S.ball.size));		
-		var positionOfPole = gameGrid.updateGrid(socket, maxNrOfColumns, ball)
+		var positionOfPole = gameGrid.updateGrid(socket, ball)
 		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
 		
 		group("Balls").addMember(ball);
@@ -162,8 +162,6 @@ function Server(){
 	group = function(name){ return gm.group(name);};
 
 	this.getGroup = function(_group){ return group(_group); };
-
-	this.getMaxNrOfPlayers = function(){ return maxNrOfPlayers; };
 
 	this.getBall = function(_id){ return group("Balls").getMember(_id); };
 
