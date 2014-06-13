@@ -114,6 +114,27 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
         }
 	}
 
+	updateMainScreenCanvasSize = function(){
+		if(canvas == undefined) return;
+
+		var windowWidth = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+
+		var windowHeight = window.innerHeight
+			|| document.documentElement.clientHeight
+			|| document.body.clientHeight;
+
+
+		canvas.style.width = windowWidth + "px";
+		canvas.style.height = windowHeight + "px";
+
+		if(hasResolution){
+			canvas.width = resolution.width + "px";
+			canvas.height = resolution.height + "px";
+		}
+	}
+
 	/**
 	* Method which returns if the resolution is correct.
 	* @method RenderEngine#hasResolution
