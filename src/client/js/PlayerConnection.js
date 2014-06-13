@@ -3,6 +3,19 @@ function startSocket() {
 
 var socket = io.connect(Settings.server+":"+Settings.port).of('/player');
 
+this.checkName = function (_name){
+	if(_name == null)
+		return false;
+
+	this.test();
+	//socket.emit('userName', userName)
+
+	return false;
+}
+
+this.test = function(){
+	console.log(document.getElementById("firstname").value);
+}
 ////////////////////////////
 // Basic socket listeners //
 ////////////////////////////

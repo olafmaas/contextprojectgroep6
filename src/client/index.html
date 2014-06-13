@@ -69,20 +69,37 @@
             #gameCanvas{
                 border: 0px solid red;
             }
-        </style>
-
-
-        <script>
-            function startPlaying() {
-                startSocket();
-                //screenfull.request(); //uitgecomment omdat dit voor debuggen onhandig is.
-                var elem = document.getElementById('startButton');
-                elem.parentNode.removeChild(elem);
+            #usernameBox {
+                width: 400px;
+                height: 30px;
+                background-color: "blue";
+                margin-top: 10px;
+                margin-left: 5px;
             }
-        </script>
+        </style>
 
     </head>
     <body>
-        <button id="startButton" onclick="startPlaying()">Start Playing!</button>
+        <div id="usernameBox"> Username: <input type="text" name="firstname" id="firstname"> <button id="startButton" onclick="startPlaying()">Start Playing!</button> </div>
     </body>
+
+    <script>
+        var s = new startSocket();
+        function startPlaying() {
+            var n = document.getElementById("firstname").value;
+
+            if(n != null){
+                s.checkName(n);
+            }
+            
+            //screenfull.request(); //uitgecomment omdat dit voor debuggen onhandig is.
+                var elem = document.getElementById("usernameBox");
+                //elem.parentNode.removeChild(elem);
+                elem.outerHTML = "";
+            }
+            else {
+                console.log("Nope");
+            }
+        }
+    </script>
 </html>
