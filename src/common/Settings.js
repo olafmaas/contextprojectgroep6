@@ -28,7 +28,7 @@ var Settings = {
 		color: "violet",
 		length: 1,
 		path: "../client/img/powerup.png",
-		chance: 0.3
+		chance: 0.4
 	},
 
 	smallPole: {
@@ -36,7 +36,7 @@ var Settings = {
 		color: "yellow",
 		radius: 2, //by which factor the pole will be divided
 		path: "../client/img/powerup.png",
-		chance: 0.3
+		chance: 0.4
 	},
 
 	bigPole: {
@@ -58,8 +58,8 @@ var Settings = {
 	nrOfPowerups: 5,
 	powerupSize: 20,
 	removalTime: 2000, //in ms, how long a powerup is present on screen.
-	minTime: 2, //in ms, minimum time between powerup spawns.
-	maxTime: 3, //in ms, maximum time between powerup spawns.
+	minTime: 10, //in ms, minimum time between powerup spawns.
+	maxTime: 30, //in ms, maximum time between powerup spawns.
 
 	/**** LABEL POSITIONS ****/
 	label: {
