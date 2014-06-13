@@ -146,16 +146,18 @@ function SocketHandler(_server, _io){
 	this.handlePlayerConnection = function(socket){
 		
 		//Ask for userName
-		socket.emit('userName', false);
+		//socket.emit('userName', false);
 
 		socket.on('userName', function (name){
+			console.log('asdfasdfasdfasd');
 			if(server.isNameAvailable(name)){
 				playerConnection(socket);
 				server.registerName(name, socket.id);
-				socket.emit('showPlayerName');
+				console.log("AAAAAAAA");
+				socket.emit('showPlayerName', name);
 			}else{
 				console.log('Username already in use');
-				socket.emit('userName', false);
+				socket.emit('userNameInUse');
 			}
 		});
 
