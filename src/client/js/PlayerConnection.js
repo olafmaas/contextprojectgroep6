@@ -229,20 +229,20 @@ function randomPowerType(){
 	var chanceOfBigShield = Settings.bigShield.chance;
 	var chanceOfSmallPole = Settings.smallPole.chance;
 	var chanceOfBigPole = Settings.bigPole.chance;
-	var archanceOfRevert = Settings.revertShield.chance;
+	var chanceOfRevert = Settings.revertShield.chance;
 	
-	var sum = chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole + chanceOfBigPole + archanceOfRevert;
+	var sum = chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole + chanceOfBigPole + chanceOfRevert;
 	
 	if(random < chanceOfSmallShield/sum){
-	 return e.smallShield;
+	 	return e.smallShield;
 	}
-	else if(random < chanceOfSmallShield/sum + chanceOfBigShield/sum){
+	else if(random < (chanceOfSmallShield + chanceOfBigShield)/sum){
 		return e.bigShield;
 	}
-	else if(random < chanceOfSmallShield/sum + chanceOfBigShield/sum + chanceOfSmallPole/sum){
+	else if(random < (chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole)/sum){
 		return e.smallPole;
 	}
-	else if(random < chanceOfSmallShield/sum + chanceOfBigShield/sum + chanceOfSmallPole/sum + chanceOfBigPole/sum){
+	else if(random < (chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole + chanceOfBigPole)/sum){
 		return e.bigPole;
 	}
 	else{
