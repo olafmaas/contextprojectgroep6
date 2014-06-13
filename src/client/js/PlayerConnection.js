@@ -197,7 +197,7 @@ function createPowerup(data){
 	if(player.getGlobalID() == data.id){
 
 		if(powerup != null) game.remove(powerup);
-		var type = Math.floor(Math.random() * Settings.nrOfPowerups); //choose a radom type
+		var type = randomPowerType(); //choose a radom type
 		powerup = game.instantiate(new Powerup(Settings.powerupSize, type));
 		
 		var chooser = Math.round(Math.random()); //random 0 or 1
@@ -219,6 +219,31 @@ function createPowerup(data){
 		createIcon(type); //temporarily disabled
 
 		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime); //set timer so powerup is removed after x seconds.
+	}
+};
+
+function randomPowerType(){
+	var random = Math.random();
+	var chanceOfSmallShield = Settings.smallShield.chance;
+	var chanceOfBigShield = Settings.bigShield.chance;
+	var chanceOfSmallPole = Settings.smallPole.chance;
+	var chanceOfBigPole = Settings.bigPole.chance;
+	var archanceOfRevert = Settings.revertShield.chance;
+	
+	if(random < chanceOfSmallShield){
+	 return 0;
+	}
+	else if(random < chanceOfSmallShield + chanceOfBigShield){
+		return 1;
+	}
+	else if(random < chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole){
+		return 2;
+	}
+	else if(random < chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole + chanceOfBigPole){
+		return 3;
+	}
+	else{
+		return 4;
 	}
 };
 

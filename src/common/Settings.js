@@ -19,34 +19,39 @@ var Settings = {
 		time: 10,
 		color: "greenyellow",
 		length: 3.5,
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.15
 	},
 
 	bigShield: {
 		time: 15,
 		color: "violet",
 		length: 1,
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.3
 	},
 
 	smallPole: {
 		time: 15,
 		color: "yellow",
 		radius: 2, //by which factor the pole will be divided
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.3
 	},
 
 	bigPole: {
 		time: 10,
 		color: "aqua",
 		radius: 1.5, //by which factor the pole will be multiplied
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.15
 	},
 
 	revertShield: {
 		time: 10,
 		color: "red",
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.10
 	},
 
 	/**** POWERUP PROPERTIES ****/
