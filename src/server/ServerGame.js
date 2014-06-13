@@ -140,6 +140,7 @@ function ServerGame(_socketHandler){
 			polePos: clientList[socketID].pole.getPosition(), gid: ball.getGlobalID(), gpid: player.getGlobalID()};
 
 		sh.newPlayer(socketID, res);
+		sh.newBall(res);
 	};
 
 	this.deleteClient = function(socketID){
@@ -157,9 +158,9 @@ function ServerGame(_socketHandler){
 		//name stays in nameList because it has to stay in the highscore
 		gameGrid.remove(socketID);
 		gameGrid.removeBall(b)
-		ret = b.getGlobalID();
+		
+		sh.removeBall(b.getGlobalID());
 		delete clientList[socketID]; 
-		return ret;
 	};
 
 
@@ -184,11 +185,10 @@ function ServerGame(_socketHandler){
 		return {width: _width, height: _height};
 	};
 
-	this.setAngle = function(socket, angle){
-		if(clientList[socket.id]){
-			clientList[socket.id].shield.setAngle(angle);
+	this.setAngle = function(socketID, angle){
+		if(clientList[socketID]){
+			clientList[socketID].shield.setAngle(angle);
 		}
-		return {id: socket.id, angle: angle};
 	};
 
 	this.setPowerup = function(_playerID, _powerupType){

@@ -24,7 +24,7 @@ io.of('/mainscreen').on('connection', function (socket) {
 io.of('/player').on('connection', function (socket) {
 	if(sg.getNumberOfPlayers() < sg.getMaxNrOfPlayers()){
 		console.log('Player connected - id: ' + socket.id);
-		sh.handlePlayerConnection(socket, sg);
+		sh.setClientListeners(socket, sg);
 		sg.addClient(socket.id, socket); //TODO socket moet verwijderd worden. maar is nu nog nodig voor de grid
 	}
 	else{
