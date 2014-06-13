@@ -63,9 +63,10 @@ var Settings = {
 
 	/**** LABEL POSITIONS ****/
 	label: {
-		score: {x: 720, y: 425},
-		name: {x: 10, y: 15},
-		highscore: {x: 720, y: 440}
+		size: 20,
+		name: {x: 10, y: 25},
+		score: {x: 630, y: 415},
+		highscore: {x: 630, y: 440}
 	}, 
 
 	/**** CANVAS PROPERTIES ****/

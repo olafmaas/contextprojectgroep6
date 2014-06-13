@@ -45,12 +45,15 @@ function loadContent(){
     //Player labels, name is set once again when the user has
     scoreLabel = game.instantiate(new ScoreLabel(player, "Score: 0"));
     scoreLabel.setPosition(Settings.label.score);
+    scoreLabel.setFontSize(Settings.label.size);
 
     nameLabel = game.instantiate(new Label("Unknown Player"));
     nameLabel.setPosition(Settings.label.name);
+    nameLabel.setFontSize(Settings.label.size);
 
     highscoreLabel = game.instantiate(new Label("Highscore: 0"));
     highscoreLabel.setPosition(Settings.label.highscore);
+    highscoreLabel.setFontSize(Settings.label.size);
 
     createTempImage();
     setTimeout(deleteTempImage, 3000);
