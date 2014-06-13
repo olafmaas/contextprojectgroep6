@@ -4,16 +4,15 @@ var ServerGame = require('./ServerGame.js');
 var io = require('socket.io').listen(S.port);
 io.set('log level', 2);   // 0 - error | 1 - warn | 2 - info | 3 - debug
 
-var sg = new ServerGame();
-var sh = new SocketHandler(sg, io);
-sg.addSH(sh);
+var sh = new SocketHandler(io);
+var sg = new ServerGame(sh);
 
-sg.createGame(sg.loadContent, sh.update, 0, 0);
+sg.createGame(sg.loadContent, sg.update, 0, 0);
 
 io.of('/mainscreen').on('connection', function (socket) {
 	if(!sh.hasMainScreen()){
 		console.log('MainScreen connected');
-		sh.setMainScreenListeners(socket);
+		sh.setMainScreenListeners(socket, sg);
 		sg.addMainScreen();
 	} 
 	else{
@@ -25,7 +24,7 @@ io.of('/mainscreen').on('connection', function (socket) {
 io.of('/player').on('connection', function (socket) {
 	if(sg.getNumberOfPlayers() < sg.getMaxNrOfPlayers()){
 		console.log('Player connected - id: ' + socket.id);
-		sh.handlePlayerConnection(socket);
+		sh.handlePlayerConnection(socket, sg);
 		sg.addClient(socket.id, socket); //TODO socket moet verwijderd worden. maar is nu nog nodig voor de grid
 	}
 	else{
