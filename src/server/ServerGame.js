@@ -44,8 +44,9 @@ function ServerGame(){
 	}
 
 	this.addMainScreen = function(_socketID){
-		sh.updateMainScreenCanvasSize2(this.updateMainScreenCanvasSize());
+		sh.updateMainScreenCanvasSize(this.updateMainScreenCanvasSize());
 		timer.startTimer(); //Start powerup timer when the mainscreen is connected.
+		setInterval(sh.updateScores, S.highScore.updateInterval);	//updates the highscores on the mainscreen on interval
 	};
 
 	updatePowerups = function() {
@@ -75,22 +76,25 @@ function ServerGame(){
 	* @method Server#addClient
 	* @param {socket} The socket associated with the player. 
 	*/
-	this.addClient = function(socket){
+	this.addClient = function(socketID, socket){
 		var ball = game.instantiate(bf.createNewBall(S.ball.size));		
 		var positionOfPole = gameGrid.updateGrid(socket, maxNrOfColumns, ball)
-		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
+		var player = game.instantiate(pf.createPlayer(positionOfPole, socketID));
 		
 		group("Balls").addMember(ball);
 		group("Poles").addMember(game.instantiate(player.getPole()));
 		group("Shields").addMember(game.instantiate(player.getShield()));
 		group("Players").addMember(player);
 
-		console.log(socket.id + "SG");
-		clientList[socket.id] = new Client(socket, socket.id, player, player.getPole(), player.getShield());
-		playerIDs[player.getID()] = socket.id;
-		
-		return {id: clientList[socket.id].player.getName(), color: ball.getColor(),
-			polePos: clientList[socket.id].pole.getPosition(), gid: ball.getGlobalID(), gpid: player.getGlobalID()};
+		clientList[socketID] = new Client(socket, socketID, player, player.getPole(), player.getShield());
+		playerIDs[player.getID()] = socketID;
+
+		sh.updateMainScreenCanvasSize(this.updateMainScreenCanvasSize());
+
+		var res = {id: clientList[socketID].player.getName(), color: ball.getColor(),
+			polePos: clientList[socketID].pole.getPosition(), gid: ball.getGlobalID(), gpid: player.getGlobalID()};
+
+		sh.newPlayer(socketID, res);
 	};
 
 	this.deleteClient = function(socketID){

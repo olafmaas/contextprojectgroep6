@@ -1,4 +1,3 @@
-//var RandomTimer = require('../common/game/time/RandomTimer');
 var Ball = require('../common/game/gameobjects/Ball.js');
 
 var handleCollision = require('../common/game/CollisionDetection.js');
@@ -17,13 +16,11 @@ function SocketHandler(_server, _io){
 	var debug;
 	// var timer = new RandomTimer(S.minTime, S.maxTime);
 	var oldranking = [];
+	var clientSockets = {};
 
 	//Handles mainscreen connection and listeners
 	this.setMainScreenListeners = function(socket){
 		mainScreenSocket = socket;
-
-		// timer.startTimer(); //Start powerup timer when the mainscreen is connected.
-		setInterval(this.updateScores, S.highScore.updateInterval);	//updates the highscores on the mainscreen on interval
 
 		socket.on('screenSizeMainScreen', function (data){
 			server.setMaxGameSize(data);
@@ -36,24 +33,18 @@ function SocketHandler(_server, _io){
 	};
 
 	//Updates the mainscreen canvassize
-	this.updateMainScreenCanvasSize2 = function(size){
+	this.updateMainScreenCanvasSize = function(size){
 		mainScreenSocket.emit("updateCanvasSize", size);
-	};
-
-		//Updates the mainscreen canvassize
-	updateMainScreenCanvasSize = function(){
-		mainScreenSocket.emit("updateCanvasSize", server.updateMainScreenCanvasSize());
 	};
 
 	//Handles player connection and listeners
 	this.handlePlayerConnection = function(socket){
-		
+		clientSockets[socket.id] = socket;
 		//Ask for userName
 		socket.emit('userName', false);
 
 		socket.on('userName', function (name){
 			if(server.isNameAvailable(name)){
-				playerConnection(socket);
 				server.registerName(name, socket.id);
 				socket.emit('showPlayerName');
 			}else{
@@ -80,19 +71,11 @@ function SocketHandler(_server, _io){
 		});
 	};
 
-	playerConnection = function(socket){
-		//Add player to grid
-		newPlayer(socket);
-		updateMainScreenCanvasSize();
-	};
-
-		//Adds a new player (+ all other stuff belonging to a player) to the mainscreen
-	newPlayer = function(socket, polePos){
-		var np = server.addClient(socket, polePos);
+	//Adds a new player (+ all other stuff belonging to a player) to the mainscreen
+	this.newPlayer = function(socketID, np) {
 		mainScreenSocket.emit('newPlayer', np);
-		socket.emit('newPlayer', np.gpid);
+		clientSockets[socketID].emit('newPlayer', np.gpid);
 		mainScreenSocket.emit('newBall', {color: np.color, gid: np.gid}); //inform mainscreen of new ball
-		return 
 	};
 
 
@@ -103,7 +86,6 @@ function SocketHandler(_server, _io){
 		//Update Balls is done in Block
 		server.update();
 		updateBalls();
-		// updatePowerups();
 		updatePoles();
 	};
 
@@ -115,18 +97,6 @@ function SocketHandler(_server, _io){
 		}
 	};
 
-	// updatePowerups = function() {
-	// 	//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
-	// 	//TODO: timer eerder af laten lopen als er meer spelers zijn, dus settings aanpassen, of
-	// 	//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
-	// 	if(timer != null && timer.hasStopped()){
-	// 		timer = null;
-	// 		newPowerup();
-
-	// 		timer = new RandomTimer(S.minTime, S.maxTime); //start a new timer for the next powerup
-	// 		timer.startTimer();
-	// 	}
-	// };
 
 	updatePoles = function() {
 		//Call isHit() when a pole is hit and send this event to the player
