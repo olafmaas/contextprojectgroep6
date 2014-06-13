@@ -88,9 +88,16 @@
         var s = new startSocket();
         function startPlaying() {
             var n = document.getElementById("firstname").value;
+            var error = document.getElementById("error");
 
-            if(n != null && n != ""){
-                s.checkName(n);
+            if(n != null && n.length > 0){
+                if(n.length < Settings.player.maxNameLength)
+                     s.checkName(n);
+                 else{
+                    error.innerHTML = "Username is too long.";
+                 }
+            } else {
+                error.innerHTML = "Username cannot be empty.";
             }
         }
     </script>

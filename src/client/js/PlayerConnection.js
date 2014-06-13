@@ -38,7 +38,7 @@ socket.on('disconnect', function (data){
 });
 
 socket.on('userNameInUse', function (){
-	showError("Username is already in use");
+	showError("Username is already in use.");
 });
 
 socket.on('showPlayerName', function (_name){
