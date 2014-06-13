@@ -1,18 +1,20 @@
 var S = require('../common/Settings.js');
 var SocketHandler = require('./SocketHandler.js');
-var Server = require('./ServerGame.js');
+var ServerGame = require('./ServerGame.js');
 var io = require('socket.io').listen(S.port);
 io.set('log level', 2);   // 0 - error | 1 - warn | 2 - info | 3 - debug
 
-var server = new Server();
-var sh = new SocketHandler(server, io);
+var sg = new ServerGame();
+var sh = new SocketHandler(sg, io);
+sg.addSH(sh);
 
-server.createGame(server.loadContent, sh.update, 0, 0);
+sg.createGame(sg.loadContent, sh.update, 0, 0);
 
 io.of('/mainscreen').on('connection', function (socket) {
 	if(!sh.hasMainScreen()){
 		console.log('MainScreen connected');
-		sh.handleMainScreen(socket);
+		sh.setMainScreenListeners(socket);
+		sg.addMainScreen();
 	} 
 	else{
 		socket.send('There is already a mainScreen.');
@@ -21,7 +23,7 @@ io.of('/mainscreen').on('connection', function (socket) {
 });
 
 io.of('/player').on('connection', function (socket) {
-	if(server.getNumberOfPlayers() < server.getMaxNrOfPlayers()){
+	if(sg.getNumberOfPlayers() < sg.getMaxNrOfPlayers()){
 		console.log('Player connected - id: ' + socket.id);
 		sh.handlePlayerConnection(socket);
 	}

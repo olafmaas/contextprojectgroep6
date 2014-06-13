@@ -6,6 +6,7 @@ if(typeof module != 'undefined'){
 	var Player = require('../common/game/gameobjects/Player.js');
 	var Powerup = require('../common/game/gameobjects/Powerup.js');
 	var CoreGame = require('../common/game/CoreGame.js');
+	var RandomTimer = require('../common/game/time/RandomTimer');
 
 	var Client = require('../common/Client.js');
 	var S = require('../common/Settings.js');
@@ -16,7 +17,8 @@ if(typeof module != 'undefined'){
 	var BallFactory = require('./factory/BallFactory.js');
 }
 
-function Server(){
+function ServerGame(){
+	var sh;
 	var clientList = {};
 	var playerIDs = {};
 	var namesList = [];
@@ -28,11 +30,36 @@ function Server(){
 	var pf = new PlayerFactory();
 	var bf = new BallFactory();
 
+		var timer = new RandomTimer(S.minTime, S.maxTime);
+
 	//Create all groups
 	gm.addGroup("Balls", Ball);
 	gm.addGroup("Poles", Pole);
 	gm.addGroup("Shields", Shield);
 	gm.addGroup("Players", Player);
+
+	//TIJDELIJK
+	this.addSH = function(_sh){
+		sh = _sh;
+	}
+
+	this.addMainScreen = function(_socketID){
+		sh.updateMainScreenCanvasSize2(this.updateMainScreenCanvasSize());
+		timer.startTimer(); //Start powerup timer when the mainscreen is connected.
+	};
+
+	updatePowerups = function() {
+		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
+		//TODO: timer eerder af laten lopen als er meer spelers zijn, dus settings aanpassen, of
+		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
+		if(timer != null && timer.hasStopped()){
+			timer = null;
+			sh.newPowerup();
+
+			timer = new RandomTimer(S.minTime, S.maxTime); //start a new timer for the next powerup
+			timer.startTimer();
+		}
+	};
 	
 	this.addPowerup = function(){
 		var index = Math.floor(Math.random()*this.getNumberOfPlayers());
@@ -125,7 +152,10 @@ function Server(){
 
 	this.loadContent = function(){};
 
-	this.update = function(){ gameGrid.update() };
+	this.update = function(){ 
+		gameGrid.update();
+		updatePowerups();
+	};
 	
 	this.updateHighscore = function(highscore){
 	
@@ -182,5 +212,5 @@ function Server(){
 }
 
 if(typeof module != 'undefined'){
-    module.exports = Server;
+    module.exports = ServerGame;
 }
