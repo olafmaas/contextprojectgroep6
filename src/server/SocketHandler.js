@@ -130,10 +130,6 @@ function SocketHandler(_server, _io){
 		updateMainScreenCanvasSize();
 		setInterval(this.updateScores, S.highScore.updateInterval);
 
-		socket.on('screenSizeMainScreen', function (data){
-			server.setMaxGameSize(data)
-		});
-
 		socket.on('disconnect', function (data){
 			console.log('MainScreen disconnected');
 			mainScreenSocket = {emit: function(){false}};

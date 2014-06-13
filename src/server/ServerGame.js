@@ -21,8 +21,6 @@ function Server(){
 	var playerIDs = {};
 	var namesList = [];
 	var game;
-	var maxNrOfPlayers = 0;
-	var maxNrOfColumns = 0;
 	var gameGrid = new GameGrid();
 	var gm = new GroupManager();
 	var pf = new PlayerFactory();
@@ -93,11 +91,6 @@ function Server(){
 		namesList[name] = true;
 		clientList[id].name = name;
 		clientList[id].player.setName(name);
-	};
-
-	this.setMaxGameSize = function(data){
-		maxNrOfPlayers = Math.floor(data.width / S.canvasWidth) * Math.floor(data.height / S.canvasHeight);
-		maxNrOfColumns = Math.floor(data.width / S.canvasWidth);
 	};
 
 	this.updateMainScreenCanvasSize = function(){
