@@ -30,7 +30,7 @@ function ServerGame(_socketHandler){
 	var pf = new PlayerFactory();
 	var bf = new BallFactory();
 	var oldranking = [];
-	var timer = new RandomTimer(S.minTime, S.maxTime);
+	var timer;
 
 	//Create all groups
 	gm.addGroup("Balls", Ball);
@@ -45,6 +45,8 @@ function ServerGame(_socketHandler){
 
 	this.addMainScreen = function(_socketID){
 		sh.updateMainScreenCanvasSize(this.updateMainScreenCanvasSize());
+		
+		timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers()));
 		timer.startTimer(); //Start powerup timer when the mainscreen is connected.
 		setInterval(updateScores, S.highScore.updateInterval);	//updates the highscores on the mainscreen on interval
 	};
@@ -101,8 +103,8 @@ function ServerGame(_socketHandler){
 		if(timer != null && timer.hasStopped()){
 			timer = null;
 			sh.newPowerup(addPowerup());
-
-			timer = new RandomTimer(S.minTime, S.maxTime); //start a new timer for the next powerup
+			
+			timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers())); //start a new timer for the next powerup
 			timer.startTimer();
 		}
 	};

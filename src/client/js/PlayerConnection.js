@@ -196,7 +196,7 @@ function createBall(data){
 function createPowerup(data){
 	if(player.getGlobalID() == data.id){
 
-		if(powerup != null) game.remove(powerup);
+		if(powerup != null) removePowerup();
 		var type = randomPowerType(); //choose a radom type
 		powerup = game.instantiate(new Powerup(Settings.powerupSize, type));
 		
@@ -304,5 +304,4 @@ function removePowerup(){
 		icon = null;
 	}
 }
-
 }
