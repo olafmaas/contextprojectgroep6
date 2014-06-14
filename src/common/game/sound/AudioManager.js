@@ -9,15 +9,15 @@ var AudioManager = Base.extend({
 
 
 	constructor: function(){
-		tracks = {};
+		this.tracks = {};
 	},
 
 	addTrack: function(name, _url){
-		tracks[name] = new Audio(_url);
+		this.tracks[name] = new AudioTrack(_url);
 	},
 
 	play: function(name){
-		tracks[name].play();
+		this.tracks[name].play();
 	}
 });
 
