@@ -4,7 +4,7 @@ HighscoresView = function(){
 		textColor: "white",
 		viewWidth: "20%",
 
-		fontFamily: "Arial",
+		fontFamily: "'Indie Flower', cursive",
 		titleFontSize: "40px",
 		columnTitleFontSize: "25px",
 		scoresFontSize: "20px",
