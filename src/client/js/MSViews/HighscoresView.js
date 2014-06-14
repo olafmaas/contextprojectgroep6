@@ -1,7 +1,8 @@
-HighscoreView = function(){
+HighscoresView = function(){
 	var ViewSettings = {
-		backgroundColor: "white",
-		viewWidth: "100px",
+		backgroundColor: "black",
+		textColor: "white",
+		viewWidth: "300px",
 
 		fontFamily: "Arial",
 		titleFontSize: "20px",
@@ -18,7 +19,8 @@ HighscoreView = function(){
 		var scores = this.stubScores();
 		this.updateScores(scores);
 
-		$("#HighscoreView").width(ViewSettings.viewWidth);
+		$("#HighscoresView").css("width", ViewSettings.viewWidth);
+		$("#HighscoresView")
 	}
 
 	this.updateScores = function(_scores){
@@ -27,6 +29,10 @@ HighscoreView = function(){
 		for (var i = 0; i < _scores.length; i++) {
 			$("#ScoreList").append(this.newScoreDiv(i, _scores[i]));
 		};
+	}
+
+	this.updateHeight = function(){
+		$("#HighscoresView").css("height", $("#gameCanvas").css("height"));
 	}
 
 	this.stubScores = function(){
