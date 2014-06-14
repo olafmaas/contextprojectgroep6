@@ -36,9 +36,11 @@ function GameGrid() {
 			b.setNeighbour("left", grid[y][x-1]);
 			grid[y].push(b)
 
+			var clog= x-1
+
 			//Set vertical Neighbours
 			if(y > 0){
-				grid[y-1][x].setNeighbour("bottomm", b);
+				grid[y-1][x].setNeighbour("bottom", b);
 				b.setNeighbour("top", grid[y-1][x]);
 			}
 		}

@@ -45,7 +45,7 @@ var GridCalc= Base.extend({
 		var ret = new Array();
 
 		var xPosInBlock = ball.getPosition().x % S.canvasWidth;
-		x = (ball.getPosition().x - xPosInBlock)/S.canvasWidth;
+		var x = (ball.getPosition().x - xPosInBlock)/S.canvasWidth;
 		ret.push(x);
 
 		if((xPosInBlock < ball.getRadius()) && (ball.getBody().getVectorVelocity().x < 0)){
@@ -70,7 +70,7 @@ var GridCalc= Base.extend({
 		var ret = new Array();
 
 		var yPosInBlock = ball.getPosition().y % S.canvasWidth;
-		y = (ball.getPosition().y - yPosInBlock)/S.canvasWidth;
+		var y = (ball.getPosition().y - yPosInBlock)/S.canvasWidth;
 		ret.push(y);
 
 		if((yPosInBlock < ball.getRadius()) && (ball.getBody().getVectorVelocity().y < 0)){
