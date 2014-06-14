@@ -37,12 +37,12 @@ function updateDimensions(){
 		|| document.body.clientHeight;
 
 	canvas.style.width =   "100%";
-	canvas.style.height = "100%";
+	canvas.style.height = "95%";
 
     canvas.setAttribute('width', game.getWidth());
     canvas.setAttribute('height', game.getHeight());
 
-    hview.updateHeight();
+    //hview.updateHeight();
 };
 
 function gameDimensionsChanged(){
