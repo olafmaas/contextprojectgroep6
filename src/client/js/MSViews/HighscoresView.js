@@ -5,9 +5,9 @@ HighscoresView = function(){
 		viewWidth: "300px",
 
 		fontFamily: "Arial",
-		titleFontSize: "20px",
-		columnTitleFontSize: "13px",
-		scoresFontSize: "10px",
+		titleFontSize: "40px",
+		columnTitleFontSize: "25px",
+		scoresFontSize: "20px",
 
 		title: "Highscores:",
 		nameColTitle: "Name",
