@@ -174,8 +174,11 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 		//Wait for body to initialize
 		while(document.body == null);
 
-		document.body.appendChild(canv);
+		var gameDiv = document.getElementById("gameDiv");
 
+		if(gameDiv == null) document.body.appendChild(canv);
+		else gameDiv.appendChild(canv);
+		
 		return document.getElementById("gameCanvas");
 	}
 

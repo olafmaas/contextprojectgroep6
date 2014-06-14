@@ -16,15 +16,24 @@ function loadContent(){
 function update(){
     canvas = document.getElementById('gameCanvas');
 
-    if(canvas.getAttribute('width') != game.getWidth() ||
-        canvas.getAttribute('height') != game.getHeight()){
-        canvas.setAttribute('width', game.getWidth());
-        canvas.setAttribute('height', game.getHeight());
+    if(gameDimensionsChanged()){
+    	updateDimensions();
     }
-
 };
 
 //Draws everything on the canvas
 function draw(canvasContext){
     game.draw();
 };
+
+function updateDimensions(){
+    canvas.setAttribute('width', game.getWidth());
+    canvas.setAttribute('height', game.getHeight());
+
+    hview.updateHeight();
+};
+
+function gameDimensionsChanged(){
+	return canvas.getAttribute('width') != game.getWidth() ||
+        canvas.getAttribute('height') != game.getHeight();
+}
