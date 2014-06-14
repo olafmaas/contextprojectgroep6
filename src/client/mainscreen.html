@@ -56,19 +56,84 @@
         <script src="js/MainScreenGame.js"></script>
         <script src="js/MainScreenConnection.js"></script> 
 
+        <script src="js/MSViews/HighscoreView.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
         <style type="text/css"> 
             body {
                 margin: 0;
             }
+
     		#gameCanvas{
     			border: 2px solid black;
     		}
+
+            #HighscoresView{
+                background-color: black;
+                color: white;
+            }
+
+            .Position, .Score, .Name, #NameTitle, #ScoreTitle{
+                display: inline-block;
+            }
+
+            .container{
+                width: 100%;
+                display: inline-block;
+            }
+
+            .Name, .Position {
+                float: left;
+            }
+
+            .Name{
+                margin-left: 5;
+            }
+
+            .Score{
+                float: right;
+            }
+
+            #Title{
+                font-size: 50px;
+                text-align: center;
+                margin: 30 0;
+            }
+            #ScoreTitle{
+                float: right;
+            }
+
+            #ScoreTable{
+                margin: 0 50;
+            }
     	</style>
 
     </head>
     <body>
 
+        <div id='HighscoresView'>
+            <div id="Title">Highscores</div>
+
+            <div id="ScoreTable">
+                <div id="ColumnTitles">
+                    <div id="NameTitle">Name</div>
+                    <div id="ScoreTitle">Score</div>
+                </div>
+
+                <div id="ScoreList">
+                    
+                </div>
+            </div>
+
+            
+            <script type="text/javascript">
+                var hview = new HighscoreView();
+            </script>
+        </div>
+
 	   <div>New gamers connect to: <a href="index.html" target="_blank">localhost/client/index.html</a></div>
+
        <div id='highScores'>HIGHSCORES -- </div>
 
     </body>

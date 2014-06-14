@@ -17,7 +17,8 @@ HighscoreView = function(){
 	this.initialize = function(){
 		var scores = this.stubScores();
 		this.updateScores(scores);
-		//Implement dat de name title als linkermargin de padding van list heeft
+
+		$("#HighscoreView").width(ViewSettings.viewWidth);
 	}
 
 	this.updateScores = function(_scores){
