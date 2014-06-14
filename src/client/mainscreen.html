@@ -6,6 +6,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
+        <!-- jQuery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
         <!-- lib --> 
         <script src="../lib/socket.io.min.js"></script>  
         <script src="../lib/Base.js"></script>
@@ -52,23 +55,82 @@
 
         <!-- this game and connection -->
         <script src="../common/Client.js"></script>
+
+        <script src="js/MSViews/HighscoresView.js"></script>
         
         <script src="js/MainScreenGame.js"></script>
         <script src="js/MainScreenConnection.js"></script> 
+
 
         <style type="text/css"> 
             body {
                 margin: 0;
             }
+
     		#gameCanvas{
     			border: 2px solid black;
-    		}          
+    		}
+
+            #HighscoresView{
+                float:left;
+            }
+
+            .Position, .Score, .Name, #NameTitle, #ScoreTitle{
+                display: inline-block;
+            }
+
+            .container{
+                width: 100%;
+                display: inline-block;
+            }
+
+            .Name, .Position {
+                float: left;
+            }
+
+            .Name{
+                margin-left: 5;
+            }
+
+            .Score{
+                float: right;
+            }
+
+            #Title{
+                text-align: center;
+                margin: 30 0;
+            }
+
+            #ScoreTitle{
+                float: right;
+            }
+
+            #ScoreTable{
+                margin: 0 50;
+            }
     	</style>
 
     </head>
     <body>
 
+    <!-- The highscoreview for the game, all text & css is inserted through HighscoresView.js -->
+        <div id='HighscoresView'>
+            <div id="Title"></div>
+
+            <div id="ScoreTable">
+                <div id="ColumnTitles">
+                    <div id="NameTitle"></div>
+                    <div id="ScoreTitle"></div>
+                </div>
+
+                <div id="ScoreList"></div>
+            </div>
+
+            <script type="text/javascript">
+                var hview = new HighscoresView();
+            </script>
+        </div>
+
 	   <div>New gamers connect to: <a href="index.html" target="_blank">localhost/client/index.html</a></div>
-       <div id='highScores'>HIGHSCORES -- </div>
     </body>
 </html>
