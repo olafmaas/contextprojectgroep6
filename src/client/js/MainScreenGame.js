@@ -36,7 +36,7 @@ function updateDimensions(){
 		|| document.documentElement.clientHeight
 		|| document.body.clientHeight;
 
-	canvas.style.width =   "100%";
+	canvas.style.width =   "80%";
 	canvas.style.height = "95%";
 
     canvas.setAttribute('width', game.getWidth());
