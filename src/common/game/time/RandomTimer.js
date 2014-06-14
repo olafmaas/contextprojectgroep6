@@ -15,6 +15,7 @@ var RandomTimer = Timer.extend({
 	time: 0,
 
 	constructor: function(_min, _max){
+		if(_min > _max) return null; //only create a timer when min is smaller than max
 		this.time = Math.floor(Math.random() * (_max - _min + 1) + _min);
 	},
 

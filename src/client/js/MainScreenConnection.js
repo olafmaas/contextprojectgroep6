@@ -39,12 +39,7 @@ socket.on('updateCanvasSize', function (data) {
 });
 
 socket.on('updateScores', function (scores){
-
-    var scoreText = "";
-    for (i=0; i < scores.length; ++i) {
-        scoreText += scores[i].Score + ': ' + scores[i].Name + " |----| ";
-    }
-	document.getElementById("highScores").innerHTML = scoreText; //JSON.stringify(highScores);
+hview.updateScores(scores);
 });
 
 socket.on('updateTop', function (data) {

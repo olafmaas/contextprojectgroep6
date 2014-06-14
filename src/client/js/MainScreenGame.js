@@ -15,7 +15,20 @@ function loadContent(){
 //Updates the position of the items on the canvas and checks for collisions
 function update(){
     canvas = document.getElementById('gameCanvas');
-    var windowWidth = window.innerWidth
+
+
+    if(gameDimensionsChanged()){
+    	updateDimensions();
+    }
+};
+
+//Draws everything on the canvas
+function draw(canvasContext){
+    game.draw();
+};
+
+function updateDimensions(){
+	var windowWidth = window.innerWidth
 		|| document.documentElement.clientWidth
 		|| document.body.clientWidth;
 
@@ -23,19 +36,16 @@ function update(){
 		|| document.documentElement.clientHeight
 		|| document.body.clientHeight;
 
-	//canvas.style.width =  windowWidth+ "px";
-	//canvas.style.height = windowHeight + "px";
 	canvas.style.width =   "100%";
 	canvas.style.height = "100%";
-    if(canvas.getAttribute('width') != game.getWidth() ||
-        canvas.getAttribute('height') != game.getHeight()){
-        canvas.setAttribute('width', game.getWidth());
-        canvas.setAttribute('height', game.getHeight());
-    }
 
+    canvas.setAttribute('width', game.getWidth());
+    canvas.setAttribute('height', game.getHeight());
+
+    hview.updateHeight();
 };
 
-//Draws everything on the canvas
-function draw(canvasContext){
-    game.draw();
-};
+function gameDimensionsChanged(){
+	return canvas.getAttribute('width') != game.getWidth() ||
+        canvas.getAttribute('height') != game.getHeight();
+}

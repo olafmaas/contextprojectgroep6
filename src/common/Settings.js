@@ -19,34 +19,39 @@ var Settings = {
 		time: 10,
 		color: "greenyellow",
 		length: 3.5,
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.15
 	},
 
 	bigShield: {
 		time: 15,
 		color: "violet",
 		length: 1,
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.4
 	},
 
 	smallPole: {
 		time: 15,
 		color: "yellow",
 		radius: 2, //by which factor the pole will be divided
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.4
 	},
 
 	bigPole: {
 		time: 10,
 		color: "aqua",
 		radius: 1.5, //by which factor the pole will be multiplied
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.15
 	},
 
 	revertShield: {
 		time: 10,
 		color: "red",
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.10
 	},
 
 	/**** POWERUP PROPERTIES ****/
@@ -58,9 +63,10 @@ var Settings = {
 
 	/**** LABEL POSITIONS ****/
 	label: {
-		score: {x: 720, y: 425},
-		name: {x: 10, y: 15},
-		highscore: {x: 720, y: 440}
+		size: 20,
+		name: {x: 10, y: 25},
+		score: {x: 630, y: 415},
+		highscore: {x: 630, y: 440}
 	}, 
 
 	/**** CANVAS PROPERTIES ****/
@@ -91,6 +97,7 @@ var Settings = {
 	},
 
 	player: {
+		maxNameLength: 20, //maximum number of characters that can be used for a username
 		points: 10,
 		step: 5 //step by which the score is incremented 
 	},
