@@ -33,7 +33,7 @@ HighscoresView = function(){
 		$("#ScoreList").empty();
 
 		for (var i = 0; i < _scores.length; i++) {
-			$("#ScoreList").append(this.newScoreDiv(i, _scores[i]));
+			$("#ScoreList").append(this.newScoreDiv(i + 1, _scores[i]));
 		};
 	}
 
