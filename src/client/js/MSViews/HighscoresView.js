@@ -6,11 +6,10 @@ HighscoresView = function(){
 
 		fontFamily: "Arial",
 		titleFontSize: "20px",
-		columnFontSize: "13px",
+		columnTitleFontSize: "13px",
 		scoresFontSize: "10px",
-		fontColor: "white",
 
-		title: "Highsores:",
+		title: "Highscores:",
 		nameColTitle: "Name",
 		scoreColTitle: "Score",
 	};
@@ -19,8 +18,18 @@ HighscoresView = function(){
 		var scores = this.stubScores();
 		this.updateScores(scores);
 
+		$("#HighscoresView").css("background-color", ViewSettings.backgroundColor);
+		$("#HighscoresView").css("color", ViewSettings.textColor);
 		$("#HighscoresView").css("width", ViewSettings.viewWidth);
-		$("#HighscoresView")
+		$("#HighscoresView").css("font-family", ViewSettings.fontFamily);
+
+		$("#Title").css("font-size", ViewSettings.titleFontSize);
+		$("#ColumnTitles").css("font-size", ViewSettings.columnTitleFontSize);
+		$("#ScoreList").css("font-size", ViewSettings.scoresFontSize);
+
+		$("#Title").html(ViewSettings.title);
+		$("#NameTitle").html(ViewSettings.nameColTitle);
+		$("#ScoreTitle").html(ViewSettings.scoreColTitle);
 	}
 
 	this.updateScores = function(_scores){

@@ -69,11 +69,6 @@
     			border: 2px solid black;
     		}
 
-            #HighscoresView{
-                background-color: black;
-                color: white;
-            }
-
             .Position, .Score, .Name, #NameTitle, #ScoreTitle{
                 display: inline-block;
             }
@@ -96,10 +91,10 @@
             }
 
             #Title{
-                font-size: 50px;
                 text-align: center;
                 margin: 30 0;
             }
+
             #ScoreTitle{
                 float: right;
             }
@@ -113,28 +108,23 @@
     <body>
 
         <div id='HighscoresView'>
-            <div id="Title">Highscores</div>
+            <div id="Title"></div>
 
             <div id="ScoreTable">
                 <div id="ColumnTitles">
-                    <div id="NameTitle">Name</div>
-                    <div id="ScoreTitle">Score</div>
+                    <div id="NameTitle"></div>
+                    <div id="ScoreTitle"></div>
                 </div>
 
-                <div id="ScoreList">
-                    
-                </div>
+                <div id="ScoreList"></div>
             </div>
 
-            
             <script type="text/javascript">
                 var hview = new HighscoresView();
             </script>
         </div>
 
 	   <div>New gamers connect to: <a href="index.html" target="_blank">localhost/client/index.html</a></div>
-
-       <div id='highScores'>HIGHSCORES -- </div>
 
     </body>
 </html>
