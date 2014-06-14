@@ -17,9 +17,9 @@ if(typeof module != 'undefined'){
 * @param {value} _resW - The width resolution of the field (optional)
 * @param {value} _resH - The height resolution of the field (optional)
 */
-function Game(_initialize, _loadContent, _update, _draw, _width, _height, _resW, _resH, isMainScreen){
+function Game(_initialize, _loadContent, _update, _draw, _width, _height, _resW, _resH){
 	var coreGame = new CoreGame(_initialize, _update, _width, _height);
-	var renderEngine = new RenderEngine(_loadContent, _draw, _width, _height, _resW, _resH, isMainScreen);
+	var renderEngine = new RenderEngine(_loadContent, _draw, _width, _height, _resW, _resH);
 
 	/**
 	* Instantiates the given object
