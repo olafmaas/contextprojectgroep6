@@ -123,11 +123,17 @@ function ServerGame(_socketHandler){
 	*/
 
 	this.addClient = function(socketID, socket){
-		var ball = game.instantiate(bf.createNewBall(S.ball.size));		
-		var positionOfPole = gameGrid.updateGrid(socket, ball)
+		var ballList = [];
+
+		for(var i = 0; i < this.getNewBallsPerPlayer; i++){
+			var newBall = game.instantiate(bf.createNewBall(S.ball.size))
+			group("Balls").addMember(newBall);
+			ballList.push(newBall);
+		}	
+
+		var positionOfPole = gameGrid.updateGrid(socket, ballList)
 		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
 		
-		group("Balls").addMember(ball);
 		group("Poles").addMember(game.instantiate(player.getPole()));
 		group("Shields").addMember(game.instantiate(player.getShield()));
 		group("Players").addMember(player);
@@ -141,7 +147,7 @@ function ServerGame(_socketHandler){
 			polePos: clientList[socketID].pole.getPosition(), gid: ball.getGlobalID(), gpid: player.getGlobalID()};
 
 		sh.newPlayer(socketID, res);
-		sh.newBall(res);
+		sh.newBalls(ballList);
 	};
 
 	this.deleteClient = function(socketID){
@@ -275,6 +281,12 @@ function ServerGame(_socketHandler){
 	this.createGame = function(_initialize, _update, _width, _height){
 		game = new CoreGame(_initialize, _update, _width, _height)
 	};
+
+
+	//If you want some fancy function implement it in this function. 
+	this.getNewBallsPerPlayer = function(){
+		return S.ball.nrOfNewBalls;
+	}
 
 	//TODO: hier de dubbele functies nog weghalen 
 	//NOTE: als je er "function" voor zet zijn ze private, this.function is public, zonder function/this ervoor = global
