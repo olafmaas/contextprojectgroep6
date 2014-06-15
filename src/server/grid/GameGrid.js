@@ -155,14 +155,12 @@ function GameGrid() {
 
 
 	addBalls = function(_block, _balls){
-		console.log(_balls.length + "Wasdeze")
 		_balls.forEach(function(b){
 			var xPos = Math.min(_block.getPosition().left + S.ball.x + Math.floor(Math.random()*S.ball.x), 
 					_block.getPosition().left + S.canvasWidth - b.getRadius());
 			var yPos = Math.min(_block.getPosition().top  + S.ball.y + Math.floor(Math.random()*S.ball.y), 
 					_block.getPosition().top + S.canvasHeight - b.getRadius());
-			
-			console.log("x" + xPos + "y" + yPos);
+
 			b.setPosition(xPos, yPos)
 			_block.addBall(b);
 		})
