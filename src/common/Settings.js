@@ -89,7 +89,6 @@ var Settings = {
 	/**** BALL ****/
 	ball: {
 		size: 10,
-		velocityDirection: 1.70 * Math.PI,
 		velocityRange: {from: 4, to: 8}, //range of velocities to generate random velocity balls.
 		//Positions of initial ball
 		x: 100,
