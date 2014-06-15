@@ -125,7 +125,7 @@ function ServerGame(_socketHandler){
 	this.addClient = function(socketID, socket){
 		var ballList = [];
 
-		for(var i = 0; i < this.getNewBallsPerPlayer; i++){
+		for(var i = 0; i < this.getNewBallsPerPlayer(); i++){
 			var newBall = game.instantiate(bf.createNewBall(S.ball.size))
 			group("Balls").addMember(newBall);
 			ballList.push(newBall);
@@ -143,8 +143,7 @@ function ServerGame(_socketHandler){
 
 		sh.updateMainScreenCanvasSize(this.updateMainScreenCanvasSize());
 
-		var res = {id: clientList[socketID].player.getName(), color: ball.getColor(),
-			polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
+		var res = {id: clientList[socketID].player.getName(), polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
 
 		sh.newPlayer(socketID, res);
 

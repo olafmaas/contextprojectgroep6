@@ -94,7 +94,7 @@ var Settings = {
 		//Positions of initial ball
 		x: 100,
 		y: 100,
-		nrOfNewBalls: 1 //Number of new balls created per player. 
+		nrOfNewBalls: 3 //Number of new balls created per player. 
 	},
 
 	player: {
