@@ -25,7 +25,7 @@ io.of('/player').on('connection', function (socket) {
 	if(sh.hasMainScreen()){
 		console.log('Player connected - id: ' + socket.id);
 		sh.setClientListeners(socket, sg);
-		sg.addClient(socket.id, socket); //TODO socket moet verwijderd worden. maar is nu nog nodig voor de grid
+		//sg.addClient(socket.id, socket); //TODO socket moet verwijderd worden. maar is nu nog nodig voor de grid
 	}
 	else{
 		socket.send('404: MainScreen not found!');

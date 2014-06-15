@@ -25,7 +25,7 @@ function SocketHandler(_io){
 
 		socket.on('userName', function (name){
 			if(serverGame.isNameAvailable(name)){
-				//serverGame.addClient(socket.id, socket);
+				serverGame.addClient(socket.id, socket);
 				serverGame.registerName(name, socket.id);
 				socket.emit('showPlayerName', name);
 			}else{
