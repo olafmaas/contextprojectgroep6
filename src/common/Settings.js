@@ -91,6 +91,7 @@ var Settings = {
 		size: 10,
 		velocity: 5,
 		velocityDirection: 1.70 * Math.PI,
+		velocityRange: {from: -1, to: 3},
 		//Positions of initial ball
 		x: 100,
 		y: 100,
