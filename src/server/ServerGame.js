@@ -125,7 +125,7 @@ function ServerGame(_socketHandler){
 	this.addClient = function(socketID, socket){
 		var ballList = [];
 
-		for(var i = 0; i < this.getNewBallsPerPlayer(); i++){
+		for(var i = 0; i < this.nofBallsToBeAdded(); i++){
 			var newBall = game.instantiate(bf.createNewBall(S.ball.size))
 			group("Balls").addMember(newBall);
 			ballList.push(newBall);
@@ -155,21 +155,26 @@ function ServerGame(_socketHandler){
 
 	this.deleteClient = function(socketID){
 		var client = clientList[socketID];
-		var b = group("Balls").getMember(group("Balls").getMemberLength()-1)
-		group("Balls").removeMember(b);	//TODO remove precies als de bal een scherm verlaat.
+		var members = group("Balls").getMembers();
+		var slice = members.slice(-this.nofBallsToBeRemoved());
+
+		slice.forEach(function(b){
+			group("Balls").removeMember(b)
+			game.remove(b);
+			gameGrid.removeBall(b)	
+			sh.removeBall(b.getGlobalID());
+		})
+
 		group("Poles").removeMember(client.pole);
 		group("Shields").removeMember(client.shield);
 		group("Players").removeMember(client.player);
 
-		game.remove(b);
 		game.remove(client.pole);
 		game.remove(client.shield);
 		game.remove(client.player);
 		//name stays in nameList because it has to stay in the highscore
 		gameGrid.remove(socketID);
-		gameGrid.removeBall(b)		
-		sh.removeBall(b.getGlobalID());
-
+	
 		namesList[client.player.getName()] = client.player.getHighscore(); //retrieve highscore and save it.
 		delete activeClients[client.name]; //remove from active clients list
 		delete clientList[socketID]; 
@@ -286,10 +291,20 @@ function ServerGame(_socketHandler){
 	};
 
 
-	//If you want some fancy function implement it in this function. 
+	//If you want some fancy function for the number of balls change ballsToBeAdded and ballsToBeRemoved.
+	this.nofBallsToBeAdded = function(){
+		return this.getNewBallsPerPlayer();
+	}
+
+	this.nofBallsToBeRemoved = function(){
+		return this.getNewBallsPerPlayer();
+	}
+
+	
 	this.getNewBallsPerPlayer = function(){
 		return S.ball.nrOfNewBalls;
 	}
+
 
 	//TODO: hier de dubbele functies nog weghalen 
 	//NOTE: als je er "function" voor zet zijn ze private, this.function is public, zonder function/this ervoor = global

@@ -63,7 +63,7 @@ function SocketHandler(_io){
 	};
 
 	this.newBall = function(_ball) {
-		mainScreenSocket.emit('newBall', {color: _ball.color, gid: _ball.gid}); //inform mainscreen of new ball
+		mainScreenSocket.emit('newBall', {color: _ball.getColor(), gid: _ball.getGlobalID()}); //inform mainscreen of new ball
 	};
 
 	//Adds a new powerup to the user
