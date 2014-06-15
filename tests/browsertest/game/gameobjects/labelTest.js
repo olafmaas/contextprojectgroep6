@@ -51,8 +51,8 @@ describe("Label", function(){
 	describe("#set/getFont", function(){
 		var l = new Label("font");
 
-		it("The inital font of the label should be verdana", function(){
-			expect(l.getFont()).to.equal("Verdana");
+		it("The inital font of the label should be " + Settings.label.font, function(){
+			expect(l.getFont()).to.equal(Settings.label.font);
 		})
 
 		it("It should be possible to alter the font of the label after it has been initialized", function(){
@@ -65,13 +65,13 @@ describe("Label", function(){
 	describe("#set/getFontSize", function(){
 		var l = new Label("fontsize");
 
-		it("The initial fontsize of the label should be 10", function(){
-			expect(l.getFontSize()).to.equal(10);
+		it("The initial fontsize of the label should be " + Settings.label.size, function(){
+			expect(l.getFontSize()).to.equal(Settings.label.size);
 		})
 
 		it("It should be possible to alter the fontsize of the label after it has been initialized", function(){
-			l.setFontSize(20);
-			expect(l.getFontSize()).to.equal(20);
+			l.setFontSize(Settings.label.size*2);
+			expect(l.getFontSize()).to.equal(Settings.label.size*2);
 		})
 	})
 
