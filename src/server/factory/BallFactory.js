@@ -11,13 +11,15 @@ if(typeof module != 'undefined'){
 var BallFactory = Base.extend({
 
 	createNewBall: function(_radius){
+		var velocity = Math.floor(Math.random() * (S.ball.velocityRange.to - S.ball.velocityRange.from+1)) + S.ball.velocityRange.from;
 		ball = new Ball(_radius);
 		ball.setPosition(S.ball.x, S.ball.y);
-		ball.getBody().setVelocity(S.ball.velocity);
+		ball.getBody().setVelocity(velocity);
 		ball.getBody().setVelocityDirection(S.ball.velocityDirection);
 		ball.setColor(ColorGenerator.returnColor());
 		ball.setGlobalID(IDDistributor.getNewId());
 
+		console.log("Velocity: " + velocity);
 		return ball;
 	}
 });
