@@ -96,7 +96,6 @@ function ServerGame(_socketHandler){
 		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
 		//Depending on the amount of players, the spawn time between powerups will go down.
 		if(timer != null && timer.hasStopped()){
-			console.log("TIMER STOPPED: " + timer.getTime() + " : " + timer.hasStopped());
 			timer = null;
 			sh.newPowerup(addPowerup());
 			
