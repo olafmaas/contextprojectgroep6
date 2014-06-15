@@ -73,18 +73,42 @@
                 border: 1px solid white;
             }
             #usernameBox {
-                height: 30px;
                 margin-top: 30px;
                 margin-left: 35px;
                 color: white;
                 font-family: 'Indie Flower', cursive;
                 font-size: 16pt;
             }
+            #usernameBox textarea, input {
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                height: 20px;
+                font-family: 'Indie Flower';
+                font-size: 12pt;
+                margin-bottom: 6px;
+            }
+            #usernameBox button {
+                font-family: 'Indie Flower';
+                font-size: 10pt;
+                height: 30px;
+                padding-left: 10px;
+                padding-right: 10px;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+            }
+            #boxHeader {
+                font-size: 20pt;
+            }
         </style>
 
     </head>
     <body>
-        <div id="usernameBox"> Username: <input type="text" name="firstname" id="firstname"> <button id="startButton" onclick="startPlaying()">Start Playing!</button> <span id="error" style="color: red;"> </span></div>  
+        <div id="usernameBox"> 
+            <div id="boxHeader"> Join the action now! </div>
+            Username: <input type="text" name="firstname" id="firstname" maxlength="20"> </br>
+            <button id="startButton" onclick="startPlaying()">Start Playing!</button> </br>
+            <span id="error" style="color: red;"> </span>
+        </div>  
     </body>
 
     <script>
@@ -94,7 +118,7 @@
             var error = document.getElementById("error");
 
             if(n != null && n.length > 0){
-                if(n.length < Settings.player.maxNameLength)
+                if(n.length <= Settings.player.maxNameLength)
                      s.checkName(n);
                  else{
                     error.innerHTML = "Username is too long.";
