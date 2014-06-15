@@ -22,11 +22,10 @@ function SocketHandler(_io){
 	//Handles player connection and listeners
 	this.setClientListeners = function(socket, serverGame){
 		clientSockets[socket.id] = socket;
-		//Ask for userName
-		//socket.emit('userName', false);
 
 		socket.on('userName', function (name){
 			if(serverGame.isNameAvailable(name)){
+				//serverGame.addClient(socket.id, socket);
 				serverGame.registerName(name, socket.id);
 				socket.emit('showPlayerName', name);
 			}else{
@@ -68,6 +67,7 @@ function SocketHandler(_io){
 
 	//Adds a new powerup to the user
 	this.newPowerup = function(data){
+		console.log("DATA");
 		io.of('/player').emit('addPowerup', data);
 	};
 

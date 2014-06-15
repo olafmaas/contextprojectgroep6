@@ -55,6 +55,7 @@ function loadContent(){
     createTempImage();
     setTimeout(deleteTempImage, 3000);
 
+    //Hide the canvas for the player until a username is filled in and accepted
     var gameElem = document.getElementById("gameCanvas");
     gameElem.style.visibility="hidden";
 };

@@ -29,7 +29,7 @@ function ServerGame(_socketHandler){
 	var pf = new PlayerFactory();
 	var bf = new BallFactory();
 	var oldranking = [];
-	var timer;
+	var timer = null;
 
 	//Create all groups
 	gm.addGroup("Balls", Ball);
@@ -45,8 +45,6 @@ function ServerGame(_socketHandler){
 	this.addMainScreen = function(_socketID){
 		sh.updateMainScreenCanvasSize(this.updateMainScreenCanvasSize());
 		
-		timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers()));
-		timer.startTimer(); //Start powerup timer when the mainscreen is connected.
 		setInterval(updateScores, S.highScore.updateInterval);	//updates the highscores on the mainscreen on interval
 	};
 
@@ -96,14 +94,16 @@ function ServerGame(_socketHandler){
 
 	updatePowerups = function() {
 		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
-		//TODO: timer eerder af laten lopen als er meer spelers zijn, dus settings aanpassen, of
-		//iets van settings - x * aantalSpelers doen ofzo, zodat het iig wat sneller wordt of het interval kleiner.
+		//Depending on the amount of players, the spawn time between powerups will go down.
 		if(timer != null && timer.hasStopped()){
+			console.log("TIMER STOPPED: " + timer.getTime() + " : " + timer.hasStopped());
 			timer = null;
 			sh.newPowerup(addPowerup());
 			
-			timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers())); //start a new timer for the next powerup
-			timer.startTimer();
+			if(timer == null && getNumberOfPlayers() > 0){
+				timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers())); //start a new timer for the next powerup
+				timer.startTimer();
+			}
 		}
 	};
 	
@@ -121,7 +121,6 @@ function ServerGame(_socketHandler){
 	* @method Server#addClient
 	* @param {socket} The socket associated with the player. 
 	*/
-
 	this.addClient = function(socketID, socket){
 		var ballList = [];
 
@@ -151,6 +150,10 @@ function ServerGame(_socketHandler){
 			sh.newBall(b);
 		})
 		
+		if(getNumberOfPlayers() == 1 && timer == null){
+			timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers()));
+			timer.startTimer(); //Start powerup timer when the mainscreen is connected.
+		}
 	};
 
 	this.deleteClient = function(socketID){
