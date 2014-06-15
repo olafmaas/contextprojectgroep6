@@ -1,5 +1,6 @@
 if(typeof module != 'undefined'){
 	var Base = require('../../../lib/Base.js');
+	var Settings = require('../../Settings.js');
 }
 
 /**
@@ -15,7 +16,7 @@ var Label = Base.extend({
 
 	text: "",
 	position: {x: 0, y: 0},
-	font: "Verdana",
+	font: Settings.label.font,
 	fontSize: 10,
 	color: "#ffffff",
 

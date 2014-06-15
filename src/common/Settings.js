@@ -63,6 +63,7 @@ var Settings = {
 
 	/**** LABEL POSITIONS ****/
 	label: {
+		font: 'Indie Flower',
 		size: 20,
 		name: {x: 10, y: 25},
 		score: {x: 630, y: 415},
