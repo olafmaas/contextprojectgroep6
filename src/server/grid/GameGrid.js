@@ -86,13 +86,13 @@ function GameGrid() {
 	* @param {ball} _ball - 
 	* @return {object} An object with the left and top boundary of the block in pixels. 
 	*/
-	this.updateGrid = function(socket, ball){
+	this.updateGrid = function(socket, balls){
 		var x;
 		var y;
 
 		//Look for an available spot
 		for (var i = 0; i < this.getHeight(); i++) {
-			x = checkrow(socket , i, ball);
+			x = checkrow(socket , i, balls);
 			if(x != -1){
 				y = i;
 				break
@@ -108,14 +108,14 @@ function GameGrid() {
 				y = 0;
 				x = gridWidth - 1;
 				grid[y][x].setPlayer(socket);
-				grid[y][x].addBall(ball);
+				addBalls(grid[y][x], balls)
 			}else{
 				//Add row
 				this.addRow();
 				y = gridHeight - 1; 
 				x = 0;
 				grid[y][x].setPlayer(socket);
-				grid[y][x].addBall(ball);
+				addBalls(grid[y][x], balls)
 			}
 
 		}
@@ -131,12 +131,14 @@ function GameGrid() {
 	* @param {ball} _ball - 
 	* @return {array} The index of the first availble spot. -1 otherwise. 
 	*/
-	checkrow = function(socket, i, ball){
+	checkrow = function(socket, i, balls){
 		for(var j = 0; j < gridWidth; j++){
 				if(grid[i].length == j){
 					grid[i].push(new Block(socket ,j * S.canvasWidth, i * S.canvasHeight))
+
 					grid[i][j].setPlayer(socket)
-					grid[i][j].addBall(ball);
+					addBalls(grid[i][j], balls)
+
 					if(j > 0){
 						grid[i][j-1].setNeighbour("right", grid[i][j]);
 						grid[i][j].setNeighbour("left", grid[i][j-1]);
@@ -144,12 +146,22 @@ function GameGrid() {
 					return j;
 				}else if(!grid[i][j].hasPlayer()){
 					grid[i][j].setPlayer(socket)
-					grid[i][j].addBall(ball);
+					addBalls(grid[i][j], balls)
 					return j;
 				}
 		}
 		return -1;
 	};
+
+
+	addBalls = function(_block, _balls){
+		_balls.forEach(function(b){
+			var xPos = Math.min(_block.getPosition().left + S.ball.x + Math.floor(Math.random()*S.ball.x), S.canvasWidth - b.getRadius());
+			var yPos = Math.min(_block.getPosition().top  + S.ball.y + Math.floor(Math.random()*S.ball.y), S.canvasHeight - b.getRadius());
+			b.setPosition(xPos, yPos)
+			_block.addBall(b);
+		})
+	}
 
 	/**
 	* Delete the player from the grid. 

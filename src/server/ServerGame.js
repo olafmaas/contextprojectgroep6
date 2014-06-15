@@ -144,10 +144,14 @@ function ServerGame(_socketHandler){
 		sh.updateMainScreenCanvasSize(this.updateMainScreenCanvasSize());
 
 		var res = {id: clientList[socketID].player.getName(), color: ball.getColor(),
-			polePos: clientList[socketID].pole.getPosition(), gid: ball.getGlobalID(), gpid: player.getGlobalID()};
+			polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
 
 		sh.newPlayer(socketID, res);
-		sh.newBalls(ballList);
+
+		ballList.forEach(function(b){
+			sh.newBall(b);
+		})
+		
 	};
 
 	this.deleteClient = function(socketID){
