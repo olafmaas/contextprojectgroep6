@@ -55,6 +55,8 @@ function loadContent(){
     createTempImage();
     setTimeout(deleteTempImage, 3000);
 
+    var gameElem = document.getElementById("gameCanvas");
+    gameElem.style.visibility="hidden";
 };
 
 //Updates the position of the items on the canvas and checks for collisions

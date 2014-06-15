@@ -48,6 +48,8 @@ socket.on('showPlayerName', function (_name){
 
 	var elem = document.getElementById("usernameBox");
 	elem.outerHTML = "";
+	var gameElem = document.getElementById("gameCanvas");
+	gameElem.style.visibility="visible";
 });
 
 socket.on('updateScoreHit', function (_score){
