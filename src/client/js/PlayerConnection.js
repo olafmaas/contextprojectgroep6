@@ -46,8 +46,12 @@ socket.on('showPlayerName', function (_name){
 	player.setScore(0);
 	nameLabel.setText(_name);
 
+	//Remove the username part
 	var elem = document.getElementById("usernameBox");
 	elem.outerHTML = "";
+	//Make the canvas visible for the user
+	var gameElem = document.getElementById("gameCanvas");
+	gameElem.style.visibility="visible";
 });
 
 socket.on('updateScoreHit', function (_score){
