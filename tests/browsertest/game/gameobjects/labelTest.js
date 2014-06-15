@@ -1,12 +1,5 @@
 describe("Label", function(){
 
-	//constructor
-	//set/gettext
-	//set/getposition
-	//set/getfont
-	//set/getfontsize
-	//set/getcolor
-
 	describe("#Constructor", function(){
 		var l = new Label("Test");
 		var l2 = new Label("A very long string to check to what extend the label will work if we put something in that's slighlty longer than the normal usage of the label");
