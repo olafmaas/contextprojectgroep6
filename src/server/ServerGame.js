@@ -82,12 +82,15 @@ function ServerGame(_socketHandler){
 
 		for(var i = 0; i < this.nofBallsToBeAdded(); i++){
 			var newBall = game.instantiate(bf.createNewBall(S.ball.size))
-			GroupManager2.getGroup("Ball").addMember(newBall);
 			ballList.push(newBall);
 		}	
 
 		var positionOfPole = gameGrid.updateGrid(socket, ballList)
 		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
+
+		game.instantiate(player.getPole());
+		game.instantiate(player.getShield());
+
 
 		clientList[socketID] = new Client(socket, socketID, player, player.getPole(), player.getShield());
 		playerIDs[player.getID()] = socketID;
