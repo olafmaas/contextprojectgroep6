@@ -19,6 +19,7 @@ var PlayerFactory = Base.extend({
 		player.setShield(shield);
 		pole.setPlayer(player);
 		player.setGlobalID(IDDistributor.getNewId());
+		console.log(typeof player);
 		return player;
 	},
 

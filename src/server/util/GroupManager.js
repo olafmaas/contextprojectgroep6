@@ -2,7 +2,7 @@ if(typeof module != 'undefined'){
 	var Group = require('../../common/game/util/Group.js');
 }
 
-function  GroupManager(){
+function GroupManager(){
 	var groups = [];
 
 	this.addGroup = function(name, type){

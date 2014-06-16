@@ -19,11 +19,12 @@ if(typeof module != 'undefined'){
 
 function ServerGame(_socketHandler){
 	var sh = _socketHandler;
+	var game;
 	var clientList = {};
+
 	var activeClients = [];
 	var playerIDs = {};
 	var namesList = [];
-	var game;
 	var gameGrid = new GameGrid();
 	var gm = new GroupManager();
 	var pf = new PlayerFactory();
@@ -37,13 +38,8 @@ function ServerGame(_socketHandler){
 	gm.addGroup("Shields", Shield);
 	gm.addGroup("Players", Player);
 
-	//TIJDELIJK
-	this.addSH = function(_sh){
-		sh = _sh;
-	}
-
 	this.addMainScreen = function(_socketID){
-		sh.updateMainScreenCanvasSize(this.updateMainScreenCanvasSize());
+		sh.updateMainScreenCanvasSize(this.updateGameSize());
 		
 		setInterval(updateScores, S.highScore.updateInterval);	//updates the highscores on the mainscreen on interval
 	};
@@ -139,7 +135,7 @@ function ServerGame(_socketHandler){
 		clientList[socketID] = new Client(socket, socketID, player, player.getPole(), player.getShield());
 		playerIDs[player.getID()] = socketID;
 
-		sh.updateMainScreenCanvasSize(this.updateMainScreenCanvasSize());
+		sh.updateMainScreenCanvasSize(this.updateGameSize());
 
 		var res = {id: clientList[socketID].player.getName(), polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
 
@@ -194,7 +190,7 @@ function ServerGame(_socketHandler){
 		else { namesList[name] = 1; }
 	};
 
-	this.updateMainScreenCanvasSize = function(){
+	this.updateGameSize = function(){
 		var _width = gameGrid.getWidth() * S.canvasWidth;
 		var _height = gameGrid.getHeight()* S.canvasHeight;
 		game.setWidth(_width);

@@ -23,7 +23,7 @@ io.of('/mainscreen').on('connection', function (socket) {
 
 io.of('/player').on('connection', function (socket) {
 	if(sh.hasMainScreen()){
-		console.log('Player connected - id: ' + socket.id);
+		console.log('Client connected - id: ' + socket.id);
 		sh.setClientListeners(socket, sg);
 	}
 	else{
