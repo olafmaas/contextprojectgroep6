@@ -296,8 +296,10 @@ function startSocket() {
 			var inY = Math.abs(powerupPos.y*scale - _y) <= powerup.getRadius();
 
 			if(inX && inY){
+				isAnimating2 = false;
 				clearTimeout(powerupRemovalTimer); //remove the timer
 				player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
+				playerCoolDown();
 
 				socket.emit('powerupClicked', player.getGlobalID(), powerup.getType());
 
@@ -350,7 +352,6 @@ function startSocket() {
     		pole.setCDAngle(0);
 
     		timeoutTime2 = (player.getPowerup().getTimer().getTime() * 1000) / 90;
-
     		setTimeout(coolDown2, timeoutTime2);
     	}
     }
@@ -359,7 +360,7 @@ function startSocket() {
     	if(player.getPowerup() != null){
     		pole.incrementCDAngle(4);
     		if(pole.getCDAngle() < 360) {
-    			setTimeout(coolDown, timeoutTime2);
+    			setTimeout(coolDown2, timeoutTime2);
     		} else {
     			isAnimating2 = false;
     		}
