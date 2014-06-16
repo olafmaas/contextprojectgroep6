@@ -89,14 +89,14 @@ Drawer = function(_canvasContext){
 
 	this.drawCooldownPowerup = function (_powerup){
 		if(_powerup.getAngle() > 0){
-			var startAngle = Settings.startAngle * Math.PI / 180;
+			var startAngle = Settings.startAngle;
 			var endAngle = (startAngle + _powerup.getAngle()) % 360;
 
-			canvasContext.fillStyle = "black"; //Must be the current background color.
+			canvasContext.fillStyle = "black";
 			canvasContext.moveTo(_powerup.getPosition().x, _powerup.getPosition().y);
 			canvasContext.beginPath();
 			canvasContext.arc(
-	            _powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius()+2, startAngle,
+	            _powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius()+2, startAngle * Math.PI / 180,
 	            endAngle * Math.PI / 180, false
 	        );
 			canvasContext.lineTo(_powerup.getPosition().x, _powerup.getPosition().y);
