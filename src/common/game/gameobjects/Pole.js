@@ -19,6 +19,7 @@ var Pole = Ball.extend({
 	coolDown: false,
 	prevColor: 0,
 	player: 0,
+	angle: 0, //Needed for the cooldown
 	timer: 0, //Each pole keeps its own 'alive' time
 	ID: -1,
 
@@ -61,6 +62,9 @@ var Pole = Ball.extend({
 	*/
 	equals: function(_other){ return (this.ID == _other.getID()); },
 	
+
+	incrementCDAngle: function(_angle){ this.angle += _angle; },
+	
 	/**
 	* Saves the highscore of the player, resets the score and restarts the timer
 	* @method Pole#saveHighScore
@@ -95,6 +99,8 @@ var Pole = Ball.extend({
 	*/
 	setHitBy: function(_id) { this.hitBy = _id; },
 
+	setCDAngle: function (_angle) { this.angle = _angle; },
+
 	/**
 	* Returns the timer of a certain pole
 	* @method Pole#getTimer
@@ -116,7 +122,9 @@ var Pole = Ball.extend({
 	* @method Pole#getHitBy
 	* @return {number} - The global ID of the player
 	*/
-	getHitBy: function() { return this.hitBy; }
+	getHitBy: function() { return this.hitBy; },
+
+	getCDAngle: function() { return this.angle; }
 
 });
 

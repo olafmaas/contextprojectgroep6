@@ -321,6 +321,9 @@ function startSocket() {
 	var isAnimating = false;
 	var timeoutTime = (Settings.removalTime * 1000) / 90; //90 because we increment the angle by 4 (360/90 = 4)
 
+	var isAnimating2 = false;
+	var timeoutTime2 = 0;
+
 	function powerupCoolDown() {
 		if(!isAnimating){
 			isAnimating = true;
@@ -339,6 +342,28 @@ function startSocket() {
 	            isAnimating = false;
 	        }
 	    }
+    }
+
+    function playerCoolDown(){
+    	if(!isAnimating2){
+    		isAnimating2 = true;
+    		pole.setCDAngle(0);
+
+    		timeoutTime2 = (player.getPowerup().getTimer().getTime() * 1000) / 90;
+
+    		setTimeout(coolDown2, timeoutTime2);
+    	}
+    }
+
+    function coolDown2() {
+    	if(player.getPowerup() != null){
+    		pole.incrementCDAngle(4);
+    		if(pole.getCDAngle() < 360) {
+    			setTimeout(coolDown, timeoutTime2);
+    		} else {
+    			isAnimating2 = false;
+    		}
+    	}
     }
 
 }
