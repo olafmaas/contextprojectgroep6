@@ -67,7 +67,7 @@ function SocketHandler(_io){
 
 	//Adds a new powerup to the user
 	this.newPowerup = function(data){
-		io.of('/player').emit('addPowerup', data);
+		getSocketFromPlayerID(data.id).emit('addPowerup', data);
 	};
 
 	//////////////////
