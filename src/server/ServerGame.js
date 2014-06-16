@@ -18,13 +18,15 @@ function ServerGame(_socketHandler){
 	var sh = _socketHandler;
 	var game;
 	var clientList = {};
+	var playerIDs = {};	//used as a hashmap playerIDs are keys, socketID as value
 
-	var activeClients = [];
-	var playerIDs = {};
-	var namesList = [];
 	var gameGrid = new GameGrid();
 
-	var timer = null;
+	var activeClients = [];
+	var namesList = [];
+
+
+	var timer = null;	//needed for powerups.
 
 	this.addMainScreen = function(_socketID){
 		sh.updateMainScreenCanvasSize(this.updateGameSize());
@@ -32,7 +34,77 @@ function ServerGame(_socketHandler){
 		setInterval(updateScores, S.highScore.updateInterval);	//updates the highscores on the mainscreen on interval
 	};
 
-	updateScores = function(){
+	/**
+	* Add a new client, create a new player, pole and shield. 
+	* @method Server#addClient
+	* @param {socket} The socket associated with the player. 
+	*/
+	this.addClient = function(socketID, socket){
+		var player = addObjects(socket);
+		
+		clientList[socketID] = new Client(socket, player, player.getPole(), player.getShield());
+		playerIDs[player.getID()] = socketID;
+
+		updatePowerupInterval();
+
+		var res = {id: clientList[socketID].player.getName(), polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
+
+		sh.updateMainScreenCanvasSize(this.updateGameSize());
+		sh.newPlayer(socketID, res);
+	};
+
+	function addObjects(socket){
+		var ballList = [];
+
+		for(var i = 0; i < nofBallsToBeAdded(); i++){
+			var newBall = game.instantiate(bf.createNewBall(S.ball.size))
+			ballList.push(newBall);
+		}	
+
+		var positionOfPole = gameGrid.updateGrid(socket, ballList)
+		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
+
+		game.instantiate(player.getPole());
+		game.instantiate(player.getShield());
+
+		ballList.forEach(function(b){
+			sh.newBall(b);
+		})
+
+		return player;
+	};
+
+	function updatePowerupInterval(){
+		if(getNumberOfPlayers() == 1 && timer == null){
+			timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers()));
+			timer.startTimer(); //Start powerup timer when the mainscreen is connected.
+		}
+	};
+
+	this.deleteClient = function(socketID){
+		var client = clientList[socketID];
+		var members = GroupManager.getGroup("Ball").getMembers();
+		var slice = members.slice(-this.nofBallsToBeRemoved());
+
+		slice.forEach(function(b){
+			GroupManager.getGroup("Ball").removeMember(b)
+			game.remove(b);
+			gameGrid.removeBall(b)	
+			sh.removeBall(b.getGlobalID());
+		})
+
+		game.remove(client.pole);
+		game.remove(client.shield);
+		game.remove(client.player);
+		//name stays in nameList because it has to stay in the highscore
+		gameGrid.remove(socketID);
+	
+		namesList[client.player.getName()] = client.player.getHighscore(); //retrieve highscore and save it.
+		delete activeClients[client.player.getName()]; //remove from active clients list
+		delete clientList[socketID]; 
+	};
+
+	function updateScores(){
 		var hs = HighScores.updateScores();
 		sh.updateScoresMainScreen(hs);
 		if(hs)
@@ -62,67 +134,6 @@ function ServerGame(_socketHandler){
 		}
 	};
 	
-	/**
-	* Add a new client, create a new player, pole and shield. 
-	* @method Server#addClient
-	* @param {socket} The socket associated with the player. 
-	*/
-	this.addClient = function(socketID, socket){
-		var ballList = [];
-
-		for(var i = 0; i < this.nofBallsToBeAdded(); i++){
-			var newBall = game.instantiate(bf.createNewBall(S.ball.size))
-			ballList.push(newBall);
-		}	
-
-		var positionOfPole = gameGrid.updateGrid(socket, ballList)
-		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
-
-		game.instantiate(player.getPole());
-		game.instantiate(player.getShield());
-
-
-		clientList[socketID] = new Client(socket, player, player.getPole(), player.getShield());
-		playerIDs[player.getID()] = socketID;
-
-		sh.updateMainScreenCanvasSize(this.updateGameSize());
-
-		var res = {id: clientList[socketID].player.getName(), polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
-
-		sh.newPlayer(socketID, res);
-
-		ballList.forEach(function(b){
-			sh.newBall(b);
-		})
-		
-		if(getNumberOfPlayers() == 1 && timer == null){
-			timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers()));
-			timer.startTimer(); //Start powerup timer when the mainscreen is connected.
-		}
-	};
-
-	this.deleteClient = function(socketID){
-		var client = clientList[socketID];
-		var members = GroupManager.getGroup("Ball").getMembers();
-		var slice = members.slice(-this.nofBallsToBeRemoved());
-
-		slice.forEach(function(b){
-			GroupManager.getGroup("Ball").removeMember(b)
-			game.remove(b);
-			gameGrid.removeBall(b)	
-			sh.removeBall(b.getGlobalID());
-		})
-
-		game.remove(client.pole);
-		game.remove(client.shield);
-		game.remove(client.player);
-		//name stays in nameList because it has to stay in the highscore
-		gameGrid.remove(socketID);
-	
-		namesList[client.player.getName()] = client.player.getHighscore(); //retrieve highscore and save it.
-		delete activeClients[client.player.getName()]; //remove from active clients list
-		delete clientList[socketID]; 
-	};
 
 	this.isNameAvailable = function(name){ return !activeClients[name]; };
 
@@ -203,15 +214,15 @@ function ServerGame(_socketHandler){
 
 
 	//If you want some fancy function for the number of balls change ballsToBeAdded and ballsToBeRemoved.
-	this.nofBallsToBeAdded = function(){
-		return this.getNewBallsPerPlayer();
+	function nofBallsToBeAdded(){
+		return getNewBallsPerPlayer();
 	};
 
 	this.nofBallsToBeRemoved = function(){
-		return this.getNewBallsPerPlayer();
+		return getNewBallsPerPlayer();
 	};
 	
-	this.getNewBallsPerPlayer = function(){
+	function getNewBallsPerPlayer(){
 		return S.ball.nrOfNewBalls;
 	};
 
