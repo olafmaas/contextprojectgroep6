@@ -57,7 +57,7 @@ function loadContent(){
 
     //Hide the canvas for the player until a username is filled in and accepted
     var gameElem = document.getElementById("gameCanvas");
-    gameElem.style.visibility="hidden";
+    gameElem.style.display="none";
 };
 
 //Updates the position of the items on the canvas and checks for collisions
