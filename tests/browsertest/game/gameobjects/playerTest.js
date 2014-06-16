@@ -5,7 +5,7 @@ describe("Player", function(){
 		it("Should increment the number of points by the given amount", function(){
 			p = new Player("Jan");
 			p.incrementPoints(10);
-			expect(p.getPoints()).to.equal(20);
+			expect(p.getPoints()).to.equal(Settings.player.points + 10);
 		})
 	})
 
@@ -20,6 +20,6 @@ describe("Player", function(){
 
 	describe("#update", function(){
 
-		it("Should get te score and print it on a label -- TBD ")
+		it("Should get the score and print it on a label -- TBD ")
 	})
 })
