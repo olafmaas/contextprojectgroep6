@@ -1,4 +1,4 @@
-var GroupManager2 = require('../../common/game/util/GroupManager2.js');
+var GroupManager = require('../../common/game/util/GroupManager.js');
 var S = require('../../common/Settings.js');
 
 var HighScores = {
@@ -8,8 +8,8 @@ var HighScores = {
 	getScores: function(){
 		var temp = [];
 		//Retrieve the highest scores of all the players
-		for(var i = 0; i < GroupManager2.getGroup("Player").getMemberLength(); i++){
-			var player = GroupManager2.getGroup("Player").getMember(i);
+		for(var i = 0; i < GroupManager.getGroup("Player").getMemberLength(); i++){
+			var player = GroupManager.getGroup("Player").getMember(i);
 			var score = Math.max(player.getScore(), player.getHighscore());
 			temp.push({ Score: score, Name: player.name, ID: player.getGlobalID() });
 		}
@@ -50,8 +50,8 @@ var HighScores = {
 
 	updateHighscore: function(highscore){
 	
-		for(i = 0; i < GroupManager2.getGroup("Player").getMemberLength(); i++){
-			var player = GroupManager2.getGroup("Player").getMember(i);
+		for(i = 0; i < GroupManager.getGroup("Player").getMemberLength(); i++){
+			var player = GroupManager.getGroup("Player").getMember(i);
 			player.setPoints(S.player.points); //Reset points to a normal player
 			
 			if(player != -1){
@@ -64,7 +64,7 @@ var HighScores = {
 		var count = S.highScore.top;
 		
 		for(i = 0; i < highscore.newhs.length; i++){
-			var player = GroupManager2.getGroup("Player").getMemberByGlobalID(highscore.newhs[i]);
+			var player = GroupManager.getGroup("Player").getMemberByGlobalID(highscore.newhs[i]);
 			player.setPoints(S.player.points + (S.player.step * count)); //Set points according to position in the highscore top
 			
 			if(player != -1){

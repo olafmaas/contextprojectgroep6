@@ -1,5 +1,6 @@
 if(typeof module != 'undefined'){
 	var Group = require('../common/game/util/Group.js');
+	var GroupManager = require('../common/game/util/GroupManager.js');
 	var Ball = require('../common/game/gameobjects/Ball.js');
 	var Pole = require('../common/game/gameobjects/Pole.js');
 	var Shield = require('../common/game/gameobjects/Shield.js');
@@ -7,12 +8,10 @@ if(typeof module != 'undefined'){
 	var Powerup = require('../common/game/gameobjects/Powerup.js');
 	var CoreGame = require('../common/game/CoreGame.js');
 	var RandomTimer = require('../common/game/time/RandomTimer.js');
-	var GroupManager2 = require('../common/game/util/GroupManager2.js');
 
 	var Client = require('../common/Client.js');
 	var S = require('../common/Settings.js');
 
-	var GroupManager = require('./util/GroupManager.js');
 	var GameGrid = require('./grid/GameGrid.js');
 	var PlayerFactory = require('./factory/PlayerFactory.js');
 	var BallFactory = require('./factory/BallFactory.js');
@@ -29,7 +28,6 @@ function ServerGame(_socketHandler){
 	var playerIDs = {};
 	var namesList = [];
 	var gameGrid = new GameGrid();
-	var gm = new GroupManager();
 	var pf = new PlayerFactory();
 	var bf = new BallFactory();
 
@@ -65,7 +63,7 @@ function ServerGame(_socketHandler){
 	
 	addPowerup = function(){
 		var index = Math.floor(Math.random()*getNumberOfPlayers());
-		var member = GroupManager2.getGroup("Player").getMember(index);
+		var member = GroupManager.getGroup("Player").getMember(index);
 		
 		if(member != undefined && member != null){
 			return { id: member.getGlobalID() };
@@ -110,18 +108,18 @@ function ServerGame(_socketHandler){
 			timer.startTimer(); //Start powerup timer when the mainscreen is connected.
 		}
 
-		console.log('nr' + GroupManager2.getGroup('Pole').getMemberLength());
-		console.log('nr' + GroupManager2.getGroup('Pole').getMemberLength());
+		console.log('nr' + GroupManager.getGroup('Pole').getMemberLength());
+		console.log('nr' + GroupManager.getGroup('Pole').getMemberLength());
 
 	};
 
 	this.deleteClient = function(socketID){
 		var client = clientList[socketID];
-		var members = GroupManager2.getGroup("Ball").getMembers();
+		var members = GroupManager.getGroup("Ball").getMembers();
 		var slice = members.slice(-this.nofBallsToBeRemoved());
 
 		slice.forEach(function(b){
-			GroupManager2.getGroup("Ball").removeMember(b)
+			GroupManager.getGroup("Ball").removeMember(b)
 			game.remove(b);
 			gameGrid.removeBall(b)	
 			sh.removeBall(b.getGlobalID());
@@ -165,7 +163,7 @@ function ServerGame(_socketHandler){
 	};
 
 	this.setPowerup = function(_playerID, _powerupType){
-		var player = GroupManager2.getGroup("Player").getMemberByGlobalID(_playerID);
+		var player = GroupManager.getGroup("Player").getMemberByGlobalID(_playerID);
 		if(player != -1){ //if player has been found
 			var powerup = new Powerup(S.powerupSize, _powerupType); //NOT game.instantiate!!, as it should not exists outside this function!
 			player.setPowerup(powerup);
@@ -193,11 +191,11 @@ function ServerGame(_socketHandler){
 	updatePoles = function() {
 		//Call isHit() when a pole is hit and send this event to the player
 		for(var i = 0; i < getNumberOfPlayers(); i++){
-			console.log(GroupManager2.getGroup('Pole').getMemberLength());
-			console.log(GroupManager2.getGroup("Pole") + 'adsfjklljklasdjjfal'+ i + pole);
-			var pole = GroupManager2.getGroup("Pole").getMember(i);
+			console.log(GroupManager.getGroup('Pole').getMemberLength());
+			console.log(GroupManager.getGroup("Pole") + 'adsfjklljklasdjjfal'+ i + pole);
+			var pole = GroupManager.getGroup("Pole").getMember(i);
 			
-			var player = GroupManager2.getGroup("Player").getMemberByGlobalID(pole.getHitBy());
+			var player = GroupManager.getGroup("Player").getMemberByGlobalID(pole.getHitBy());
 			if(pole.hit){
 				incrementScore(player, pole);
 				pole.isHit();
@@ -258,11 +256,11 @@ function ServerGame(_socketHandler){
 
 	this.getGroup = function(_group){ return group(_group); };
 
-	this.getBall = function(_id){ return GroupManager2.getGroup("Ball").getMember(_id); };
+	this.getBall = function(_id){ return GroupManager.getGroup("Ball").getMember(_id); };
 
-	nrOfBalls = function(){ return GroupManager2.getGroup("Ball").getMemberLength(); };
+	nrOfBalls = function(){ return GroupManager.getGroup("Ball").getMemberLength(); };
 
-	getBallPosition = function(_id){ return GroupManager2.getGroup("Ball").getMember(_id).getPosition(); };
+	getBallPosition = function(_id){ return GroupManager.getGroup("Ball").getMember(_id).getPosition(); };
 
 	this.getSocketFromPlayerID = function(_playerID){ return clientList[playerIDs[_playerID]].socket; };
 
