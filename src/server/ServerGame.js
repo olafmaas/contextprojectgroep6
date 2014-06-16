@@ -1,9 +1,5 @@
 var Group = require('../common/game/util/Group.js');
 var GroupManager = require('../common/game/util/GroupManager.js');
-var Ball = require('../common/game/gameobjects/Ball.js');
-var Pole = require('../common/game/gameobjects/Pole.js');
-var Shield = require('../common/game/gameobjects/Shield.js');
-var Player = require('../common/game/gameobjects/Player.js');
 var Powerup = require('../common/game/gameobjects/Powerup.js');
 var CoreGame = require('../common/game/CoreGame.js');
 var RandomTimer = require('../common/game/time/RandomTimer.js');
@@ -86,7 +82,7 @@ function ServerGame(_socketHandler){
 		game.instantiate(player.getShield());
 
 
-		clientList[socketID] = new Client(socket, socketID, player, player.getPole(), player.getShield());
+		clientList[socketID] = new Client(socket, player, player.getPole(), player.getShield());
 		playerIDs[player.getID()] = socketID;
 
 		sh.updateMainScreenCanvasSize(this.updateGameSize());
@@ -124,18 +120,17 @@ function ServerGame(_socketHandler){
 		gameGrid.remove(socketID);
 	
 		namesList[client.player.getName()] = client.player.getHighscore(); //retrieve highscore and save it.
-		delete activeClients[client.name]; //remove from active clients list
+		delete activeClients[client.player.getName()]; //remove from active clients list
 		delete clientList[socketID]; 
 	};
 
 	this.isNameAvailable = function(name){ return !activeClients[name]; };
 
-	this.registerName = function(name, id){
-		clientList[id].name = name;
-		clientList[id].player.setName(name);
+	this.registerName = function(name, socketID){
+		clientList[socketID].player.setName(name);
 		activeClients[name] = true;
 
-		if(namesList[name]){ clientList[id].player.setHighscore(namesList[name]); }
+		if(namesList[name]){ clientList[socketID].player.setHighscore(namesList[name]); }
 		else { namesList[name] = 1; }
 	};
 
