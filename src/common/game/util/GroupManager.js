@@ -2,7 +2,7 @@ if(typeof module != 'undefined'){
 	var Group = require('./Group.js');
 }
 
-var GroupManager2 = {
+var GroupManager = {
 	groups: {},
 
 	addMember: function(element) {
@@ -33,5 +33,5 @@ var GroupManager2 = {
 }
 
 if(typeof module != 'undefined'){
-    module.exports = GroupManager2;
+    module.exports = GroupManager;
 }
