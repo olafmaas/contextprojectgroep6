@@ -296,10 +296,9 @@ function startSocket() {
 			var inY = Math.abs(powerupPos.y*scale - _y) <= powerup.getRadius();
 
 			if(inX && inY){
-				isAnimating2 = false;
 				clearTimeout(powerupRemovalTimer); //remove the timer
-				player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
-				playerCoolDown((player.getPowerup().getTimer().getTime() * 1000) / 90);
+				player.setPowerup(powerup); 
+				playerCoolDown((powerup.getTimer().getTime() * 1000) / 90);
 
 				socket.emit('powerupClicked', player.getGlobalID(), powerup.getType());
 
@@ -319,21 +318,31 @@ function startSocket() {
 		}
 	}
 
+	var powerupCDTimer = null;
+	var playerCDTimer = null;
 	function powerupCoolDown(_time) {
+		console.log("POWERUP")
+		clearTimeout(powerupCDTimer); //Clear any old timeout that might be present
         powerup.setCDAngle(0);
-        setTimeout(function() { coolDown(powerup, _time); }, _time);
+        powerupCDTimer = setTimeout(function() { coolDown(powerup, _time); }, _time);
 	}
-
+	
 	function playerCoolDown(_time){
+		console.log("PLAYER")
+		clearTimeout(playerCDTimer); //Clear any old timeout that might be present
     	pole.setCDAngle(0);		
-    	setTimeout(function() { coolDown(pole, _time); }, _time);
+    	playerCDTimer = setTimeout(function() { coolDown(pole, _time); }, _time);
     }
 
 	function coolDown(_object, _time){
 		if(_object != null){
 			_object.incrementCDAngle(4);
-			if(_object.getCDAngle() < 360)
-				setTimeout(function() { coolDown(_object, _time); }, _time);
+			if(_object.getCDAngle() < 360) {
+				if(_object instanceof Player)
+					playerCDTimer = setTimeout(function() { coolDown(_object, _time); }, _time);
+				else
+					powerupCDTimer = setTimeout(function() { coolDown(_object, _time); }, _time);
+			}
 		}
 	}
 }
