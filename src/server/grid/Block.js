@@ -3,7 +3,7 @@ if(typeof module != 'undefined'){
 
 	var e = require('../../common/Enums.js');
 	var Ball = require('../../common/game/gameobjects/Ball.js');
-	var Settings = require('../../common/Settings.js');
+	var S = require('../../common/Settings.js');
 }
 
 
@@ -24,6 +24,7 @@ var Block = Base.extend({
 	socket: false,
 	neighbours: null,
 	position: null,
+	player: false,
 
 	constructor: function(_socket, _left, _top){
 		this.socket = _socket;
@@ -92,7 +93,7 @@ var Block = Base.extend({
 		}
 
 		//Bottom
-		if((yPosInBlock > (Settings.canvasHeight - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().y > 0)){
+		if((yPosInBlock > (S.canvasHeight - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().y > 0)){
 			sendTo.push("bottom")
 		}
 
@@ -102,7 +103,7 @@ var Block = Base.extend({
 		}
 
 		//right
-		if((xPosInBlock > (Settings.canvasWidth - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().x > 0)){
+		if((xPosInBlock > (S.canvasWidth - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().x > 0)){
 			sendTo.push("right")
 		}
 
@@ -126,7 +127,7 @@ var Block = Base.extend({
 		}
 
 		//Bottom
-		if((yPosInBlock > (_ball.getRadius() + Settings.canvasHeight)) && (_ball.getBody().getVectorVelocity().y > 0)){
+		if((yPosInBlock > (_ball.getRadius() + S.canvasHeight)) && (_ball.getBody().getVectorVelocity().y > 0)){
 			del = true;
 		}
 
@@ -136,7 +137,7 @@ var Block = Base.extend({
 		}
 
 		//right
-		if((xPosInBlock > (_ball.getRadius() + Settings.canvasWidth)) && (_ball.getBody().getVectorVelocity().x > 0)){
+		if((xPosInBlock > (_ball.getRadius() + S.canvasWidth)) && (_ball.getBody().getVectorVelocity().x > 0)){
 			del = true;
 		}
 
@@ -225,30 +226,37 @@ var Block = Base.extend({
 	},
 
 	getReadyForDeletion: function(_direction, _opposite){
-		var direction = _direction;
 		if(this.hasNeighbour(_direction)){
-			this.neighbours[_direction].updatePosition(this.position.x, this.position.y);
+			this.neighbours[_direction].updatePosition(this.position.left, this.position.top);
+			this.prepareBallsForDeletion(_direction)
 			this.neighbours[_direction].setNeighbour(_opposite, this.neighbours[_opposite]);
 		}else{
-			var direction = _opposite;
-			this.neighbours[_opposite].setNeighbour(direction, undefined);
+			this.prepareBallsForDeletion(_opposite)
+			this.neighbours[_opposite].setNeighbour(_direction, undefined);
 		}
 
-		balls.forEach(function(b){
-				b.setPostion(this.neighbours[_direction].getPosition().x + ball.getRadius()
-						, this.neighbours[_direction].getPosition().y + ball.getRadius())
+
+	},
+
+
+	prepareBallsForDeletion: function(direction){
+		this.ballsList.forEach(function(b){
+			//Kan problemen veroorzaken misschien ofzo.
+				b.setPosition(this.neighbours[direction].getPosition().left + ball.getRadius()
+						, this.neighbours[direction].getPosition().top + ball.getRadius())
+				
 				this.neighbours[direction].ballIncoming(b);
-		});
+		}, this);
 	},
 
 	/**
-	* Change the current player. Emit the canvasPosition and send all
+	* Change the current Socket. Emit the canvasPosition and send all
 	* balls which are currently in this block to the player.
-	* @method Block#setPlayer
+	* @method Block#setSocket
 	* @param {Socket} _socket - The ball that should be found. 
 	* @return {integer} - the index of the ball, or -1 if the ball is not found. 
 	*/
-	setPlayer: function(_socket){
+	setSocket: function(_socket){
 		this.socket = _socket;
 		this.socket.emit('canvasPos', {left: this.position.left, top: this.position.top});
 
@@ -256,6 +264,10 @@ var Block = Base.extend({
 		for(var i = 0; i < this.ballsList.length; i++){
 			this.sendNewBallToPlayer(this.ballsList[i]);
 		}
+	},
+
+	setPlayer: function(_player){
+		this.player = _player;
 	},
 
 	/**
@@ -266,16 +278,20 @@ var Block = Base.extend({
 	* @param {number} y - The new y position 
 	*/
 	updatePosition: function(x, y){
-		var dx = this.position.x - x;
-		var dy = this.position.y - y;
+		var dx = x - this.position.left;
+		var dy = y - this.position.right;
 
-		balls.forEach(function(b){
-			b.setPostion(b.getPosition().x + dx, b.getPosition().y + dy)
+		this.ballsList.forEach(function(b){
+			b.setPosition(b.getPosition().x + dx, b.getPosition().y + dy)
 		});
 
-		this.position.x = x;
-		this.position.y = y;
-	}
+		this.player.updatePosition(x + S.canvasWidth/2, y + S.canvasHeight/2)
+
+		this.position.left += dx
+		this.position.right += dy
+
+		if(this.socket) this.socket.emit('canvasPos', {left: this.position.left, top: this.position.top});
+	},
 
 	/**
 	* Remove the current player by setting it to false. 
@@ -283,6 +299,7 @@ var Block = Base.extend({
 	*/
 	removePlayer: function(){
 		this.socket = false;
+		this.player = false;
 	},
 
 	hasPlayer: function(){
@@ -290,8 +307,8 @@ var Block = Base.extend({
 	},
 
 	hasNeighbour: function(_direction){
-		return this.neighbours[_direction] == undefined;
-	}
+		return this.neighbours[_direction] != undefined;
+	},
 
 	hasBall: function(_ball){
 		return this.getBallIndex(_ball) != -1;
@@ -302,6 +319,10 @@ var Block = Base.extend({
 	},
 
 	getPlayer: function(){
+		return this.player;
+	},
+
+	getSocket: function(){
 		return this.socket;
 	},
 

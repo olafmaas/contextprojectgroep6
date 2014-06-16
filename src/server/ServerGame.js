@@ -43,7 +43,7 @@ function ServerGame(_socketHandler){
 	}
 
 	this.addMainScreen = function(_socketID){
-		sh.updateMainScreenCanvasSize(this.updateMainScreenCanvasSize());
+		sh.updateMainScreenCanvasSize(updateMainScreenCanvasSize());
 		
 		setInterval(updateScores, S.highScore.updateInterval);	//updates the highscores on the mainscreen on interval
 	};
@@ -130,7 +130,8 @@ function ServerGame(_socketHandler){
 		}	
 
 		var positionOfPole = gameGrid.updateGrid(socket, ballList)
-		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
+		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id, this.updatePlayerOnMainscreen, this));
+		gameGrid.setPlayer(positionOfPole.left, positionOfPole.top , player);
 		
 		group("Poles").addMember(game.instantiate(player.getPole()));
 		group("Shields").addMember(game.instantiate(player.getShield()));
@@ -139,7 +140,7 @@ function ServerGame(_socketHandler){
 		clientList[socketID] = new Client(socket, socketID, player, player.getPole(), player.getShield());
 		playerIDs[player.getID()] = socketID;
 
-		sh.updateMainScreenCanvasSize(this.updateMainScreenCanvasSize());
+		sh.updateMainScreenCanvasSize(updateMainScreenCanvasSize());
 
 		var res = {id: clientList[socketID].player.getName(), polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
 
@@ -194,7 +195,7 @@ function ServerGame(_socketHandler){
 		else { namesList[name] = 1; }
 	};
 
-	this.updateMainScreenCanvasSize = function(){
+	updateMainScreenCanvasSize = function(){
 		var _width = gameGrid.getWidth() * S.canvasWidth;
 		var _height = gameGrid.getHeight()* S.canvasHeight;
 		game.setWidth(_width);
@@ -220,7 +221,9 @@ function ServerGame(_socketHandler){
 
 	this.update = function(){ 
 		updateBalls();
-		gameGrid.update();
+		if(gameGrid.update()){
+			sh.updateMainScreenCanvasSize(updateMainScreenCanvasSize());
+		}
 		updatePowerups();
 		updatePoles();
 	};
@@ -291,6 +294,10 @@ function ServerGame(_socketHandler){
 	this.createGame = function(_initialize, _update, _width, _height){
 		game = new CoreGame(_initialize, _update, _width, _height)
 	};
+
+	this.updatePlayerOnMainscreen = function(data){
+		sh.updatePlayerOnMainscreen(data);
+	}
 
 
 	//If you want some fancy function for the number of balls change ballsToBeAdded and ballsToBeRemoved.

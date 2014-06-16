@@ -88,7 +88,7 @@ function GameGrid() {
 
 		//Look for an available spot
 		for (var i = 0; i < this.getHeight(); i++) {
-		 x = checkrow(socket , i, balls);
+		 x = checkrow(socket, i, balls);
 			if(x != -1){
 				y = i;
 				break
@@ -102,7 +102,7 @@ function GameGrid() {
 			y = freeSpot.y;
 		}
 
-		return {left: x * S.canvasWidth, top: y * S.canvasHeight}; 
+		return {left: x , top: y}; 
 	};
 
 
@@ -115,14 +115,14 @@ function GameGrid() {
 				this.addColumn()
 				y = 0;
 				x = gridWidth - 1;
-				grid[y][x].setPlayer(socket);
+				grid[y][x].setSocket(socket);
 				addBalls(grid[y][x], balls)
 			}else{
 				//Add row
 				this.addRow();
 				y = gridHeight - 1; 
 				x = 0;
-				grid[y][x].setPlayer(socket);
+				grid[y][x].setSocket(socket);
 				addBalls(grid[y][x], balls)
 			}
 
@@ -142,7 +142,7 @@ function GameGrid() {
 				if(grid[i].length == j){
 					grid[i].push(new Block(socket ,j * S.canvasWidth, i * S.canvasHeight))
 
-					grid[i][j].setPlayer(socket)
+					grid[i][j].setSocket(socket)
 					addBalls(grid[i][j], balls)
 
 					if(j > 0){
@@ -151,7 +151,7 @@ function GameGrid() {
 					}
 					return j;
 				}else if(!grid[i][j].hasPlayer()){
-					grid[i][j].setPlayer(socket)
+					grid[i][j].setSocket(socket)
 					addBalls(grid[i][j], balls)
 					return j;
 				}
@@ -180,8 +180,8 @@ function GameGrid() {
 	this.remove = function(socketID){
 		for (var i = 0; i < grid.length; i++) {
 			for(var j = 0; j < grid[i].length; j++){
-				if(grid[i][j].getPlayer()){
-					if(socketID == grid[i][j].getPlayer().id){
+				if(grid[i][j].getSocket()){
+					if(socketID == grid[i][j].getSocket().id){
 						grid[i][j].removePlayer();
 					}
 				}
@@ -206,16 +206,18 @@ function GameGrid() {
 	};
 
 	this.cleanUp = function(){
+		if(gridWidth == 1 && gridHeight == 1) return
 		cleanRows();
 		cleanColumns();
 	};
 
 	cleanRows = function(){
 		var emptyRows = []
+
 		for(var y = 0; y < grid.length; y++){
 			empty = true;
 			grid[y].forEach(function(_block){
-				empty = empty && _block.hasPlayer;
+				empty = empty && !_block.hasPlayer();
 			})
 
 			//If you would call deleteRows there 
@@ -228,37 +230,44 @@ function GameGrid() {
 		var emptyCols = []
 
 		for(var x = 0; x < gridWidth; x++){
-			var empty = false;
-			for(var y = 0; grid.length; y++){
-				empty = empty && grid[y][x].hasPlayer();
+			var empty = true;
+
+			for(var y = 0; y < grid.length; y++){
+				empty = empty && !grid[y][x].hasPlayer();
 			}
-			if(empty) emptyCols.push(x);
+
+			if(empty) {
+				emptyCols.push(x);
+				console.log("Empty Column" + x)
+			}
 		}
 
-		deleteColumns(emptyRows);
+		deleteColumns(emptyCols);
 	};
 
-	deleteRows =function(emptyRows){
+	deleteRows = function(emptyRows){
 		deletedRows = 0
+
 		emptyRows.forEach(function(y){
+			
 			for(var x = 0; x < grid[y - deletedRows].length; x++){
 				grid[y][x].getReadyForDeletion("bottom", "top");
 			}
 			grid.splice(y-deletedRows, 1);
 			deletedRows++;
-			gridHeight--:
+			gridHeight--;
 		})
 	};
 
-	deleteColumns =function(emptyColumns){
+	deleteColumns = function(emptyColumns){
 		deletedColumns = 0
-		emptyRows.forEach(function(x){
+		emptyColumns.forEach(function(x){
 			for(var y = 0; y < grid.length; y++){
 				grid[y][x].getReadyForDeletion("right", "left");
 				grid[y].splice(x-deletedColumns, 1);
 			}
 			deletedColumns++;
-			gridWidth--:
+			gridWidth--;
 		})
 	};
 
@@ -273,7 +282,14 @@ function GameGrid() {
 			}
 		}
 		this.cleanUp();
+
+		return true;
 	};
+
+
+	this.setPlayer = function(x, y, _player){
+		grid[y][x].setPlayer(_player);
+	}
 
 	this.getHeight = function(){ return grid.length; };
 

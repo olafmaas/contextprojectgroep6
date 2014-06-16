@@ -11,7 +11,7 @@ if(typeof module != 'undefined'){
 
 var PlayerFactory = Base.extend({
 
-	createPlayer: function(polePos, id){
+	createPlayer: function(polePos, id, callback, context){
 		var player = new Player(id)
 		var pole = this.createPole(polePos);
 		var shield = this.createShield(pole);
@@ -19,6 +19,8 @@ var PlayerFactory = Base.extend({
 		player.setShield(shield);
 		pole.setPlayer(player);
 		player.setGlobalID(IDDistributor.getNewId());
+
+		player.setUpdateCallBack(callback, context);
 		return player;
 	},
 
@@ -29,7 +31,7 @@ var PlayerFactory = Base.extend({
 	*/
 	createPole: function(polePos){
 		var pole = new Pole(S.pole.size);
-		pole.setPosition(polePos.left + S.canvasWidth/2, polePos.top + S.canvasHeight/2);
+		pole.setPosition(polePos.left * S.canvasWidth + S.canvasWidth/2, polePos.top * S.canvasHeight + S.canvasHeight/2);
 
 		return pole;
 	},

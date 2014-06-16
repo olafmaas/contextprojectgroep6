@@ -86,6 +86,13 @@ socket.on('removePlayer', function (socketID){
 	removePlayerObjects(socketID);
 });
 
+socket.on('changePlayerPosition', function (data) {
+	var p = players.getMemberByGlobalID(data.gid);
+	if(p != -1){ 
+		p.updatePosition(data.x, data.y);
+	}
+});
+
 socket.on('removeBall', function (globalID){
 	removeBall(globalID);
 })
