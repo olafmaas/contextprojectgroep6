@@ -192,6 +192,26 @@ var Powerup = Base.extend({
 	getBody: function(){ return this.body; }
 });
 
+//Static function for the powerup class
+Powerup.getPowerupSpritePath = function(_type){
+		switch(_type){
+			case e.smallShield:
+				return Settings.smallShield.path;
+
+			case e.bigShield:
+				return Settings.bigShield.path;
+
+			case e.smallPole:
+				return Settings.smallPole.path;
+
+			case e.bigPole:
+				return Settings.bigPole.path;
+
+			case e.revertShield: 
+				return Settings.revertShield.path;
+		}
+	}
+
 if(typeof module != 'undefined'){
     module.exports = Powerup;
 }

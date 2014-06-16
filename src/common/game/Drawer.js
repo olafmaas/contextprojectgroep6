@@ -40,6 +40,7 @@ Drawer = function(_canvasContext){
 	* @param {object} _sprite - The sprite object to be drawn
 	*/
 	this.drawSprite = function(_sprite){
+		console.log(_sprite.getPosition());
 		canvasContext.drawImage(_sprite.getTexture(), _sprite.getPosition().x + _sprite.getAnchor().x, _sprite.getPosition().y + _sprite.getAnchor().y, _sprite.getSize().x, _sprite.getSize().y);
 	};
 

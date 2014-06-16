@@ -227,8 +227,10 @@ function createPowerup(){
 
 		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime); //set timer so powerup is removed after x seconds.
 
-
-		socket.emit('powerupSpawned', player.getGlobalID(), type, powerup.getPosition());
+		socket.emit('powerupSpawned', type, {
+				x: powerup.getPosition().x + leftOffset,
+				y: powerup.getPosition().y + topOffset,
+			});
 };
 
 function randomPowerType(){
@@ -261,22 +263,7 @@ function randomPowerType(){
 
 //
 function createIcon(_type){
-	switch(_type){
-		case e.smallShield:
-		icon = game.instantiate(new Sprite(Settings.smallShield.path));
-
-		case e.bigShield:
-		icon = game.instantiate(new Sprite(Settings.bigShield.path));
-
-		case e.smallPole:
-		icon = game.instantiate(new Sprite(Settings.smallPole.path));
-
-		case e.bigPole:
-		icon = game.instantiate(new Sprite(Settings.bigPole.path));
-
-		case e.revertShield: 
-		icon = game.instantiate(new Sprite(Settings.revertShield.path));
-	}
+	icon = game.instantiate(new Sprite(Powerup.getPowerupSpritePath(_type)));
 
 	var size = Settings.powerupSize-2;
 	icon.setPosition(powerup.getPosition());

@@ -44,8 +44,8 @@ function SocketHandler(_io){
 			mainScreenSocket.emit('powerupClicked', _playerID, _powerupType);
 		});
 
-		socket.on('powerupSpawned', function (_playerID, _powerupType, _location){
-			
+		socket.on('powerupSpawned', function (_powerupType, _location){
+			mainScreenSocket.emit('powerupSpawned', _powerupType, _location);
 		});
 
 		socket.on('disconnect', function (data){ //<< waarom wordt er 'data' doorgegeven als dit vervolgens niet wordt gebruikt?

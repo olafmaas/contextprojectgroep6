@@ -106,6 +106,10 @@ socket.on('poleIsHit', function (_pid) {
 	}
 });
 
+socket.on('powerupSpawned', function(_ptype, _plocation) {
+	createPowerUp(_ptype, _plocation);
+});
+
 socket.on('powerupClicked', function (_pid, _ptype) {
 	var p = players.getMemberByGlobalID(_pid);
 	if(p != -1){ //if player has been found
@@ -177,6 +181,14 @@ function removeBall(globalID){
 	return;
 };
 
+function createPowerUp(_ptype, _plocation){
+	var powerup = game.instantiate(new Sprite(Powerup.getPowerupSpritePath(_ptype)));
+	powerup.setPosition(_plocation);
+}
+
+function removePowerUp(_pid){
+
+}
 
 function updateScale(data){
 	
