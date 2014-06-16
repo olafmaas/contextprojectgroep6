@@ -1,23 +1,22 @@
-if(typeof module != 'undefined'){
-	var Group = require('../common/game/util/Group.js');
-	var GroupManager = require('../common/game/util/GroupManager.js');
-	var Ball = require('../common/game/gameobjects/Ball.js');
-	var Pole = require('../common/game/gameobjects/Pole.js');
-	var Shield = require('../common/game/gameobjects/Shield.js');
-	var Player = require('../common/game/gameobjects/Player.js');
-	var Powerup = require('../common/game/gameobjects/Powerup.js');
-	var CoreGame = require('../common/game/CoreGame.js');
-	var RandomTimer = require('../common/game/time/RandomTimer.js');
+var Group = require('../common/game/util/Group.js');
+var GroupManager = require('../common/game/util/GroupManager.js');
+var Ball = require('../common/game/gameobjects/Ball.js');
+var Pole = require('../common/game/gameobjects/Pole.js');
+var Shield = require('../common/game/gameobjects/Shield.js');
+var Player = require('../common/game/gameobjects/Player.js');
+var Powerup = require('../common/game/gameobjects/Powerup.js');
+var CoreGame = require('../common/game/CoreGame.js');
+var RandomTimer = require('../common/game/time/RandomTimer.js');
 
-	var Client = require('../common/Client.js');
-	var S = require('../common/Settings.js');
+var Client = require('../common/Client.js');
+var S = require('../common/Settings.js');
 
-	var GameGrid = require('./grid/GameGrid.js');
-	var PlayerFactory = require('./factory/PlayerFactory.js');
-	var BallFactory = require('./factory/BallFactory.js');
+var GameGrid = require('./grid/GameGrid.js');
+var PlayerFactory = require('./factory/PlayerFactory.js');
+var BallFactory = require('./factory/BallFactory.js');
 
-	var HighScores = require('./game/HighScores.js');
-}
+var HighScores = require('./game/HighScores.js');
+
 
 function ServerGame(_socketHandler){
 	var sh = _socketHandler;
@@ -107,7 +106,6 @@ function ServerGame(_socketHandler){
 			timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers()));
 			timer.startTimer(); //Start powerup timer when the mainscreen is connected.
 		}
-
 	};
 
 	this.deleteClient = function(socketID){
@@ -132,7 +130,6 @@ function ServerGame(_socketHandler){
 		delete activeClients[client.name]; //remove from active clients list
 		delete clientList[socketID]; 
 	};
-
 
 	this.isNameAvailable = function(name){ return !activeClients[name]; };
 
@@ -184,7 +181,6 @@ function ServerGame(_socketHandler){
 		}
 	};
 
-
 	updatePoles = function() {
 		//Call isHit() when a pole is hit and send this event to the player
 		for(var i = 0; i < getNumberOfPlayers(); i++){
@@ -199,8 +195,6 @@ function ServerGame(_socketHandler){
 		}
 	};
 
-
-
 	//Increments score when a player hits another player
 	incrementScore = function (_player, _pole) {
 		if(_player != -1) { 
@@ -210,9 +204,6 @@ function ServerGame(_socketHandler){
 			}
 		}
 	};
-
-	
-
 
 	this.createGame = function(_initialize, _update, _width, _height){
 		game = new CoreGame(_initialize, _update, _width, _height)
@@ -241,18 +232,6 @@ function ServerGame(_socketHandler){
 
 	getNumberOfPlayers = function(){ return Object.keys(clientList).length; };
 
-	this.getClient = function(id){ return clientList[id]; };
-
-	this.getGame = function(){ return game; };
-
-	group = function(name){ return gm.group(name);};
-
-	getGroup = function(_group){ return group(_group); };
-
-	this.getGroup = function(_group){ return group(_group); };
-
-	this.getBall = function(_id){ return GroupManager.getGroup("Ball").getMember(_id); };
-
 	nrOfBalls = function(){ return GroupManager.getGroup("Ball").getMemberLength(); };
 
 	getBallPosition = function(_id){ return GroupManager.getGroup("Ball").getMember(_id).getPosition(); };
@@ -262,6 +241,4 @@ function ServerGame(_socketHandler){
 	getSocketFromPlayerID = function(_playerID){ return clientList[playerIDs[_playerID]].socket; };
 }
 
-if(typeof module != 'undefined'){
-    module.exports = ServerGame;
-}
+module.exports = ServerGame;
