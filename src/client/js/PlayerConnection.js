@@ -228,6 +228,7 @@ function startSocket() {
 			createIcon(type); //temporarily disabled
 
 			powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime*1000); //set timer so powerup is removed after x seconds.
+			powerupCooldown();
 		}
 	};
 
@@ -299,7 +300,6 @@ function startSocket() {
 				player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
 
 				socket.emit('powerupClicked', player.getGlobalID(), powerup.getType());
-				powerupCooldown()
 
 				//TODO: als je hem niet verwijdert en er dan nog een keer op klikt, gaat je power weg.
 				//Dit dus even aanpassen dat je er niet meer op kan klikken als hij aan het animaten is.
@@ -319,24 +319,26 @@ function startSocket() {
 		}
 	}
 
+	//TODO: kijken of dit in powerup klasse kan
 	var isAnimating = false;
+	var angle = (Settings.removalTime * 1000) / 20 / 90;
 
 	function powerupCooldown() {
 		if(!isAnimating){
 			isAnimating = true;
-            powerup.setAngle(Settings.startAngle);
+            powerup.setAngle(0);
 
             setTimeout(coolDown, 20);
 		}
 	}
 
 	function coolDown(){	
-		powerup.incrementAngle(4);
-        if (powerup.getAngle() < ((Settings.startAngle-1) % 360)) {
+		powerup.incrementAngle(angle);
+        if (powerup.getAngle() < 360) {
             setTimeout(coolDown, 20);
         } else {
             isAnimating = false;
-            removePowerup();
+            //removePowerup();
         }
     }
 
