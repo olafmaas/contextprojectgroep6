@@ -39,7 +39,7 @@ socket.on('updateCanvasSize', function (data) {
 });
 
 socket.on('updateScores', function (scores){
-hview.updateScores(scores);
+	hview.updateScores(scores);
 });
 
 socket.on('updateTop', function (data) {
