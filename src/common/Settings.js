@@ -57,9 +57,10 @@ var Settings = {
 	/**** POWERUP PROPERTIES ****/
 	nrOfPowerups: 5,
 	powerupSize: 25,
-	removalTime: 4000, //in ms, how long a powerup is present on screen.
-	minTime: 10, //in ms, minimum time between powerup spawns.
-	maxTime: 30, //in ms, maximum time between powerup spawns.
+	removalTime: 4, //in seconds, how long a powerup is present on screen.
+	minTime: 5, //in seconds, minimum time between powerup spawns.
+	maxTime: 10, //in seconds, maximum time between powerup spawns.
+	startAngle: 270, //The starting angle for the transition of the powerup when clicked (In degrees)
 
 	/**** LABEL POSITIONS ****/
 	label: {
