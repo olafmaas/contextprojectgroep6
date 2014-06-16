@@ -7,14 +7,14 @@ var e = require('../common/Enums.js');
 function SocketHandler(_io){
 	var io = _io;
 	var mainScreenSocket = {emit:function(){false}}; //If the mainscreen is not instantiated this function is used;
-	var clientSockets = {};
+	var clientSockets = {};	//Used as a hashmap with socketID as key and socket as value
 
 	//Handles mainscreen connection and listeners
 	this.setMainScreenListeners = function(socket, serverGame){
 		mainScreenSocket = socket;
 
 		socket.on('disconnect', function (data){
-			console.log('MainScreen disconnected');
+			console.log('MainScreen ' + data);
 			mainScreenSocket = {emit: function(){false}};
 		});
 	};
@@ -45,8 +45,8 @@ function SocketHandler(_io){
 			mainScreenSocket.emit('powerupClicked', _playerID, _powerupType);
 		});
 
-		socket.on('disconnect', function (data){ //<< waarom wordt er 'data' doorgegeven als dit vervolgens niet wordt gebruikt?
-			console.log('Player disconnected - id: ' + socket.id);
+		socket.on('disconnect', function (data){ 
+			console.log('Client ' + data);
 			serverGame.deleteClient(socket.id);
 			mainScreenSocket.emit('removePlayer', socket.id);
 		});
