@@ -18,6 +18,9 @@ var GroupManager2 = {
 	},
 
 	getGroup: function(type) {
+		if(!this.groups[type]){
+			this.groups[type] = new Group(type);
+		}
 		return this.groups[type];
 	},
 

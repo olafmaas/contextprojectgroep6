@@ -16,6 +16,8 @@ if(typeof module != 'undefined'){
 	var GameGrid = require('./grid/GameGrid.js');
 	var PlayerFactory = require('./factory/PlayerFactory.js');
 	var BallFactory = require('./factory/BallFactory.js');
+
+	var HighScores = require('./game/HighScores.js');
 }
 
 function ServerGame(_socketHandler){
@@ -30,7 +32,7 @@ function ServerGame(_socketHandler){
 	var gm = new GroupManager();
 	var pf = new PlayerFactory();
 	var bf = new BallFactory();
-	var oldranking = [];
+
 	var timer = null;
 
 	//Create all groups
@@ -45,48 +47,12 @@ function ServerGame(_socketHandler){
 		setInterval(updateScores, S.highScore.updateInterval);	//updates the highscores on the mainscreen on interval
 	};
 
-	//Returns a list of the players with their highscores
-	getScores = function(){
-		var temp = [];
-		//Retrieve the highest scores of all the players
-		for(var i = 0; i < getNumberOfPlayers(); i++){
-			var player = getGroup("Players").getMember(i);
-			var score = Math.max(player.getScore(), player.getHighscore());
-			temp.push({ Score: score, Name: player.name, ID: player.getGlobalID() });
-		}
-		return temp;
-	};
-
-	//Updates the highscores on the mainscreen + informs players when they are in the top x
 	updateScores = function(){
-		var highScores = getScores();
-		
-		if(highScores.length > 0){
-			var serializedScores = JSON.stringify(highScores);
-			var hs = JSON.parse(serializedScores);
-			//Sort the scores (highest to lowest)
-			hs.sort(function(a, b) {return b.Score - a.Score;});
+		var hs = HighScores.updateScores();
+		sh.updateScoresMainScreen(hs);
+		if(hs)
+			sh.updateTop(HighScores.reviseTop(hs.splice(0, S.highScore.top)));
 
-			//Send current highscore list to the mainscreen
-			sh.updateScoresMainScreen(hs);
-	
-			reviseTop(hs.splice(0, S.highScore.top)); 
-		}
-	};
-
-	reviseTop = function(_top){
-		var newRanking = [];
-		//Retrieve the id's of the top players
-		for(i = 0; i < _top.length; i++){
-			newRanking.push(_top[i].ID);
-		}
-		//TODO: oldhs kan hier nu toch uit? wordt namelijk niet meer gebruikt nu alles gewoon teruggezet wordt.
-		data = { newhs: newRanking, oldhs: oldranking };
-
-		sh.updateTop(data);
-		updateHighscore(data);
-		
-		oldranking = newRanking;
 	};
 
 	updatePowerups = function() {
@@ -260,33 +226,7 @@ function ServerGame(_socketHandler){
 	};
 
 	
-	updateHighscore = function(highscore){
-	
-		for(i = 0; i < group("Players").getMemberLength(); i++){
-			var player = group("Players").getMember(i);
-			player.setPoints(S.player.points); //Reset points to a normal player
-			
-			if(player != -1){
-				if(player.getPowerup() == null){
-					player.getPole().setRadius(S.pole.size);
-				}
-			}
-		}
 
-		var count = S.highScore.top;
-		
-		for(i = 0; i < highscore.newhs.length; i++){
-			var player = group("Players").getMemberByGlobalID(highscore.newhs[i]);
-			player.setPoints(S.player.points + (S.player.step * count)); //Set points according to position in the highscore top
-			
-			if(player != -1){
-				if(player.getPowerup() == null){
-					player.getPole().setRadius(S.pole.size + count*2);
-				}
-			}
-			count--;
-		}
-	};
 
 	this.createGame = function(_initialize, _update, _width, _height){
 		game = new CoreGame(_initialize, _update, _width, _height)
