@@ -6,7 +6,8 @@ if(typeof module != 'undefined'){
 	var Player = require('../common/game/gameobjects/Player.js');
 	var Powerup = require('../common/game/gameobjects/Powerup.js');
 	var CoreGame = require('../common/game/CoreGame.js');
-	var RandomTimer = require('../common/game/time/RandomTimer');
+	var RandomTimer = require('../common/game/time/RandomTimer.js');
+	var GroupManager2 = require('../common/game/util/GroupManager2.js');
 
 	var Client = require('../common/Client.js');
 	var S = require('../common/Settings.js');
@@ -149,6 +150,9 @@ function ServerGame(_socketHandler){
 			timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers()));
 			timer.startTimer(); //Start powerup timer when the mainscreen is connected.
 		}
+
+
+		console.log(GroupManager2.getGroup('Pole').getMemberLength());
 	};
 
 	this.deleteClient = function(socketID){
