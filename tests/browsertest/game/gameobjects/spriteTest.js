@@ -86,8 +86,14 @@ describe("Sprite", function(){
 		var s2 = new Sprite("");
 
 		it("The sprite should have a unique ID", function(){
+			expect(s.getID()).to.be.a("number");
 			expect(s.getID()).to.not.equal(s2.getID());
 		})
 	})
+	
+	describe("getTexture", function(){
+		var s = new Sprite("");
 
+		it("Should return the texturepath of the sprite - TBD");
+	})
 })

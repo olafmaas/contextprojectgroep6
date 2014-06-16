@@ -14,9 +14,7 @@ describe("CircularBody", function(){
 
 	describe("#HandleCollision", function(){
 		var b = new Ball(10);
-
 		
-
 		it("Should detect if the other object is a ball and pass it to another function", function(){
 			var othercb = new CircularBody(b);
 			cb = new CircularBody(b);

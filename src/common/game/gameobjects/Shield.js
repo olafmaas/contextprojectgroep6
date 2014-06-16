@@ -123,7 +123,7 @@ function Shield(_pole){
 	/**
 	* Sets the color of the shield.
 	* @method Shield#setColor
-	* @param {hex} _color - The color of the shield in hex value.
+	* @param {hex} _color - The color of the shield;
 	*/
 	this.setColor = function(_color){ color = _color; }
 

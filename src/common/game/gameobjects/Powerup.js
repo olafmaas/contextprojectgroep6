@@ -139,7 +139,7 @@ var Powerup = Base.extend({
 	/**
 	* @method Powerup#setRadius
 	*/
-	setRadius: function(_radius_) { this.radius = _radius; },
+	setRadius: function(_radius) { this.radius = _radius; },
 
 	/**
 	* @method Powerup#setColor
