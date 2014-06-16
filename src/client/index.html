@@ -7,6 +7,11 @@
         <meta name="viewport" content="width=device-width, user-scalable=0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <!-- css -->
+        <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/client.css">
     
         <!-- lib --> 
         <script src="../lib/socket.io.min.js"></script>  
@@ -60,29 +65,32 @@
         <!-- this game and connection -->
         <script src="js/PlayerGame.js"></script>
         <script src="js/PlayerConnection.js"></script>
-        
-        <style type="text/css">
-            body {
-                margin: 0;
-            }
-
-            #gameCanvas{
-                border: 0px solid red;
-            }
-        </style>
-
-
-        <script>
-            function startPlaying() {
-                startSocket();
-                //screenfull.request(); //uitgecomment omdat dit voor debuggen onhandig is.
-                var elem = document.getElementById('startButton');
-                elem.parentNode.removeChild(elem);
-            }
-        </script>
 
     </head>
     <body>
-        <button id="startButton" onclick="startPlaying()">Start Playing!</button>
+        <div id="usernameBox"> 
+            <div id="boxHeader"> Join the action now! </div>
+            Username: <input type="text" name="firstname" id="firstname" maxlength="20"> </br>
+            <button id="startButton" onclick="startPlaying()">Start Playing!</button> </br>
+            <span id="error" style="color: red;"> </span>
+        </div>  
     </body>
+
+    <script>
+        var s = new startSocket();
+        function startPlaying() {
+            var n = document.getElementById("firstname").value;
+            var error = document.getElementById("error");
+
+            if(n != null && n.length > 0){
+                if(n.length <= Settings.player.maxNameLength)
+                     s.checkName(n);
+                 else{
+                    error.innerHTML = "Username is too long.";
+                 }
+            } else {
+                error.innerHTML = "Username cannot be empty.";
+            }
+        }
+    </script>
 </html>

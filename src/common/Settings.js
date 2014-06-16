@@ -19,48 +19,55 @@ var Settings = {
 		time: 10,
 		color: "greenyellow",
 		length: 3.5,
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.15
 	},
 
 	bigShield: {
 		time: 15,
 		color: "violet",
 		length: 1,
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.4
 	},
 
 	smallPole: {
 		time: 15,
 		color: "yellow",
 		radius: 2, //by which factor the pole will be divided
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.4
 	},
 
 	bigPole: {
 		time: 10,
 		color: "aqua",
 		radius: 1.5, //by which factor the pole will be multiplied
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.15
 	},
 
 	revertShield: {
 		time: 10,
 		color: "red",
-		path: "../client/img/powerup.png"
+		path: "../client/img/powerup.png",
+		chance: 0.10
 	},
 
 	/**** POWERUP PROPERTIES ****/
 	nrOfPowerups: 5,
-	powerupSize: 20,
-	removalTime: 2000, //in ms, how long a powerup is present on screen.
+	powerupSize: 25,
+	removalTime: 4000, //in ms, how long a powerup is present on screen.
 	minTime: 10, //in ms, minimum time between powerup spawns.
 	maxTime: 30, //in ms, maximum time between powerup spawns.
 
 	/**** LABEL POSITIONS ****/
 	label: {
-		score: {x: 720, y: 425},
-		name: {x: 10, y: 15},
-		highscore: {x: 720, y: 440}
+		font: 'Indie Flower',
+		size: 20,
+		name: {x: 10, y: 25},
+		score: {x: 630, y: 415},
+		highscore: {x: 630, y: 440}
 	}, 
 
 	/**** CANVAS PROPERTIES ****/
@@ -83,16 +90,18 @@ var Settings = {
 	/**** BALL ****/
 	ball: {
 		size: 10,
-		velocity: 5,
-		velocityDirection: 1.70 * Math.PI,
+		velocityRange: {from: 4, to: 8}, //range of velocities to generate random velocity balls.
 		//Positions of initial ball
 		x: 100,
-		y: 100
+		y: 100,
+		nrOfNewBalls: 3 //Number of new balls created per player. 
 	},
 
 	player: {
-		points: 10,
-		step: 5 //step by which the score is incremented 
+		maxNameLength: 20, //maximum number of characters that can be used for a username
+		//Points for hitting player is now removed
+		points: 0,
+		step: 0 //step by which the score is incremented 
 	},
 
 	/**** HIGHSCORE PROPERTIES ****/	
@@ -100,7 +109,8 @@ var Settings = {
 		updateInterval: 5000,
 		top: 3,
 		colors: ["#B8E6E6", "#66CCFF", "#3399FF", "#0066FF", "#0000FF"] //from blue to light-blue
-	}
+	},
+	
 }
 
 if(typeof module != 'undefined'){

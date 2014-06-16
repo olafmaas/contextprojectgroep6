@@ -17,21 +17,19 @@ var Sprite = Base.extend({
 	position: {x: 0, y: 0},
 	scale: {x: 1, y: 1}, //Scale of the sprite
 	size: {x: 0, y: 0}, //Actual size of the sprite (used in combination with scale)	
-	ID: IDDistributor.getNewId(),
-
-	hooked: false, //Whether the sprite is hooked to an object
-	hookedTo: null, //The object the sprite is hooked to
+	ID: -1,
 	anchor: {x: 0, y: 0}, //Used to let the sprite be drawn from different position (e.g. with a circle)
 
 	constructor: function(_texturePath){
 		this.texture = new Image();
 		this.texture.src = _texturePath;
+		this.ID = IDDistributor.getNewId();
 	},
 
 	/**
 	* Checks whether two objects are equals by comparing their ID's
 	*
-	* @method Ball#equals
+	* @method Sprite#equals
 	* @param {Object} _other - The other object with which it is compared.
 	*/
 	equals: function(_other){ return (this.ID == _other.getID()); },

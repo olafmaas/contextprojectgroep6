@@ -1,4 +1,4 @@
-# Paaltjevoetbal 0.3
+# Paaltjesvoetbal 0.3
 
 Paaltjesvoetbal is a game that is played on mobile devices and a mainscreen.
 

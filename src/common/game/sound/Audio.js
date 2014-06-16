@@ -3,20 +3,23 @@ if(typeof module != 'undefined'){
 	var Howl = require('../../../lib/howler.min.js');
 }
 
-var Audio = Base.extend({
+var AudioTrack = Base.extend({
 
 	audioFile: 0,
 	vol: 2.5,
 
 	constructor: function(_url){
-		audioFile = new Howl({
-			urls: [_url],
-			vol: 2.5,
+		var arr = [];
+		arr.push(_url);
+
+		this.audioFile = new Howl({
+			urls: arr,
+			vol: this.vol,
 		})
 	},
 
 	play: function(){
-		audioFile.play();
+		this.audioFile.play();
 	}
 });
 

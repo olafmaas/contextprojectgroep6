@@ -3,6 +3,16 @@ function startSocket() {
 
 var socket = io.connect(Settings.server+":"+Settings.port).of('/player');
 
+this.checkName = function (_name){
+	//Emit to sockethandler
+	socket.emit('userName', _name);
+}
+
+function showError (_error){
+	var elem = document.getElementById("error");
+	elem.innerHTML = _error;
+}
+
 ////////////////////////////
 // Basic socket listeners //
 ////////////////////////////
@@ -27,21 +37,21 @@ socket.on('disconnect', function (data){
 	console.info('Disconnected from server');
 });
 
-socket.on('userName', function (free){
-	if(!free){
-		var randomName = "User" + Math.floor(Math.random()*10000);
-		var userName = prompt("Please enter your name", randomName);
-		if(userName == null) userName = randomName;
-
-		socket.emit('userName', userName); //player.getName());
-		player.setName(userName); 
-		player.setScore(0); //Reset score so it's equivalent with server's score
-	}
+socket.on('userNameInUse', function (){
+	showError("Username is already in use.");
 });
 
-//Sets the name label whenever a valid name is chosen by the player
-socket.on('showPlayerName', function (){
-	nameLabel.setText(player.getName());
+socket.on('showPlayerName', function (_name){
+	player.setName(_name);
+	player.setScore(0);
+	nameLabel.setText(_name);
+
+	//Remove the username part
+	var elem = document.getElementById("usernameBox");
+	elem.outerHTML = "";
+	//Make the canvas visible for the user
+	var gameElem = document.getElementById("gameCanvas");
+	gameElem.style.visibility="visible";
 });
 
 socket.on('updateScoreHit', function (_score){
@@ -91,7 +101,6 @@ socket.on(e.updateBalls, function (ballData) { //TODO: ID instead of index
 socket.on('newPlayer', function (_id){
 	player.setGlobalID(_id);
 });
-
 
 //Listener for powerup
 socket.on('addPowerup', function (data) {
@@ -196,8 +205,8 @@ function createBall(data){
 function createPowerup(data){
 	if(player.getGlobalID() == data.id){
 
-		if(powerup != null) game.remove(powerup);
-		var type = Math.floor(Math.random() * Settings.nrOfPowerups); //choose a radom type
+		if(powerup != null) removePowerup();
+		var type = randomPowerType(); //choose a radom type
 		powerup = game.instantiate(new Powerup(Settings.powerupSize, type));
 		
 		var chooser = Math.round(Math.random()); //random 0 or 1
@@ -219,6 +228,34 @@ function createPowerup(data){
 		createIcon(type); //temporarily disabled
 
 		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime); //set timer so powerup is removed after x seconds.
+	}
+};
+
+function randomPowerType(){
+
+	var random = Math.random();
+	var chanceOfSmallShield = Settings.smallShield.chance;
+	var chanceOfBigShield = Settings.bigShield.chance;
+	var chanceOfSmallPole = Settings.smallPole.chance;
+	var chanceOfBigPole = Settings.bigPole.chance;
+	var chanceOfRevert = Settings.revertShield.chance;
+	
+	var sum = chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole + chanceOfBigPole + chanceOfRevert;
+	
+	if(random < chanceOfSmallShield/sum){
+	 	return e.smallShield;
+	}
+	else if(random < (chanceOfSmallShield + chanceOfBigShield)/sum){
+		return e.bigShield;
+	}
+	else if(random < (chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole)/sum){
+		return e.smallPole;
+	}
+	else if(random < (chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole + chanceOfBigPole)/sum){
+		return e.bigPole;
+	}
+	else{
+		return e.revertShield;
 	}
 };
 
@@ -276,5 +313,4 @@ function removePowerup(){
 		icon = null;
 	}
 }
-
 }

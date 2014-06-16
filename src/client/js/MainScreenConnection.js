@@ -39,12 +39,7 @@ socket.on('updateCanvasSize', function (data) {
 });
 
 socket.on('updateScores', function (scores){
-
-    var scoreText = "";
-    for (i=0; i < scores.length; ++i) {
-        scoreText += scores[i].Score + ': ' + scores[i].Name + " |----| ";
-    }
-	document.getElementById("highScores").innerHTML = scoreText; //JSON.stringify(highScores);
+hview.updateScores(scores);
 });
 
 socket.on('updateTop', function (data) {
@@ -170,13 +165,19 @@ function createBall(data){
 
 function removeBall(globalID){
 	var members = balls.getMembers();
+
 	for(var i = 0; i < members.length; i++){
 		if(members[i].getGlobalID() === globalID){
 			game.remove(members[i]);
-			balls.removeMember(members[i]);
+			balls.removeMember(members[i]);	
 			return;
 		}
 	}
-	console.log("404 Ball not found")
+	console.log("404 Ball not found. GlobalID:" + globalID)
 	return;
 };
+
+
+function updateScale(data){
+	
+}

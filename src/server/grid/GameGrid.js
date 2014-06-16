@@ -14,32 +14,62 @@ if(typeof module != 'undefined'){
 function GameGrid() {
 	var grid = new Array();	//vertical
 	grid.push(new Array());	//horizontal (first row)
-	var maximumCol = 0;
+
+	var gridWidth = 1;
+	var gridHeight = 1;
+
 	var gridc = new GridCalc();
+
+	/**
+	* Add a new column to the grid. This column is filled with new blocks. 
+	* @method GameGrid#addColumn
+	*/
+	this.addColumn = function(){
+		var x = gridWidth;
+		gridWidth++;
+
+		for(var y = 0; y < grid.length; y++){
+			var b = new Block(false ,x * S.canvasWidth, y * S.canvasHeight)
+		
+			//Set horizontal Neighbours
+			grid[y][x-1].setNeighbour("right", b);
+			b.setNeighbour("left", grid[y][x-1]);
+			grid[y].push(b)
+
+			var clog= x-1
+
+			//Set vertical Neighbours
+			if(y > 0){
+				grid[y-1][x].setNeighbour("bottom", b);
+				b.setNeighbour("top", grid[y-1][x]);
+			}
+		}
+	};
 
 	/**
 	* Add a new row to the grid. The row is filled with new blocks. 
 	* @method GameGrid#addRow
 	*/
 	this.addRow = function(){
-		var l = grid.length;
+		var y = grid.length;
 		grid.push(new Array());
-		for(var i = 0; i < maximumCol; i++){
-			var b = new Block(false ,i * S.canvasWidth, l * S.canvasHeight)
-		
+
+		for(var x = 0; x < gridWidth; x++){
+			var b = new Block(false ,x * S.canvasWidth, y * S.canvasHeight)
+			
 			//Set vertical Neighbours
-			grid[l-1][i].setNeighbour("bottom", b);
-			b.setNeighbour("top", grid[l-1][i]);
-			grid[l].push(b)
+			grid[y-1][x].setNeighbour("bottom", b);
+			b.setNeighbour("top", grid[y-1][x]);
+			grid[y].push(b)
 
 			//Set horizontal Neighbours
-			if(i > 0){
-				grid[l][i-1].setNeighbour("right", b);
-				b.setNeighbour("left", grid[l][i-1]);
+			if(x > 0){
+				grid[y][x-1].setNeighbour("right", b);
+				b.setNeighbour("left", grid[y][x-1]);
 			}
 		}
 
-		return l;
+		gridHeight++;
 	};
 
 	this.getHeight = function(){ return grid.length; };
@@ -56,26 +86,38 @@ function GameGrid() {
 	* @param {ball} _ball - 
 	* @return {object} An object with the left and top boundary of the block in pixels. 
 	*/
-	this.updateGrid = function(socket, maxCol, ball){
+	this.updateGrid = function(socket, balls){
 		var x;
 		var y;
-		maximumCol = maxCol;
 
 		//Look for an available spot
 		for (var i = 0; i < this.getHeight(); i++) {
-			x = checkrow(socket , i, ball);
+			x = checkrow(socket , i, balls);
 			if(x != -1){
 				y = i;
 				break
 			}
 		}
 
-		//If no available spot is found add new row
+
+		//If no available spot is found add a new row or column
 		if(x < 0){
-			y = this.addRow();
-			x = 0;
-			grid[grid.length-1][0].setPlayer(socket);
-			grid[grid.length-1][0].addBall(ball);
+			if(gridWidth <= gridHeight){
+				//Add column
+				this.addColumn()
+				y = 0;
+				x = gridWidth - 1;
+				grid[y][x].setPlayer(socket);
+				addBalls(grid[y][x], balls)
+			}else{
+				//Add row
+				this.addRow();
+				y = gridHeight - 1; 
+				x = 0;
+				grid[y][x].setPlayer(socket);
+				addBalls(grid[y][x], balls)
+			}
+
 		}
 
 		return {left: x * S.canvasWidth, top: y * S.canvasHeight}; 
@@ -89,12 +131,14 @@ function GameGrid() {
 	* @param {ball} _ball - 
 	* @return {array} The index of the first availble spot. -1 otherwise. 
 	*/
-	checkrow = function(socket, i, ball){
-		for(var j = 0; j < maximumCol; j++){
+	checkrow = function(socket, i, balls){
+		for(var j = 0; j < gridWidth; j++){
 				if(grid[i].length == j){
 					grid[i].push(new Block(socket ,j * S.canvasWidth, i * S.canvasHeight))
+
 					grid[i][j].setPlayer(socket)
-					grid[i][j].addBall(ball);
+					addBalls(grid[i][j], balls)
+
 					if(j > 0){
 						grid[i][j-1].setNeighbour("right", grid[i][j]);
 						grid[i][j].setNeighbour("left", grid[i][j-1]);
@@ -102,12 +146,25 @@ function GameGrid() {
 					return j;
 				}else if(!grid[i][j].hasPlayer()){
 					grid[i][j].setPlayer(socket)
-					grid[i][j].addBall(ball);
+					addBalls(grid[i][j], balls)
 					return j;
 				}
 		}
 		return -1;
 	};
+
+
+	addBalls = function(_block, _balls){
+		_balls.forEach(function(b){
+			var xPos = Math.min(_block.getPosition().left + S.ball.x + Math.floor(Math.random()*S.ball.x), 
+					_block.getPosition().left + S.canvasWidth - b.getRadius());
+			var yPos = Math.min(_block.getPosition().top  + S.ball.y + Math.floor(Math.random()*S.ball.y), 
+					_block.getPosition().top + S.canvasHeight - b.getRadius());
+
+			b.setPosition(xPos, yPos)
+			_block.addBall(b);
+		})
+	}
 
 	/**
 	* Delete the player from the grid. 
