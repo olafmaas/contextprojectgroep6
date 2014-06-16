@@ -6,15 +6,19 @@ var GroupManager2 = {
 	groups: {},
 
 	addMember: function(element) {
-		console.log(element)
-		// var type = element.getType();
+		if(element.getType){
+			var type = element.getType();
 
-		// if(!this.groups[type]){
-		// 	this.groups[type] = new Group(type);
-		// } else {
-		// 	this.groups[type].addMember(element);
-		// }
+			if(!this.groups[type]){
+				this.groups[type] = new Group(type);
+			} 
+			
+			this.groups[type].addMember(element);
+		}
+	},
 
+	getGroup: function(type) {
+		return this.groups[type];
 	}
 	
 }

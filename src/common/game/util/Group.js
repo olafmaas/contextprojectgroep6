@@ -21,8 +21,11 @@ function Group(_type){
 	* @param {Object} _object - The object which is added to a list of members
 	*/
 	this.addMember = function(_object){
-		if(_object instanceof type)
+		if(_object.getType && (_object.getType() === type)){
 			members.push(_object);
+		} else if(_object instanceof type){
+			members.push(_object);
+		}
 	}
 
 	/**
