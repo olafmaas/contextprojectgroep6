@@ -58,7 +58,7 @@ function ServerGame(_socketHandler){
 
 		updatePowerupInterval();
 
-		var res = {id: clientList[socketID].player.getName(), polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
+		var res = {id: socketID, polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
 
 		sh.updateMainScreenCanvasSize(updateGameSize());
 		sh.newPlayer(socketID, res);
@@ -134,10 +134,16 @@ function ServerGame(_socketHandler){
 	};
 
 	function reconnectMainScreen(){
-		// var res = {id: clientList[socketID].player.getName(), polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
-		// GroupManager.getGroup
-		// 	sh.newPlayer(socketID, res);
-		// GroupManager.getGroup
+		for(var i=0; i < getNumberOfPlayers(); i++){
+			var player = GroupManager.getGroup('Player').getMember(i);
+			var socketID = getSocketID(player.getID());
+			var res = {id: socketID, polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
+			sh.newPlayer(socketID, res);
+		};
+
+		for(var i=0; i < nrOfBalls(); i++){
+			sh.newBall(GroupManager.getGroup('Ball').getMember(i));
+		}
 	}
 
 	updatePowerups = function() {
@@ -238,13 +244,15 @@ function ServerGame(_socketHandler){
 
 	function getNumberOfPlayers() { return Object.keys(clientList).length; };
 
-	nrOfBalls = function(){ return GroupManager.getGroup("Ball").getMemberLength(); };
+	function nrOfBalls(){ return GroupManager.getGroup("Ball").getMemberLength(); };
 
 	getBallPosition = function(_id){ return GroupManager.getGroup("Ball").getMember(_id).getPosition(); };
 
 	this.getSocketFromPlayerID = function(_playerID){ return clientList[playerIDs[_playerID]].socket; };
 
 	getSocketFromPlayerID = function(_playerID){ return clientList[playerIDs[_playerID]].socket; };
+
+	function getSocketID(_playerID){ return clientList[playerIDs[_playerID]].socket.id; };
 }
 
 module.exports = ServerGame;
