@@ -143,8 +143,8 @@ var Player = Base.extend({
 		this.pole.setPosition(_x, _y);
 		this.shield.setPosition(this.pole);
 		this.callback.callback.call(this.callback.context, {gid: this.getGlobalID(), x: _x, y: _y});
-	}
-	
+	},
+
 	/**
 	* Sets the timer belonging to the powerup.
 	*
