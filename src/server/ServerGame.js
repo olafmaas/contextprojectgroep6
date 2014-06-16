@@ -108,9 +108,6 @@ function ServerGame(_socketHandler){
 			timer.startTimer(); //Start powerup timer when the mainscreen is connected.
 		}
 
-		console.log('nr' + GroupManager.getGroup('Pole').getMemberLength());
-		console.log('nr' + GroupManager.getGroup('Pole').getMemberLength());
-
 	};
 
 	this.deleteClient = function(socketID){
@@ -191,8 +188,6 @@ function ServerGame(_socketHandler){
 	updatePoles = function() {
 		//Call isHit() when a pole is hit and send this event to the player
 		for(var i = 0; i < getNumberOfPlayers(); i++){
-			console.log(GroupManager.getGroup('Pole').getMemberLength());
-			console.log(GroupManager.getGroup("Pole") + 'adsfjklljklasdjjfal'+ i + pole);
 			var pole = GroupManager.getGroup("Pole").getMember(i);
 			
 			var player = GroupManager.getGroup("Player").getMemberByGlobalID(pole.getHitBy());
