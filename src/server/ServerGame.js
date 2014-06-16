@@ -242,7 +242,7 @@ function ServerGame(_socketHandler){
 			if(pole.hit){
 				incrementScore(player, pole);
 				pole.isHit();
-				sh.hitEmit(getSocketFromPlayerID(pole.player.getID()), pole.player.getGlobalID());
+				sh.hitEmit(getSocketFromPlayerID(pole.player.getGlobalID()), pole.player.getGlobalID());
 			}
 		}
 	};
@@ -254,7 +254,7 @@ function ServerGame(_socketHandler){
 		if(_player != -1) { 
 			if(_player.getGlobalID() != _pole.player.getGlobalID()) { //check if the player doesn't hit himself 
 				_player.incrementScore(_pole.player.getPoints()); //Increment score 
-				sh.updateScoreHit(getSocketFromPlayerID(_player.getID()), _pole.player.getPoints())
+				sh.updateScoreHit(getSocketFromPlayerID(_player.getGlobalID()), _pole.player.getPoints())
 			}
 		}
 	};
