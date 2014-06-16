@@ -61,3 +61,8 @@ body a{
     font-family: 'Indie Flower', cursive;
     font-size: 16pt;
 }
+
+#QRcode{
+    width: 100%;
+    
+}
