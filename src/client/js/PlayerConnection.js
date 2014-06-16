@@ -320,15 +320,14 @@ function startSocket() {
 
 	var powerupCDTimer = null;
 	var playerCDTimer = null;
+
 	function powerupCoolDown(_time) {
-		console.log("POWERUP")
 		clearTimeout(powerupCDTimer); //Clear any old timeout that might be present
         powerup.setCDAngle(0);
         powerupCDTimer = setTimeout(function() { coolDown(powerup, _time); }, _time);
 	}
 	
 	function playerCoolDown(_time){
-		console.log("PLAYER")
 		clearTimeout(playerCDTimer); //Clear any old timeout that might be present
     	pole.setCDAngle(0);		
     	playerCDTimer = setTimeout(function() { coolDown(pole, _time); }, _time);
@@ -338,10 +337,11 @@ function startSocket() {
 		if(_object != null){
 			_object.incrementCDAngle(4);
 			if(_object.getCDAngle() < 360) {
-				if(_object instanceof Player)
+				if(_object instanceof Pole) {
 					playerCDTimer = setTimeout(function() { coolDown(_object, _time); }, _time);
-				else
+				} else {
 					powerupCDTimer = setTimeout(function() { coolDown(_object, _time); }, _time);
+				}
 			}
 		}
 	}
