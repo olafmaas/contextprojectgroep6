@@ -29,16 +29,18 @@ function SocketHandler(_io){
 				serverGame.addClient(socket.id, socket);
 				serverGame.registerName(checkName, socket.id);
 				socket.emit('showPlayerName', name); //Set the normal name (with uppercases) to the player
+
+				socket.on('shieldAngle', function (_angle){ //dit staat hier omdat hier pas naar geluisterd moet worden nadat de player is aangemaakt
+					serverGame.setAngle(socket.id, _angle);
+					mainScreenSocket.emit('updateShieldAngle', {id: socket.id, angle: _angle});
+				});
 			}else{
 				console.log('Username already in use');
 				socket.emit('userNameInUse');
 			}
 		});
 
-		socket.on('shieldAngle', function (_angle){
-			serverGame.setAngle(socket.id, _angle);
-			mainScreenSocket.emit('updateShieldAngle', {id: socket.id, angle: _angle});
-		});
+
 
 		socket.on('powerupClicked', function (_playerID, _powerupType){
 			serverGame.setPowerup(_playerID, _powerupType);

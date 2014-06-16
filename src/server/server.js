@@ -27,7 +27,7 @@ io.of('/player').on('connection', function (socket) {
 		sh.setClientListeners(socket, sg);
 	}
 	else{
-		socket.send('404: MainScreen not found!');
+		socket.send('MainScreen not found!');
 		socket.disconnect();
 	} 
 });
