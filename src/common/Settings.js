@@ -110,6 +110,12 @@ var Settings = {
 		top: 3,
 		colors: ["#B8E6E6", "#66CCFF", "#3399FF", "#0066FF", "#0000FF"] //from blue to light-blue
 	},
+
+	joinIndicator: {
+		times: 10,
+		interval: 200,
+		color: 'red'
+	}
 	
 }
 

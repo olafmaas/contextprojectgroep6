@@ -75,6 +75,7 @@ socket.on('updateTop', function (data) {
 
 socket.on('newPlayer', function (data) {
 	createPlayerObjects(data);
+	playerData[data.id].pole.indicateJoin();
 });
 
 //Listener which waits for an added ball from socketHandler

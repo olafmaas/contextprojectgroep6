@@ -3,6 +3,7 @@ if(typeof module != 'undefined'){
 	var Ball = require('./Ball.js');
 	var PlayerTimer = require('../time/PlayerTimer.js');
 	var IDDistributor = require('../util/IDDistributor.js');
+	var Settings = require('../../Settings.js');
 }
 /**
 * Pole class
@@ -51,6 +52,23 @@ var Pole = Ball.extend({
 			var savedThis = this;
 			setTimeout(function() { savedThis.setColor(savedThis.prevColor); savedThis.coolDown = false  }, 1000); //set cooldown period
 		}
+	},
+
+	indicateJoin: function(){
+		var i = 0;
+		this.setColor(Settings.joinIndicator.color);
+		var pole = this;
+		setInterval(function() { 
+			i++; 
+			if (i < Settings.joinIndicator.times) { 
+				if(pole.getColor() == Settings.joinIndicator.color){
+					pole.setColor(Settings.pole.color);
+				} else {
+					pole.setColor(Settings.joinIndicator.color);
+				};
+			}
+		}, 
+		Settings.joinIndicator.interval);
 	},
 
 	/**
