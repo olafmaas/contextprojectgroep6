@@ -227,7 +227,7 @@ function createPowerup(data){
 		powerup.setPosition(Settings.canvasWidth/2 + dx, Settings.canvasHeight/2 + dy);
 		createIcon(type); //temporarily disabled
 
-		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime); //set timer so powerup is removed after x seconds.
+		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime*1000); //set timer so powerup is removed after x seconds.
 	}
 };
 

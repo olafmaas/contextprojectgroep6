@@ -42,7 +42,7 @@ function loadContent(){
     player.setShield(shield);
     pole.setPlayer(player);
 
-    //Player labels, name is set once again when the user has
+    //Player labels, name is set once again when the user has filled in his/her name
     scoreLabel = game.instantiate(new ScoreLabel(player, "Score: 0"));
     scoreLabel.setPosition(Settings.label.score);
 
