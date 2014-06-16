@@ -82,5 +82,22 @@ Drawer = function(_canvasContext){
 		
 		canvasContext.fillStyle = _powerup.getColor();
 		canvasContext.fill();
+
+		//Draw the cooldown part
+		this.drawCooldownPowerup(_powerup);
 	};
+
+	this.drawCooldownPowerup = function (_powerup){
+		canvasContext.fillStyle = "white";
+
+		canvasContext.moveTo(_powerup.getPosition().x, _powerup.getPosition().y);
+		canvasContext.beginPath();
+		canvasContext.arc(
+            _powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius(), _powerup.getAngle() * Math.PI / 180,
+            (_powerup.getAngle() + 5) * Math.PI / 180, false
+        );
+		canvasContext.lineTo(_powerup.getPosition().x, _powerup.getPosition().y);
+        canvasContext.fill();
+        canvasContext.closePath();
+	}
 }

@@ -25,6 +25,7 @@ var Powerup = Base.extend({
 	body: false,
 	type: null,
 	radius: 1,
+	angle: 0, //Needed for cooldown
 	ID: -1,
 	timer: 0,
 	color: "red",
@@ -135,6 +136,8 @@ var Powerup = Base.extend({
 			return function(_player) { _player.getShield().revertShield(true); };		
 		}
 	},
+
+	incrementAngle: function(_angle){ this.angle += _angle; },
 	
 	/**
 	* @method Powerup#setRadius
@@ -155,6 +158,9 @@ var Powerup = Base.extend({
 	* @method Powerup#setType
 	*/
 	setType: function(_type){ this.type = _type; },
+
+	//Angle in degrees
+	setAngle: function(_angle) { this.angle = _angle },
 
 	/**
 	* @method Powerup#getColor
@@ -189,7 +195,9 @@ var Powerup = Base.extend({
 	/**
 	* @method Powerup#getBody
 	*/	
-	getBody: function(){ return this.body; }
+	getBody: function(){ return this.body; },
+
+	getAngle: function() { return this.angle; }
 });
 
 if(typeof module != 'undefined'){
