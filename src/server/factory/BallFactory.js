@@ -1,14 +1,10 @@
-if(typeof module != 'undefined'){
-	var Base = require('../../lib/Base.js');
+var IDDistributor = require('../../common/game/util/IDDistributor.js');
+var ColorGenerator = require('../../common/game/util/ColorGenerator');
+var Ball = require('../../common/game/gameobjects/Ball.js');
 
-	var IDDistributor = require('../../common/game/util/IDDistributor.js');
-	var ColorGenerator = require('../../common/game/util/ColorGenerator');
-	var Ball = require('../../common/game/gameobjects/Ball.js');
+var S = require('../../common/Settings.js');
 
-	var S = require('../../common/Settings.js');
-}
-
-var BallFactory = Base.extend({
+var BallFactory = {
 
 	createNewBall: function(_radius){
 		var velocity = this.randomVelocity();
@@ -43,8 +39,6 @@ var BallFactory = Base.extend({
 		
 		return {x: S.ball.x + (randomX * S.ball.size * 2), y: S.ball.y + (randomY * S.ball.size * 2)};
 	}
-});
+};
 
-if(typeof module != 'undefined'){
-    module.exports = BallFactory;
-}
+module.exports = BallFactory;

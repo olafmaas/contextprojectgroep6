@@ -1,15 +1,11 @@
-if(typeof module != 'undefined'){
-	var Base = require('../../lib/Base.js');
+var IDDistributor = require('../../common/game/util/IDDistributor.js');
+var Player = require('../../common/game/gameobjects/Player.js');
+var Pole = require('../../common/game/gameobjects/Pole.js');
+var Shield = require('../../common/game/gameobjects/Shield.js');
 
-	var IDDistributor = require('../../common/game/util/IDDistributor.js');
-	var Player = require('../../common/game/gameobjects/Player.js');
-	var Pole = require('../../common/game/gameobjects/Pole.js');
-	var Shield = require('../../common/game/gameobjects/Shield.js');
+var S = require('../../common/Settings.js');
 
-	var S = require('../../common/Settings.js');
-}
-
-var PlayerFactory = Base.extend({
+var PlayerFactory = {
 
 	createPlayer: function(polePos, id){
 		var player = new Player(id)
@@ -19,6 +15,7 @@ var PlayerFactory = Base.extend({
 		player.setShield(shield);
 		pole.setPlayer(player);
 		player.setGlobalID(IDDistributor.getNewId());
+
 		return player;
 	},
 
@@ -40,8 +37,6 @@ var PlayerFactory = Base.extend({
 
 		return shield;
 	},
-});
+};
 
-if(typeof module != 'undefined'){
-    module.exports = PlayerFactory;
-}
+module.exports = PlayerFactory;

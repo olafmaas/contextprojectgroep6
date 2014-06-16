@@ -1,5 +1,6 @@
 if(typeof module != 'undefined'){
 	var Settings = require('../Settings.js');
+	var GroupManager = require('./util/GroupManager.js');
 }
 
 /**
@@ -98,6 +99,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	* @param{object} _element - The element to instantiate
 	*/
 	this.instantiate = function(_element){
+		GroupManager.addMember(_element);
 		elements.push(_element);
 		return _element;
 	}
@@ -109,6 +111,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	* @param{object} _element - The element to remove
 	*/
 	this.remove = function(_element){
+		GroupManager.removeMember(_element);
 		elementIndex = elements.indexOf(_element);
 		elements.splice(elementIndex, 1);
 	}

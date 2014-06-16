@@ -141,7 +141,9 @@ var Ball = Base.extend({
 	* @method Ball#getGlobalID
 	* @return {number} The unique GlobalID of the ball
 	*/
-	getGlobalID: function(){ return this.globalID; }
+	getGlobalID: function(){ return this.globalID; },
+
+	getType: function(){ return 'Ball'; }
 
 });
 
