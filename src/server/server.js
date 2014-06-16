@@ -24,10 +24,10 @@ io.of('/mainscreen').on('connection', function (socket) {
 io.of('/player').on('connection', function (socket) {
 	if(sh.hasMainScreen()){
 		console.log('Client connected - id: ' + socket.id);
-		sh.setClientListeners(socket, sg);
+		sh.connectClient(socket, sg);
 	}
 	else{
-		socket.send('404: MainScreen not found!');
+		socket.send('MainScreen not found!');
 		socket.disconnect();
 	} 
 });

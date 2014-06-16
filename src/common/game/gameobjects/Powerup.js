@@ -25,6 +25,7 @@ var Powerup = Base.extend({
 	body: false,
 	type: null,
 	radius: 1,
+	angle: 0, //Needed for cooldown
 	ID: -1,
 	timer: 0,
 	color: "red",
@@ -135,6 +136,14 @@ var Powerup = Base.extend({
 			return function(_player) { _player.getShield().revertShield(true); };		
 		}
 	},
+
+	/**
+	* Increments the current coolDown angle by the specified amount.
+	*
+	* @method Powerup#incrementCDAngle
+	* @param {number} _angle - The angle by which the current angle is incremented (in degrees);
+	*/
+	incrementCDAngle: function(_angle){ this.angle += _angle; },
 	
 	/**
 	* @method Powerup#setRadius
@@ -155,6 +164,14 @@ var Powerup = Base.extend({
 	* @method Powerup#setType
 	*/
 	setType: function(_type){ this.type = _type; },
+
+	/**
+	* Sets the cooldown angle of the powerup.
+	*
+	* @method Powerup#setCDAngle
+	* @param {number} _angle - The angle in degrees.
+	*/
+	setCDAngle: function(_angle) { this.angle = _angle },
 
 	/**
 	* @method Powerup#getColor
@@ -189,7 +206,15 @@ var Powerup = Base.extend({
 	/**
 	* @method Powerup#getBody
 	*/	
-	getBody: function(){ return this.body; }
+	getBody: function(){ return this.body; },
+
+	/**
+	* Retrieves the current cooldown angle of the powerup
+	*
+	* @method Powerup#getCDAngle
+	* @return {number} - The current cooldown angle in degrees.
+	*/
+	getCDAngle: function() { return this.angle; }
 });
 
 if(typeof module != 'undefined'){

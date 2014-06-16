@@ -3,6 +3,7 @@ if(typeof module != 'undefined'){
 	var Ball = require('./Ball.js');
 	var PlayerTimer = require('../time/PlayerTimer.js');
 	var IDDistributor = require('../util/IDDistributor.js');
+	var Settings = require('../../Settings.js');
 }
 /**
 * Pole class
@@ -19,6 +20,7 @@ var Pole = Ball.extend({
 	coolDown: false,
 	prevColor: 0,
 	player: 0,
+	angle: 0, //Needed for the cooldown
 	timer: 0, //Each pole keeps its own 'alive' time
 	ID: -1,
 
@@ -53,6 +55,23 @@ var Pole = Ball.extend({
 		}
 	},
 
+	indicateJoin: function(){
+		var i = 0;
+		this.setColor(Settings.joinIndicator.color);
+		var pole = this;
+		setInterval(function() { 
+			i++; 
+			if (i < Settings.joinIndicator.times) { 
+				if(pole.getColor() == Settings.joinIndicator.color){
+					pole.setColor(Settings.pole.color);
+				} else {
+					pole.setColor(Settings.joinIndicator.color);
+				};
+			}
+		}, 
+		Settings.joinIndicator.interval);
+	},
+
 	/**
 	* Checks whether two objects are the same by comparing ID's
 	*
@@ -61,6 +80,14 @@ var Pole = Ball.extend({
 	*/
 	equals: function(_other){ return (this.ID == _other.getID()); },
 	
+	/**
+	* Increments the current coolDown angle by the specified amount.
+	*
+	* @method Pole#incrementCDAngle
+	* @param {number} _angle - The angle by which the current angle is incremented (in degrees);
+	*/
+	incrementCDAngle: function(_angle){ this.angle += _angle; },
+
 	/**
 	* Saves the highscore of the player, resets the score and restarts the timer
 	* @method Pole#saveHighScore
@@ -96,6 +123,14 @@ var Pole = Ball.extend({
 	setHitBy: function(_id) { this.hitBy = _id; },
 
 	/**
+	* Sets the cooldown angle of the pole.
+	*
+	* @method Pole#setCDAngle
+	* @param {number} _angle - The angle in degrees.
+	*/
+	setCDAngle: function (_angle) { this.angle = _angle; },
+
+	/**
 	* Returns the timer of a certain pole
 	* @method Pole#getTimer
 	* @return {Timer} - The timer belonging to the pole
@@ -118,7 +153,14 @@ var Pole = Ball.extend({
 	*/
 	getHitBy: function() { return this.hitBy; },
 
-	getType: function(){ return 'Pole'; }
+	getType: function(){ return 'Pole'; },
+	/**
+	* Retrieves the current cooldown angle of the pole
+	*
+	* @method Pole#getCDAngle
+	* @return {number} - The current cooldown angle in degrees.
+	*/
+	getCDAngle: function() { return this.angle; }
 
 });
 

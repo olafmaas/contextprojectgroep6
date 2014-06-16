@@ -39,7 +39,7 @@ socket.on('updateCanvasSize', function (data) {
 });
 
 socket.on('updateScores', function (scores){
-hview.updateScores(scores);
+	hview.updateScores(scores);
 });
 
 socket.on('updateTop', function (data) {
@@ -75,6 +75,7 @@ socket.on('updateTop', function (data) {
 
 socket.on('newPlayer', function (data) {
 	createPlayerObjects(data);
+	playerData[data.id].pole.indicateJoin();
 });
 
 //Listener which waits for an added ball from socketHandler
@@ -137,7 +138,7 @@ function createPlayerObjects(data){
 	pole.setPlayer(player);
 	players.addMember(player);
 
-	playerDataObject = new Client(socket, data.id, player, pole, shield)
+	playerDataObject = new Client(socket, player, pole, shield)
 	playerData[data.id] = playerDataObject;
 };
 
