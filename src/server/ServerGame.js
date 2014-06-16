@@ -35,6 +35,12 @@ function ServerGame(_socketHandler){
 
 	var timer = null;
 
+	//Create all groups
+	gm.addGroup("Balls", Ball);
+	gm.addGroup("Poles", Pole);
+	gm.addGroup("Shields", Shield);
+	gm.addGroup("Players", Player);
+
 	this.addMainScreen = function(_socketID){
 		sh.updateMainScreenCanvasSize(this.updateGameSize());
 		
@@ -65,7 +71,7 @@ function ServerGame(_socketHandler){
 	
 	addPowerup = function(){
 		var index = Math.floor(Math.random()*getNumberOfPlayers());
-		var member = GroupManager2.getGroup("Player").getMember(index);
+		var member = group("Players").getMember(index);
 		
 		if(member != undefined && member != null){
 			return { id: member.getGlobalID() };
@@ -82,12 +88,16 @@ function ServerGame(_socketHandler){
 
 		for(var i = 0; i < this.nofBallsToBeAdded(); i++){
 			var newBall = game.instantiate(bf.createNewBall(S.ball.size))
-			GroupManager2.getGroup("Ball").addMember(newBall);
+			group("Balls").addMember(newBall);
 			ballList.push(newBall);
 		}	
 
 		var positionOfPole = gameGrid.updateGrid(socket, ballList)
 		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
+		
+		group("Poles").addMember(game.instantiate(player.getPole()));
+		group("Shields").addMember(game.instantiate(player.getShield()));
+		group("Players").addMember(player);
 
 		clientList[socketID] = new Client(socket, socketID, player, player.getPole(), player.getShield());
 		playerIDs[player.getID()] = socketID;
@@ -107,22 +117,25 @@ function ServerGame(_socketHandler){
 			timer.startTimer(); //Start powerup timer when the mainscreen is connected.
 		}
 
-		console.log('nr' + GroupManager2.getGroup('Pole').getMemberLength());
-		console.log('nr' + GroupManager2.getGroup('Pole').getMemberLength());
 
+		console.log(GroupManager2.getGroup('Pole').getMemberLength());
 	};
 
 	this.deleteClient = function(socketID){
 		var client = clientList[socketID];
-		var members = GroupManager2.getGroup("Ball").getMembers();
+		var members = group("Balls").getMembers();
 		var slice = members.slice(-this.nofBallsToBeRemoved());
 
 		slice.forEach(function(b){
-			GroupManager2.getGroup("Ball").removeMember(b)
+			group("Balls").removeMember(b)
 			game.remove(b);
 			gameGrid.removeBall(b)	
 			sh.removeBall(b.getGlobalID());
 		})
+
+		group("Poles").removeMember(client.pole);
+		group("Shields").removeMember(client.shield);
+		group("Players").removeMember(client.player);
 
 		game.remove(client.pole);
 		game.remove(client.shield);
@@ -162,7 +175,7 @@ function ServerGame(_socketHandler){
 	};
 
 	this.setPowerup = function(_playerID, _powerupType){
-		var player = GroupManager2.getGroup("Player").getMemberByGlobalID(_playerID);
+		var player = group("Players").getMemberByGlobalID(_playerID);
 		if(player != -1){ //if player has been found
 			var powerup = new Powerup(S.powerupSize, _powerupType); //NOT game.instantiate!!, as it should not exists outside this function!
 			player.setPowerup(powerup);
@@ -190,11 +203,8 @@ function ServerGame(_socketHandler){
 	updatePoles = function() {
 		//Call isHit() when a pole is hit and send this event to the player
 		for(var i = 0; i < getNumberOfPlayers(); i++){
-			console.log(GroupManager2.getGroup('Pole').getMemberLength());
-			console.log(GroupManager2.getGroup("Pole") + 'adsfjklljklasdjjfal'+ i + pole);
-			var pole = GroupManager2.getGroup("Pole").getMember(i);
-			
-			var player = GroupManager2.getGroup("Player").getMemberByGlobalID(pole.getHitBy());
+			var pole = getGroup("Poles").getMember(i);
+			var player = getGroup("Players").getMemberByGlobalID(pole.getHitBy());
 			if(pole.hit){
 				incrementScore(player, pole);
 				pole.isHit();
@@ -255,11 +265,11 @@ function ServerGame(_socketHandler){
 
 	this.getGroup = function(_group){ return group(_group); };
 
-	this.getBall = function(_id){ return GroupManager2.getGroup("Ball").getMember(_id); };
+	this.getBall = function(_id){ return group("Balls").getMember(_id); };
 
-	nrOfBalls = function(){ return GroupManager2.getGroup("Ball").getMemberLength(); };
+	nrOfBalls = function(){ return group("Balls").getMemberLength(); };
 
-	getBallPosition = function(_id){ return GroupManager2.getGroup("Ball").getMember(_id).getPosition(); };
+	getBallPosition = function(_id){ return group("Balls").getMember(_id).getPosition(); };
 
 	this.getSocketFromPlayerID = function(_playerID){ return clientList[playerIDs[_playerID]].socket; };
 
