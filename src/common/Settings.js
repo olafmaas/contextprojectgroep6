@@ -56,8 +56,8 @@ var Settings = {
 
 	/**** POWERUP PROPERTIES ****/
 	nrOfPowerups: 5,
-	powerupSize: 20,
-	removalTime: 2000, //in ms, how long a powerup is present on screen.
+	powerupSize: 25,
+	removalTime: 4000, //in ms, how long a powerup is present on screen.
 	minTime: 10, //in ms, minimum time between powerup spawns.
 	maxTime: 30, //in ms, maximum time between powerup spawns.
 
@@ -99,8 +99,9 @@ var Settings = {
 
 	player: {
 		maxNameLength: 20, //maximum number of characters that can be used for a username
-		points: 10,
-		step: 5 //step by which the score is incremented 
+		//Points for hitting player is now removed
+		points: 0,
+		step: 0 //step by which the score is incremented 
 	},
 
 	/**** HIGHSCORE PROPERTIES ****/	
