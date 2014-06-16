@@ -224,6 +224,26 @@ var Block = Base.extend({
 		return -1;
 	},
 
+	getReadyForRowDeletion: function(){
+		if(this.hasNeighbour("bottom")){
+			this.neighbours["bottom"].updatePosition(this.position.x, this.position.y);
+			balls.forEach(function(b){
+				this.neighbours["bottom"].ballIncoming(b);
+			});
+			
+		}else{
+
+		}
+
+		this.neighbours
+
+
+	},
+
+	getReadyForColumnDeletion: function(){
+
+	},
+
 	/**
 	* Change the current player. Emit the canvasPosition and send all
 	* balls which are currently in this block to the player.
@@ -242,6 +262,25 @@ var Block = Base.extend({
 	},
 
 	/**
+	* Change the postion of the block. WARNING: This function also updates 
+	* the position of all the balls. 
+	* @method Block#updatPosition
+	* @param {number} x - The new x position.
+	* @param {number} y - The new y position 
+	*/
+	updatePosition: function(x, y){
+		var dx = this.position.x - x;
+		var dy = this.position.y - y;
+
+		balls.forEach(function(b){
+			b.setPostion(b.getPosition().x + dx, b.getPosition().y + dy)
+		});
+
+		this.position.x = x;
+		this.position.y = y;
+	}
+
+	/**
 	* Remove the current player by setting it to false. 
 	* @method Block#removePlayer
 	*/
@@ -252,6 +291,10 @@ var Block = Base.extend({
 	hasPlayer: function(){
 		return this.socket != false;
 	},
+
+	hasNeighbour: function(_direction){
+		return this.neighbours[_direction] == undefined;
+	}
 
 	hasBall: function(_ball){
 		return this.getBallIndex(_ball) != -1;

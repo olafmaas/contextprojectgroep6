@@ -72,10 +72,6 @@ function GameGrid() {
 		gridHeight++;
 	};
 
-	this.getHeight = function(){ return grid.length; };
-
-	this.getWidth = function(){ return grid[0].length; };
-
 	/**
 	* Add a new player to the grid, and adds ball to 
 	* the palyer's screen. The player is placed on the
@@ -99,9 +95,21 @@ function GameGrid() {
 			}
 		}
 
-
 		//If no available spot is found add a new row or column
 		if(x < 0){
+			var freeSpot = this.createFreeSpots(socket, balls);
+			x = freeSpot.x;
+			y = freeSpot.y;
+		}
+
+		return {left: x * S.canvasWidth, top: y * S.canvasHeight}; 
+	};
+
+
+	this.createFreeSpots = function(socket, balls){
+			var x;
+			var y;
+
 			if(gridWidth <= gridHeight){
 				//Add column
 				this.addColumn()
@@ -118,10 +126,8 @@ function GameGrid() {
 				addBalls(grid[y][x], balls)
 			}
 
-		}
-
-		return {left: x * S.canvasWidth, top: y * S.canvasHeight}; 
-	};
+			return {x: x, y: y};
+	}
 
 	/**
 	* Check if there is place available in row i. 
@@ -199,10 +205,36 @@ function GameGrid() {
 		})
 	};
 
+
+	this.cleanUp = function(){
+		cleanRows();
+		cleanColumns();
+	}
+
+	cleanRows = function(){
+		var emptyRows = []
+		for(var y = 0; y < grid[i].length; y++){
+			empty = true;
+			grid[y].forEach(function(_block){
+				empty = empty && _block.hasPlayer;
+			})
+
+			//If you would call deleteRows there 
+			if(empty) emptyRows.push(y);
+		}
+		deleteRows(emptyRows);
+	}
+
+	deleteRows =function(emptyRows){
+		emptyRows.forEach(function(y){
+			
+		})
+	}
+
 	/**
 	* Update all the blocks in the grid. 
 	* @method GameGrid#rupdate
-	*/
+	*/	
 	this.update = function(){
 		for(var i = 0; i < grid.length; i++){
 			for(var j = 0; j < grid[i].length; j++){
@@ -211,6 +243,9 @@ function GameGrid() {
 		}
 	};
 
+	this.getHeight = function(){ return grid.length; };
+
+	this.getWidth = function(){ return grid[0].length; };
 };
 
 if(typeof module != 'undefined'){
