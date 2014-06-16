@@ -230,6 +230,8 @@ var Block = Base.extend({
 			this.neighbours[_direction].updatePosition(this.position.left, this.position.top);
 			this.prepareBallsForDeletion(_direction)
 			this.neighbours[_direction].setNeighbour(_opposite, this.neighbours[_opposite]);
+			if(this.neighbours[_opposite] != undefined)
+				this.neighbours[_opposite].setNeighbour(_direction, this.neighbours[_direction]);
 		}else{
 			this.prepareBallsForDeletion(_opposite)
 			this.neighbours[_opposite].setNeighbour(_direction, undefined);
@@ -242,10 +244,10 @@ var Block = Base.extend({
 	prepareBallsForDeletion: function(direction){
 		this.ballsList.forEach(function(b){
 			//Kan problemen veroorzaken misschien ofzo.
-				b.setPosition(this.neighbours[direction].getPosition().left + ball.getRadius()
-						, this.neighbours[direction].getPosition().top + ball.getRadius())
-				
+				b.setPosition(this.neighbours[direction].getPosition().left + 2 *  ball.getRadius()
+						, this.neighbours[direction].getPosition().top + 2 * ball.getRadius())
 				this.neighbours[direction].ballIncoming(b);
+				console.log(b.getPosition().x + "pbd" + b.getPosition().y + " " + b.getColor())
 		}, this);
 	},
 
@@ -279,16 +281,17 @@ var Block = Base.extend({
 	*/
 	updatePosition: function(x, y){
 		var dx = x - this.position.left;
-		var dy = y - this.position.right;
+		var dy = y - this.position.top;
 
 		this.ballsList.forEach(function(b){
 			b.setPosition(b.getPosition().x + dx, b.getPosition().y + dy)
+			console.log(b.getPosition().x + "up" + b.getPosition().y + " " + b.getColor())
 		});
 
-		this.player.updatePosition(x + S.canvasWidth/2, y + S.canvasHeight/2)
+		if(this.player)	this.player.updatePosition(x + S.canvasWidth/2, y + S.canvasHeight/2)
 
 		this.position.left += dx
-		this.position.right += dy
+		this.position.top += dy
 
 		if(this.socket) this.socket.emit('canvasPos', {left: this.position.left, top: this.position.top});
 	},

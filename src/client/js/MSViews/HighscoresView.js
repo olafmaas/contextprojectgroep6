@@ -35,6 +35,7 @@ HighscoresView = function(){
 
 		//Hackerdehack
 		$("body").css("height", window.innerHeight +'px');
+		$("#gameDiv").css("max-height", window.innerHeight +'px');
 	}
 
 	this.updateScores = function(_scores){
