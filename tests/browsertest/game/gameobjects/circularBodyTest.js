@@ -2,7 +2,6 @@ describe("CircularBody", function(){
 
 	describe("#Update", function(){
 		
-		
 		var b = new Ball(10);
 		var mockedBall = sinon.stub(b, 'setPosition');
 
@@ -11,7 +10,6 @@ describe("CircularBody", function(){
 			cb.update();
 			expect(mockedBall).to.have.been.called;
 		})
-		
 	})
 
 	describe("#HandleCollision", function(){
