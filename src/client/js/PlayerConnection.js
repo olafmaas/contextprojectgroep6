@@ -307,6 +307,11 @@ function startSocket() {
 		}
 	};
 
+	/**
+	* Removes the powerup + icon from the user's screen
+	* 
+	* @method PlayerConnection#removePowerup
+	*/
 	function removePowerup(){
 		if(powerup != null){
 			game.remove(powerup);
@@ -321,18 +326,41 @@ function startSocket() {
 	var powerupCDTimer = null;
 	var playerCDTimer = null;
 
+	/**
+	* Instantiates the cooldown belonging to a powerup. 
+	* It also removes any previous timeout that is present (to avoid cooldowns going to quick)
+	*
+	* @method PlayerConnection#powerupCoolDown
+	* @param {number} _time - The time in milliseconds at which the setTimeout function is called
+	*/
 	function powerupCoolDown(_time) {
-		clearTimeout(powerupCDTimer); //Clear any old timeout that might be present
+		clearTimeout(powerupCDTimer); //Clear any old poweruptimeout that might be present
         powerup.setCDAngle(0);
         powerupCDTimer = setTimeout(function() { coolDown(powerup, _time); }, _time);
 	}
 	
+	/**
+	* Instantiates the cooldown belonging to a player after a powerup has been activated. 
+	* It also removes any previous timeout that is present (to avoid cooldowns going to quick)
+	*
+	* @method PlayerConnection#playerCoolDown
+	* @param {number} _time - The time in milliseconds at which the setTimeout function is called
+	*/
 	function playerCoolDown(_time){
-		clearTimeout(playerCDTimer); //Clear any old timeout that might be present
+		clearTimeout(playerCDTimer); //Clear any old playertimeout that might be present
     	pole.setCDAngle(0);		
     	playerCDTimer = setTimeout(function() { coolDown(pole, _time); }, _time);
     }
 
+    /**
+    * The cooldown function that is called by playerCoolDown and powerupCoolDown
+    * It handles the actual coolDown and makes sure the angles are set and the function
+    * is called again (until the cooldown is over)
+    *
+    * @method PlayerConnection#coolDown
+    * @param {Object} _object - The object which has the cooldown
+    * @param {numer} _time - The time in milliseconds at which the setTimout function is called
+    */
 	function coolDown(_object, _time){
 		if(_object != null){
 			_object.incrementCDAngle(4);
