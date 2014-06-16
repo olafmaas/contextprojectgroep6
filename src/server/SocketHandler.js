@@ -38,7 +38,7 @@ function SocketHandler(_io){
 	};
 
 	function setClientListeners(socket, serverGame){
-		socket.on('shieldAngle', function (_angle){ //dit staat hier omdat hier pas naar geluisterd moet worden nadat de player is aangemaakt
+		socket.on('shieldAngle', function (_angle){ 
 			serverGame.setAngle(socket.id, _angle);
 			mainScreenSocket.emit('updateShieldAngle', {id: socket.id, angle: _angle});
 		});
