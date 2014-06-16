@@ -235,10 +235,8 @@ var Block = Base.extend({
 		}
 
 		balls.forEach(function(b){
-				if(_direction == _opposite){
-					b.setPostion(this.neighbours[_opposite].getPosition().x + ball.getRadius()
-						, this.neighbours[_opposite].getPosition().y + ball.getRadius())
-				}
+				b.setPostion(this.neighbours[_direction].getPosition().x + ball.getRadius()
+						, this.neighbours[_direction].getPosition().y + ball.getRadius())
 				this.neighbours[direction].ballIncoming(b);
 		});
 	},

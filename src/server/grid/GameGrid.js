@@ -88,7 +88,7 @@ function GameGrid() {
 
 		//Look for an available spot
 		for (var i = 0; i < this.getHeight(); i++) {
-			x = checkrow(socket , i, balls);
+		 x = checkrow(socket , i, balls);
 			if(x != -1){
 				y = i;
 				break
@@ -213,7 +213,7 @@ function GameGrid() {
 
 	cleanRows = function(){
 		var emptyRows = []
-		for(var y = 0; y < grid[i].length; y++){
+		for(var y = 0; y < grid.length; y++){
 			empty = true;
 			grid[y].forEach(function(_block){
 				empty = empty && _block.hasPlayer;
@@ -225,11 +225,43 @@ function GameGrid() {
 		deleteRows(emptyRows);
 	}
 
-	deleteRows =function(emptyRows){
-		emptyRows.forEach(function(y){
-			
-		})
+	cleanColumns = function(){
+		var emptyCols = []
+
+		for(var x = 0; x < gridWidth; x++){
+			var empty = false;
+			for(var y = 0; grid.length; y++){
+				empty = empty && grid[y][x].hasPlayer();
+			}
+			if(empty) emptyCols.push(x);
+		}
+
+		deleteColumns(emptyRows);
 	}
+
+	deleteRows =function(emptyRows){
+		deletedRows = 0
+		emptyRows.forEach(function(y){
+			for(var x = 0; x < grid[y - deletedRows].length; x++){
+				grid[y][x].getReadyForDeletion("bottom", "top");
+			}
+			grid.splice(y-deletedRows, 1);
+			deletedRows++;
+			gridHeight--:
+		})
+	};
+
+	deleteColumns =function(emptyColumns){
+		deletedColumns = 0
+		emptyRows.forEach(function(x){
+			for(var y = 0; y < grid.length; y++){
+				grid[y][x].getReadyForDeletion("right", "left");
+				grid[y].splice(x-deletedColumns, 1);
+			}
+			deletedColumns++;
+			gridWidth--:
+		})
+	};
 
 	/**
 	* Update all the blocks in the grid. 
