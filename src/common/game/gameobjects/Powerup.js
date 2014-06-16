@@ -137,7 +137,7 @@ var Powerup = Base.extend({
 		}
 	},
 
-	incrementAngle: function(_angle){ this.angle += _angle; },
+	incrementCDAngle: function(_angle){ this.angle += _angle; },
 	
 	/**
 	* @method Powerup#setRadius
@@ -160,7 +160,7 @@ var Powerup = Base.extend({
 	setType: function(_type){ this.type = _type; },
 
 	//Angle in degrees
-	setAngle: function(_angle) { this.angle = _angle },
+	setCDAngle: function(_angle) { this.angle = _angle },
 
 	/**
 	* @method Powerup#getColor
@@ -197,7 +197,7 @@ var Powerup = Base.extend({
 	*/	
 	getBody: function(){ return this.body; },
 
-	getAngle: function() { return this.angle; }
+	getCDAngle: function() { return this.angle; }
 });
 
 if(typeof module != 'undefined'){

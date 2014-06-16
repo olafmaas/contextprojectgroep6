@@ -229,7 +229,7 @@ function startSocket() {
 
 			powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime*1000); //set timer so powerup is removed after x seconds.
 			isAnimating = false;
-			powerupCooldown();
+			powerupCoolDown();
 		}
 	};
 
@@ -321,10 +321,10 @@ function startSocket() {
 	var isAnimating = false;
 	var timeoutTime = (Settings.removalTime * 1000) / 90; //90 because we increment the angle by 4 (360/90 = 4)
 
-	function powerupCooldown() {
+	function powerupCoolDown() {
 		if(!isAnimating){
 			isAnimating = true;
-            powerup.setAngle(0);
+            powerup.setCDAngle(0);
 
             setTimeout(coolDown, timeoutTime);
 		}
@@ -332,8 +332,8 @@ function startSocket() {
 
 	function coolDown(){	
 		if(powerup != null){
-			powerup.incrementAngle(4);
-	        if (powerup.getAngle() < 360) {
+			powerup.incrementCDAngle(4);
+	        if (powerup.getCDAngle() < 360) {
 	            setTimeout(coolDown, timeoutTime);
 	        } else {
 	            isAnimating = false;

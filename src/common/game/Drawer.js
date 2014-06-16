@@ -12,8 +12,8 @@ Drawer = function(_canvasContext){
 	* @param {object} _element - The object to be drawn
 	*/
 	this.draw = function(_element){
-		if(_element instanceof Ball) this.drawBall(_element);
-		else if(_element instanceof Pole) this.drawBall(_element);
+		if(_element instanceof Ball) this.drawBall(_element, false);
+		else if(_element instanceof Pole) this.drawBall(_element, true);
 		else if(_element instanceof Shield) this.drawShield(_element);
 		else if(_element instanceof Label) this.drawLabel(_element);
 		else if(_element instanceof Powerup) this.drawPowerup(_element);
@@ -25,13 +25,15 @@ Drawer = function(_canvasContext){
 	* @method Drawer#drawBall
 	* @param {object} _ball - The ball object to be drawn
 	*/
-	this.drawBall = function(_ball){
+	this.drawBall = function(_ball, _isPole){
 		canvasContext.beginPath();
 		canvasContext.arc(_ball.getBody().position.x, _ball.getBody().position.y, _ball.radius, 0, Math.PI*2, true);
 		canvasContext.closePath();
 
 		canvasContext.fillStyle = _ball.color;
 		canvasContext.fill();
+
+		if(_isPole) { drawCoolDown(_ball); }
 	};
 
 	/**
@@ -84,22 +86,22 @@ Drawer = function(_canvasContext){
 		canvasContext.fill();
 
 		//Draw the cooldown part
-		this.drawCooldownPowerup(_powerup);
+		this.drawCoolDown(_powerup);
 	};
 
-	this.drawCooldownPowerup = function (_powerup){
-		if(_powerup.getAngle() > 0){
+	this.drawCoolDown = function (_object){
+		if(_object.getCDAngle() > 0){
 			var startAngle = Settings.startAngle;
-			var endAngle = (startAngle + _powerup.getAngle()) % 360;
+			var endAngle = (startAngle + _object.getCDAngle()) % 360;
 
-			canvasContext.fillStyle = "black";
-			canvasContext.moveTo(_powerup.getPosition().x, _powerup.getPosition().y);
+			canvasContext.fillStyle = "black"; //Has to be the current background color
+			canvasContext.moveTo(_object.getPosition().x, _object.getPosition().y);
 			canvasContext.beginPath();
 			canvasContext.arc(
-	            _powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius()+2, startAngle * Math.PI / 180,
+	            _object.getPosition().x, _object.getPosition().y, _object.getRadius()+2, startAngle * Math.PI / 180,
 	            endAngle * Math.PI / 180, false
 	        );
-			canvasContext.lineTo(_powerup.getPosition().x, _powerup.getPosition().y);
+			canvasContext.lineTo(_object.getPosition().x, _object.getPosition().y);
 	        canvasContext.fill();
 	        canvasContext.closePath();
     	}
