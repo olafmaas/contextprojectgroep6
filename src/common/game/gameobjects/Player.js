@@ -264,7 +264,10 @@ var Player = Base.extend({
 	* @method Player#getID
 	* @return {number} The ID of the player
 	*/
-	getID: function(){ return this.ID; }
+	getID: function(){ return this.ID; },
+
+	getType: function(){ return 'Player'; }
+
 });
 
 if(typeof module != 'undefined'){

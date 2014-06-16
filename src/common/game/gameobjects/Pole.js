@@ -116,7 +116,9 @@ var Pole = Ball.extend({
 	* @method Pole#getHitBy
 	* @return {number} - The global ID of the player
 	*/
-	getHitBy: function() { return this.hitBy; }
+	getHitBy: function() { return this.hitBy; },
+
+	getType: function(){ return 'Pole'; }
 
 });
 

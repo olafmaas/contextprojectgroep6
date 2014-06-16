@@ -217,7 +217,9 @@ function Shield(_pole){
 	* @method Shield#getID
 	* @return {number} The unique ID of the shield
 	*/
-	this.getID = function(){ return ID; }	
+	this.getID = function(){ return ID; },	
+
+	this.getType = function(){ return 'Shield'; }
 
 	//Stuff to execute when constructing
 	this.enableBody();
