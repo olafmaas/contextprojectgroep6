@@ -24,10 +24,11 @@ function SocketHandler(_io){
 		clientSockets[socket.id] = socket;
 
 		socket.on('userName', function (name){
-			if(serverGame.isNameAvailable(name)){
+			var checkName = name.toLowerCase();
+			if(serverGame.isNameAvailable(checkName)){
 				serverGame.addClient(socket.id, socket);
-				serverGame.registerName(name, socket.id);
-				socket.emit('showPlayerName', name);
+				serverGame.registerName(checkName, socket.id);
+				socket.emit('showPlayerName', name); //Set the normal name (with uppercases) to the player
 			}else{
 				console.log('Username already in use');
 				socket.emit('userNameInUse');
