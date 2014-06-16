@@ -102,6 +102,7 @@ socket.on('newPlayer', function (_id){
 	player.setGlobalID(_id);
 });
 
+
 //Listener for powerup
 socket.on('addPowerup', function (data) {
 	createPowerup(data);
@@ -177,7 +178,7 @@ function getBallIndex(_gid) {
 		}
 	}
 	return -1; 
-}
+};
 
 function removeBall(_gid) {
 	var ind = getBallIndex(_gid);
@@ -188,7 +189,7 @@ function removeBall(_gid) {
 		console.log("404 Ball Not Found");
 	}
 	return;
-}
+};
 
 //Create nr of ball with the corresponding colors in the color-array
 function createBall(data){
