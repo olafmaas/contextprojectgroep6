@@ -1,5 +1,6 @@
 if(typeof module != 'undefined'){
 	var Settings = require('../Settings.js');
+	var GroupManager2 = require('./util/GroupManager2.js');
 }
 
 /**
@@ -98,6 +99,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	* @param{object} _element - The element to instantiate
 	*/
 	this.instantiate = function(_element){
+		GroupManager2.addMember(_element);
 		elements.push(_element);
 		return _element;
 	}
