@@ -101,6 +101,10 @@ function SocketHandler(_io){
 	this.updateScoresMainScreen = function(hs){
 		mainScreenSocket.emit('updateScores', hs);	
 	};
+
+	this.updatePlayerOnMainscreen = function(data){
+		mainScreenSocket.emit('changePlayerPosition', data);	
+	}
 	
 	this.updateTop = function(data){
 		mainScreenSocket.emit('updateTop', data);

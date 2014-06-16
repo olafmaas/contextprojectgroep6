@@ -25,7 +25,7 @@ function ServerGame(_socketHandler){
 
 	this.createGame = function(_initialize, _update, _width, _height){
 		game = new CoreGame(_initialize, _update, _width, _height)
-	};
+	}
 
 	this.loadContent = function(){};
 
@@ -33,10 +33,13 @@ function ServerGame(_socketHandler){
 		updateBalls();
 		updatePowerups();
 		updatePoles();
-		gameGrid.update();
+		if(gameGrid.update()){
+			sh.updateMainScreenCanvasSize(updateGameSize());
+		}
 	};
 
 	this.addMainScreen = function(_socketID){
+		//		sh.updateMainScreenCanvasSize(updateMainScreenCanvasSize());
 		sh.updateMainScreenCanvasSize(updateGameSize());
 		if(getNumberOfPlayers() > 0){
 			reconnectMainScreen();
@@ -82,8 +85,9 @@ function ServerGame(_socketHandler){
 		}	
 
 		var positionOfPole = gameGrid.updateGrid(socket, ballList)
-		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id));
-
+		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id, this.updatePlayerOnMainscreen, this));
+		gameGrid.setPlayer(positionOfPole.left, positionOfPole.top , player);
+		
 		game.instantiate(player.getPole());
 		game.instantiate(player.getShield());
 
@@ -233,10 +237,14 @@ function ServerGame(_socketHandler){
 	function nofBallsToBeRemoved(){
 		return getNewBallsPerPlayer();
 	};
-	
+
 	function getNewBallsPerPlayer(){
 		return S.ball.nrOfNewBalls;
 	};
+
+	this.updatePlayerOnMainscreen = function(data){
+		sh.updatePlayerOnMainscreen(data);
+	}
 
 	//NOTE: als je er "function" voor zet zijn ze private, this.function is public, zonder function/this ervoor = global
 	//Getters and Setters

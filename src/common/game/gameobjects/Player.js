@@ -26,6 +26,7 @@ var Player = Base.extend({
 	originalState: {},
 	timer: null,
 	ID: -1,
+	callback: {callback: function(){return false}, context: undefined},
 
 	constructor: function(_name){
 		this.name = _name
@@ -132,6 +133,18 @@ var Player = Base.extend({
 		this.timer.startTimer();
 	},
 
+
+	setUpdateCallBack: function(_callback, _context){
+		this.callback.callback= _callback;
+		this.callback.context = _context;
+	},
+
+	updatePosition: function(_x, _y){
+		this.pole.setPosition(_x, _y);
+		this.shield.setPosition(this.pole);
+		this.callback.callback.call(this.callback.context, {gid: this.getGlobalID(), x: _x, y: _y});
+	}
+	
 	/**
 	* Sets the timer belonging to the powerup.
 	*
@@ -267,6 +280,7 @@ var Player = Base.extend({
 	getID: function(){ return this.ID; },
 
 	getType: function(){ return 'Player'; }
+
 
 });
 
