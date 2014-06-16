@@ -89,10 +89,10 @@ Drawer = function(_canvasContext){
 
 	this.drawCooldownPowerup = function (_powerup){
 		if(_powerup.getAngle() > 0){
-			var startAngle = Settings.startAngle;
+			var startAngle = Settings.startAngle * Math.PI / 180;
 			var endAngle = (startAngle + _powerup.getAngle()) % 360;
 
-			canvasContext.fillStyle = "black";
+			canvasContext.fillStyle = "black"; //Must be the current background color.
 			canvasContext.moveTo(_powerup.getPosition().x, _powerup.getPosition().y);
 			canvasContext.beginPath();
 			canvasContext.arc(

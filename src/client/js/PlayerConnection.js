@@ -296,7 +296,6 @@ function startSocket() {
 			var inY = Math.abs(powerupPos.y*scale - _y) <= powerup.getRadius();
 
 			if(inX && inY){
-				console.log("asdf");
 				clearTimeout(powerupRemovalTimer); //remove the timer
 				player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
 
@@ -320,7 +319,7 @@ function startSocket() {
 
 	//TODO: kijken of dit in powerup klasse kan
 	var isAnimating = false;
-	var timeoutTime = (Settings.removalTime * 1000) / 90;
+	var timeoutTime = (Settings.removalTime * 1000) / 90; //90 because we increment the angle by 4 (360/90 = 4)
 
 	function powerupCooldown() {
 		if(!isAnimating){
@@ -338,7 +337,6 @@ function startSocket() {
 	            setTimeout(coolDown, timeoutTime);
 	        } else {
 	            isAnimating = false;
-	            //removePowerup();
 	        }
 	    }
     }
