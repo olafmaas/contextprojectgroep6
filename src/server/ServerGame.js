@@ -97,7 +97,7 @@ function ServerGame(_socketHandler){
 		//Depending on the amount of players, the spawn time between powerups will go down.
 		if(timer != null && timer.hasStopped()){
 			timer = null;
-			sh.newPowerup(getRandomPlayerID());
+			sh.newPowerup(getRandomPlayerSocketID());
 			
 			if(timer == null && getNumberOfPlayers() > 0){
 				timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers())); //start a new timer for the next powerup
@@ -106,12 +106,12 @@ function ServerGame(_socketHandler){
 		}
 	};
 	
-	getRandomPlayerID = function(){
+	getRandomPlayerSocketID = function(){
 		var index = Math.floor(Math.random()*getNumberOfPlayers());
 		var member = group("Players").getMember(index);
 		
 		if(member != undefined && member != null){
-			return { id: member.getGlobalID() };
+			return playerIDs[member.getGlobalID()];
 		}
 	};
 	
@@ -137,7 +137,7 @@ function ServerGame(_socketHandler){
 		group("Players").addMember(player);
 
 		clientList[socketID] = new Client(socket, socketID, player, player.getPole(), player.getShield());
-		playerIDs[player.getID()] = socketID;
+		playerIDs[player.getGlobalID()] = socketID;
 
 		sh.updateMainScreenCanvasSize(this.updateMainScreenCanvasSize());
 

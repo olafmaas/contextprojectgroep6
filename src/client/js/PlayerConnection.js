@@ -103,8 +103,8 @@ socket.on('newPlayer', function (_id){
 });
 
 //Listener for powerup
-socket.on('addPowerup', function (data) {
-	createPowerup(data);
+socket.on('addPowerup', function () {
+	createPowerup();
 });
 
 socket.on('removeBall', function (gid) {
@@ -202,9 +202,7 @@ function createBall(data){
 };
 
 //The powerup stuff should be placed somewhere else I think..
-function createPowerup(data){
-	if(player.getGlobalID() == data.id){
-
+function createPowerup(){
 		if(powerup != null) removePowerup();
 		var type = randomPowerType(); //choose a radom type
 		powerup = game.instantiate(new Powerup(Settings.powerupSize, type));
@@ -228,7 +226,6 @@ function createPowerup(data){
 		createIcon(type); //temporarily disabled
 
 		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime); //set timer so powerup is removed after x seconds.
-	}
 };
 
 function randomPowerType(){
