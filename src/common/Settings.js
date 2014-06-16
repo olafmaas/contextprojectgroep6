@@ -56,8 +56,8 @@ var Settings = {
 
 	/**** POWERUP PROPERTIES ****/
 	nrOfPowerups: 5,
-	powerupSize: 20,
-	removalTime: 2000, //in ms, how long a powerup is present on screen.
+	powerupSize: 25,
+	removalTime: 4000, //in ms, how long a powerup is present on screen.
 	minTime: 10, //in ms, minimum time between powerup spawns.
 	maxTime: 30, //in ms, maximum time between powerup spawns.
 
