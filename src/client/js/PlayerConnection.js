@@ -226,6 +226,9 @@ function createPowerup(){
 		createIcon(type); //temporarily disabled
 
 		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime); //set timer so powerup is removed after x seconds.
+
+
+		socket.emit('powerupSpawned', player.getGlobalID(), type, powerup.getPosition());
 };
 
 function randomPowerType(){
