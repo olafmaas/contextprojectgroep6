@@ -152,7 +152,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 		if(Math.abs(window.orientation) == 90){
             updateCanvasSize();
         }else{
-            alert("For an optimal experience please hold your device horizontal.");
+           // alert("For an optimal experience please hold your device horizontal.");
         }
 	}
 	/**
