@@ -12,13 +12,19 @@ var GroupManager2 = {
 			if(!this.groups[type]){
 				this.groups[type] = new Group(type);
 			} 
-			
+
 			this.groups[type].addMember(element);
 		}
 	},
 
 	getGroup: function(type) {
 		return this.groups[type];
+	},
+
+	removeMember: function(element) {
+		if(element.getType){
+			this.groups[element.getType()].removeMember(element);
+		}
 	}
 	
 }
