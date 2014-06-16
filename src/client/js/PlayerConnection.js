@@ -324,7 +324,7 @@ function startSocket() {
 	function powerupCooldown() {
 		if(!isAnimating){
 			isAnimating = true;
-            powerup.setAngle(0);
+            powerup.setAngle(Settings.startAngle);
 
             setTimeout(coolDown, 20);
 		}
@@ -332,7 +332,7 @@ function startSocket() {
 
 	function coolDown(){	
 		powerup.incrementAngle(4);
-        if (powerup.getAngle() < 360) {
+        if (powerup.getAngle() < ((Settings.startAngle-1) % 360)) {
             setTimeout(coolDown, 20);
         } else {
             isAnimating = false;

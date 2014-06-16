@@ -25,7 +25,7 @@ var Powerup = Base.extend({
 	body: false,
 	type: null,
 	radius: 1,
-	angle: 0, //Needed for cooldown
+	angle: Settings.startAngle, //Needed for cooldown
 	ID: -1,
 	timer: 0,
 	color: "red",

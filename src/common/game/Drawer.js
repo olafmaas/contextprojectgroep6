@@ -88,16 +88,17 @@ Drawer = function(_canvasContext){
 	};
 
 	this.drawCooldownPowerup = function (_powerup){
-		canvasContext.fillStyle = "white";
-
-		canvasContext.moveTo(_powerup.getPosition().x, _powerup.getPosition().y);
-		canvasContext.beginPath();
-		canvasContext.arc(
-            _powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius(), _powerup.getAngle() * Math.PI / 180,
-            (_powerup.getAngle() + 5) * Math.PI / 180, false
-        );
-		canvasContext.lineTo(_powerup.getPosition().x, _powerup.getPosition().y);
-        canvasContext.fill();
-        canvasContext.closePath();
+		if(_powerup.getAngle() > Settings.startAngle){
+			canvasContext.fillStyle = "black";
+			canvasContext.moveTo(_powerup.getPosition().x, _powerup.getPosition().y);
+			canvasContext.beginPath();
+			canvasContext.arc(
+	            _powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius()+2, 0,
+	            (_powerup.getAngle() + 5) * Math.PI / 180, false
+	        );
+			canvasContext.lineTo(_powerup.getPosition().x, _powerup.getPosition().y);
+	        canvasContext.fill();
+	        canvasContext.closePath();
+    	}
 	}
 }
