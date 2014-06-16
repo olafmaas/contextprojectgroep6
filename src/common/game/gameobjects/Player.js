@@ -264,7 +264,13 @@ var Player = Base.extend({
 	* @method Player#getID
 	* @return {number} The ID of the player
 	*/
-	getID: function(){ return this.ID; }
+	getID: function(){ return this.ID; },
+
+	updatePosition: function(_x, _y){
+		this.pole.setPosition(_x, _y);
+		this.shield.setPosition(_x, _y);
+	}
+
 });
 
 if(typeof module != 'undefined'){

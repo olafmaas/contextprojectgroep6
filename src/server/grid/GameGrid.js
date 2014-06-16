@@ -205,11 +205,10 @@ function GameGrid() {
 		})
 	};
 
-
 	this.cleanUp = function(){
 		cleanRows();
 		cleanColumns();
-	}
+	};
 
 	cleanRows = function(){
 		var emptyRows = []
@@ -223,7 +222,7 @@ function GameGrid() {
 			if(empty) emptyRows.push(y);
 		}
 		deleteRows(emptyRows);
-	}
+	};
 
 	cleanColumns = function(){
 		var emptyCols = []
@@ -237,7 +236,7 @@ function GameGrid() {
 		}
 
 		deleteColumns(emptyRows);
-	}
+	};
 
 	deleteRows =function(emptyRows){
 		deletedRows = 0
@@ -273,6 +272,7 @@ function GameGrid() {
 				grid[i][j].update()
 			}
 		}
+		this.cleanUp();
 	};
 
 	this.getHeight = function(){ return grid.length; };
