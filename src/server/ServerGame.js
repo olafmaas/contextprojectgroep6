@@ -97,7 +97,7 @@ function ServerGame(_socketHandler){
 		//Depending on the amount of players, the spawn time between powerups will go down.
 		if(timer != null && timer.hasStopped()){
 			timer = null;
-			sh.newPowerup(addPowerup());
+			sh.newPowerup(getRandomPlayerID());
 			
 			if(timer == null && getNumberOfPlayers() > 0){
 				timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers())); //start a new timer for the next powerup
@@ -106,7 +106,7 @@ function ServerGame(_socketHandler){
 		}
 	};
 	
-	addPowerup = function(){
+	getRandomPlayerID = function(){
 		var index = Math.floor(Math.random()*getNumberOfPlayers());
 		var member = group("Players").getMember(index);
 		
