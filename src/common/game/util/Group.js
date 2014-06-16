@@ -35,7 +35,7 @@ function Group(_type){
 	* @param {Object} _object - The object which has to be deleted from the group.
 	*/
 	this.removeMember = function(_object){
-		if(_object instanceof type){
+		if((_object.getType && (_object.getType() === type)) ||_object instanceof type){
 			var found = false;
 			for(var i = members.length - 1; i >= 0; i--) {
     			if(members[i].getID() === _object.getID()) {

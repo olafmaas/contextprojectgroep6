@@ -111,6 +111,7 @@ function CoreGame(_initialize, _update, _width, _height){
 	* @param{object} _element - The element to remove
 	*/
 	this.remove = function(_element){
+		GroupManager2.removeMember(_element);
 		elementIndex = elements.indexOf(_element);
 		elements.splice(elementIndex, 1);
 	}
