@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    height: 100%;
+}
+
+body a{
+    color: white;
+}
+
+#HighscoresView{
+    float:left;
+}
+
+.Position, .Score, .Name, #NameTitle, #ScoreTitle{
+    display: inline-block;
+}
+
+.container{
+    width: 100%;
+    display: inline-block;
+}
+
+.Name, .Position {
+    float: left;
+}
+
+.Name{
+    margin-left: 5;
+}
+
+.Score{
+    float: right;
+}
+
+#gameDiv{
+    float:left;
+    width: 80%;
+    
+    
+}
+
+#Title{
+    text-align: center;
+    margin: 30 0;
+}
+
+#ScoreTitle{
+    float: right;
+}
+
+#ScoreTable{
+    margin: 0 50;
+}
+
+#joinlink{
+    width: 100%;
+    height: 5%;
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    font-size: 16pt;
+}
