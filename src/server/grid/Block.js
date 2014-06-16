@@ -224,24 +224,23 @@ var Block = Base.extend({
 		return -1;
 	},
 
-	getReadyForRowDeletion: function(){
-		if(this.hasNeighbour("bottom")){
-			this.neighbours["bottom"].updatePosition(this.position.x, this.position.y);
-			balls.forEach(function(b){
-				this.neighbours["bottom"].ballIncoming(b);
-			});
-			
+	getReadyForDeletion: function(_direction, _opposite){
+		var direction = _direction;
+		if(this.hasNeighbour(_direction)){
+			this.neighbours[_direction].updatePosition(this.position.x, this.position.y);
+			this.neighbours[_direction].setNeighbour(_opposite, this.neighbours[_opposite]);
 		}else{
-
+			var direction = _opposite;
+			this.neighbours[_opposite].setNeighbour(direction, undefined);
 		}
 
-		this.neighbours
-
-
-	},
-
-	getReadyForColumnDeletion: function(){
-
+		balls.forEach(function(b){
+				if(_direction == _opposite){
+					b.setPostion(this.neighbours[_opposite].getPosition().x + ball.getRadius()
+						, this.neighbours[_opposite].getPosition().y + ball.getRadius())
+				}
+				this.neighbours[direction].ballIncoming(b);
+		});
 	},
 
 	/**
