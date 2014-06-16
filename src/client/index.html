@@ -76,7 +76,9 @@
             <span id="error" style="color: red;"> </span>
         </div>  
 
-        <div id="gameControls">
+        <button id="toggleControls" onclick="toggle()"> Show/hide game info </button> </br>
+
+        <div id="gameControls" style="display: none;">
             Protect your pole from the incoming balls and show who's the best by ranking up against other players!
 
             <div id="controlHeader">Some basic stuff you might want to know about: </div>
@@ -105,6 +107,20 @@
     </body>
 
     <script>
+    var state = true;
+        function toggle(){
+            var description = document.getElementById("gameControls");
+            if(state){
+                description.style.display = 'block';
+                state = false;
+            }
+            else {
+                description.style.display = 'none';
+                state = true;
+            }
+        }
+
+
         var s = new startSocket();
         function startPlaying() {
             var n = document.getElementById("firstname").value;

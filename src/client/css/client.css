@@ -8,10 +8,10 @@
     -moz-border-radius: 10px;
     padding: 10px;
     margin-top: 30px;
-    margin-left: 35px;
+    margin-left: 15px;
     color: white;
     font-size: 16pt;
-    width: 400px;
+    width: 350px;
 }
 
 #usernameBox textarea, input {
@@ -41,8 +41,8 @@
 #gameControls {
     width: 500px;
     padding: 10px;
-    margin-top: 30px;
-    margin-left: 35px;
+    margin-top: 10px;
+    margin-left: 15px;
     font-size: 11pt;
 }
 
@@ -56,6 +56,16 @@
     margin-top: 15px;
     font-size: 14pt;
     margin-bottom: 2px;
+}
+
+#toggleControls {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    font-family: 'Indie Flower';
+    font-size: 10pt;
+    margin-left: 35px;
+    margin-top: 5px;
+    color: white;
 }
 
 #hint {
