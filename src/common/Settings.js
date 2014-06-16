@@ -99,8 +99,9 @@ var Settings = {
 
 	player: {
 		maxNameLength: 20, //maximum number of characters that can be used for a username
-		points: 10,
-		step: 5 //step by which the score is incremented 
+		//Points for hitting player is now removed
+		points: 0,
+		step: 0 //step by which the score is incremented 
 	},
 
 	/**** HIGHSCORE PROPERTIES ****/	
