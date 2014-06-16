@@ -47,11 +47,11 @@ function startSocket() {
 		nameLabel.setText(_name);
 
 		//Remove the username part
-		var elem = document.getElementById("usernameBox");
+		var elem = document.getElementById("removeAfterStart");
 		elem.outerHTML = "";
 		//Make the canvas visible for the user
 		var gameElem = document.getElementById("gameCanvas");
-		gameElem.style.visibility="visible";
+		gameElem.style.display="block";
 	});
 
 	socket.on('updateScoreHit', function (_score){

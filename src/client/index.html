@@ -69,6 +69,7 @@
 
     </head>
     <body>
+    <div id="removeAfterStart">
         <div id="usernameBox"> 
             <div id="boxHeader"> Join the action now! </div>
             Username: <input type="text" name="firstname" id="firstname" maxlength="20"> </br>
@@ -100,14 +101,13 @@
             <div id="clear"/>
 
             <img src="img/controlGuide/powerup_active.png" alt="Active Powerup" height="70"/>
-            After you've tapped a powerup, you will see a ring around your pole. This ring indicates which powerup is currently active (color) and for how long. Whenever the ring runs out, the powerup will no longer be active.
-
-            
+            After you've tapped a powerup, you will see a ring around your pole. This ring indicates which powerup is currently active (color) and for how long. Whenever the ring runs out, the powerup will no longer be active. 
         </div>
+    </div>
     </body>
 
     <script>
-    var state = true;
+        var state = true; //Used to toggle between show/hide game info
         function toggle(){
             var description = document.getElementById("gameControls");
             if(state){
@@ -119,7 +119,6 @@
                 state = true;
             }
         }
-
 
         var s = new startSocket();
         function startPlaying() {
