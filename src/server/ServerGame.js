@@ -12,8 +12,8 @@ var Client = require('../common/Client.js');
 var S = require('../common/Settings.js');
 
 var GameGrid = require('./grid/GameGrid.js');
-var PlayerFactory = require('./factory/PlayerFactory.js');
-var BallFactory = require('./factory/BallFactory.js');
+var pf = require('./factory/PlayerFactory.js');
+var bf = require('./factory/BallFactory.js');
 
 var HighScores = require('./game/HighScores.js');
 
@@ -27,8 +27,6 @@ function ServerGame(_socketHandler){
 	var playerIDs = {};
 	var namesList = [];
 	var gameGrid = new GameGrid();
-	var pf = new PlayerFactory();
-	var bf = new BallFactory();
 
 	var timer = null;
 
@@ -43,7 +41,6 @@ function ServerGame(_socketHandler){
 		sh.updateScoresMainScreen(hs);
 		if(hs)
 			sh.updateTop(HighScores.reviseTop(hs.splice(0, S.highScore.top)));
-
 	};
 
 	updatePowerups = function() {
@@ -213,19 +210,17 @@ function ServerGame(_socketHandler){
 	//If you want some fancy function for the number of balls change ballsToBeAdded and ballsToBeRemoved.
 	this.nofBallsToBeAdded = function(){
 		return this.getNewBallsPerPlayer();
-	}
+	};
 
 	this.nofBallsToBeRemoved = function(){
 		return this.getNewBallsPerPlayer();
-	}
-
+	};
 	
 	this.getNewBallsPerPlayer = function(){
 		return S.ball.nrOfNewBalls;
-	}
+	};
 
 
-	//TODO: hier de dubbele functies nog weghalen 
 	//NOTE: als je er "function" voor zet zijn ze private, this.function is public, zonder function/this ervoor = global
 	//Getters and Setters
 	this.getNumberOfPlayers = function(){ return Object.keys(clientList).length; };
