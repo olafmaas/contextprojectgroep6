@@ -62,9 +62,14 @@ var Pole = Ball.extend({
 	*/
 	equals: function(_other){ return (this.ID == _other.getID()); },
 	
-
+	/**
+	* Increments the current coolDown angle by the specified amount.
+	*
+	* @method Pole#incrementCDAngle
+	* @param {number} _angle - The angle by which the current angle is incremented (in degrees);
+	*/
 	incrementCDAngle: function(_angle){ this.angle += _angle; },
-	
+
 	/**
 	* Saves the highscore of the player, resets the score and restarts the timer
 	* @method Pole#saveHighScore
@@ -99,6 +104,12 @@ var Pole = Ball.extend({
 	*/
 	setHitBy: function(_id) { this.hitBy = _id; },
 
+	/**
+	* Sets the cooldown angle of the pole.
+	*
+	* @method Pole#setCDAngle
+	* @param {number} _angle - The angle in degrees.
+	*/
 	setCDAngle: function (_angle) { this.angle = _angle; },
 
 	/**
@@ -124,6 +135,12 @@ var Pole = Ball.extend({
 	*/
 	getHitBy: function() { return this.hitBy; },
 
+	/**
+	* Retrieves the current cooldown angle of the pole
+	*
+	* @method Pole#getCDAngle
+	* @return {number} - The current cooldown angle in degrees.
+	*/
 	getCDAngle: function() { return this.angle; }
 
 });

@@ -137,6 +137,12 @@ var Powerup = Base.extend({
 		}
 	},
 
+	/**
+	* Increments the current coolDown angle by the specified amount.
+	*
+	* @method Powerup#incrementCDAngle
+	* @param {number} _angle - The angle by which the current angle is incremented (in degrees);
+	*/
 	incrementCDAngle: function(_angle){ this.angle += _angle; },
 	
 	/**
@@ -159,7 +165,12 @@ var Powerup = Base.extend({
 	*/
 	setType: function(_type){ this.type = _type; },
 
-	//Angle in degrees
+	/**
+	* Sets the cooldown angle of the powerup.
+	*
+	* @method Powerup#setCDAngle
+	* @param {number} _angle - The angle in degrees.
+	*/
 	setCDAngle: function(_angle) { this.angle = _angle },
 
 	/**
@@ -197,6 +208,12 @@ var Powerup = Base.extend({
 	*/	
 	getBody: function(){ return this.body; },
 
+	/**
+	* Retrieves the current cooldown angle of the powerup
+	*
+	* @method Powerup#getCDAngle
+	* @return {number} - The current cooldown angle in degrees.
+	*/
 	getCDAngle: function() { return this.angle; }
 });
 

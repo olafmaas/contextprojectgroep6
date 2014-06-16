@@ -228,8 +228,8 @@ function startSocket() {
 			createIcon(type); //temporarily disabled
 
 			powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime*1000); //set timer so powerup is removed after x seconds.
-			isAnimating = false;
-			powerupCoolDown();
+
+			powerupCoolDown((Settings.removalTime * 1000) / 90); //90 because we increment the angle by 4 (360/90 = 4)
 		}
 	};
 
@@ -299,7 +299,7 @@ function startSocket() {
 				isAnimating2 = false;
 				clearTimeout(powerupRemovalTimer); //remove the timer
 				player.setPowerup(powerup); //weghalen, want moet door server geregeld worden.
-				playerCoolDown();
+				playerCoolDown((player.getPowerup().getTimer().getTime() * 1000) / 90);
 
 				socket.emit('powerupClicked', player.getGlobalID(), powerup.getType());
 
@@ -319,52 +319,21 @@ function startSocket() {
 		}
 	}
 
-	//TODO: kijken of dit in powerup klasse kan
-	var isAnimating = false;
-	var timeoutTime = (Settings.removalTime * 1000) / 90; //90 because we increment the angle by 4 (360/90 = 4)
-
-	var isAnimating2 = false;
-	var timeoutTime2 = 0;
-
-	function powerupCoolDown() {
-		if(!isAnimating){
-			isAnimating = true;
-            powerup.setCDAngle(0);
-
-            setTimeout(coolDown, timeoutTime);
-		}
+	function powerupCoolDown(_time) {
+        powerup.setCDAngle(0);
+        setTimeout(function() { coolDown(powerup, _time); }, _time);
 	}
 
-	function coolDown(){	
-		if(powerup != null){
-			powerup.incrementCDAngle(4);
-	        if (powerup.getCDAngle() < 360) {
-	            setTimeout(coolDown, timeoutTime);
-	        } else {
-	            isAnimating = false;
-	        }
-	    }
+	function playerCoolDown(_time){
+    	pole.setCDAngle(0);		
+    	setTimeout(function() { coolDown(pole, _time); }, _time);
     }
 
-    function playerCoolDown(){
-    	if(!isAnimating2){
-    		isAnimating2 = true;
-    		pole.setCDAngle(0);
-
-    		timeoutTime2 = (player.getPowerup().getTimer().getTime() * 1000) / 90;
-    		setTimeout(coolDown2, timeoutTime2);
-    	}
-    }
-
-    function coolDown2() {
-    	if(player.getPowerup() != null){
-    		pole.incrementCDAngle(4);
-    		if(pole.getCDAngle() < 360) {
-    			setTimeout(coolDown2, timeoutTime2);
-    		} else {
-    			isAnimating2 = false;
-    		}
-    	}
-    }
-
+	function coolDown(_object, _time){
+		if(_object != null){
+			_object.incrementCDAngle(4);
+			if(_object.getCDAngle() < 360)
+				setTimeout(function() { coolDown(_object, _time); }, _time);
+		}
+	}
 }
