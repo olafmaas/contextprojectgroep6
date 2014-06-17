@@ -107,26 +107,26 @@ function GameGrid() {
 
 
 	this.createFreeSpots = function(socket, balls){
-			var x;
-			var y;
+		var x;
+		var y;
 
-			if(gridWidth <= gridHeight){
-				//Add column
-				this.addColumn()
-				y = 0;
-				x = gridWidth - 1;
-				grid[y][x].setSocket(socket);
-				addBalls(grid[y][x], balls)
-			}else{
-				//Add row
-				this.addRow();
-				y = gridHeight - 1; 
-				x = 0;
-				grid[y][x].setSocket(socket);
-				addBalls(grid[y][x], balls)
-			}
+		if(gridWidth <= gridHeight){
+			//Add column
+			this.addColumn()
+			y = 0;
+			x = gridWidth - 1;
+			grid[y][x].setSocket(socket);
+			addBalls(grid[y][x], balls)
+		}else{
+			//Add row
+			this.addRow();
+			y = gridHeight - 1; 
+			x = 0;
+			grid[y][x].setSocket(socket);
+			addBalls(grid[y][x], balls)
+		}
 
-			return {x: x, y: y};
+		return {x: x, y: y};
 	}
 
 	/**
@@ -162,8 +162,10 @@ function GameGrid() {
 
 	addBalls = function(_block, _balls){
 		_balls.forEach(function(b){
+
 			var xPos = Math.min(_block.getPosition().left + S.ball.x + Math.floor(Math.random()*S.ball.x), 
 					_block.getPosition().left + S.canvasWidth - b.getRadius());
+
 			var yPos = Math.min(_block.getPosition().top  + S.ball.y + Math.floor(Math.random()*S.ball.y), 
 					_block.getPosition().top + S.canvasHeight - b.getRadius());
 
@@ -238,7 +240,6 @@ function GameGrid() {
 
 			if(empty) {
 				emptyCols.push(x);
-				console.log("Empty Column" + x)
 			}
 		}
 

@@ -7,6 +7,7 @@ var S = require('../../common/Settings.js');
 
 var PlayerFactory = {
 
+
 	createPlayer: function(polePos, id, callback, context){
 		var player = new Player(id)
 		var pole = this.createPole(polePos);
@@ -22,7 +23,7 @@ var PlayerFactory = {
 
 	/**
 	* Create new Pole
-	* @method Group#update
+	* @method PlayerFactory#createPole
 	* @param {GroupManager} gm, group manager used to add pole
 	*/
 	createPole: function(polePos){
