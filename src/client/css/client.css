@@ -72,7 +72,7 @@
     font-size: 10pt;
 }
 
-#clear {
+.clear {
     margin-top: 5px;
     margin-bottom: 5px;
     clear: both;
