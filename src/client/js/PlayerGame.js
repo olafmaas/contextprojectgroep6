@@ -5,7 +5,7 @@ var pole;
 var shield;
 var player;
 var balls;
-var powerup = null;
+
 var scoreLabel;
 var nameLabel;
 var highscoreLabel;
