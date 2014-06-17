@@ -3,7 +3,7 @@ if(typeof module != 'undefined'){
 
 	var e = require('../../common/Enums.js');
 	var Ball = require('../../common/game/gameobjects/Ball.js');
-	var S = require('../../common/Settings.js');
+	var Settings = require('../../common/Settings.js');
 }
 
 
@@ -93,7 +93,7 @@ var Block = Base.extend({
 		}
 
 		//Bottom
-		if((yPosInBlock > (S.canvasHeight - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().y > 0)){
+		if((yPosInBlock > (Settings.canvasHeight - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().y > 0)){
 			sendTo.push("bottom")
 		}
 
@@ -103,7 +103,7 @@ var Block = Base.extend({
 		}
 
 		//right
-		if((xPosInBlock > (S.canvasWidth - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().x > 0)){
+		if((xPosInBlock > (Settings.canvasWidth - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().x > 0)){
 			sendTo.push("right")
 		}
 
@@ -127,7 +127,7 @@ var Block = Base.extend({
 		}
 
 		//Bottom
-		if((yPosInBlock > (_ball.getRadius() + S.canvasHeight)) && (_ball.getBody().getVectorVelocity().y > 0)){
+		if((yPosInBlock > (_ball.getRadius() + Settings.canvasHeight)) && (_ball.getBody().getVectorVelocity().y > 0)){
 			del = true;
 		}
 
@@ -137,7 +137,7 @@ var Block = Base.extend({
 		}
 
 		//right
-		if((xPosInBlock > (_ball.getRadius() + S.canvasWidth)) && (_ball.getBody().getVectorVelocity().x > 0)){
+		if((xPosInBlock > (_ball.getRadius() + Settings.canvasWidth)) && (_ball.getBody().getVectorVelocity().x > 0)){
 			del = true;
 		}
 
@@ -288,7 +288,7 @@ var Block = Base.extend({
 			console.log(b.getPosition().x + "up" + b.getPosition().y + " " + b.getColor())
 		});
 
-		if(this.player)	this.player.updatePosition(x + S.canvasWidth/2, y + S.canvasHeight/2)
+		if(this.player)	this.player.updatePosition(x + Settings.canvasWidth/2, y + Settings.canvasHeight/2)
 
 		this.position.left += dx
 		this.position.top += dy
