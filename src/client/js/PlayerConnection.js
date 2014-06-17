@@ -54,7 +54,7 @@ function startSocket() {
 		//Show the player where he is on the mainscreen
 		pole.indicateJoin();
 		//Make everything fullscreen
-        screenfull.request();
+        //screenfull.request(); //temporarily disabled 
 
         //make canvas visible again
         var gameElem = document.getElementById("gameCanvas");
