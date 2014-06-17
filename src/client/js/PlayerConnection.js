@@ -13,6 +13,7 @@ function startSocket() {
 		elem.innerHTML = _error;
 	}
 
+
 	////////////////////////////
 	// Basic socket listeners //
 	////////////////////////////
@@ -49,9 +50,15 @@ function startSocket() {
 		//Remove the username part
 		var elem = document.getElementById("removeAfterStart");
 		elem.outerHTML = "";
-		//Make the canvas visible for the user
-		var gameElem = document.getElementById("gameCanvas");
-		gameElem.style.display="block";
+
+		//Show the player where he is on the mainscreen
+		pole.indicateJoin();
+		//Make everything fullscreen
+        //screenfull.request(); //temporarily disabled 
+
+        //make canvas visible again
+        var gameElem = document.getElementById("gameCanvas");
+        gameElem.style.display="block";
 	});
 
 	socket.on('updateScoreHit', function (_score){
@@ -146,7 +153,6 @@ function startSocket() {
 			count--;
 		}
 	});
-
 
 	window.ontouchstart = handleTouchStart;
 	window.onmousemove = sendShieldAngle;
