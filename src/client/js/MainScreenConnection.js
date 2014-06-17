@@ -182,8 +182,9 @@ function removeBall(globalID){
 };
 
 function createPowerUp(_ptype, _plocation){
-	var powerup = game.instantiate(new Sprite(Powerup.getPowerupSpritePath(_ptype)));
-	powerup.setPosition(_plocation);
+	var powerupSprite = game.instantiate(new Sprite(Powerup.getPowerupSpritePath(_ptype)));
+	powerupSprite.setPosition(_plocation);
+	powerupSprite.setSize({x: 36, y: 36});
 }
 
 function removePowerUp(_pid){
