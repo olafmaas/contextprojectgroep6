@@ -201,7 +201,6 @@ function ServerGame(_socketHandler){
 
 	//Opgedeelde update functies
 	updateBalls = function() {
-		//TODO: ID instead of index
 		for(var i = 0; i < nrOfBalls(); i++){
 			sh.updateBallMainscreen(getBallPosition(i), i);
 		}
