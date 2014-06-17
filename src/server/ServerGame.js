@@ -36,7 +36,7 @@ function ServerGame(_socketHandler){
 		gameGrid.update();
 	};
 
-	this.addMainScreen = function(_socketID){
+	this.addMainScreen = function(){
 		//		sh.updateMainScreenCanvasSize(updateMainScreenCanvasSize());
 		sh.updateMainScreenCanvasSize(updateGameSize());
 		if(getNumberOfPlayers() > 0){
