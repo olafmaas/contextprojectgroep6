@@ -33,9 +33,7 @@ function ServerGame(_socketHandler){
 		updateBalls();
 		updatePowerups();
 		updatePoles();
-		if(gameGrid.update()){
-			sh.updateMainScreenCanvasSize(updateGameSize());
-		}
+		gameGrid.update();
 	};
 
 	this.addMainScreen = function(_socketID){
@@ -97,6 +95,10 @@ function ServerGame(_socketHandler){
 		namesList[client.player.getName()] = client.player.getHighscore(); //retrieve highscore and save it. name stays in nameList because it has to stay in the highscore
 		delete activeClients[client.player.getName()]; //remove from active clients list
 		delete clientList[socketID]; 
+
+		var nOfPlayers = getNumberOfPlayers()
+		gameGrid.cleanUp()
+		sh.updateMainScreenCanvasSize(updateGameSize());
 	};
 
 	function addObjects(socket){

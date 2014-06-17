@@ -281,9 +281,6 @@ function GameGrid() {
 				grid[i][j].update()
 			}
 		}
-		this.cleanUp();
-
-		return true;
 	};
 
 
@@ -294,6 +291,8 @@ function GameGrid() {
 	this.getHeight = function(){ return grid.length; };
 
 	this.getWidth = function(){ return grid[0].length; };
+
+	this.getNrOfBlocks = function(){grid.length*grid[0].length}
 };
 
 if(typeof module != 'undefined'){

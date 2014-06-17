@@ -50,6 +50,8 @@ function SocketHandler(_io){
 
 		socket.on('disconnect', function (data){ 
 			console.log('Client ' + data);
+			serverGame.deleteClient(socket.id);
+ -			mainScreenSocket.emit('removePlayer', socket.id);
 		});
 
 		socket.on('powerupSpawned', function (_powerupType, _location){
