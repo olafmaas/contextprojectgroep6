@@ -36,15 +36,13 @@ var HighScores = {
 		for(i = 0; i < _top.length; i++){
 			newRanking.push(_top[i].ID);
 		}
-		//TODO: oldhs kan hier nu toch uit? wordt namelijk niet meer gebruikt nu alles gewoon teruggezet wordt.
-		data = { newhs: newRanking, oldhs: this.oldranking };
 
 		//TODO sh.updateTop(data);
-		this.updateHighscore(data);
+		this.updateHighscore(newRanking);
 		
 		this.oldranking = newRanking;
 
-		return data
+		return newRanking
 	},
 
 
@@ -75,7 +73,6 @@ var HighScores = {
 			count--;
 		}
 	}
-
 };
 
 module.exports = HighScores;

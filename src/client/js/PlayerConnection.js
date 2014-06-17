@@ -121,17 +121,15 @@ function startSocket() {
 
 	socket.on('updateTop', function (data) {
 		
-		//for(i = 0; i < data.oldhs.length; i++){
-			//if(player.getGlobalID() == data.oldhs[i]){
-				player.getPole().setColor(Settings.pole.color);
-				player.setPoints(Settings.player.points); //Reset points to a normal player
+		// Set color, points and radius to that of a normal player
+		player.getPole().setColor(Settings.pole.color);
+		player.setPoints(Settings.player.points);
 				
-				if(player.getPowerup() == null){
-					player.getPole().setRadius(Settings.pole.size);
-				}
-			//}
-		//}
-
+		if(player.getPowerup() == null){
+			player.getPole().setRadius(Settings.pole.size);
+		}
+		
+		// Modify if player is in highscore
 		var count = Settings.highScore.top;
 		var colors = Settings.highScore.colors;
 		

@@ -42,8 +42,9 @@ socket.on('updateScores', function (scores){
 	hview.updateScores(scores);
 });
 
-socket.on('updateTop', function (data) {
+socket.on('updateTop', function (newRanking) {
 	
+	// Set color, points and radius to that of a normal player
 	for(i = 0; i < players.getMemberLength(); i++){
 		var player = players.getMember(i);
 		
@@ -55,12 +56,13 @@ socket.on('updateTop', function (data) {
 			}
 		}
 	}
-
+	
+	// Modify players in highscore
 	var count = Settings.highScore.top;
 	var colors = Settings.highScore.colors;
 	
-	for(i = 0; i < data.newhs.length; i++){
-		var player = players.getMemberByGlobalID(data.newhs[i]);
+	for(i = 0; i < newRanking.length; i++){
+		var player = players.getMemberByGlobalID(newRanking[i]);
 		
 		if(player != -1){
 			player.getPole().setColor(colors[i]);
