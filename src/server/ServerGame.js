@@ -64,7 +64,7 @@ function ServerGame(_socketHandler){
 	
 	getRandomPlayerSocketID = function(){
 		var index = Math.floor(Math.random()*getNumberOfPlayers());
-		var member = group("Players").getMember(index);
+		var member = GroupManager.getGroup("Player").getMember(index);
 		
 		if(member != undefined && member != null){
 			return playerIDs[member.getGlobalID()];
@@ -80,7 +80,7 @@ function ServerGame(_socketHandler){
 		var player = addObjects(socket);
 		
 		clientList[socketID] = new Client(socket, player, player.getPole(), player.getShield());
-		playerIDs[player.getID()] = socketID;
+		playerIDs[player.getGlobalID()] = socketID;
 
 		updatePowerupInterval();
 
@@ -172,29 +172,6 @@ function ServerGame(_socketHandler){
 			sh.newBall(GroupManager.getGroup('Ball').getMember(i));
 		}
 	}
-
-	updatePowerups = function() {
-		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
-		//Depending on the amount of players, the spawn time between powerups will go down.
-		if(timer != null && timer.hasStopped()){
-			timer = null;
-			sh.newPowerup(addPowerup());
-			
-			if(timer == null && getNumberOfPlayers() > 0){
-				timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers())); //start a new timer for the next powerup
-				timer.startTimer();
-			}
-		}
-	};
-	
-	addPowerup = function(){
-		var index = Math.floor(Math.random()*getNumberOfPlayers());
-		var member = GroupManager.getGroup("Player").getMember(index);
-		
-		if(member != undefined && member != null){
-			return { id: member.getGlobalID() };
-		}
-	};
 	
 	this.isNameAvailable = function(name){ return !activeClients[name]; };
 

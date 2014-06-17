@@ -50,16 +50,10 @@ function SocketHandler(_io){
 
 		socket.on('disconnect', function (data){ 
 			console.log('Client ' + data);
+		});
 
 		socket.on('powerupSpawned', function (_powerupType, _location){
 			mainScreenSocket.emit('powerupSpawned', _powerupType, _location);
-		});
-
-		socket.on('disconnect', function (data){ //<< waarom wordt er 'data' doorgegeven als dit vervolgens niet wordt gebruikt?
-			console.log('Player disconnected - id: ' + socket.id);
-			
-			serverGame.deleteClient(socket.id);
-			mainScreenSocket.emit('removePlayer', socket.id);
 		});
 	};
 
