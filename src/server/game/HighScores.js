@@ -61,8 +61,8 @@ var HighScores = {
 
 		var count = S.highScore.top;
 		
-		for(i = 0; i < highscore.newhs.length; i++){
-			var player = GroupManager.getGroup("Player").getMemberByGlobalID(highscore.newhs[i]);
+		for(i = 0; i < highscore.length; i++){
+			var player = GroupManager.getGroup("Player").getMemberByGlobalID(highscore[i]);
 			player.setPoints(S.player.points + (S.player.step * count)); //Set points according to position in the highscore top
 			
 			if(player != -1){
