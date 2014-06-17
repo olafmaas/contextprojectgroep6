@@ -48,6 +48,29 @@ function ServerGame(_socketHandler){
 		}
 	};
 
+	updatePowerups = function() {
+		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
+		//Depending on the amount of players, the spawn time between powerups will go down.
+		if(timer != null && timer.hasStopped()){
+			timer = null;
+			sh.newPowerup(getRandomPlayerSocketID());
+			
+			if(timer == null && getNumberOfPlayers() > 0){
+				timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers())); //start a new timer for the next powerup
+				timer.startTimer();
+			}
+		}
+	};
+	
+	getRandomPlayerSocketID = function(){
+		var index = Math.floor(Math.random()*getNumberOfPlayers());
+		var member = group("Players").getMember(index);
+		
+		if(member != undefined && member != null){
+			return playerIDs[member.getGlobalID()];
+		}
+	};
+	
 	/**
 	* Add a new client, create a new player, pole and shield. 
 	* @method Server#addClient
@@ -87,7 +110,7 @@ function ServerGame(_socketHandler){
 		var positionOfPole = gameGrid.updateGrid(socket, ballList)
 		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id, sh.updatePlayerOnMainscreen, sh));
 		gameGrid.setPlayer(positionOfPole.left, positionOfPole.top , player);
-		
+
 		game.instantiate(player.getPole());
 		game.instantiate(player.getShield());
 
@@ -214,7 +237,7 @@ function ServerGame(_socketHandler){
 			if(pole.hit){
 				incrementScore(player, pole);
 				pole.isHit();
-				sh.hitEmit(getSocketFromPlayerID(pole.player.getID()), pole.player.getGlobalID());
+				sh.hitEmit(getSocketFromPlayerID(pole.player.getGlobalID()), pole.player.getGlobalID());
 			}
 		}
 	};
@@ -224,7 +247,7 @@ function ServerGame(_socketHandler){
 		if(_player != -1) { 
 			if(_player.getGlobalID() != _pole.player.getGlobalID()) { //check if the player doesn't hit himself 
 				_player.incrementScore(_pole.player.getPoints()); //Increment score 
-				sh.updateScoreHit(getSocketFromPlayerID(_player.getID()), _pole.player.getPoints())
+				sh.updateScoreHit(getSocketFromPlayerID(_player.getGlobalID()), _pole.player.getPoints())
 			}
 		}
 	};
