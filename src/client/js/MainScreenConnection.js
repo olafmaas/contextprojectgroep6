@@ -185,6 +185,10 @@ function createPowerUp(_ptype, _plocation){
 	var powerupSprite = game.instantiate(new Sprite(Powerup.getPowerupSpritePath(_ptype)));
 	powerupSprite.setPosition(_plocation);
 	powerupSprite.setSize({x: 36, y: 36});
+
+	setTimeout(function(){
+		game.remove(powerupSprite);
+	}, Settings.removalTime);
 }
 
 function removePowerUp(_pid){
