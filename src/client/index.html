@@ -135,7 +135,13 @@
                 error.innerHTML = "Username cannot be empty.";
             }
             pole.indicateJoin();
+
             screenfull.request();
+
+            if(screen.height > screen.width){
+                alert("Please use Landscape!");
+            }
+
         }
     </script>
 </html>
