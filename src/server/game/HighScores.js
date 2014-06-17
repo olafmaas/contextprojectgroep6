@@ -36,15 +36,13 @@ var HighScores = {
 		for(i = 0; i < _top.length; i++){
 			newRanking.push(_top[i].ID);
 		}
-		//TODO: oldhs kan hier nu toch uit? wordt namelijk niet meer gebruikt nu alles gewoon teruggezet wordt.
-		data = { newhs: newRanking, oldhs: this.oldranking };
 
 		//TODO sh.updateTop(data);
-		this.updateHighscore(data);
+		this.updateHighscore(newRanking);
 		
 		this.oldranking = newRanking;
 
-		return data
+		return newRanking
 	},
 
 
@@ -63,8 +61,8 @@ var HighScores = {
 
 		var count = S.highScore.top;
 		
-		for(i = 0; i < highscore.newhs.length; i++){
-			var player = GroupManager.getGroup("Player").getMemberByGlobalID(highscore.newhs[i]);
+		for(i = 0; i < highscore.length; i++){
+			var player = GroupManager.getGroup("Player").getMemberByGlobalID(highscore[i]);
 			player.setPoints(S.player.points + (S.player.step * count)); //Set points according to position in the highscore top
 			
 			if(player != -1){
@@ -75,7 +73,6 @@ var HighScores = {
 			count--;
 		}
 	}
-
 };
 
 module.exports = HighScores;
