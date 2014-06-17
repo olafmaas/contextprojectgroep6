@@ -85,7 +85,7 @@ function ServerGame(_socketHandler){
 		}	
 
 		var positionOfPole = gameGrid.updateGrid(socket, ballList)
-		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id, this.updatePlayerOnMainscreen, this));
+		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id, sh.updatePlayerOnMainscreen, sh));
 		gameGrid.setPlayer(positionOfPole.left, positionOfPole.top , player);
 		
 		game.instantiate(player.getPole());
@@ -241,10 +241,6 @@ function ServerGame(_socketHandler){
 	function getNewBallsPerPlayer(){
 		return S.ball.nrOfNewBalls;
 	};
-
-	this.updatePlayerOnMainscreen = function(data){
-		sh.updatePlayerOnMainscreen(data);
-	}
 
 	//NOTE: als je er "function" voor zet zijn ze private, this.function is public, zonder function/this ervoor = global
 	//Getters and Setters
