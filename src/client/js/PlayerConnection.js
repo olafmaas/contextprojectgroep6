@@ -91,7 +91,7 @@ function startSocket() {
 		}
 	});
 
-	socket.on(e.updateBalls, function (ballData) { //TODO: ID instead of index
+	socket.on(e.updateBalls, function (ballData) { 
 		lastBall = ballData;
 		var d = new Date();
 		var n = d.getTime();
@@ -109,9 +109,10 @@ function startSocket() {
 		player.setGlobalID(_id);
 	});
 
+
 	//Listener for powerup
-	socket.on('addPowerup', function (data) {
-		createPowerup(data);
+	socket.on('addPowerup', function () {
+		createPowerup();
 	});
 
 	socket.on('removeBall', function (gid) {
@@ -128,17 +129,15 @@ function startSocket() {
 
 	socket.on('updateTop', function (data) {
 		
-		//for(i = 0; i < data.oldhs.length; i++){
-			//if(player.getGlobalID() == data.oldhs[i]){
-				player.getPole().setColor(Settings.pole.color);
-				player.setPoints(Settings.player.points); //Reset points to a normal player
+		// Set color, points and radius to that of a normal player
+		player.getPole().setColor(Settings.pole.color);
+		player.setPoints(Settings.player.points);
 				
-				if(player.getPowerup() == null){
-					player.getPole().setRadius(Settings.pole.size);
-				}
-			//}
-		//}
-
+		if(player.getPowerup() == null){
+			player.getPole().setRadius(Settings.pole.size);
+		}
+		
+		// Modify if player is in highscore
 		var count = Settings.highScore.top;
 		var colors = Settings.highScore.colors;
 		
@@ -207,40 +206,42 @@ function startSocket() {
 		balls.addMember(ball);
 	};
 
+
 	//The powerup stuff should be placed somewhere else I think..
-	function createPowerup(data){
-		if(player.getGlobalID() == data.id){
+	function createPowerup(){
+		if(powerup != null) removePowerup();
+		var type = randomPowerType(); //choose a radom type
+		powerup = game.instantiate(new Powerup(Settings.powerupSize, type));
+		
+		var chooser = Math.round(Math.random()); //random 0 or 1
+		
+		var width = Settings.canvasWidth;
+		var height = Settings.canvasHeight;
+		var shieldRadius = Settings.shield.radius;
+		var powerupSize = Settings.powerupSize;
+		
+		var dx = Math.round(Math.random() * ((width - powerupSize) - (width/2 + shieldRadius + 2*powerupSize)) + ((shieldRadius + 2*powerupSize) * (1-chooser)));
+		var dy = Math.round(Math.random() * ((height - powerupSize) - (height/2 + shieldRadius + 2*powerupSize)) + ((shieldRadius + 2*powerupSize) * chooser));
+		
+		if(Math.round(Math.random())) //randomly decide whether to make x-coordinate negative
+			dx *= -1;
+		if(Math.round(Math.random())) //randomly decide whether to make y-coordinate negative
+			dy *= -1;
 
-			if(powerup != null) removePowerup();
-			var type = randomPowerType(); //choose a radom type
-			powerup = game.instantiate(new Powerup(Settings.powerupSize, type));
-			
-			var chooser = Math.round(Math.random()); //random 0 or 1
-			
-			var width = Settings.canvasWidth;
-			var height = Settings.canvasHeight;
-			var shieldRadius = Settings.shield.radius;
-			var powerupSize = Settings.powerupSize;
-			
-			var dx = Math.round(Math.random() * ((width - powerupSize) - (width/2 + shieldRadius + 2*powerupSize)) + ((shieldRadius + 2*powerupSize) * (1-chooser)));
-			var dy = Math.round(Math.random() * ((height - powerupSize) - (height/2 + shieldRadius + 2*powerupSize)) + ((shieldRadius + 2*powerupSize) * chooser));
-			
-			if(Math.round(Math.random())) //randomly decide whether to make x-coordinate negative
-				dx *= -1;
-			if(Math.round(Math.random())) //randomly decide whether to make y-coordinate negative
-				dy *= -1;
+		powerup.setPosition(Settings.canvasWidth/2 + dx, Settings.canvasHeight/2 + dy);
+		createIcon(type); //temporarily disabled
 
-			powerup.setPosition(Settings.canvasWidth/2 + dx, Settings.canvasHeight/2 + dy);
-			createIcon(type); //temporarily disabled
+		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime*1000); //set timer so powerup is removed after x seconds.
 
-			powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime*1000); //set timer so powerup is removed after x seconds.
+		socket.emit('powerupSpawned', type, {
+				x: powerup.getPosition().x + leftOffset,
+				y: powerup.getPosition().y + topOffset,
+			});
 
-			powerupCoolDown((Settings.removalTime * 1000) / 90); //90 because we increment the angle by 4 (360/90 = 4)
-		}
+		powerupCoolDown((Settings.removalTime * 1000) / 90); //90 because we increment the angle by 4 (360/90 = 4)
 	};
 
 	function randomPowerType(){
-
 		var random = Math.random();
 		var chanceOfSmallShield = Settings.smallShield.chance;
 		var chanceOfBigShield = Settings.bigShield.chance;

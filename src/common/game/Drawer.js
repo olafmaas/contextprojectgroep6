@@ -102,6 +102,7 @@ Drawer = function(_canvasContext){
 	}
 
 	this.drawCoolDown = function (_object, _offset){
+		
 		if(_object.getCDAngle() > 0){
 			var startAngle = Settings.startAngle;
 			var endAngle = (startAngle + _object.getCDAngle()) % 360;

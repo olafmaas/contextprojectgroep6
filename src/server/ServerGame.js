@@ -16,7 +16,7 @@ function ServerGame(_socketHandler){
 	var sh = _socketHandler;
 	var game;
 	var clientList = {};
-	var playerIDs = {};	//used as a hashmap playerIDs are keys, socketID as value
+	var playerIDs = {};	//used as a hashmap playerGlobalIDs are keys, socketID as value
 
 	var gameGrid = new GameGrid();
 	var activeClients = [];
@@ -33,12 +33,10 @@ function ServerGame(_socketHandler){
 		updateBalls();
 		updatePowerups();
 		updatePoles();
-		if(gameGrid.update()){
-			sh.updateMainScreenCanvasSize(updateGameSize());
-		}
+		gameGrid.update();
 	};
 
-	this.addMainScreen = function(_socketID){
+	this.addMainScreen = function(){
 		//		sh.updateMainScreenCanvasSize(updateMainScreenCanvasSize());
 		sh.updateMainScreenCanvasSize(updateGameSize());
 		if(getNumberOfPlayers() > 0){
@@ -48,6 +46,29 @@ function ServerGame(_socketHandler){
 		}
 	};
 
+	updatePowerups = function() {
+		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
+		//Depending on the amount of players, the spawn time between powerups will go down.
+		if(timer != null && timer.hasStopped()){
+			timer = null;
+			sh.newPowerup(getRandomPlayerSocketID());
+			
+			if(timer == null && getNumberOfPlayers() > 0){
+				timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers())); //start a new timer for the next powerup
+				timer.startTimer();
+			}
+		}
+	};
+	
+	getRandomPlayerSocketID = function(){
+		var index = Math.floor(Math.random()*getNumberOfPlayers());
+		var member = GroupManager.getGroup("Player").getMember(index);
+		
+		if(member != undefined && member != null){
+			return playerIDs[member.getGlobalID()];
+		}
+	};
+	
 	/**
 	* Add a new client, create a new player, pole and shield. 
 	* @method Server#addClient
@@ -57,7 +78,7 @@ function ServerGame(_socketHandler){
 		var player = addObjects(socket);
 		
 		clientList[socketID] = new Client(socket, player, player.getPole(), player.getShield());
-		playerIDs[player.getID()] = socketID;
+		playerIDs[player.getGlobalID()] = socketID;
 
 		updatePowerupInterval();
 
@@ -74,6 +95,10 @@ function ServerGame(_socketHandler){
 		namesList[client.player.getName()] = client.player.getHighscore(); //retrieve highscore and save it. name stays in nameList because it has to stay in the highscore
 		delete activeClients[client.player.getName()]; //remove from active clients list
 		delete clientList[socketID]; 
+
+		var nOfPlayers = getNumberOfPlayers()
+		gameGrid.cleanUp()
+		sh.updateMainScreenCanvasSize(updateGameSize());
 	};
 
 	function addObjects(socket){
@@ -85,9 +110,9 @@ function ServerGame(_socketHandler){
 		}	
 
 		var positionOfPole = gameGrid.updateGrid(socket, ballList)
-		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id, this.updatePlayerOnMainscreen, this));
+		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id, sh.updatePlayerOnMainscreen, sh));
 		gameGrid.setPlayer(positionOfPole.left, positionOfPole.top , player);
-		
+
 		game.instantiate(player.getPole());
 		game.instantiate(player.getShield());
 
@@ -140,7 +165,7 @@ function ServerGame(_socketHandler){
 	function reconnectMainScreen(){
 		for(var i=0; i < getNumberOfPlayers(); i++){
 			var player = GroupManager.getGroup('Player').getMember(i);
-			var socketID = getSocketID(player.getID());
+			var socketID = getSocketID(player.getGlobalID());
 			var res = {id: socketID, polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
 			sh.newPlayer(socketID, res);
 		};
@@ -149,29 +174,6 @@ function ServerGame(_socketHandler){
 			sh.newBall(GroupManager.getGroup('Ball').getMember(i));
 		}
 	}
-
-	updatePowerups = function() {
-		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
-		//Depending on the amount of players, the spawn time between powerups will go down.
-		if(timer != null && timer.hasStopped()){
-			timer = null;
-			sh.newPowerup(addPowerup());
-			
-			if(timer == null && getNumberOfPlayers() > 0){
-				timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers())); //start a new timer for the next powerup
-				timer.startTimer();
-			}
-		}
-	};
-	
-	addPowerup = function(){
-		var index = Math.floor(Math.random()*getNumberOfPlayers());
-		var member = GroupManager.getGroup("Player").getMember(index);
-		
-		if(member != undefined && member != null){
-			return { id: member.getGlobalID() };
-		}
-	};
 	
 	this.isNameAvailable = function(name){ return !activeClients[name]; };
 
@@ -199,7 +201,6 @@ function ServerGame(_socketHandler){
 
 	//Opgedeelde update functies
 	updateBalls = function() {
-		//TODO: ID instead of index
 		for(var i = 0; i < nrOfBalls(); i++){
 			sh.updateBallMainscreen(getBallPosition(i), i);
 		}
@@ -214,7 +215,7 @@ function ServerGame(_socketHandler){
 			if(pole.hit){
 				incrementScore(player, pole);
 				pole.isHit();
-				sh.hitEmit(getSocketFromPlayerID(pole.player.getID()), pole.player.getGlobalID());
+				sh.hitEmit(getSocketFromPlayerID(pole.player.getGlobalID()), pole.player.getGlobalID());
 			}
 		}
 	};
@@ -224,7 +225,7 @@ function ServerGame(_socketHandler){
 		if(_player != -1) { 
 			if(_player.getGlobalID() != _pole.player.getGlobalID()) { //check if the player doesn't hit himself 
 				_player.incrementScore(_pole.player.getPoints()); //Increment score 
-				sh.updateScoreHit(getSocketFromPlayerID(_player.getID()), _pole.player.getPoints())
+				sh.updateScoreHit(getSocketFromPlayerID(_player.getGlobalID()), _pole.player.getPoints())
 			}
 		}
 	};
@@ -242,10 +243,6 @@ function ServerGame(_socketHandler){
 		return S.ball.nrOfNewBalls;
 	};
 
-	this.updatePlayerOnMainscreen = function(data){
-		sh.updatePlayerOnMainscreen(data);
-	}
-
 	//NOTE: als je er "function" voor zet zijn ze private, this.function is public, zonder function/this ervoor = global
 	//Getters and Setters
 	this.getNumberOfPlayers = function(){ return Object.keys(clientList).length; };
@@ -260,7 +257,7 @@ function ServerGame(_socketHandler){
 
 	getSocketFromPlayerID = function(_playerID){ return clientList[playerIDs[_playerID]].socket; };
 
-	function getSocketID(_playerID){ return clientList[playerIDs[_playerID]].socket.id; };
+	function getSocketID(_playerGlobalID){ return clientList[playerIDs[_playerGlobalID]].socket.id; };
 }
 
 module.exports = ServerGame;

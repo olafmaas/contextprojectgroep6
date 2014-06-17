@@ -35,9 +35,7 @@ var Body = Base.extend({
 		this.position.y += this.vectorVelocity.y;
 	},
 
-	handleCollision: function(_other){
-		//TODO: deze functie wordt dus nog aangeroepen door CollisionDetection:24
-	},
+	handleCollision: function(_other){	}, //abstract function.
 
 	/**
 	* Gets the angle from this object to another object
@@ -113,7 +111,6 @@ var Body = Base.extend({
 	/**
 	* Sets the velocity direction (angle) of the ball. 
 	* It also calculates the corresponding speed values for the x and y axis.
-	* TODO move to CircularBody?
 	* 
 	* @method Body#setVelocityDirection
 	* @param {number} _direction - The direction (angle) of the ball in radians.

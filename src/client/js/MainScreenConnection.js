@@ -42,8 +42,9 @@ socket.on('updateScores', function (scores){
 	hview.updateScores(scores);
 });
 
-socket.on('updateTop', function (data) {
+socket.on('updateTop', function (newRanking) {
 	
+	// Set color, points and radius to that of a normal player
 	for(i = 0; i < players.getMemberLength(); i++){
 		var player = players.getMember(i);
 		
@@ -55,12 +56,13 @@ socket.on('updateTop', function (data) {
 			}
 		}
 	}
-
+	
+	// Modify players in highscore
 	var count = Settings.highScore.top;
 	var colors = Settings.highScore.colors;
 	
-	for(i = 0; i < data.newhs.length; i++){
-		var player = players.getMemberByGlobalID(data.newhs[i]);
+	for(i = 0; i < newRanking.length; i++){
+		var player = players.getMemberByGlobalID(newRanking[i]);
 		
 		if(player != -1){
 			player.getPole().setColor(colors[i]);
@@ -98,7 +100,7 @@ socket.on('removeBall', function (globalID){
 	removeBall(globalID);
 })
 
-socket.on(e.updateBall, function (data, index) { //TODO: ID instead of index
+socket.on(e.updateBall, function (data, index) { 
 	if(balls.getMember(index) != undefined)
 		balls.getMember(index).setPosition(data.x, data.y);
 });
@@ -112,6 +114,10 @@ socket.on('poleIsHit', function (_pid) {
 	if(p != -1){
 		p.getPole().isHit();
 	}
+});
+
+socket.on('powerupSpawned', function(_ptype, _plocation) {
+	createPowerUp(_ptype, _plocation);
 });
 
 socket.on('powerupClicked', function (_pid, _ptype) {
@@ -185,6 +191,19 @@ function removeBall(globalID){
 	return;
 };
 
+function createPowerUp(_ptype, _plocation){
+	var powerupSprite = game.instantiate(new Sprite(Powerup.getPowerupSpritePath(_ptype)));
+	powerupSprite.setPosition(_plocation);
+	powerupSprite.setSize({x: 36, y: 36});
+
+	setTimeout(function(){
+		game.remove(powerupSprite);
+	}, Settings.removalTime * 1000);
+}
+
+function removePowerUp(_pid){
+
+}
 
 function updateScale(data){
 	
