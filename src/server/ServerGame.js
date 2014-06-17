@@ -16,7 +16,7 @@ function ServerGame(_socketHandler){
 	var sh = _socketHandler;
 	var game;
 	var clientList = {};
-	var playerIDs = {};	//used as a hashmap playerIDs are keys, socketID as value
+	var playerIDs = {};	//used as a hashmap playerGlobalIDs are keys, socketID as value
 
 	var gameGrid = new GameGrid();
 	var activeClients = [];
@@ -163,7 +163,7 @@ function ServerGame(_socketHandler){
 	function reconnectMainScreen(){
 		for(var i=0; i < getNumberOfPlayers(); i++){
 			var player = GroupManager.getGroup('Player').getMember(i);
-			var socketID = getSocketID(player.getID());
+			var socketID = getSocketID(player.getGlobalID());
 			var res = {id: socketID, polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
 			sh.newPlayer(socketID, res);
 		};
@@ -256,7 +256,7 @@ function ServerGame(_socketHandler){
 
 	getSocketFromPlayerID = function(_playerID){ return clientList[playerIDs[_playerID]].socket; };
 
-	function getSocketID(_playerID){ return clientList[playerIDs[_playerID]].socket.id; };
+	function getSocketID(_playerGlobalID){ return clientList[playerIDs[_playerGlobalID]].socket.id; };
 }
 
 module.exports = ServerGame;
