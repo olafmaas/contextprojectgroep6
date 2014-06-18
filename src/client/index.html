@@ -66,6 +66,8 @@
         <!-- this game and connection -->
         <script src="js/PlayerGame.js"></script>
         <script src="js/PlayerConnection.js"></script>
+        <script src="js/PowerUpController.js"></script>
+        <script src="js/BallController.js"></script>
 
     </head>
     <body>
@@ -120,7 +122,7 @@
             }
         }
 
-        var s = new startSocket();
+        var s = new PlayerSocketHandler();
         function startPlaying() {
             var n = document.getElementById("firstname").value;
             var error = document.getElementById("error");

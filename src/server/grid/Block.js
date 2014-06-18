@@ -83,26 +83,27 @@ var Block = Base.extend({
 	* @return {array} - An array with the directions. (top, bottom, left, right)
 	*/
 	blocksToSendBallTo: function(_ball){
-		var sendTo = [];
+		
 		var xPosInBlock = _ball.getPosition().x - this.position.left;
 		var yPosInBlock = _ball.getPosition().y - this.position.top;
 
-		//Top
+		return this.directionsToSendBallTo(_ball, xPosInBlock, yPosInBlock);
+	},
+
+	directionsToSendBallTo: function(_ball, xPosInBlock, yPosInBlock){
+		var sendTo = [];
 		if((yPosInBlock < _ball.getRadius()) && (_ball.getBody().getVectorVelocity().y < 0)){
 			sendTo.push("top");
 		}
 
-		//Bottom
 		if((yPosInBlock > (Settings.canvasHeight - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().y > 0)){
 			sendTo.push("bottom")
 		}
 
-		//left
 		if((xPosInBlock < _ball.getRadius()) && (_ball.getBody().getVectorVelocity().x < 0)){
 			sendTo.push("left")
 		}
 
-		//right
 		if((xPosInBlock > (Settings.canvasWidth - _ball.getRadius())) && (_ball.getBody().getVectorVelocity().x > 0)){
 			sendTo.push("right")
 		}
@@ -121,25 +122,18 @@ var Block = Base.extend({
 		var xPosInBlock = _ball.getPosition().x - this.position.left;
 		var yPosInBlock = _ball.getPosition().y - this.position.top;
 
-		//top
-		if((yPosInBlock < -_ball.getRadius()) && (_ball.getBody().getVectorVelocity().y < 0)){
-			del = true;
-		}
+		return this.ballInBlockRange(_ball, xPosInBlock, yPosInBlock);
+	},
 
-		//Bottom
-		if((yPosInBlock > (_ball.getRadius() + Settings.canvasHeight)) && (_ball.getBody().getVectorVelocity().y > 0)){
-			del = true;
-		}
+	ballInBlockRange: function(_ball, xPosInBlock, yPosInBlock){
+		var del = false; 
+		del = del || (yPosInBlock < -_ball.getRadius()) && (_ball.getBody().getVectorVelocity().y < 0); //top
 
-		//left
-		if((xPosInBlock < -_ball.getRadius()) && (_ball.getBody().getVectorVelocity().x < 0)){
-			del = true;
-		}
+		del = del || (yPosInBlock > (_ball.getRadius() + Settings.canvasHeight)) && (_ball.getBody().getVectorVelocity().y > 0); //Bottom 
 
-		//right
-		if((xPosInBlock > (_ball.getRadius() + Settings.canvasWidth)) && (_ball.getBody().getVectorVelocity().x > 0)){
-			del = true;
-		}
+		del = del || (xPosInBlock < -_ball.getRadius()) && (_ball.getBody().getVectorVelocity().x < 0); //left
+
+		del = del || (xPosInBlock > (_ball.getRadius() + Settings.canvasWidth)) && (_ball.getBody().getVectorVelocity().x > 0); //right
 
 		return del;
 	},
@@ -227,17 +221,17 @@ var Block = Base.extend({
 
 	getReadyForDeletion: function(_direction, _opposite){
 		if(this.hasNeighbour(_direction)){
+
 			this.neighbours[_direction].updatePosition(this.position.left, this.position.top);
 			this.prepareBallsForDeletion(_direction)
 			this.neighbours[_direction].setNeighbour(_opposite, this.neighbours[_opposite]);
+
 			if(this.neighbours[_opposite] != undefined)
 				this.neighbours[_opposite].setNeighbour(_direction, this.neighbours[_direction]);
 		}else{
 			this.prepareBallsForDeletion(_opposite)
 			this.neighbours[_opposite].setNeighbour(_direction, undefined);
 		}
-
-
 	},
 
 
@@ -246,7 +240,9 @@ var Block = Base.extend({
 			//Kan problemen veroorzaken misschien ofzo.
 				b.setPosition(this.neighbours[direction].getPosition().left + 2 *  ball.getRadius()
 						, this.neighbours[direction].getPosition().top + 2 * ball.getRadius())
+
 				this.neighbours[direction].ballIncoming(b);
+
 				console.log(b.getPosition().x + "pbd" + b.getPosition().y + " " + b.getColor())
 		}, this);
 	},
