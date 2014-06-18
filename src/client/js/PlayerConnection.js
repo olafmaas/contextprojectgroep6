@@ -135,8 +135,8 @@ function PlayerSocketHandler() {
 		var count = Settings.highScore.top;
 		var colors = Settings.highScore.colors;
 		
-		for(i = 0; i < data.newhs.length; i++){
-			if(player.getGlobalID() == data.newhs[i]){
+		for(i = 0; i < data.length; i++){
+			if(player.getGlobalID() == data[i]){
 				player.getPole().setColor(colors[i]);
 				player.setPoints(Settings.player.points + (Settings.player.step * count)); //Set points according to position in the highscore top
 				

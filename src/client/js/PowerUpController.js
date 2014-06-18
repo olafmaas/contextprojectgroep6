@@ -8,22 +8,22 @@ function PowerUpController(){
 
 	//The powerup stuff should be placed somewhere else I think..
 	this.createPowerup = function(leftOffset, topOffset){
-		if(powerup != null) removePowerup();
+		if(powerup == null) { //Only one powerup will be present on the player's screen
+			var type = randomPowerType(); //choose a radom type
+			powerup = game.instantiate(new Powerup(Settings.powerupSize, type));
+			
+			randomPosition = getRandomPosition();
+			powerup.setPosition(randomPosition.x, randomPosition.y);
+			createIcon(type); //temporarily disabled
 
-		var type = randomPowerType(); //choose a radom type
-		powerup = game.instantiate(new Powerup(Settings.powerupSize, type));
-		
-		randomPosition = getRandomPosition();
-		powerup.setPosition(randomPosition.x, randomPosition.y);
-		createIcon(type); //temporarily disabled
+			powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime*1000); //set timer so powerup is removed after x seconds.
+			powerupCoolDown((Settings.removalTime * 1000) / 90); //90 because we increment the angle by 4 (360/90 = 4)
 
-		powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime*1000); //set timer so powerup is removed after x seconds.
-		powerupCoolDown((Settings.removalTime * 1000) / 90); //90 because we increment the angle by 4 (360/90 = 4)
-
-		return {t: type, position: {
-				x: randomPosition.x + leftOffset,
-				y: randomPosition.y + topOffset,
-		}};
+			return {t: type, position: {
+					x: randomPosition.x + leftOffset,
+					y: randomPosition.y + topOffset,
+			}};
+		}
 	};
 
 	function getRandomPosition(){
