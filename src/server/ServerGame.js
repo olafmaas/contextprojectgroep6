@@ -17,6 +17,7 @@ function ServerGame(_socketHandler){
 	var game;
 	var clientList = {};
 	var playerIDs = {};	//used as a hashmap playerGlobalIDs are keys, socketID as value
+	var removalTimers = {}; //used as a hashmap, player names are keys, timer id's as values
 
 	var gameGrid = new GameGrid();
 	var activeClients = [];
@@ -37,7 +38,7 @@ function ServerGame(_socketHandler){
 	};
 
 	this.addMainScreen = function(){
-		//		sh.updateMainScreenCanvasSize(updateMainScreenCanvasSize());
+		//sh.updateMainScreenCanvasSize(updateMainScreenCanvasSize());
 		sh.updateMainScreenCanvasSize(updateGameSize());
 		if(getNumberOfPlayers() > 0){
 			reconnectMainScreen();
@@ -86,6 +87,10 @@ function ServerGame(_socketHandler){
 
 		sh.updateMainScreenCanvasSize(updateGameSize());
 		sh.newPlayer(socketID, res);
+
+		//Check if there was a timer present, if so: remove it
+		if(removalTimers[player.getName()])
+			clearTimeout(removalTimers[player.getName()]);
 	};
 
 	this.deleteClient = function(socketID){
@@ -99,7 +104,17 @@ function ServerGame(_socketHandler){
 		var nOfPlayers = getNumberOfPlayers()
 		gameGrid.cleanUp()
 		sh.updateMainScreenCanvasSize(updateGameSize());
+
+		//Start removal timer for the highscore
+		var t = setTimeout(function() { removeHighscore(client.player.getName()); }, S.highScore.removalTime );
+		//Save the timer
+		removalTimers[client.player.getName()] = t;
 	};
+
+	//Removes the highscore belonging to the player with name _name
+	function removeHighscore(_name){
+		namesList[_name] = 0; //set highscore to 0
+	}
 
 	function addObjects(socket){
 		var ballList = [];
@@ -231,20 +246,12 @@ function ServerGame(_socketHandler){
 	};
 
 	//If you want some fancy function for the number of balls change ballsToBeAdded and ballsToBeRemoved.
-	function nofBallsToBeAdded(){
-		return getNewBallsPerPlayer();
-	};
+	function nofBallsToBeAdded(){ return getNewBallsPerPlayer();};
 
-	function nofBallsToBeRemoved(){
-		return getNewBallsPerPlayer();
-	};
+	function nofBallsToBeRemoved(){ return getNewBallsPerPlayer(); };
 
-	function getNewBallsPerPlayer(){
-		return S.ball.nrOfNewBalls;
-	};
+	function getNewBallsPerPlayer(){ return S.ball.nrOfNewBalls; };
 
-	//NOTE: als je er "function" voor zet zijn ze private, this.function is public, zonder function/this ervoor = global
-	//Getters and Setters
 	this.getNumberOfPlayers = function(){ return Object.keys(clientList).length; };
 
 	function getNumberOfPlayers() { return Object.keys(clientList).length; };

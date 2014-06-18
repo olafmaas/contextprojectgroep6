@@ -109,7 +109,8 @@ var Settings = {
 	highScore: {
 		updateInterval: 5000,
 		top: 3,
-		colors: ["#B8E6E6", "#66CCFF", "#3399FF", "#0066FF", "#0000FF"] //from blue to light-blue
+		colors: ["#B8E6E6", "#66CCFF", "#3399FF", "#0066FF", "#0000FF"], //from blue to light-blue
+		removalTime: 300000 //in milliseconds, the amount of time the highscore is saved after a disconnect from a player
 	},
 
 	joinIndicator: {
