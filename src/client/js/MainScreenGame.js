@@ -49,3 +49,5 @@ function gameDimensionsChanged(){
 	return canvas.getAttribute('width') != game.getWidth() ||
         canvas.getAttribute('height') != game.getHeight();
 }
+
+var mss = new MainScreenSocketHandler();
