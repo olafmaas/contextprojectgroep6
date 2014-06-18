@@ -38,7 +38,6 @@ function ServerGame(_socketHandler){
 	};
 
 	this.addMainScreen = function(){
-		//sh.updateMainScreenCanvasSize(updateMainScreenCanvasSize());
 		sh.updateMainScreenCanvasSize(updateGameSize());
 		if(getNumberOfPlayers() > 0){
 			reconnectMainScreen();
