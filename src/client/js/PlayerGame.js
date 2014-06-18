@@ -12,22 +12,26 @@ var highscoreLabel;
 var audioManager
 var tempImage;
 
+//Init function which initializes the objects needed for the playergame.
 function init(){
     balls = new Group(Ball);
     audioManager = new AudioManager()
     audioManager.addTrack("ballCollision", "./assets/collide.wav")
 };
 
+//Creates the temporary image that is visible at the start of the game.
 function createTempImage(){
     tempImage = game.instantiate(new Sprite('./img/beginplaatje.svg'));
     tempImage.setPosition({x: Settings.canvasWidth/2 - 110, y: Settings.canvasHeight/2 - 110});
     tempImage.setSize({x: 200, y: 200});
 }
 
+//Removes the temporary image after a set time limit.
 function deleteTempImage(){
     game.remove(tempImage);
 }
 
+//Loadcontent function which creates all objects that are initially needed for the playergame
 function loadContent(){
     pole = game.instantiate(new Pole(Settings.pole.size));
     pole.setColor(Settings.pole.color);
@@ -60,10 +64,8 @@ function loadContent(){
     gameElem.style.display="none";
 };
 
-//Updates the position of the items on the canvas and checks for collisions
-function update(){
-
-};
+//Dummy function, handled by the game
+function update(){};
 
 //Draws everything on the canvas
 function draw(){
