@@ -26,7 +26,7 @@ Drawer = function(_canvasContext){
 	* @param {object} _ball - The ball object to be drawn
 	*/
 	this.drawBall = function(_ball, _isPole){
-		if(_isPole) { this.drawPowerupSkin(_ball); this.drawCoolDown(_ball, 4); }
+		if(_isPole) { this.drawPowerupSkin(_ball); }
 
 		canvasContext.beginPath();
 		canvasContext.arc(_ball.getBody().position.x, _ball.getBody().position.y, _ball.radius, 0, Math.PI*2, true);
@@ -91,18 +91,19 @@ Drawer = function(_canvasContext){
 
 	this.drawPowerupSkin = function (_pole){
 		var powerup = _pole.player.getPowerup();
-		if(powerup != null){
+		console.log(_pole.getPowerupDraw());
+		if(powerup != null && _pole.getPowerupDraw()){
 			canvasContext.beginPath();
 			canvasContext.arc(_pole.getBody().position.x, _pole.getBody().position.y, _pole.getRadius()+2, 0, Math.PI*2, true);
 			canvasContext.closePath();
 
 			canvasContext.fillStyle = powerup.color;
 			canvasContext.fill();	
+			this.drawCoolDown(_pole, 4);
 		}
 	}
 
-	this.drawCoolDown = function (_object, _offset){
-		
+	this.drawCoolDown = function (_object, _offset){	
 		if(_object.getCDAngle() > 0){
 			var startAngle = Settings.startAngle;
 			var endAngle = (startAngle + _object.getCDAngle()) % 360;
