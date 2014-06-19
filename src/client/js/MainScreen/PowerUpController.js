@@ -17,6 +17,7 @@ function PowerUpController(){
 		if(p != -1){ //if player has been found
 			var powerup = new Powerup(Settings.powerupSize, _ptype); //NOT game.instantiate!!, as it should not exists outside this function!
 			p.setPowerup(powerup);
+			p.getPole().setPowerupDraw(false); //On the mainscreen, we don't want to show the circle around the pole
 		}
 	}
 }

@@ -20,6 +20,7 @@ var Pole = Ball.extend({
 	coolDown: false,
 	prevColor: 0,
 	player: 0,
+	powerupDraw: true,
 	angle: 0, //Needed for the cooldown
 	timer: 0, //Each pole keeps its own 'alive' time
 	ID: -1,
@@ -115,6 +116,14 @@ var Pole = Ball.extend({
 	},
 
 	/**
+	* Sets whether the powerup should be drawn
+	*
+	* @method Pole#setPowerupDraw
+	* @param {boolean} _bool - True if it should be drawn, or false if it shouldn't
+	*/
+	setPowerupDraw: function(_bool){ this.powerupDraw = _bool; },
+
+	/**
 	* Sets the ID of the player that hit the pole
 	*
 	* @method Pole#setHitBy
@@ -160,7 +169,15 @@ var Pole = Ball.extend({
 	* @method Pole#getCDAngle
 	* @return {number} - The current cooldown angle in degrees.
 	*/
-	getCDAngle: function() { return this.angle; }
+	getCDAngle: function() { return this.angle; },
+
+	/**
+	* Returns whether the powerup skin should be drawn or not
+	* 
+	* @method Pole#getPowerupDraw
+	* @return {number} - Returns true if it should be drawn, returns false if is shouldn't
+	*/
+	getPowerupDraw: function() { return this.powerupDraw; }
 
 });
 
