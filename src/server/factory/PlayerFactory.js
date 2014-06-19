@@ -1,12 +1,13 @@
-var IDDistributor = require('../../common/game/util/IDDistributor.js');
-var Player = require('../../common/game/gameobjects/Player.js');
-var Pole = require('../../common/game/gameobjects/Pole.js');
-var Shield = require('../../common/game/gameobjects/Shield.js');
+if(typeof module != 'undefined'){
+	var IDDistributor = require('../../common/game/util/IDDistributor.js');
+	var Player = require('../../common/game/gameobjects/Player.js');
+	var Pole = require('../../common/game/gameobjects/Pole.js');
+	var Shield = require('../../common/game/gameobjects/Shield.js');
 
-var S = require('../../common/Settings.js');
+	var S = require('../../common/Settings.js');
+}
 
 var PlayerFactory = {
-
 
 	createPlayer: function(polePos, id, callback, context){
 		var player = new Player(id)
@@ -41,4 +42,6 @@ var PlayerFactory = {
 	},
 };
 
-module.exports = PlayerFactory;
+if(typeof module != 'undefined'){
+	module.exports = PlayerFactory;
+}
