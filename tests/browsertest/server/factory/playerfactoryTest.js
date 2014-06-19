@@ -24,4 +24,5 @@ describe("PlayerFactory", function(){
 			expect(shield.getBody().immovable).to.be.true;
 		})
 	})
+	
 })
