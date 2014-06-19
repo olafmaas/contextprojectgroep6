@@ -37,9 +37,18 @@ function PlayerSocketHandler() {
 	});
 
 	//Emits the chosen name to the sockethandler to be checked
-	this.checkName = function (_name){
-		//Emit to sockethandler
-		socket.emit('userName', _name);
+	this.checkName = function (n){
+		var error = document.getElementById("error");
+
+		if(n.indexOf("<") != -1){
+            error.innerHTML = "Brackets are not allowed";
+        } else if(n.length == 0 || n == "null"){
+        	error.innerHTML = "name can not be empty or null";
+        } else if(n.length >= Settings.player.maxNameLength){
+        	error.innerHTML = "Username is too long.";
+        } else {
+        	socket.emit('userName', n);
+        }
 	}
 
 	//Shows the error on the screen of the player
