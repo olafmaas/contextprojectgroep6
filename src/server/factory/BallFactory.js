@@ -1,8 +1,10 @@
-var IDDistributor = require('../../common/game/util/IDDistributor.js');
-var ColorGenerator = require('../../common/game/util/ColorGenerator');
-var Ball = require('../../common/game/gameobjects/Ball.js');
+if(typeof module != 'undefined'){
+	var IDDistributor = require('../../common/game/util/IDDistributor.js');
+	var ColorGenerator = require('../../common/game/util/ColorGenerator');
+	var Ball = require('../../common/game/gameobjects/Ball.js');
 
-var S = require('../../common/Settings.js');
+	var S = require('../../common/Settings.js');
+}
 
 var BallFactory = {
 
@@ -41,4 +43,6 @@ var BallFactory = {
 	}
 };
 
-module.exports = BallFactory;
+if(typeof module != 'undefined'){
+	module.exports = BallFactory;
+}
