@@ -1,16 +1,18 @@
-var Group = require('../common/game/util/Group.js');
-var GroupManager = require('../common/game/util/GroupManager.js');
-var Powerup = require('../common/game/gameobjects/Powerup.js');
-var CoreGame = require('../common/game/CoreGame.js');
-var RandomTimer = require('../common/game/time/RandomTimer.js');
+if(typeof module != 'undefined'){
+	var Group = require('../common/game/util/Group.js');
+	var GroupManager = require('../common/game/util/GroupManager.js');
+	var Powerup = require('../common/game/gameobjects/Powerup.js');
+	var CoreGame = require('../common/game/CoreGame.js');
+	var RandomTimer = require('../common/game/time/RandomTimer.js');
 
-var Client = require('../common/Client.js');
-var S = require('../common/Settings.js');
+	var Client = require('../common/Client.js');
+	var S = require('../common/Settings.js');
 
-var HighScores = require('./game/HighScores.js');
-var GameGrid = require('./grid/GameGrid.js');
-var pf = require('./factory/PlayerFactory.js');
-var bf = require('./factory/BallFactory.js');
+	var HighScores = require('./game/HighScores.js');
+	var GameGrid = require('./grid/GameGrid.js');
+	var pf = require('./factory/PlayerFactory.js');
+	var bf = require('./factory/BallFactory.js');
+}
 
 function ServerGame(_socketHandler){
 	var sh = _socketHandler;
@@ -266,4 +268,6 @@ function ServerGame(_socketHandler){
 	function getSocketID(_playerGlobalID){ return clientList[playerIDs[_playerGlobalID]].socket.id; };
 }
 
-module.exports = ServerGame;
+if(typeof module != 'undefined'){
+	module.exports = ServerGame;
+}
