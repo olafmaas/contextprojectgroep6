@@ -6,6 +6,10 @@ Our game is based on the dutch game called "Paaltjesvoetbal". This is a game you
 
 This game has been create by Group 6 of the gaming contextproject on the TU Delft. The game is meant to entertain and distract people who are waiting for something, which can be anything, ranging from the dentist to a movie theatre.
 
+## Packages
+
+JavaScript nativly doesn't support packages. Packages contribute to organized and well structured code. This is why we still developed with the idea of packages in mind. We made sure our folders were structured in a good way.
+
 ## Tech
 
 Any piece of software is programmed in a language and possibly uses frameworks and/or libraries. Every language or framework has its advantages and disadvantages. This is a game which has to be extremely easy to pick up and play preferably without preparing anything.
