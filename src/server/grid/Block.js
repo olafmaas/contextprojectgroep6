@@ -242,8 +242,6 @@ var Block = Base.extend({
 						, this.neighbours[direction].getPosition().top + 2 * ball.getRadius())
 
 				this.neighbours[direction].ballIncoming(b);
-
-				console.log(b.getPosition().x + "pbd" + b.getPosition().y + " " + b.getColor())
 		}, this);
 	},
 
