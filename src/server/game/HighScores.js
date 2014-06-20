@@ -36,28 +36,15 @@ var HighScores = {
 		for(i = 0; i < _top.length; i++){
 			newRanking.push(_top[i].ID);
 		}
-
-		//TODO sh.updateTop(data);
 		this.updateHighscore(newRanking);
 		
 		this.oldranking = newRanking;
-
 		return newRanking
 	},
 
 
 	updateHighscore: function(highscore){
-	
-		for(i = 0; i < GroupManager.getGroup("Player").getMemberLength(); i++){
-			var player = GroupManager.getGroup("Player").getMember(i);
-			player.setPoints(S.player.points); //Reset points to a normal player
-			
-			if(player != -1){
-				if(player.getPowerup() == null){
-					player.getPole().setRadius(S.pole.size);
-				}
-			}
-		}
+		this.resetPole();
 
 		var count = S.highScore.top;
 		
@@ -71,6 +58,19 @@ var HighScores = {
 				}
 			}
 			count--;
+		}
+	},
+
+	resetPole: function(){
+		for(i = 0; i < GroupManager.getGroup("Player").getMemberLength(); i++){
+			var player = GroupManager.getGroup("Player").getMember(i);
+			player.setPoints(S.player.points); //Reset points to a normal player
+			
+			if(player != -1){
+				if(player.getPowerup() == null){
+					player.getPole().setRadius(S.pole.size);
+				}
+			}
 		}
 	}
 };

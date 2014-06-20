@@ -9,6 +9,15 @@ describe("Powerup", function(){
 			expect(p.getType()).to.equal(0);
 		})
 	})
+
+	describe("#Update", function(){
+		var p = new Powerup(10, 2);
+
+		it("Should not update the position of the powerup, as it isn't moving", function(){
+			p.update();
+			expect(p.getPosition()).to.deep.equal({x: 0, y: 0});
+		})
+	})
 	
 	describe("#Equals", function(){
 		var p = new Powerup(10, 3);
@@ -34,6 +43,14 @@ describe("Powerup", function(){
 			p.stop();
 			expect(p.power).to.equals(null);
 		})		
+
+		it("Should be able to stop the powerup twice without problems", function(){
+			p.execute(stubPlayer);
+			p.stop();
+			expect(p.power).to.equal(null);
+			p.stop();
+			expect(p.power).to.equal(null);
+		})
 	})
 	
 	describe("#CreateTimer", function(){
@@ -134,6 +151,21 @@ describe("Powerup", function(){
 		it("Should get the correct ID", function(){
 			expect(p.getID()).to.be.a("number");
 			expect(p.getID()).to.not.equal(p2.getID());
+		})
+	})
+
+	describe("#CoolDown", function(){
+
+		var p = new Powerup(10, 1);
+
+		it("Should increment the cooldown angle", function(){
+			p.incrementCDAngle(10);
+			expect(p.getCDAngle()).to.equal(10);
+		})
+
+		it("Should set the cooldown angle", function(){
+			p.setCDAngle(2);
+			expect(p.getCDAngle()).to.equal(2);
 		})
 	})
 })
