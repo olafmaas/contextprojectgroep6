@@ -124,7 +124,9 @@ function PlayerSocketHandler() {
 	//and sends the powerup position to the mainscreen
 	socket.on('addPowerup', function () {
 		res = PUController.createPowerup(leftOffset, topOffset);
-		socket.emit('powerupSpawned', res.t, res.position)		
+		if(res){
+			socket.emit('powerupSpawned', res.t, res.position)		
+		}
 	});
 
 	//Sets the global ID of this player
