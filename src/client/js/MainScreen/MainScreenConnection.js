@@ -62,7 +62,7 @@ function MainScreenSocketHandler(){
 
 	socket.on('removePlayer', function (socketID){	
 		var client = playerData[socketID];	
-		Pcontroller.removePlayerObjects(socketID);
+		Pcontroller.removePlayerObjects(client);
 		delete playerData[socketID]; 
 	});
 

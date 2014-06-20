@@ -91,7 +91,6 @@ Drawer = function(_canvasContext){
 
 	this.drawPowerupSkin = function (_pole){
 		var powerup = _pole.player.getPowerup();
-		console.log(_pole.getPowerupDraw());
 		if(powerup != null && _pole.getPowerupDraw()){
 			canvasContext.beginPath();
 			canvasContext.arc(_pole.getBody().position.x, _pole.getBody().position.y, _pole.getRadius()+2, 0, Math.PI*2, true);
