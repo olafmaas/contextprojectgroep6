@@ -67,7 +67,7 @@ function MainScreenSocketHandler(){
 	});
 
 	socket.on('changePlayerPosition', function (data) {
-		Pcontroller.changePlayerPosition(data);
+		Pcontroller.updatePostition(data);
 	});
 
 	socket.on('poleIsHit', function (_pid) {
