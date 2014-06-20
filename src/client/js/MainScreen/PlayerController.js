@@ -7,6 +7,7 @@ function PlayerController(){
 		pole = game.instantiate(new Pole(Settings.pole.size));
 		pole.setColor(Settings.pole.color);
 		pole.setPosition(data.polePos.x, data.polePos.y);
+		pole.setPowerupDraw(false); //On the mainscreen, we don't want to show the circle around the pole
 		poles.addMember(pole);
 
 		shield = game.instantiate(new Shield(pole));

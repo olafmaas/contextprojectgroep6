@@ -70,7 +70,6 @@ var Player = Base.extend({
 	*
 	* @method Player#revert
 	*/
-	//met nieuwe powerups moet deze functie ook worden aangepast!
 	revert: function(){
 		this.getShield().revertShield(this.originalState.revert);
 		this.getShield().setShieldLength(this.originalState.length);
