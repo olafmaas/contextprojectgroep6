@@ -4,11 +4,7 @@ Our game is based on the dutch game called "Paaltjesvoetbal". This is a game you
 
 ## Project
 
-Games
-
-## Group
-
-Contextproject groep 6
+This game has been create by Group 6 of the gaming contextproject on the TU Delft. The game is meant to entertain and distract people who are waiting for something, which can be anything, ranging from the dentist to a movie theatre.
 
 ## Tech
 
