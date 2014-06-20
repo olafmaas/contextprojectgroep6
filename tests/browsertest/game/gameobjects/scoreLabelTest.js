@@ -1,7 +1,7 @@
 describe("ScoreLabel", function(){
 
 	describe("#constructor", function(){
-		it("should initialize the objects values", function(){
+		it("Should initialize the objects values", function(){
 			var stubPlayer = sinon.stub();
 			var lbl = new ScoreLabel(stubPlayer, "test");
 
@@ -20,7 +20,7 @@ describe("ScoreLabel", function(){
 			sl = new ScoreLabel(player, "");
 		})
 
-		it("should print the score on the label", function(){
+		it("Should print the score on the label", function(){
 			sl.update();
 			expect(sl.getText()).to.equal("Score: " + 42);
 		})

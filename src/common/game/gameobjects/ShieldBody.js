@@ -50,17 +50,6 @@ var ShieldBody = Body.extend({
 	*/
 	equals: function(_other){ return (this.ID == _other.getID()); },
 
-/******** WEGHALEN ******/
-	/**
-	* Method to handle a collision
-	* @method Shieldbody#handleIndividual
-	* @param {Body} _other - The other item that collides
-	*/
-	handleIndividual: function(_other){
-		//If the body is static it shouldn't respond to collision
-	},
-/****** EINDE WEGHALEN *****/	
-
 	/**
 	* Sets the angle of the shield
 	* @method ShieldBody#setAngle

@@ -1,6 +1,4 @@
 if(typeof module != 'undefined'){
-	var Base = require('../../lib/Base.js');
-
 	var IDDistributor = require('../../common/game/util/IDDistributor.js');
 	var Player = require('../../common/game/gameobjects/Player.js');
 	var Pole = require('../../common/game/gameobjects/Pole.js');
@@ -9,9 +7,9 @@ if(typeof module != 'undefined'){
 	var S = require('../../common/Settings.js');
 }
 
-var PlayerFactory = Base.extend({
+var PlayerFactory = {
 
-	createPlayer: function(polePos, id){
+	createPlayer: function(polePos, id, callback, context){
 		var player = new Player(id)
 		var pole = this.createPole(polePos);
 		var shield = this.createShield(pole);
@@ -19,17 +17,19 @@ var PlayerFactory = Base.extend({
 		player.setShield(shield);
 		pole.setPlayer(player);
 		player.setGlobalID(IDDistributor.getNewId());
+		player.setUpdateCallBack(callback, context);
+
 		return player;
 	},
 
 	/**
 	* Create new Pole
-	* @method Group#update
+	* @method PlayerFactory#createPole
 	* @param {GroupManager} gm, group manager used to add pole
 	*/
 	createPole: function(polePos){
 		var pole = new Pole(S.pole.size);
-		pole.setPosition(polePos.left + S.canvasWidth/2, polePos.top + S.canvasHeight/2);
+		pole.setPosition(polePos.left * S.canvasWidth + S.canvasWidth/2, polePos.top * S.canvasHeight + S.canvasHeight/2);
 
 		return pole;
 	},
@@ -40,8 +40,8 @@ var PlayerFactory = Base.extend({
 
 		return shield;
 	},
-});
+};
 
 if(typeof module != 'undefined'){
-    module.exports = PlayerFactory;
+	module.exports = PlayerFactory;
 }

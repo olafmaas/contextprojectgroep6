@@ -37,7 +37,6 @@ var Timer = Base.extend ({
 	*/
 	count: function(_this){
 		this.time++;
-		//console.log(time + " | " + player.getScore());
 	},
 
 	/**

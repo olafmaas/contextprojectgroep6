@@ -12,8 +12,8 @@ Drawer = function(_canvasContext){
 	* @param {object} _element - The object to be drawn
 	*/
 	this.draw = function(_element){
-		if(_element instanceof Ball) this.drawBall(_element);
-		else if(_element instanceof Pole) this.drawBall(_element);
+		if(_element instanceof Pole) this.drawBall(_element, true);
+		else if(_element instanceof Ball) this.drawBall(_element, false);
 		else if(_element instanceof Shield) this.drawShield(_element);
 		else if(_element instanceof Label) this.drawLabel(_element);
 		else if(_element instanceof Powerup) this.drawPowerup(_element);
@@ -25,7 +25,9 @@ Drawer = function(_canvasContext){
 	* @method Drawer#drawBall
 	* @param {object} _ball - The ball object to be drawn
 	*/
-	this.drawBall = function(_ball){
+	this.drawBall = function(_ball, _isPole){
+		if(_isPole) { this.drawPowerupSkin(_ball); }
+
 		canvasContext.beginPath();
 		canvasContext.arc(_ball.getBody().position.x, _ball.getBody().position.y, _ball.radius, 0, Math.PI*2, true);
 		canvasContext.closePath();
@@ -82,5 +84,39 @@ Drawer = function(_canvasContext){
 		
 		canvasContext.fillStyle = _powerup.getColor();
 		canvasContext.fill();
+
+		//Draw the cooldown part
+		this.drawCoolDown(_powerup, 2);
 	};
+
+	this.drawPowerupSkin = function (_pole){
+		var powerup = _pole.player.getPowerup();
+		if(powerup != null && _pole.getPowerupDraw()){
+			canvasContext.beginPath();
+			canvasContext.arc(_pole.getBody().position.x, _pole.getBody().position.y, _pole.getRadius()+2, 0, Math.PI*2, true);
+			canvasContext.closePath();
+
+			canvasContext.fillStyle = powerup.color;
+			canvasContext.fill();	
+			this.drawCoolDown(_pole, 4);
+		}
+	}
+
+	this.drawCoolDown = function (_object, _offset){	
+		if(_object.getCDAngle() > 0){
+			var startAngle = Settings.startAngle;
+			var endAngle = (startAngle + _object.getCDAngle()) % 360;
+
+			canvasContext.fillStyle = "black"; //Has to be the current background color
+			canvasContext.moveTo(_object.getPosition().x, _object.getPosition().y);
+			canvasContext.beginPath();
+			canvasContext.arc(
+	            _object.getPosition().x, _object.getPosition().y, _object.getRadius() + _offset, startAngle * Math.PI / 180,
+	            endAngle * Math.PI / 180, false
+	        );
+			canvasContext.lineTo(_object.getPosition().x, _object.getPosition().y);
+	        canvasContext.fill();
+	        canvasContext.closePath();
+    	}
+	}
 }

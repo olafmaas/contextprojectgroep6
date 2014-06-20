@@ -8,7 +8,7 @@ var scale = 1;
 * @param {function} _draw - The user-defined draw function to be called
 * Other parameters are optional
 */
-function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeight ,debug){
+function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeight){
 	var loadContent = _loadContent;
 	var draw = _draw;
 
@@ -96,22 +96,26 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 			|| document.body.clientHeight;
 
         if(hasResolution()){
-        	if (windowRatio < canvasRatio) {
-	            var height = window.innerHeight;
-	            scale = window.innerHeight/canvas.height;
-        	} 
-			else {
-	            var width = window.innerWidth;
-	            scale = window.innerWidth/canvas.width;
-        	}
-			canvas.style.width = width + "px";
-			canvas.style.height = height + "px";
+        	this.updateResolution(windowRatio, canvasRatio)
         }else{
         	var height = dimensions.height;
         	var width = dimensions.width;
         	canvas.width = width + "px";
 			canvas.height = height + "px";
         }
+	}
+
+	updateResolution = function(windowRatio, canvasRatio){
+		if (windowRatio < canvasRatio) {
+	            var height = window.innerHeight;
+	            scale = window.innerHeight/canvas.height;
+    	} 
+		else {
+            var width = window.innerWidth;
+            scale = window.innerWidth/canvas.width;
+    	}
+		canvas.style.width = width + "px";
+		canvas.style.height = height + "px";
 	}
 
 	updateMainScreenCanvasSize = function(){
@@ -152,7 +156,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 		if(Math.abs(window.orientation) == 90){
             updateCanvasSize();
         }else{
-            alert("For an optimal experience please hold your device horizontal.");
+           // alert("For an optimal experience please hold your device horizontal.");
         }
 	}
 	/**

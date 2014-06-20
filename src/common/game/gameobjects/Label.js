@@ -93,7 +93,7 @@ var Label = Base.extend({
 	* @method Label#getColor
 	* @return {hexcolor} The hex code of the color.
 	*/
-	getColor: function(){ return this.color; }
+	getColor: function(){ return this.color; },
 
 });
 

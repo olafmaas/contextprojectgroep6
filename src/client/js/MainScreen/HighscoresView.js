@@ -1,4 +1,5 @@
 HighscoresView = function(){
+	//Css settings used by the view
 	var ViewSettings = {
 		backgroundColor: "black",
 		textColor: "white",
@@ -17,6 +18,7 @@ HighscoresView = function(){
 		viewHeight: "95%",
 	};
 
+	//Initializes the view and sets the css 
 	this.initialize = function(){
 		$("#HighscoresView").css("background-color", ViewSettings.backgroundColor);
 		$("#HighscoresView").css("color", ViewSettings.textColor);
@@ -33,22 +35,27 @@ HighscoresView = function(){
 		$("#NameTitle").html(ViewSettings.nameColTitle);
 		$("#ScoreTitle").html(ViewSettings.scoreColTitle);
 
-		//Hackerdehack
 		$("body").css("height", window.innerHeight +'px');
+		$("#gameDiv").css("max-height", window.innerHeight +'px');
 	}
 
+	//Updates the highscore list by clearing it and appending all the players
 	this.updateScores = function(_scores){
 		$("#ScoreList").empty();
 
-		for (var i = 0; i < _scores.length; i++) {
-			$("#ScoreList").append(this.newScoreDiv(i + 1, _scores[i]));
-		};
+		if(_scores != null){
+			for (var i = 0; i < _scores.length; i++) {
+				$("#ScoreList").append(this.newScoreDiv(i + 1, _scores[i]));
+			};
+		}
 	}
 
+	//Updates the height of the highscore 
 	this.updateHeight = function(){
 		$("#HighscoresView").css("height", $("#gameCanvas").css("height"));
 	}
 
+	//Adds the html div used for a new score in the highscore list
 	this.newScoreDiv = function(_position, _score){
 		return "<div class=container>" + 
 					"<div class=Position>" + _position + ".</div>" +
@@ -57,5 +64,6 @@ HighscoresView = function(){
 				"</div>";
 	}
 
+	//Initalizes the highscore
 	this.initialize();
 }

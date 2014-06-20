@@ -7,34 +7,42 @@ var e = require('../common/Enums.js');
 function SocketHandler(_io){
 	var io = _io;
 	var mainScreenSocket = {emit:function(){false}}; //If the mainscreen is not instantiated this function is used;
-	var clientSockets = {};
+	var clientSockets = {};	//Used as a hashmap with socketID as key and socket as value
 
 	//Handles mainscreen connection and listeners
 	this.setMainScreenListeners = function(socket, serverGame){
 		mainScreenSocket = socket;
 
 		socket.on('disconnect', function (data){
-			console.log('MainScreen disconnected');
+			console.log('MainScreen ' + data);
 			mainScreenSocket = {emit: function(){false}};
 		});
 	};
 
 	//Handles player connection and listeners
-	this.setClientListeners = function(socket, serverGame){
+	this.connectClient = function(socket, serverGame){
 		clientSockets[socket.id] = socket;
 
 		socket.on('userName', function (name){
-			if(serverGame.isNameAvailable(name)){
-				serverGame.addClient(socket.id, socket);
-				serverGame.registerName(name, socket.id);
-				socket.emit('showPlayerName', name);
+			var checkName = name.toLowerCase();
+			if(!serverGame.hasName(socket.id)){
+				if(serverGame.isNameAvailable(checkName)){
+					serverGame.addClient(socket.id, socket);
+					serverGame.registerName(checkName, socket.id);
+					socket.emit('showPlayerName', name); //Set the normal name (with uppercases) to the player
+					setClientListeners(socket, serverGame);
+				}else{
+					console.log('Username already in use');
+					socket.emit('userNameInUse');
+				}
 			}else{
-				console.log('Username already in use');
-				socket.emit('userNameInUse');
+				socket.emit('cheaterDetected');
 			}
 		});
+	};
 
-		socket.on('shieldAngle', function (_angle){
+	function setClientListeners(socket, serverGame){
+		socket.on('shieldAngle', function (_angle){ 
 			serverGame.setAngle(socket.id, _angle);
 			mainScreenSocket.emit('updateShieldAngle', {id: socket.id, angle: _angle});
 		});
@@ -44,10 +52,14 @@ function SocketHandler(_io){
 			mainScreenSocket.emit('powerupClicked', _playerID, _powerupType);
 		});
 
-		socket.on('disconnect', function (data){ //<< waarom wordt er 'data' doorgegeven als dit vervolgens niet wordt gebruikt?
-			console.log('Player disconnected - id: ' + socket.id);
+		socket.on('disconnect', function (data){ 
+			console.log('Client ' + data);
 			serverGame.deleteClient(socket.id);
-			mainScreenSocket.emit('removePlayer', socket.id);
+ 			mainScreenSocket.emit('removePlayer', socket.id);
+		});
+
+		socket.on('powerupSpawned', function (_powerupType, _location){
+			mainScreenSocket.emit('powerupSpawned', _powerupType, _location);
 		});
 	};
 
@@ -66,8 +78,9 @@ function SocketHandler(_io){
 	};
 
 	//Adds a new powerup to the user
-	this.newPowerup = function(data){
-		io.of('/player').emit('addPowerup', data);
+	this.newPowerup = function(socketID){
+		if(clientSockets[socketID])
+			clientSockets[socketID].emit('addPowerup');
 	};
 
 	//////////////////
@@ -97,6 +110,10 @@ function SocketHandler(_io){
 	this.updateScoresMainScreen = function(hs){
 		mainScreenSocket.emit('updateScores', hs);	
 	};
+
+	this.updatePlayerOnMainscreen = function(data){
+		mainScreenSocket.emit('changePlayerPosition', data);	
+	}
 	
 	this.updateTop = function(data){
 		mainScreenSocket.emit('updateTop', data);

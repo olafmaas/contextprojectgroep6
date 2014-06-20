@@ -21,8 +21,11 @@ function Group(_type){
 	* @param {Object} _object - The object which is added to a list of members
 	*/
 	this.addMember = function(_object){
-		if(_object instanceof type)
+		if(_object.getType && (_object.getType() === type)){
 			members.push(_object);
+		} else if(_object instanceof type){
+			members.push(_object);
+		}
 	}
 
 	/**
@@ -32,7 +35,7 @@ function Group(_type){
 	* @param {Object} _object - The object which has to be deleted from the group.
 	*/
 	this.removeMember = function(_object){
-		if(_object instanceof type){
+		if((_object.getType && (_object.getType() === type)) ||_object instanceof type){
 			var found = false;
 			for(var i = members.length - 1; i >= 0; i--) {
     			if(members[i].getID() === _object.getID()) {
@@ -46,31 +49,6 @@ function Group(_type){
 	}
 
 	/**
-	* Removes the object on the specified index from the group.
-	*
-	* @method Group#removeMember 
-	* @param {Integer} _index - The index of the object which has to be deleted from the group.
-	*/
-	this.removeMemberOnIndex = function(_index){
-		members[_index] = undefined;
-	}
-
-	/**
-	* Clears both the members and collision array of the group.
-	* Note: Both are cleared at once, because collisions are depending on the members.
-	* There is a function available to clear all collisions without removing the members.
-	*
-	* @method Group#clearGroup.
-	*/
-	this.clearGroup = function(){
-		//Setting the length to 0 will remove all objects in the array.
-		//members = [] would also be possible, but this will create a new array
-		//and any references to the old one will still be working or will eventually
-		//created problems.
-		members.length = 0; 
-	}
-
-	/**
 	* Checks each collision of the possible collisions
 	* 
 	* @method Group#checkCollision
@@ -81,7 +59,6 @@ function Group(_type){
 				if(CollisionDetection.hasCollision(members[i], members[j])) return true;
 			}
 		}
-
 		return false;
 	}
 
@@ -101,7 +78,11 @@ function Group(_type){
 	this.getMember = function(_index){
 		return members[_index];
 	}
-
+	
+	/**
+	* Returns member with given id
+	* @method Group#getMemberByID
+	*/
 	this.getMemberByID = function(_id){
 		var length = this.getMemberLength();
 		for(var i = 0; i < length; i++){
@@ -110,7 +91,11 @@ function Group(_type){
 		}
 		return -1;
 	}
-
+	
+	/**
+	* Returns member with given global id
+	* @method Group#getMemberByGlobalID
+	*/
 	this.getMemberByGlobalID = function(_id){
 		var length = this.getMemberLength();
 		for(var i = 0; i < length; i++){
@@ -126,15 +111,6 @@ function Group(_type){
 	*/
 	this.getMemberLength = function(){
 		return members.length;
-	}
-
-	this.getCollisionLength = function(){
-		return collision.length;
-	}
-
-	this.getRandomElement = function(){
-		randInt = Math.floor(Math.random()*members.length)-1
-		return members[randInt]
 	}
 }
 

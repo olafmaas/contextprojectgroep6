@@ -23,12 +23,11 @@ io.of('/mainscreen').on('connection', function (socket) {
 
 io.of('/player').on('connection', function (socket) {
 	if(sh.hasMainScreen()){
-		console.log('Player connected - id: ' + socket.id);
-		sh.setClientListeners(socket, sg);
-		//sg.addClient(socket.id, socket); //TODO socket moet verwijderd worden. maar is nu nog nodig voor de grid
+		console.log('Client connected - id: ' + socket.id);
+		sh.connectClient(socket, sg);
 	}
 	else{
-		socket.send('404: MainScreen not found!');
+		socket.send('MainScreen not found!');
 		socket.disconnect();
 	} 
 });

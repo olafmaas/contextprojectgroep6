@@ -26,6 +26,7 @@ var Player = Base.extend({
 	originalState: {},
 	timer: null,
 	ID: -1,
+	callback: {callb: function(){return false}, context: undefined},
 
 	constructor: function(_name){
 		this.name = _name
@@ -69,7 +70,6 @@ var Player = Base.extend({
 	*
 	* @method Player#revert
 	*/
-	//met nieuwe powerups moet deze functie ook worden aangepast!
 	revert: function(){
 		this.getShield().revertShield(this.originalState.revert);
 		this.getShield().setShieldLength(this.originalState.length);
@@ -130,6 +130,18 @@ var Player = Base.extend({
 		this.activePowerup.execute(this); //immediatly execute the powerup 
 		this.timer = _powerup.getTimer();
 		this.timer.startTimer();
+	},
+
+
+	setUpdateCallBack: function(_callback, _context){
+		this.callback.callb = _callback;
+		this.callback.context = _context;
+	},
+
+	updatePosition: function(_x, _y){
+		this.pole.setPosition(_x, _y);
+		this.shield.setPosition(this.pole);
+		this.callback.callb.call(this.callback.context, {gid: this.getGlobalID(), x: _x, y: _y});
 	},
 
 	/**
@@ -264,7 +276,11 @@ var Player = Base.extend({
 	* @method Player#getID
 	* @return {number} The ID of the player
 	*/
-	getID: function(){ return this.ID; }
+	getID: function(){ return this.ID; },
+
+	getType: function(){ return 'Player'; }
+
+
 });
 
 if(typeof module != 'undefined'){

@@ -57,9 +57,10 @@ var Settings = {
 	/**** POWERUP PROPERTIES ****/
 	nrOfPowerups: 5,
 	powerupSize: 25,
-	removalTime: 4000, //in ms, how long a powerup is present on screen.
-	minTime: 10, //in ms, minimum time between powerup spawns.
-	maxTime: 30, //in ms, maximum time between powerup spawns.
+	removalTime: 4, //in seconds, how long a powerup is present on screen.
+	minTime: 5, //in seconds, minimum time between powerup spawns.
+	maxTime: 10, //in seconds, maximum time between powerup spawns.
+	startAngle: 270, //The starting angle for the transition of the powerup when clicked (In degrees)
 
 	/**** LABEL POSITIONS ****/
 	label: {
@@ -108,8 +109,15 @@ var Settings = {
 	highScore: {
 		updateInterval: 5000,
 		top: 3,
-		colors: ["#B8E6E6", "#66CCFF", "#3399FF", "#0066FF", "#0000FF"] //from blue to light-blue
+		colors: ["#B8E6E6", "#66CCFF", "#3399FF", "#0066FF", "#0000FF"], //from blue to light-blue
+		removalTime: 300000 //in milliseconds, the amount of time the highscore is saved after a disconnect from a player
 	},
+
+	joinIndicator: {
+		times: 10,
+		interval: 200,
+		color: 'red'
+	}
 	
 }
 
