@@ -201,6 +201,10 @@ function ServerGame(_socketHandler){
 		else { namesList[name] = 1; }
 	};
 
+	this.hasName = function(socketID){
+		return clientList[socketID];
+	}
+
 	this.setAngle = function(socketID, angle){
 		if(clientList[socketID]){
 			clientList[socketID].shield.setAngle(angle);

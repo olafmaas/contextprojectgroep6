@@ -25,14 +25,18 @@ function SocketHandler(_io){
 
 		socket.on('userName', function (name){
 			var checkName = name.toLowerCase();
-			if(serverGame.isNameAvailable(checkName)){
-				serverGame.addClient(socket.id, socket);
-				serverGame.registerName(checkName, socket.id);
-				socket.emit('showPlayerName', name); //Set the normal name (with uppercases) to the player
-				setClientListeners(socket, serverGame);
+			if(!serverGame.hasName(socket.id)){
+				if(serverGame.isNameAvailable(checkName)){
+					serverGame.addClient(socket.id, socket);
+					serverGame.registerName(checkName, socket.id);
+					socket.emit('showPlayerName', name); //Set the normal name (with uppercases) to the player
+					setClientListeners(socket, serverGame);
+				}else{
+					console.log('Username already in use');
+					socket.emit('userNameInUse');
+				}
 			}else{
-				console.log('Username already in use');
-				socket.emit('userNameInUse');
+				socket.emit('cheaterDetected');
 			}
 		});
 	};

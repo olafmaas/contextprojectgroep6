@@ -36,6 +36,11 @@ function PlayerSocketHandler() {
         gameElem.style.display="block";
 	});
 
+	socket.on("cheaterDetected", function(){
+		console.log("You shall not succeed!")
+		window.location.replace("http://www.youtube.com/watch?v=dQw4w9WgXcQ");
+	})
+
 	//Emits the chosen name to the sockethandler to be checked
 	this.checkName = function (n){
 		var error = document.getElementById("error");
