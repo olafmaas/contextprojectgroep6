@@ -1,4 +1,4 @@
-# Paaltjesvoetbal 0.3
+# Paaltjesvoetbal
 
 Our game is based on the dutch game called "Paaltjesvoetbal". This is a game you play with a football and cones. Everyone has his own cone and needs to prevent it from collapsing. There can be multiple footballs which players need to use to make other peoples cones collapse while defending their own. In our game every player has a pole which he/she needs to defend with a shield.
 
