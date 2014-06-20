@@ -1,8 +1,26 @@
 {
     "project": {},
     "files": {
-        "Ball.js": {
-            "name": "Ball.js",
+        "src/client/js/Player/BallController.js": {
+            "name": "src/client/js/Player/BallController.js",
+            "modules": {},
+            "classes": {
+                "BallController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/client/js/Player/PowerUpController.js": {
+            "name": "src/client/js/Player/PowerUpController.js",
+            "modules": {},
+            "classes": {
+                "PowerUpController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/gameobjects/Ball.js": {
+            "name": "src/common/game/gameobjects/Ball.js",
             "modules": {},
             "classes": {
                 "Ball": 1
@@ -10,8 +28,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "Body.js": {
-            "name": "Body.js",
+        "src/common/game/gameobjects/Body.js": {
+            "name": "src/common/game/gameobjects/Body.js",
             "modules": {},
             "classes": {
                 "Body": 1
@@ -19,17 +37,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "Camera.js": {
-            "name": "Camera.js",
-            "modules": {},
-            "classes": {
-                "Camera": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "CircularBody.js": {
-            "name": "CircularBody.js",
+        "src/common/game/gameobjects/CircularBody.js": {
+            "name": "src/common/game/gameobjects/CircularBody.js",
             "modules": {},
             "classes": {
                 "CircularBody": 1
@@ -37,60 +46,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "Collision.js": {
-            "name": "Collision.js",
-            "modules": {},
-            "classes": {
-                "Collision": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "ColorGenerator.js": {
-            "name": "ColorGenerator.js",
-            "modules": {},
-            "classes": {
-                "ColorGenerator": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "Game.js": {
-            "name": "Game.js",
-            "modules": {},
-            "classes": {
-                "Game": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "Group.js": {
-            "name": "Group.js",
-            "modules": {},
-            "classes": {
-                "Group": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "HighResolutionTimer.js": {
-            "name": "HighResolutionTimer.js",
-            "modules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {}
-        },
-        "Input.js": {
-            "name": "Input.js",
-            "modules": {},
-            "classes": {
-                "Input": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "Label.js": {
-            "name": "Label.js",
+        "src/common/game/gameobjects/Label.js": {
+            "name": "src/common/game/gameobjects/Label.js",
             "modules": {},
             "classes": {
                 "Label": 1
@@ -98,8 +55,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "Player.js": {
-            "name": "Player.js",
+        "src/common/game/gameobjects/Player.js": {
+            "name": "src/common/game/gameobjects/Player.js",
             "modules": {},
             "classes": {
                 "Player": 1
@@ -107,8 +64,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "Pole.js": {
-            "name": "Pole.js",
+        "src/common/game/gameobjects/Pole.js": {
+            "name": "src/common/game/gameobjects/Pole.js",
             "modules": {},
             "classes": {
                 "Pole": 1
@@ -116,8 +73,26 @@
             "fors": {},
             "namespaces": {}
         },
-        "Shield.js": {
-            "name": "Shield.js",
+        "src/common/game/gameobjects/Powerup.js": {
+            "name": "src/common/game/gameobjects/Powerup.js",
+            "modules": {},
+            "classes": {
+                "Powerup": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/gameobjects/ScoreLabel.js": {
+            "name": "src/common/game/gameobjects/ScoreLabel.js",
+            "modules": {},
+            "classes": {
+                "ScoreLabel": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/gameobjects/Shield.js": {
+            "name": "src/common/game/gameobjects/Shield.js",
             "modules": {},
             "classes": {
                 "Shield": 1
@@ -125,15 +100,17 @@
             "fors": {},
             "namespaces": {}
         },
-        "ShieldBody.js": {
-            "name": "ShieldBody.js",
+        "src/common/game/gameobjects/ShieldBody.js": {
+            "name": "src/common/game/gameobjects/ShieldBody.js",
             "modules": {},
-            "classes": {},
+            "classes": {
+                "Shieldbody": 1
+            },
             "fors": {},
             "namespaces": {}
         },
-        "Sprite.js": {
-            "name": "Sprite.js",
+        "src/common/game/gameobjects/Sprite.js": {
+            "name": "src/common/game/gameobjects/Sprite.js",
             "modules": {},
             "classes": {
                 "Sprite": 1
@@ -141,18 +118,216 @@
             "fors": {},
             "namespaces": {}
         },
-        "Timer.js": {
-            "name": "Timer.js",
+        "src/common/game/time/PlayerTimer.js": {
+            "name": "src/common/game/time/PlayerTimer.js",
+            "modules": {},
+            "classes": {
+                "PlayerTimer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/time/PowerupTimer.js": {
+            "name": "src/common/game/time/PowerupTimer.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/time/RandomTimer.js": {
+            "name": "src/common/game/time/RandomTimer.js",
+            "modules": {},
+            "classes": {
+                "PowerupTimer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/time/Timer.js": {
+            "name": "src/common/game/time/Timer.js",
             "modules": {},
             "classes": {
                 "Timer": 1
             },
             "fors": {},
             "namespaces": {}
+        },
+        "src/common/game/util/ColorGenerator.js": {
+            "name": "src/common/game/util/ColorGenerator.js",
+            "modules": {},
+            "classes": {
+                "ColorGenerator": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/util/Group.js": {
+            "name": "src/common/game/util/Group.js",
+            "modules": {},
+            "classes": {
+                "Group": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/util/IDDistributor.js": {
+            "name": "src/common/game/util/IDDistributor.js",
+            "modules": {},
+            "classes": {
+                "IdDistributor": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/CollisionDetection.js": {
+            "name": "src/common/game/CollisionDetection.js",
+            "modules": {},
+            "classes": {
+                "CollisionDetection": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/CoreGame.js": {
+            "name": "src/common/game/CoreGame.js",
+            "modules": {},
+            "classes": {
+                "CoreGame": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/Drawer.js": {
+            "name": "src/common/game/Drawer.js",
+            "modules": {},
+            "classes": {
+                "Drawer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/Game.js": {
+            "name": "src/common/game/Game.js",
+            "modules": {},
+            "classes": {
+                "Game": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/Input.js": {
+            "name": "src/common/game/Input.js",
+            "modules": {},
+            "classes": {
+                "Input": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/game/RenderEngine.js": {
+            "name": "src/common/game/RenderEngine.js",
+            "modules": {},
+            "classes": {
+                "RenderEngine": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/Client.js": {
+            "name": "src/common/Client.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/Enums.js": {
+            "name": "src/common/Enums.js",
+            "modules": {},
+            "classes": {
+                "Enum": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/common/Settings.js": {
+            "name": "src/common/Settings.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/server/factory/PlayerFactory.js": {
+            "name": "src/server/factory/PlayerFactory.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/server/grid/Block.js": {
+            "name": "src/server/grid/Block.js",
+            "modules": {},
+            "classes": {
+                "Block": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/server/grid/GameGrid.js": {
+            "name": "src/server/grid/GameGrid.js",
+            "modules": {},
+            "classes": {
+                "GameGrid": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/server/grid/GridCalc.js": {
+            "name": "src/server/grid/GridCalc.js",
+            "modules": {},
+            "classes": {
+                "GridCalc": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/server/ServerGame.js": {
+            "name": "src/server/ServerGame.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
         }
     },
     "modules": {},
     "classes": {
+        "BallController": {
+            "name": "BallController",
+            "shortname": "BallController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/client/js/Player/BallController.js",
+            "line": 1,
+            "description": "Ballcontroller which handles the creating and removal off balls.",
+            "classdesc": "BallController",
+            "is_constructor": 1
+        },
+        "PowerUpController": {
+            "name": "PowerUpController",
+            "shortname": "PowerUpController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/client/js/Player/PowerUpController.js",
+            "line": 2,
+            "description": "Powerup controller which handles the powerup action on the player's screen.",
+            "classdesc": "Powerupcontroller",
+            "is_constructor": 1
+        },
         "Ball": {
             "name": "Ball",
             "shortname": "Ball",
@@ -161,11 +336,12 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "Ball.js",
-            "line": 7,
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 9,
             "description": "Ball constructor",
-            "classdesc": "Ball constructor.",
+            "classdesc": "Ball class.",
             "is_constructor": 1,
+            "extends": "Base",
             "params": [
                 {
                     "name": "_radius",
@@ -182,25 +358,12 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "Body.js",
+            "file": "src/common/game/gameobjects/Body.js",
             "line": 5,
             "description": "Body constructor",
             "classdesc": "The bass class from which the other bodies inherit.",
-            "is_constructor": 1
-        },
-        "Camera": {
-            "name": "Camera",
-            "shortname": "Camera",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "Camera.js",
-            "line": 3,
-            "description": "Camera class",
-            "classdesc": "Camera class",
-            "is_constructor": 1
+            "is_constructor": 1,
+            "extends": "Base"
         },
         "CircularBody": {
             "name": "CircularBody",
@@ -210,11 +373,12 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "CircularBody.js",
+            "file": "src/common/game/gameobjects/CircularBody.js",
             "line": 9,
             "description": "CircularBody Class",
             "classdesc": "CircularBody class which extends the Body class.",
             "is_constructor": 1,
+            "extends": "Body",
             "params": [
                 {
                     "name": "_parent",
@@ -222,122 +386,6 @@
                     "type": "Ball"
                 }
             ]
-        },
-        "Collision": {
-            "name": "Collision",
-            "shortname": "Collision",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "Collision.js",
-            "line": 1,
-            "description": "Collision class",
-            "classdesc": "This class is used by the Group class to save collisions.",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "_object1",
-                    "description": "- The first object for the collision (No groups)",
-                    "type": "Object"
-                },
-                {
-                    "name": "_object2",
-                    "description": "- The secod object for the collision (Can be a group)",
-                    "type": "Object"
-                },
-                {
-                    "name": "_funcAfter",
-                    "description": "- A function which will be triggered after the collision handling (Optional)",
-                    "type": "Function"
-                },
-                {
-                    "name": "_this",
-                    "description": "- The 'this' object that will be used as parameter in the function triggered after the collision (Optional)",
-                    "type": "Object"
-                }
-            ]
-        },
-        "ColorGenerator": {
-            "name": "ColorGenerator",
-            "shortname": "ColorGenerator",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "ColorGenerator.js",
-            "line": 1,
-            "description": "Class for a color generator",
-            "classdesc": "Color generator class",
-            "static": 1
-        },
-        "Game": {
-            "name": "Game",
-            "shortname": "Game",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "Game.js",
-            "line": 5,
-            "description": "Game class",
-            "classdesc": "Game class for setting up the game/field.",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "load",
-                    "description": "- Load function",
-                    "type": "Function"
-                },
-                {
-                    "name": "update",
-                    "description": "- Update function",
-                    "type": "Function"
-                },
-                {
-                    "name": "draw",
-                    "description": "- Draw function",
-                    "type": "Function"
-                }
-            ]
-        },
-        "Group": {
-            "name": "Group",
-            "shortname": "Group",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "Group.js",
-            "line": 1,
-            "description": "Group class",
-            "classdesc": "Class to represent objects as groups.",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "_type",
-                    "description": "- The type of objects which are stored in the group.",
-                    "type": "Object"
-                }
-            ]
-        },
-        "Input": {
-            "name": "Input",
-            "shortname": "Input",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "Input.js",
-            "line": 1,
-            "description": "Input class",
-            "classdescr": "Input class",
-            "is_constructor": 1
         },
         "Label": {
             "name": "Label",
@@ -347,11 +395,12 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "Label.js",
-            "line": 1,
+            "file": "src/common/game/gameobjects/Label.js",
+            "line": 6,
             "description": "A label class for writing text on the screen",
             "classdesc": "Label class for writing text on the screen.",
             "is_constructor": 1,
+            "extends": "Base",
             "params": [
                 {
                     "name": "_text",
@@ -368,11 +417,12 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "Player.js",
-            "line": 5,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 8,
             "description": "Player class",
             "classdesc": "Class to represent players with properties.",
             "is_constructor": 1,
+            "extends": "Base",
             "params": [
                 {
                     "name": "_name",
@@ -389,11 +439,12 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "Pole.js",
-            "line": 6,
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 8,
             "description": "Pole class",
             "classdesc": "A simple pole class which extends Ball",
             "is_constructor": 1,
+            "extends": "Ball",
             "params": [
                 {
                     "name": "_radius",
@@ -401,6 +452,60 @@
                     "type": "Number"
                 }
             ]
+        },
+        "Powerup": {
+            "name": "Powerup",
+            "shortname": "Powerup",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 13,
+            "description": "Powerup class",
+            "classdesc": "A simple powerup class",
+            "is_constructor": 1,
+            "extends": "Base",
+            "params": [
+                {
+                    "name": "_radius",
+                    "description": "- The radius of the powerup.",
+                    "type": "Number"
+                },
+                {
+                    "name": "_type",
+                    "description": "- The type of the powerup",
+                    "type": "Number"
+                }
+            ]
+        },
+        "ScoreLabel": {
+            "name": "ScoreLabel",
+            "shortname": "ScoreLabel",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/gameobjects/ScoreLabel.js",
+            "line": 5,
+            "description": "A label class for showing user's score on screen",
+            "classdesc": "Label class specifically aimed at showing the score of the player",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_player",
+                    "description": "- The player for which the label should display the score",
+                    "type": "Player"
+                },
+                {
+                    "name": "_text",
+                    "description": "- Initial string to write on the screen",
+                    "type": "String"
+                }
+            ],
+            "extends": "Label"
         },
         "Shield": {
             "name": "Shield",
@@ -410,8 +515,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "Shield.js",
-            "line": 6,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 7,
             "description": "Shield constructor",
             "classdesc": "Shield constructor.",
             "is_constructor": 1,
@@ -423,6 +528,28 @@
                 }
             ]
         },
+        "Shieldbody": {
+            "name": "Shieldbody",
+            "shortname": "Shieldbody",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/gameobjects/ShieldBody.js",
+            "line": 8,
+            "description": "Constructor for the shield body",
+            "classdesc": "Shieldbody class",
+            "is_constructor": 1,
+            "extends": "Body",
+            "params": [
+                {
+                    "name": "_parent",
+                    "description": "- The shield object",
+                    "type": "Shield"
+                }
+            ]
+        },
         "Sprite": {
             "name": "Sprite",
             "shortname": "Sprite",
@@ -431,11 +558,61 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "Sprite.js",
-            "line": 1,
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 6,
             "description": "Sprite class",
             "classdesc": "Sprite class for loading textures",
-            "is_constructor": 1
+            "is_constructor": 1,
+            "extends": "Base",
+            "params": [
+                {
+                    "name": "_texturePath",
+                    "description": "- The relative path to the image.",
+                    "type": "String"
+                }
+            ]
+        },
+        "PlayerTimer": {
+            "name": "PlayerTimer",
+            "shortname": "PlayerTimer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/time/PlayerTimer.js",
+            "line": 5,
+            "description": "PlayerTimer class",
+            "classdesc": "Class which handles the timers used for the scores in the game.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_player",
+                    "description": "- The player to which the timer belongs",
+                    "type": "Player"
+                }
+            ]
+        },
+        "PowerupTimer": {
+            "name": "PowerupTimer",
+            "shortname": "PowerupTimer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/time/RandomTimer.js",
+            "line": 5,
+            "description": "PowerupTimer class",
+            "classdesc": "Class which handles the timers used for the powerups in the game. It counts down instead of up!",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_time",
+                    "description": "- The time from which will be counted down.",
+                    "type": "Time"
+                }
+            ]
         },
         "Timer": {
             "name": "Timer",
@@ -445,55 +622,511 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "Timer.js",
-            "line": 3,
+            "file": "src/common/game/time/Timer.js",
+            "line": 6,
             "description": "Timer class",
-            "classdesc": "Class which handles the timers used for the scores in game.",
+            "classdesc": "Class which handles the timers used for the scores and powerups in the game.",
+            "is_constructor": 1
+        },
+        "ColorGenerator": {
+            "name": "ColorGenerator",
+            "shortname": "ColorGenerator",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/util/ColorGenerator.js",
+            "line": 1,
+            "description": "Class for a color generator",
+            "classdesc": "Color generator class",
+            "static": 1
+        },
+        "Group": {
+            "name": "Group",
+            "shortname": "Group",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/util/Group.js",
+            "line": 5,
+            "description": "Group class",
+            "classdesc": "Class to represent objects as groups.",
             "is_constructor": 1,
             "params": [
                 {
-                    "name": "_player",
-                    "description": "- The player to which the timer belongs.",
-                    "type": "Player"
+                    "name": "_type",
+                    "description": "- The type of objects which are stored in the group.",
+                    "type": "Object"
                 }
             ]
+        },
+        "IdDistributor": {
+            "name": "IdDistributor",
+            "shortname": "IdDistributor",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/util/IDDistributor.js",
+            "line": 1,
+            "description": "ID distributor",
+            "classdesc": "Distributes unique ID's",
+            "is_constructor": 1
+        },
+        "CollisionDetection": {
+            "name": "CollisionDetection",
+            "shortname": "CollisionDetection",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 6,
+            "description": "CollisionDetection Class",
+            "classdesc": "Class which detects collisions and calls methods to handle them."
+        },
+        "CoreGame": {
+            "name": "CoreGame",
+            "shortname": "CoreGame",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/CoreGame.js",
+            "line": 6,
+            "description": "A fully functional game class without any graphical handling",
+            "params": [
+                {
+                    "name": "_initialize",
+                    "description": "- The initialize function",
+                    "type": "Function"
+                },
+                {
+                    "name": "_update",
+                    "description": "- The update function",
+                    "type": "Function"
+                }
+            ]
+        },
+        "Drawer": {
+            "name": "Drawer",
+            "shortname": "Drawer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/Drawer.js",
+            "line": 1,
+            "description": "Drawer class",
+            "classdesc": "Class which draws everything in the playing field."
+        },
+        "Game": {
+            "name": "Game",
+            "shortname": "Game",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/Game.js",
+            "line": 6,
+            "description": "Game class",
+            "classdesc": "Game class for setting up the game/field.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_intialize",
+                    "description": "- Initialize function",
+                    "type": "Function"
+                },
+                {
+                    "name": "_loadContent",
+                    "description": "- Load function",
+                    "type": "Function"
+                },
+                {
+                    "name": "_update",
+                    "description": "- Update function",
+                    "type": "Function"
+                },
+                {
+                    "name": "_draw",
+                    "description": "- Draw function",
+                    "type": "Function"
+                },
+                {
+                    "name": "_width",
+                    "description": "- The width of the field (optional)",
+                    "type": "Value"
+                },
+                {
+                    "name": "_height",
+                    "description": "- The height of the field (optional)",
+                    "type": "Value"
+                },
+                {
+                    "name": "_resW",
+                    "description": "- The width resolution of the field (optional)",
+                    "type": "Value"
+                },
+                {
+                    "name": "_resH",
+                    "description": "- The height resolution of the field (optional)",
+                    "type": "Value"
+                }
+            ]
+        },
+        "Input": {
+            "name": "Input",
+            "shortname": "Input",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/Input.js",
+            "line": 1,
+            "description": "Input class",
+            "classdesc": "Input class",
+            "is_constructor": 1
+        },
+        "RenderEngine": {
+            "name": "RenderEngine",
+            "shortname": "RenderEngine",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/game/RenderEngine.js",
+            "line": 3,
+            "description": "The engine for rendering sprites, balls and other game objects",
+            "params": [
+                {
+                    "name": "_loadContent",
+                    "description": "- The user-defined loadcontent function to be called",
+                    "type": "Function"
+                },
+                {
+                    "name": "_draw",
+                    "description": "- The user-defined draw function to be called\nOther parameters are optional",
+                    "type": "Function"
+                }
+            ]
+        },
+        "Enum": {
+            "name": "Enum",
+            "shortname": "Enum",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/common/Enums.js",
+            "line": 1,
+            "description": "Enum class",
+            "classdesc": "An enum class in which we can put our used enums. \nNote: Enums can be called as follow: e.updateBall, which will return a number. \nNote: Object.freeze is used to prevent accidental overwrites which would render the enums useless."
+        },
+        "Block": {
+            "name": "Block",
+            "shortname": "Block",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/server/grid/Block.js",
+            "line": 10,
+            "description": "Block Class",
+            "classdesc": "Block is a class which handles the screen of one player.",
+            "is_constructor": 1,
+            "extends": "Base",
+            "params": [
+                {
+                    "name": "_socket",
+                    "description": "- The socket of the player in this block, use false \nif a player is not yet assigned.",
+                    "type": "Socket"
+                },
+                {
+                    "name": "_left",
+                    "description": "- The left bound of this block in pixels.",
+                    "type": "Int"
+                },
+                {
+                    "name": "_top",
+                    "description": "- The top bound of this block.",
+                    "type": "Int"
+                }
+            ]
+        },
+        "GameGrid": {
+            "name": "GameGrid",
+            "shortname": "GameGrid",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/server/grid/GameGrid.js",
+            "line": 8,
+            "description": "GameGrid Class",
+            "classdesc": "GameGrid is the class which contains all blocks.",
+            "is_constructor": 1
+        },
+        "GridCalc": {
+            "name": "GridCalc",
+            "shortname": "GridCalc",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/server/grid/GridCalc.js",
+            "line": 7,
+            "description": "GridCalc Class",
+            "classdesc": "GridCalcis is an helper class.",
+            "is_constructor": 1
         }
     },
     "classitems": [
         {
-            "file": "Ball.js",
-            "line": 28,
-            "description": "Draws the ball on the canvas",
+            "file": "src/client/js/Player/BallController.js",
+            "line": 12,
+            "description": "Retrieves the ball index belonging the the given global ballID",
             "itemtype": "method",
-            "name": "Ball#draw",
+            "name": "BallController#getBallIndex",
             "params": [
                 {
-                    "name": "_canvasContext",
-                    "description": "- The canvas context on which the ball will be drawn.",
-                    "type": "CanvasContext"
+                    "name": "_gid",
+                    "description": "- The global ball ID",
+                    "type": "Number"
                 }
             ],
-            "class": "Ball"
+            "return": {
+                "description": "- The index if the ball has been found, otherwise -1",
+                "type": "Number"
+            },
+            "class": "BallController"
         },
         {
-            "file": "Ball.js",
-            "line": 42,
+            "file": "src/client/js/Player/BallController.js",
+            "line": 28,
+            "description": "Removes the ball from the game.",
+            "itemtype": "method",
+            "name": "BallController#remove",
+            "params": [
+                {
+                    "name": "_gid",
+                    "description": "- The global ID of the ball that will be removed",
+                    "type": "Number"
+                }
+            ],
+            "class": "BallController"
+        },
+        {
+            "file": "src/client/js/Player/BallController.js",
+            "line": 61,
+            "description": "Updates the position of the ball",
+            "itemtype": "method",
+            "name": "BallController#update",
+            "params": [
+                {
+                    "name": "ballData",
+                    "description": "- Array containing the balls to update",
+                    "type": "Array"
+                },
+                {
+                    "name": "leftOffSet",
+                    "description": "- The left offset of the player's screen as to the mainscreen.",
+                    "type": "Number"
+                },
+                {
+                    "name": "topOffset",
+                    "description": "- The top offset of the player's screen as to the mainscreen.",
+                    "type": "Number"
+                }
+            ],
+            "class": "BallController"
+        },
+        {
+            "file": "src/client/js/Player/PowerUpController.js",
+            "line": 18,
+            "description": "Creates a powerup if no powerup is present already.",
+            "itemtype": "method",
+            "name": "PowerUpController",
+            "params": [
+                {
+                    "name": "leftOffset",
+                    "description": "- The left offset of the screen of the player as to that of the mainscreen",
+                    "type": "Number"
+                },
+                {
+                    "name": "topOffset",
+                    "description": "- The top offset of the screen of the player as to that of the mainscreen",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "- An object containing the type and position of the powerup.",
+                "type": "Object"
+            },
+            "class": "PowerUpController"
+        },
+        {
+            "file": "src/client/js/Player/PowerUpController.js",
+            "line": 45,
+            "description": "Returns a random position for the powerup to be placed.",
+            "itemtype": "method",
+            "name": "PowerUpController",
+            "return": {
+                "description": "- The random position generated by the method.",
+                "type": "Object"
+            },
+            "class": "PowerUpController"
+        },
+        {
+            "file": "src/client/js/Player/PowerUpController.js",
+            "line": 70,
+            "description": "Chooses a random poweruptype depending on the given weight in the settings file.",
+            "itemtype": "method",
+            "name": "PowerUpController",
+            "return": {
+                "description": "- The powerup type as a number",
+                "type": "Number"
+            },
+            "class": "PowerUpController"
+        },
+        {
+            "file": "src/client/js/Player/PowerUpController.js",
+            "line": 94,
+            "description": "Creates an icon depending on the powerup type\nNote: each powerup can have its own path to a sprite.",
+            "itemtype": "method",
+            "name": "PowerUpController",
+            "class": "PowerUpController"
+        },
+        {
+            "file": "src/client/js/Player/PowerUpController.js",
+            "line": 124,
+            "description": "Checks whether the powerup is tapped by the player",
+            "itemtype": "method",
+            "name": "PowerUpController#checkPowerup",
+            "params": [
+                {
+                    "name": "_x",
+                    "description": "- The x coordinate of the tap",
+                    "type": "Number"
+                },
+                {
+                    "name": "_y",
+                    "description": "- The y coordinate of the tap",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "- An object containing the global playerID and the powerup type.",
+                "type": "Object"
+            },
+            "class": "PowerUpController"
+        },
+        {
+            "file": "src/client/js/Player/PowerUpController.js",
+            "line": 153,
+            "description": "Removes the powerup + icon from the user's screen",
+            "itemtype": "method",
+            "name": "PowerUpController#removePowerup",
+            "class": "PowerUpController"
+        },
+        {
+            "file": "src/client/js/Player/PowerUpController.js",
+            "line": 169,
+            "description": "Instantiates the cooldown belonging to a powerup. \nIt also removes any previous timeout that is present (to avoid cooldowns going to quick)",
+            "itemtype": "method",
+            "name": "PowerUpController#powerupCoolDown",
+            "params": [
+                {
+                    "name": "_time",
+                    "description": "- The time in milliseconds at which the setTimeout function is called",
+                    "type": "Number"
+                }
+            ],
+            "class": "PowerUpController"
+        },
+        {
+            "file": "src/client/js/Player/PowerUpController.js",
+            "line": 182,
+            "description": "Instantiates the cooldown belonging to a player after a powerup has been activated. \nIt also removes any previous timeout that is present (to avoid cooldowns going to quick)",
+            "itemtype": "method",
+            "name": "PowerUpController#playerCoolDown",
+            "params": [
+                {
+                    "name": "_time",
+                    "description": "- The time in milliseconds at which the setTimeout function is called",
+                    "type": "Number"
+                }
+            ],
+            "class": "PowerUpController"
+        },
+        {
+            "file": "src/client/js/Player/PowerUpController.js",
+            "line": 195,
+            "description": "The cooldown function that is called by playerCoolDown and powerupCoolDown\nIt handles the actual coolDown and makes sure the angles are set and the function\nis called again (until the cooldown is over)",
+            "itemtype": "method",
+            "name": "PowerUpController#coolDown",
+            "params": [
+                {
+                    "name": "_object",
+                    "description": "- The object which has the cooldown",
+                    "type": "Object"
+                },
+                {
+                    "name": "_time",
+                    "description": "- The time in milliseconds at which the setTimout function is called",
+                    "type": "Numer"
+                }
+            ],
+            "class": "PowerUpController"
+        },
+        {
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 34,
             "description": "Updates the position of the ball",
             "itemtype": "method",
             "name": "Ball#update",
             "class": "Ball"
         },
         {
-            "file": "Ball.js",
-            "line": 50,
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 40,
+            "description": "Checks whether two objects are equals by comparing their ID's",
+            "itemtype": "method",
+            "name": "Ball#equals",
+            "params": [
+                {
+                    "name": "_other",
+                    "description": "- The other object with which it is compared.",
+                    "type": "Object"
+                }
+            ],
+            "class": "Ball"
+        },
+        {
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 48,
             "description": "Creates the body of the ball",
             "itemtype": "method",
             "name": "Ball#enableBody",
             "class": "Ball"
         },
         {
-            "file": "Ball.js",
-            "line": 58,
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 54,
             "description": "Collision handler for the ball\nIt calls the collision function in the body class which takes care of the rest",
             "itemtype": "method",
             "name": "Ball#collidesWith",
@@ -507,8 +1140,8 @@
             "class": "Ball"
         },
         {
-            "file": "Ball.js",
-            "line": 71,
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 65,
             "description": "Sets the position of the ball in the canvas.",
             "itemtype": "method",
             "name": "Ball#setPosition",
@@ -527,8 +1160,8 @@
             "class": "Ball"
         },
         {
-            "file": "Ball.js",
-            "line": 81,
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 73,
             "description": "Sets the radius of the ball.",
             "itemtype": "method",
             "name": "Ball#setRadius",
@@ -542,8 +1175,23 @@
             "class": "Ball"
         },
         {
-            "file": "Ball.js",
-            "line": 91,
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 83,
+            "description": "Sets the global id of the ball.",
+            "itemtype": "method",
+            "name": "Ball#setGlobalID",
+            "params": [
+                {
+                    "name": "_id",
+                    "description": "- The new GlobalID of the ball",
+                    "type": "Number"
+                }
+            ],
+            "class": "Ball"
+        },
+        {
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 90,
             "description": "Sets the color of the ball.",
             "itemtype": "method",
             "name": "Ball#setColor",
@@ -557,8 +1205,8 @@
             "class": "Ball"
         },
         {
-            "file": "Ball.js",
-            "line": 101,
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 98,
             "description": "Retrieves both x and y coordinate of the middle of the ball.",
             "itemtype": "method",
             "name": "Ball#getPosition",
@@ -569,8 +1217,8 @@
             "class": "Ball"
         },
         {
-            "file": "Ball.js",
-            "line": 111,
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 106,
             "description": "Retrieves the radius of the ball.",
             "itemtype": "method",
             "name": "Ball#getRadius",
@@ -581,8 +1229,8 @@
             "class": "Ball"
         },
         {
-            "file": "Ball.js",
-            "line": 121,
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 114,
             "description": "Retrieves the color of the ball.",
             "itemtype": "method",
             "name": "Ball#getColor",
@@ -593,8 +1241,8 @@
             "class": "Ball"
         },
         {
-            "file": "Ball.js",
-            "line": 131,
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 122,
             "description": "Retrieves the body of the ball.",
             "itemtype": "method",
             "name": "Ball#getBody",
@@ -605,19 +1253,43 @@
             "class": "Ball"
         },
         {
-            "file": "Body.js",
-            "line": 22,
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 130,
+            "description": "Retrieves the ID of the ball",
+            "itemtype": "method",
+            "name": "Ball#getID",
+            "return": {
+                "description": "The unique ID of the ball",
+                "type": "Number"
+            },
+            "class": "Ball"
+        },
+        {
+            "file": "src/common/game/gameobjects/Ball.js",
+            "line": 138,
+            "description": "Retrieves the global ID of the ball",
+            "itemtype": "method",
+            "name": "Ball#getGlobalID",
+            "return": {
+                "description": "The unique GlobalID of the ball",
+                "type": "Number"
+            },
+            "class": "Ball"
+        },
+        {
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 23,
             "description": "Updates the position of the body",
             "itemtype": "method",
             "name": "Body#update",
             "class": "Body"
         },
         {
-            "file": "Body.js",
-            "line": 38,
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 40,
             "description": "Gets the angle from this object to another object",
             "itemtype": "method",
-            "name": "getAngleToObject",
+            "name": "Body#getAngleTo",
             "params": [
                 {
                     "name": "_other",
@@ -628,8 +1300,48 @@
             "class": "Body"
         },
         {
-            "file": "Body.js",
-            "line": 55,
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 53,
+            "description": "Calculates the velocity direction (angle) in which the ball is moving, by using the current x and y speed of the ball.",
+            "itemtype": "method",
+            "name": "Body#calculateVDirection",
+            "return": {
+                "description": "The angle in radians.",
+                "type": "Number"
+            },
+            "class": "Body"
+        },
+        {
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 61,
+            "description": "Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.",
+            "itemtype": "method",
+            "name": "Body#calculateVelocity",
+            "return": {
+                "description": "The velocity of the ball.",
+                "type": "Number"
+            },
+            "class": "Body"
+        },
+        {
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 73,
+            "description": "Reverts the y speed (positive to negative and vice versa).\nIt also calculates the new angle (speed remains the same).",
+            "itemtype": "method",
+            "name": "Body#revertYSpeed",
+            "class": "Body"
+        },
+        {
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 84,
+            "description": "Reverts the x speed (positive to negative and vice versa).\nIt also calculates the new angle (speed remains the same).",
+            "itemtype": "method",
+            "name": "Body#revertXSpeed",
+            "class": "Body"
+        },
+        {
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 95,
             "description": "Sets the velocity of the ball. \nIt also calculates the corresponding speed values for the x and y axis.",
             "itemtype": "method",
             "name": "Body#setVelocity",
@@ -643,9 +1355,9 @@
             "class": "Body"
         },
         {
-            "file": "Body.js",
-            "line": 71,
-            "description": "Sets the velocity direction (angle) of the ball. \nIt also calculates the corresponding speed values for the x and y axis.\nTODO move to CircularBody?",
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 111,
+            "description": "Sets the velocity direction (angle) of the ball. \nIt also calculates the corresponding speed values for the x and y axis.",
             "itemtype": "method",
             "name": "Body#setVelocityDirection",
             "params": [
@@ -658,8 +1370,8 @@
             "class": "Body"
         },
         {
-            "file": "Body.js",
-            "line": 88,
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 127,
             "description": "Sets the x and y speed values of the ball.\nIt also calculates the corresponding angle and velocity.\nNote: The given speed can also be negative, it then moves in the opposite direction.",
             "itemtype": "method",
             "name": "Body#setXYSpeed",
@@ -678,8 +1390,8 @@
             "class": "Body"
         },
         {
-            "file": "Body.js",
-            "line": 107,
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 146,
             "description": "Retrieves the x and y speed.",
             "itemtype": "method",
             "name": "Body#getXYSpeed",
@@ -690,48 +1402,8 @@
             "class": "Body"
         },
         {
-            "file": "Body.js",
-            "line": 117,
-            "description": "Calculates the velocity direction (angle) in which the ball is moving, by using the current x and y speed of the ball.",
-            "itemtype": "method",
-            "name": "Body#calculateVelocity",
-            "return": {
-                "description": "The angle in radians.",
-                "type": "Number"
-            },
-            "class": "Body"
-        },
-        {
-            "file": "Body.js",
-            "line": 127,
-            "description": "Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.",
-            "itemtype": "method",
-            "name": "Body#calculateVDirection",
-            "return": {
-                "description": "The velocity of the ball.",
-                "type": "Number"
-            },
-            "class": "Body"
-        },
-        {
-            "file": "Body.js",
-            "line": 139,
-            "description": "Reverts the y speed (positive to negative and vice versa).\nIt also calculates the new angle (speed remains the same).",
-            "itemtype": "method",
-            "name": "Body#revertYSpeed",
-            "class": "Body"
-        },
-        {
-            "file": "Body.js",
-            "line": 150,
-            "description": "Reverts the x speed (positive to negative and vice versa).\nIt also calculates the new angle (speed remains the same).",
-            "itemtype": "method",
-            "name": "Body#revertXSpeed",
-            "class": "Body"
-        },
-        {
-            "file": "Body.js",
-            "line": 161,
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 154,
             "description": "Retrieves the position.",
             "itemtype": "method",
             "name": "Body#getPosition",
@@ -742,8 +1414,8 @@
             "class": "Body"
         },
         {
-            "file": "Body.js",
-            "line": 171,
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 162,
             "description": "Retrieves the velocity of the body.",
             "itemtype": "method",
             "name": "Body#getVelocity",
@@ -754,11 +1426,11 @@
             "class": "Body"
         },
         {
-            "file": "Body.js",
-            "line": 181,
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 170,
             "description": "Retrieves the velocity direction (angle) of the body.",
             "itemtype": "method",
-            "name": "Body#getAngle",
+            "name": "Body#getVelocityDirection",
             "return": {
                 "description": "The current angle of the body in radians.",
                 "type": "Number"
@@ -766,55 +1438,58 @@
             "class": "Body"
         },
         {
-            "file": "Camera.js",
-            "line": 14,
-            "description": "Get the center position of the camera",
+            "file": "src/common/game/gameobjects/Body.js",
+            "line": 178,
+            "description": "Retrieves the velocity of the body.",
             "itemtype": "method",
-            "name": "getCenter",
+            "name": "Body#getVectorVelocity",
             "return": {
-                "description": "The center, (x, y) coordinates, of the camera.",
+                "description": "The x and y velocities of the body.",
                 "type": "Number, number"
             },
-            "class": "Camera"
+            "class": "Body"
         },
         {
-            "file": "Camera.js",
+            "file": "src/common/game/gameobjects/CircularBody.js",
             "line": 24,
-            "description": "Get the zoom factor of the camera",
-            "itemtype": "method",
-            "name": "getZoom",
-            "return": {
-                "description": "The current zoom level of the camera.",
-                "type": "Number"
-            },
-            "class": "Camera"
-        },
-        {
-            "file": "CircularBody.js",
-            "line": 21,
             "description": "Constructor for the circular body",
             "itemtype": "method",
             "name": "CircularBody#constructor",
             "params": [
                 {
-                    "name": "The",
-                    "description": "circle object",
-                    "type": "_parent"
+                    "name": "_parent",
+                    "description": "- The circle object",
+                    "type": "Circle"
                 }
             ],
             "class": "CircularBody"
         },
         {
-            "file": "CircularBody.js",
-            "line": 32,
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 36,
             "description": "Updates the position of the circle",
             "itemtype": "method",
             "name": "CircularBody#update",
             "class": "CircularBody"
         },
         {
-            "file": "CircularBody.js",
-            "line": 41,
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 45,
+            "description": "Checks whether two objects are the same by comparing ID's",
+            "itemtype": "method",
+            "name": "CircularBody#equals",
+            "params": [
+                {
+                    "name": "_other",
+                    "description": "- The other object with which it is compared.",
+                    "type": "Object"
+                }
+            ],
+            "class": "CircularBody"
+        },
+        {
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 53,
             "description": "This method uses the previous methods to check whether the circle collides\nAnd then handles the collision",
             "itemtype": "method",
             "name": "CircularBody#handleCollision",
@@ -828,8 +1503,8 @@
             "class": "CircularBody"
         },
         {
-            "file": "CircularBody.js",
-            "line": 58,
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 73,
             "description": "Handles the collision of circle and ball",
             "itemtype": "method",
             "name": "CircularBody#handleBallCollision",
@@ -843,8 +1518,23 @@
             "class": "CircularBody"
         },
         {
-            "file": "CircularBody.js",
-            "line": 81,
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 88,
+            "description": "Handles the collision of circle and shield",
+            "itemtype": "method",
+            "name": "CircularBody#handleShieldCollision",
+            "params": [
+                {
+                    "name": "_other",
+                    "description": "- Shield object which collides with the circle",
+                    "type": "Shield"
+                }
+            ],
+            "class": "CircularBody"
+        },
+        {
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 105,
             "description": "Checks if the ball collides with world boundaries and handles it",
             "itemtype": "method",
             "name": "CircularBody#checkWorldBounds",
@@ -858,377 +1548,106 @@
             "class": "CircularBody"
         },
         {
-            "file": "Collision.js",
-            "line": 18,
-            "description": "Executes the collision depending on the parameters that are set.\nIn case the funcAfter parameter is set, this function will be triggered \nwhen handleCollision returns true;",
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 132,
+            "description": "Sets the radius",
             "itemtype": "method",
-            "name": "Collision#execute",
-            "class": "Collision"
-        },
-        {
-            "file": "ColorGenerator.js",
-            "line": 12,
-            "description": "Returns a random color from the predefined color list above.",
-            "itemtype": "method",
-            "name": "ColorGenerator#returnColor",
-            "class": "ColorGenerator"
-        },
-        {
-            "file": "Game.js",
-            "line": 21,
-            "description": "Draw function",
-            "itemtype": "method",
-            "name": "Game#parentDraw",
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 32,
-            "description": "Create function for the game field (canvas)",
-            "itemtype": "method",
-            "name": "Game#createCanvas",
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 48,
-            "description": "Function which updates the width and height",
-            "itemtype": "method",
-            "name": "Game#updateGameDimensions",
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 65,
-            "description": "Function which clears the playing field",
-            "itemtype": "method",
-            "name": "Game#clearCanvas",
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 76,
-            "description": "Initializes the variables",
-            "itemtype": "method",
-            "name": "Game#Initialize",
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 98,
-            "description": "Starts up the game itself",
-            "itemtype": "method",
-            "name": "Game#Boot",
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 112,
-            "description": "Returns the input",
-            "itemtype": "method",
-            "name": "Game#getInput",
-            "return": {
-                "description": "The input object",
-                "type": "Input"
-            },
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 121,
-            "description": "Returns the background color",
-            "itemtype": "method",
-            "name": "Game#getBackgroundColor",
-            "return": {
-                "description": "The background color",
-                "type": "BackGroundColor"
-            },
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 130,
-            "description": "Sets the background color",
-            "itemtype": "method",
-            "name": "Game#setBackgroundColor",
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 138,
-            "description": "Returns the width of the canvas",
-            "itemtype": "method",
-            "name": "Game#getWidth",
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 146,
-            "description": "Returns the height of the canvas",
-            "itemtype": "method",
-            "name": "Game#getHeight",
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 154,
-            "description": "Sets the width of the canvas",
-            "itemtype": "method",
-            "name": "Game#setWidth",
-            "class": "Game"
-        },
-        {
-            "file": "Game.js",
-            "line": 162,
-            "description": "Sets the height of the canvas",
-            "itemtype": "method",
-            "name": "Game#setHeight",
-            "class": "Game"
-        },
-        {
-            "file": "Group.js",
-            "line": 16,
-            "description": "Adds an object to an existing list of members",
-            "itemtype": "method",
-            "name": "Group#addMember",
+            "name": "CircularBody#setRadius",
             "params": [
                 {
-                    "name": "_object",
-                    "description": "- The object which is added to a list of members",
-                    "type": "Object"
+                    "name": "_radius",
+                    "description": "- The radius",
+                    "type": "Float"
                 }
             ],
-            "class": "Group"
+            "class": "CircularBody"
         },
         {
-            "file": "Group.js",
-            "line": 26,
-            "description": "Updates al objects within a list of members",
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 139,
+            "description": "Sets the collision callback",
             "itemtype": "method",
-            "name": "Group#update",
-            "class": "Group"
-        },
-        {
-            "file": "Group.js",
-            "line": 36,
-            "description": "Draws all objects within a list of members",
-            "itemtype": "method",
-            "name": "Group#draw",
-            "class": "Group"
-        },
-        {
-            "file": "Group.js",
-            "line": 46,
-            "description": "Returns a list of members",
-            "itemtype": "method",
-            "name": "Group#getMembers",
-            "class": "Group"
-        },
-        {
-            "file": "Group.js",
-            "line": 54,
-            "description": "Returns a specific object from a list of members",
-            "itemtype": "method",
-            "name": "Group@getMember",
+            "name": "CircularBody#setCollisionCallback",
             "params": [
                 {
-                    "name": "_index",
-                    "description": "- The index of the object you want to return",
-                    "type": "Int"
-                }
-            ],
-            "class": "Group"
-        },
-        {
-            "file": "Group.js",
-            "line": 63,
-            "description": "Returns the amount of objects in the list",
-            "itemtype": "method",
-            "name": "Group#getMembersLength",
-            "class": "Group"
-        },
-        {
-            "file": "Group.js",
-            "line": 71,
-            "description": "Checks the world bounds for every ball object",
-            "itemtype": "method",
-            "name": "Group#checkWorldBounds",
-            "params": [
-                {
-                    "name": "_game",
-                    "description": "- Game object supplies the boundaries",
-                    "type": "Game"
-                }
-            ],
-            "class": "Group"
-        },
-        {
-            "file": "Group.js",
-            "line": 84,
-            "description": "Adds the correct colission between all the objects of two lists",
-            "itemtype": "method",
-            "name": "Group#addCollision",
-            "params": [
-                {
-                    "name": "_object1",
-                    "description": "- Object 1 for the possible collision",
-                    "type": "Object"
-                },
-                {
-                    "name": "_object2",
-                    "description": "- Object 2 for the possible collision, can be a list",
-                    "type": "Object"
-                },
-                {
-                    "name": "_funcAfter",
-                    "description": "- The function that will be triggered after collisionhandling has succeeded (e.g. for pole) (can be null)",
+                    "name": "_callback",
+                    "description": "- The callback function",
                     "type": "Function"
                 },
                 {
                     "name": "_this",
-                    "description": "- The 'this' that will be submitted to the funcAfter function (can be null)",
+                    "description": "- The 'this' object on which the callback function will be called",
                     "type": "Object"
                 }
             ],
-            "class": "Group"
+            "class": "CircularBody"
         },
         {
-            "file": "Group.js",
-            "line": 109,
-            "description": "Checks each collision of the possible collisions",
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 147,
+            "description": "Sets the global id of the player that last hit this ball. \nNote: 'Hit' means that the ball has bounced of the shield of the player",
             "itemtype": "method",
-            "name": "Group#checkCollision",
-            "class": "Group"
-        },
-        {
-            "file": "Group.js",
-            "line": 120,
-            "description": "Adds collision between the objects of the same group (is used in the balls group)",
-            "itemtype": "method",
-            "name": "Group#addCollisionCombineAll",
+            "name": "Ball#setLastHitBy",
             "params": [
                 {
-                    "name": "_objectGroup",
-                    "description": "- Group of objects",
-                    "type": "Group"
+                    "name": "_id",
+                    "description": "- The GlobalID of the player that hit the ball",
+                    "type": "Number"
                 }
             ],
-            "class": "Group"
+            "class": "CircularBody"
         },
         {
-            "file": "HighResolutionTimer.js",
-            "line": 1,
-            "description": "A high resolution timer.",
-            "class": "Input"
-        },
-        {
-            "file": "HighResolutionTimer.js",
-            "line": 12,
-            "description": "Delayed running of the callback.",
-            "class": "Input"
-        },
-        {
-            "file": "Input.js",
-            "line": 12,
-            "description": "The update function for updating the input",
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 155,
+            "description": "Returns the radius",
             "itemtype": "method",
-            "name": "Input#update",
-            "class": "Input"
-        },
-        {
-            "file": "Input.js",
-            "line": 23,
-            "description": "Listener for mouse movement to save X and Y position",
-            "itemtype": "method",
-            "name": "Input#mouseMoveListener",
-            "class": "Input"
-        },
-        {
-            "file": "Input.js",
-            "line": 36,
-            "description": "Listener for mouse down for the pause functionality (debuggin purpose only)",
-            "itemtype": "method",
-            "name": "Input#mouseDownListener",
-            "class": "Input"
-        },
-        {
-            "file": "Label.js",
-            "line": 16,
-            "description": "Draws the label on the game canvas",
-            "itemtype": "method",
-            "name": "Label#draw",
-            "params": [
-                {
-                    "name": "_canvasContext",
-                    "description": "- The canvascontext which should be drawn.",
-                    "type": "CanvasContext"
-                }
-            ],
-            "class": "Label"
-        },
-        {
-            "file": "Label.js",
-            "line": 27,
-            "description": "Gets the string which is the labels text",
-            "itemtype": "method",
-            "name": "Label#getText",
+            "name": "CircularBody#getRadius",
             "return": {
-                "description": "The text of the label",
-                "type": "String"
-            },
-            "class": "Label"
-        },
-        {
-            "file": "Label.js",
-            "line": 36,
-            "description": "Gets the position of the top-left corner of the label",
-            "itemtype": "method",
-            "name": "Label#getPosition",
-            "return": {
-                "description": "An position object containing and x and y property",
-                "type": "Object"
-            },
-            "class": "Label"
-        },
-        {
-            "file": "Label.js",
-            "line": 46,
-            "description": "Gets the name of the font",
-            "itemtype": "method",
-            "name": "Label#getFont",
-            "return": {
-                "description": "The name of the font.",
-                "type": "String"
-            },
-            "class": "Label"
-        },
-        {
-            "file": "Label.js",
-            "line": 55,
-            "description": "Gets the font size in pixels",
-            "itemtype": "method",
-            "name": "Label#getFontSize",
-            "return": {
-                "description": "The font size in pixels.",
+                "description": "The radius of the circularBody",
                 "type": "Number"
             },
-            "class": "Label"
+            "class": "CircularBody"
         },
         {
-            "file": "Label.js",
-            "line": 64,
-            "description": "Gets the color of the label",
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 162,
+            "description": "Returns the ball object",
             "itemtype": "method",
-            "name": "Label#getColor",
+            "name": "CircularBody#getParentBall",
             "return": {
-                "description": "The hex code of the color.",
-                "type": "Hexcolor"
+                "description": "The ball to which the circularBody belongs",
+                "type": "Object"
             },
-            "class": "Label"
+            "class": "CircularBody"
         },
         {
-            "file": "Label.js",
-            "line": 73,
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 169,
+            "description": "Retrieves the ID of the circularBody",
+            "itemtype": "method",
+            "name": "CircularBody#getID",
+            "return": {
+                "description": "The unique ID of this circularBody",
+                "type": "Number"
+            },
+            "class": "CircularBody"
+        },
+        {
+            "file": "src/common/game/gameobjects/CircularBody.js",
+            "line": 177,
+            "description": "Retrieves the global ID of the player that last hit the ball",
+            "itemtype": "method",
+            "name": "Ball#getLastHitBy",
+            "return": {
+                "description": "The unique GlobalID of the player that last hit the ball",
+                "type": "Number"
+            },
+            "class": "CircularBody"
+        },
+        {
+            "file": "src/common/game/gameobjects/Label.js",
+            "line": 27,
             "description": "Sets the string which is the labels text",
             "itemtype": "method",
             "name": "Label#setText",
@@ -1242,8 +1661,8 @@
             "class": "Label"
         },
         {
-            "file": "Label.js",
-            "line": 82,
+            "file": "src/common/game/gameobjects/Label.js",
+            "line": 34,
             "description": "Sets the position of the left-top corner of the label where it's drawn",
             "itemtype": "method",
             "name": "Label#setPosition",
@@ -1257,8 +1676,8 @@
             "class": "Label"
         },
         {
-            "file": "Label.js",
-            "line": 91,
+            "file": "src/common/game/gameobjects/Label.js",
+            "line": 41,
             "description": "Sets the font of the label",
             "itemtype": "method",
             "name": "Label#setFont",
@@ -1272,8 +1691,8 @@
             "class": "Label"
         },
         {
-            "file": "Label.js",
-            "line": 100,
+            "file": "src/common/game/gameobjects/Label.js",
+            "line": 48,
             "description": "Sets the font size in pixels",
             "itemtype": "method",
             "name": "Label#setFontSize",
@@ -1287,8 +1706,8 @@
             "class": "Label"
         },
         {
-            "file": "Label.js",
-            "line": 109,
+            "file": "src/common/game/gameobjects/Label.js",
+            "line": 55,
             "description": "Sets the color of the label",
             "itemtype": "method",
             "name": "Label#setColor",
@@ -1302,31 +1721,75 @@
             "class": "Label"
         },
         {
-            "file": "Player.js",
-            "line": 24,
-            "description": "Updates the score label which will be drawn on screen\nThis includes score, time alive and highscore",
+            "file": "src/common/game/gameobjects/Label.js",
+            "line": 62,
+            "description": "Gets the string which is the labels text",
+            "itemtype": "method",
+            "name": "Label#getText",
+            "return": {
+                "description": "The text of the label",
+                "type": "String"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/common/game/gameobjects/Label.js",
+            "line": 69,
+            "description": "Gets the position of the top-left corner of the label",
+            "itemtype": "method",
+            "name": "Label#getPosition",
+            "return": {
+                "description": "An position object containing and x and y property",
+                "type": "Object"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/common/game/gameobjects/Label.js",
+            "line": 77,
+            "description": "Gets the name of the font",
+            "itemtype": "method",
+            "name": "Label#getFont",
+            "return": {
+                "description": "The name of the font.",
+                "type": "String"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/common/game/gameobjects/Label.js",
+            "line": 84,
+            "description": "Gets the font size in pixels",
+            "itemtype": "method",
+            "name": "Label#getFontSize",
+            "return": {
+                "description": "The font size in pixels.",
+                "type": "Number"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/common/game/gameobjects/Label.js",
+            "line": 91,
+            "description": "Gets the color of the label",
+            "itemtype": "method",
+            "name": "Label#getColor",
+            "return": {
+                "description": "The hex code of the color.",
+                "type": "Hexcolor"
+            },
+            "class": "Label"
+        },
+        {
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 36,
             "itemtype": "method",
             "name": "Player#update",
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 46,
-            "description": "Currently it just draws the score, time alive and highscore of the player on the canvas",
-            "itemtype": "method",
-            "name": "Player#draw",
-            "params": [
-                {
-                    "name": "_canvasContext",
-                    "description": "- The canvas on which it will be drawn.",
-                    "type": "CanvasContext"
-                }
-            ],
-            "class": "Player"
-        },
-        {
-            "file": "Player.js",
-            "line": 58,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 47,
             "description": "Increments the current points by the given amounts",
             "itemtype": "method",
             "name": "Player#incrementPoints",
@@ -1340,8 +1803,8 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 68,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 57,
             "description": "Increments the current score by the given amounts",
             "itemtype": "method",
             "name": "Player#incrementScore",
@@ -1355,8 +1818,77 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 78,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 67,
+            "description": "Reverts the player back to the (original) saved state before a powerup was activated.\nNote: When new powerups are added, this function should be updated accordingly!",
+            "itemtype": "method",
+            "name": "Player#revert",
+            "class": "Player"
+        },
+        {
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 79,
+            "description": "Saves the current (original) state of the player.\nNote: When new powerups are added, this function should be updated accordingly!",
+            "itemtype": "method",
+            "name": "Player#saveState",
+            "class": "Player"
+        },
+        {
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 94,
+            "description": "Deletes the currently active powerup, stops the timer and reverts the \nplayer back to his original state.",
+            "itemtype": "method",
+            "name": "Player#deletePowerup",
+            "class": "Player"
+        },
+        {
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 108,
+            "description": "Sets a global ID for the player",
+            "itemtype": "method",
+            "name": "Player#setGlobalID",
+            "params": [
+                {
+                    "name": "_id",
+                    "description": "- The unique id to assign to the player.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Player"
+        },
+        {
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 116,
+            "description": "Sets a new powerup and activates it.\nIn case there was already a powerup active, that powerup is deleted first.",
+            "itemtype": "method",
+            "name": "Player#setPowerup",
+            "params": [
+                {
+                    "name": "_powerup",
+                    "description": "- The powerup that will be set.",
+                    "type": "Powerup"
+                }
+            ],
+            "class": "Player"
+        },
+        {
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 147,
+            "description": "Sets the timer belonging to the powerup.",
+            "itemtype": "method",
+            "name": "Player#setTimer",
+            "params": [
+                {
+                    "name": "_timer",
+                    "description": "- The timer that will be set.",
+                    "type": "Timer"
+                }
+            ],
+            "class": "Player"
+        },
+        {
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 155,
             "description": "Sets the name of the player",
             "itemtype": "method",
             "name": "Player#setName",
@@ -1370,8 +1902,8 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 88,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 163,
             "description": "Sets theh pole belonging to the player",
             "itemtype": "method",
             "name": "Player#setPole",
@@ -1385,8 +1917,8 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 98,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 171,
             "description": "Sets the shield belonging to the player",
             "itemtype": "method",
             "name": "Player#setShield",
@@ -1400,8 +1932,8 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 108,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 179,
             "description": "Sets the amount of poits the player is worth",
             "itemtype": "method",
             "name": "Player#setPoints",
@@ -1415,8 +1947,8 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 118,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 187,
             "description": "Sets the current score of the player",
             "itemtype": "method",
             "name": "Player#setScore",
@@ -1430,8 +1962,8 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 128,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 195,
             "description": "Sets the highscore of the player",
             "itemtype": "method",
             "name": "Player#setHighscore",
@@ -1445,8 +1977,8 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 138,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 203,
             "description": "Returns the name of the player",
             "itemtype": "method",
             "name": "Player#getName",
@@ -1457,8 +1989,24 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 148,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 211,
+            "description": "Returns the current timer belonging to the powerup, or null if no timer is present.",
+            "itemtype": "method",
+            "name": "Player#getTimer",
+            "class": "Player"
+        },
+        {
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 218,
+            "description": "Returns the currently active powerup, or null if no powerup is active.",
+            "itemtype": "method",
+            "name": "Player#getPowerup",
+            "class": "Player"
+        },
+        {
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 225,
             "description": "Returns the pole belonging to the player",
             "itemtype": "method",
             "name": "Player#getPole",
@@ -1469,8 +2017,8 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 158,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 233,
             "description": "Returns the shield belonging to the player",
             "itemtype": "method",
             "name": "Player#getShield",
@@ -1481,8 +2029,8 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 168,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 241,
             "description": "Returns the points the player is worth on hit.",
             "itemtype": "method",
             "name": "Player#getPoints",
@@ -1493,8 +2041,8 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 178,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 249,
             "description": "Returns the current score of the player",
             "itemtype": "method",
             "name": "Player#getScore",
@@ -1505,8 +2053,8 @@
             "class": "Player"
         },
         {
-            "file": "Player.js",
-            "line": 188,
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 257,
             "description": "Returns the current highscore of the player",
             "itemtype": "method",
             "name": "Player#getHighscore",
@@ -1517,55 +2065,463 @@
             "class": "Player"
         },
         {
-            "file": "Pole.js",
-            "line": 26,
-            "description": "Handles everything when the pole is hit:\nfrom setting the hit flag, to managing the cooldown of the pole.",
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 265,
+            "description": "Retrieves the global ID of the player",
+            "itemtype": "method",
+            "name": "Player#getGlobalID",
+            "return": {
+                "description": "The unique GlobalID of the player",
+                "type": "Number"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/common/game/gameobjects/Player.js",
+            "line": 273,
+            "description": "Retrieves the ID of the player",
+            "itemtype": "method",
+            "name": "Player#getID",
+            "return": {
+                "description": "The ID of the player",
+                "type": "Number"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 28,
+            "description": "Constructor for the Pole class",
+            "itemtype": "method",
+            "name": "Pole#constructor",
+            "params": [
+                {
+                    "name": "_radius",
+                    "description": "- The radius of the pole",
+                    "type": "Float"
+                }
+            ],
+            "class": "Pole"
+        },
+        {
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 40,
+            "description": "Handles everything when the pole is hit:\nfrom setting the hit flag, to managing the cooldown of the pole.\nzie commit 15f21808bd1c8d0f708674a6f142c768ba3119da voor de oude versie.",
             "itemtype": "method",
             "name": "Pole#isHit",
             "class": "Pole"
         },
         {
-            "file": "Pole.js",
-            "line": 48,
-            "description": "Handles the cooldown period of the pole, which includes a change of color\nand not being able to get hit again for some amount of time.",
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 76,
+            "description": "Checks whether two objects are the same by comparing ID's",
             "itemtype": "method",
-            "name": "Pole#coolDown",
+            "name": "Pole#equals",
+            "params": [
+                {
+                    "name": "_other",
+                    "description": "- The other object with which it is compared.",
+                    "type": "Object"
+                }
+            ],
             "class": "Pole"
         },
         {
-            "file": "Shield.js",
-            "line": 25,
-            "description": "Draws the shield on the canvas",
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 84,
+            "description": "Increments the current coolDown angle by the specified amount.",
             "itemtype": "method",
-            "name": "Shield#draw",
+            "name": "Pole#incrementCDAngle",
             "params": [
                 {
-                    "name": "_canvasContext",
-                    "description": "- The canvas context on which the shield will be drawn.",
-                    "type": "CanvasContext"
+                    "name": "_angle",
+                    "description": "- The angle by which the current angle is incremented (in degrees);",
+                    "type": "Number"
                 }
             ],
-            "class": "Shield"
+            "class": "Pole"
         },
         {
-            "file": "Shield.js",
-            "line": 37,
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 92,
+            "description": "Saves the highscore of the player, resets the score and restarts the timer",
+            "itemtype": "method",
+            "name": "Pole#saveHighScore",
+            "class": "Pole"
+        },
+        {
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 107,
+            "description": "Sets the player, assigns a timer and starts the timer.",
+            "itemtype": "method",
+            "name": "Pole#setPlayer",
+            "params": [
+                {
+                    "name": "_player",
+                    "description": "- The player object",
+                    "type": "Player"
+                }
+            ],
+            "class": "Pole"
+        },
+        {
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 118,
+            "description": "Sets whether the powerup should be drawn",
+            "itemtype": "method",
+            "name": "Pole#setPowerupDraw",
+            "params": [
+                {
+                    "name": "_bool",
+                    "description": "- True if it should be drawn, or false if it shouldn't",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "Pole"
+        },
+        {
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 126,
+            "description": "Sets the ID of the player that hit the pole",
+            "itemtype": "method",
+            "name": "Pole#setHitBy",
+            "params": [
+                {
+                    "name": "_id",
+                    "description": "- The global ID of the player",
+                    "type": "Number"
+                }
+            ],
+            "class": "Pole"
+        },
+        {
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 134,
+            "description": "Sets the cooldown angle of the pole.",
+            "itemtype": "method",
+            "name": "Pole#setCDAngle",
+            "params": [
+                {
+                    "name": "_angle",
+                    "description": "- The angle in degrees.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Pole"
+        },
+        {
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 142,
+            "description": "Returns the timer of a certain pole",
+            "itemtype": "method",
+            "name": "Pole#getTimer",
+            "return": {
+                "description": "- The timer belonging to the pole",
+                "type": "Timer"
+            },
+            "class": "Pole"
+        },
+        {
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 149,
+            "description": "Retrieves the ID of the pole",
+            "itemtype": "method",
+            "name": "Pole#getID",
+            "return": {
+                "description": "The unique ID of the pole",
+                "type": "Number"
+            },
+            "class": "Pole"
+        },
+        {
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 157,
+            "description": "Retrieves the global ID of the player that hit the pole",
+            "itemtype": "method",
+            "name": "Pole#getHitBy",
+            "return": {
+                "description": "- The global ID of the player",
+                "type": "Number"
+            },
+            "class": "Pole"
+        },
+        {
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 166,
+            "description": "Retrieves the current cooldown angle of the pole",
+            "itemtype": "method",
+            "name": "Pole#getCDAngle",
+            "return": {
+                "description": "- The current cooldown angle in degrees.",
+                "type": "Number"
+            },
+            "class": "Pole"
+        },
+        {
+            "file": "src/common/game/gameobjects/Pole.js",
+            "line": 174,
+            "description": "Returns whether the powerup skin should be drawn or not",
+            "itemtype": "method",
+            "name": "Pole#getPowerupDraw",
+            "return": {
+                "description": "- Returns true if it should be drawn, returns false if is shouldn't",
+                "type": "Number"
+            },
+            "class": "Pole"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 44,
+            "description": "Updates the position of the powerup",
+            "itemtype": "method",
+            "name": "Powerup#update",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 50,
+            "description": "Creates the body of the powerup",
+            "itemtype": "method",
+            "name": "Powerup#enableBody",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 56,
+            "description": "Checks whether two objects are equals by comparing their ID's",
+            "itemtype": "method",
+            "name": "Powerup#equals",
+            "params": [
+                {
+                    "name": "_other",
+                    "description": "- The other object with which it is compared.",
+                    "type": "Object"
+                }
+            ],
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 64,
+            "description": "Executes the powerup on the given player",
+            "itemtype": "method",
+            "name": "Powerup#execute",
+            "params": [
+                {
+                    "name": "_player",
+                    "description": "- The player on which the powerup will be executed",
+                    "type": "Player"
+                }
+            ],
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 76,
+            "description": "Stops the powerup",
+            "itemtype": "method",
+            "name": "Powerup#stop",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 85,
+            "description": "Creates the timer according to the given type of the powerup",
+            "itemtype": "method",
+            "name": "Powerup#createTimer",
+            "params": [
+                {
+                    "name": "_type",
+                    "description": "- The type of the powerup",
+                    "type": "Number"
+                }
+            ],
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 110,
+            "description": "Creates the actual functionality of the powerup (the \"power\") depending on the given type.",
+            "itemtype": "method",
+            "name": "Powerup#createPower",
+            "params": [
+                {
+                    "name": "_type",
+                    "description": "- The type of the powerup",
+                    "type": "Number"
+                }
+            ],
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 140,
+            "description": "Increments the current coolDown angle by the specified amount.",
+            "itemtype": "method",
+            "name": "Powerup#incrementCDAngle",
+            "params": [
+                {
+                    "name": "_angle",
+                    "description": "- The angle by which the current angle is incremented (in degrees);",
+                    "type": "Number"
+                }
+            ],
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 148,
+            "itemtype": "method",
+            "name": "Powerup#setRadius",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 153,
+            "itemtype": "method",
+            "name": "Powerup#setColor",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 158,
+            "itemtype": "method",
+            "name": "Powerup#setPosition",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 163,
+            "itemtype": "method",
+            "name": "Powerup#setType",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 168,
+            "description": "Sets the cooldown angle of the powerup.",
+            "itemtype": "method",
+            "name": "Powerup#setCDAngle",
+            "params": [
+                {
+                    "name": "_angle",
+                    "description": "- The angle in degrees.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 176,
+            "itemtype": "method",
+            "name": "Powerup#getColor",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 181,
+            "itemtype": "method",
+            "name": "Powerup#getType",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 186,
+            "itemtype": "method",
+            "name": "Powerup#getPosition",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 191,
+            "itemtype": "method",
+            "name": "Powerup#getRadius",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 196,
+            "itemtype": "method",
+            "name": "Powerup#getID",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 201,
+            "itemtype": "method",
+            "name": "Powerup#getTimer",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 206,
+            "itemtype": "method",
+            "name": "Powerup#getBody",
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/Powerup.js",
+            "line": 211,
+            "description": "Retrieves the current cooldown angle of the powerup",
+            "itemtype": "method",
+            "name": "Powerup#getCDAngle",
+            "return": {
+                "description": "- The current cooldown angle in degrees.",
+                "type": "Number"
+            },
+            "class": "Powerup"
+        },
+        {
+            "file": "src/common/game/gameobjects/ScoreLabel.js",
+            "line": 24,
+            "description": "Updates the score displayed on the label",
+            "itemtype": "method",
+            "name": "ScoreLabel#update",
+            "class": "ScoreLabel"
+        },
+        {
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 30,
             "description": "Updates the position of the shield",
             "itemtype": "method",
             "name": "Shield#update",
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 50,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 43,
             "description": "Creates the body of the shield",
             "itemtype": "method",
             "name": "Shield#enableBody",
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 59,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 50,
+            "description": "Checks whether two objects are the same by comparing ID's",
+            "itemtype": "method",
+            "name": "Shield#equals",
+            "params": [
+                {
+                    "name": "_other",
+                    "description": "- The other object with which it is compared.",
+                    "type": "Object"
+                }
+            ],
+            "class": "Shield"
+        },
+        {
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 58,
+            "description": "Sets calculate to false so the angle of the shield will not be calculated in the update function\nNote: used for mainscreen to get rid of the shieldangles that are otherwise calculated",
+            "itemtype": "method",
+            "name": "Shield#noCalc",
+            "class": "Shield"
+        },
+        {
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 66,
             "description": "Calculates the angle of the shield (in radians) depending on the current mouse input",
             "itemtype": "method",
             "name": "Shield#calculateAngle",
@@ -1576,8 +2532,35 @@
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 69,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 79,
+            "description": "Reverts the way in which the shield is drawn",
+            "itemtype": "method",
+            "name": "Shield#revertShield",
+            "params": [
+                {
+                    "name": "_revert",
+                    "description": "- True or false with false being drawn normally",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "Shield"
+        },
+        {
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 87,
+            "description": "Returns whether the shield is reverted or not",
+            "itemtype": "method",
+            "name": "Shield#isRevert",
+            "return": {
+                "description": "- Returns true if the shield is revert",
+                "type": "Boolean"
+            },
+            "class": "Shield"
+        },
+        {
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 95,
             "description": "Sets the angle of the shield.",
             "itemtype": "method",
             "name": "Shield#setAngle",
@@ -1591,8 +2574,23 @@
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 79,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 105,
+            "description": "Sets the length of the shield",
+            "itemtype": "method",
+            "name": "Shield#setShieldLength",
+            "params": [
+                {
+                    "name": "_length",
+                    "description": "- The length of the shield",
+                    "type": "Number"
+                }
+            ],
+            "class": "Shield"
+        },
+        {
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 113,
             "description": "Sets the radius of the shield.",
             "itemtype": "method",
             "name": "Shield#setRadius",
@@ -1606,23 +2604,23 @@
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 89,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 123,
             "description": "Sets the color of the shield.",
             "itemtype": "method",
             "name": "Shield#setColor",
             "params": [
                 {
                     "name": "_color",
-                    "description": "- The color of the shield in hex value.",
+                    "description": "- The color of the shield;",
                     "type": "Hex"
                 }
             ],
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 98,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 130,
             "description": "Sets the size of the shield.",
             "itemtype": "method",
             "name": "Shield#setSize",
@@ -1636,8 +2634,8 @@
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 107,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 137,
             "description": "Sets the position of the shield in the canvas.",
             "itemtype": "method",
             "name": "Shield#setPosition",
@@ -1651,8 +2649,8 @@
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 120,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 150,
             "description": "Retrieves both x and y coordinate of the middle of the shield.",
             "itemtype": "method",
             "name": "Shield#getPosition",
@@ -1663,8 +2661,20 @@
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 130,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 158,
+            "description": "Returns the length of the shield",
+            "itemtype": "method",
+            "name": "Shield#getShieldLength",
+            "return": {
+                "description": "- The length of the shield",
+                "type": "Number"
+            },
+            "class": "Shield"
+        },
+        {
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 166,
             "description": "Retrieves the pole belonging to the shield.",
             "itemtype": "method",
             "name": "Shield#getPole",
@@ -1675,8 +2685,8 @@
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 140,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 174,
             "description": "Retrieves the current angle of the shield.",
             "itemtype": "method",
             "name": "Shield#getAngle",
@@ -1687,8 +2697,8 @@
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 150,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 182,
             "description": "Retrieves the size of the radius of the shield.",
             "itemtype": "method",
             "name": "Shield#getRadius",
@@ -1699,8 +2709,8 @@
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 160,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 190,
             "description": "Retrieves the color of the shield.",
             "itemtype": "method",
             "name": "Shield#getColor",
@@ -1711,8 +2721,8 @@
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 170,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 198,
             "description": "Retrieves the size of the shield (circle)",
             "itemtype": "method",
             "name": "Shield#getSize",
@@ -1723,8 +2733,8 @@
             "class": "Shield"
         },
         {
-            "file": "Shield.js",
-            "line": 180,
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 206,
             "description": "Retrieves the body of the shield.",
             "itemtype": "method",
             "name": "Shield#getBody",
@@ -1735,13 +2745,20 @@
             "class": "Shield"
         },
         {
-            "file": "ShieldBody.js",
-            "line": 8,
-            "class": "Sprite"
+            "file": "src/common/game/gameobjects/Shield.js",
+            "line": 214,
+            "description": "Retrieves the ID of the shield",
+            "itemtype": "method",
+            "name": "Shield#getID",
+            "return": {
+                "description": "The unique ID of the shield",
+                "type": "Number"
+            },
+            "class": "Shield"
         },
         {
-            "file": "ShieldBody.js",
-            "line": 18,
+            "file": "src/common/game/gameobjects/ShieldBody.js",
+            "line": 22,
             "description": "Constructor for the shield body",
             "itemtype": "method",
             "name": "ShieldBody#constructor",
@@ -1752,112 +2769,374 @@
                     "type": "Shield"
                 }
             ],
-            "class": "Sprite"
+            "class": "Shieldbody"
         },
         {
-            "file": "ShieldBody.js",
-            "line": 31,
+            "file": "src/common/game/gameobjects/ShieldBody.js",
+            "line": 35,
             "description": "Updates the angle of the shield",
             "itemtype": "method",
             "name": "ShieldBody#update",
-            "class": "Sprite"
+            "class": "Shieldbody"
         },
         {
-            "file": "ShieldBody.js",
-            "line": 41,
-            "description": "Method to handle a collision",
+            "file": "src/common/game/gameobjects/ShieldBody.js",
+            "line": 45,
+            "description": "Checks whether two objects are the same by comparing ID's",
             "itemtype": "method",
-            "name": "Shieldbody#handleIndividual",
+            "name": "ShieldBody#equals",
             "params": [
                 {
                     "name": "_other",
-                    "description": "- The other item that collides",
-                    "type": "Body"
+                    "description": "- The other object with which it is compared.",
+                    "type": "Object"
                 }
             ],
-            "class": "Sprite"
+            "class": "Shieldbody"
         },
         {
-            "file": "Sprite.js",
-            "line": 15,
-            "description": "Function which loads a texture",
+            "file": "src/common/game/gameobjects/ShieldBody.js",
+            "line": 53,
+            "description": "Sets the angle of the shield",
             "itemtype": "method",
-            "name": "Sprite#LoadContent",
+            "name": "ShieldBody#setAngle",
             "params": [
                 {
-                    "name": "texturePath",
-                    "description": "- texture's path",
-                    "type": "String"
+                    "name": "_angle",
+                    "description": "- The angle of the shieldbody in radians.",
+                    "type": "Number"
                 }
             ],
-            "class": "Sprite"
+            "class": "Shieldbody"
         },
         {
-            "file": "Sprite.js",
-            "line": 25,
-            "description": "Function which draws the sprite",
+            "file": "src/common/game/gameobjects/ShieldBody.js",
+            "line": 60,
+            "description": "Sets the radius of the shield",
             "itemtype": "method",
-            "name": "Sprite#Draw",
+            "name": "ShieldBody#setRadius",
             "params": [
                 {
-                    "name": "canvasContext",
-                    "description": "- The playing field",
-                    "type": "Canvas"
+                    "name": "_radius",
+                    "description": "- The radius of the shieldbody.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Shieldbody"
+        },
+        {
+            "file": "src/common/game/gameobjects/ShieldBody.js",
+            "line": 67,
+            "description": "Sets the parent of the shield",
+            "itemtype": "method",
+            "name": "ShieldBody#setParentShield",
+            "params": [
+                {
+                    "name": "_parentShield",
+                    "description": "- The shield to which the body belongs.",
+                    "type": "Shield"
+                }
+            ],
+            "class": "Shieldbody"
+        },
+        {
+            "file": "src/common/game/gameobjects/ShieldBody.js",
+            "line": 74,
+            "description": "Returns the angle of the shield",
+            "itemtype": "method",
+            "name": "ShieldBody#getAngle",
+            "return": {
+                "description": "- The angle in radians",
+                "type": "Number"
+            },
+            "class": "Shieldbody"
+        },
+        {
+            "file": "src/common/game/gameobjects/ShieldBody.js",
+            "line": 81,
+            "description": "Returns the radius of the shield",
+            "itemtype": "method",
+            "name": "ShieldBody#getRadius",
+            "return": {
+                "description": "- The radius of the shieldbody",
+                "type": "Number"
+            },
+            "class": "Shieldbody"
+        },
+        {
+            "file": "src/common/game/gameobjects/ShieldBody.js",
+            "line": 88,
+            "description": "Returns the parent of the shield",
+            "itemtype": "method",
+            "name": "ShieldBody#getParentShield",
+            "return": {
+                "description": "- The shield belonging to this shieldbody",
+                "type": "Shield"
+            },
+            "class": "Shieldbody"
+        },
+        {
+            "file": "src/common/game/gameobjects/ShieldBody.js",
+            "line": 95,
+            "description": "Retrieves the ID of the shieldBody",
+            "itemtype": "method",
+            "name": "ShieldBody#getID",
+            "return": {
+                "description": "The unique ID of the shieldBody",
+                "type": "Number"
+            },
+            "class": "Shieldbody"
+        },
+        {
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 29,
+            "description": "Checks whether two objects are equals by comparing their ID's",
+            "itemtype": "method",
+            "name": "Sprite#equals",
+            "params": [
+                {
+                    "name": "_other",
+                    "description": "- The other object with which it is compared.",
+                    "type": "Object"
                 }
             ],
             "class": "Sprite"
         },
         {
-            "file": "Timer.js",
-            "line": 17,
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 37,
+            "description": "Sets the position of the sprite (top left) from which it will be drawn",
+            "itemtype": "method",
+            "name": "Sprite#setPosition",
+            "params": [
+                {
+                    "name": "_position",
+                    "description": "- The x and y coordinates of the top left corner.",
+                    "type": "Number, number"
+                }
+            ],
+            "class": "Sprite"
+        },
+        {
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 45,
+            "description": "Sets the scale of the sprite.",
+            "itemtype": "method",
+            "name": "Sprite#setScale",
+            "params": [
+                {
+                    "name": "_scale",
+                    "description": "- The scale by which the sprite will be drawn.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Sprite"
+        },
+        {
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 53,
+            "description": "Sets the original size at which the sprite will be drawn",
+            "itemtype": "method",
+            "name": "Sprite#setSize",
+            "params": [
+                {
+                    "name": "_size",
+                    "description": "- The width and height at which the sprite will be drawn.",
+                    "type": "Number, number"
+                }
+            ],
+            "class": "Sprite"
+        },
+        {
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 61,
+            "description": "Anchors the origin of the sprite at a specific place relative to the x and y position.",
+            "itemtype": "method",
+            "name": "Sprite#setAnchor",
+            "params": [
+                {
+                    "name": "_anchorPos",
+                    "description": "- The x and y coordinates that will be added up to the original x and y positon. (can be negative)",
+                    "type": "Number, number"
+                }
+            ],
+            "class": "Sprite"
+        },
+        {
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 69,
+            "description": "Retrieves the ID of the sprite",
+            "itemtype": "method",
+            "name": "Sprite#getID",
+            "return": {
+                "description": "The unique ID of the sprite",
+                "type": "Number"
+            },
+            "class": "Sprite"
+        },
+        {
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 77,
+            "description": "Retrieves the texturepath of the sprite",
+            "itemtype": "method",
+            "name": "Sprite#getTexture",
+            "return": {
+                "description": "The relative path to the texture",
+                "type": "String"
+            },
+            "class": "Sprite"
+        },
+        {
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 85,
+            "description": "Retrieves the position of the sprite",
+            "itemtype": "method",
+            "name": "Sprite#getPosition",
+            "return": {
+                "description": "The x and y coordinates of the sprite",
+                "type": "Number, number"
+            },
+            "class": "Sprite"
+        },
+        {
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 93,
+            "description": "Retrieves the scale of the sprite",
+            "itemtype": "method",
+            "name": "Sprite#getScale",
+            "return": {
+                "description": "The current scale in which the sprite is drawn.",
+                "type": "Number"
+            },
+            "class": "Sprite"
+        },
+        {
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 101,
+            "description": "Retrieves the size of the sprite",
+            "itemtype": "method",
+            "name": "Sprite#getSize",
+            "return": {
+                "description": "The x and y dimensions in which the sprite is drawn",
+                "type": "Number, number"
+            },
+            "class": "Sprite"
+        },
+        {
+            "file": "src/common/game/gameobjects/Sprite.js",
+            "line": 109,
+            "description": "Retrieves the anchor of the sprite",
+            "itemtype": "method",
+            "name": "Sprite#getAnchor",
+            "return": {
+                "description": "The x and y coordinates to which the sprite is anchored, relative to the position of the sprite",
+                "type": "Number, number"
+            },
+            "class": "Sprite"
+        },
+        {
+            "file": "src/common/game/time/PlayerTimer.js",
+            "line": 20,
+            "description": "Adds one to the current time and update the player's score",
+            "itemtype": "method",
+            "name": "PlayerTimer#count",
+            "params": [
+                {
+                    "name": "_this",
+                    "description": "- The pointer to the original 'this', otherwise the object will mess it all up.",
+                    "type": "This"
+                }
+            ],
+            "class": "PlayerTimer"
+        },
+        {
+            "file": "src/common/game/time/PowerupTimer.js",
+            "line": 20,
+            "description": "Counts one down from the initial time for the powerup. When the timer reaches 0, it is stopped",
+            "itemtype": "method",
+            "name": "PowerupTimer#count",
+            "params": [
+                {
+                    "name": "_this",
+                    "description": "- It needs a reference to the original 'this', otherwise the variable will mess it up.",
+                    "type": "This"
+                }
+            ],
+            "class": "PowerupTimer"
+        },
+        {
+            "file": "src/common/game/time/RandomTimer.js",
+            "line": 22,
+            "description": "Counts one down from the initial time for the powerup. When the timer reaches 0, it is stopped",
+            "itemtype": "method",
+            "name": "PowerupTimer#count",
+            "params": [
+                {
+                    "name": "_this",
+                    "description": "- It needs a reference to the original 'this', otherwise the variable will mess it up.",
+                    "type": "This"
+                }
+            ],
+            "class": "PowerupTimer"
+        },
+        {
+            "file": "src/common/game/time/Timer.js",
+            "line": 22,
             "description": "Starts the timer",
             "itemtype": "method",
             "name": "Timer#startTimer",
             "class": "Timer"
         },
         {
-            "file": "Timer.js",
-            "line": 27,
-            "description": "Adds one to the current time and updates player score",
+            "file": "src/common/game/time/Timer.js",
+            "line": 32,
+            "description": "Adds one to the current time",
             "itemtype": "method",
             "name": "Timer#count",
+            "params": [
+                {
+                    "name": "_this",
+                    "description": "- Optional, is needed for playertimer and PowerupTimer!",
+                    "type": "This"
+                }
+            ],
             "class": "Timer"
         },
         {
-            "file": "Timer.js",
-            "line": 38,
+            "file": "src/common/game/time/Timer.js",
+            "line": 42,
             "description": "Pauses the timer (but only if it isn't paused already)",
             "itemtype": "method",
             "name": "Timer#pause",
             "class": "Timer"
         },
         {
-            "file": "Timer.js",
-            "line": 50,
+            "file": "src/common/game/time/Timer.js",
+            "line": 54,
             "description": "Resumes the timer (but only if it was paused at first)",
             "itemtype": "method",
             "name": "Timer#resume",
             "class": "Timer"
         },
         {
-            "file": "Timer.js",
-            "line": 63,
+            "file": "src/common/game/time/Timer.js",
+            "line": 67,
             "description": "Resets the timer",
             "itemtype": "method",
             "name": "Timer#reset",
             "class": "Timer"
         },
         {
-            "file": "Timer.js",
-            "line": 75,
+            "file": "src/common/game/time/Timer.js",
+            "line": 79,
             "description": "Stops the timer",
             "itemtype": "method",
             "name": "Timer#stop",
             "class": "Timer"
         },
         {
-            "file": "Timer.js",
-            "line": 86,
+            "file": "src/common/game/time/Timer.js",
+            "line": 90,
             "description": "Returns the current time in minutes",
             "itemtype": "method",
             "name": "Timer#getMinutes",
@@ -1868,8 +3147,8 @@
             "class": "Timer"
         },
         {
-            "file": "Timer.js",
-            "line": 96,
+            "file": "src/common/game/time/Timer.js",
+            "line": 100,
             "description": "Returns the state of the",
             "itemtype": "method",
             "name": "Timer#isPaused",
@@ -1880,8 +3159,8 @@
             "class": "Timer"
         },
         {
-            "file": "Timer.js",
-            "line": 107,
+            "file": "src/common/game/time/Timer.js",
+            "line": 111,
             "description": "Returns the count",
             "itemtype": "method",
             "name": "Timer#isPaused",
@@ -1892,8 +3171,8 @@
             "class": "Timer"
         },
         {
-            "file": "Timer.js",
-            "line": 116,
+            "file": "src/common/game/time/Timer.js",
+            "line": 120,
             "description": "Returns the current time in seconds (between 0 and 59, otherwise it's a minute)",
             "itemtype": "method",
             "name": "Timer#getSeconds",
@@ -1902,80 +3181,1539 @@
                 "type": "String"
             },
             "class": "Timer"
+        },
+        {
+            "file": "src/common/game/util/ColorGenerator.js",
+            "line": 12,
+            "description": "Returns a random color from the predefined color list above.",
+            "itemtype": "method",
+            "name": "ColorGenerator#returnColor",
+            "class": "ColorGenerator"
+        },
+        {
+            "file": "src/common/game/util/Group.js",
+            "line": 18,
+            "description": "Adds an object to an existing list of members. Don't use this function in combination with AddMemberOnPosition.",
+            "itemtype": "method",
+            "name": "Group#addMember",
+            "params": [
+                {
+                    "name": "_object",
+                    "description": "- The object which is added to a list of members",
+                    "type": "Object"
+                }
+            ],
+            "class": "Group"
+        },
+        {
+            "file": "src/common/game/util/Group.js",
+            "line": 31,
+            "description": "Removes the specified object from the group, returns -1 if not found or of wrong type.",
+            "itemtype": "method",
+            "name": "Group#removeMember",
+            "params": [
+                {
+                    "name": "_object",
+                    "description": "- The object which has to be deleted from the group.",
+                    "type": "Object"
+                }
+            ],
+            "class": "Group"
+        },
+        {
+            "file": "src/common/game/util/Group.js",
+            "line": 51,
+            "description": "Checks each collision of the possible collisions",
+            "itemtype": "method",
+            "name": "Group#checkCollision",
+            "class": "Group"
+        },
+        {
+            "file": "src/common/game/util/Group.js",
+            "line": 65,
+            "description": "Returns a list of members",
+            "itemtype": "method",
+            "name": "Group#getMembers",
+            "class": "Group"
+        },
+        {
+            "file": "src/common/game/util/Group.js",
+            "line": 73,
+            "description": "Returns a specific object from a list of members",
+            "itemtype": "method",
+            "name": "Group@getMember",
+            "params": [
+                {
+                    "name": "_index",
+                    "description": "- The index of the object you want to return",
+                    "type": "Int"
+                }
+            ],
+            "class": "Group"
+        },
+        {
+            "file": "src/common/game/util/Group.js",
+            "line": 82,
+            "description": "Returns member with given id",
+            "itemtype": "method",
+            "name": "Group#getMemberByID",
+            "class": "Group"
+        },
+        {
+            "file": "src/common/game/util/Group.js",
+            "line": 95,
+            "description": "Returns member with given global id",
+            "itemtype": "method",
+            "name": "Group#getMemberByGlobalID",
+            "class": "Group"
+        },
+        {
+            "file": "src/common/game/util/Group.js",
+            "line": 108,
+            "description": "Returns the amount of objects in the list",
+            "itemtype": "method",
+            "name": "Group#getMembersLength",
+            "class": "Group"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 14,
+            "description": "Calls basic collision function with the two objects",
+            "itemtype": "method",
+            "name": "CollisionDetection#handleCollision",
+            "params": [
+                {
+                    "name": "_bodyOne",
+                    "description": "- Object 1",
+                    "type": "Object"
+                },
+                {
+                    "name": "_bodyTwo",
+                    "description": "- Object 2",
+                    "type": "Object"
+                }
+            ],
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 29,
+            "description": "Gets the collisions between two objects",
+            "itemtype": "method",
+            "name": "CollisionDetection#shouldHandle",
+            "params": [
+                {
+                    "name": "_bodyOne",
+                    "description": "- Object 1",
+                    "type": "Object"
+                },
+                {
+                    "name": "_bodyTwo",
+                    "description": "- Object 2",
+                    "type": "Object"
+                }
+            ],
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 51,
+            "description": "Checks for collision and returns the collision object",
+            "itemtype": "method",
+            "name": "CollisionDetection#checkForCollision",
+            "params": [
+                {
+                    "name": "_bodyOne",
+                    "description": "- Object 1",
+                    "type": "Object"
+                },
+                {
+                    "name": "_bodyTwo",
+                    "description": "- Object 2",
+                    "type": "Object"
+                }
+            ],
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 71,
+            "description": "Determines which collision could occur and calls the specific check method",
+            "itemtype": "method",
+            "name": "CollisionDetection#collides",
+            "params": [
+                {
+                    "name": "_bodyOne",
+                    "description": "- Object 1",
+                    "type": "Object"
+                },
+                {
+                    "name": "_bodyTwo",
+                    "description": "- Object 2",
+                    "type": "Object"
+                }
+            ],
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 82,
+            "description": "Specific collision method for ball and another object",
+            "itemtype": "method",
+            "name": "CollisionDetection#collidesBallWith",
+            "params": [
+                {
+                    "name": "_ball",
+                    "description": "- Ball object",
+                    "type": "Shield"
+                },
+                {
+                    "name": "_other",
+                    "description": "- Other object",
+                    "type": "Object"
+                }
+            ],
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 93,
+            "description": "Specific collision method for shield and another object",
+            "itemtype": "method",
+            "name": "CollisionDetection#collidesShieldWith",
+            "params": [
+                {
+                    "name": "_shield",
+                    "description": "- Shield object",
+                    "type": "Shield"
+                },
+                {
+                    "name": "_other",
+                    "description": "- Other object",
+                    "type": "Object"
+                }
+            ],
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 104,
+            "description": "Specific collision method for ball and ball",
+            "itemtype": "method",
+            "name": "CollisionDetection#collidesBallWithBall",
+            "params": [
+                {
+                    "name": "_ball1",
+                    "description": "- Ball object",
+                    "type": "Ball"
+                },
+                {
+                    "name": "_ball2",
+                    "description": "- Ball object",
+                    "type": "Ball"
+                }
+            ],
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 122,
+            "description": "Specific collision method for ball and shield (circle to circle collision)",
+            "itemtype": "method",
+            "name": "CollisionDetection#collidesBallWithShield",
+            "params": [
+                {
+                    "name": "_ball",
+                    "description": "- Ball object",
+                    "type": "Ball"
+                },
+                {
+                    "name": "_shield",
+                    "description": "- Shield object",
+                    "type": "Shield"
+                }
+            ],
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 139,
+            "description": "Precise collision method for ball and shield (circle to arc)",
+            "itemtype": "method",
+            "name": "CollisionDetection#collidesBallWithBall",
+            "params": [
+                {
+                    "name": "_ball",
+                    "description": "- Ball object",
+                    "type": "Ball"
+                },
+                {
+                    "name": "_shield",
+                    "description": "- Shield object",
+                    "type": "Ball"
+                }
+            ],
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 164,
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 175,
+            "description": "Normalizes the angle",
+            "itemtype": "method",
+            "name": "CollisionDetection#normalizeAngle",
+            "params": [
+                {
+                    "name": "_angle",
+                    "description": "- The angle of the object",
+                    "type": "Float"
+                }
+            ],
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CollisionDetection.js",
+            "line": 184,
+            "description": "Calls the handling method for two given objects",
+            "itemtype": "method",
+            "name": "CollisionDetection#handleCollision",
+            "params": [
+                {
+                    "name": "_objectOne",
+                    "description": "- Object 1",
+                    "type": "Object"
+                },
+                {
+                    "name": "_objectTwo",
+                    "description": "- Object 2",
+                    "type": "Object"
+                }
+            ],
+            "class": "CollisionDetection"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 22,
+            "description": "The boot function to boot the game",
+            "itemtype": "method",
+            "name": "CoreGame#boot",
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 32,
+            "description": "The parent initialize function",
+            "itemtype": "method",
+            "name": "CoreGame#parentInitialize",
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 41,
+            "description": "The parent update function",
+            "itemtype": "method",
+            "name": "CoreGame#parentUpdate",
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 57,
+            "description": "Function to update all game elements",
+            "itemtype": "method",
+            "name": "CoreGame#updateElements",
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 68,
+            "description": "Function to handle all game object collisions",
+            "itemtype": "method",
+            "name": "CoreGame#handleCollisions",
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 83,
+            "description": "Function to make sure all elements stay in the world bounds",
+            "itemtype": "method",
+            "name": "CoreGame#keepInWorldBounds",
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 95,
+            "description": "Function to instantiate game elements",
+            "itemtype": "method",
+            "name": "CoreGame#instantiate",
+            "params": [
+                {
+                    "name": "_element",
+                    "description": "- The element to instantiate",
+                    "type": "Object"
+                }
+            ],
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 107,
+            "description": "Function to remove game elements",
+            "itemtype": "method",
+            "name": "CoreGame#remove",
+            "params": [
+                {
+                    "name": "_element",
+                    "description": "- The element to remove",
+                    "type": "Object"
+                }
+            ],
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 127,
+            "description": "A getter for the game elements",
+            "itemtype": "method",
+            "name": "CoreGame#getGameElements",
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 136,
+            "description": "Returns the boolean which represents if the game is updating or not",
+            "itemtype": "method",
+            "name": "CoreGame#getUpdating",
+            "return": {
+                "description": "The value",
+                "type": "Boolean"
+            },
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 145,
+            "description": "A setter for the game dimensions",
+            "itemtype": "method",
+            "name": "CoreGame#setDimensions",
+            "params": [
+                {
+                    "name": "_width",
+                    "description": "- The new game width",
+                    "type": "Float"
+                },
+                {
+                    "name": "_height",
+                    "description": "- The new game height",
+                    "type": "Float"
+                }
+            ],
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 156,
+            "description": "A getter for the game dimensions",
+            "itemtype": "method",
+            "name": "CoreGame#getDimensions",
+            "return": {
+                "description": "An object with a width and height value",
+                "type": "Object"
+            },
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/CoreGame.js",
+            "line": 174,
+            "description": "Setter for the updating variable",
+            "itemtype": "method",
+            "name": "CoreGame#setUpdating",
+            "params": [
+                {
+                    "name": "_updating",
+                    "description": "- The value",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "CoreGame"
+        },
+        {
+            "file": "src/common/game/Drawer.js",
+            "line": 9,
+            "description": "Function which calls the correct drawing method",
+            "itemtype": "method",
+            "name": "Drawer#draw",
+            "params": [
+                {
+                    "name": "_element",
+                    "description": "- The object to be drawn",
+                    "type": "Object"
+                }
+            ],
+            "class": "Drawer"
+        },
+        {
+            "file": "src/common/game/Drawer.js",
+            "line": 23,
+            "description": "Function which draws the actual ball object",
+            "itemtype": "method",
+            "name": "Drawer#drawBall",
+            "params": [
+                {
+                    "name": "_ball",
+                    "description": "- The ball object to be drawn",
+                    "type": "Object"
+                }
+            ],
+            "class": "Drawer"
+        },
+        {
+            "file": "src/common/game/Drawer.js",
+            "line": 39,
+            "description": "Function which draws the actual sprite object",
+            "itemtype": "method",
+            "name": "Drawer#drawSprite",
+            "params": [
+                {
+                    "name": "_sprite",
+                    "description": "- The sprite object to be drawn",
+                    "type": "Object"
+                }
+            ],
+            "class": "Drawer"
+        },
+        {
+            "file": "src/common/game/Drawer.js",
+            "line": 48,
+            "description": "Function which draws the actual shield object",
+            "itemtype": "method",
+            "name": "Drawer#drawShield",
+            "params": [
+                {
+                    "name": "_shield",
+                    "description": "- The shield object to be drawn",
+                    "type": "Object"
+                }
+            ],
+            "class": "Drawer"
+        },
+        {
+            "file": "src/common/game/Drawer.js",
+            "line": 64,
+            "description": "Function which draws the actual label object",
+            "itemtype": "method",
+            "name": "Drawer#drawLabel",
+            "params": [
+                {
+                    "name": "_label",
+                    "description": "- The label object to be drawn",
+                    "type": "Object"
+                }
+            ],
+            "class": "Drawer"
+        },
+        {
+            "file": "src/common/game/Drawer.js",
+            "line": 75,
+            "description": "Function which draws the actual powerup object",
+            "itemtype": "method",
+            "name": "Drawer#drawPowerup",
+            "params": [
+                {
+                    "name": "_powerup",
+                    "description": "- The powerup object to be drawn",
+                    "type": "Object"
+                }
+            ],
+            "class": "Drawer"
+        },
+        {
+            "file": "src/common/game/Game.js",
+            "line": 24,
+            "description": "Instantiates the given object",
+            "itemtype": "method",
+            "name": "Game#instantiate",
+            "return": {
+                "description": "- The instantiated object",
+                "type": "Object"
+            },
+            "class": "Game"
+        },
+        {
+            "file": "src/common/game/Game.js",
+            "line": 34,
+            "description": "Removes the given object",
+            "itemtype": "method",
+            "name": "Game#remove",
+            "class": "Game"
+        },
+        {
+            "file": "src/common/game/Game.js",
+            "line": 43,
+            "description": "Draws the given object",
+            "itemtype": "method",
+            "name": "Game#draw",
+            "class": "Game"
+        },
+        {
+            "file": "src/common/game/Game.js",
+            "line": 57,
+            "description": "Returns the input",
+            "itemtype": "method",
+            "name": "Game#getInput",
+            "return": {
+                "description": "The input object",
+                "type": "Input"
+            },
+            "class": "Game"
+        },
+        {
+            "file": "src/common/game/Game.js",
+            "line": 66,
+            "description": "Returns the boolean which represents if the game is updating or not",
+            "itemtype": "method",
+            "name": "Game#getUpdating",
+            "return": {
+                "description": "The value",
+                "type": "Boolean"
+            },
+            "class": "Game"
+        },
+        {
+            "file": "src/common/game/Game.js",
+            "line": 75,
+            "description": "Getter for the drawing state of the renderengine",
+            "itemtype": "method",
+            "name": "Game#getDrawing",
+            "return": {
+                "description": "The background color",
+                "type": "Color"
+            },
+            "class": "Game"
+        },
+        {
+            "file": "src/common/game/Game.js",
+            "line": 85,
+            "description": "Assigns a boolean value whether the game is updating or not",
+            "itemtype": "method",
+            "name": "Game#setUpdating",
+            "class": "Game"
+        },
+        {
+            "file": "src/common/game/Game.js",
+            "line": 94,
+            "description": "Setter for the drawing state of the renderengine",
+            "itemtype": "method",
+            "name": "Game#setDrawing",
+            "class": "Game"
+        },
+        {
+            "file": "src/common/game/Input.js",
+            "line": 11,
+            "description": "Listener for mouse movement to save X and Y position",
+            "itemtype": "method",
+            "name": "Input#mouseMoveListener",
+            "params": [
+                {
+                    "name": "_e",
+                    "description": "- The events arguments",
+                    "type": "Event"
+                }
+            ],
+            "class": "Input"
+        },
+        {
+            "file": "src/common/game/Input.js",
+            "line": 23,
+            "description": "Listener for mouse down for the pause functionality (debugging purpose only)",
+            "itemtype": "method",
+            "name": "Input#mouseDownListener",
+            "params": [
+                {
+                    "name": "_e",
+                    "description": "- The event arguments",
+                    "type": "Event"
+                }
+            ],
+            "class": "Input"
+        },
+        {
+            "file": "src/common/game/Input.js",
+            "line": 33,
+            "description": "Listener for the touch start event",
+            "itemtype": "method",
+            "name": "Input#touchStartListener",
+            "params": [
+                {
+                    "name": "_e",
+                    "description": "- The event arguments",
+                    "type": "Event"
+                }
+            ],
+            "class": "Input"
+        },
+        {
+            "file": "src/common/game/Input.js",
+            "line": 45,
+            "description": "Listener for the touch move event",
+            "itemtype": "method",
+            "name": "Input#touchMoveListener",
+            "params": [
+                {
+                    "name": "_e",
+                    "description": "- The event arguments",
+                    "type": "Event"
+                }
+            ],
+            "class": "Input"
+        },
+        {
+            "file": "src/common/game/Input.js",
+            "line": 62,
+            "description": "A getter for the activePointer location",
+            "itemtype": "method",
+            "name": "Input#getMainPointer",
+            "return": {
+                "description": "- Object which contains the x and y position",
+                "type": "Object"
+            },
+            "class": "Input"
+        },
+        {
+            "file": "src/common/game/Input.js",
+            "line": 72,
+            "description": "A setter for the activePointer location",
+            "itemtype": "method",
+            "name": "Input#setMainPointer",
+            "params": [
+                {
+                    "name": "_x",
+                    "description": "- The new x position of the pointer",
+                    "type": "Float"
+                },
+                {
+                    "name": "_y",
+                    "description": "- The new y position of the pointer",
+                    "type": "Float"
+                }
+            ],
+            "class": "Input"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 25,
+            "description": "Function for booting the RenderEngine",
+            "itemtype": "method",
+            "name": "RenderEngine#boot",
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 36,
+            "description": "Function for initializing class variables",
+            "itemtype": "method",
+            "name": "RenderEngine#initialize",
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 49,
+            "description": "Function for loading class-internal and external content",
+            "itemtype": "method",
+            "name": "RenderEngine#parentLoadContent",
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 57,
+            "description": "Function for setting event listeners",
+            "itemtype": "method",
+            "name": "RenderEngine#initializeListeners",
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 71,
+            "description": "Function for initializing canvas",
+            "itemtype": "method",
+            "name": "RenderEngine#initializeCanvas",
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 81,
+            "description": "Update function for the RenderEngine",
+            "itemtype": "method",
+            "name": "RenderEngine#updateCanvasSize",
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 142,
+            "description": "Method which returns if the resolution is correct.",
+            "itemtype": "method",
+            "name": "RenderEngine#hasResolution",
+            "return": {
+                "description": "- True or False",
+                "type": "Boolean"
+            },
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 151,
+            "description": "Checks the orientation and change of the canvas size.",
+            "itemtype": "method",
+            "name": "RenderEngine#checkOrientation",
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 162,
+            "description": "Draw function",
+            "itemtype": "method",
+            "name": "RenderEngine#parentDraw",
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 171,
+            "description": "Draw function for drawing all the elements in a game.",
+            "itemtype": "method",
+            "name": "RenderEngine#drawGame",
+            "params": [
+                {
+                    "name": "_game",
+                    "description": "- The game to be drawn.",
+                    "type": "CoreGame"
+                }
+            ],
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 186,
+            "description": "Create function for the game field (canvas)",
+            "itemtype": "method",
+            "name": "RenderEngine#createCanvas",
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 211,
+            "description": "Function which clears the canvas",
+            "itemtype": "method",
+            "name": "RenderEngine#clearCanvas",
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 221,
+            "description": "Function which draws the specified object to the game canvas",
+            "itemtype": "method",
+            "name": "RenderEngine#drawElement",
+            "params": [
+                {
+                    "name": "_element",
+                    "description": "- The game object to be drawn",
+                    "type": "Object"
+                }
+            ],
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 241,
+            "description": "Getter for the background color",
+            "itemtype": "method",
+            "name": "RenderEngine#getBackgroundColor",
+            "return": {
+                "description": "The background color",
+                "type": "Color"
+            },
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 251,
+            "description": "Getter for the drawing state of the renderengine",
+            "itemtype": "method",
+            "name": "RenderEngine#getDrawing",
+            "return": {
+                "description": "The drawing state",
+                "type": "Boolean"
+            },
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 261,
+            "description": "Setter for the background color",
+            "itemtype": "method",
+            "name": "RenderEngine#setBackgroundColor",
+            "params": [
+                {
+                    "name": "_color",
+                    "description": "- The background color",
+                    "type": "Color"
+                }
+            ],
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/game/RenderEngine.js",
+            "line": 271,
+            "description": "Setter for the drawing state of the renderengine",
+            "itemtype": "method",
+            "name": "RenderEngine#setDrawing",
+            "return": {
+                "description": "The drawing state",
+                "type": "Boolean"
+            },
+            "class": "RenderEngine"
+        },
+        {
+            "file": "src/common/Client.js",
+            "line": 1,
+            "description": "Creates the client for the game",
+            "itemtype": "method",
+            "name": "Client#Client",
+            "class": "Enum"
+        },
+        {
+            "file": "src/common/Settings.js",
+            "line": 6,
+            "class": "Block"
+        },
+        {
+            "file": "src/common/Settings.js",
+            "line": 10,
+            "class": "Block"
+        },
+        {
+            "file": "src/common/Settings.js",
+            "line": 15,
+            "class": "Block"
+        },
+        {
+            "file": "src/common/Settings.js",
+            "line": 57,
+            "class": "Block"
+        },
+        {
+            "file": "src/common/Settings.js",
+            "line": 65,
+            "class": "Block"
+        },
+        {
+            "file": "src/common/Settings.js",
+            "line": 74,
+            "class": "Block"
+        },
+        {
+            "file": "src/common/Settings.js",
+            "line": 78,
+            "class": "Block"
+        },
+        {
+            "file": "src/common/Settings.js",
+            "line": 84,
+            "class": "Block"
+        },
+        {
+            "file": "src/common/Settings.js",
+            "line": 91,
+            "class": "Block"
+        },
+        {
+            "file": "src/common/Settings.js",
+            "line": 108,
+            "class": "Block"
+        },
+        {
+            "file": "src/server/factory/PlayerFactory.js",
+            "line": 25,
+            "description": "Create new Pole",
+            "itemtype": "method",
+            "name": "PlayerFactory#createPole",
+            "params": [
+                {
+                    "name": "gm,",
+                    "description": "group manager used to add pole",
+                    "type": "GroupManager"
+                }
+            ],
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 41,
+            "description": "Add ball to this block.",
+            "itemtype": "method",
+            "name": "Block#addBall",
+            "params": [
+                {
+                    "name": "_ball",
+                    "description": "- The ball that should be added to the block.",
+                    "type": "Ball"
+                }
+            ],
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 53,
+            "description": "A method that is called by other blocks to tell a ball is traveling towards this\nblock. Checks wether this block already has this ball in his list. If the ball\nis not found the ball will be added.",
+            "itemtype": "method",
+            "name": "Block#ballIncoming",
+            "params": [
+                {
+                    "name": "_ball",
+                    "description": "- The ball that should be added to the block.",
+                    "type": "Ball"
+                }
+            ],
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 68,
+            "description": "Notify the player about the ball.",
+            "itemtype": "method",
+            "name": "Block#sendNewBallToPlayer",
+            "params": [
+                {
+                    "name": "_ball",
+                    "description": "- The ball the player should be notified about.",
+                    "type": "Ball"
+                }
+            ],
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 79,
+            "description": "Calculates in which directions a ball should be send.",
+            "itemtype": "method",
+            "name": "Block#blocksToSendBallTo",
+            "params": [
+                {
+                    "name": "_ball",
+                    "description": "",
+                    "type": "Ball"
+                }
+            ],
+            "return": {
+                "description": "- An array with the directions. (top, bottom, left, right)",
+                "type": "Array"
+            },
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 114,
+            "description": "Calculates wether a ball should be removed",
+            "itemtype": "method",
+            "name": "Block#shouldBeRemoved",
+            "params": [
+                {
+                    "name": "_ball",
+                    "description": "",
+                    "type": "Ball"
+                }
+            ],
+            "return": {
+                "description": "- A boolean which is true if the ball should be removed.",
+                "type": "Boolean"
+            },
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 141,
+            "description": "Updates the block. Send balls to other players, remove balls and emits all the new positions to the player.",
+            "itemtype": "method",
+            "name": "Block#update",
+            "return": {
+                "description": "- A boolean which is true if the ball should be removed.",
+                "type": "Boolean"
+            },
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 162,
+            "description": "Sends ball to everey direction in the list",
+            "itemtype": "method",
+            "name": "Block#sendToList",
+            "params": [
+                {
+                    "name": "list",
+                    "description": "- the list with directions the ball should be send to.",
+                    "type": "Array"
+                },
+                {
+                    "name": "_ball",
+                    "description": "-",
+                    "type": "Ball"
+                }
+            ],
+            "return": {
+                "description": "- A boolean which is true if the ball should be removed.",
+                "type": "Boolean"
+            },
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 175,
+            "description": "Send to the list.",
+            "itemtype": "method",
+            "name": "Block#sendTobBlock",
+            "return": {
+                "description": "- A boolean which is true if the ball should be removed.",
+                "type": "Boolean"
+            },
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 187,
+            "description": "Remove ball from the block. If an index is known this method can\nbe much faster. Send index -1 if the index is unknown.",
+            "itemtype": "method",
+            "name": "Block#removeball",
+            "params": [
+                {
+                    "name": "_ball",
+                    "description": "- The ball that should be removed.",
+                    "type": "Ball"
+                },
+                {
+                    "name": "index",
+                    "description": "- The index of the ball in the ballList. -1 if unknown.",
+                    "type": "Integer"
+                }
+            ],
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 206,
+            "description": "A search method, which returns the index of the ball in the ballsList.\nThe balls are compared on GlobalID.",
+            "itemtype": "method",
+            "name": "Block#getBallIndex",
+            "params": [
+                {
+                    "name": "_ball",
+                    "description": "- The ball that should be found.",
+                    "type": "Ball"
+                }
+            ],
+            "return": {
+                "description": "- the index of the ball, or -1 if the ball is not found.",
+                "type": "Integer"
+            },
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 250,
+            "description": "Change the current Socket. Emit the canvasPosition and send all\nballs which are currently in this block to the player.",
+            "itemtype": "method",
+            "name": "Block#setSocket",
+            "params": [
+                {
+                    "name": "_socket",
+                    "description": "- The ball that should be found.",
+                    "type": "Socket"
+                }
+            ],
+            "return": {
+                "description": "- the index of the ball, or -1 if the ball is not found.",
+                "type": "Integer"
+            },
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 271,
+            "description": "Change the postion of the block. WARNING: This function also updates \nthe position of all the balls.",
+            "itemtype": "method",
+            "name": "Block#updatPosition",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The new x position.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The new y position",
+                    "type": "Number"
+                }
+            ],
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 295,
+            "description": "Remove the current player by setting it to false.",
+            "itemtype": "method",
+            "name": "Block#removePlayer",
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/Block.js",
+            "line": 328,
+            "description": "Emits the message playAudio to a player. If the player receives this \nmessage audio will be played.",
+            "itemtype": "method",
+            "name": "Block#removePlayer",
+            "class": "Block"
+        },
+        {
+            "file": "src/server/grid/GameGrid.js",
+            "line": 23,
+            "description": "Add a new column to the grid. This column is filled with new blocks.",
+            "itemtype": "method",
+            "name": "GameGrid#addColumn",
+            "class": "GameGrid"
+        },
+        {
+            "file": "src/server/grid/GameGrid.js",
+            "line": 49,
+            "description": "Add a new row to the grid. The row is filled with new blocks.",
+            "itemtype": "method",
+            "name": "GameGrid#addRow",
+            "class": "GameGrid"
+        },
+        {
+            "file": "src/server/grid/GameGrid.js",
+            "line": 75,
+            "description": "Add a new player to the grid, and adds ball to \nthe palyer's screen. The player is placed on the\nfirst available spot.",
+            "itemtype": "method",
+            "name": "GameGrid#updateGrid",
+            "params": [
+                {
+                    "name": "socket",
+                    "description": "- The socket that will be placed in the block.",
+                    "type": "Socket"
+                },
+                {
+                    "name": "maxcol",
+                    "description": "- The maximum number of columns",
+                    "type": "Integer"
+                },
+                {
+                    "name": "_ball",
+                    "description": "-",
+                    "type": "Ball"
+                }
+            ],
+            "return": {
+                "description": "An object with the left and top boundary of the block in pixels.",
+                "type": "Object"
+            },
+            "class": "GameGrid"
+        },
+        {
+            "file": "src/server/grid/GameGrid.js",
+            "line": 132,
+            "description": "Check if there is place available in row i.",
+            "itemtype": "method",
+            "name": "GameGrid#checkrow",
+            "params": [
+                {
+                    "name": "socket",
+                    "description": "- The socket that will be placed in the block.",
+                    "type": "Socket"
+                },
+                {
+                    "name": "i",
+                    "description": "- The index of the row.",
+                    "type": "Integer"
+                },
+                {
+                    "name": "_ball",
+                    "description": "-",
+                    "type": "Ball"
+                }
+            ],
+            "return": {
+                "description": "The index of the first availble spot. -1 otherwise.",
+                "type": "Array"
+            },
+            "class": "GameGrid"
+        },
+        {
+            "file": "src/server/grid/GameGrid.js",
+            "line": 177,
+            "description": "Delete the player from the grid.",
+            "itemtype": "method",
+            "name": "GameGrid#remove",
+            "params": [
+                {
+                    "name": "socket",
+                    "description": "- The socket that will be removed",
+                    "type": "Socket"
+                }
+            ],
+            "class": "GameGrid"
+        },
+        {
+            "file": "src/server/grid/GameGrid.js",
+            "line": 194,
+            "description": "Delete a ball from the grid.",
+            "itemtype": "method",
+            "name": "GameGrid#removeBall",
+            "params": [
+                {
+                    "name": "ball",
+                    "description": "- The ball that will be removed.",
+                    "type": "Ball"
+                }
+            ],
+            "class": "GameGrid"
+        },
+        {
+            "file": "src/server/grid/GameGrid.js",
+            "line": 275,
+            "description": "Update all the blocks in the grid.",
+            "itemtype": "method",
+            "name": "GameGrid#rupdate",
+            "class": "GameGrid"
+        },
+        {
+            "file": "src/server/grid/GridCalc.js",
+            "line": 15,
+            "description": "Calculates in which blocks the ball could be.",
+            "itemtype": "method",
+            "name": "GridCalc#inBlock",
+            "params": [
+                {
+                    "name": "ball",
+                    "description": "",
+                    "type": "Ball"
+                }
+            ],
+            "return": {
+                "description": "An array with objects which contains the x and y coordinates of the blocks.",
+                "type": "Array"
+            },
+            "class": "GridCalc"
+        },
+        {
+            "file": "src/server/grid/GridCalc.js",
+            "line": 38,
+            "description": "Calculates in which rows the ball could be.",
+            "itemtype": "method",
+            "name": "GridCalc#inHorizontalBlock",
+            "params": [
+                {
+                    "name": "ball",
+                    "description": "",
+                    "type": "Ball"
+                }
+            ],
+            "return": {
+                "description": "An array with objects which contains the x coordinates of the blocks.",
+                "type": "Array"
+            },
+            "class": "GridCalc"
+        },
+        {
+            "file": "src/server/grid/GridCalc.js",
+            "line": 63,
+            "description": "Calculates in which columns the ball could be.",
+            "itemtype": "method",
+            "name": "GridCalc#inVerticalBlock",
+            "params": [
+                {
+                    "name": "ball",
+                    "description": "",
+                    "type": "Ball"
+                }
+            ],
+            "return": {
+                "description": "An array with objects which contains the y coordinates of the blocks.",
+                "type": "Array"
+            },
+            "class": "GridCalc"
+        },
+        {
+            "file": "src/server/ServerGame.js",
+            "line": 74,
+            "description": "Add a new client, create a new player, pole and shield.",
+            "itemtype": "method",
+            "name": "Server#addClient",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "socket associated with the player.",
+                    "type": "Socket"
+                }
+            ],
+            "class": ""
         }
     ],
     "warnings": [
         {
             "message": "unknown tag: classdesc",
-            "line": " Ball.js:7"
+            "line": " src/client/js/Player/BallController.js:1"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " Body.js:5"
+            "line": " src/client/js/Player/PowerUpController.js:2"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " Camera.js:3"
+            "line": " src/common/game/gameobjects/Ball.js:9"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " CircularBody.js:9"
+            "line": " src/common/game/gameobjects/Body.js:5"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " Collision.js:1"
+            "line": " src/common/game/gameobjects/CircularBody.js:9"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " ColorGenerator.js:1"
+            "line": " src/common/game/gameobjects/Label.js:6"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " Game.js:5"
+            "line": " src/common/game/gameobjects/Player.js:8"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " Group.js:1"
-        },
-        {
-            "message": "unknown tag: classdescr",
-            "line": " Input.js:1"
+            "line": " src/common/game/gameobjects/Pole.js:8"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " Label.js:1"
+            "line": " src/common/game/gameobjects/Powerup.js:13"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " Player.js:5"
+            "line": " src/common/game/gameobjects/ScoreLabel.js:5"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " Pole.js:6"
+            "line": " src/common/game/gameobjects/Shield.js:7"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " Shield.js:6"
+            "line": " src/common/game/gameobjects/ShieldBody.js:8"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " Sprite.js:1"
+            "line": " src/common/game/gameobjects/Sprite.js:6"
         },
         {
             "message": "unknown tag: classdesc",
-            "line": " Timer.js:3"
+            "line": " src/common/game/time/PlayerTimer.js:5"
         },
         {
-            "message": "Missing item type\nA high resolution timer.",
-            "line": " HighResolutionTimer.js:1"
+            "message": "unknown tag: classdesc",
+            "line": " src/common/game/time/PowerupTimer.js:5"
         },
         {
-            "message": "Missing item type\nDelayed running of the callback.",
-            "line": " HighResolutionTimer.js:12"
+            "message": "unknown tag: classdesc",
+            "line": " src/common/game/time/RandomTimer.js:5"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/common/game/time/Timer.js:6"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/common/game/util/ColorGenerator.js:1"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/common/game/util/Group.js:5"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/common/game/util/IDDistributor.js:1"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/common/game/CollisionDetection.js:6"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/common/game/Drawer.js:1"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/common/game/Game.js:6"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/common/game/Input.js:1"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/common/Enums.js:1"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/server/grid/Block.js:10"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/server/grid/GameGrid.js:8"
+        },
+        {
+            "message": "unknown tag: classdesc",
+            "line": " src/server/grid/GridCalc.js:7"
         },
         {
             "message": "Missing item type",
-            "line": " ShieldBody.js:8"
+            "line": " src/common/game/CollisionDetection.js:164"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/common/Settings.js:6"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/common/Settings.js:10"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/common/Settings.js:15"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/common/Settings.js:57"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/common/Settings.js:65"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/common/Settings.js:74"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/common/Settings.js:78"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/common/Settings.js:84"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/common/Settings.js:91"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/common/Settings.js:108"
         }
     ]
 }

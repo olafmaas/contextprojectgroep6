@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ColorGenerator.js</title>
+    <title>IdDistributor</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -110,35 +138,120 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: ColorGenerator.js</h1>
+                        <h1>IdDistributor Class</h1>
+<div class="box meta">
+    
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-/**
-* Class for a color generator
-* @class ColorGenerator
-* @classdesc Color generator class
-* @static
-*/
-var ColorGenerator = {
-	
-	colors: [&quot;#988CFF&quot;, &quot;#FF8C8C&quot;, &quot;#8CE4FF&quot;, &quot;#90FF8C&quot;, &quot;#F4FF8C&quot;, &quot;#FFBC8C&quot;, 
-	&quot;#FF8CF5&quot;, &quot;#FF4040&quot;, &quot;#FF40DC&quot;, &quot;#4640FF&quot;, &quot;#29FFFB&quot;, &quot;#38FF49&quot;, &quot;#F5FF38&quot;, &quot;#FF1717&quot;],
-	
-	/**
-	* Returns a random color from the predefined color list above.
-	* @method ColorGenerator#returnColor
-	*/
-	returnColor: function(){
-		return this.colors[parseInt(Math.random()*this.colors.length)];
-	}
-}
+    
 
-if(typeof module != &#x27;undefined&#x27;){
-    module.exports = ColorGenerator;
-} 
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_common_game_util_IDDistributor.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;IDDistributor.js:1</code></a>
+        </div>
+    
 
-    </pre>
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>ID distributor</p>
+
+</div>
+
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_IdDistributor" class="method item">
+    <h3 class="name"><code>IdDistributor</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_util_IDDistributor.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;IDDistributor.js:1</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+    </div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+
+        
+
+        
+
+        
+    </div>
 </div>
 
                     </div>

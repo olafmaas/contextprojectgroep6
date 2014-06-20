@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ColorGenerator</title>
+    <title>src/common/game/CoreGame.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,141 +138,206 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>ColorGenerator Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: src/common/game/CoreGame.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+if(typeof module != &#x27;undefined&#x27;){
+	var Settings = require(&#x27;../Settings.js&#x27;);
+	var GroupManager = require(&#x27;./util/GroupManager.js&#x27;);
+}
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_common_game_util_ColorGenerator.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:1</code></a>
-        </div>
-    
+/**
+* A fully functional game class without any graphical handling
+*
+* @class CoreGame
+* @param{function} _initialize - The initialize function
+* @param{function} _update - The update function
+*/
+function CoreGame(_initialize, _update, _width, _height){
+	var dimensions = {width: (_width || 0), height: (_height || 0)};
+	var initialize = _initialize;
+	var update = _update;
+	var elements = [];
+	var thisGame = this;
 
-    
+	var updating = true;
 
-    
-</div>
+	/**
+	* The boot function to boot the game
+	* @method CoreGame#boot
+	*/
+	this.boot = function(){
+		parentInitialize();
+		
+		setInterval(parentUpdate, Settings.updateInterval);
+	}
 
+	/**
+	* The parent initialize function
+	* 
+	* @method CoreGame#parentInitialize
+	*/
+	parentInitialize = function(){
+		initialize();
+	}
 
+	/**
+	* The parent update function
+	*
+	* @method CoreGame#parentUpdate
+	*/
+	parentUpdate = function(){
+		//Guard
+		if(updating){
+			//This makes all the elements update individually
+			updateElements();
+			handleCollisions();
+		}
 
-<div class="box intro">
-    <p>Class for a color generator</p>
+		update();
+	}
 
-</div>
+	/**
+	* Function to update all game elements
+	*
+	* @method CoreGame#updateElements
+	*/
+	updateElements = function(){
+		for(var i = 0; i &lt; elements.length; i++){
+			if(elements[i].update !== undefined) elements[i].update();
+		}
+	}
 
+	/**
+	* Function to handle all game object collisions
+	*
+	* @method CoreGame#handleCollisions
+	*/
+	handleCollisions = function(){
+		for(var i = 0; i &lt; elements.length; i++){
+			for(var j = i + 1; j &lt; elements.length; j++){
+				handleCollision(elements[i], elements[j]);
+			}
+		}
 
+		keepInWorldBounds();
+	}
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+	/**
+	* Function to make sure all elements stay in the world bounds
+	* 
+	* @method CoreGame#keepInWorldBounds
+	*/
+	keepInWorldBounds = function(){
+		for(var i = 0; i &lt; elements.length; i++){
+			if(elements[i].getBody !== undefined &amp;&amp; elements[i].getBody().checkWorldBounds !== undefined)
+				elements[i].getBody().checkWorldBounds(thisGame);
+		}
+	}
 
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-        
-        
-    </ul>
+	/**
+	* Function to instantiate game elements
+	*
+	* @method CoreGame#instantiate
+	* @param{object} _element - The element to instantiate
+	*/
+	this.instantiate = function(_element){
+		GroupManager.addMember(_element);
+		elements.push(_element);
+		return _element;
+	}
 
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
+	/**
+	* Function to remove game elements
+	*
+	* @method CoreGame#remove
+	* @param{object} _element - The element to remove
+	*/
+	this.remove = function(_element){
+		GroupManager.removeMember(_element);
+		elementIndex = elements.indexOf(_element);
+		elements.splice(elementIndex, 1);
+	}
 
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
+	//this.boot();
+	setTimeout(this.boot, 10);
+	
+	
+	//===================
+	//Getters &amp; Setters
+	//===================
 
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_ColorGenerator#returnColor">ColorGenerator#returnColor</a>
+	/**
+	* A getter for the game elements
+	*
+	* @method CoreGame#getGameElements
+	*/
+	this.getGameElements = function(){
+		return elements;
+	}
 
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
+	/**
+	* Returns the boolean which represents if the game is updating or not
+	* @method CoreGame#getUpdating
+	* @return{boolean} The value
+	*/
+	this.getUpdating = function(){
+		return updating;
+	}
 
-            
+	/**
+	* A setter for the game dimensions
+	*
+	* @method CoreGame#setDimensions
+	* @param{float} _width - The new game width
+	* @param{float} _height - The new game height
+	*/
+	this.setDimensions = function(_width, _height){
+		dimensions = {width: _width, height: _height};
+	}
 
-            
+	/**
+	* A getter for the game dimensions
+	*
+	* @method CoreGame#getDimensions
+	* @return{object} An object with a width and height value
+	*/
+	this.getDimensions = function(){
+		return dimensions;
+	}
 
-            
-        </div>
+	this.setWidth = function(_width){
+		dimensions.width = _width;
+	}
 
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
+	this.setHeight = function(_height){
+		dimensions.height = _height;
+	}
 
-                
-                    <div id="method_ColorGenerator#returnColor" class="method item">
-    <h3 class="name"><code>ColorGenerator#returnColor</code></h3>
+	/**
+	* Setter for the updating variable
+	* @method CoreGame#setUpdating
+	* @param{boolean} _updating - The value
+	*/
+	this.setUpdating = function(_updating){
+		updating = _updating;
+	}
 
-    
-        <span class="paren">()</span>
-    
+	this.getWidth = function(){
+		return dimensions.width;
+	}
 
-    
+	this.getHeight = function(){
+		return dimensions.height;
+	}
+}
 
-    
+if(typeof module != &#x27;undefined&#x27;){
+    module.exports = CoreGame;
+}  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_ColorGenerator.js.html#l12"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:12</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns a random color from the predefined color list above.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
-        
-
-        
-
-        
-
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

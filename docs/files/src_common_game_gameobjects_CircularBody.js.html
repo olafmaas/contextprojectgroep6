@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CircularBody.js</title>
+    <title>src/common/game/gameobjects/CircularBody.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -110,7 +138,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: CircularBody.js</h1>
+                        <h1 class="file-heading">File: src/common/game/gameobjects/CircularBody.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -119,7 +147,7 @@ if(typeof module != &#x27;undefined&#x27;){
 	var Body = require(&#x27;./Body.js&#x27;);
 	var ShieldBody = require(&#x27;./ShieldBody.js&#x27;);
 	var Ball = require(&#x27;./Ball.js&#x27;);
-	var IDDistributor = require(&#x27;./IDDistributor.js&#x27;);
+	var IDDistributor = require(&#x27;../util/IDDistributor.js&#x27;);
 }
 
 /**
@@ -127,32 +155,44 @@ if(typeof module != &#x27;undefined&#x27;){
 * @class CircularBody
 * @classdesc CircularBody class which extends the Body class.
 * @constructor
+* @extends Body
 * @param {ball} _parent - Ball or pole object to which the body is assigned.
 */
 var CircularBody = Body.extend({
 	radius: 1,
 	parentBall: 0,
 	ID: -1,
+	collisionCallBack: 0, 
+	lastHitBy: -1,
 	
 	/**
 	* Constructor for the circular body
 	* @method CircularBody#constructor
-	* @param {_parent} The circle object
+	* @param {circle} _parent - The circle object
 	*/
 	constructor: function(_parent){
 		this.radius = _parent.getRadius();
 		this.parentBall = _parent;
 		this.ID = IDDistributor.getNewId();
+		this.collisionCallBack = {callback:function(){return}, context: undefined};
 	},
 
 	/**
 	* Updates the position of the circle
 	* @method CircularBody#update
 	*/
-	Update: function(){
+	update: function(){
 		this.base();
 		this.parentBall.setPosition(this.position.x, this.position.y);
 	},
+
+	/**
+	* Checks whether two objects are the same by comparing ID&#x27;s
+	*
+	* @method CircularBody#equals
+	* @param {Object} _other - The other object with which it is compared.
+	*/
+	equals: function(_other){ return (this.ID == _other.getID()); },
 
 	/**
 	* This method uses the previous methods to check whether the circle collides
@@ -162,7 +202,10 @@ var CircularBody = Body.extend({
 	*/
 	handleCollision: function(_other){
 		//If the body is static it shouldn&#x27;t respond to collision, but should respond to getting hit in case it&#x27;s the pole
-		if(this.immovable || this.hit) {
+		if(this.immovable) { 
+			//this.parentBall is de Pole
+			this.parentBall.hit = true;
+			this.parentBall.setHitBy(_other.getLastHitBy());
 			return;
 		}
 
@@ -183,8 +226,14 @@ var CircularBody = Body.extend({
 
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
+		this.collisionCallBack.callback.call(this.collisionCallBack.context);
 	},
 
+	/**
+	* Handles the collision of circle and shield
+	* @method CircularBody#handleShieldCollision
+	* @param {shield} _other - Shield object which collides with the circle
+	*/
 	handleShieldCollision: function(_other){
 		//Get x and y difference
 		var dx = this.getPosition().x - _other.getPosition().x;
@@ -192,6 +241,9 @@ var CircularBody = Body.extend({
 
 		var tangent = Math.atan2(dx, dy);
 		this.setVelocityDirection(2 * tangent - this.getVelocityDirection());
+
+		var p = _other.getParentShield().getPole().player;
+		this.setLastHitBy(p.getGlobalID()); //Save person that last hit this ball
 	},
 
 	/**
@@ -204,11 +256,10 @@ var CircularBody = Body.extend({
 		var ballSpeed = this.getXYSpeed();
 		var nextXPos = ballPosition.x + ballSpeed.x;
 		var nextYPos = ballPosition.y + ballSpeed.y;
-		var width = _game.getWidth();
-		var height = _game.getHeight();
+		var width = _game.getDimensions().width;
+		var height = _game.getDimensions().height;
 
 		var collision = false
-
 		if(nextXPos &gt; width - this.getRadius() || nextXPos &lt; this.getRadius()){
 			this.revertXSpeed();
 			collision = true;
@@ -222,17 +273,59 @@ var CircularBody = Body.extend({
 		return collision;
 	},
 
-	getRadius: function(){
-		return this.radius;
-	},
+	/**
+	* Sets the radius
+	* @method CircularBody#setRadius
+	* @param {float} _radius - The radius
+	*/
+	setRadius: function(_radius){ this.radius = _radius; },
 
-	getParentBall: function(){
-		return this.parentBall;
-	},
+	/**
+	* Sets the collision callback
+	* @method CircularBody#setCollisionCallback
+	* @param {function} _callback - The callback function
+	* @param {Object} _this - The &#x27;this&#x27; object on which the callback function will be called
+	*/
+	setCollisionCallback: function(_callback, _this){ this.collisionCallBack = {callback: _callback, context: _this}; },
 
-	setRadius: function(_radius){
-		this.radius = _radius;
-	}
+	/**
+	* Sets the global id of the player that last hit this ball. 
+	* Note: &#x27;Hit&#x27; means that the ball has bounced of the shield of the player
+	* @method Ball#setLastHitBy
+	* @param {number} _id - The GlobalID of the player that hit the ball
+	*/
+	setLastHitBy: function (_id) { this.lastHitBy = _id; },
+
+	/**
+	* Returns the radius
+	* @method CircularBody#getRadius
+	* @return {number} The radius of the circularBody
+	*/
+	getRadius: function(){ return this.radius; },
+	
+	/**
+	* Returns the ball object
+	* @method CircularBody#getParentBall
+	* @return {Object} The ball to which the circularBody belongs
+	*/
+	getParentBall: function(){ return this.parentBall; },
+
+	/**
+	* Retrieves the ID of the circularBody
+	*
+	* @method CircularBody#getID
+	* @return {number} The unique ID of this circularBody
+	*/
+	getID: function(){ return this.ID; },
+
+	/**
+	* Retrieves the global ID of the player that last hit the ball
+	*
+	* @method Ball#getLastHitBy
+	* @return {number} The unique GlobalID of the player that last hit the ball
+	*/
+	getLastHitBy: function() { return this.lastHitBy; }
+
 });
 
 if(typeof module != &#x27;undefined&#x27;){

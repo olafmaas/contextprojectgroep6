@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ColorGenerator</title>
+    <title>PlayerTimer</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,7 +138,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>ColorGenerator Class</h1>
+                        <h1>PlayerTimer Class</h1>
 <div class="box meta">
     
 
@@ -146,7 +146,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_common_game_util_ColorGenerator.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:1</code></a>
+            Defined in: <a href="../files/src_common_game_time_PlayerTimer.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;PlayerTimer.js:5</code></a>
         </div>
     
 
@@ -158,62 +158,28 @@
 
 
 <div class="box intro">
-    <p>Class for a color generator</p>
+    <p>PlayerTimer class</p>
 
 </div>
 
 
-
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
-
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_ColorGenerator#returnColor">ColorGenerator#returnColor</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_ColorGenerator#returnColor" class="method item">
-    <h3 class="name"><code>ColorGenerator#returnColor</code></h3>
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_PlayerTimer" class="method item">
+    <h3 class="name"><code>PlayerTimer</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_player</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -241,7 +207,7 @@
             
         
         
-        <a href="../files/src_common_game_util_ColorGenerator.js.html#l12"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:12</code></a>
+        <a href="../files/src_common_game_time_PlayerTimer.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;PlayerTimer.js:5</code></a>
         
         </p>
 
@@ -252,10 +218,173 @@
     </div>
 
     <div class="description">
-        <p>Returns a random color from the predefined color list above.</p>
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_player</code>
+                        <span class="type"><a href="../classes/Player.html" class="crosslink">Player</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The player to which the timer belongs</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
 
     </div>
 
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_PlayerTimer#count">PlayerTimer#count</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_PlayerTimer#count" class="method item">
+    <h3 class="name"><code>PlayerTimer#count</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_this</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_time_PlayerTimer.js.html#l20"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;PlayerTimer.js:20</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Adds one to the current time and update the player&#39;s score</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_this</code>
+                        <span class="type">This</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The pointer to the original &#39;this&#39;, otherwise the object will mess it all up.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     

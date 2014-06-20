@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Body</title>
+    <title>RenderEngine</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,19 +138,15 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Body Class</h1>
+                        <h1>RenderEngine Class</h1>
 <div class="box meta">
     
 
     
-        <div class="extends">
-            Extends Base
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_common_game_gameobjects_Body.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:5</code></a>
+            Defined in: <a href="../files/src_common_game_RenderEngine.js.html#l3"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:3</code></a>
         </div>
     
 
@@ -162,67 +158,10 @@
 
 
 <div class="box intro">
-    <p>Body constructor</p>
+    <p>The engine for rendering sprites, balls and other game objects</p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Body" class="method item">
-    <h3 class="name"><code>Body</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:5</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -245,101 +184,122 @@
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods extends">
+                    <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Body#calculateVDirection">Body#calculateVDirection</a>
+                                <a href="#method_RenderEngine#boot">RenderEngine#boot</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#calculateVelocity">Body#calculateVelocity</a>
+                                <a href="#method_RenderEngine#checkOrientation">RenderEngine#checkOrientation</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getAngleTo">Body#getAngleTo</a>
+                                <a href="#method_RenderEngine#clearCanvas">RenderEngine#clearCanvas</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getPosition">Body#getPosition</a>
+                                <a href="#method_RenderEngine#createCanvas">RenderEngine#createCanvas</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getVectorVelocity">Body#getVectorVelocity</a>
+                                <a href="#method_RenderEngine#drawElement">RenderEngine#drawElement</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getVelocity">Body#getVelocity</a>
+                                <a href="#method_RenderEngine#drawGame">RenderEngine#drawGame</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getVelocityDirection">Body#getVelocityDirection</a>
+                                <a href="#method_RenderEngine#getBackgroundColor">RenderEngine#getBackgroundColor</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getXYSpeed">Body#getXYSpeed</a>
+                                <a href="#method_RenderEngine#getDrawing">RenderEngine#getDrawing</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#revertXSpeed">Body#revertXSpeed</a>
+                                <a href="#method_RenderEngine#hasResolution">RenderEngine#hasResolution</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#revertYSpeed">Body#revertYSpeed</a>
+                                <a href="#method_RenderEngine#initialize">RenderEngine#initialize</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#setVelocity">Body#setVelocity</a>
+                                <a href="#method_RenderEngine#initializeCanvas">RenderEngine#initializeCanvas</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#setVelocityDirection">Body#setVelocityDirection</a>
+                                <a href="#method_RenderEngine#initializeListeners">RenderEngine#initializeListeners</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#setXYSpeed">Body#setXYSpeed</a>
+                                <a href="#method_RenderEngine#parentDraw">RenderEngine#parentDraw</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#update">Body#update</a>
+                                <a href="#method_RenderEngine#parentLoadContent">RenderEngine#parentLoadContent</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_RenderEngine#setBackgroundColor">RenderEngine#setBackgroundColor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_RenderEngine#setDrawing">RenderEngine#setDrawing</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_RenderEngine#updateCanvasSize">RenderEngine#updateCanvasSize</a>
 
                                 
                                 
@@ -361,17 +321,13 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Body#calculateVDirection" class="method item">
-    <h3 class="name"><code>Body#calculateVDirection</code></h3>
+                    <div id="method_RenderEngine#boot" class="method item">
+    <h3 class="name"><code>RenderEngine#boot</code></h3>
 
     
         <span class="paren">()</span>
     
 
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
     
 
     
@@ -397,7 +353,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l53"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:53</code></a>
+        <a href="../files/src_common_game_RenderEngine.js.html#l25"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:25</code></a>
         
         </p>
 
@@ -408,43 +364,25 @@
     </div>
 
     <div class="description">
-        <p>Calculates the velocity direction (angle) in which the ball is moving, by using the current x and y speed of the ball.</p>
+        <p>Function for booting the RenderEngine</p>
 
     </div>
 
     
 
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The angle in radians.</p>
-
-                
-            </div>
-        </div>
-    
 
     
 </div>
 
                 
-                    <div id="method_Body#calculateVelocity" class="method item">
-    <h3 class="name"><code>Body#calculateVelocity</code></h3>
+                    <div id="method_RenderEngine#checkOrientation" class="method item">
+    <h3 class="name"><code>RenderEngine#checkOrientation</code></h3>
 
     
         <span class="paren">()</span>
     
 
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
     
 
     
@@ -470,7 +408,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l61"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:61</code></a>
+        <a href="../files/src_common_game_RenderEngine.js.html#l151"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:151</code></a>
         
         </p>
 
@@ -481,34 +419,130 @@
     </div>
 
     <div class="description">
-        <p>Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.</p>
+        <p>Checks the orientation and change of the canvas size.</p>
 
     </div>
 
     
 
     
-        <div class="returns">
-            <h4>Returns:</h4>
 
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The velocity of the ball.</p>
+    
+</div>
 
                 
-            </div>
-        </div>
+                    <div id="method_RenderEngine#clearCanvas" class="method item">
+    <h3 class="name"><code>RenderEngine#clearCanvas</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_RenderEngine.js.html#l211"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:211</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Function which clears the canvas</p>
+
+    </div>
+
+    
+
     
 
     
 </div>
 
                 
-                    <div id="method_Body#getAngleTo" class="method item">
-    <h3 class="name"><code>Body#getAngleTo</code></h3>
+                    <div id="method_RenderEngine#createCanvas" class="method item">
+    <h3 class="name"><code>RenderEngine#createCanvas</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_RenderEngine.js.html#l186"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:186</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Create function for the game field (canvas)</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_RenderEngine#drawElement" class="method item">
+    <h3 class="name"><code>RenderEngine#drawElement</code></h3>
 
     
         <div class="args">
@@ -516,7 +550,7 @@
             
                 <li class="arg">
                     
-                        <code>_other</code>
+                        <code>_element</code>
                     
                 </li>
             
@@ -549,7 +583,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l40"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:40</code></a>
+        <a href="../files/src_common_game_RenderEngine.js.html#l221"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:221</code></a>
         
         </p>
 
@@ -560,7 +594,7 @@
     </div>
 
     <div class="description">
-        <p>Gets the angle from this object to another object</p>
+        <p>Function which draws the specified object to the game canvas</p>
 
     </div>
 
@@ -572,14 +606,16 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_other</code>
-                        <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                        <code class="param-name">_element</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>the body of the other object</p>
+                        <ul>
+<li>The game object to be drawn</li>
+</ul>
 
                     </div>
 
@@ -596,485 +632,8 @@
 </div>
 
                 
-                    <div id="method_Body#getPosition" class="method item">
-    <h3 class="name"><code>Body#getPosition</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l154"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:154</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the position.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y coordinate the position of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getVectorVelocity" class="method item">
-    <h3 class="name"><code>Body#getVectorVelocity</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l178"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:178</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the velocity of the body.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y velocities of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getVelocity" class="method item">
-    <h3 class="name"><code>Body#getVelocity</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l162"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:162</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the velocity of the body.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The current velocity of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getVelocityDirection" class="method item">
-    <h3 class="name"><code>Body#getVelocityDirection</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l170"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:170</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the velocity direction (angle) of the body.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The current angle of the body in radians.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getXYSpeed" class="method item">
-    <h3 class="name"><code>Body#getXYSpeed</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l146"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:146</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the x and y speed.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y speeds of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#revertXSpeed" class="method item">
-    <h3 class="name"><code>Body#revertXSpeed</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l84"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:84</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Reverts the x speed (positive to negative and vice versa).
-It also calculates the new angle (speed remains the same).</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#revertYSpeed" class="method item">
-    <h3 class="name"><code>Body#revertYSpeed</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l73"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:73</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Reverts the y speed (positive to negative and vice versa).
-It also calculates the new angle (speed remains the same).</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#setVelocity" class="method item">
-    <h3 class="name"><code>Body#setVelocity</code></h3>
+                    <div id="method_RenderEngine#drawGame" class="method item">
+    <h3 class="name"><code>RenderEngine#drawGame</code></h3>
 
     
         <div class="args">
@@ -1082,7 +641,7 @@ It also calculates the new angle (speed remains the same).</p>
             
                 <li class="arg">
                     
-                        <code>_vel</code>
+                        <code>_game</code>
                     
                 </li>
             
@@ -1115,7 +674,7 @@ It also calculates the new angle (speed remains the same).</p>
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l95"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:95</code></a>
+        <a href="../files/src_common_game_RenderEngine.js.html#l171"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:171</code></a>
         
         </p>
 
@@ -1126,8 +685,7 @@ It also calculates the new angle (speed remains the same).</p>
     </div>
 
     <div class="description">
-        <p>Sets the velocity of the ball. 
-It also calculates the corresponding speed values for the x and y axis.</p>
+        <p>Draw function for drawing all the elements in a game.</p>
 
     </div>
 
@@ -1139,15 +697,15 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">_vel</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">_game</code>
+                        <span class="type"><a href="../classes/CoreGame.html" class="crosslink">CoreGame</a></span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The velocity of the ball.</li>
+<li>The game to be drawn.</li>
 </ul>
 
                     </div>
@@ -1165,23 +723,17 @@ It also calculates the corresponding speed values for the x and y axis.</p>
 </div>
 
                 
-                    <div id="method_Body#setVelocityDirection" class="method item">
-    <h3 class="name"><code>Body#setVelocityDirection</code></h3>
+                    <div id="method_RenderEngine#getBackgroundColor" class="method item">
+    <h3 class="name"><code>RenderEngine#getBackgroundColor</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_direction</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Color</span>
+        </span>
     
 
     
@@ -1207,7 +759,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l111"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:111</code></a>
+        <a href="../files/src_common_game_RenderEngine.js.html#l241"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:241</code></a>
         
         </p>
 
@@ -1218,68 +770,43 @@ It also calculates the corresponding speed values for the x and y axis.</p>
     </div>
 
     <div class="description">
-        <p>Sets the velocity direction (angle) of the ball. 
-It also calculates the corresponding speed values for the x and y axis.</p>
+        <p>Getter for the background color</p>
 
     </div>
 
     
-        <div class="params">
-            <h4>Parameters:</h4>
 
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_direction</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The direction (angle) of the ball in radians.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
+        <div class="returns">
+            <h4>Returns:</h4>
 
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Color</span>:
+                    
+                    <p>The background color</p>
+
+                
+            </div>
+        </div>
     
 
     
 </div>
 
                 
-                    <div id="method_Body#setXYSpeed" class="method item">
-    <h3 class="name"><code>Body#setXYSpeed</code></h3>
+                    <div id="method_RenderEngine#getDrawing" class="method item">
+    <h3 class="name"><code>RenderEngine#getDrawing</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_x</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>_y</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
     
 
     
@@ -1305,7 +832,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l127"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:127</code></a>
+        <a href="../files/src_common_game_RenderEngine.js.html#l251"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:251</code></a>
         
         </p>
 
@@ -1316,66 +843,109 @@ It also calculates the corresponding speed values for the x and y axis.</p>
     </div>
 
     <div class="description">
-        <p>Sets the x and y speed values of the ball.
-It also calculates the corresponding angle and velocity.
-Note: The given speed can also be negative, it then moves in the opposite direction.</p>
+        <p>Getter for the drawing state of the renderengine</p>
 
     </div>
 
     
-        <div class="params">
-            <h4>Parameters:</h4>
 
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_x</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The speed on the x axis (pixels per redraw).</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">_y</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The speed on the y axis (pixels per redraw).</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
+        <div class="returns">
+            <h4>Returns:</h4>
 
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <p>The drawing state</p>
+
+                
+            </div>
+        </div>
     
 
     
 </div>
 
                 
-                    <div id="method_Body#update" class="method item">
-    <h3 class="name"><code>Body#update</code></h3>
+                    <div id="method_RenderEngine#hasResolution" class="method item">
+    <h3 class="name"><code>RenderEngine#hasResolution</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_RenderEngine.js.html#l142"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:142</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Method which returns if the resolution is correct.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <ul>
+<li>True or False</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_RenderEngine#initialize" class="method item">
+    <h3 class="name"><code>RenderEngine#initialize</code></h3>
 
     
         <span class="paren">()</span>
@@ -1406,7 +976,7 @@ Note: The given speed can also be negative, it then moves in the opposite direct
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l23"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:23</code></a>
+        <a href="../files/src_common_game_RenderEngine.js.html#l36"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:36</code></a>
         
         </p>
 
@@ -1417,7 +987,446 @@ Note: The given speed can also be negative, it then moves in the opposite direct
     </div>
 
     <div class="description">
-        <p>Updates the position of the body</p>
+        <p>Function for initializing class variables</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_RenderEngine#initializeCanvas" class="method item">
+    <h3 class="name"><code>RenderEngine#initializeCanvas</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_RenderEngine.js.html#l71"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:71</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Function for initializing canvas</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_RenderEngine#initializeListeners" class="method item">
+    <h3 class="name"><code>RenderEngine#initializeListeners</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_RenderEngine.js.html#l57"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:57</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Function for setting event listeners</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_RenderEngine#parentDraw" class="method item">
+    <h3 class="name"><code>RenderEngine#parentDraw</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_RenderEngine.js.html#l162"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:162</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Draw function</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_RenderEngine#parentLoadContent" class="method item">
+    <h3 class="name"><code>RenderEngine#parentLoadContent</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_RenderEngine.js.html#l49"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:49</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Function for loading class-internal and external content</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_RenderEngine#setBackgroundColor" class="method item">
+    <h3 class="name"><code>RenderEngine#setBackgroundColor</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_color</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_RenderEngine.js.html#l261"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:261</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Setter for the background color</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_color</code>
+                        <span class="type">Color</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The background color</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_RenderEngine#setDrawing" class="method item">
+    <h3 class="name"><code>RenderEngine#setDrawing</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_RenderEngine.js.html#l271"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:271</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Setter for the drawing state of the renderengine</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <p>The drawing state</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_RenderEngine#updateCanvasSize" class="method item">
+    <h3 class="name"><code>RenderEngine#updateCanvasSize</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_RenderEngine.js.html#l81"><code>src&#x2F;common&#x2F;game&#x2F;RenderEngine.js:81</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Update function for the RenderEngine</p>
 
     </div>
 

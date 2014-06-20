@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Ball</title>
+    <title>Block</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,7 +138,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Ball Class</h1>
+                        <h1>Block Class</h1>
 <div class="box meta">
     
 
@@ -150,7 +150,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_common_game_gameobjects_Ball.js.html#l9"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:9</code></a>
+            Defined in: <a href="../files/src_server_grid_Block.js.html#l10"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:10</code></a>
         </div>
     
 
@@ -162,15 +162,15 @@
 
 
 <div class="box intro">
-    <p>Ball constructor</p>
+    <p>Block Class</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Ball" class="method item">
-    <h3 class="name"><code>Ball</code></h3>
+        <div id="method_Block" class="method item">
+    <h3 class="name"><code>Block</code></h3>
 
     
         <div class="args">
@@ -178,7 +178,19 @@
             
                 <li class="arg">
                     
-                        <code>_radius</code>
+                        <code>_socket</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_left</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_top</code>
                     
                 </li>
             
@@ -211,7 +223,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l9"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:9</code></a>
+        <a href="../files/src_server_grid_Block.js.html#l10"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:10</code></a>
         
         </p>
 
@@ -233,15 +245,52 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_radius</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">_socket</code>
+                        <span class="type">Socket</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The radius of the ball.</li>
+<li>The socket of the player in this block, use false 
+if a player is not yet assigned.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_left</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The left bound of this block in pixels.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_top</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The top bound of this block.</li>
 </ul>
 
                     </div>
@@ -284,98 +333,105 @@
                     <ul class="index-list methods extends">
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#collidesWith">Ball#collidesWith</a>
+                                <a href="#method_Block#addBall">Block#addBall</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#enableBody">Ball#enableBody</a>
+                                <a href="#method_Block#ballIncoming">Block#ballIncoming</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#equals">Ball#equals</a>
+                                <a href="#method_Block#blocksToSendBallTo">Block#blocksToSendBallTo</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getBody">Ball#getBody</a>
+                                <a href="#method_Block#getBallIndex">Block#getBallIndex</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getColor">Ball#getColor</a>
+                                <a href="#method_Block#removeball">Block#removeball</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getGlobalID">Ball#getGlobalID</a>
+                                <a href="#method_Block#removePlayer">Block#removePlayer</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getID">Ball#getID</a>
+                                <a href="#method_Block#removePlayer">Block#removePlayer</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getPosition">Ball#getPosition</a>
+                                <a href="#method_Block#sendNewBallToPlayer">Block#sendNewBallToPlayer</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getRadius">Ball#getRadius</a>
+                                <a href="#method_Block#sendTobBlock">Block#sendTobBlock</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#setColor">Ball#setColor</a>
+                                <a href="#method_Block#sendToList">Block#sendToList</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#setGlobalID">Ball#setGlobalID</a>
+                                <a href="#method_Block#setSocket">Block#setSocket</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#setPosition">Ball#setPosition</a>
+                                <a href="#method_Block#shouldBeRemoved">Block#shouldBeRemoved</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#setRadius">Ball#setRadius</a>
+                                <a href="#method_Block#update">Block#update</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#update">Ball#update</a>
+                                <a href="#method_Block#updatPosition">Block#updatPosition</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_PlayerFactory#createPole">PlayerFactory#createPole</a>
 
                                 
                                 
@@ -397,8 +453,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Ball#collidesWith" class="method item">
-    <h3 class="name"><code>Ball#collidesWith</code></h3>
+                    <div id="method_Block#addBall" class="method item">
+    <h3 class="name"><code>Block#addBall</code></h3>
 
     
         <div class="args">
@@ -406,7 +462,7 @@
             
                 <li class="arg">
                     
-                        <code>_other</code>
+                        <code>_ball</code>
                     
                 </li>
             
@@ -439,7 +495,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l54"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:54</code></a>
+        <a href="../files/src_server_grid_Block.js.html#l41"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:41</code></a>
         
         </p>
 
@@ -450,8 +506,7 @@
     </div>
 
     <div class="description">
-        <p>Collision handler for the ball
-It calls the collision function in the body class which takes care of the rest</p>
+        <p>Add ball to this block.</p>
 
     </div>
 
@@ -463,15 +518,15 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_other</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">_ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The other object with which the ball collides</li>
+<li>The ball that should be added to the block.</li>
 </ul>
 
                     </div>
@@ -489,63 +544,8 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#enableBody" class="method item">
-    <h3 class="name"><code>Ball#enableBody</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l48"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:48</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Creates the body of the ball</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#equals" class="method item">
-    <h3 class="name"><code>Ball#equals</code></h3>
+                    <div id="method_Block#ballIncoming" class="method item">
+    <h3 class="name"><code>Block#ballIncoming</code></h3>
 
     
         <div class="args">
@@ -553,7 +553,7 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>_other</code>
+                        <code>_ball</code>
                     
                 </li>
             
@@ -586,7 +586,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l40"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:40</code></a>
+        <a href="../files/src_server_grid_Block.js.html#l53"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:53</code></a>
         
         </p>
 
@@ -597,7 +597,9 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Checks whether two objects are equals by comparing their ID&#39;s</p>
+        <p>A method that is called by other blocks to tell a ball is traveling towards this
+block. Checks wether this block already has this ball in his list. If the ball
+is not found the ball will be added.</p>
 
     </div>
 
@@ -609,15 +611,15 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_other</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">_ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The other object with which it is compared.</li>
+<li>The ball that should be added to the block.</li>
 </ul>
 
                     </div>
@@ -635,446 +637,8 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#getBody" class="method item">
-    <h3 class="name"><code>Ball#getBody</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l122"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:122</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the body of the ball.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>:
-                    
-                    <p>The body of the ball.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getColor" class="method item">
-    <h3 class="name"><code>Ball#getColor</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Hex</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l114"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:114</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the color of the ball.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Hex</span>:
-                    
-                    <p>The color of the ball in hex value.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getGlobalID" class="method item">
-    <h3 class="name"><code>Ball#getGlobalID</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l138"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:138</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the global ID of the ball</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The unique GlobalID of the ball</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getID" class="method item">
-    <h3 class="name"><code>Ball#getID</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l130"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:130</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the ID of the ball</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The unique ID of the ball</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getPosition" class="method item">
-    <h3 class="name"><code>Ball#getPosition</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l98"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:98</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves both x and y coordinate of the middle of the ball.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y coordinate of the middle of the ball.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getRadius" class="method item">
-    <h3 class="name"><code>Ball#getRadius</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l106"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:106</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the radius of the ball.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The radius of the ball.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#setColor" class="method item">
-    <h3 class="name"><code>Ball#setColor</code></h3>
+                    <div id="method_Block#blocksToSendBallTo" class="method item">
+    <h3 class="name"><code>Block#blocksToSendBallTo</code></h3>
 
     
         <div class="args">
@@ -1082,7 +646,233 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>_color</code>
+                        <code>_ball</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_server_grid_Block.js.html#l79"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:79</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Calculates in which directions a ball should be send.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Array</span>:
+                    
+                    <ul>
+<li>An array with the directions. (top, bottom, left, right)</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Block#getBallIndex" class="method item">
+    <h3 class="name"><code>Block#getBallIndex</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_ball</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Integer</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_server_grid_Block.js.html#l206"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:206</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A search method, which returns the index of the ball in the ballsList.
+The balls are compared on GlobalID.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The ball that should be found.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Integer</span>:
+                    
+                    <ul>
+<li>the index of the ball, or -1 if the ball is not found.</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Block#removeball" class="method item">
+    <h3 class="name"><code>Block#removeball</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_ball</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>index</code>
                     
                 </li>
             
@@ -1115,7 +905,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l90"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:90</code></a>
+        <a href="../files/src_server_grid_Block.js.html#l187"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:187</code></a>
         
         </p>
 
@@ -1126,7 +916,8 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Sets the color of the ball.</p>
+        <p>Remove ball from the block. If an index is known this method can
+be much faster. Send index -1 if the index is unknown.</p>
 
     </div>
 
@@ -1138,15 +929,33 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_color</code>
-                        <span class="type">Hex value</span>
+                        <code class="param-name">_ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The hex value of the color.</li>
+<li>The ball that should be removed.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">index</code>
+                        <span class="type">Integer</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The index of the ball in the ballList. -1 if unknown.</li>
 </ul>
 
                     </div>
@@ -1164,8 +973,119 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#setGlobalID" class="method item">
-    <h3 class="name"><code>Ball#setGlobalID</code></h3>
+                    <div id="method_Block#removePlayer" class="method item">
+    <h3 class="name"><code>Block#removePlayer</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_server_grid_Block.js.html#l328"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:328</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Emits the message playAudio to a player. If the player receives this 
+message audio will be played.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Block#removePlayer" class="method item">
+    <h3 class="name"><code>Block#removePlayer</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_server_grid_Block.js.html#l295"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:295</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Remove the current player by setting it to false.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Block#sendNewBallToPlayer" class="method item">
+    <h3 class="name"><code>Block#sendNewBallToPlayer</code></h3>
 
     
         <div class="args">
@@ -1173,7 +1093,7 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>_id</code>
+                        <code>_ball</code>
                     
                 </li>
             
@@ -1206,7 +1126,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l83"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:83</code></a>
+        <a href="../files/src_server_grid_Block.js.html#l68"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:68</code></a>
         
         </p>
 
@@ -1217,7 +1137,7 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Sets the global id of the ball.</p>
+        <p>Notify the player about the ball.</p>
 
     </div>
 
@@ -1229,7 +1149,608 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_id</code>
+                        <code class="param-name">_ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The ball the player should be notified about.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Block#sendTobBlock" class="method item">
+    <h3 class="name"><code>Block#sendTobBlock</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_server_grid_Block.js.html#l175"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:175</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Send to the list.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <ul>
+<li>A boolean which is true if the ball should be removed.</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Block#sendToList" class="method item">
+    <h3 class="name"><code>Block#sendToList</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>list</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_ball</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_server_grid_Block.js.html#l162"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:162</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sends ball to everey direction in the list</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">list</code>
+                        <span class="type">Array</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>the list with directions the ball should be send to.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>-</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <ul>
+<li>A boolean which is true if the ball should be removed.</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Block#setSocket" class="method item">
+    <h3 class="name"><code>Block#setSocket</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_socket</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Integer</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_server_grid_Block.js.html#l250"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:250</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Change the current Socket. Emit the canvasPosition and send all
+balls which are currently in this block to the player.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_socket</code>
+                        <span class="type">Socket</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The ball that should be found.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Integer</span>:
+                    
+                    <ul>
+<li>the index of the ball, or -1 if the ball is not found.</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Block#shouldBeRemoved" class="method item">
+    <h3 class="name"><code>Block#shouldBeRemoved</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_ball</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_server_grid_Block.js.html#l114"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:114</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Calculates wether a ball should be removed</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <ul>
+<li>A boolean which is true if the ball should be removed.</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Block#update" class="method item">
+    <h3 class="name"><code>Block#update</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_server_grid_Block.js.html#l141"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:141</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Updates the block. Send balls to other players, remove balls and emits all the new positions to the player.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <ul>
+<li>A boolean which is true if the ball should be removed.</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Block#updatPosition" class="method item">
+    <h3 class="name"><code>Block#updatPosition</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_server_grid_Block.js.html#l271"><code>src&#x2F;server&#x2F;grid&#x2F;Block.js:271</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Change the postion of the block. WARNING: This function also updates 
+the position of all the balls.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
                         <span class="type">Number</span>
                     
 
@@ -1237,7 +1758,25 @@ It calls the collision function in the body class which takes care of the rest</
 
                     <div class="param-description">
                         <ul>
-<li>The new GlobalID of the ball</li>
+<li>The new x position.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The new y position</li>
 </ul>
 
                     </div>
@@ -1255,8 +1794,8 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#setPosition" class="method item">
-    <h3 class="name"><code>Ball#setPosition</code></h3>
+                    <div id="method_PlayerFactory#createPole" class="method item">
+    <h3 class="name"><code>PlayerFactory#createPole</code></h3>
 
     
         <div class="args">
@@ -1264,13 +1803,7 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>_x</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>_y</code>
+                        <code>gm,</code>
                     
                 </li>
             
@@ -1303,7 +1836,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l65"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:65</code></a>
+        <a href="../files/src_server_factory_PlayerFactory.js.html#l25"><code>src&#x2F;server&#x2F;factory&#x2F;PlayerFactory.js:25</code></a>
         
         </p>
 
@@ -1314,7 +1847,7 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Sets the position of the ball in the canvas.</p>
+        <p>Create new Pole</p>
 
     </div>
 
@@ -1326,34 +1859,14 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_x</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">gm,</code>
+                        <span class="type">GroupManager</span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
-<li>The x coordinate of the center of the ball.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">_y</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The y coordinate of the center of the ball.</li>
-</ul>
+                        <p>group manager used to add pole</p>
 
                     </div>
 
@@ -1362,152 +1875,6 @@ It calls the collision function in the body class which takes care of the rest</
             
             </ul>
         </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#setRadius" class="method item">
-    <h3 class="name"><code>Ball#setRadius</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_radius</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l73"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:73</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Sets the radius of the ball.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_radius</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The radius of the ball in pixels.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#update" class="method item">
-    <h3 class="name"><code>Ball#update</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l34"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:34</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Updates the position of the ball</p>
-
-    </div>
-
     
 
     

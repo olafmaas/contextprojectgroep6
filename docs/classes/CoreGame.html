@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Body</title>
+    <title>CoreGame</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,19 +138,15 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Body Class</h1>
+                        <h1>CoreGame Class</h1>
 <div class="box meta">
     
 
     
-        <div class="extends">
-            Extends Base
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_common_game_gameobjects_Body.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:5</code></a>
+            Defined in: <a href="../files/src_common_game_CoreGame.js.html#l6"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:6</code></a>
         </div>
     
 
@@ -162,67 +158,10 @@
 
 
 <div class="box intro">
-    <p>Body constructor</p>
+    <p>A fully functional game class without any graphical handling</p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Body" class="method item">
-    <h3 class="name"><code>Body</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:5</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -245,101 +184,94 @@
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods extends">
+                    <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Body#calculateVDirection">Body#calculateVDirection</a>
+                                <a href="#method_CoreGame#boot">CoreGame#boot</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#calculateVelocity">Body#calculateVelocity</a>
+                                <a href="#method_CoreGame#getDimensions">CoreGame#getDimensions</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getAngleTo">Body#getAngleTo</a>
+                                <a href="#method_CoreGame#getGameElements">CoreGame#getGameElements</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getPosition">Body#getPosition</a>
+                                <a href="#method_CoreGame#getUpdating">CoreGame#getUpdating</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getVectorVelocity">Body#getVectorVelocity</a>
+                                <a href="#method_CoreGame#handleCollisions">CoreGame#handleCollisions</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getVelocity">Body#getVelocity</a>
+                                <a href="#method_CoreGame#instantiate">CoreGame#instantiate</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getVelocityDirection">Body#getVelocityDirection</a>
+                                <a href="#method_CoreGame#keepInWorldBounds">CoreGame#keepInWorldBounds</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#getXYSpeed">Body#getXYSpeed</a>
+                                <a href="#method_CoreGame#parentInitialize">CoreGame#parentInitialize</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#revertXSpeed">Body#revertXSpeed</a>
+                                <a href="#method_CoreGame#parentUpdate">CoreGame#parentUpdate</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#revertYSpeed">Body#revertYSpeed</a>
+                                <a href="#method_CoreGame#remove">CoreGame#remove</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#setVelocity">Body#setVelocity</a>
+                                <a href="#method_CoreGame#setDimensions">CoreGame#setDimensions</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#setVelocityDirection">Body#setVelocityDirection</a>
+                                <a href="#method_CoreGame#setUpdating">CoreGame#setUpdating</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#setXYSpeed">Body#setXYSpeed</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#update">Body#update</a>
+                                <a href="#method_CoreGame#updateElements">CoreGame#updateElements</a>
 
                                 
                                 
@@ -361,8 +293,63 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Body#calculateVDirection" class="method item">
-    <h3 class="name"><code>Body#calculateVDirection</code></h3>
+                    <div id="method_CoreGame#boot" class="method item">
+    <h3 class="name"><code>CoreGame#boot</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_CoreGame.js.html#l22"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:22</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The boot function to boot the game</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_CoreGame#getDimensions" class="method item">
+    <h3 class="name"><code>CoreGame#getDimensions</code></h3>
 
     
         <span class="paren">()</span>
@@ -370,7 +357,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type">Object</span>
         </span>
     
 
@@ -397,7 +384,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l53"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:53</code></a>
+        <a href="../files/src_common_game_CoreGame.js.html#l156"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:156</code></a>
         
         </p>
 
@@ -408,7 +395,7 @@
     </div>
 
     <div class="description">
-        <p>Calculates the velocity direction (angle) in which the ball is moving, by using the current x and y speed of the ball.</p>
+        <p>A getter for the game dimensions</p>
 
     </div>
 
@@ -421,9 +408,9 @@
             <div class="returns-description">
                 
                     
-                        <span class="type">Number</span>:
+                        <span class="type">Object</span>:
                     
-                    <p>The angle in radians.</p>
+                    <p>An object with a width and height value</p>
 
                 
             </div>
@@ -434,8 +421,63 @@
 </div>
 
                 
-                    <div id="method_Body#calculateVelocity" class="method item">
-    <h3 class="name"><code>Body#calculateVelocity</code></h3>
+                    <div id="method_CoreGame#getGameElements" class="method item">
+    <h3 class="name"><code>CoreGame#getGameElements</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_CoreGame.js.html#l127"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:127</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A getter for the game elements</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_CoreGame#getUpdating" class="method item">
+    <h3 class="name"><code>CoreGame#getUpdating</code></h3>
 
     
         <span class="paren">()</span>
@@ -443,7 +485,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type">Boolean</span>
         </span>
     
 
@@ -470,7 +512,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l61"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:61</code></a>
+        <a href="../files/src_common_game_CoreGame.js.html#l136"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:136</code></a>
         
         </p>
 
@@ -481,7 +523,7 @@
     </div>
 
     <div class="description">
-        <p>Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.</p>
+        <p>Returns the boolean which represents if the game is updating or not</p>
 
     </div>
 
@@ -494,9 +536,9 @@
             <div class="returns-description">
                 
                     
-                        <span class="type">Number</span>:
+                        <span class="type">Boolean</span>:
                     
-                    <p>The velocity of the ball.</p>
+                    <p>The value</p>
 
                 
             </div>
@@ -507,8 +549,63 @@
 </div>
 
                 
-                    <div id="method_Body#getAngleTo" class="method item">
-    <h3 class="name"><code>Body#getAngleTo</code></h3>
+                    <div id="method_CoreGame#handleCollisions" class="method item">
+    <h3 class="name"><code>CoreGame#handleCollisions</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_CoreGame.js.html#l68"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:68</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Function to handle all game object collisions</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_CoreGame#instantiate" class="method item">
+    <h3 class="name"><code>CoreGame#instantiate</code></h3>
 
     
         <div class="args">
@@ -516,7 +613,7 @@
             
                 <li class="arg">
                     
-                        <code>_other</code>
+                        <code>_element</code>
                     
                 </li>
             
@@ -549,7 +646,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l40"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:40</code></a>
+        <a href="../files/src_common_game_CoreGame.js.html#l95"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:95</code></a>
         
         </p>
 
@@ -560,7 +657,7 @@
     </div>
 
     <div class="description">
-        <p>Gets the angle from this object to another object</p>
+        <p>Function to instantiate game elements</p>
 
     </div>
 
@@ -572,14 +669,16 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_other</code>
-                        <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                        <code class="param-name">_element</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>the body of the other object</p>
+                        <ul>
+<li>The element to instantiate</li>
+</ul>
 
                     </div>
 
@@ -596,373 +695,8 @@
 </div>
 
                 
-                    <div id="method_Body#getPosition" class="method item">
-    <h3 class="name"><code>Body#getPosition</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l154"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:154</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the position.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y coordinate the position of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getVectorVelocity" class="method item">
-    <h3 class="name"><code>Body#getVectorVelocity</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l178"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:178</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the velocity of the body.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y velocities of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getVelocity" class="method item">
-    <h3 class="name"><code>Body#getVelocity</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l162"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:162</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the velocity of the body.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The current velocity of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getVelocityDirection" class="method item">
-    <h3 class="name"><code>Body#getVelocityDirection</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l170"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:170</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the velocity direction (angle) of the body.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The current angle of the body in radians.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getXYSpeed" class="method item">
-    <h3 class="name"><code>Body#getXYSpeed</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l146"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:146</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the x and y speed.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y speeds of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#revertXSpeed" class="method item">
-    <h3 class="name"><code>Body#revertXSpeed</code></h3>
+                    <div id="method_CoreGame#keepInWorldBounds" class="method item">
+    <h3 class="name"><code>CoreGame#keepInWorldBounds</code></h3>
 
     
         <span class="paren">()</span>
@@ -993,7 +727,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l84"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:84</code></a>
+        <a href="../files/src_common_game_CoreGame.js.html#l83"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:83</code></a>
         
         </p>
 
@@ -1004,8 +738,7 @@
     </div>
 
     <div class="description">
-        <p>Reverts the x speed (positive to negative and vice versa).
-It also calculates the new angle (speed remains the same).</p>
+        <p>Function to make sure all elements stay in the world bounds</p>
 
     </div>
 
@@ -1017,8 +750,8 @@ It also calculates the new angle (speed remains the same).</p>
 </div>
 
                 
-                    <div id="method_Body#revertYSpeed" class="method item">
-    <h3 class="name"><code>Body#revertYSpeed</code></h3>
+                    <div id="method_CoreGame#parentInitialize" class="method item">
+    <h3 class="name"><code>CoreGame#parentInitialize</code></h3>
 
     
         <span class="paren">()</span>
@@ -1049,7 +782,7 @@ It also calculates the new angle (speed remains the same).</p>
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l73"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:73</code></a>
+        <a href="../files/src_common_game_CoreGame.js.html#l32"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:32</code></a>
         
         </p>
 
@@ -1060,8 +793,7 @@ It also calculates the new angle (speed remains the same).</p>
     </div>
 
     <div class="description">
-        <p>Reverts the y speed (positive to negative and vice versa).
-It also calculates the new angle (speed remains the same).</p>
+        <p>The parent initialize function</p>
 
     </div>
 
@@ -1073,8 +805,63 @@ It also calculates the new angle (speed remains the same).</p>
 </div>
 
                 
-                    <div id="method_Body#setVelocity" class="method item">
-    <h3 class="name"><code>Body#setVelocity</code></h3>
+                    <div id="method_CoreGame#parentUpdate" class="method item">
+    <h3 class="name"><code>CoreGame#parentUpdate</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_CoreGame.js.html#l41"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:41</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The parent update function</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_CoreGame#remove" class="method item">
+    <h3 class="name"><code>CoreGame#remove</code></h3>
 
     
         <div class="args">
@@ -1082,7 +869,7 @@ It also calculates the new angle (speed remains the same).</p>
             
                 <li class="arg">
                     
-                        <code>_vel</code>
+                        <code>_element</code>
                     
                 </li>
             
@@ -1115,7 +902,7 @@ It also calculates the new angle (speed remains the same).</p>
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l95"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:95</code></a>
+        <a href="../files/src_common_game_CoreGame.js.html#l107"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:107</code></a>
         
         </p>
 
@@ -1126,8 +913,7 @@ It also calculates the new angle (speed remains the same).</p>
     </div>
 
     <div class="description">
-        <p>Sets the velocity of the ball. 
-It also calculates the corresponding speed values for the x and y axis.</p>
+        <p>Function to remove game elements</p>
 
     </div>
 
@@ -1139,15 +925,15 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">_vel</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">_element</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The velocity of the ball.</li>
+<li>The element to remove</li>
 </ul>
 
                     </div>
@@ -1165,8 +951,8 @@ It also calculates the corresponding speed values for the x and y axis.</p>
 </div>
 
                 
-                    <div id="method_Body#setVelocityDirection" class="method item">
-    <h3 class="name"><code>Body#setVelocityDirection</code></h3>
+                    <div id="method_CoreGame#setDimensions" class="method item">
+    <h3 class="name"><code>CoreGame#setDimensions</code></h3>
 
     
         <div class="args">
@@ -1174,7 +960,13 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
                 <li class="arg">
                     
-                        <code>_direction</code>
+                        <code>_width</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_height</code>
                     
                 </li>
             
@@ -1207,7 +999,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l111"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:111</code></a>
+        <a href="../files/src_common_game_CoreGame.js.html#l145"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:145</code></a>
         
         </p>
 
@@ -1218,8 +1010,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
     </div>
 
     <div class="description">
-        <p>Sets the velocity direction (angle) of the ball. 
-It also calculates the corresponding speed values for the x and y axis.</p>
+        <p>A setter for the game dimensions</p>
 
     </div>
 
@@ -1231,15 +1022,33 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">_direction</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">_width</code>
+                        <span class="type">Float</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The direction (angle) of the ball in radians.</li>
+<li>The new game width</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_height</code>
+                        <span class="type">Float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The new game height</li>
 </ul>
 
                     </div>
@@ -1257,8 +1066,8 @@ It also calculates the corresponding speed values for the x and y axis.</p>
 </div>
 
                 
-                    <div id="method_Body#setXYSpeed" class="method item">
-    <h3 class="name"><code>Body#setXYSpeed</code></h3>
+                    <div id="method_CoreGame#setUpdating" class="method item">
+    <h3 class="name"><code>CoreGame#setUpdating</code></h3>
 
     
         <div class="args">
@@ -1266,13 +1075,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
                 <li class="arg">
                     
-                        <code>_x</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>_y</code>
+                        <code>_updating</code>
                     
                 </li>
             
@@ -1305,7 +1108,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l127"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:127</code></a>
+        <a href="../files/src_common_game_CoreGame.js.html#l174"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:174</code></a>
         
         </p>
 
@@ -1316,9 +1119,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
     </div>
 
     <div class="description">
-        <p>Sets the x and y speed values of the ball.
-It also calculates the corresponding angle and velocity.
-Note: The given speed can also be negative, it then moves in the opposite direction.</p>
+        <p>Setter for the updating variable</p>
 
     </div>
 
@@ -1330,33 +1131,15 @@ Note: The given speed can also be negative, it then moves in the opposite direct
             
                 <li class="param">
                     
-                        <code class="param-name">_x</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">_updating</code>
+                        <span class="type">Boolean</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The speed on the x axis (pixels per redraw).</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">_y</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The speed on the y axis (pixels per redraw).</li>
+<li>The value</li>
 </ul>
 
                     </div>
@@ -1374,8 +1157,8 @@ Note: The given speed can also be negative, it then moves in the opposite direct
 </div>
 
                 
-                    <div id="method_Body#update" class="method item">
-    <h3 class="name"><code>Body#update</code></h3>
+                    <div id="method_CoreGame#updateElements" class="method item">
+    <h3 class="name"><code>CoreGame#updateElements</code></h3>
 
     
         <span class="paren">()</span>
@@ -1406,7 +1189,7 @@ Note: The given speed can also be negative, it then moves in the opposite direct
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l23"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:23</code></a>
+        <a href="../files/src_common_game_CoreGame.js.html#l57"><code>src&#x2F;common&#x2F;game&#x2F;CoreGame.js:57</code></a>
         
         </p>
 
@@ -1417,7 +1200,7 @@ Note: The given speed can also be negative, it then moves in the opposite direct
     </div>
 
     <div class="description">
-        <p>Updates the position of the body</p>
+        <p>Function to update all game elements</p>
 
     </div>
 

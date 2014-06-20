@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Group</title>
+    <title>BallController</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,7 +138,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Group Class</h1>
+                        <h1>BallController Class</h1>
 <div class="box meta">
     
 
@@ -146,7 +146,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_common_game_util_Group.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;Group.js:5</code></a>
+            Defined in: <a href="../files/src_client_js_Player_BallController.js.html#l1"><code>src&#x2F;client&#x2F;js&#x2F;Player&#x2F;BallController.js:1</code></a>
         </div>
     
 
@@ -158,28 +158,18 @@
 
 
 <div class="box intro">
-    <p>Group class</p>
+    <p>Ballcontroller which handles the creating and removal off balls.</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Group" class="method item">
-    <h3 class="name"><code>Group</code></h3>
+        <div id="method_BallController" class="method item">
+    <h3 class="name"><code>BallController</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_type</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -207,7 +197,7 @@
             
         
         
-        <a href="../files/src_common_game_util_Group.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;Group.js:5</code></a>
+        <a href="../files/src_client_js_Player_BallController.js.html#l1"><code>src&#x2F;client&#x2F;js&#x2F;Player&#x2F;BallController.js:1</code></a>
         
         </p>
 
@@ -221,32 +211,6 @@
         
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_type</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The type of objects which are stored in the group.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -280,56 +244,21 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Group#addMember">Group#addMember</a>
+                                <a href="#method_BallController#getBallIndex">BallController#getBallIndex</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Group#checkCollision">Group#checkCollision</a>
+                                <a href="#method_BallController#remove">BallController#remove</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Group#getMemberByGlobalID">Group#getMemberByGlobalID</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Group#getMemberByID">Group#getMemberByID</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Group#getMembers">Group#getMembers</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Group#getMembersLength">Group#getMembersLength</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Group#removeMember">Group#removeMember</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Group@getMember">Group@getMember</a>
+                                <a href="#method_BallController#update">BallController#update</a>
 
                                 
                                 
@@ -351,8 +280,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Group#addMember" class="method item">
-    <h3 class="name"><code>Group#addMember</code></h3>
+                    <div id="method_BallController#getBallIndex" class="method item">
+    <h3 class="name"><code>BallController#getBallIndex</code></h3>
 
     
         <div class="args">
@@ -360,7 +289,118 @@
             
                 <li class="arg">
                     
-                        <code>_object</code>
+                        <code>_gid</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_client_js_Player_BallController.js.html#l12"><code>src&#x2F;client&#x2F;js&#x2F;Player&#x2F;BallController.js:12</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the ball index belonging the the given global ballID</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_gid</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The global ball ID</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <ul>
+<li>The index if the ball has been found, otherwise -1</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_BallController#remove" class="method item">
+    <h3 class="name"><code>BallController#remove</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_gid</code>
                     
                 </li>
             
@@ -393,7 +433,7 @@
             
         
         
-        <a href="../files/src_common_game_util_Group.js.html#l18"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;Group.js:18</code></a>
+        <a href="../files/src_client_js_Player_BallController.js.html#l28"><code>src&#x2F;client&#x2F;js&#x2F;Player&#x2F;BallController.js:28</code></a>
         
         </p>
 
@@ -404,7 +444,7 @@
     </div>
 
     <div class="description">
-        <p>Adds an object to an existing list of members. Don&#39;t use this function in combination with AddMemberOnPosition.</p>
+        <p>Removes the ball from the game.</p>
 
     </div>
 
@@ -416,15 +456,15 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_object</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">_gid</code>
+                        <span class="type">Number</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The object which is added to a list of members</li>
+<li>The global ID of the ball that will be removed</li>
 </ul>
 
                     </div>
@@ -442,283 +482,8 @@
 </div>
 
                 
-                    <div id="method_Group#checkCollision" class="method item">
-    <h3 class="name"><code>Group#checkCollision</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_Group.js.html#l51"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;Group.js:51</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Checks each collision of the possible collisions</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Group#getMemberByGlobalID" class="method item">
-    <h3 class="name"><code>Group#getMemberByGlobalID</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_Group.js.html#l95"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;Group.js:95</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns member with given global id</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Group#getMemberByID" class="method item">
-    <h3 class="name"><code>Group#getMemberByID</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_Group.js.html#l82"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;Group.js:82</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns member with given id</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Group#getMembers" class="method item">
-    <h3 class="name"><code>Group#getMembers</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_Group.js.html#l65"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;Group.js:65</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns a list of members</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Group#getMembersLength" class="method item">
-    <h3 class="name"><code>Group#getMembersLength</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_Group.js.html#l108"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;Group.js:108</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns the amount of objects in the list</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Group#removeMember" class="method item">
-    <h3 class="name"><code>Group#removeMember</code></h3>
+                    <div id="method_BallController#update" class="method item">
+    <h3 class="name"><code>BallController#update</code></h3>
 
     
         <div class="args">
@@ -726,7 +491,19 @@
             
                 <li class="arg">
                     
-                        <code>_object</code>
+                        <code>ballData</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>leftOffSet</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>topOffset</code>
                     
                 </li>
             
@@ -759,7 +536,7 @@
             
         
         
-        <a href="../files/src_common_game_util_Group.js.html#l31"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;Group.js:31</code></a>
+        <a href="../files/src_client_js_Player_BallController.js.html#l61"><code>src&#x2F;client&#x2F;js&#x2F;Player&#x2F;BallController.js:61</code></a>
         
         </p>
 
@@ -770,7 +547,7 @@
     </div>
 
     <div class="description">
-        <p>Removes the specified object from the group, returns -1 if not found or of wrong type.</p>
+        <p>Updates the position of the ball</p>
 
     </div>
 
@@ -782,15 +559,15 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_object</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">ballData</code>
+                        <span class="type">Array</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The object which has to be deleted from the group.</li>
+<li>Array containing the balls to update</li>
 </ul>
 
                     </div>
@@ -798,90 +575,35 @@
                     
                 </li>
             
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Group@getMember" class="method item">
-    <h3 class="name"><code>Group@getMember</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_index</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_Group.js.html#l73"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;Group.js:73</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns a specific object from a list of members</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
                 <li class="param">
                     
-                        <code class="param-name">_index</code>
-                        <span class="type">Int</span>
+                        <code class="param-name">leftOffSet</code>
+                        <span class="type">Number</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The index of the object you want to return</li>
+<li>The left offset of the player&#39;s screen as to the mainscreen.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">topOffset</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The top offset of the player&#39;s screen as to the mainscreen.</li>
 </ul>
 
                     </div>

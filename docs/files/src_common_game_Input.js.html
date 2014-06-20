@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ColorGenerator</title>
+    <title>src/common/game/Input.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,141 +138,98 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>ColorGenerator Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: src/common/game/Input.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+* Input class
+* @class Input
+* @classdesc Input class
+* @constructor
+*
+*/
+var input = {
+	mainPointer: {isActive: true, x: 0, y: 0},
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_common_game_util_ColorGenerator.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:1</code></a>
-        </div>
-    
+	/**
+	* Listener for mouse movement to save X and Y position 
+	*
+	* @method Input#mouseMoveListener
+	* @param {event} _e - The events arguments
+	*/
+	mouseMoveListener: function(_e){
+		this.mainPointer = {isActive: true, x: _e.clientX, y: _e.clientY};
 
-    
+		setMainPointer(this.mainPointer.x, this.mainPointer.y);
+	},
 
-    
-</div>
+	/**
+	* Listener for mouse down for the pause functionality (debugging purpose only)
+	*
+	* @method Input#mouseDownListener
+	* @param {event} _e - The event arguments
+	*/
+	mouseDownListener: function(_e){
+		mouseDown = 1 - mouseDown;
+	},
 
+	/**
+	* Listener for the touch start event
+	*
+	* @method Input#touchStartListener
+	* @param {event} _e - The event arguments
+	*/
+	touchStartListener: function(_e){
+		_e.preventDefault();
 
+		setMainPointer(_e.targetTouches[0].pageX, _e.targetTouches[0].pageY);
+	},
 
-<div class="box intro">
-    <p>Class for a color generator</p>
+	/**
+	* Listener for the touch move event
+	*
+	* @method Input#touchMoveListener
+	* @param {event} _e - The event arguments
+	*/
+	touchMoveListener: function(_e){
+		_e.preventDefault();
 
-</div>
+		setMainPointer(_e.targetTouches[0].pageX, _e.targetTouches[0].pageY);
+	}
+}
 
+var mouseX = 0;
+var mouseY = 0;
+var mouseDown = 0;
 
+/**
+* A getter for the activePointer location
+*
+* @method Input#getMainPointer
+* @return {object} - Object which contains the x and y position
+*/
+getMainPointer = function(){
+	return {x: mouseX, y:mouseY};
+}
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+/**
+* A setter for the activePointer location
+*
+* @method Input#setMainPointer
+* @param {float} _x - The new x position of the pointer
+* @param {float} _y - The new y position of the pointer
+*/
+setMainPointer = function(_x, _y){
+	mouseX = _x;
+	mouseY = _y;
+}
 
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-        
-        
-    </ul>
+if(typeof module != &#x27;undefined&#x27;){
+	module.exports = input;
+}
 
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_ColorGenerator#returnColor">ColorGenerator#returnColor</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_ColorGenerator#returnColor" class="method item">
-    <h3 class="name"><code>ColorGenerator#returnColor</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_ColorGenerator.js.html#l12"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:12</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns a random color from the predefined color list above.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
-        
-
-        
-
-        
-
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

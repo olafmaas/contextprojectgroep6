@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -115,10 +143,14 @@
     
 
     
+        <div class="extends">
+            Extends <a href="../classes/Ball.html" class="crosslink">Ball</a>
+        </div>
+    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/Pole.js.html#l6"><code>Pole.js:6</code></a>
+            Defined in: <a href="../files/src_common_game_gameobjects_Pole.js.html#l8"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:8</code></a>
         </div>
     
 
@@ -179,7 +211,7 @@
             
         
         
-        <a href="../files/Pole.js.html#l6"><code>Pole.js:6</code></a>
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l8"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:8</code></a>
         
         </p>
 
@@ -249,10 +281,157 @@
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods">
+                    <ul class="index-list methods extends">
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#collidesWith">Ball#collidesWith</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#enableBody">Ball#enableBody</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#equals">Ball#equals</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#getBody">Ball#getBody</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#getColor">Ball#getColor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#getGlobalID">Ball#getGlobalID</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#getID">Ball#getID</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#getPosition">Ball#getPosition</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#getRadius">Ball#getRadius</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#setColor">Ball#setColor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#setGlobalID">Ball#setGlobalID</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#setPosition">Ball#setPosition</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#setRadius">Ball#setRadius</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Ball#update">Ball#update</a>
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Pole#coolDown">Pole#coolDown</a>
+                                <a href="#method_Pole#constructor">Pole#constructor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#equals">Pole#equals</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#getCDAngle">Pole#getCDAngle</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#getHitBy">Pole#getHitBy</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#getID">Pole#getID</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#getPowerupDraw">Pole#getPowerupDraw</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#getTimer">Pole#getTimer</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#incrementCDAngle">Pole#incrementCDAngle</a>
 
                                 
                                 
@@ -260,6 +439,41 @@
                         
                             <li class="index-item method">
                                 <a href="#method_Pole#isHit">Pole#isHit</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#saveHighScore">Pole#saveHighScore</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#setCDAngle">Pole#setCDAngle</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#setHitBy">Pole#setHitBy</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#setPlayer">Pole#setPlayer</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Pole#setPowerupDraw">Pole#setPowerupDraw</a>
 
                                 
                                 
@@ -281,11 +495,1098 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Pole#coolDown" class="method item">
-    <h3 class="name"><code>Pole#coolDown</code></h3>
+                    <div id="method_Ball#collidesWith" class="method item inherited">
+    <h3 class="name"><code>Ball#collidesWith</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_other</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#collidesWith">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l54"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:54</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Collision handler for the ball
+It calls the collision function in the body class which takes care of the rest</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_other</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The other object with which the ball collides</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#enableBody" class="method item inherited">
+    <h3 class="name"><code>Ball#enableBody</code></h3>
 
     
         <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#enableBody">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l48"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:48</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Creates the body of the ball</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#equals" class="method item inherited">
+    <h3 class="name"><code>Ball#equals</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_other</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#equals">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l40"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:40</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks whether two objects are equals by comparing their ID&#39;s</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_other</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The other object with which it is compared.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#getBody" class="method item inherited">
+    <h3 class="name"><code>Ball#getBody</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#getBody">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l122"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:122</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the body of the ball.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>:
+                    
+                    <p>The body of the ball.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#getColor" class="method item inherited">
+    <h3 class="name"><code>Ball#getColor</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Hex</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#getColor">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l114"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:114</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the color of the ball.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Hex</span>:
+                    
+                    <p>The color of the ball in hex value.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#getGlobalID" class="method item inherited">
+    <h3 class="name"><code>Ball#getGlobalID</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#getGlobalID">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l138"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:138</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the global ID of the ball</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>The unique GlobalID of the ball</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#getID" class="method item inherited">
+    <h3 class="name"><code>Ball#getID</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#getID">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l130"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:130</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the ID of the ball</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>The unique ID of the ball</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#getPosition" class="method item inherited">
+    <h3 class="name"><code>Ball#getPosition</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number, number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#getPosition">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l98"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:98</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves both x and y coordinate of the middle of the ball.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number, number</span>:
+                    
+                    <p>The x and y coordinate of the middle of the ball.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#getRadius" class="method item inherited">
+    <h3 class="name"><code>Ball#getRadius</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#getRadius">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l106"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:106</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the radius of the ball.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>The radius of the ball.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#setColor" class="method item inherited">
+    <h3 class="name"><code>Ball#setColor</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_color</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#setColor">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l90"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:90</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the color of the ball.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_color</code>
+                        <span class="type">Hex value</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The hex value of the color.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#setGlobalID" class="method item inherited">
+    <h3 class="name"><code>Ball#setGlobalID</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_id</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#setGlobalID">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l83"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:83</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the global id of the ball.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_id</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The new GlobalID of the ball</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#setPosition" class="method item inherited">
+    <h3 class="name"><code>Ball#setPosition</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#setPosition">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l65"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:65</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the position of the ball in the canvas.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_x</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The x coordinate of the center of the ball.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_y</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The y coordinate of the center of the ball.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#setRadius" class="method item inherited">
+    <h3 class="name"><code>Ball#setRadius</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_radius</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#setRadius">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l73"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:73</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the radius of the ball.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_radius</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The radius of the ball in pixels.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Ball#update" class="method item inherited">
+    <h3 class="name"><code>Ball#update</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Ball.html#method_Ball#update">Ball</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Ball.js.html#l34"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:34</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Updates the position of the ball</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#constructor" class="method item">
+    <h3 class="name"><code>Pole#constructor</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_radius</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -313,7 +1614,7 @@
             
         
         
-        <a href="../files/Pole.js.html#l48"><code>Pole.js:48</code></a>
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l28"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:28</code></a>
         
         </p>
 
@@ -324,11 +1625,591 @@
     </div>
 
     <div class="description">
-        <p>Handles the cooldown period of the pole, which includes a change of color
-and not being able to get hit again for some amount of time.</p>
+        <p>Constructor for the Pole class</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_radius</code>
+                        <span class="type">Float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The radius of the pole</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#equals" class="method item">
+    <h3 class="name"><code>Pole#equals</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_other</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l76"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:76</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks whether two objects are the same by comparing ID&#39;s</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_other</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The other object with which it is compared.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#getCDAngle" class="method item">
+    <h3 class="name"><code>Pole#getCDAngle</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l166"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:166</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the current cooldown angle of the pole</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <ul>
+<li>The current cooldown angle in degrees.</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#getHitBy" class="method item">
+    <h3 class="name"><code>Pole#getHitBy</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l157"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:157</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the global ID of the player that hit the pole</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <ul>
+<li>The global ID of the player</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#getID" class="method item">
+    <h3 class="name"><code>Pole#getID</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l149"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:149</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the ID of the pole</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>The unique ID of the pole</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#getPowerupDraw" class="method item">
+    <h3 class="name"><code>Pole#getPowerupDraw</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l174"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:174</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns whether the powerup skin should be drawn or not</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <ul>
+<li>Returns true if it should be drawn, returns false if is shouldn&#39;t</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#getTimer" class="method item">
+    <h3 class="name"><code>Pole#getTimer</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Timer.html" class="crosslink">Timer</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l142"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:142</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the timer of a certain pole</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/Timer.html" class="crosslink">Timer</a></span>:
+                    
+                    <ul>
+<li>The timer belonging to the pole</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#incrementCDAngle" class="method item">
+    <h3 class="name"><code>Pole#incrementCDAngle</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_angle</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l84"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:84</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Increments the current coolDown angle by the specified amount.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_angle</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The angle by which the current angle is incremented (in degrees);</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -369,7 +2250,7 @@ and not being able to get hit again for some amount of time.</p>
             
         
         
-        <a href="../files/Pole.js.html#l26"><code>Pole.js:26</code></a>
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l40"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:40</code></a>
         
         </p>
 
@@ -381,10 +2262,430 @@ and not being able to get hit again for some amount of time.</p>
 
     <div class="description">
         <p>Handles everything when the pole is hit:
-from setting the hit flag, to managing the cooldown of the pole.</p>
+from setting the hit flag, to managing the cooldown of the pole.
+zie commit 15f21808bd1c8d0f708674a6f142c768ba3119da voor de oude versie.</p>
 
     </div>
 
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#saveHighScore" class="method item">
+    <h3 class="name"><code>Pole#saveHighScore</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l92"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:92</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Saves the highscore of the player, resets the score and restarts the timer</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#setCDAngle" class="method item">
+    <h3 class="name"><code>Pole#setCDAngle</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_angle</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l134"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:134</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the cooldown angle of the pole.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_angle</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The angle in degrees.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#setHitBy" class="method item">
+    <h3 class="name"><code>Pole#setHitBy</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_id</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l126"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:126</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the ID of the player that hit the pole</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_id</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The global ID of the player</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#setPlayer" class="method item">
+    <h3 class="name"><code>Pole#setPlayer</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_player</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l107"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:107</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the player, assigns a timer and starts the timer.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_player</code>
+                        <span class="type"><a href="../classes/Player.html" class="crosslink">Player</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The player object</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Pole#setPowerupDraw" class="method item">
+    <h3 class="name"><code>Pole#setPowerupDraw</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_bool</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Pole.js.html#l118"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Pole.js:118</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets whether the powerup should be drawn</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_bool</code>
+                        <span class="type">Boolean</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>True if it should be drawn, or false if it shouldn&#39;t</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     

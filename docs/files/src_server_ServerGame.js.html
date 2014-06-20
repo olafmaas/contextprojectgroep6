@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/server/ServerGame.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Ball.html">Ball</a></li>
+            
+                <li><a href="../classes/BallController.html">BallController</a></li>
+            
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
+                <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
+            
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
+                <li><a href="../classes/Pole.html">Pole</a></li>
+            
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
+                <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
+            
+                <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/server/ServerGame.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+if(typeof module != &#x27;undefined&#x27;){
+	var Group = require(&#x27;../common/game/util/Group.js&#x27;);
+	var GroupManager = require(&#x27;../common/game/util/GroupManager.js&#x27;);
+	var Powerup = require(&#x27;../common/game/gameobjects/Powerup.js&#x27;);
+	var CoreGame = require(&#x27;../common/game/CoreGame.js&#x27;);
+	var RandomTimer = require(&#x27;../common/game/time/RandomTimer.js&#x27;);
+
+	var Client = require(&#x27;../common/Client.js&#x27;);
+	var S = require(&#x27;../common/Settings.js&#x27;);
+
+	var HighScores = require(&#x27;./game/HighScores.js&#x27;);
+	var GameGrid = require(&#x27;./grid/GameGrid.js&#x27;);
+	var pf = require(&#x27;./factory/PlayerFactory.js&#x27;);
+	var bf = require(&#x27;./factory/BallFactory.js&#x27;);
+}
+
+function ServerGame(_socketHandler){
+	var sh = _socketHandler;
+	var game;
+	var clientList = {};
+	var playerIDs = {};	//used as a hashmap playerGlobalIDs are keys, socketID as value
+	var removalTimers = {}; //used as a hashmap, player names are keys, timer id&#x27;s as values
+
+	var gameGrid = new GameGrid();
+	var activeClients = [];
+	var namesList = [];
+	var timer = null;	//needed for powerups.
+
+	this.createGame = function(_initialize, _update, _width, _height){
+		game = new CoreGame(_initialize, _update, _width, _height)
+	}
+
+	this.loadContent = function(){};
+
+	this.update = function(){ 
+		updateBalls();
+		updatePowerups();
+		updatePoles();
+		gameGrid.update();
+	};
+
+	this.addMainScreen = function(){
+		sh.updateMainScreenCanvasSize(updateGameSize());
+		if(getNumberOfPlayers() &gt; 0){
+			reconnectMainScreen();
+		} else {
+			setInterval(updateScores, S.highScore.updateInterval);	//updates the highscores on the mainscreen on interval
+		}
+	};
+
+	updatePowerups = function() {
+		//Check whether the randomtimer has stopped, if so; spawn a powerup at a random player and start a new timer.
+		//Depending on the amount of players, the spawn time between powerups will go down.
+		if(timer != null &amp;&amp; timer.hasStopped()){
+			timer = null;
+			sh.newPowerup(getRandomPlayerSocketID());
+			
+			if(timer == null &amp;&amp; getNumberOfPlayers() &gt; 0){
+				timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers())); //start a new timer for the next powerup
+				timer.startTimer();
+			}
+		}
+	};
+	
+	getRandomPlayerSocketID = function(){
+		var index = Math.floor(Math.random()*getNumberOfPlayers());
+		var member = GroupManager.getGroup(&quot;Player&quot;).getMember(index);
+		
+		if(member != undefined &amp;&amp; member != null){
+			return playerIDs[member.getGlobalID()];
+		}
+	};
+	
+	/**
+	* Add a new client, create a new player, pole and shield. 
+	* @method Server#addClient
+	* @param {socket} The socket associated with the player. 
+	*/
+	this.addClient = function(socketID, socket){
+		var player = addObjects(socket);
+		
+		clientList[socketID] = new Client(socket, player, player.getPole(), player.getShield());
+		playerIDs[player.getGlobalID()] = socketID;
+
+		updatePowerupInterval();
+
+		var res = {id: socketID, polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
+
+		sh.updateMainScreenCanvasSize(updateGameSize());
+		sh.newPlayer(socketID, res);
+
+		//Check if there was a timer present, if so: remove it
+		if(removalTimers[player.getName()])
+			clearTimeout(removalTimers[player.getName()]);
+	};
+
+	this.deleteClient = function(socketID){
+		var client = clientList[socketID];
+		deleteObjects(client);
+	
+		namesList[client.player.getName()] = client.player.getHighscore(); //retrieve highscore and save it. name stays in nameList because it has to stay in the highscore
+		delete activeClients[client.player.getName()]; //remove from active clients list
+		delete clientList[socketID]; 
+
+		var nOfPlayers = getNumberOfPlayers()
+		gameGrid.cleanUp()
+		sh.updateMainScreenCanvasSize(updateGameSize());
+
+		//Start removal timer for the highscore
+		var t = setTimeout(function() { removeHighscore(client.player.getName()); }, S.highScore.removalTime );
+		//Save the timer
+		removalTimers[client.player.getName()] = t;
+	};
+
+	//Removes the highscore belonging to the player with name _name
+	function removeHighscore(_name){
+		namesList[_name] = 0; //set highscore to 0
+	}
+
+	function addObjects(socket){
+		var ballList = [];
+
+		for(var i = 0; i &lt; nofBallsToBeAdded(); i++){
+			var newBall = game.instantiate(bf.createNewBall(S.ball.size))
+			ballList.push(newBall);
+		}	
+
+		var positionOfPole = gameGrid.updateGrid(socket, ballList)
+		var player = game.instantiate(pf.createPlayer(positionOfPole, socket.id, sh.updatePlayerOnMainscreen, sh));
+		gameGrid.setPlayer(positionOfPole.left, positionOfPole.top , player);
+
+		game.instantiate(player.getPole());
+		game.instantiate(player.getShield());
+
+		ballList.forEach(function(b){
+			sh.newBall(b);
+		})
+
+		return player;
+	};
+
+	function deleteObjects(client){
+		var members = GroupManager.getGroup(&quot;Ball&quot;).getMembers();
+		var slice = members.slice(-nofBallsToBeRemoved());
+
+		slice.forEach(function(b){
+			GroupManager.getGroup(&quot;Ball&quot;).removeMember(b)
+			game.remove(b);
+			gameGrid.removeBall(b)	
+			sh.removeBall(b.getGlobalID());
+		})
+
+		game.remove(client.pole);
+		game.remove(client.shield);
+		game.remove(client.player);
+		gameGrid.remove(client.socket.id);
+	};
+
+	function updateScores(){
+		var hs = HighScores.updateScores();
+		sh.updateScoresMainScreen(hs);
+		if(hs)
+			sh.updateTop(HighScores.reviseTop(hs.splice(0, S.highScore.top)));
+	};
+
+	function updatePowerupInterval(){
+		if(getNumberOfPlayers() == 1 &amp;&amp; timer == null){
+			timer = new RandomTimer(Math.max(1, S.minTime/getNumberOfPlayers()), Math.max(1, S.maxTime/getNumberOfPlayers()));
+			timer.startTimer(); //Start powerup timer when the mainscreen is connected.
+		}
+	};
+
+	function updateGameSize(){
+		var _width = gameGrid.getWidth() * S.canvasWidth;
+		var _height = gameGrid.getHeight()* S.canvasHeight;
+		game.setWidth(_width);
+		game.setHeight(_height);
+		return {width: _width, height: _height};
+	};
+
+	function reconnectMainScreen(){
+		for(var i=0; i &lt; getNumberOfPlayers(); i++){
+			var player = GroupManager.getGroup(&#x27;Player&#x27;).getMember(i);
+			var socketID = getSocketID(player.getGlobalID());
+			var res = {id: socketID, polePos: clientList[socketID].pole.getPosition(), gpid: player.getGlobalID()};
+			sh.newPlayer(socketID, res);
+		};
+
+		for(var i=0; i &lt; nrOfBalls(); i++){
+			sh.newBall(GroupManager.getGroup(&#x27;Ball&#x27;).getMember(i));
+		}
+	}
+	
+	this.isNameAvailable = function(name){ return !activeClients[name]; };
+
+	this.registerName = function(name, socketID){
+		clientList[socketID].player.setName(name);
+		activeClients[name] = true;
+
+		if(namesList[name]){ clientList[socketID].player.setHighscore(namesList[name]); }
+		else { namesList[name] = 1; }
+	};
+
+	this.hasName = function(socketID){
+		return clientList[socketID];
+	}
+
+	this.setAngle = function(socketID, angle){
+		if(clientList[socketID]){
+			clientList[socketID].shield.setAngle(angle);
+		}
+	};
+
+	this.setPowerup = function(_playerID, _powerupType){
+		var player = GroupManager.getGroup(&quot;Player&quot;).getMemberByGlobalID(_playerID);
+		if(player != -1){ //if player has been found
+			var powerup = new Powerup(S.powerupSize, _powerupType); //NOT game.instantiate!!, as it should not exists outside this function!
+			player.setPowerup(powerup);
+		}
+	};
+
+	//Opgedeelde update functies
+	updateBalls = function() {
+		for(var i = 0; i &lt; nrOfBalls(); i++){
+			sh.updateBallMainscreen(getBallPosition(i), i);
+		}
+	};
+
+	updatePoles = function() {
+		//Call isHit() when a pole is hit and send this event to the player
+		for(var i = 0; i &lt; getNumberOfPlayers(); i++){
+			var pole = GroupManager.getGroup(&quot;Pole&quot;).getMember(i);
+			
+			var player = GroupManager.getGroup(&quot;Player&quot;).getMemberByGlobalID(pole.getHitBy());
+			if(pole.hit){
+				incrementScore(player, pole);
+				pole.isHit();
+				sh.hitEmit(getSocketFromPlayerID(pole.player.getGlobalID()), pole.player.getGlobalID());
+			}
+		}
+	};
+
+	//Increments score when a player hits another player
+	incrementScore = function (_player, _pole) {
+		if(_player != -1) { 
+			if(_player.getGlobalID() != _pole.player.getGlobalID()) { //check if the player doesn&#x27;t hit himself 
+				_player.incrementScore(_pole.player.getPoints()); //Increment score 
+				sh.updateScoreHit(getSocketFromPlayerID(_player.getGlobalID()), _pole.player.getPoints())
+			}
+		}
+	};
+
+	//If you want some fancy function for the number of balls change ballsToBeAdded and ballsToBeRemoved.
+	function nofBallsToBeAdded(){ return getNewBallsPerPlayer();};
+
+	function nofBallsToBeRemoved(){ return getNewBallsPerPlayer(); };
+
+	function getNewBallsPerPlayer(){ return S.ball.nrOfNewBalls; };
+
+	this.getNumberOfPlayers = function(){ return Object.keys(clientList).length; };
+
+	function getNumberOfPlayers() { return Object.keys(clientList).length; };
+
+	function nrOfBalls(){ return GroupManager.getGroup(&quot;Ball&quot;).getMemberLength(); };
+
+	getBallPosition = function(_id){ return GroupManager.getGroup(&quot;Ball&quot;).getMember(_id).getPosition(); };
+
+	this.getSocketFromPlayerID = function(_playerID){ return clientList[playerIDs[_playerID]].socket; };
+
+	getSocketFromPlayerID = function(_playerID){ return clientList[playerIDs[_playerID]].socket; };
+
+	function getSocketID(_playerGlobalID){ return clientList[playerIDs[_playerGlobalID]].socket.id; };
+}
+
+if(typeof module != &#x27;undefined&#x27;){
+	module.exports = ServerGame;
+}
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

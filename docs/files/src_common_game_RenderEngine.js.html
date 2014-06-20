@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/common/game/RenderEngine.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Ball.html">Ball</a></li>
+            
+                <li><a href="../classes/BallController.html">BallController</a></li>
+            
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
+                <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
+            
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
+                <li><a href="../classes/Pole.html">Pole</a></li>
+            
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
+                <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
+            
+                <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/common/game/RenderEngine.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+var scale = 1;
+
+/**
+* The engine for rendering sprites, balls and other game objects
+* 
+* @class RenderEngine
+* @param {function} _loadContent - The user-defined loadcontent function to be called
+* @param {function} _draw - The user-defined draw function to be called
+* Other parameters are optional
+*/
+function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeight){
+	var loadContent = _loadContent;
+	var draw = _draw;
+
+	var canvas;
+	var canvasContext;
+	var drawer;
+	var dimensions = {width: (_width || 0), height: (_height || 0)};
+	var resolution = {width: (_resWidth || 0), height: (_resHeight || 0)}
+
+	var fpsLimit;
+
+	var drawing = true;
+
+	/**
+	* Function for booting the RenderEngine
+	* @method RenderEngine#boot
+	*/
+	this.boot = function(){
+		initialize();
+		parentLoadContent();
+
+		setInterval(parentDraw, 1000/fpsLimit);
+	}
+
+	/**
+	* Function for initializing class variables
+	* @method RenderEngine#initialize
+	*/
+	initialize = function(){
+		backGroundColor = &quot;black&quot;;
+		fpsLimit = fpsLimit || 60;
+		initializeCanvas();
+		initializeListeners();
+
+		drawer = new Drawer(canvasContext);
+	}
+
+	/**
+	* Function for loading class-internal and external content
+	* @method RenderEngine#parentLoadContent
+	*/
+	parentLoadContent = function(){
+		loadContent();
+	}
+
+	/**
+	* Function for setting event listeners
+	* @method RenderEngine#initializeListeners
+	*/
+	initializeListeners = function(){
+		canvas.onmousemove = input.mouseMoveListener;
+		canvas.ontouchmove = input.touchMoveListener;
+		if(hasResolution()){
+			window.onresize = updateCanvasSize;
+			window.onorientationchange = checkOrientation;
+		}
+
+	}
+
+	/**
+	* Function for initializing canvas
+	* @method RenderEngine#initializeCanvas
+	*/
+	initializeCanvas = function(){
+		canvas = createCanvas();
+		updateCanvasSize();
+		canvasContext = canvas.getContext(&quot;2d&quot;);
+	}
+
+	/**
+	* Update function for the RenderEngine
+	* @method RenderEngine#updateCanvasSize
+	*/
+	updateCanvasSize = function(){
+		if(canvas == undefined) return;
+
+		var canvasRatio = canvas.height / canvas.width;
+		var windowRatio = window.innerHeight / window.innerWidth;
+		var windowWidth = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+
+		var windowHeight = window.innerHeight
+			|| document.documentElement.clientHeight
+			|| document.body.clientHeight;
+
+        if(hasResolution()){
+        	this.updateResolution(windowRatio, canvasRatio)
+        }else{
+        	var height = dimensions.height;
+        	var width = dimensions.width;
+        	canvas.width = width + &quot;px&quot;;
+			canvas.height = height + &quot;px&quot;;
+        }
+	}
+
+	updateResolution = function(windowRatio, canvasRatio){
+		if (windowRatio &lt; canvasRatio) {
+	            var height = window.innerHeight;
+	            scale = window.innerHeight/canvas.height;
+    	} 
+		else {
+            var width = window.innerWidth;
+            scale = window.innerWidth/canvas.width;
+    	}
+		canvas.style.width = width + &quot;px&quot;;
+		canvas.style.height = height + &quot;px&quot;;
+	}
+
+	updateMainScreenCanvasSize = function(){
+		if(canvas == undefined) return;
+
+		var windowWidth = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+
+		var windowHeight = window.innerHeight
+			|| document.documentElement.clientHeight
+			|| document.body.clientHeight;
+
+
+		canvas.style.width = windowWidth + &quot;px&quot;;
+		canvas.style.height = windowHeight + &quot;px&quot;;
+
+		if(hasResolution){
+			canvas.width = resolution.width + &quot;px&quot;;
+			canvas.height = resolution.height + &quot;px&quot;;
+		}
+	}
+
+	/**
+	* Method which returns if the resolution is correct.
+	* @method RenderEngine#hasResolution
+	* @return {boolean} - True or False
+	*/
+	hasResolution = function() {
+		return resolution.height &amp;&amp; resolution.width;
+	}
+
+	/**
+	* Checks the orientation and change of the canvas size. 
+	* @method RenderEngine#checkOrientation
+	*/
+	checkOrientation = function(){
+		if(Math.abs(window.orientation) == 90){
+            updateCanvasSize();
+        }else{
+           // alert(&quot;For an optimal experience please hold your device horizontal.&quot;);
+        }
+	}
+	/**
+	* Draw function
+	* @method RenderEngine#parentDraw
+	*/
+	parentDraw = function(){
+		clearCanvas();
+		draw();
+	}
+
+	/**
+	* Draw function for drawing all the elements in a game.
+	* @method RenderEngine#drawGame
+	* @param{CoreGame} _game - The game to be drawn.
+	*/
+	this.drawGame = function(_game){
+		if(!drawing) return;
+
+		if(!(_game instanceof CoreGame)) throw &quot;The argument is not an instance of Game&quot;;
+
+		var elements = _game.getGameElements();
+
+		for(var i = 0; i &lt; elements.length; i++) this.drawElement(elements[i]);
+	}
+
+	/**
+	* Create function for the game field (canvas)
+	* @method RenderEngine#createCanvas
+	*/
+	createCanvas = function(){
+		var canv = document.createElement(&quot;canvas&quot;);
+		canv.id = &#x27;gameCanvas&#x27;;
+
+		if(hasResolution()){
+			canv.setAttribute(&quot;height&quot;, resolution.height + &quot;px&quot;);
+			canv.setAttribute(&quot;width&quot;, resolution.width + &quot;px&quot;);
+		}
+
+		//Wait for body to initialize
+		while(document.body == null);
+
+		var gameDiv = document.getElementById(&quot;gameDiv&quot;);
+
+		if(gameDiv == null) document.body.appendChild(canv);
+		else gameDiv.appendChild(canv);
+		
+		return document.getElementById(&quot;gameCanvas&quot;);
+	}
+
+
+	/**
+	* Function which clears the canvas
+	* @method RenderEngine#clearCanvas
+	*/
+	clearCanvas = function(){
+		canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+		canvasContext.fillStyle = backGroundColor;
+		canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+	}
+
+	/**
+	* Function which draws the specified object to the game canvas
+	*
+	* @method RenderEngine#drawElement
+	* @param {object} _element - The game object to be drawn
+	*/
+	this.drawElement = function(_element){
+		drawer.draw(_element);
+	}
+
+	//Make the engine boot 1 second after instantiating
+	//this.boot();
+	setTimeout(this.boot, Settings.bootTime);
+
+	
+	
+	//======================
+	// Gets &amp; Sets
+	//======================
+
+	/**
+	* Getter for the background color
+	*
+	* @method RenderEngine#getBackgroundColor
+	* @return{color} The background color
+	*/
+	this.getBackgroundColor = function(){
+		return backGroundColor;
+	}
+
+	/**
+	* Getter for the drawing state of the renderengine
+	*
+	* @method RenderEngine#getDrawing
+	* @return{boolean} The drawing state
+	*/
+	this.getDrawing = function(){
+		return drawing;
+	}
+
+	/**
+	* Setter for the background color
+	*
+	* @method RenderEngine#setBackgroundColor
+	* @param{color} _color - The background color
+	*/
+	this.setBackgroundColor = function(_color){
+		backGroundColor = _color;
+	}
+
+	/**
+	* Setter for the drawing state of the renderengine
+	*
+	* @method RenderEngine#setDrawing
+	* @return{boolean} The drawing state
+	*/
+	this.getDrawing = function(_drawing){
+		drawing = _drawing;
+	}
+}
+
+if(typeof module != &#x27;undefined&#x27;){
+    module.exports = RenderEngine;
+}
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

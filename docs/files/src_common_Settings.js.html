@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ColorGenerator</title>
+    <title>src/common/Settings.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,141 +138,138 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>ColorGenerator Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: src/common/Settings.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+/*
+* A settings file from which the game retrieves information.
+*/
+var Settings = {
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_common_game_util_ColorGenerator.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:1</code></a>
-        </div>
-    
+	/**** GAME ****/
+	bootTime: 10, 
+	updateInterval: 17,
 
-    
+	/**** SERVER CONNECTION ****/
+	server: &#x27;http://localhost&#x27;,
+	//server: &#x27;http://vps-76938-1774.hosted.at.hostnet.nl&#x27;,	//Server Olaf
+	port: 5050,
 
-    
-</div>
+	/**** POWERUP TYPES ****/
+	//NOTE: time mag niet groter zijn dan de minimale spawntijd voor een nieuwe powerup.
+	//want anders wordt de oude powerup overschreden met de nieuwe timer :D hier nog een fix voor zoeken.
+	smallShield: {
+		time: 10,
+		color: &quot;greenyellow&quot;,
+		length: 3.5,
+		path: &quot;../client/img/powerup.png&quot;,
+		chance: 0.15
+	},
 
+	bigShield: {
+		time: 15,
+		color: &quot;violet&quot;,
+		length: 1,
+		path: &quot;../client/img/powerup.png&quot;,
+		chance: 0.4
+	},
 
+	smallPole: {
+		time: 15,
+		color: &quot;yellow&quot;,
+		radius: 2, //by which factor the pole will be divided
+		path: &quot;../client/img/powerup.png&quot;,
+		chance: 0.4
+	},
 
-<div class="box intro">
-    <p>Class for a color generator</p>
+	bigPole: {
+		time: 10,
+		color: &quot;aqua&quot;,
+		radius: 1.5, //by which factor the pole will be multiplied
+		path: &quot;../client/img/powerup.png&quot;,
+		chance: 0.15
+	},
 
-</div>
+	revertShield: {
+		time: 10,
+		color: &quot;red&quot;,
+		path: &quot;../client/img/powerup.png&quot;,
+		chance: 0.10
+	},
 
+	/**** POWERUP PROPERTIES ****/
+	nrOfPowerups: 5,
+	powerupSize: 25,
+	removalTime: 4, //in seconds, how long a powerup is present on screen.
+	minTime: 5, //in seconds, minimum time between powerup spawns.
+	maxTime: 10, //in seconds, maximum time between powerup spawns.
+	startAngle: 270, //The starting angle for the transition of the powerup when clicked (In degrees)
 
+	/**** LABEL POSITIONS ****/
+	label: {
+		font: &#x27;Indie Flower&#x27;,
+		size: 20,
+		name: {x: 10, y: 25},
+		score: {x: 630, y: 415},
+		highscore: {x: 630, y: 440}
+	}, 
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+	/**** CANVAS PROPERTIES ****/
+	canvasWidth: 800,
+	canvasHeight: 450,
+	
+	/**** POLE ****/
+	pole: {
+		size: 10,
+		color: &quot;blue&quot;
+	},
 
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-        
-        
-    </ul>
+	/**** SHIELD ****/
+	shield: {
+		radius: 70,
+		shieldWidth: 2,
+		color: &quot;yellow&quot;
+	},
 
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
+	/**** BALL ****/
+	ball: {
+		size: 10,
+		velocityRange: {from: 4, to: 8}, //range of velocities to generate random velocity balls.
+		//Positions of initial ball
+		x: 100,
+		y: 100,
+		nrOfNewBalls: 3 //Number of new balls created per player. 
+	},
 
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
+	player: {
+		maxNameLength: 20, //maximum number of characters that can be used for a username
+		//Points for hitting player is now removed
+		points: 0,
+		step: 0 //step by which the score is incremented 
+	},
 
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_ColorGenerator#returnColor">ColorGenerator#returnColor</a>
+	/**** HIGHSCORE PROPERTIES ****/	
+	highScore: {
+		updateInterval: 5000,
+		top: 3,
+		colors: [&quot;#B8E6E6&quot;, &quot;#66CCFF&quot;, &quot;#3399FF&quot;, &quot;#0066FF&quot;, &quot;#0000FF&quot;], //from blue to light-blue
+		removalTime: 300000 //in milliseconds, the amount of time the highscore is saved after a disconnect from a player
+	},
 
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
+	joinIndicator: {
+		times: 10,
+		interval: 200,
+		color: &#x27;red&#x27;
+	}
+	
+}
 
-            
+if(typeof module != &#x27;undefined&#x27;){
+    module.exports = Settings;
+}
 
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_ColorGenerator#returnColor" class="method item">
-    <h3 class="name"><code>ColorGenerator#returnColor</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_ColorGenerator.js.html#l12"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:12</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns a random color from the predefined color list above.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
-        
-
-        
-
-        
-
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

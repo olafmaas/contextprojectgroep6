@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Input.js</title>
+    <title>src/common/game/time/PowerupTimer.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -110,61 +138,50 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: Input.js</h1>
+                        <h1 class="file-heading">File: src/common/game/time/PowerupTimer.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
-* Input class
-* 
-* @class Input
-* @classdescr Input class
-* @constructor
-*
-*/
-var input = {
-	mainPointer: {isActive: true, x: 0, y: 0},
-
-	/**
-	* The update function for updating the input
-	* 
-	* @method Input#update
-	*/
-	update: function(){
-		//TODO: update main pointer door muis of touchscreen
-		
-		//console.log(this.mainPointer);
-	},
-
-	/**
-	* Listener for mouse movement to save X and Y position 
-	*
-	* @method Input#mouseMoveListener
-	*/
-	mouseMoveListener: function(_e){
-		this.mainPointer = {isActive: true, x: _e.clientX, y: _e.clientY};
-		//console.log(this.mainPointer);
-
-		mouseX = this.mainPointer.x;
-		mouseY = this.mainPointer.y;
-	},
-
-	/**
-	* Listener for mouse down for the pause functionality (debuggin purpose only)
-	*
-	* @method Input#mouseDownListener
-	*/
-	mouseDownListener: function(_e){
-		mouseDown = 1 - mouseDown;
-	}
+if(typeof module != &#x27;undefined&#x27;){
+	var Timer = require(&#x27;./Timer.js&#x27;);
 }
 
-var mouseX = 0;
-var mouseY = 0;
-var mouseDown = 0;
+/**
+* PowerupTimer class
+* @class PowerupTimer
+* @classdesc Class which handles the timers used for the powerups in the game. It counts down instead of up!
+* @constructor
+* @param {Time} _time - The time from which will be counted down.
+*/
+var PowerupTimer = Timer.extend({
+
+	powerup: null,
+
+	constructor: function(_time){
+		this.time = _time;
+	},
+
+	/**
+	* Counts one down from the initial time for the powerup. When the timer reaches 0, it is stopped
+	*
+	* @method PowerupTimer#count
+	* @param {This} _this - It needs a reference to the original &#x27;this&#x27;, otherwise the variable will mess it up.
+	*/
+	count: function(_this){
+		if(_this.time &gt; 0)
+			_this.time--;
+		else 
+			_this.stop();
+	},
+
+	hasStopped: function(){
+		return this.time == 0;
+	}
+
+});
 
 if(typeof module != &#x27;undefined&#x27;){
-	module.exports = input;
+	module.exports = PowerupTimer;
 }
 
     </pre>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ColorGenerator</title>
+    <title>src/common/game/util/Group.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,141 +138,131 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>ColorGenerator Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: src/common/game/util/Group.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+if(typeof module != &#x27;undefined&#x27;){
+	var Ball = require(&#x27;../gameobjects/Ball.js&#x27;);
+}
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_common_game_util_ColorGenerator.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:1</code></a>
-        </div>
-    
+/**
+* Group class
+* @class Group
+* @classdesc Class to represent objects as groups.
+* @constructor
+* @param {Object} _type - The type of objects which are stored in the group.
+*/
+function Group(_type){
 
-    
+	//Variables
+	var type = _type; //The type of objects in the group.
+	var members = []; //Array for the &#x27;members&#x27; of the groups, as this could be many.
 
-    
-</div>
+	/**
+	* Adds an object to an existing list of members. Don&#x27;t use this function in combination with AddMemberOnPosition.
+	* @method Group#addMember
+	* @param {Object} _object - The object which is added to a list of members
+	*/
+	this.addMember = function(_object){
+		if(_object.getType &amp;&amp; (_object.getType() === type)){
+			members.push(_object);
+		} else if(_object instanceof type){
+			members.push(_object);
+		}
+	}
 
+	/**
+	* Removes the specified object from the group, returns -1 if not found or of wrong type.
+	*
+	* @method Group#removeMember 
+	* @param {Object} _object - The object which has to be deleted from the group.
+	*/
+	this.removeMember = function(_object){
+		if((_object.getType &amp;&amp; (_object.getType() === type)) ||_object instanceof type){
+			var found = false;
+			for(var i = members.length - 1; i &gt;= 0; i--) {
+    			if(members[i].getID() === _object.getID()) {
+       				members.splice(i, 1);
+       				found = true;
+    			}
+			}
+			if(!found) return -1;
+		}
+		else return -1; //Else it&#x27;s another type, which isn&#x27;t present in this group
+	}
 
+	/**
+	* Checks each collision of the possible collisions
+	* 
+	* @method Group#checkCollision
+	*/
+	this.checkCollision = function(){
+		for (var i = 0; i &lt; members.length; i++) {
+			for (var j = i + 1; j &lt; members.length; j++) {
+				if(CollisionDetection.hasCollision(members[i], members[j])) return true;
+			}
+		}
+		return false;
+	}
 
-<div class="box intro">
-    <p>Class for a color generator</p>
+	/**
+	* Returns a list of members
+	* @method Group#getMembers
+	*/
+	this.getMembers = function(){
+		return members;
+	}
 
-</div>
+	/**
+	* Returns a specific object from a list of members
+	* @method Group@getMember
+	* @param {int} _index - The index of the object you want to return
+	*/
+	this.getMember = function(_index){
+		return members[_index];
+	}
+	
+	/**
+	* Returns member with given id
+	* @method Group#getMemberByID
+	*/
+	this.getMemberByID = function(_id){
+		var length = this.getMemberLength();
+		for(var i = 0; i &lt; length; i++){
+			if(members[i].getID() === _id)
+				return members[i];
+		}
+		return -1;
+	}
+	
+	/**
+	* Returns member with given global id
+	* @method Group#getMemberByGlobalID
+	*/
+	this.getMemberByGlobalID = function(_id){
+		var length = this.getMemberLength();
+		for(var i = 0; i &lt; length; i++){
+			if(members[i].getGlobalID() === _id)
+				return members[i];
+		}
+		return -1;
+	}
 
+	/**
+	* Returns the amount of objects in the list
+	* @method Group#getMembersLength
+	*/
+	this.getMemberLength = function(){
+		return members.length;
+	}
+}
 
+if(typeof module != &#x27;undefined&#x27;){
+    module.exports = Group;
+}
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
-
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_ColorGenerator#returnColor">ColorGenerator#returnColor</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_ColorGenerator#returnColor" class="method item">
-    <h3 class="name"><code>ColorGenerator#returnColor</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_ColorGenerator.js.html#l12"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:12</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns a random color from the predefined color list above.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
-        
-
-        
-
-        
-
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

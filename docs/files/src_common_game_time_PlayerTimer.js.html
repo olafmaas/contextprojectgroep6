@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Timer.js</title>
+    <title>src/common/game/time/PlayerTimer.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -110,141 +138,44 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: Timer.js</h1>
+                        <h1 class="file-heading">File: src/common/game/time/PlayerTimer.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-//Timer class
-
-/**
-* Timer class
-* @class Timer
-* @classdesc Class which handles the timers used for the scores in game.
-* @constructor
-* @param {Player} _player - The player to which the timer belongs. 
-*/
-function Timer(_player){
-
-	var time = 0;
-	var interval;
-	var player = _player;
-	var paused = false;
-
-	/**
-	* Starts the timer
-	*
-	* @method Timer#startTimer
-	*/
-	this.startTimer = function(){
-		var savedThis = this;
-		interval = setInterval(savedThis.count, 1000);
-	}
-
-	/**
-	* Adds one to the current time and updates player score
-	*
-	* @method Timer#count
-	*/
-	this.count = function(){
-		time++;
-		player.incrementScore(1);
-		//console.log(time + &quot; | &quot; + player.getScore());
-	}
-
-	/**
-	* Pauses the timer (but only if it isn&#x27;t paused already)
-	*
-	* @method Timer#pause
-	*/
-	this.pause = function(){
-		if(!paused){
-			clearInterval(interval);
-			paused = true;
-		}
-	}
-
-	/**
-	* Resumes the timer (but only if it was paused at first)
-	*
-	* @method Timer#resume
-	*/
-	this.resume = function(){
-		if(paused){
-			var savedThis = this;
-			interval = setInterval(this.count, 1000);
-			paused = false;
-		}
-	}
-	
-	/**
-	* Resets the timer
-	*
-	* @method Timer#reset
-	*/
-	this.reset = function(){
-		var savedThis = this;
-		clearInterval(interval);
-		time = 0;
-		interval = setInterval(savedThis.count, 1000); //Start counter again.
-	}
-	
-	/**
-	* Stops the timer
-	*
-	* @method Timer#stop
-	*/
-	this.stop = function(){
-		var savedThis = this;
-		clearInterval(interval);
-		time = 0;
-	}
-	
-	/**
-	* Returns the current time in minutes
-	*
-	* @method Timer#getMinutes
-	* @return {number} The amount of minutes rounded down.
-	*/
-	this.getMinutes = function(){
-		return Math.floor(time / 60);
-	}
-
-	/**
-	* Returns the state of the
-	*
-	* @method Timer#isPaused
-	* @return {boolean} Wether the timer is paused
-	*/
-
-	this.isPaused = function(){
-		return paused;
-	}
-
-	/**
-	* Returns the count
-	*
-	* @method Timer#isPaused
-	* @return {number} The current number of seconds.
-	*/
-	this.getTime = function(){
-		return time;
-	}
-	/**
-	* Returns the current time in seconds (between 0 and 59, otherwise it&#x27;s a minute)
-	*
-	* @method Timer#getSeconds
-	* @return {String} The amount of seconds between 0 and 59, formatted on two numbers (so 00, 01, etc)
-	*/
-	this.getSeconds = function(){
-		var mod = time % 60;
-		if(mod &lt; 10)
-			return &quot;0&quot; + mod;
-		return mod;
-	}
+if(typeof module != &#x27;undefined&#x27;){
+	var Timer = require(&#x27;./Timer.js&#x27;);
 }
 
+/**
+* PlayerTimer class
+* @class PlayerTimer
+* @classdesc Class which handles the timers used for the scores in the game.
+* @constructor
+* @param {Player} _player - The player to which the timer belongs
+*/
+var PlayerTimer = Timer.extend({
+
+	player: null,
+
+	constructor: function(_player){
+		this.player = _player;
+	},
+
+	/**
+	* Adds one to the current time and update the player&#x27;s score
+	*
+	* @method PlayerTimer#count
+	* @param {This} _this - The pointer to the original &#x27;this&#x27;, otherwise the object will mess it all up.
+	*/
+	count: function(_this){
+		_this.time++;
+		_this.player.incrementScore(1);
+	}
+
+});
+
 if(typeof module != &#x27;undefined&#x27;){
-	module.exports = Timer;
+	module.exports = PlayerTimer;
 }
 
     </pre>

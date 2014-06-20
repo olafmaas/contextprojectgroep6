@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -115,10 +143,14 @@
     
 
     
+        <div class="extends">
+            Extends Base
+        </div>
+    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/Sprite.js.html#l1"><code>Sprite.js:1</code></a>
+            Defined in: <a href="../files/src_common_game_gameobjects_Sprite.js.html#l6"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:6</code></a>
         </div>
     
 
@@ -141,141 +173,12 @@
     <h3 class="name"><code>Sprite</code></h3>
 
     
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/Sprite.js.html#l1"><code>Sprite.js:1</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
-
-
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
-
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_ShieldBody#constructor">ShieldBody#constructor</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shieldbody#handleIndividual">Shieldbody#handleIndividual</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_ShieldBody#update">ShieldBody#update</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Sprite#Draw">Sprite#Draw</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Sprite#LoadContent">Sprite#LoadContent</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_ShieldBody#constructor" class="method item">
-    <h3 class="name"><code>ShieldBody#constructor</code></h3>
-
-    
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
             
                 <li class="arg">
                     
-                        <code>_parent</code>
+                        <code>_texturePath</code>
                     
                 </li>
             
@@ -308,7 +211,7 @@
             
         
         
-        <a href="../files/ShieldBody.js.html#l18"><code>ShieldBody.js:18</code></a>
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l6"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:6</code></a>
         
         </p>
 
@@ -319,8 +222,7 @@
     </div>
 
     <div class="description">
-        <p>Constructor for the shield body</p>
-
+        
     </div>
 
     
@@ -331,15 +233,15 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_parent</code>
-                        <span class="type"><a href="../classes/Shield.html" class="crosslink">Shield</a></span>
+                        <code class="param-name">_texturePath</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The shield object</li>
+<li>The relative path to the image.</li>
 </ul>
 
                     </div>
@@ -356,9 +258,126 @@
     
 </div>
 
+    </div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods extends">
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sprite#equals">Sprite#equals</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sprite#getAnchor">Sprite#getAnchor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sprite#getID">Sprite#getID</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sprite#getPosition">Sprite#getPosition</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sprite#getScale">Sprite#getScale</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sprite#getSize">Sprite#getSize</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sprite#getTexture">Sprite#getTexture</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sprite#setAnchor">Sprite#setAnchor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sprite#setPosition">Sprite#setPosition</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sprite#setScale">Sprite#setScale</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sprite#setSize">Sprite#setSize</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
                 
-                    <div id="method_Shieldbody#handleIndividual" class="method item">
-    <h3 class="name"><code>Shieldbody#handleIndividual</code></h3>
+                    <div id="method_Sprite#equals" class="method item">
+    <h3 class="name"><code>Sprite#equals</code></h3>
 
     
         <div class="args">
@@ -399,7 +418,7 @@
             
         
         
-        <a href="../files/ShieldBody.js.html#l41"><code>ShieldBody.js:41</code></a>
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l29"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:29</code></a>
         
         </p>
 
@@ -410,7 +429,7 @@
     </div>
 
     <div class="description">
-        <p>Method to handle a collision</p>
+        <p>Checks whether two objects are equals by comparing their ID&#39;s</p>
 
     </div>
 
@@ -423,14 +442,14 @@
                 <li class="param">
                     
                         <code class="param-name">_other</code>
-                        <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The other item that collides</li>
+<li>The other object with which it is compared.</li>
 </ul>
 
                     </div>
@@ -448,14 +467,18 @@
 </div>
 
                 
-                    <div id="method_ShieldBody#update" class="method item">
-    <h3 class="name"><code>ShieldBody#update</code></h3>
+                    <div id="method_Sprite#getAnchor" class="method item">
+    <h3 class="name"><code>Sprite#getAnchor</code></h3>
 
     
         <span class="paren">()</span>
     
 
     
+        <span class="returns-inline">
+            <span class="type">Number, number</span>
+        </span>
+    
 
     
 
@@ -480,7 +503,7 @@
             
         
         
-        <a href="../files/ShieldBody.js.html#l31"><code>ShieldBody.js:31</code></a>
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l109"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:109</code></a>
         
         </p>
 
@@ -491,20 +514,399 @@
     </div>
 
     <div class="description">
-        <p>Updates the angle of the shield</p>
+        <p>Retrieves the anchor of the sprite</p>
 
     </div>
 
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number, number</span>:
+                    
+                    <p>The x and y coordinates to which the sprite is anchored, relative to the position of the sprite</p>
+
+                
+            </div>
+        </div>
+    
 
     
 </div>
 
                 
-                    <div id="method_Sprite#Draw" class="method item">
-    <h3 class="name"><code>Sprite#Draw</code></h3>
+                    <div id="method_Sprite#getID" class="method item">
+    <h3 class="name"><code>Sprite#getID</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l69"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:69</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the ID of the sprite</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>The unique ID of the sprite</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Sprite#getPosition" class="method item">
+    <h3 class="name"><code>Sprite#getPosition</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number, number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l85"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:85</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the position of the sprite</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number, number</span>:
+                    
+                    <p>The x and y coordinates of the sprite</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Sprite#getScale" class="method item">
+    <h3 class="name"><code>Sprite#getScale</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l93"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:93</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the scale of the sprite</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>The current scale in which the sprite is drawn.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Sprite#getSize" class="method item">
+    <h3 class="name"><code>Sprite#getSize</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number, number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l101"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:101</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the size of the sprite</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number, number</span>:
+                    
+                    <p>The x and y dimensions in which the sprite is drawn</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Sprite#getTexture" class="method item">
+    <h3 class="name"><code>Sprite#getTexture</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l77"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:77</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the texturepath of the sprite</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">String</span>:
+                    
+                    <p>The relative path to the texture</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Sprite#setAnchor" class="method item">
+    <h3 class="name"><code>Sprite#setAnchor</code></h3>
 
     
         <div class="args">
@@ -512,7 +914,7 @@
             
                 <li class="arg">
                     
-                        <code>canvasContext</code>
+                        <code>_anchorPos</code>
                     
                 </li>
             
@@ -545,7 +947,7 @@
             
         
         
-        <a href="../files/Sprite.js.html#l25"><code>Sprite.js:25</code></a>
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l61"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:61</code></a>
         
         </p>
 
@@ -556,7 +958,7 @@
     </div>
 
     <div class="description">
-        <p>Function which draws the sprite</p>
+        <p>Anchors the origin of the sprite at a specific place relative to the x and y position.</p>
 
     </div>
 
@@ -568,15 +970,15 @@
             
                 <li class="param">
                     
-                        <code class="param-name">canvasContext</code>
-                        <span class="type">Canvas</span>
+                        <code class="param-name">_anchorPos</code>
+                        <span class="type">Number, number</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The playing field</li>
+<li>The x and y coordinates that will be added up to the original x and y positon. (can be negative)</li>
 </ul>
 
                     </div>
@@ -594,8 +996,8 @@
 </div>
 
                 
-                    <div id="method_Sprite#LoadContent" class="method item">
-    <h3 class="name"><code>Sprite#LoadContent</code></h3>
+                    <div id="method_Sprite#setPosition" class="method item">
+    <h3 class="name"><code>Sprite#setPosition</code></h3>
 
     
         <div class="args">
@@ -603,7 +1005,7 @@
             
                 <li class="arg">
                     
-                        <code>texturePath</code>
+                        <code>_position</code>
                     
                 </li>
             
@@ -636,7 +1038,7 @@
             
         
         
-        <a href="../files/Sprite.js.html#l15"><code>Sprite.js:15</code></a>
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l37"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:37</code></a>
         
         </p>
 
@@ -647,7 +1049,7 @@
     </div>
 
     <div class="description">
-        <p>Function which loads a texture</p>
+        <p>Sets the position of the sprite (top left) from which it will be drawn</p>
 
     </div>
 
@@ -659,15 +1061,197 @@
             
                 <li class="param">
                     
-                        <code class="param-name">texturePath</code>
-                        <span class="type">String</span>
+                        <code class="param-name">_position</code>
+                        <span class="type">Number, number</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>texture&#39;s path</li>
+<li>The x and y coordinates of the top left corner.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Sprite#setScale" class="method item">
+    <h3 class="name"><code>Sprite#setScale</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_scale</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l45"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:45</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the scale of the sprite.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_scale</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The scale by which the sprite will be drawn.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Sprite#setSize" class="method item">
+    <h3 class="name"><code>Sprite#setSize</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_size</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Sprite.js.html#l53"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Sprite.js:53</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the original size at which the sprite will be drawn</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_size</code>
+                        <span class="type">Number, number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The width and height at which the sprite will be drawn.</li>
 </ul>
 
                     </div>

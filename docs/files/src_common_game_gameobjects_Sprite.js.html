@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ColorGenerator</title>
+    <title>src/common/game/gameobjects/Sprite.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,141 +138,133 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>ColorGenerator Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: src/common/game/gameobjects/Sprite.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+if(typeof module != &#x27;undefined&#x27;){
+	var Base = require(&#x27;../../../lib/Base.js&#x27;);
+	var IDDistributor = require(&#x27;../util/IDDistributor.js&#x27;);
+}
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_common_game_util_ColorGenerator.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:1</code></a>
-        </div>
-    
+/**
+* Sprite class
+* @class Sprite
+* @classdesc Sprite class for loading textures
+* @constructor
+* @extends Base
+* @param {String} _texturePath - The relative path to the image.
+*/
+var Sprite = Base.extend({
+	
+	texture: null,
+	position: {x: 0, y: 0},
+	scale: {x: 1, y: 1}, //Scale of the sprite
+	size: {x: 0, y: 0}, //Actual size of the sprite (used in combination with scale)	
+	ID: -1,
+	anchor: {x: 0, y: 0}, //Used to let the sprite be drawn from different position (e.g. with a circle)
 
-    
+	constructor: function(_texturePath){
+		this.texture = new Image();
+		this.texture.src = _texturePath;
+		this.ID = IDDistributor.getNewId();
+	},
 
-    
-</div>
+	/**
+	* Checks whether two objects are equals by comparing their ID&#x27;s
+	*
+	* @method Sprite#equals
+	* @param {Object} _other - The other object with which it is compared.
+	*/
+	equals: function(_other){ return (this.ID == _other.getID()); },
 
+	/**
+	* Sets the position of the sprite (top left) from which it will be drawn
+	*
+	* @method Sprite#setPosition
+	* @param {number, number} _position - The x and y coordinates of the top left corner.
+	*/
+	setPosition: function(_position){this.position = _position;},
 
+	/**
+	* Sets the scale of the sprite.
+	* 
+	* @method Sprite#setScale
+	* @param {number} _scale - The scale by which the sprite will be drawn.
+	*/
+	setScale: function(_scale){this.scale = _scale;},
 
-<div class="box intro">
-    <p>Class for a color generator</p>
+	/**
+	* Sets the original size at which the sprite will be drawn
+	*
+	* @method Sprite#setSize
+	* @param {number, number} _size - The width and height at which the sprite will be drawn.
+	*/
+	setSize: function(_size){this.size = _size;},
 
-</div>
+	/**
+	* Anchors the origin of the sprite at a specific place relative to the x and y position.
+	*
+	* @method Sprite#setAnchor
+	* @param {number, number} _anchorPos - The x and y coordinates that will be added up to the original x and y positon. (can be negative)
+	*/
+	setAnchor: function(_anchorPos){this.anchor = _anchorPos; },
 
+	/**
+	* Retrieves the ID of the sprite
+	*
+	* @method Sprite#getID
+	* @return {number} The unique ID of the sprite
+	*/
+	getID: function(){ return this.ID; },
 
+	/**
+	* Retrieves the texturepath of the sprite
+	*
+	* @method Sprite#getTexture
+	* @return {String} The relative path to the texture
+	*/
+	getTexture: function(){ return this.texture; },
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+	/**
+	* Retrieves the position of the sprite
+	*
+	* @method Sprite#getPosition
+	* @return {number, number} The x and y coordinates of the sprite
+	*/
+	getPosition: function(){ return this.position; },
 
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-        
-        
-    </ul>
+	/**
+	* Retrieves the scale of the sprite
+	*
+	* @method Sprite#getScale
+	* @return {number} The current scale in which the sprite is drawn.
+	*/
+	getScale: function(){ return this.scale; },
 
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
+	/**
+	* Retrieves the size of the sprite
+	*
+	* @method Sprite#getSize
+	* @return {number, number} The x and y dimensions in which the sprite is drawn
+	*/
+	getSize: function(){ return this.size; },
 
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
+	/**
+	* Retrieves the anchor of the sprite
+	*
+	* @method Sprite#getAnchor
+	* @return {number, number} The x and y coordinates to which the sprite is anchored, relative to the position of the sprite
+	*/
+	getAnchor: function(){ return this.anchor; }
 
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_ColorGenerator#returnColor">ColorGenerator#returnColor</a>
+});
 
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
+if(typeof module != &#x27;undefined&#x27;){
+	module.exports = Sprite
+}  
 
-            
-
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_ColorGenerator#returnColor" class="method item">
-    <h3 class="name"><code>ColorGenerator#returnColor</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_ColorGenerator.js.html#l12"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:12</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns a random color from the predefined color list above.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
-        
-
-        
-
-        
-
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

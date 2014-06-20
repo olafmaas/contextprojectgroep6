@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -118,7 +146,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/Input.js.html#l1"><code>Input.js:1</code></a>
+            Defined in: <a href="../files/src_common_game_Input.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;Input.js:1</code></a>
         </div>
     
 
@@ -169,7 +197,7 @@
             
         
         
-        <a href="../files/Input.js.html#l1"><code>Input.js:1</code></a>
+        <a href="../files/src_common_game_Input.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;Input.js:1</code></a>
         
         </p>
 
@@ -216,6 +244,13 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
+                                <a href="#method_Input#getMainPointer">Input#getMainPointer</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_Input#mouseDownListener">Input#mouseDownListener</a>
 
                                 
@@ -230,7 +265,21 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Input#update">Input#update</a>
+                                <a href="#method_Input#setMainPointer">Input#setMainPointer</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Input#touchMoveListener">Input#touchMoveListener</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Input#touchStartListener">Input#touchStartListener</a>
 
                                 
                                 
@@ -252,11 +301,96 @@
                 <h2 class="off-left">Methods</h2>
 
                 
+                    <div id="method_Input#getMainPointer" class="method item">
+    <h3 class="name"><code>Input#getMainPointer</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_Input.js.html#l62"><code>src&#x2F;common&#x2F;game&#x2F;Input.js:62</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A getter for the activePointer location</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <ul>
+<li>Object which contains the x and y position</li>
+</ul>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_Input#mouseDownListener" class="method item">
     <h3 class="name"><code>Input#mouseDownListener</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -284,7 +418,7 @@
             
         
         
-        <a href="../files/Input.js.html#l36"><code>Input.js:36</code></a>
+        <a href="../files/src_common_game_Input.js.html#l23"><code>src&#x2F;common&#x2F;game&#x2F;Input.js:23</code></a>
         
         </p>
 
@@ -295,10 +429,36 @@
     </div>
 
     <div class="description">
-        <p>Listener for mouse down for the pause functionality (debuggin purpose only)</p>
+        <p>Listener for mouse down for the pause functionality (debugging purpose only)</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_e</code>
+                        <span class="type">Event</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The event arguments</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -311,7 +471,17 @@
     <h3 class="name"><code>Input#mouseMoveListener</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -339,7 +509,7 @@
             
         
         
-        <a href="../files/Input.js.html#l23"><code>Input.js:23</code></a>
+        <a href="../files/src_common_game_Input.js.html#l11"><code>src&#x2F;common&#x2F;game&#x2F;Input.js:11</code></a>
         
         </p>
 
@@ -355,6 +525,32 @@
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_e</code>
+                        <span class="type">Event</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The events arguments</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
 
     
 
@@ -362,11 +558,27 @@
 </div>
 
                 
-                    <div id="method_Input#update" class="method item">
-    <h3 class="name"><code>Input#update</code></h3>
+                    <div id="method_Input#setMainPointer" class="method item">
+    <h3 class="name"><code>Input#setMainPointer</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -394,7 +606,7 @@
             
         
         
-        <a href="../files/Input.js.html#l12"><code>Input.js:12</code></a>
+        <a href="../files/src_common_game_Input.js.html#l72"><code>src&#x2F;common&#x2F;game&#x2F;Input.js:72</code></a>
         
         </p>
 
@@ -405,10 +617,236 @@
     </div>
 
     <div class="description">
-        <p>The update function for updating the input</p>
+        <p>A setter for the activePointer location</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_x</code>
+                        <span class="type">Float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The new x position of the pointer</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_y</code>
+                        <span class="type">Float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The new y position of the pointer</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Input#touchMoveListener" class="method item">
+    <h3 class="name"><code>Input#touchMoveListener</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_Input.js.html#l45"><code>src&#x2F;common&#x2F;game&#x2F;Input.js:45</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Listener for the touch move event</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_e</code>
+                        <span class="type">Event</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The event arguments</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Input#touchStartListener" class="method item">
+    <h3 class="name"><code>Input#touchStartListener</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_Input.js.html#l33"><code>src&#x2F;common&#x2F;game&#x2F;Input.js:33</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Listener for the touch start event</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_e</code>
+                        <span class="type">Event</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The event arguments</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Camera.js</title>
+    <title>src/server/grid/GridCalc.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -110,46 +138,101 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: Camera.js</h1>
+                        <h1 class="file-heading">File: src/server/grid/GridCalc.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-//Properties of the camera object
+if(typeof module != &#x27;undefined&#x27;){
+	var Base = require(&#x27;../../lib/Base.js&#x27;);
+	
+	var S = require(&#x27;../../common/Settings.js&#x27;);
+}
 
 /**
-* Camera class
-*
-* @class Camera
-* @classdesc Camera class
-* @constructor
+* GridCalc Class
+* @class GridCalc
+* @classdesc GridCalcis is an helper class.
+* @constructor 
 */
-Camera = function(){
-	var center = {x: 0, y: 0};
-	var zoom - 1;
-	
+var GridCalc= Base.extend({
+
 	/**
-	* Get the center position of the camera
-	*
-	* @method getCenter
-	* @return {number, number} The center, (x, y) coordinates, of the camera.
+	* Calculates in which blocks the ball could be.
+	* @method GridCalc#inBlock
+	* @param {ball} ball
+	* @return {array} An array with objects which contains the x and y coordinates of the blocks. 
 	*/
-	this.getCenter = function(){
-		return center;
-	}
-	
+	inBlock: function(_ball){
+		var arr = new Array();
+
+		xList = this.inHorizontalBlock(_ball);
+		yList = this.inVerticalBlock(_ball);
+
+		for(var i = 0; i &lt; xList.length; i++){
+			for(var j = 0; j &lt; yList.length; j++){
+				arr.push({x: xList[i], y: yList[j]});
+			}
+		}
+
+		return arr;
+	},
+
+
+
 	/**
-	* Get the zoom factor of the camera
-	*
-	* @method getZoom
-	* @return {number} The current zoom level of the camera.
+	* Calculates in which rows the ball could be.
+	* @method GridCalc#inHorizontalBlock
+	* @param {ball} ball
+	* @return {array} An array with objects which contains the x coordinates of the blocks. 
 	*/
-	this.getZoom = function(){
-		return zoom;
-	}
-}
-	
+	inHorizontalBlock: function(_ball){
+		var ret = new Array();
+
+		var xPosInBlock = _ball.getPosition().x % S.canvasWidth;
+		var x = (_ball.getPosition().x - xPosInBlock)/S.canvasWidth;
+		ret.push(x);
+
+		if((xPosInBlock &lt; _ball.getRadius()) &amp;&amp; (_ball.getBody().getVectorVelocity().x &lt; 0)){
+			ret.push(x-1);
+		}
+
+		if((xPosInBlock &gt; (S.canvasWidth - _ball.getRadius())) &amp;&amp; (_ball.getBody().getVectorVelocity().x &gt; 0)){
+			ret.push(x+1);
+		}
+
+		return ret;
+	},
+
+
+	/**
+	* Calculates in which columns the ball could be.
+	* @method GridCalc#inVerticalBlock
+	* @param {ball} ball
+	* @return {array} An array with objects which contains the y coordinates of the blocks. 
+	*/
+	inVerticalBlock: function(_ball){
+		var ret = new Array();
+
+		var yPosInBlock = _ball.getPosition().y % S.canvasHeight;
+		var y = (_ball.getPosition().y - yPosInBlock)/S.canvasHeight;
+		ret.push(y);
+
+		if((yPosInBlock &lt; _ball.getRadius()) &amp;&amp; (_ball.getBody().getVectorVelocity().y &lt; 0)){
+			ret.push(y-1);
+		}
+
+		//Bottom
+		if((yPosInBlock &gt; (S.canvasHeight - _ball.getRadius())) &amp;&amp; (_ball.getBody().getVectorVelocity().y &gt; 0)){
+			ret.push(y+1);
+		}
+
+		return ret;
+	},
+
+});
+
 if(typeof module != &#x27;undefined&#x27;){
-    module.exports = Camera;
+    module.exports = GridCalc;
 }
 
     </pre>

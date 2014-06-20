@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Timer</title>
+    <title>Drawer</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,7 +138,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Timer Class</h1>
+                        <h1>Drawer Class</h1>
 <div class="box meta">
     
 
@@ -146,7 +146,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_common_game_time_Timer.js.html#l6"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:6</code></a>
+            Defined in: <a href="../files/src_common_game_Drawer.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;Drawer.js:1</code></a>
         </div>
     
 
@@ -158,67 +158,10 @@
 
 
 <div class="box intro">
-    <p>Timer class</p>
+    <p>Drawer class</p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Timer" class="method item">
-    <h3 class="name"><code>Timer</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_time_Timer.js.html#l6"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:6</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -244,70 +187,42 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Timer#count">Timer#count</a>
+                                <a href="#method_Drawer#draw">Drawer#draw</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Timer#getMinutes">Timer#getMinutes</a>
+                                <a href="#method_Drawer#drawBall">Drawer#drawBall</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Timer#getSeconds">Timer#getSeconds</a>
+                                <a href="#method_Drawer#drawLabel">Drawer#drawLabel</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Timer#isPaused">Timer#isPaused</a>
+                                <a href="#method_Drawer#drawPowerup">Drawer#drawPowerup</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Timer#isPaused">Timer#isPaused</a>
+                                <a href="#method_Drawer#drawShield">Drawer#drawShield</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Timer#pause">Timer#pause</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Timer#reset">Timer#reset</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Timer#resume">Timer#resume</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Timer#startTimer">Timer#startTimer</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Timer#stop">Timer#stop</a>
+                                <a href="#method_Drawer#drawSprite">Drawer#drawSprite</a>
 
                                 
                                 
@@ -329,8 +244,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Timer#count" class="method item">
-    <h3 class="name"><code>Timer#count</code></h3>
+                    <div id="method_Drawer#draw" class="method item">
+    <h3 class="name"><code>Drawer#draw</code></h3>
 
     
         <div class="args">
@@ -338,7 +253,7 @@
             
                 <li class="arg">
                     
-                        <code>_this</code>
+                        <code>_element</code>
                     
                 </li>
             
@@ -371,7 +286,7 @@
             
         
         
-        <a href="../files/src_common_game_time_Timer.js.html#l32"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:32</code></a>
+        <a href="../files/src_common_game_Drawer.js.html#l9"><code>src&#x2F;common&#x2F;game&#x2F;Drawer.js:9</code></a>
         
         </p>
 
@@ -382,7 +297,7 @@
     </div>
 
     <div class="description">
-        <p>Adds one to the current time</p>
+        <p>Function which calls the correct drawing method</p>
 
     </div>
 
@@ -394,15 +309,15 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_this</code>
-                        <span class="type">This</span>
+                        <code class="param-name">_element</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>Optional, is needed for playertimer and PowerupTimer!</li>
+<li>The object to be drawn</li>
 </ul>
 
                     </div>
@@ -420,91 +335,24 @@
 </div>
 
                 
-                    <div id="method_Timer#getMinutes" class="method item">
-    <h3 class="name"><code>Timer#getMinutes</code></h3>
+                    <div id="method_Drawer#drawBall" class="method item">
+    <h3 class="name"><code>Drawer#drawBall</code></h3>
 
     
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
             
-                
-                <p>
-                
-                Defined in
-                
+                <li class="arg">
+                    
+                        <code>_ball</code>
+                    
+                </li>
             
-        
-        
-        <a href="../files/src_common_game_time_Timer.js.html#l90"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:90</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns the current time in minutes</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The amount of minutes rounded down.</p>
-
-                
-            </div>
+            </ul><span class="paren">)</span>
         </div>
     
 
     
-</div>
-
-                
-                    <div id="method_Timer#getSeconds" class="method item">
-    <h3 class="name"><code>Timer#getSeconds</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
 
     
 
@@ -529,7 +377,7 @@
             
         
         
-        <a href="../files/src_common_game_time_Timer.js.html#l120"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:120</code></a>
+        <a href="../files/src_common_game_Drawer.js.html#l23"><code>src&#x2F;common&#x2F;game&#x2F;Drawer.js:23</code></a>
         
         </p>
 
@@ -540,117 +388,62 @@
     </div>
 
     <div class="description">
-        <p>Returns the current time in seconds (between 0 and 59, otherwise it&#39;s a minute)</p>
+        <p>Function which draws the actual ball object</p>
 
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
+            <ul class="params-list">
+            
+                <li class="param">
                     
-                        <span class="type">String</span>:
+                        <code class="param-name">_ball</code>
+                        <span class="type">Object</span>
                     
-                    <p>The amount of seconds between 0 and 59, formatted on two numbers (so 00, 01, etc)</p>
 
-                
-            </div>
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The ball object to be drawn</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
         </div>
     
 
     
+
+    
 </div>
 
                 
-                    <div id="method_Timer#isPaused" class="method item">
-    <h3 class="name"><code>Timer#isPaused</code></h3>
+                    <div id="method_Drawer#drawLabel" class="method item">
+    <h3 class="name"><code>Drawer#drawLabel</code></h3>
 
     
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
             
-                
-                <p>
-                
-                Defined in
-                
+                <li class="arg">
+                    
+                        <code>_label</code>
+                    
+                </li>
             
-        
-        
-        <a href="../files/src_common_game_time_Timer.js.html#l100"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:100</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns the state of the</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>Wether the timer is paused</p>
-
-                
-            </div>
+            </ul><span class="paren">)</span>
         </div>
     
 
     
-</div>
-
-                
-                    <div id="method_Timer#isPaused" class="method item">
-    <h3 class="name"><code>Timer#isPaused</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
 
     
 
@@ -675,7 +468,7 @@
             
         
         
-        <a href="../files/src_common_game_time_Timer.js.html#l111"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:111</code></a>
+        <a href="../files/src_common_game_Drawer.js.html#l64"><code>src&#x2F;common&#x2F;game&#x2F;Drawer.js:64</code></a>
         
         </p>
 
@@ -686,37 +479,59 @@
     </div>
 
     <div class="description">
-        <p>Returns the count</p>
+        <p>Function which draws the actual label object</p>
 
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
+            <ul class="params-list">
+            
+                <li class="param">
                     
-                        <span class="type">Number</span>:
+                        <code class="param-name">_label</code>
+                        <span class="type">Object</span>
                     
-                    <p>The current number of seconds.</p>
 
-                
-            </div>
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The label object to be drawn</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
         </div>
     
 
     
+
+    
 </div>
 
                 
-                    <div id="method_Timer#pause" class="method item">
-    <h3 class="name"><code>Timer#pause</code></h3>
+                    <div id="method_Drawer#drawPowerup" class="method item">
+    <h3 class="name"><code>Drawer#drawPowerup</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_powerup</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -744,7 +559,7 @@
             
         
         
-        <a href="../files/src_common_game_time_Timer.js.html#l42"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:42</code></a>
+        <a href="../files/src_common_game_Drawer.js.html#l75"><code>src&#x2F;common&#x2F;game&#x2F;Drawer.js:75</code></a>
         
         </p>
 
@@ -755,10 +570,36 @@
     </div>
 
     <div class="description">
-        <p>Pauses the timer (but only if it isn&#39;t paused already)</p>
+        <p>Function which draws the actual powerup object</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_powerup</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The powerup object to be drawn</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -767,11 +608,21 @@
 </div>
 
                 
-                    <div id="method_Timer#reset" class="method item">
-    <h3 class="name"><code>Timer#reset</code></h3>
+                    <div id="method_Drawer#drawShield" class="method item">
+    <h3 class="name"><code>Drawer#drawShield</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_shield</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -799,7 +650,7 @@
             
         
         
-        <a href="../files/src_common_game_time_Timer.js.html#l67"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:67</code></a>
+        <a href="../files/src_common_game_Drawer.js.html#l48"><code>src&#x2F;common&#x2F;game&#x2F;Drawer.js:48</code></a>
         
         </p>
 
@@ -810,10 +661,36 @@
     </div>
 
     <div class="description">
-        <p>Resets the timer</p>
+        <p>Function which draws the actual shield object</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_shield</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The shield object to be drawn</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -822,11 +699,21 @@
 </div>
 
                 
-                    <div id="method_Timer#resume" class="method item">
-    <h3 class="name"><code>Timer#resume</code></h3>
+                    <div id="method_Drawer#drawSprite" class="method item">
+    <h3 class="name"><code>Drawer#drawSprite</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_sprite</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -854,7 +741,7 @@
             
         
         
-        <a href="../files/src_common_game_time_Timer.js.html#l54"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:54</code></a>
+        <a href="../files/src_common_game_Drawer.js.html#l39"><code>src&#x2F;common&#x2F;game&#x2F;Drawer.js:39</code></a>
         
         </p>
 
@@ -865,120 +752,36 @@
     </div>
 
     <div class="description">
-        <p>Resumes the timer (but only if it was paused at first)</p>
+        <p>Function which draws the actual sprite object</p>
 
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
 
-    
-
-    
-</div>
-
-                
-                    <div id="method_Timer#startTimer" class="method item">
-    <h3 class="name"><code>Timer#startTimer</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
+            <ul class="params-list">
             
-                
-                <p>
-                
-                Defined in
-                
+                <li class="param">
+                    
+                        <code class="param-name">_sprite</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The sprite object to be drawn</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
             
-        
-        
-        <a href="../files/src_common_game_time_Timer.js.html#l22"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:22</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Starts the timer</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Timer#stop" class="method item">
-    <h3 class="name"><code>Timer#stop</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_time_Timer.js.html#l79"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;Timer.js:79</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Stops the timer</p>
-
-    </div>
-
+            </ul>
+        </div>
     
 
     

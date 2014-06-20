@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Label.js</title>
+    <title>src/common/game/time/RandomTimer.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -110,130 +138,54 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: Label.js</h1>
+                        <h1 class="file-heading">File: src/common/game/time/RandomTimer.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
-* A label class for writing text on the screen
-*
-* @class Label
-* @classdesc Label class for writing text on the screen.
-* @constructor
-* @param {string} _text - String to write on the screen.
-*/
-Label = function(_text){
-	var text = _text; //Var containing the string
-	var position = {x: 0, y: 0}; //Var for the position
-	var font = &quot;Verdana&quot;; //Var for the font
-	var fontSize = 20; //Var for the font size
-	var color = &quot;#000000&quot; //Var for the font color
-
-	/**
-	* Draws the label on the game canvas
-	* @method Label#draw
-	* @param {CanvasContext} _canvasContext - The canvascontext which should be drawn.
-	*/
-	this.draw = function(_canvasContext){
-		_canvasContext.fillStyle = color;
-		_canvasContext.font = this.getFontSize() + &quot;px &quot; + this.getFont();
-		_canvasContext.fillText(this.getText(), this.getPosition().x, this.getPosition().y)
-	}
-
-	/**
-	* Gets the string which is the labels text
-	* @method Label#getText
-	* @return {string} The text of the label
-	*/
-	this.getText = function(){
-		return text;
-	}
-
-	/**
-	* Gets the position of the top-left corner of the label
-	*
-	* @method Label#getPosition
-	* @return {object} An position object containing and x and y property
-	*/
-	this.getPosition = function(){
-		return position;
-	}
-
-	/**
-	* Gets the name of the font
-	* @method Label#getFont
-	* @return {string} The name of the font.
-	*/
-	this.getFont = function(){
-		return font;
-	}
-
-	/**
-	* Gets the font size in pixels
-	* @method Label#getFontSize
-	* @return {number} The font size in pixels.
-	*/
-	this.getFontSize = function(){
-		return fontSize;
-	}
-
-	/**
-	* Gets the color of the label
-	* @method Label#getColor
-	* @return {hexcolor} The hex code of the color.
-	*/
-	this.getColor = function(){
-		return color;
-	}
-
-	/**
-	* Sets the string which is the labels text
-	* @method Label#setText
-	* @param {string} _text - The text which should be displayed on the label.
-	*/
-	this.setText = function(_text){
-		text = _text;
-	}
-
-	/**
-	* Sets the position of the left-top corner of the label where it&#x27;s drawn
-	* @method Label#setPosition
-	* @param {object} _position - An object containing an x and y value
-	*/
-	this.setPosition = function(_position){
-		position = _position;
-	}
-
-	/**
-	* Sets the font of the label
-	* @method Label#setFont
-	* @param {string} _font - The name of the font.
-	*/
-	this.setFont = function(_font){
-		font = _font;
-	}
-
-	/**
-	* Sets the font size in pixels
-	* @method Label#setFontSize
-	* @param {number} _fontSize - The size of the font in pixels.
-	*/
-	this.setFontSize = function(_fontSize){
-		fontSize = _fontSize;
-	}
-
-	/**
-	* Sets the color of the label
-	* @method Label#setColor
-	* @param {hexcolor} _color - The color in hexidecimal form.
-	*/
-	this.setColor = function(_color){
-		color = _color;
-	}
+if(typeof module != &#x27;undefined&#x27;){
+	var Timer = require(&#x27;./Timer.js&#x27;);
 }
 
+/**
+* PowerupTimer class
+* @class PowerupTimer
+* @classdesc Class which handles the timers used for the powerups in the game. It counts down instead of up!
+* @constructor
+* @param {Number} _min - The lower bound of the random time it will generate.
+* @param {Number} _max - The upper bound of the random time it will generate.
+*/
+var RandomTimer = Timer.extend({
+
+	time: 0,
+
+	constructor: function(_min, _max){
+		if(_min &gt; _max) return null; //only create a timer when min is smaller than max
+		this.time = Math.floor(Math.random() * (_max - _min + 1) + _min);
+	},
+
+	/**
+	* Counts one down from the initial time for the powerup. When the timer reaches 0, it is stopped
+	*
+	* @method PowerupTimer#count
+	* @param {This} _this - It needs a reference to the original &#x27;this&#x27;, otherwise the variable will mess it up.
+	*/
+	count: function(_this){
+		if(_this.time &gt; 0)
+			_this.time--;
+		else 
+			_this.stop();
+	}, 
+
+	hasStopped: function(){
+		if(this.time == 0)
+			return true;
+		return false;
+	}
+
+});
+
 if(typeof module != &#x27;undefined&#x27;){
-    module.exports = Label;
+	module.exports = RandomTimer;
 }
 
     </pre>

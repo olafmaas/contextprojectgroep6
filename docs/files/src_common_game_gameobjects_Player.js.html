@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/common/game/gameobjects/Player.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Ball.html">Ball</a></li>
+            
+                <li><a href="../classes/BallController.html">BallController</a></li>
+            
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
+                <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
+            
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
+                <li><a href="../classes/Pole.html">Pole</a></li>
+            
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
+                <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
+            
+                <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/common/game/gameobjects/Player.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+//Player class
+if(typeof module != &#x27;undefined&#x27;){
+	var Base = require(&#x27;../../../lib/Base.js&#x27;);
+	var Label = require(&#x27;./Label.js&#x27;);
+	var IDDistributor = require(&#x27;../util/IDDistributor.js&#x27;);
+	var Settings = require(&#x27;../../Settings.js&#x27;); 
+}
+/**
+* Player class
+* @class Player
+* @classdesc Class to represent players with properties.
+* @constructor
+* @extends Base
+* @param {String} _name - The name of the player.
+*/
+var Player = Base.extend({
+	
+	name: null, //Name of the player
+	pole: null, //Pole belonging to the player
+	shield: null, //Shield belonging to the player
+	points: Settings.player.points, //Points the player is worth when hit 
+	score: 0, //Current score of the player
+	highscore: 0, //Highscore of the player
+	globalID: -1,
+	activePowerup: null, //The currently active powerup
+	originalState: {},
+	timer: null,
+	ID: -1,
+	callback: {callb: function(){return false}, context: undefined},
+
+	constructor: function(_name){
+		this.name = _name
+		this.ID = IDDistributor.getNewId();
+	},
+	
+	/** Checks timer and removes powerup if necesarry.
+	*
+	* @method Player#update
+	*/
+	update: function(){
+		if(this.timer != null){
+			if(this.timer.hasStopped())
+				this.deletePowerup();
+		}
+	},
+
+	/**
+	* Increments the current points by the given amounts
+	*
+	* @method Player#incrementPoints
+	* @param {number} _points - The amount of points by which it should be incremented.
+	*/
+	incrementPoints: function(_points){
+		this.points += _points;
+	},
+
+	/**
+	* Increments the current score by the given amounts
+	*
+	* @method Player#incrementScore
+	* @param {number} _score - The score by which it should be incremented.
+	*/
+	incrementScore: function(_score){
+		this.score += _score;
+	},
+
+	/**
+	* Reverts the player back to the (original) saved state before a powerup was activated.
+	* Note: When new powerups are added, this function should be updated accordingly!
+	*
+	* @method Player#revert
+	*/
+	revert: function(){
+		this.getShield().revertShield(this.originalState.revert);
+		this.getShield().setShieldLength(this.originalState.length);
+		this.getPole().setRadius(this.originalState.radius);
+	},
+
+	/**
+	* Saves the current (original) state of the player.
+	* Note: When new powerups are added, this function should be updated accordingly!
+	*
+	* @method Player#saveState
+	*/
+	saveState: function(){
+		var savedThis = this;
+		this.originalState = {
+			revert: savedThis.getShield().isRevert(),
+			length: savedThis.getShield().getShieldLength(),
+			radius: savedThis.getPole().getRadius(),
+		};
+	},
+
+	/**
+	* Deletes the currently active powerup, stops the timer and reverts the 
+	* player back to his original state.
+	*
+	* @method Player#deletePowerup
+	*/
+	deletePowerup: function(){
+		this.activePowerup.stop();
+		this.activePowerup = null;
+		this.timer.stop();
+		this.timer = null;
+		this.revert(); //revert to original playerstate
+	},	
+	
+	/**
+	* Sets a global ID for the player
+	* 
+	* @method Player#setGlobalID
+	* @param {number} _id - The unique id to assign to the player.
+	*/
+	setGlobalID: function (_id) { this.globalID = _id; },
+
+	/**
+	* Sets a new powerup and activates it.
+	* In case there was already a powerup active, that powerup is deleted first.
+	*
+	* @method Player#setPowerup
+	* @param {Powerup} _powerup - The powerup that will be set.
+	*/
+	setPowerup: function(_powerup){
+		//If another powerup was active at this point, make sure the old one is deprecated
+		if(this.activePowerup != null){
+			this.deletePowerup();
+		}
+		this.activePowerup = _powerup;
+		this.saveState(); //Save original playerstate
+		this.activePowerup.execute(this); //immediatly execute the powerup 
+		this.timer = _powerup.getTimer();
+		this.timer.startTimer();
+	},
+
+
+	setUpdateCallBack: function(_callback, _context){
+		this.callback.callb = _callback;
+		this.callback.context = _context;
+	},
+
+	updatePosition: function(_x, _y){
+		this.pole.setPosition(_x, _y);
+		this.shield.setPosition(this.pole);
+		this.callback.callb.call(this.callback.context, {gid: this.getGlobalID(), x: _x, y: _y});
+	},
+
+	/**
+	* Sets the timer belonging to the powerup.
+	*
+	* @method Player#setTimer
+	* @param {Timer} _timer - The timer that will be set.
+	*/
+	setTimer: function(_timer){ this.timer = _timer; },
+
+	/**
+	* Sets the name of the player
+	*
+	* @method Player#setName
+	* @param {String} _name - The name of the player.
+	*/
+	setName: function(_name){ this.name = _name; },
+
+	/**
+	* Sets theh pole belonging to the player
+	*
+	* @method Player#setPole
+	* @param {Pole} _pole - The pole belonging to the player
+	*/
+	setPole: function(_pole){ this.pole = _pole; },
+
+	/**
+	* Sets the shield belonging to the player
+	*
+	* @method Player#setShield
+	* @param {Shield} _shield - The shield belonging to the player.
+	*/
+	setShield: function(_shield){ this.shield = _shield; },
+
+	/**
+	* Sets the amount of poits the player is worth
+	*
+	* @method Player#setPoints
+	* @param {number} _points - The amount of points.
+	*/
+	setPoints: function(_points){ this.points = _points; },
+
+	/**
+	* Sets the current score of the player
+	*
+	* @method Player#setScore
+	* @param {number} _score - The score
+	*/
+	setScore: function(_score){ this.score = _score; },
+
+	/**
+	* Sets the highscore of the player
+	*
+	* @method Player#setHighscore
+	* @param {number} _highscore - The highscore
+	*/
+	setHighscore: function(_highscore){ this.highscore = _highscore; },
+
+	/**
+	* Returns the name of the player
+	*
+	* @method Player#getName
+	* @return {String} The name of the player
+	*/
+	getName: function(){ return this.name; },
+
+	/**
+	* Returns the current timer belonging to the powerup, or null if no timer is present.
+	*
+	* @method Player#getTimer
+	*/
+	getTimer: function(){ return this.timer; },
+
+	/**
+	* Returns the currently active powerup, or null if no powerup is active.
+	*
+	* @method Player#getPowerup
+	*/
+	getPowerup: function(){ return this.activePowerup; },
+
+	/**
+	* Returns the pole belonging to the player
+	*
+	* @method Player#getPole
+	* @return {Pole} The pole belonging to the player.
+	*/
+	getPole: function(){ return this.pole; },
+
+	/**
+	* Returns the shield belonging to the player
+	*
+	* @method Player#getShield
+	* @return {Shield} The shield belonging to the player.
+	*/
+	getShield: function(){ return this.shield; },
+
+	/**
+	* Returns the points the player is worth on hit.
+	*
+	* @method Player#getPoints
+	* @return {number} The points the player is currently worth.
+	*/
+	getPoints: function(){ return this.points; },
+
+	/**
+	* Returns the current score of the player
+	*
+	* @method Player#getScore
+	* @return {number} The current score of the player.
+	*/
+	getScore: function(){ return this.score; },
+
+	/**
+	* Returns the current highscore of the player
+	*
+	* @method Player#getHighscore
+	* @return {number} The current highscore of the player.
+	*/
+	getHighscore: function(){ return this.highscore; },
+	
+	/**
+	* Retrieves the global ID of the player
+	*
+	* @method Player#getGlobalID
+	* @return {number} The unique GlobalID of the player
+	*/
+	getGlobalID: function(){ return this.globalID; },
+
+	/**
+	* Retrieves the ID of the player
+	*
+	* @method Player#getID
+	* @return {number} The ID of the player
+	*/
+	getID: function(){ return this.ID; },
+
+	getType: function(){ return &#x27;Player&#x27;; }
+
+
+});
+
+if(typeof module != &#x27;undefined&#x27;){
+    module.exports = Player;
+}
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

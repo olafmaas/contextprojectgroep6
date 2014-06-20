@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/server/grid/GameGrid.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Ball.html">Ball</a></li>
+            
+                <li><a href="../classes/BallController.html">BallController</a></li>
+            
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
+                <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
+            
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
+                <li><a href="../classes/Pole.html">Pole</a></li>
+            
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
+                <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
+            
+                <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/server/grid/GameGrid.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+if(typeof module != &#x27;undefined&#x27;){
+	var S = require(&#x27;../../common/Settings.js&#x27;);
+
+	var Block = require(&#x27;./Block.js&#x27;);
+	var GridCalc = require(&#x27;./GridCalc.js&#x27;);
+}
+
+/**
+* GameGrid Class
+* @class GameGrid
+* @classdesc GameGrid is the class which contains all blocks. 
+* @constructor 
+*/
+function GameGrid() {
+	var grid = new Array();	//vertical
+	grid.push(new Array());	//horizontal (first row)
+
+	var gridWidth = 1;
+	var gridHeight = 1;
+
+	var gridc = new GridCalc();
+
+	/**
+	* Add a new column to the grid. This column is filled with new blocks. 
+	* @method GameGrid#addColumn
+	*/
+	this.addColumn = function(){
+		var x = gridWidth;
+		gridWidth++;
+
+		for(var y = 0; y &lt; grid.length; y++){
+			var b = new Block(false ,x * S.canvasWidth, y * S.canvasHeight)
+		
+			//Set horizontal Neighbours
+			grid[y][x-1].setNeighbour(&quot;right&quot;, b);
+			b.setNeighbour(&quot;left&quot;, grid[y][x-1]);
+			grid[y].push(b)
+
+			var clog= x-1
+
+			//Set vertical Neighbours
+			if(y &gt; 0){
+				grid[y-1][x].setNeighbour(&quot;bottom&quot;, b);
+				b.setNeighbour(&quot;top&quot;, grid[y-1][x]);
+			}
+		}
+	};
+
+	/**
+	* Add a new row to the grid. The row is filled with new blocks. 
+	* @method GameGrid#addRow
+	*/
+	this.addRow = function(){
+		var y = grid.length;
+		grid.push(new Array());
+
+		for(var x = 0; x &lt; gridWidth; x++){
+			var b = new Block(false ,x * S.canvasWidth, y * S.canvasHeight)
+			
+			//Set vertical Neighbours
+			grid[y-1][x].setNeighbour(&quot;bottom&quot;, b);
+			b.setNeighbour(&quot;top&quot;, grid[y-1][x]);
+			grid[y].push(b)
+
+			//Set horizontal Neighbours
+			if(x &gt; 0){
+				grid[y][x-1].setNeighbour(&quot;right&quot;, b);
+				b.setNeighbour(&quot;left&quot;, grid[y][x-1]);
+			}
+		}
+
+		gridHeight++;
+	};
+
+	/**
+	* Add a new player to the grid, and adds ball to 
+	* the palyer&#x27;s screen. The player is placed on the
+	* first available spot. 
+	* @method GameGrid#updateGrid
+	* @param {socket} socket - The socket that will be placed in the block.
+	* @param {integer} maxcol - The maximum number of columns
+	* @param {ball} _ball - 
+	* @return {object} An object with the left and top boundary of the block in pixels. 
+	*/
+	this.updateGrid = function(socket, balls){
+		var x;
+		var y;
+
+		//Look for an available spot
+		for (var i = 0; i &lt; this.getHeight(); i++) {
+		 x = checkrow(socket, i, balls);
+			if(x != -1){
+				y = i;
+				break
+			}
+		}
+
+		//If no available spot is found add a new row or column
+		if(x &lt; 0){
+			var freeSpot = this.createFreeSpots(socket, balls);
+			x = freeSpot.x;
+			y = freeSpot.y;
+		}
+
+		return {left: x , top: y}; 
+	};
+
+
+	this.createFreeSpots = function(socket, balls){
+		var x;
+		var y;
+
+		if(gridWidth &lt;= gridHeight){
+			//Add column
+			this.addColumn()
+			y = 0;
+			x = gridWidth - 1;
+			grid[y][x].setSocket(socket);
+			addBalls(grid[y][x], balls)
+		}else{
+			//Add row
+			this.addRow();
+			y = gridHeight - 1; 
+			x = 0;
+			grid[y][x].setSocket(socket);
+			addBalls(grid[y][x], balls)
+		}
+
+		return {x: x, y: y};
+	}
+
+	/**
+	* Check if there is place available in row i. 
+	* @method GameGrid#checkrow 
+	* @param {socket} socket - The socket that will be placed in the block.
+	* @param {integer} i - The index of the row.
+	* @param {ball} _ball - 
+	* @return {array} The index of the first availble spot. -1 otherwise. 
+	*/
+	checkrow = function(socket, i, balls){
+		for(var j = 0; j &lt; gridWidth; j++){
+				if(grid[i].length == j){
+					grid[i].push(new Block(socket ,j * S.canvasWidth, i * S.canvasHeight))
+
+					grid[i][j].setSocket(socket)
+					addBalls(grid[i][j], balls)
+
+					if(j &gt; 0){
+						grid[i][j-1].setNeighbour(&quot;right&quot;, grid[i][j]);
+						grid[i][j].setNeighbour(&quot;left&quot;, grid[i][j-1]);
+					}
+					return j;
+				}else if(!grid[i][j].hasPlayer()){
+					grid[i][j].setSocket(socket)
+					addBalls(grid[i][j], balls)
+					return j;
+				}
+		}
+		return -1;
+	};
+
+
+	addBalls = function(_block, _balls){
+		_balls.forEach(function(b){
+
+			var xPos = Math.min(_block.getPosition().left + S.ball.x + Math.floor(Math.random()*S.ball.x), 
+					_block.getPosition().left + S.canvasWidth - b.getRadius());
+
+			var yPos = Math.min(_block.getPosition().top  + S.ball.y + Math.floor(Math.random()*S.ball.y), 
+					_block.getPosition().top + S.canvasHeight - b.getRadius());
+
+			b.setPosition(xPos, yPos)
+			_block.addBall(b);
+		})
+	}
+
+	/**
+	* Delete the player from the grid. 
+	* @method GameGrid#remove  
+	* @param {socket} socket - The socket that will be removed
+	*/
+	this.remove = function(socketID){
+		for (var i = 0; i &lt; grid.length; i++) {
+			for(var j = 0; j &lt; grid[i].length; j++){
+				if(grid[i][j].getSocket()){
+					if(socketID == grid[i][j].getSocket().id){
+						grid[i][j].removePlayer();
+					}
+				}
+			}
+		}
+	};
+
+	/**
+	* Delete a ball from the grid.  
+	* @method GameGrid#removeBall
+	* @param {ball} ball - The ball that will be removed.
+	*/
+	this.removeBall = function(ball){
+		blocksWithBall = gridc.inBlock(ball);
+		blocksWithBall.forEach(function(b){
+			if(b.y &lt; grid.length){
+				if(b.x &lt; grid[b.y].length){
+					grid[b.y][b.x].removeBall(ball, -1);
+				}
+			}
+		})
+	};
+
+	this.cleanUp = function(){
+		if(gridWidth == 1 &amp;&amp; gridHeight == 1) return
+		cleanRows();
+		cleanColumns();
+	};
+
+	cleanRows = function(){
+		var emptyRows = []
+
+		for(var y = 0; y &lt; grid.length; y++){
+			empty = true;
+			grid[y].forEach(function(_block){
+				empty = empty &amp;&amp; !_block.hasPlayer();
+			})
+
+			//If you would call deleteRows there 
+			if(empty) emptyRows.push(y);
+		}
+		deleteRows(emptyRows);
+	};
+
+	cleanColumns = function(){
+		var emptyCols = []
+
+		for(var x = 0; x &lt; gridWidth; x++){
+			var empty = true;
+
+			for(var y = 0; y &lt; grid.length; y++){
+				empty = empty &amp;&amp; !grid[y][x].hasPlayer();
+			}
+
+			if(empty) {
+				emptyCols.push(x);
+			}
+		}
+
+		deleteColumns(emptyCols);
+	};
+
+	deleteRows = function(emptyRows){
+		deletedRows = 0
+
+		emptyRows.forEach(function(y){
+			
+			for(var x = 0; x &lt; grid[y - deletedRows].length; x++){
+				grid[y][x].getReadyForDeletion(&quot;bottom&quot;, &quot;top&quot;);
+			}
+			grid.splice(y-deletedRows, 1);
+			deletedRows++;
+			gridHeight--;
+		})
+	};
+
+	deleteColumns = function(emptyColumns){
+		deletedColumns = 0
+		emptyColumns.forEach(function(x){
+			for(var y = 0; y &lt; grid.length; y++){
+				grid[y][x].getReadyForDeletion(&quot;right&quot;, &quot;left&quot;);
+				grid[y].splice(x-deletedColumns, 1);
+			}
+			deletedColumns++;
+			gridWidth--;
+		})
+	};
+
+	/**
+	* Update all the blocks in the grid. 
+	* @method GameGrid#rupdate
+	*/	
+	this.update = function(){
+		for(var i = 0; i &lt; grid.length; i++){
+			for(var j = 0; j &lt; grid[i].length; j++){
+				grid[i][j].update()
+			}
+		}
+	};
+
+
+	this.setPlayer = function(x, y, _player){
+		grid[y][x].setPlayer(_player);
+	}
+
+	this.getHeight = function(){ return grid.length; };
+
+	this.getWidth = function(){ return grid[0].length; };
+
+	this.getNrOfBlocks = function(){grid.length*grid[0].length}
+};
+
+if(typeof module != &#x27;undefined&#x27;){
+    module.exports = GameGrid;
+}
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

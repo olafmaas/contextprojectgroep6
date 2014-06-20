@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ColorGenerator</title>
+    <title>src/common/game/Drawer.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,141 +138,134 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>ColorGenerator Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: src/common/game/Drawer.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+* Drawer class
+* @class Drawer
+* @classdesc Class which draws everything in the playing field.
+*/
+Drawer = function(_canvasContext){
+	canvasContext = _canvasContext;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_common_game_util_ColorGenerator.js.html#l1"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:1</code></a>
-        </div>
-    
+	/**
+	* Function which calls the correct drawing method
+	* @method Drawer#draw
+	* @param {object} _element - The object to be drawn
+	*/
+	this.draw = function(_element){
+		if(_element instanceof Pole) this.drawBall(_element, true);
+		else if(_element instanceof Ball) this.drawBall(_element, false);
+		else if(_element instanceof Shield) this.drawShield(_element);
+		else if(_element instanceof Label) this.drawLabel(_element);
+		else if(_element instanceof Powerup) this.drawPowerup(_element);
+		else if(_element instanceof Sprite) this.drawSprite(_element);
+	};
 
-    
+	/**
+	* Function which draws the actual ball object
+	* @method Drawer#drawBall
+	* @param {object} _ball - The ball object to be drawn
+	*/
+	this.drawBall = function(_ball, _isPole){
+		if(_isPole) { this.drawPowerupSkin(_ball); }
 
-    
-</div>
+		canvasContext.beginPath();
+		canvasContext.arc(_ball.getBody().position.x, _ball.getBody().position.y, _ball.radius, 0, Math.PI*2, true);
+		canvasContext.closePath();
 
+		canvasContext.fillStyle = _ball.color;
+		canvasContext.fill();
+	};
 
+	/**
+	* Function which draws the actual sprite object
+	* @method Drawer#drawSprite
+	* @param {object} _sprite - The sprite object to be drawn
+	*/
+	this.drawSprite = function(_sprite){
+		canvasContext.drawImage(_sprite.getTexture(), _sprite.getPosition().x + _sprite.getAnchor().x, _sprite.getPosition().y + _sprite.getAnchor().y, _sprite.getSize().x, _sprite.getSize().y);
+	};
 
-<div class="box intro">
-    <p>Class for a color generator</p>
+	/**
+	* Function which draws the actual shield object
+	* @method Drawer#drawShield
+	* @param {object} _shield - The shield object to be drawn
+	*/
+	this.drawShield = function(_shield){
+		var revert = 1;
+		if(_shield.isRevert()) revert = -1;
 
-</div>
+		canvasContext.beginPath();
+  		canvasContext.arc(_shield.getPosition().x, _shield.getPosition().y, _shield.getRadius(), (revert * _shield.getAngle()) - (_shield.getSize() / _shield.getShieldLength()), (revert * _shield.getAngle()) + (_shield.getSize() / _shield.getShieldLength()));
+  		canvasContext.strokeStyle = _shield.getColor();
+  		canvasContext.lineWidth = Settings.shield.shieldWidth;
+  		canvasContext.stroke();
+	};
 
+	/**
+	* Function which draws the actual label object
+	* @method Drawer#drawLabel
+	* @param {object} _label - The label object to be drawn
+	*/
+	this.drawLabel = function(_label){
+		canvasContext.fillStyle = _label.getColor();
+		canvasContext.font = _label.getFontSize() + &quot;px &quot; + _label.getFont();
+		canvasContext.fillText(_label.getText(), _label.getPosition().x, _label.getPosition().y);
+	};
 
+	/**
+	* Function which draws the actual powerup object
+	* @method Drawer#drawPowerup
+	* @param {object} _powerup - The powerup object to be drawn
+	*/
+	this.drawPowerup = function (_powerup){
+		canvasContext.beginPath();
+		canvasContext.arc(_powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius(), 0, Math.PI*2, true);
+		canvasContext.closePath();
+		
+		canvasContext.fillStyle = _powerup.getColor();
+		canvasContext.fill();
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+		//Draw the cooldown part
+		this.drawCoolDown(_powerup, 2);
+	};
 
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-        
-        
-    </ul>
+	this.drawPowerupSkin = function (_pole){
+		var powerup = _pole.player.getPowerup();
+		if(powerup != null &amp;&amp; _pole.getPowerupDraw()){
+			canvasContext.beginPath();
+			canvasContext.arc(_pole.getBody().position.x, _pole.getBody().position.y, _pole.getRadius()+2, 0, Math.PI*2, true);
+			canvasContext.closePath();
 
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
+			canvasContext.fillStyle = powerup.color;
+			canvasContext.fill();	
+			this.drawCoolDown(_pole, 4);
+		}
+	}
 
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
+	this.drawCoolDown = function (_object, _offset){	
+		if(_object.getCDAngle() &gt; 0){
+			var startAngle = Settings.startAngle;
+			var endAngle = (startAngle + _object.getCDAngle()) % 360;
 
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_ColorGenerator#returnColor">ColorGenerator#returnColor</a>
+			canvasContext.fillStyle = &quot;black&quot;; //Has to be the current background color
+			canvasContext.moveTo(_object.getPosition().x, _object.getPosition().y);
+			canvasContext.beginPath();
+			canvasContext.arc(
+	            _object.getPosition().x, _object.getPosition().y, _object.getRadius() + _offset, startAngle * Math.PI / 180,
+	            endAngle * Math.PI / 180, false
+	        );
+			canvasContext.lineTo(_object.getPosition().x, _object.getPosition().y);
+	        canvasContext.fill();
+	        canvasContext.closePath();
+    	}
+	}
+}
 
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_ColorGenerator#returnColor" class="method item">
-    <h3 class="name"><code>ColorGenerator#returnColor</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_util_ColorGenerator.js.html#l12"><code>src&#x2F;common&#x2F;game&#x2F;util&#x2F;ColorGenerator.js:12</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns a random color from the predefined color list above.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
-        
-
-        
-
-        
-
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

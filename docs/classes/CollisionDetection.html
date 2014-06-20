@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Ball</title>
+    <title>CollisionDetection</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,19 +138,15 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Ball Class</h1>
+                        <h1>CollisionDetection Class</h1>
 <div class="box meta">
     
 
     
-        <div class="extends">
-            Extends Base
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_common_game_gameobjects_Ball.js.html#l9"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:9</code></a>
+            Defined in: <a href="../files/src_common_game_CollisionDetection.js.html#l6"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:6</code></a>
         </div>
     
 
@@ -162,103 +158,10 @@
 
 
 <div class="box intro">
-    <p>Ball constructor</p>
+    <p>CollisionDetection Class</p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Ball" class="method item">
-    <h3 class="name"><code>Ball</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_radius</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l9"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:9</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_radius</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The radius of the ball.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -281,101 +184,80 @@
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods extends">
+                    <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#collidesWith">Ball#collidesWith</a>
+                                <a href="#method_CollisionDetection#checkForCollision">CollisionDetection#checkForCollision</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#enableBody">Ball#enableBody</a>
+                                <a href="#method_CollisionDetection#collides">CollisionDetection#collides</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#equals">Ball#equals</a>
+                                <a href="#method_CollisionDetection#collidesBallWith">CollisionDetection#collidesBallWith</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getBody">Ball#getBody</a>
+                                <a href="#method_CollisionDetection#collidesBallWithBall">CollisionDetection#collidesBallWithBall</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getColor">Ball#getColor</a>
+                                <a href="#method_CollisionDetection#collidesBallWithBall">CollisionDetection#collidesBallWithBall</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getGlobalID">Ball#getGlobalID</a>
+                                <a href="#method_CollisionDetection#collidesBallWithShield">CollisionDetection#collidesBallWithShield</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getID">Ball#getID</a>
+                                <a href="#method_CollisionDetection#collidesShieldWith">CollisionDetection#collidesShieldWith</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getPosition">Ball#getPosition</a>
+                                <a href="#method_CollisionDetection#handleCollision">CollisionDetection#handleCollision</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#getRadius">Ball#getRadius</a>
+                                <a href="#method_CollisionDetection#handleCollision">CollisionDetection#handleCollision</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#setColor">Ball#setColor</a>
+                                <a href="#method_CollisionDetection#normalizeAngle">CollisionDetection#normalizeAngle</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Ball#setGlobalID">Ball#setGlobalID</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Ball#setPosition">Ball#setPosition</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Ball#setRadius">Ball#setRadius</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Ball#update">Ball#update</a>
+                                <a href="#method_CollisionDetection#shouldHandle">CollisionDetection#shouldHandle</a>
 
                                 
                                 
@@ -397,12 +279,248 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Ball#collidesWith" class="method item">
-    <h3 class="name"><code>Ball#collidesWith</code></h3>
+                    <div id="method_CollisionDetection#checkForCollision" class="method item">
+    <h3 class="name"><code>CollisionDetection#checkForCollision</code></h3>
 
     
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_bodyOne</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_bodyTwo</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_CollisionDetection.js.html#l51"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:51</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks for collision and returns the collision object</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_bodyOne</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Object 1</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_bodyTwo</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Object 2</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_CollisionDetection#collides" class="method item">
+    <h3 class="name"><code>CollisionDetection#collides</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_bodyOne</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_bodyTwo</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_CollisionDetection.js.html#l71"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:71</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Determines which collision could occur and calls the specific check method</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_bodyOne</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Object 1</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_bodyTwo</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Object 2</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_CollisionDetection#collidesBallWith" class="method item">
+    <h3 class="name"><code>CollisionDetection#collidesBallWith</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_ball</code>
+                    
+                </li>
             
                 <li class="arg">
                     
@@ -439,7 +557,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l54"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:54</code></a>
+        <a href="../files/src_common_game_CollisionDetection.js.html#l82"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:82</code></a>
         
         </p>
 
@@ -450,8 +568,7 @@
     </div>
 
     <div class="description">
-        <p>Collision handler for the ball
-It calls the collision function in the body class which takes care of the rest</p>
+        <p>Specific collision method for ball and another object</p>
 
     </div>
 
@@ -463,6 +580,24 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
+                        <code class="param-name">_ball</code>
+                        <span class="type"><a href="../classes/Shield.html" class="crosslink">Shield</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Ball object</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
                         <code class="param-name">_other</code>
                         <span class="type">Object</span>
                     
@@ -471,7 +606,7 @@ It calls the collision function in the body class which takes care of the rest</
 
                     <div class="param-description">
                         <ul>
-<li>The other object with which the ball collides</li>
+<li>Other object</li>
 </ul>
 
                     </div>
@@ -489,11 +624,27 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#enableBody" class="method item">
-    <h3 class="name"><code>Ball#enableBody</code></h3>
+                    <div id="method_CollisionDetection#collidesBallWithBall" class="method item">
+    <h3 class="name"><code>CollisionDetection#collidesBallWithBall</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_ball</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_shield</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -521,7 +672,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l48"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:48</code></a>
+        <a href="../files/src_common_game_CollisionDetection.js.html#l139"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:139</code></a>
         
         </p>
 
@@ -532,10 +683,54 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Creates the body of the ball</p>
+        <p>Precise collision method for ball and shield (circle to arc)</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Ball object</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_shield</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Shield object</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -544,12 +739,248 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#equals" class="method item">
-    <h3 class="name"><code>Ball#equals</code></h3>
+                    <div id="method_CollisionDetection#collidesBallWithBall" class="method item">
+    <h3 class="name"><code>CollisionDetection#collidesBallWithBall</code></h3>
 
     
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_ball1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_ball2</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_CollisionDetection.js.html#l104"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:104</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specific collision method for ball and ball</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_ball1</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Ball object</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_ball2</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Ball object</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_CollisionDetection#collidesBallWithShield" class="method item">
+    <h3 class="name"><code>CollisionDetection#collidesBallWithShield</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_ball</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_shield</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_CollisionDetection.js.html#l122"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:122</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specific collision method for ball and shield (circle to circle collision)</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Ball object</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_shield</code>
+                        <span class="type"><a href="../classes/Shield.html" class="crosslink">Shield</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Shield object</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_CollisionDetection#collidesShieldWith" class="method item">
+    <h3 class="name"><code>CollisionDetection#collidesShieldWith</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_shield</code>
+                    
+                </li>
             
                 <li class="arg">
                     
@@ -586,7 +1017,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l40"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:40</code></a>
+        <a href="../files/src_common_game_CollisionDetection.js.html#l93"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:93</code></a>
         
         </p>
 
@@ -597,7 +1028,7 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Checks whether two objects are equals by comparing their ID&#39;s</p>
+        <p>Specific collision method for shield and another object</p>
 
     </div>
 
@@ -606,6 +1037,24 @@ It calls the collision function in the body class which takes care of the rest</
             <h4>Parameters:</h4>
 
             <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_shield</code>
+                        <span class="type"><a href="../classes/Shield.html" class="crosslink">Shield</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Shield object</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
             
                 <li class="param">
                     
@@ -617,7 +1066,7 @@ It calls the collision function in the body class which takes care of the rest</
 
                     <div class="param-description">
                         <ul>
-<li>The other object with which it is compared.</li>
+<li>Other object</li>
 </ul>
 
                     </div>
@@ -635,446 +1084,8 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#getBody" class="method item">
-    <h3 class="name"><code>Ball#getBody</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l122"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:122</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the body of the ball.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>:
-                    
-                    <p>The body of the ball.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getColor" class="method item">
-    <h3 class="name"><code>Ball#getColor</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Hex</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l114"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:114</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the color of the ball.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Hex</span>:
-                    
-                    <p>The color of the ball in hex value.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getGlobalID" class="method item">
-    <h3 class="name"><code>Ball#getGlobalID</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l138"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:138</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the global ID of the ball</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The unique GlobalID of the ball</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getID" class="method item">
-    <h3 class="name"><code>Ball#getID</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l130"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:130</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the ID of the ball</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The unique ID of the ball</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getPosition" class="method item">
-    <h3 class="name"><code>Ball#getPosition</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l98"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:98</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves both x and y coordinate of the middle of the ball.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y coordinate of the middle of the ball.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#getRadius" class="method item">
-    <h3 class="name"><code>Ball#getRadius</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l106"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:106</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the radius of the ball.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The radius of the ball.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#setColor" class="method item">
-    <h3 class="name"><code>Ball#setColor</code></h3>
+                    <div id="method_CollisionDetection#handleCollision" class="method item">
+    <h3 class="name"><code>CollisionDetection#handleCollision</code></h3>
 
     
         <div class="args">
@@ -1082,7 +1093,13 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>_color</code>
+                        <code>_bodyOne</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_bodyTwo</code>
                     
                 </li>
             
@@ -1115,7 +1132,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l90"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:90</code></a>
+        <a href="../files/src_common_game_CollisionDetection.js.html#l14"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:14</code></a>
         
         </p>
 
@@ -1126,7 +1143,7 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Sets the color of the ball.</p>
+        <p>Calls basic collision function with the two objects</p>
 
     </div>
 
@@ -1138,15 +1155,33 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_color</code>
-                        <span class="type">Hex value</span>
+                        <code class="param-name">_bodyOne</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The hex value of the color.</li>
+<li>Object 1</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_bodyTwo</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Object 2</li>
 </ul>
 
                     </div>
@@ -1164,8 +1199,8 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#setGlobalID" class="method item">
-    <h3 class="name"><code>Ball#setGlobalID</code></h3>
+                    <div id="method_CollisionDetection#handleCollision" class="method item">
+    <h3 class="name"><code>CollisionDetection#handleCollision</code></h3>
 
     
         <div class="args">
@@ -1173,7 +1208,13 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>_id</code>
+                        <code>_objectOne</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_objectTwo</code>
                     
                 </li>
             
@@ -1206,7 +1247,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l83"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:83</code></a>
+        <a href="../files/src_common_game_CollisionDetection.js.html#l184"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:184</code></a>
         
         </p>
 
@@ -1217,7 +1258,7 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Sets the global id of the ball.</p>
+        <p>Calls the handling method for two given objects</p>
 
     </div>
 
@@ -1229,15 +1270,33 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_id</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">_objectOne</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The new GlobalID of the ball</li>
+<li>Object 1</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_objectTwo</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Object 2</li>
 </ul>
 
                     </div>
@@ -1255,8 +1314,8 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#setPosition" class="method item">
-    <h3 class="name"><code>Ball#setPosition</code></h3>
+                    <div id="method_CollisionDetection#normalizeAngle" class="method item">
+    <h3 class="name"><code>CollisionDetection#normalizeAngle</code></h3>
 
     
         <div class="args">
@@ -1264,13 +1323,7 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>_x</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>_y</code>
+                        <code>_angle</code>
                     
                 </li>
             
@@ -1303,7 +1356,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l65"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:65</code></a>
+        <a href="../files/src_common_game_CollisionDetection.js.html#l175"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:175</code></a>
         
         </p>
 
@@ -1314,7 +1367,7 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Sets the position of the ball in the canvas.</p>
+        <p>Normalizes the angle</p>
 
     </div>
 
@@ -1326,33 +1379,15 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_x</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">_angle</code>
+                        <span class="type">Float</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The x coordinate of the center of the ball.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">_y</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The y coordinate of the center of the ball.</li>
+<li>The angle of the object</li>
 </ul>
 
                     </div>
@@ -1370,8 +1405,8 @@ It calls the collision function in the body class which takes care of the rest</
 </div>
 
                 
-                    <div id="method_Ball#setRadius" class="method item">
-    <h3 class="name"><code>Ball#setRadius</code></h3>
+                    <div id="method_CollisionDetection#shouldHandle" class="method item">
+    <h3 class="name"><code>CollisionDetection#shouldHandle</code></h3>
 
     
         <div class="args">
@@ -1379,7 +1414,13 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="arg">
                     
-                        <code>_radius</code>
+                        <code>_bodyOne</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_bodyTwo</code>
                     
                 </li>
             
@@ -1412,7 +1453,7 @@ It calls the collision function in the body class which takes care of the rest</
             
         
         
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l73"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:73</code></a>
+        <a href="../files/src_common_game_CollisionDetection.js.html#l29"><code>src&#x2F;common&#x2F;game&#x2F;CollisionDetection.js:29</code></a>
         
         </p>
 
@@ -1423,7 +1464,7 @@ It calls the collision function in the body class which takes care of the rest</
     </div>
 
     <div class="description">
-        <p>Sets the radius of the ball.</p>
+        <p>Gets the collisions between two objects</p>
 
     </div>
 
@@ -1435,15 +1476,33 @@ It calls the collision function in the body class which takes care of the rest</
             
                 <li class="param">
                     
-                        <code class="param-name">_radius</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">_bodyOne</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The radius of the ball in pixels.</li>
+<li>Object 1</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_bodyTwo</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Object 2</li>
 </ul>
 
                     </div>
@@ -1453,61 +1512,6 @@ It calls the collision function in the body class which takes care of the rest</
             
             </ul>
         </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Ball#update" class="method item">
-    <h3 class="name"><code>Ball#update</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Ball.js.html#l34"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Ball.js:34</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Updates the position of the ball</p>
-
-    </div>
-
     
 
     

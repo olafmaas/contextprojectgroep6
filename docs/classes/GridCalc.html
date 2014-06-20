@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CircularBody</title>
+    <title>GridCalc</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -110,7 +138,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>CircularBody Class</h1>
+                        <h1>GridCalc Class</h1>
 <div class="box meta">
     
 
@@ -118,7 +146,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/CircularBody.js.html#l9"><code>CircularBody.js:9</code></a>
+            Defined in: <a href="../files/src_server_grid_GridCalc.js.html#l7"><code>src&#x2F;server&#x2F;grid&#x2F;GridCalc.js:7</code></a>
         </div>
     
 
@@ -130,28 +158,18 @@
 
 
 <div class="box intro">
-    <p>CircularBody Class</p>
+    <p>GridCalc Class</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_CircularBody" class="method item">
-    <h3 class="name"><code>CircularBody</code></h3>
+        <div id="method_GridCalc" class="method item">
+    <h3 class="name"><code>GridCalc</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_parent</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -179,7 +197,7 @@
             
         
         
-        <a href="../files/CircularBody.js.html#l9"><code>CircularBody.js:9</code></a>
+        <a href="../files/src_server_grid_GridCalc.js.html#l7"><code>src&#x2F;server&#x2F;grid&#x2F;GridCalc.js:7</code></a>
         
         </p>
 
@@ -193,32 +211,6 @@
         
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_parent</code>
-                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Ball or pole object to which the body is assigned.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -252,35 +244,21 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_CircularBody#checkWorldBounds">CircularBody#checkWorldBounds</a>
+                                <a href="#method_GridCalc#inBlock">GridCalc#inBlock</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_CircularBody#constructor">CircularBody#constructor</a>
+                                <a href="#method_GridCalc#inHorizontalBlock">GridCalc#inHorizontalBlock</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_CircularBody#handleBallCollision">CircularBody#handleBallCollision</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_CircularBody#handleCollision">CircularBody#handleCollision</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_CircularBody#update">CircularBody#update</a>
+                                <a href="#method_GridCalc#inVerticalBlock">GridCalc#inVerticalBlock</a>
 
                                 
                                 
@@ -302,8 +280,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_CircularBody#checkWorldBounds" class="method item">
-    <h3 class="name"><code>CircularBody#checkWorldBounds</code></h3>
+                    <div id="method_GridCalc#inBlock" class="method item">
+    <h3 class="name"><code>GridCalc#inBlock</code></h3>
 
     
         <div class="args">
@@ -311,7 +289,7 @@
             
                 <li class="arg">
                     
-                        <code>_game</code>
+                        <code>ball</code>
                     
                 </li>
             
@@ -319,6 +297,10 @@
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
     
 
     
@@ -344,7 +326,7 @@
             
         
         
-        <a href="../files/CircularBody.js.html#l81"><code>CircularBody.js:81</code></a>
+        <a href="../files/src_server_grid_GridCalc.js.html#l15"><code>src&#x2F;server&#x2F;grid&#x2F;GridCalc.js:15</code></a>
         
         </p>
 
@@ -355,7 +337,7 @@
     </div>
 
     <div class="description">
-        <p>Checks if the ball collides with world boundaries and handles it</p>
+        <p>Calculates in which blocks the ball could be.</p>
 
     </div>
 
@@ -367,197 +349,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_game</code>
-                        <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The game/playing field</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_CircularBody#constructor" class="method item">
-    <h3 class="name"><code>CircularBody#constructor</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>The</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/CircularBody.js.html#l21"><code>CircularBody.js:21</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Constructor for the circular body</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">The</code>
-                        <span class="type">_parent</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>circle object</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_CircularBody#handleBallCollision" class="method item">
-    <h3 class="name"><code>CircularBody#handleBallCollision</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_other</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/CircularBody.js.html#l58"><code>CircularBody.js:58</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Handles the collision of circle and ball</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_other</code>
+                        <code class="param-name">ball</code>
                         <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
-<li>Ball object which collides with the circle</li>
-</ul>
-
+                         
                     </div>
 
                     
@@ -568,13 +367,27 @@
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Array</span>:
+                    
+                    <p>An array with objects which contains the x and y coordinates of the blocks.</p>
+
+                
+            </div>
+        </div>
+    
 
     
 </div>
 
                 
-                    <div id="method_CircularBody#handleCollision" class="method item">
-    <h3 class="name"><code>CircularBody#handleCollision</code></h3>
+                    <div id="method_GridCalc#inHorizontalBlock" class="method item">
+    <h3 class="name"><code>GridCalc#inHorizontalBlock</code></h3>
 
     
         <div class="args">
@@ -582,7 +395,7 @@
             
                 <li class="arg">
                     
-                        <code>_other</code>
+                        <code>ball</code>
                     
                 </li>
             
@@ -590,6 +403,10 @@
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
     
 
     
@@ -615,7 +432,7 @@
             
         
         
-        <a href="../files/CircularBody.js.html#l41"><code>CircularBody.js:41</code></a>
+        <a href="../files/src_server_grid_GridCalc.js.html#l38"><code>src&#x2F;server&#x2F;grid&#x2F;GridCalc.js:38</code></a>
         
         </p>
 
@@ -626,8 +443,7 @@
     </div>
 
     <div class="description">
-        <p>This method uses the previous methods to check whether the circle collides
-And then handles the collision</p>
+        <p>Calculates in which rows the ball could be.</p>
 
     </div>
 
@@ -639,17 +455,14 @@ And then handles the collision</p>
             
                 <li class="param">
                     
-                        <code class="param-name">_other</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
-<li>Object which collides with the shield</li>
-</ul>
-
+                         
                     </div>
 
                     
@@ -660,18 +473,46 @@ And then handles the collision</p>
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Array</span>:
+                    
+                    <p>An array with objects which contains the x coordinates of the blocks.</p>
+
+                
+            </div>
+        </div>
+    
 
     
 </div>
 
                 
-                    <div id="method_CircularBody#update" class="method item">
-    <h3 class="name"><code>CircularBody#update</code></h3>
+                    <div id="method_GridCalc#inVerticalBlock" class="method item">
+    <h3 class="name"><code>GridCalc#inVerticalBlock</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>ball</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
     
 
     
@@ -697,7 +538,7 @@ And then handles the collision</p>
             
         
         
-        <a href="../files/CircularBody.js.html#l32"><code>CircularBody.js:32</code></a>
+        <a href="../files/src_server_grid_GridCalc.js.html#l63"><code>src&#x2F;server&#x2F;grid&#x2F;GridCalc.js:63</code></a>
         
         </p>
 
@@ -708,12 +549,49 @@ And then handles the collision</p>
     </div>
 
     <div class="description">
-        <p>Updates the position of the circle</p>
+        <p>Calculates in which columns the ball could be.</p>
 
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
 
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">ball</code>
+                        <span class="type"><a href="../classes/Ball.html" class="crosslink">Ball</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Array</span>:
+                    
+                    <p>An array with objects which contains the y coordinates of the blocks.</p>
+
+                
+            </div>
+        </div>
     
 
     

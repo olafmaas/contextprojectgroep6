@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Body</title>
+    <title>ScoreLabel</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,19 +138,19 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Body Class</h1>
+                        <h1>ScoreLabel Class</h1>
 <div class="box meta">
     
 
     
         <div class="extends">
-            Extends Base
+            Extends <a href="../classes/Label.html" class="crosslink">Label</a>
         </div>
     
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_common_game_gameobjects_Body.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:5</code></a>
+            Defined in: <a href="../files/src_common_game_gameobjects_ScoreLabel.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ScoreLabel.js:5</code></a>
         </div>
     
 
@@ -162,18 +162,34 @@
 
 
 <div class="box intro">
-    <p>Body constructor</p>
+    <p>A label class for showing user&#39;s score on screen</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Body" class="method item">
-    <h3 class="name"><code>Body</code></h3>
+        <div id="method_ScoreLabel" class="method item">
+    <h3 class="name"><code>ScoreLabel</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_player</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_text</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -201,7 +217,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:5</code></a>
+        <a href="../files/src_common_game_gameobjects_ScoreLabel.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ScoreLabel.js:5</code></a>
         
         </p>
 
@@ -215,6 +231,50 @@
         
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_player</code>
+                        <span class="type"><a href="../classes/Player.html" class="crosslink">Player</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The player for which the label should display the score</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_text</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Initial string to write on the screen</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -247,99 +307,78 @@
 
                     <ul class="index-list methods extends">
                         
-                            <li class="index-item method">
-                                <a href="#method_Body#calculateVDirection">Body#calculateVDirection</a>
+                            <li class="index-item method inherited">
+                                <a href="#method_Label#getColor">Label#getColor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Label#getFont">Label#getFont</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Label#getFontSize">Label#getFontSize</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Label#getPosition">Label#getPosition</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Label#getText">Label#getText</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Label#setColor">Label#setColor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Label#setFont">Label#setFont</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Label#setFontSize">Label#setFontSize</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Label#setPosition">Label#setPosition</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Label#setText">Label#setText</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Body#calculateVelocity">Body#calculateVelocity</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#getAngleTo">Body#getAngleTo</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#getPosition">Body#getPosition</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#getVectorVelocity">Body#getVectorVelocity</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#getVelocity">Body#getVelocity</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#getVelocityDirection">Body#getVelocityDirection</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#getXYSpeed">Body#getXYSpeed</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#revertXSpeed">Body#revertXSpeed</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#revertYSpeed">Body#revertYSpeed</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#setVelocity">Body#setVelocity</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#setVelocityDirection">Body#setVelocityDirection</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#setXYSpeed">Body#setXYSpeed</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Body#update">Body#update</a>
+                                <a href="#method_ScoreLabel#update">ScoreLabel#update</a>
 
                                 
                                 
@@ -361,8 +400,148 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Body#calculateVDirection" class="method item">
-    <h3 class="name"><code>Body#calculateVDirection</code></h3>
+                    <div id="method_Label#getColor" class="method item inherited">
+    <h3 class="name"><code>Label#getColor</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Hexcolor</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Label.html#method_Label#getColor">Label</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Label.js.html#l91"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Label.js:91</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the color of the label</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Hexcolor</span>:
+                    
+                    <p>The hex code of the color.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Label#getFont" class="method item inherited">
+    <h3 class="name"><code>Label#getFont</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Label.html#method_Label#getFont">Label</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Label.js.html#l77"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Label.js:77</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the name of the font</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">String</span>:
+                    
+                    <p>The name of the font.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Label#getFontSize" class="method item inherited">
+    <h3 class="name"><code>Label#getFontSize</code></h3>
 
     
         <span class="paren">()</span>
@@ -389,15 +568,12 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/Label.html#method_Label#getFontSize">Label</a>:
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l53"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:53</code></a>
+        <a href="../files/src_common_game_gameobjects_Label.js.html#l84"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Label.js:84</code></a>
         
         </p>
 
@@ -408,7 +584,7 @@
     </div>
 
     <div class="description">
-        <p>Calculates the velocity direction (angle) in which the ball is moving, by using the current x and y speed of the ball.</p>
+        <p>Gets the font size in pixels</p>
 
     </div>
 
@@ -423,7 +599,7 @@
                     
                         <span class="type">Number</span>:
                     
-                    <p>The angle in radians.</p>
+                    <p>The font size in pixels.</p>
 
                 
             </div>
@@ -434,8 +610,8 @@
 </div>
 
                 
-                    <div id="method_Body#calculateVelocity" class="method item">
-    <h3 class="name"><code>Body#calculateVelocity</code></h3>
+                    <div id="method_Label#getPosition" class="method item inherited">
+    <h3 class="name"><code>Label#getPosition</code></h3>
 
     
         <span class="paren">()</span>
@@ -443,7 +619,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type">Object</span>
         </span>
     
 
@@ -462,15 +638,12 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/Label.html#method_Label#getPosition">Label</a>:
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l61"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:61</code></a>
+        <a href="../files/src_common_game_gameobjects_Label.js.html#l69"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Label.js:69</code></a>
         
         </p>
 
@@ -481,7 +654,7 @@
     </div>
 
     <div class="description">
-        <p>Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.</p>
+        <p>Gets the position of the top-left corner of the label</p>
 
     </div>
 
@@ -494,9 +667,9 @@
             <div class="returns-description">
                 
                     
-                        <span class="type">Number</span>:
+                        <span class="type">Object</span>:
                     
-                    <p>The velocity of the ball.</p>
+                    <p>An position object containing and x and y property</p>
 
                 
             </div>
@@ -507,8 +680,78 @@
 </div>
 
                 
-                    <div id="method_Body#getAngleTo" class="method item">
-    <h3 class="name"><code>Body#getAngleTo</code></h3>
+                    <div id="method_Label#getText" class="method item inherited">
+    <h3 class="name"><code>Label#getText</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Label.html#method_Label#getText">Label</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Label.js.html#l62"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Label.js:62</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the string which is the labels text</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">String</span>:
+                    
+                    <p>The text of the label</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Label#setColor" class="method item inherited">
+    <h3 class="name"><code>Label#setColor</code></h3>
 
     
         <div class="args">
@@ -516,7 +759,7 @@
             
                 <li class="arg">
                     
-                        <code>_other</code>
+                        <code>_color</code>
                     
                 </li>
             
@@ -541,15 +784,12 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/Label.html#method_Label#setColor">Label</a>:
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l40"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:40</code></a>
+        <a href="../files/src_common_game_gameobjects_Label.js.html#l55"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Label.js:55</code></a>
         
         </p>
 
@@ -560,7 +800,7 @@
     </div>
 
     <div class="description">
-        <p>Gets the angle from this object to another object</p>
+        <p>Sets the color of the label</p>
 
     </div>
 
@@ -572,14 +812,16 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_other</code>
-                        <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                        <code class="param-name">_color</code>
+                        <span class="type">Hexcolor</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>the body of the other object</p>
+                        <ul>
+<li>The color in hexidecimal form.</li>
+</ul>
 
                     </div>
 
@@ -596,485 +838,8 @@
 </div>
 
                 
-                    <div id="method_Body#getPosition" class="method item">
-    <h3 class="name"><code>Body#getPosition</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l154"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:154</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the position.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y coordinate the position of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getVectorVelocity" class="method item">
-    <h3 class="name"><code>Body#getVectorVelocity</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l178"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:178</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the velocity of the body.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y velocities of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getVelocity" class="method item">
-    <h3 class="name"><code>Body#getVelocity</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l162"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:162</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the velocity of the body.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The current velocity of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getVelocityDirection" class="method item">
-    <h3 class="name"><code>Body#getVelocityDirection</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l170"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:170</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the velocity direction (angle) of the body.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The current angle of the body in radians.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#getXYSpeed" class="method item">
-    <h3 class="name"><code>Body#getXYSpeed</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l146"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:146</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the x and y speed.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y speeds of the body.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#revertXSpeed" class="method item">
-    <h3 class="name"><code>Body#revertXSpeed</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l84"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:84</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Reverts the x speed (positive to negative and vice versa).
-It also calculates the new angle (speed remains the same).</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#revertYSpeed" class="method item">
-    <h3 class="name"><code>Body#revertYSpeed</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l73"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:73</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Reverts the y speed (positive to negative and vice versa).
-It also calculates the new angle (speed remains the same).</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Body#setVelocity" class="method item">
-    <h3 class="name"><code>Body#setVelocity</code></h3>
+                    <div id="method_Label#setFont" class="method item inherited">
+    <h3 class="name"><code>Label#setFont</code></h3>
 
     
         <div class="args">
@@ -1082,7 +847,7 @@ It also calculates the new angle (speed remains the same).</p>
             
                 <li class="arg">
                     
-                        <code>_vel</code>
+                        <code>_font</code>
                     
                 </li>
             
@@ -1107,15 +872,12 @@ It also calculates the new angle (speed remains the same).</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/Label.html#method_Label#setFont">Label</a>:
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l95"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:95</code></a>
+        <a href="../files/src_common_game_gameobjects_Label.js.html#l41"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Label.js:41</code></a>
         
         </p>
 
@@ -1126,8 +888,7 @@ It also calculates the new angle (speed remains the same).</p>
     </div>
 
     <div class="description">
-        <p>Sets the velocity of the ball. 
-It also calculates the corresponding speed values for the x and y axis.</p>
+        <p>Sets the font of the label</p>
 
     </div>
 
@@ -1139,15 +900,15 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">_vel</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">_font</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The velocity of the ball.</li>
+<li>The name of the font.</li>
 </ul>
 
                     </div>
@@ -1165,8 +926,8 @@ It also calculates the corresponding speed values for the x and y axis.</p>
 </div>
 
                 
-                    <div id="method_Body#setVelocityDirection" class="method item">
-    <h3 class="name"><code>Body#setVelocityDirection</code></h3>
+                    <div id="method_Label#setFontSize" class="method item inherited">
+    <h3 class="name"><code>Label#setFontSize</code></h3>
 
     
         <div class="args">
@@ -1174,7 +935,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
                 <li class="arg">
                     
-                        <code>_direction</code>
+                        <code>_fontSize</code>
                     
                 </li>
             
@@ -1199,15 +960,12 @@ It also calculates the corresponding speed values for the x and y axis.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/Label.html#method_Label#setFontSize">Label</a>:
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l111"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:111</code></a>
+        <a href="../files/src_common_game_gameobjects_Label.js.html#l48"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Label.js:48</code></a>
         
         </p>
 
@@ -1218,8 +976,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
     </div>
 
     <div class="description">
-        <p>Sets the velocity direction (angle) of the ball. 
-It also calculates the corresponding speed values for the x and y axis.</p>
+        <p>Sets the font size in pixels</p>
 
     </div>
 
@@ -1231,7 +988,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">_direction</code>
+                        <code class="param-name">_fontSize</code>
                         <span class="type">Number</span>
                     
 
@@ -1239,7 +996,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
 
                     <div class="param-description">
                         <ul>
-<li>The direction (angle) of the ball in radians.</li>
+<li>The size of the font in pixels.</li>
 </ul>
 
                     </div>
@@ -1257,8 +1014,8 @@ It also calculates the corresponding speed values for the x and y axis.</p>
 </div>
 
                 
-                    <div id="method_Body#setXYSpeed" class="method item">
-    <h3 class="name"><code>Body#setXYSpeed</code></h3>
+                    <div id="method_Label#setPosition" class="method item inherited">
+    <h3 class="name"><code>Label#setPosition</code></h3>
 
     
         <div class="args">
@@ -1266,13 +1023,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
             
                 <li class="arg">
                     
-                        <code>_x</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>_y</code>
+                        <code>_position</code>
                     
                 </li>
             
@@ -1297,15 +1048,12 @@ It also calculates the corresponding speed values for the x and y axis.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/Label.html#method_Label#setPosition">Label</a>:
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l127"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:127</code></a>
+        <a href="../files/src_common_game_gameobjects_Label.js.html#l34"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Label.js:34</code></a>
         
         </p>
 
@@ -1316,9 +1064,7 @@ It also calculates the corresponding speed values for the x and y axis.</p>
     </div>
 
     <div class="description">
-        <p>Sets the x and y speed values of the ball.
-It also calculates the corresponding angle and velocity.
-Note: The given speed can also be negative, it then moves in the opposite direction.</p>
+        <p>Sets the position of the left-top corner of the label where it&#39;s drawn</p>
 
     </div>
 
@@ -1330,33 +1076,15 @@ Note: The given speed can also be negative, it then moves in the opposite direct
             
                 <li class="param">
                     
-                        <code class="param-name">_x</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">_position</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The speed on the x axis (pixels per redraw).</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">_y</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The speed on the y axis (pixels per redraw).</li>
+<li>An object containing an x and y value</li>
 </ul>
 
                     </div>
@@ -1374,8 +1102,96 @@ Note: The given speed can also be negative, it then moves in the opposite direct
 </div>
 
                 
-                    <div id="method_Body#update" class="method item">
-    <h3 class="name"><code>Body#update</code></h3>
+                    <div id="method_Label#setText" class="method item inherited">
+    <h3 class="name"><code>Label#setText</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_text</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Label.html#method_Label#setText">Label</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Label.js.html#l27"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Label.js:27</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the string which is the labels text</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_text</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The text which should be displayed on the label.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_ScoreLabel#update" class="method item">
+    <h3 class="name"><code>ScoreLabel#update</code></h3>
 
     
         <span class="paren">()</span>
@@ -1406,7 +1222,7 @@ Note: The given speed can also be negative, it then moves in the opposite direct
             
         
         
-        <a href="../files/src_common_game_gameobjects_Body.js.html#l23"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:23</code></a>
+        <a href="../files/src_common_game_gameobjects_ScoreLabel.js.html#l24"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ScoreLabel.js:24</code></a>
         
         </p>
 
@@ -1417,7 +1233,7 @@ Note: The given speed can also be negative, it then moves in the opposite direct
     </div>
 
     <div class="description">
-        <p>Updates the position of the body</p>
+        <p>Updates the score displayed on the label</p>
 
     </div>
 

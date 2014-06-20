@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Shield</title>
+    <title>Shieldbody</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -138,15 +138,19 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Shield Class</h1>
+                        <h1>Shieldbody Class</h1>
 <div class="box meta">
     
 
     
+        <div class="extends">
+            Extends <a href="../classes/Body.html" class="crosslink">Body</a>
+        </div>
+    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_common_game_gameobjects_Shield.js.html#l7"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:7</code></a>
+            Defined in: <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l8"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:8</code></a>
         </div>
     
 
@@ -158,15 +162,15 @@
 
 
 <div class="box intro">
-    <p>Shield constructor</p>
+    <p>Constructor for the shield body</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Shield" class="method item">
-    <h3 class="name"><code>Shield</code></h3>
+        <div id="method_Shieldbody" class="method item">
+    <h3 class="name"><code>Shieldbody</code></h3>
 
     
         <div class="args">
@@ -174,7 +178,7 @@
             
                 <li class="arg">
                     
-                        <code>_pole</code>
+                        <code>_parent</code>
                     
                 </li>
             
@@ -207,7 +211,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l7"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:7</code></a>
+        <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l8"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:8</code></a>
         
         </p>
 
@@ -229,15 +233,15 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_pole</code>
-                        <span class="type"><a href="../classes/Pole.html" class="crosslink">Pole</a></span>
+                        <code class="param-name">_parent</code>
+                        <span class="type"><a href="../classes/Shield.html" class="crosslink">Shield</a></span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The pole which the shield protects</li>
+<li>The shield object</li>
 </ul>
 
                     </div>
@@ -277,157 +281,171 @@
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods">
+                    <ul class="index-list methods extends">
                         
-                            <li class="index-item method">
-                                <a href="#method_Shield#calculateAngle">Shield#calculateAngle</a>
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#calculateVDirection">Body#calculateVDirection</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#calculateVelocity">Body#calculateVelocity</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#getAngleTo">Body#getAngleTo</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#getPosition">Body#getPosition</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#getVectorVelocity">Body#getVectorVelocity</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#getVelocity">Body#getVelocity</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#getVelocityDirection">Body#getVelocityDirection</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#getXYSpeed">Body#getXYSpeed</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#revertXSpeed">Body#revertXSpeed</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#revertYSpeed">Body#revertYSpeed</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#setVelocity">Body#setVelocity</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#setVelocityDirection">Body#setVelocityDirection</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#setXYSpeed">Body#setXYSpeed</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_Body#update">Body#update</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#enableBody">Shield#enableBody</a>
+                                <a href="#method_ShieldBody#constructor">ShieldBody#constructor</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#equals">Shield#equals</a>
+                                <a href="#method_ShieldBody#equals">ShieldBody#equals</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#getAngle">Shield#getAngle</a>
+                                <a href="#method_ShieldBody#getAngle">ShieldBody#getAngle</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#getBody">Shield#getBody</a>
+                                <a href="#method_ShieldBody#getID">ShieldBody#getID</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#getColor">Shield#getColor</a>
+                                <a href="#method_ShieldBody#getParentShield">ShieldBody#getParentShield</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#getID">Shield#getID</a>
+                                <a href="#method_ShieldBody#getRadius">ShieldBody#getRadius</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#getPole">Shield#getPole</a>
+                                <a href="#method_ShieldBody#setAngle">ShieldBody#setAngle</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#getPosition">Shield#getPosition</a>
+                                <a href="#method_ShieldBody#setParentShield">ShieldBody#setParentShield</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#getRadius">Shield#getRadius</a>
+                                <a href="#method_ShieldBody#setRadius">ShieldBody#setRadius</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_Shield#getShieldLength">Shield#getShieldLength</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#getSize">Shield#getSize</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#isRevert">Shield#isRevert</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#noCalc">Shield#noCalc</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#revertShield">Shield#revertShield</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#setAngle">Shield#setAngle</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#setColor">Shield#setColor</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#setPosition">Shield#setPosition</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#setRadius">Shield#setRadius</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#setShieldLength">Shield#setShieldLength</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#setSize">Shield#setSize</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_Shield#update">Shield#update</a>
+                                <a href="#method_ShieldBody#update">ShieldBody#update</a>
 
                                 
                                 
@@ -449,8 +467,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Shield#calculateAngle" class="method item">
-    <h3 class="name"><code>Shield#calculateAngle</code></h3>
+                    <div id="method_Body#calculateVDirection" class="method item inherited">
+    <h3 class="name"><code>Body#calculateVDirection</code></h3>
 
     
         <span class="paren">()</span>
@@ -458,7 +476,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Float</span>
+            <span class="type">Number</span>
         </span>
     
 
@@ -477,15 +495,12 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#calculateVDirection">Body</a>:
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l66"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:66</code></a>
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l53"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:53</code></a>
         
         </p>
 
@@ -496,7 +511,7 @@
     </div>
 
     <div class="description">
-        <p>Calculates the angle of the shield (in radians) depending on the current mouse input</p>
+        <p>Calculates the velocity direction (angle) in which the ball is moving, by using the current x and y speed of the ball.</p>
 
     </div>
 
@@ -509,9 +524,9 @@
             <div class="returns-description">
                 
                     
-                        <span class="type">Float</span>:
+                        <span class="type">Number</span>:
                     
-                    <p>The angle between the shield and the current mousepointer.</p>
+                    <p>The angle in radians.</p>
 
                 
             </div>
@@ -522,11 +537,977 @@
 </div>
 
                 
-                    <div id="method_Shield#enableBody" class="method item">
-    <h3 class="name"><code>Shield#enableBody</code></h3>
+                    <div id="method_Body#calculateVelocity" class="method item inherited">
+    <h3 class="name"><code>Body#calculateVelocity</code></h3>
 
     
         <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#calculateVelocity">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l61"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:61</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>The velocity of the ball.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#getAngleTo" class="method item inherited">
+    <h3 class="name"><code>Body#getAngleTo</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_other</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#getAngleTo">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l40"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:40</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the angle from this object to another object</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_other</code>
+                        <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the body of the other object</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#getPosition" class="method item inherited">
+    <h3 class="name"><code>Body#getPosition</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number, number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#getPosition">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l154"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:154</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the position.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number, number</span>:
+                    
+                    <p>The x and y coordinate the position of the body.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#getVectorVelocity" class="method item inherited">
+    <h3 class="name"><code>Body#getVectorVelocity</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number, number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#getVectorVelocity">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l178"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:178</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the velocity of the body.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number, number</span>:
+                    
+                    <p>The x and y velocities of the body.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#getVelocity" class="method item inherited">
+    <h3 class="name"><code>Body#getVelocity</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#getVelocity">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l162"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:162</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the velocity of the body.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>The current velocity of the body.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#getVelocityDirection" class="method item inherited">
+    <h3 class="name"><code>Body#getVelocityDirection</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#getVelocityDirection">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l170"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:170</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the velocity direction (angle) of the body.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>The current angle of the body in radians.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#getXYSpeed" class="method item inherited">
+    <h3 class="name"><code>Body#getXYSpeed</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number, number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#getXYSpeed">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l146"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:146</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves the x and y speed.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number, number</span>:
+                    
+                    <p>The x and y speeds of the body.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#revertXSpeed" class="method item inherited">
+    <h3 class="name"><code>Body#revertXSpeed</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#revertXSpeed">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l84"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:84</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Reverts the x speed (positive to negative and vice versa).
+It also calculates the new angle (speed remains the same).</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#revertYSpeed" class="method item inherited">
+    <h3 class="name"><code>Body#revertYSpeed</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#revertYSpeed">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l73"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:73</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Reverts the y speed (positive to negative and vice versa).
+It also calculates the new angle (speed remains the same).</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#setVelocity" class="method item inherited">
+    <h3 class="name"><code>Body#setVelocity</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_vel</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#setVelocity">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l95"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:95</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the velocity of the ball. 
+It also calculates the corresponding speed values for the x and y axis.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_vel</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The velocity of the ball.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#setVelocityDirection" class="method item inherited">
+    <h3 class="name"><code>Body#setVelocityDirection</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_direction</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#setVelocityDirection">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l111"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:111</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the velocity direction (angle) of the ball. 
+It also calculates the corresponding speed values for the x and y axis.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_direction</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The direction (angle) of the ball in radians.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#setXYSpeed" class="method item inherited">
+    <h3 class="name"><code>Body#setXYSpeed</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>_y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#setXYSpeed">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l127"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:127</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the x and y speed values of the ball.
+It also calculates the corresponding angle and velocity.
+Note: The given speed can also be negative, it then moves in the opposite direction.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_x</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The speed on the x axis (pixels per redraw).</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">_y</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The speed on the y axis (pixels per redraw).</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Body#update" class="method item inherited">
+    <h3 class="name"><code>Body#update</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Body.html#method_Body#update">Body</a>:
+            
+        
+        
+        <a href="../files/src_common_game_gameobjects_Body.js.html#l23"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Body.js:23</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Updates the position of the body</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_ShieldBody#constructor" class="method item">
+    <h3 class="name"><code>ShieldBody#constructor</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_parent</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -554,7 +1535,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l43"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:43</code></a>
+        <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l22"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:22</code></a>
         
         </p>
 
@@ -565,10 +1546,36 @@
     </div>
 
     <div class="description">
-        <p>Creates the body of the shield</p>
+        <p>Constructor for the shield body</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_parent</code>
+                        <span class="type"><a href="../classes/Shield.html" class="crosslink">Shield</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The shield object</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -577,8 +1584,8 @@
 </div>
 
                 
-                    <div id="method_Shield#equals" class="method item">
-    <h3 class="name"><code>Shield#equals</code></h3>
+                    <div id="method_ShieldBody#equals" class="method item">
+    <h3 class="name"><code>ShieldBody#equals</code></h3>
 
     
         <div class="args">
@@ -619,7 +1626,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l50"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:50</code></a>
+        <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l45"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:45</code></a>
         
         </p>
 
@@ -668,8 +1675,8 @@
 </div>
 
                 
-                    <div id="method_Shield#getAngle" class="method item">
-    <h3 class="name"><code>Shield#getAngle</code></h3>
+                    <div id="method_ShieldBody#getAngle" class="method item">
+    <h3 class="name"><code>ShieldBody#getAngle</code></h3>
 
     
         <span class="paren">()</span>
@@ -704,7 +1711,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l174"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:174</code></a>
+        <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l74"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:74</code></a>
         
         </p>
 
@@ -715,518 +1722,7 @@
     </div>
 
     <div class="description">
-        <p>Retrieves the current angle of the shield.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The angle of the shield in radians.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#getBody" class="method item">
-    <h3 class="name"><code>Shield#getBody</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l206"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:206</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the body of the shield.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>:
-                    
-                    <p>The body of the shield.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#getColor" class="method item">
-    <h3 class="name"><code>Shield#getColor</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Hex</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l190"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:190</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the color of the shield.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Hex</span>:
-                    
-                    <p>The color of the shield in hex value</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#getID" class="method item">
-    <h3 class="name"><code>Shield#getID</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l214"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:214</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the ID of the shield</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>The unique ID of the shield</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#getPole" class="method item">
-    <h3 class="name"><code>Shield#getPole</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="../classes/Pole.html" class="crosslink">Pole</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l166"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:166</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the pole belonging to the shield.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="../classes/Pole.html" class="crosslink">Pole</a></span>:
-                    
-                    <p>The pole the shield protects.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#getPosition" class="method item">
-    <h3 class="name"><code>Shield#getPosition</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number, number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l150"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:150</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves both x and y coordinate of the middle of the shield.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number, number</span>:
-                    
-                    <p>The x and y coordinate of the middle of the shield.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#getRadius" class="method item">
-    <h3 class="name"><code>Shield#getRadius</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l182"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:182</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves the size of the radius of the shield.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>Radius of the shield.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#getShieldLength" class="method item">
-    <h3 class="name"><code>Shield#getShieldLength</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l158"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:158</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns the length of the shield</p>
+        <p>Returns the angle of the shield</p>
 
     </div>
 
@@ -1242,7 +1738,7 @@
                         <span class="type">Number</span>:
                     
                     <ul>
-<li>The length of the shield</li>
+<li>The angle in radians</li>
 </ul>
 
                 
@@ -1254,8 +1750,8 @@
 </div>
 
                 
-                    <div id="method_Shield#getSize" class="method item">
-    <h3 class="name"><code>Shield#getSize</code></h3>
+                    <div id="method_ShieldBody#getID" class="method item">
+    <h3 class="name"><code>ShieldBody#getID</code></h3>
 
     
         <span class="paren">()</span>
@@ -1290,7 +1786,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l198"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:198</code></a>
+        <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l95"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:95</code></a>
         
         </p>
 
@@ -1301,7 +1797,7 @@
     </div>
 
     <div class="description">
-        <p>Retrieves the size of the shield (circle)</p>
+        <p>Retrieves the ID of the shieldBody</p>
 
     </div>
 
@@ -1316,7 +1812,7 @@
                     
                         <span class="type">Number</span>:
                     
-                    <p>Size of the shield.</p>
+                    <p>The unique ID of the shieldBody</p>
 
                 
             </div>
@@ -1327,8 +1823,8 @@
 </div>
 
                 
-                    <div id="method_Shield#isRevert" class="method item">
-    <h3 class="name"><code>Shield#isRevert</code></h3>
+                    <div id="method_ShieldBody#getParentShield" class="method item">
+    <h3 class="name"><code>ShieldBody#getParentShield</code></h3>
 
     
         <span class="paren">()</span>
@@ -1336,7 +1832,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type"><a href="../classes/Shield.html" class="crosslink">Shield</a></span>
         </span>
     
 
@@ -1363,7 +1859,7 @@
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l87"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:87</code></a>
+        <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l88"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:88</code></a>
         
         </p>
 
@@ -1374,7 +1870,7 @@
     </div>
 
     <div class="description">
-        <p>Returns whether the shield is reverted or not</p>
+        <p>Returns the parent of the shield</p>
 
     </div>
 
@@ -1387,10 +1883,10 @@
             <div class="returns-description">
                 
                     
-                        <span class="type">Boolean</span>:
+                        <span class="type"><a href="../classes/Shield.html" class="crosslink">Shield</a></span>:
                     
                     <ul>
-<li>Returns true if the shield is revert</li>
+<li>The shield belonging to this shieldbody</li>
 </ul>
 
                 
@@ -1402,79 +1898,17 @@
 </div>
 
                 
-                    <div id="method_Shield#noCalc" class="method item">
-    <h3 class="name"><code>Shield#noCalc</code></h3>
+                    <div id="method_ShieldBody#getRadius" class="method item">
+    <h3 class="name"><code>ShieldBody#getRadius</code></h3>
 
     
         <span class="paren">()</span>
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l58"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:58</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Sets calculate to false so the angle of the shield will not be calculated in the update function
-Note: used for mainscreen to get rid of the shieldangles that are otherwise calculated</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#revertShield" class="method item">
-    <h3 class="name"><code>Shield#revertShield</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_revert</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
     
 
     
@@ -1500,7 +1934,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l79"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:79</code></a>
+        <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l81"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:81</code></a>
         
         </p>
 
@@ -1511,46 +1945,36 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
     </div>
 
     <div class="description">
-        <p>Reverts the way in which the shield is drawn</p>
+        <p>Returns the radius of the shield</p>
 
     </div>
 
     
-        <div class="params">
-            <h4>Parameters:</h4>
 
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_revert</code>
-                        <span class="type">Boolean</span>
-                    
+    
+        <div class="returns">
+            <h4>Returns:</h4>
 
+            <div class="returns-description">
+                
                     
-
-                    <div class="param-description">
-                        <ul>
-<li>True or false with false being drawn normally</li>
+                        <span class="type">Number</span>:
+                    
+                    <ul>
+<li>The radius of the shieldbody</li>
 </ul>
 
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
+                
+            </div>
         </div>
-    
-
     
 
     
 </div>
 
                 
-                    <div id="method_Shield#setAngle" class="method item">
-    <h3 class="name"><code>Shield#setAngle</code></h3>
+                    <div id="method_ShieldBody#setAngle" class="method item">
+    <h3 class="name"><code>ShieldBody#setAngle</code></h3>
 
     
         <div class="args">
@@ -1591,7 +2015,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l95"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:95</code></a>
+        <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l53"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:53</code></a>
         
         </p>
 
@@ -1602,7 +2026,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
     </div>
 
     <div class="description">
-        <p>Sets the angle of the shield.</p>
+        <p>Sets the angle of the shield</p>
 
     </div>
 
@@ -1622,7 +2046,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
 
                     <div class="param-description">
                         <ul>
-<li>The angle of the shield in radians.</li>
+<li>The angle of the shieldbody in radians.</li>
 </ul>
 
                     </div>
@@ -1640,8 +2064,8 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
 </div>
 
                 
-                    <div id="method_Shield#setColor" class="method item">
-    <h3 class="name"><code>Shield#setColor</code></h3>
+                    <div id="method_ShieldBody#setParentShield" class="method item">
+    <h3 class="name"><code>ShieldBody#setParentShield</code></h3>
 
     
         <div class="args">
@@ -1649,7 +2073,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
             
                 <li class="arg">
                     
-                        <code>_color</code>
+                        <code>_parentShield</code>
                     
                 </li>
             
@@ -1682,7 +2106,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l123"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:123</code></a>
+        <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l67"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:67</code></a>
         
         </p>
 
@@ -1693,7 +2117,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
     </div>
 
     <div class="description">
-        <p>Sets the color of the shield.</p>
+        <p>Sets the parent of the shield</p>
 
     </div>
 
@@ -1705,15 +2129,15 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
             
                 <li class="param">
                     
-                        <code class="param-name">_color</code>
-                        <span class="type">Hex</span>
+                        <code class="param-name">_parentShield</code>
+                        <span class="type"><a href="../classes/Shield.html" class="crosslink">Shield</a></span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The color of the shield;</li>
+<li>The shield to which the body belongs.</li>
 </ul>
 
                     </div>
@@ -1731,99 +2155,8 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
 </div>
 
                 
-                    <div id="method_Shield#setPosition" class="method item">
-    <h3 class="name"><code>Shield#setPosition</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_pole</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l137"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:137</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Sets the position of the shield in the canvas.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_pole</code>
-                        <span class="type"><a href="../classes/Pole.html" class="crosslink">Pole</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The pole to which the shield will be assigned</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#setRadius" class="method item">
-    <h3 class="name"><code>Shield#setRadius</code></h3>
+                    <div id="method_ShieldBody#setRadius" class="method item">
+    <h3 class="name"><code>ShieldBody#setRadius</code></h3>
 
     
         <div class="args">
@@ -1864,7 +2197,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l113"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:113</code></a>
+        <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l60"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:60</code></a>
         
         </p>
 
@@ -1875,7 +2208,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
     </div>
 
     <div class="description">
-        <p>Sets the radius of the shield.</p>
+        <p>Sets the radius of the shield</p>
 
     </div>
 
@@ -1895,7 +2228,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
 
                     <div class="param-description">
                         <ul>
-<li>The radius of the shield</li>
+<li>The radius of the shieldbody.</li>
 </ul>
 
                     </div>
@@ -1913,190 +2246,8 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
 </div>
 
                 
-                    <div id="method_Shield#setShieldLength" class="method item">
-    <h3 class="name"><code>Shield#setShieldLength</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_length</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l105"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:105</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Sets the length of the shield</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_length</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The length of the shield</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#setSize" class="method item">
-    <h3 class="name"><code>Shield#setSize</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>_size</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l130"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:130</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Sets the size of the shield.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">_size</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The size of the shield.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_Shield#update" class="method item">
-    <h3 class="name"><code>Shield#update</code></h3>
+                    <div id="method_ShieldBody#update" class="method item">
+    <h3 class="name"><code>ShieldBody#update</code></h3>
 
     
         <span class="paren">()</span>
@@ -2127,7 +2278,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
             
         
         
-        <a href="../files/src_common_game_gameobjects_Shield.js.html#l30"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;Shield.js:30</code></a>
+        <a href="../files/src_common_game_gameobjects_ShieldBody.js.html#l35"><code>src&#x2F;common&#x2F;game&#x2F;gameobjects&#x2F;ShieldBody.js:35</code></a>
         
         </p>
 
@@ -2138,7 +2289,7 @@ Note: used for mainscreen to get rid of the shieldangles that are otherwise calc
     </div>
 
     <div class="description">
-        <p>Updates the position of the shield</p>
+        <p>Updates the angle of the shield</p>
 
     </div>
 

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/client/js/Player/PowerUpController.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Ball.html">Ball</a></li>
+            
+                <li><a href="../classes/BallController.html">BallController</a></li>
+            
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
+            
+                <li><a href="../classes/CircularBody.html">CircularBody</a></li>
+            
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
+            
+                <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
+            
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
+                <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
+                <li><a href="../classes/Label.html">Label</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
+            
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
+                <li><a href="../classes/Pole.html">Pole</a></li>
+            
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
+                <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
+            
+                <li><a href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/client/js/Player/PowerUpController.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+
+/**
+* Powerup controller which handles the powerup action on the player&#x27;s screen.
+*
+* @class PowerUpController
+* @classdesc Powerupcontroller
+* @constructor
+*/
+function PowerUpController(){
+
+	var powerupCDTimer = null;
+	var playerCDTimer = null;
+	var powerupRemovalTimer = null;
+	var icon = null;
+	var powerup = null;
+
+
+	/**
+	* Creates a powerup if no powerup is present already.
+	*
+	* @method PowerUpController
+	* @param {number} leftOffset - The left offset of the screen of the player as to that of the mainscreen
+	* @param {number} topOffset - The top offset of the screen of the player as to that of the mainscreen
+	* @return {Object} - An object containing the type and position of the powerup.
+	*/
+	this.createPowerup = function(leftOffset, topOffset){
+		if(powerup == null) { //Only one powerup will be present on the player&#x27;s screen
+			var type = randomPowerType(); //choose a radom type
+			powerup = game.instantiate(new Powerup(Settings.powerupSize, type));
+			
+			randomPosition = getRandomPosition();
+			powerup.setPosition(randomPosition.x, randomPosition.y);
+			createIcon(type);
+
+			powerupRemovalTimer = setTimeout(removePowerup, Settings.removalTime*1000); //set timer so powerup is removed after x seconds.
+			powerupCoolDown((Settings.removalTime * 1000) / 90); //90 because we increment the angle by 4 (360/90 = 4)
+
+			return {t: type, position: {
+					x: randomPosition.x + leftOffset,
+					y: randomPosition.y + topOffset,
+			}};
+		}
+	};
+
+	/**
+	* Returns a random position for the powerup to be placed.
+	*
+	* @method PowerUpController
+	* @return {Object} - The random position generated by the method.
+	*/
+	function getRandomPosition(){
+		var chooser = Math.round(Math.random()); //random 0 or 1
+
+		var width = Settings.canvasWidth;
+		var height = Settings.canvasHeight;
+		var shieldRadius = Settings.shield.radius;
+		var powerupSize = Settings.powerupSize;
+		
+		var dx = Math.round(Math.random() * ((width - powerupSize) - (width/2 + shieldRadius + 2*powerupSize)) + ((shieldRadius + 2*powerupSize) * (1-chooser)));
+		var dy = Math.round(Math.random() * ((height - powerupSize) - (height/2 + shieldRadius + 2*powerupSize)) + ((shieldRadius + 2*powerupSize) * chooser));
+		
+		//randomly decide whether to make x-coordinate negative
+		if(Math.round(Math.random())) dx *= -1;
+		 //randomly decide whether to make y-coordinate negative
+		if(Math.round(Math.random())) dy *= -1;
+
+		return {x: Settings.canvasWidth/2 + dx, y: Settings.canvasHeight/2 + dy};
+	};
+
+	/**
+	* Chooses a random poweruptype depending on the given weight in the settings file.
+	*
+	* @method PowerUpController
+	* @return {number} - The powerup type as a number
+	*/
+	function randomPowerType(){
+		var random = Math.random();
+		var chanceOfSmallShield = Settings.smallShield.chance;
+		var chanceOfBigShield = Settings.bigShield.chance;
+		var chanceOfSmallPole = Settings.smallPole.chance;
+		var chanceOfBigPole = Settings.bigPole.chance;
+		var chanceOfRevert = Settings.revertShield.chance;
+		
+		var sum = chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole + chanceOfBigPole + chanceOfRevert;
+		
+		if(random &lt; chanceOfSmallShield/sum) return e.smallShield;
+		if(random &lt; (chanceOfSmallShield + chanceOfBigShield)/sum) return e.bigShield;
+		if(random &lt; (chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole)/sum) return e.smallPole;
+		if(random &lt; (chanceOfSmallShield + chanceOfBigShield + chanceOfSmallPole + chanceOfBigPole)/sum) return e.bigPole;
+		//else
+		return e.revertShield;
+	};
+
+	/**
+	* Creates an icon depending on the powerup type
+	* Note: each powerup can have its own path to a sprite.
+	*
+	* @method PowerUpController
+	*/
+	function createIcon(_type){
+		switch(_type){
+			case e.smallShield:
+			icon = game.instantiate(new Sprite(Settings.smallShield.path));
+
+			case e.bigShield:
+			icon = game.instantiate(new Sprite(Settings.bigShield.path));
+
+			case e.smallPole:
+			icon = game.instantiate(new Sprite(Settings.smallPole.path));
+
+			case e.bigPole:
+			icon = game.instantiate(new Sprite(Settings.bigPole.path));
+
+			case e.revertShield: 
+			icon = game.instantiate(new Sprite(Settings.revertShield.path));
+		}
+
+		var size = Settings.powerupSize-2;
+		icon.setPosition(powerup.getPosition());
+		icon.setSize({x: size*2, y: size*2});
+		icon.setAnchor({x: -size, y: -size});
+	};
+
+	/**
+	* Checks whether the powerup is tapped by the player
+	*
+	* @method PowerUpController#checkPowerup
+	* @param {number} _x - The x coordinate of the tap
+	* @param {number} _y - The y coordinate of the tap
+	* @return {Object} - An object containing the global playerID and the powerup type.
+	*/
+	this.checkPowerup = function(_x, _y){
+		if(powerup != null){ //only when a powerup is present!
+			if(!scale) scale = 1;
+			var powerupPos = powerup.getPosition();
+
+			//Check whether distance between powerup center and click is less than radius
+			var inX = Math.abs(powerupPos.x*scale - _x) &lt;= powerup.getRadius();
+			var inY = Math.abs(powerupPos.y*scale - _y) &lt;= powerup.getRadius();
+
+			if(inX &amp;&amp; inY){
+				clearTimeout(powerupRemovalTimer); //remove the timer
+				player.setPowerup(powerup); 
+				playerCoolDown((powerup.getTimer().getTime() * 1000) / 90);
+
+				var type = powerup.getType();
+				removePowerup();
+				return {gid: player.getGlobalID(), t: type};
+			}
+		}
+	};
+
+	/**
+	* Removes the powerup + icon from the user&#x27;s screen
+	* 
+	* @method PowerUpController#removePowerup
+	*/
+	function removePowerup(){
+		if(powerup != null){
+			game.remove(powerup);
+			powerup = null;
+		}
+		if(icon != null) { 
+			game.remove(icon);
+			icon = null;
+		}
+	}
+
+	/**
+	* Instantiates the cooldown belonging to a powerup. 
+	* It also removes any previous timeout that is present (to avoid cooldowns going to quick)
+	*
+	* @method PowerUpController#powerupCoolDown
+	* @param {number} _time - The time in milliseconds at which the setTimeout function is called
+	*/
+	function powerupCoolDown(_time) {
+		clearTimeout(powerupCDTimer); //Clear any old poweruptimeout that might be present
+        powerup.setCDAngle(0);
+        powerupCDTimer = setTimeout(function() { coolDown(powerup, _time); }, _time);
+	}
+	
+	/**
+	* Instantiates the cooldown belonging to a player after a powerup has been activated. 
+	* It also removes any previous timeout that is present (to avoid cooldowns going to quick)
+	*
+	* @method PowerUpController#playerCoolDown
+	* @param {number} _time - The time in milliseconds at which the setTimeout function is called
+	*/
+	function playerCoolDown(_time){
+		clearTimeout(playerCDTimer); //Clear any old playertimeout that might be present
+    	player.getPole().setCDAngle(0);		
+    	playerCDTimer = setTimeout(function() { coolDown(pole, _time); }, _time);
+    }
+
+    /**
+    * The cooldown function that is called by playerCoolDown and powerupCoolDown
+    * It handles the actual coolDown and makes sure the angles are set and the function
+    * is called again (until the cooldown is over)
+    *
+    * @method PowerUpController#coolDown
+    * @param {Object} _object - The object which has the cooldown
+    * @param {numer} _time - The time in milliseconds at which the setTimout function is called
+    */
+	function coolDown(_object, _time){
+		if(_object != null){
+			_object.incrementCDAngle(4);
+			if(_object.getCDAngle() &lt; 360) {
+				if(_object instanceof Pole) {
+					playerCDTimer = setTimeout(function() { coolDown(_object, _time); }, _time);
+				} else {
+					powerupCDTimer = setTimeout(function() { coolDown(_object, _time); }, _time);
+				}
+			}
+		}
+	}
+}
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

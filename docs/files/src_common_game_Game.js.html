@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Game.js</title>
+    <title>src/common/game/Game.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -110,117 +138,62 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: Game.js</h1>
+                        <h1 class="file-heading">File: src/common/game/Game.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 //Game class
 if(typeof module != &#x27;undefined&#x27;){
-	var highResolutionTimer = require(&#x27;./HighResolutionTimer.js&#x27;);
+	var CoreGame = require(&#x27;./CoreGame.js&#x27;);
+	var RenderEngine = require(&#x27;./RenderEngine.js&#x27;);
 }
 /**
 * Game class
 * @class Game
 * @classdesc Game class for setting up the game/field.
 * @constructor
-* @param {function} load - Load function
-* @param {function} update - Update function
-* @param {function} draw - Draw function
+* @param {function} _intialize - Initialize function
+* @param {function} _loadContent - Load function
+* @param {function} _update - Update function
+* @param {function} _draw - Draw function
+* @param {value} _width - The width of the field (optional)
+* @param {value} _height - The height of the field (optional)
+* @param {value} _resW - The width resolution of the field (optional)
+* @param {value} _resH - The height resolution of the field (optional)
 */
-function Game(load, update, draw){
-	var width = 40; 
-	var height = 40;
-	var backGroundColor;
-	var canv;
-	var score = 0;
+function Game(_initialize, _loadContent, _update, _draw, _width, _height, _resW, _resH){
+	var coreGame = new CoreGame(_initialize, _update, _width, _height);
+	var renderEngine = new RenderEngine(_loadContent, _draw, _width, _height, _resW, _resH);
 
 	/**
-	* Draw function
-	* @method Game#parentDraw
+	* Instantiates the given object
+	*
+	* @method Game#instantiate
+	* @return {object} - The instantiated object
 	*/
-	parentDraw = function(){
-		var ctx = canv.getContext(&quot;2d&quot;);
-		
-		clearCanvas();
-		draw(ctx);
+	this.instantiate = function(_object){
+		return coreGame.instantiate(_object);
 	}
 
 	/**
-	* Create function for the game field (canvas)
-	* @method Game#createCanvas
+	* Removes the given object
+	*
+	* @method Game#remove
 	*/
-	createCanvas = function(){
-		var canv = document.createElement(&quot;canvas&quot;);
-		canv.id = &#x27;gameCanvas&#x27;;
-
-		canv.width = width;
-		canv.height = height;
-
-		document.body.appendChild(canv);
-
-		return document.getElementById(&quot;gameCanvas&quot;);
+	this.remove = function(_object){
+		coreGame.remove(_object);
 	}
 
 	/**
-	* Function which updates the width and height
-	* @method Game#updateGameDimensions
+	* Draws the given object
+	*
+	* @method Game#draw
 	*/
-	updateGameDimensions = function(){
-		width=window.innerWidth
-		|| document.documentElement.clientWidth
-		|| document.body.clientWidth;
-
-		height=window.innerHeight
-		|| document.documentElement.clientHeight
-		|| document.body.clientHeight;
-
-		canv.width = width;
-		canv.height = height;
+	this.draw = function(){
+		renderEngine.drawGame(coreGame);
 	}
-
-	/**
-	* Function which clears the playing field
-	* @method Game#clearCanvas
-	*/
-	clearCanvas = function(){
-		var ctx = canv.getContext(&quot;2d&quot;);
-		ctx.clearRect(0, 0, width, height);
-		ctx.fillStyle = backGroundColor;
-		ctx.fillRect(0, 0, width, height);
-	}
-
-	/**
-	* Initializes the variables
-	* @method Game#Initialize
-	*/
-	Initialize = function(){
-		width = document.body.clientWidth;
-		height = document.body.clientHeight;
-		backGroundColor = &quot;#FFFFFF&quot;;
-
-		canv = createCanvas();
-		canv.onmousemove = input.mouseMoveListener;
-		canv.onmousedown = input.mouseDownListener;
-	}
-
-	InitializeMainScreen = function(){
-		width = 100;
-		height = 100;
-		backGroundColor = &quot;#FFFFFF&quot;;
-
-		canv = createCanvas();
-	}
-
-	/**
-	* Starts up the game itself
-	* @method Game#Boot
-	*/
-	Boot = function(){
-		load();
-		highResolutionTimer(17, update);
-	}
-
-	setTimeout(Boot, 1000);
+	
+	
 
 	//====================
 	//Section: gets &amp; sets
@@ -233,54 +206,76 @@ function Game(load, update, draw){
 	this.getInput = function(){
 		return input;
 	}
+	
+	/**
+	* Returns the boolean which represents if the game is updating or not
+	* @method Game#getUpdating
+	* @return{boolean} The value
+	*/
+	this.getUpdating = function(){
+		return coreGame.getUpdating();
+	}
+	
+	/**
+	* Getter for the drawing state of the renderengine
+	*
+	* @method Game#getDrawing
+	* @return{color} The background color
+	*/
+	this.getDrawing = function(){
+		return renderEngine.getDrawing();
+	}
+	
+	/**
+	* Assigns a boolean value whether the game is updating or not
+	* 
+	* @method Game#setUpdating
+	*/
+	this.setUpdating = function(_updating){
+		coreGame.setUpdating(_updating);
+	}
 
 	/**
-	* Returns the background color
-	* @method Game#getBackgroundColor
-	* @return {backGroundColor} The background color
+	* Setter for the drawing state of the renderengine
+	* 
+	* @method Game#setDrawing
 	*/
+	this.setDrawing = function(_drawing){
+		coreGame.setDrawing(_drawing);
+	}
+
+	
+	
 	this.getBackgroundColor = function(){
-		return backGroundColor;
+		return renderEngine.getBackgroundColor();
 	}
 
-	/**
-	* Sets the background color
-	* @method Game#setBackgroundColor
-	*/
 	this.setBackgroundColor = function(_color){
-		backGroundColor = _color;
+		renderEngine.setBackgroundColor(_color);
 	}
 
-	/**
-	* Returns the width of the canvas
-	* @method Game#getWidth
-	*/
 	this.getWidth = function(){
-		return width;
+		return coreGame.getDimensions().width;
 	}
 
-	/**
-	* Returns the height of the canvas
-	* @method Game#getHeight
-	*/
 	this.getHeight = function(){
-		return height;
+		return coreGame.getDimensions().height;
 	}
 
-	/**
-	* Sets the width of the canvas
-	* @method Game#setWidth
-	*/
+	this.getDimensions = function(){
+		return coreGame.getDimensions();
+	}
+
 	this.setWidth = function(_width){
-		width = _width;
+		coreGame.setDimensions(_width, coreGame.getDimensions().height);
 	}
 
-	/**
-	* Sets the height of the canvas
-	* @method Game#setHeight
-	*/
 	this.setHeight = function(_height){
-		height = _height;
+		coreGame.setDimensions(coreGame.getDimensions().width, _height);
+	}
+
+	this.setDimensions = function(_width, _height){
+		coreGame.setDimensions(_width, _height);
 	}
 }
 

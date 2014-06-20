@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Body.js</title>
+    <title>src/common/game/gameobjects/Body.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -110,12 +138,12 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: Body.js</h1>
+                        <h1 class="file-heading">File: src/common/game/gameobjects/Body.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 if(typeof module != &#x27;undefined&#x27;){
-    var Base = require(&#x27;./Base.js&#x27;);
+	var Base = require(&#x27;../../../lib/Base.js&#x27;);
 }
 
 /** 
@@ -124,6 +152,7 @@ if(typeof module != &#x27;undefined&#x27;){
 * @class Body
 * @classdesc The bass class from which the other bodies inherit.
 * @constructor
+* @extends Base
 */
 var Body = Base.extend({
 	
@@ -140,10 +169,9 @@ var Body = Base.extend({
 	*
 	* @method Body#update
 	*/
-	Update: function(){
+	update: function(){
 		//If the body is static it should be immovable
 		if(this.immovable) return;
-
 		//Keep velocityDirection value between 0 and 2pi
 		this.velocityDirection = this.velocityDirection % (2 * Math.PI);
 	
@@ -151,10 +179,12 @@ var Body = Base.extend({
 		this.position.y += this.vectorVelocity.y;
 	},
 
+	handleCollision: function(_other){	}, //abstract function.
+
 	/**
 	* Gets the angle from this object to another object
 	*
-	* @method getAngleToObject
+	* @method Body#getAngleTo
 	* @param _other {Body} the body of the other object
 	*/
 	getAngleTo: function(_other){
@@ -164,8 +194,46 @@ var Body = Base.extend({
 		return angle;
 	},
 
-	handleCollision: function(_other){
-		//Here collisions should be handled
+	/**
+	* Calculates the velocity direction (angle) in which the ball is moving, by using the current x and y speed of the ball.
+	* 
+	* @method Body#calculateVDirection
+	* @return {number} The angle in radians.
+	*/
+	calculateVDirection: function (){ return -Math.atan2(this.vectorVelocity.y, this.vectorVelocity.x);},
+
+	/**
+	* Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.
+	*
+	* @method Body#calculateVelocity
+	* @return {number} The velocity of the ball.
+	*/
+	calculateVelocity: function(){
+		var dx = this.vectorVelocity.x;
+		var dy = this.vectorVelocity.y;
+	  	return Math.sqrt( dx * dx + dy * dy );
+	},
+
+	/**
+	* Reverts the y speed (positive to negative and vice versa).
+	* It also calculates the new angle (speed remains the same).
+	*
+	* @method Body#revertYSpeed
+	*/
+	revertYSpeed: function (){
+		this.vectorVelocity.y = -this.vectorVelocity.y;
+		this.velocityDirection = this.calculateVDirection();
+	},
+
+	/**
+	* Reverts the x speed (positive to negative and vice versa).
+	* It also calculates the new angle (speed remains the same).
+	*
+	* @method Body#revertXSpeed
+	*/
+	revertXSpeed: function (){
+		this.vectorVelocity.x = -this.vectorVelocity.x;
+		this.velocityDirection = this.calculateVDirection();		
 	},
 
 	/**
@@ -187,7 +255,6 @@ var Body = Base.extend({
 	/**
 	* Sets the velocity direction (angle) of the ball. 
 	* It also calculates the corresponding speed values for the x and y axis.
-	* TODO move to CircularBody?
 	* 
 	* @method Body#setVelocityDirection
 	* @param {number} _direction - The direction (angle) of the ball in radians.
@@ -226,53 +293,7 @@ var Body = Base.extend({
 	* @method Body#getXYSpeed
 	* @return {number, number} The x and y speeds of the body.
 	*/
-	getXYSpeed: function(){
-		return this.vectorVelocity;
-	},
-
-	/**
-	* Calculates the velocity direction (angle) in which the ball is moving, by using the current x and y speed of the ball.
-	* 
-	* @method Body#calculateVelocity
-	* @return {number} The angle in radians.
-	*/
-	calculateVDirection: function (){
-		return -Math.atan2(this.vectorVelocity.y, this.vectorVelocity.x);
-	},
-
-	/**
-	* Calculates the velocity at which the ball is moving, by using the current x and y speed of the ball.
-	*
-	* @method Body#calculateVDirection
-	* @return {number} The velocity of the ball.
-	*/
-	calculateVelocity: function(){
-		var dx = this.vectorVelocity.x;
-		var dy = this.vectorVelocity.y;
-	  	return Math.sqrt( dx * dx + dy * dy );
-	},
-
-	/**
-	* Reverts the y speed (positive to negative and vice versa).
-	* It also calculates the new angle (speed remains the same).
-	*
-	* @method Body#revertYSpeed
-	*/
-	revertYSpeed: function (){
-		this.vectorVelocity.y = -this.vectorVelocity.y;
-		this.velocityDirection = this.calculateVDirection();
-	},
-
-	/**
-	* Reverts the x speed (positive to negative and vice versa).
-	* It also calculates the new angle (speed remains the same).
-	*
-	* @method Body#revertXSpeed
-	*/
-	revertXSpeed: function (){
-		this.vectorVelocity.x = -this.vectorVelocity.x;
-		this.velocityDirection = this.calculateVDirection();		
-	},
+	getXYSpeed: function(){ return this.vectorVelocity; },
 
 	/**
 	* Retrieves the position.
@@ -280,9 +301,7 @@ var Body = Base.extend({
 	* @method Body#getPosition
 	* @return {number, number} The x and y coordinate the position of the body.
 	*/
-	getPosition: function (){
-		return this.position;
-	},
+	getPosition: function (){ return {x: Math.round(this.position.x), y: Math.round(this.position.y)}; },
 
 	/**
 	* Retrieves the velocity of the body.
@@ -290,19 +309,23 @@ var Body = Base.extend({
 	* @method Body#getVelocity
 	* @return {number} The current velocity of the body.
 	*/
-	getVelocity: function (){
-		return this.velocity;
-	},
+	getVelocity: function (){ return this.velocity; },
 
 	/**
 	* Retrieves the velocity direction (angle) of the body.
 	*
-	* @method Body#getAngle
+	* @method Body#getVelocityDirection
 	* @return {number} The current angle of the body in radians.
 	*/
-	getVelocityDirection: function(){
-		return this.velocityDirection;
-	}
+	getVelocityDirection: function(){ return this.velocityDirection; },
+
+	/**
+	* Retrieves the velocity of the body.
+	*
+	* @method Body#getVectorVelocity
+	* @return {number, number} The x and y velocities of the body.
+	*/
+	getVectorVelocity: function(){ return this.vectorVelocity; }
 });
 
 if(typeof module != &#x27;undefined&#x27;){

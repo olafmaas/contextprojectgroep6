@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Collision</title>
+    <title>PowerupTimer</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -110,7 +138,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Collision Class</h1>
+                        <h1>PowerupTimer Class</h1>
 <div class="box meta">
     
 
@@ -118,7 +146,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/Collision.js.html#l1"><code>Collision.js:1</code></a>
+            Defined in: <a href="../files/src_common_game_time_RandomTimer.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;RandomTimer.js:5</code></a>
         </div>
     
 
@@ -130,15 +158,15 @@
 
 
 <div class="box intro">
-    <p>Collision class</p>
+    <p>PowerupTimer class</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Collision" class="method item">
-    <h3 class="name"><code>Collision</code></h3>
+        <div id="method_PowerupTimer" class="method item">
+    <h3 class="name"><code>PowerupTimer</code></h3>
 
     
         <div class="args">
@@ -146,25 +174,7 @@
             
                 <li class="arg">
                     
-                        <code>_object1</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>_object2</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>_funcAfter</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>_this</code>
+                        <code>_time</code>
                     
                 </li>
             
@@ -197,7 +207,7 @@
             
         
         
-        <a href="../files/Collision.js.html#l1"><code>Collision.js:1</code></a>
+        <a href="../files/src_common_game_time_RandomTimer.js.html#l5"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;RandomTimer.js:5</code></a>
         
         </p>
 
@@ -219,69 +229,15 @@
             
                 <li class="param">
                     
-                        <code class="param-name">_object1</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">_time</code>
+                        <span class="type">Time</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The first object for the collision (No groups)</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">_object2</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The secod object for the collision (Can be a group)</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">_funcAfter</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>A function which will be triggered after the collision handling (Optional)</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">_this</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The &#39;this&#39; object that will be used as parameter in the function triggered after the collision (Optional)</li>
+<li>The time from which will be counted down.</li>
 </ul>
 
                     </div>
@@ -324,7 +280,14 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_Collision#execute">Collision#execute</a>
+                                <a href="#method_PowerupTimer#count">PowerupTimer#count</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_PowerupTimer#count">PowerupTimer#count</a>
 
                                 
                                 
@@ -346,11 +309,21 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_Collision#execute" class="method item">
-    <h3 class="name"><code>Collision#execute</code></h3>
+                    <div id="method_PowerupTimer#count" class="method item">
+    <h3 class="name"><code>PowerupTimer#count</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_this</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -378,7 +351,7 @@
             
         
         
-        <a href="../files/Collision.js.html#l18"><code>Collision.js:18</code></a>
+        <a href="../files/src_common_game_time_PowerupTimer.js.html#l20"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;PowerupTimer.js:20</code></a>
         
         </p>
 
@@ -389,12 +362,127 @@
     </div>
 
     <div class="description">
-        <p>Executes the collision depending on the parameters that are set.
-In case the funcAfter parameter is set, this function will be triggered 
-when handleCollision returns true;</p>
+        <p>Counts one down from the initial time for the powerup. When the timer reaches 0, it is stopped</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_this</code>
+                        <span class="type">This</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>It needs a reference to the original &#39;this&#39;, otherwise the variable will mess it up.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_PowerupTimer#count" class="method item">
+    <h3 class="name"><code>PowerupTimer#count</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>_this</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_common_game_time_RandomTimer.js.html#l22"><code>src&#x2F;common&#x2F;game&#x2F;time&#x2F;RandomTimer.js:22</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Counts one down from the initial time for the powerup. When the timer reaches 0, it is stopped</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">_this</code>
+                        <span class="type">This</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>It needs a reference to the original &#39;this&#39;, otherwise the variable will mess it up.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     

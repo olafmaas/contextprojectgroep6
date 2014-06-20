@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ShieldBody.js</title>
+    <title>src/common/game/gameobjects/ShieldBody.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,19 +43,33 @@
             
                 <li><a href="../classes/Ball.html">Ball</a></li>
             
-                <li><a href="../classes/Body.html">Body</a></li>
+                <li><a href="../classes/BallController.html">BallController</a></li>
             
-                <li><a href="../classes/Camera.html">Camera</a></li>
+                <li><a href="../classes/Block.html">Block</a></li>
+            
+                <li><a href="../classes/Body.html">Body</a></li>
             
                 <li><a href="../classes/CircularBody.html">CircularBody</a></li>
             
-                <li><a href="../classes/Collision.html">Collision</a></li>
+                <li><a href="../classes/CollisionDetection.html">CollisionDetection</a></li>
             
                 <li><a href="../classes/ColorGenerator.html">ColorGenerator</a></li>
             
+                <li><a href="../classes/CoreGame.html">CoreGame</a></li>
+            
+                <li><a href="../classes/Drawer.html">Drawer</a></li>
+            
+                <li><a href="../classes/Enum.html">Enum</a></li>
+            
                 <li><a href="../classes/Game.html">Game</a></li>
             
+                <li><a href="../classes/GameGrid.html">GameGrid</a></li>
+            
+                <li><a href="../classes/GridCalc.html">GridCalc</a></li>
+            
                 <li><a href="../classes/Group.html">Group</a></li>
+            
+                <li><a href="../classes/IdDistributor.html">IdDistributor</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
@@ -63,9 +77,23 @@
             
                 <li><a href="../classes/Player.html">Player</a></li>
             
+                <li><a href="../classes/PlayerTimer.html">PlayerTimer</a></li>
+            
                 <li><a href="../classes/Pole.html">Pole</a></li>
             
+                <li><a href="../classes/Powerup.html">Powerup</a></li>
+            
+                <li><a href="../classes/PowerUpController.html">PowerUpController</a></li>
+            
+                <li><a href="../classes/PowerupTimer.html">PowerupTimer</a></li>
+            
+                <li><a href="../classes/RenderEngine.html">RenderEngine</a></li>
+            
+                <li><a href="../classes/ScoreLabel.html">ScoreLabel</a></li>
+            
                 <li><a href="../classes/Shield.html">Shield</a></li>
+            
+                <li><a href="../classes/Shieldbody.html">Shieldbody</a></li>
             
                 <li><a href="../classes/Sprite.html">Sprite</a></li>
             
@@ -110,20 +138,24 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: ShieldBody.js</h1>
+                        <h1 class="file-heading">File: src/common/game/gameobjects/ShieldBody.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 //The shield body class
 if(typeof module != &#x27;undefined&#x27;){
     var CircularBody = require(&#x27;./CircularBody.js&#x27;);
-	var Input = require(&#x27;./Input.js&#x27;);
 	var Body = require(&#x27;./Body.js&#x27;);
-	var IDDistributor = require(&#x27;./IDDistributor.js&#x27;);
+	var Input = require(&#x27;../Input.js&#x27;);
+	var IDDistributor = require(&#x27;../util/IDDistributor.js&#x27;);
 }  
 /**
-*
-*
+* Constructor for the shield body
+* @class Shieldbody
+* @classdesc Shieldbody class
+* @constructor
+* @extends Body
+* @param {shield} _parent - The shield object
 */
 var ShieldBody = Body.extend({
 	angle: 0,
@@ -155,37 +187,62 @@ var ShieldBody = Body.extend({
 	},
 
 	/**
-	* Method to handle a collision
-	* @method Shieldbody#handleIndividual
-	* @param {Body} _other - The other item that collides
+	* Checks whether two objects are the same by comparing ID&#x27;s
+	*
+	* @method ShieldBody#equals
+	* @param {Object} _other - The other object with which it is compared.
 	*/
-	handleIndividual: function(_other){
-		//If the body is static it shouldn&#x27;t respond to collision
-	},
-	
-	getAngle: function(){
-		return this.angle;
-	},
+	equals: function(_other){ return (this.ID == _other.getID()); },
 
-	getRadius: function(){
-		return this.radius;
-	},
+	/**
+	* Sets the angle of the shield
+	* @method ShieldBody#setAngle
+	* @param {number} _angle - The angle of the shieldbody in radians.
+	*/
+	setAngle: function(_angle){ this.angle = _angle; },
 
-	getParentShield: function(){
-		return this.parentShield;
-	},
+	/**
+	* Sets the radius of the shield
+	* @method ShieldBody#setRadius
+	* @param {number} _radius - The radius of the shieldbody.
+	*/
+	setRadius: function(_radius){ this.radius = _radius; },
 
-	setAngle: function(_angle){
-		this.angle = _angle;
-	},
+	/**
+	* Sets the parent of the shield
+	* @method ShieldBody#setParentShield
+	* @param {Shield} _parentShield - The shield to which the body belongs.
+	*/
+	setParentShield: function(_parentShield){ this.parentShield = _parentShield; },
 
-	setRadius: function(_radius){
-		this.radius = _radius;
-	},
+	/**
+	* Returns the angle of the shield
+	* @method ShieldBody#getAngle
+	* @return {number} - The angle in radians
+	*/
+	getAngle: function(){ return this.angle; },
 
-	setParentShield: function(_parentShield){
-		this.parentShield = _parentShield;
-	}
+	/**
+	* Returns the radius of the shield
+	* @method ShieldBody#getRadius
+	* @return {number} - The radius of the shieldbody
+	*/
+	getRadius: function(){ return this.radius; },
+
+	/**
+	* Returns the parent of the shield
+	* @method ShieldBody#getParentShield
+	* @return {Shield} - The shield belonging to this shieldbody
+	*/
+	getParentShield: function(){ return this.parentShield; },
+
+	/**
+	* Retrieves the ID of the shieldBody
+	*
+	* @method ShieldBody#getID
+	* @return {number} The unique ID of the shieldBody
+	*/
+	getID: function(){ return this.ID; }
 });
 
 if(typeof module != &#x27;undefined&#x27;){
