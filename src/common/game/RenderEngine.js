@@ -95,9 +95,6 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 			|| document.documentElement.clientHeight
 			|| document.body.clientHeight;
 
-		windowWidth -= 2;	//border
-		windowHeight -= 2;
-
         if(hasResolution()){
         	this.updateResolution(windowRatio, canvasRatio)
         }else{
