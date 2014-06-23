@@ -70,6 +70,10 @@ function ServerGame(_socketHandler){
 			return playerIDs[member.getGlobalID()];
 		}
 	};
+
+	this.getPlayerCount = function(){
+		
+	}
 	
 	/**
 	* Add a new client, create a new player, pole and shield. 

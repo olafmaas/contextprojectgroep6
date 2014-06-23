@@ -146,8 +146,8 @@ function SocketHandler(_io){
 	this.countClients = function(){
 		var count = 0;
 
-		for(var i = 0; i < clientSockets.length; i++){
-			if(clientSockets[i] !== undefined)
+		for(var socketID in clientSockets){
+			if(clientSockets[socketID] !== undefined)
 				count++;
 		}
 
