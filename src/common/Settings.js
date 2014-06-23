@@ -78,7 +78,8 @@ var Settings = {
 	/**** POLE ****/
 	pole: {
 		size: 10,
-		color: "#8CFF8E"
+		color: "#8CFF8E",
+		maxsize: 60
 	},
 
 	/**** SHIELD ****/
