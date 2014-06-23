@@ -35,7 +35,7 @@ function PlayerSocketHandler() {
 
         checkScreenRotation();
         addViewport();
-        window.ontouchmove = handleTouchMove; //Add this eventlistener
+        window.ontouchmove = sendShieldAngle; //Add this eventlistener
 	});
 
 	socket.on("cheaterDetected", function(){
@@ -107,10 +107,10 @@ function PlayerSocketHandler() {
 	//When a mouse/finger is dragged across the screen,
 	//the shieldangle should be updated
 	window.onmousemove = sendShieldAngle;
-	window.ontouchmove = sendShieldAngle;
 
 	//Sends the shield angle to the sockethandler
-	function sendShieldAngle() {
+	function sendShieldAngle(e) {
+		e.preventDefault();
 		if(shield != undefined){
 			socket.emit('shieldAngle', shield.getAngle());
 		}
