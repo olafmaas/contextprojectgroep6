@@ -4,6 +4,8 @@ var handleCollision = require('../common/game/CollisionDetection.js');
 var Client = require('../common/Client.js');
 var e = require('../common/Enums.js');
 
+var S = require('../common/Settings.js');
+
 function SocketHandler(_io){
 	var io = _io;
 	var mainScreenSocket = {emit:function(){false}}; //If the mainscreen is not instantiated this function is used;
@@ -22,17 +24,20 @@ function SocketHandler(_io){
 	//Handles player connection and listeners
 	this.connectClient = function(socket, serverGame){
 		clientSockets[socket.id] = socket;
+		var clientCount = this.countClients();
+		console.log(clientCount);
 
 		socket.on('userName', function (name){
 			var checkName = name.toLowerCase();
 			if(!serverGame.hasName(socket.id)){
-				if(serverGame.isNameAvailable(checkName)){
+				if(serverGame.isNameAvailable(checkName) && clientCount < S.playerLimit){
 					serverGame.addClient(socket.id, socket);
 					serverGame.registerName(checkName, socket.id);
 					socket.emit('showPlayerName', name); //Set the normal name (with uppercases) to the player
 					setClientListeners(socket, serverGame);
+				}else if(clientCount >= S.playerLimit){
+					socket.emit('gameFull');
 				}else{
-					console.log('Username already in use');
 					socket.emit('userNameInUse');
 				}
 			}else{
@@ -56,7 +61,8 @@ function SocketHandler(_io){
 			console.log('Client ' + data);
 			serverGame.deleteClient(socket.id);
  			mainScreenSocket.emit('removePlayer', socket.id);
-		});
+ 			clientSockets[socket.id] = undefined;
+ 		});
 
 		socket.on('powerupSpawned', function (_playerid, _powerupType, _location){
 			mainScreenSocket.emit('powerupSpawned', _playerid, _powerupType, _location);
@@ -134,6 +140,19 @@ function SocketHandler(_io){
 		return mainScreenSocket.emit();
 	};
 
+	//////////////////
+	//   COUNTERS   //
+	//////////////////
+	this.countClients = function(){
+		var count = 0;
+
+		for(var i = 0; i < clientSockets.length; i++){
+			if(clientSockets[i] !== undefined)
+				count++;
+		}
+
+		return count;
+	};
 };
 
 module.exports = SocketHandler;
