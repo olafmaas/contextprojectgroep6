@@ -16,7 +16,7 @@ var tempImage;
 function init(){
     balls = new Group(Ball);
     audioManager = new AudioManager()
-    audioManager.addTrack("ballCollision", "./assets/collide.wav")
+    audioManager.addTrack("ballCollision", "./assets/collide.mp3")
 };
 
 //Creates the temporary image that is visible at the start of the game.

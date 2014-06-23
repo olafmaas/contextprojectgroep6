@@ -57,20 +57,18 @@ var Pole = Ball.extend({
 	},
 
 	indicateJoin: function(){
-		var i = 0;
-		this.setColor(Settings.joinIndicator.color);
-		var pole = this;
-		setInterval(function() { 
-			i++; 
-			if (i < Settings.joinIndicator.times) { 
-				if(pole.getColor() == Settings.joinIndicator.color){
-					pole.setColor(Settings.pole.color);
-				} else {
-					pole.setColor(Settings.joinIndicator.color);
-				};
+		refThis = this;
+		for(var i = 0 ; i < Settings.joinIndicator.times ; i++){
+			if(i % 2){
+				setTimeout(function() { 
+					refThis.setColor(Settings.pole.color);
+				 }, Settings.joinIndicator.interval*i);
+			} else {
+				setTimeout(function() { 
+					refThis.setColor(Settings.joinIndicator.color);
+				 }, Settings.joinIndicator.interval*i);
 			}
-		}, 
-		Settings.joinIndicator.interval);
+		}	
 	},
 
 	/**
