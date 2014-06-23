@@ -29,8 +29,6 @@ function PlayerSocketHandler() {
 
 		//Show the player where he is on the mainscreen
 		pole.indicateJoin();
-		//Make everything fullscreen
-        screenfull.request(); //temporarily disabled 
 
         //make canvas visible again
         var gameElem = document.getElementById("gameCanvas");
@@ -62,6 +60,8 @@ function PlayerSocketHandler() {
         	error.innerHTML = "Username is too long.";
         } else {
         	socket.emit('userName', n);
+        	//Make everything fullscreen
+        	screenfull.request(); //temporarily disabled 
         }
 	}
 
