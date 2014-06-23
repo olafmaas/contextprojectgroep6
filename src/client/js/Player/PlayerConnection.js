@@ -35,6 +35,7 @@ function PlayerSocketHandler() {
 
         checkScreenRotation();
         addViewport();
+        window.ontouchmove = handleTouchMove; //Add this eventlistener
 	});
 
 	socket.on("cheaterDetected", function(){
@@ -153,8 +154,8 @@ function PlayerSocketHandler() {
 	});
 
 	//For powerups, it should be able to click/tap on them
-	window.ontouchstart = handleTouchStart;
 	window.onmousedown = handleMouseDown;
+	window.ontouchstart = handleTouchStart;
 
 	//Handles the mousedown event and checks whether a powerup is clicked.
 	//If the powerup is clicked, it is sent to the server
@@ -175,6 +176,11 @@ function PlayerSocketHandler() {
 			socket.emit('powerupClicked', res.gid, res.t);
 		}
 	};
+
+	//
+	function handleTouchMove(e){
+		e.preventDefault();
+	}
 
 	////////////////
 	// Highscores //
