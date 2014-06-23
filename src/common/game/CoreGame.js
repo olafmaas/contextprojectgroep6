@@ -113,7 +113,9 @@ function CoreGame(_initialize, _update, _width, _height){
 	this.remove = function(_element){
 		GroupManager.removeMember(_element);
 		elementIndex = elements.indexOf(_element);
-		elements.splice(elementIndex, 1);
+		if(elementIndex > -1){
+			elements.splice(elementIndex, 1);
+		}
 	}
 
 	//this.boot();
