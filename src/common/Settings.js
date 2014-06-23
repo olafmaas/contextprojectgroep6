@@ -95,7 +95,9 @@ var Settings = {
 		//Positions of initial ball
 		x: 100,
 		y: 100,
-		nrOfNewBalls: 3 //Number of new balls created per player. 
+		nrOfNewBalls: 3, //Number of new balls created per player. 
+		colors: ["#988CFF", "#FF3636", "#8CE4FF", "#90FF8C", "#F4FF8C", "#FFBC8C", 
+	"#FF8CF5", "#FF40DC", "#4640FF", "#29FFFB", "#38FF49", "#F5FF38"]
 	},
 
 	player: {
