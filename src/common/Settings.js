@@ -114,7 +114,7 @@ var Settings = {
 	},
 
 	joinIndicator: {
-		times: 10,
+		times: 10,	//must be even!
 		interval: 200,
 		color: 'red'
 	}
