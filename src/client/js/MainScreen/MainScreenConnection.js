@@ -128,7 +128,7 @@ function MainScreenSocketHandler(){
 				player.getPole().setColor(colors[i]);
 				
 				if(player.getPowerup() == null){
-					player.getPole().setRadius(Settings.pole.size + count*2);
+					player.getPole().setRadius(Settings.pole.size + count * Settings.highScore.radIncrStep);
 				}
 			}
 			count--;

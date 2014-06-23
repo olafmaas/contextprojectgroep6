@@ -54,7 +54,7 @@ var HighScores = {
 			
 			if(player != -1){
 				if(player.getPowerup() == null){
-					player.getPole().setRadius(S.pole.size + count*2);
+					player.getPole().setRadius(S.pole.size + count * S.highScore.radIncrStep);
 				}
 			}
 			count--;

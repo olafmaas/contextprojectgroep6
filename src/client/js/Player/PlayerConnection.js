@@ -198,7 +198,7 @@ function PlayerSocketHandler() {
 				player.setPoints(Settings.player.points + (Settings.player.step * count)); //Set points according to position in the highscore top
 				
 				if(player.getPowerup() == null){
-					player.getPole().setRadius(Settings.pole.size + count*2);
+					player.getPole().setRadius(Settings.pole.size + count * Settings.highScore.radIncrStep);
 				}
 			}
 			count--;

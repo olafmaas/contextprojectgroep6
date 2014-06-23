@@ -108,6 +108,7 @@ var Settings = {
 	/**** HIGHSCORE PROPERTIES ****/	
 	highScore: {
 		updateInterval: 5000,
+		radIncrStep: 10,
 		top: 5,
 		colors: ["#FF8C8C","#FFD58C","#ECFF8C","#C6FF8C","#8CFF8E"],//From high to low
 		removalTime: 300000 //in milliseconds, the amount of time the highscore is saved after a disconnect from a player
