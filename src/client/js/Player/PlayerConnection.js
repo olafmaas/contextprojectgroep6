@@ -34,6 +34,7 @@ function PlayerSocketHandler() {
         gameElem.style.display="block";
 
         checkScreenRotation();
+        addViewport();
 	});
 
 	socket.on("cheaterDetected", function(){
@@ -48,6 +49,15 @@ function PlayerSocketHandler() {
 		if(Math.abs(window.orientation) != 90){
 			alert("For an optimal experience please hold your device horizontal.");
 		}
+	}
+
+	//Adds the viewport meta tag when a user is in the game, so he can't scale anymore
+	function addViewport(){
+		var viewPortTag = document.createElement('meta');
+		viewPortTag.id = "viewport";
+		viewPortTag.name = "viewport";
+		viewPortTag.content = "width=device-width, user-scalable=0 initial-scale=1.0; maximum-scale=1.0;";
+		document.getElementsByTagName('head')[0].appendChild(viewPortTag);
 	}
 
 	//Emits the chosen name to the sockethandler to be checked
