@@ -78,7 +78,7 @@ var Settings = {
 	/**** POLE ****/
 	pole: {
 		size: 10,
-		color: "blue"
+		color: "#8CFF8E"
 	},
 
 	/**** SHIELD ****/
@@ -108,8 +108,8 @@ var Settings = {
 	/**** HIGHSCORE PROPERTIES ****/	
 	highScore: {
 		updateInterval: 5000,
-		top: 3,
-		colors: ["#B8E6E6", "#66CCFF", "#3399FF", "#0066FF", "#0000FF"], //from blue to light-blue
+		top: 5,
+		colors: ["#FF8C8C","#FFD58C","#ECFF8C","#C6FF8C","#8CFF8E"],//From high to low
 		removalTime: 300000 //in milliseconds, the amount of time the highscore is saved after a disconnect from a player
 	},
 
