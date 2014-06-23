@@ -13,7 +13,6 @@ function PlayerSocketHandler() {
 	//Shows an error when the chosen username is already in use
 	socket.on('userNameInUse', function (){
 		showError("Username is already in use.");
-		checkScreenRotation();
 	});
 
 	//Sets the playername and shows the canvas when a username is accepted
@@ -33,6 +32,10 @@ function PlayerSocketHandler() {
         //make canvas visible again
         var gameElem = document.getElementById("gameCanvas");
         gameElem.style.display="block";
+
+        checkScreenRotation();
+        addViewport();
+        window.ontouchmove = handleTouchMove; //Add this eventlistener
 	});
 
 	socket.on("cheaterDetected", function(){
@@ -42,10 +45,17 @@ function PlayerSocketHandler() {
 
 	//Checks the initial rotation of the screen and gives an message when the player has the
 	//device currently in portrait mode
-	this.checkScreenRotation = function(){
-		if(Math.abs(window.orientation) !== 90){
+	function checkScreenRotation(){
+		if(Math.abs(window.orientation) != 90){
 			alert("For an optimal experience please hold your device horizontal.");
 		}
+	}
+
+	//Adds the viewport meta tag when a user is in the game, so he can't scale anymore
+	function addViewport(){
+		var v = document.getElementById('viewport');
+		console.log(v.content);
+		v.content = "width=device-width, user-scalable=0 initial-scale=1.0, maximum-scale=1.0";
 	}
 
 	//Emits the chosen name to the sockethandler to be checked
@@ -144,8 +154,8 @@ function PlayerSocketHandler() {
 	});
 
 	//For powerups, it should be able to click/tap on them
-	window.ontouchstart = handleTouchStart;
 	window.onmousedown = handleMouseDown;
+	window.ontouchstart = handleTouchStart;
 
 	//Handles the mousedown event and checks whether a powerup is clicked.
 	//If the powerup is clicked, it is sent to the server
@@ -166,6 +176,11 @@ function PlayerSocketHandler() {
 			socket.emit('powerupClicked', res.gid, res.t);
 		}
 	};
+
+	//
+	function handleTouchMove(e){
+		e.preventDefault();
+	}
 
 	////////////////
 	// Highscores //
