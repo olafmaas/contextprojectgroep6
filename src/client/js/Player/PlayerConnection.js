@@ -16,6 +16,10 @@ function PlayerSocketHandler() {
 		checkScreenRotation();
 	});
 
+	socket.on('gameFull', function(){
+		showError("The current game is full.");
+	})
+
 	//Sets the playername and shows the canvas when a username is accepted
 	//by the server. It also removes the userform.
 	socket.on('showPlayerName', function (_name){
