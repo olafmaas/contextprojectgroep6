@@ -242,8 +242,6 @@ var Block = Base.extend({
 						, this.neighbours[direction].getPosition().top + 2 * ball.getRadius())
 
 				this.neighbours[direction].ballIncoming(b);
-
-				console.log(b.getPosition().x + "pbd" + b.getPosition().y + " " + b.getColor())
 		}, this);
 	},
 
@@ -281,7 +279,6 @@ var Block = Base.extend({
 
 		this.ballsList.forEach(function(b){
 			b.setPosition(b.getPosition().x + dx, b.getPosition().y + dy)
-			console.log(b.getPosition().x + "up" + b.getPosition().y + " " + b.getColor())
 		});
 
 		if(this.player)	this.player.updatePosition(x + Settings.canvasWidth/2, y + Settings.canvasHeight/2)
