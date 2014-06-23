@@ -43,7 +43,7 @@ function PlayerSocketHandler() {
 
 	//Checks the initial rotation of the screen and gives an message when the player has the
 	//device currently in portrait mode
-	this.checkScreenRotation = function(){
+	function checkScreenRotation(){
 		alert(window.orientation);
 		if(Math.abs(window.orientation) != 90){
 			alert("For an optimal experience please hold your device horizontal.");
