@@ -45,7 +45,6 @@ function PlayerSocketHandler() {
 	//Checks the initial rotation of the screen and gives an message when the player has the
 	//device currently in portrait mode
 	function checkScreenRotation(){
-		alert(window.orientation);
 		if(Math.abs(window.orientation) != 90){
 			alert("For an optimal experience please hold your device horizontal.");
 		}
@@ -53,11 +52,9 @@ function PlayerSocketHandler() {
 
 	//Adds the viewport meta tag when a user is in the game, so he can't scale anymore
 	function addViewport(){
-		var viewPortTag = document.createElement('meta');
-		viewPortTag.id = "viewport";
-		viewPortTag.name = "viewport";
-		viewPortTag.content = "width=device-width, user-scalable=0 initial-scale=1.0; maximum-scale=1.0;";
-		document.getElementsByTagName('head')[0].appendChild(viewPortTag);
+		var v = document.getElementById('viewport');
+		console.log(v.content);
+		v.content = "width=device-width, user-scalable=0 initial-scale=1.0, maximum-scale=1.0";
 	}
 
 	//Emits the chosen name to the sockethandler to be checked
