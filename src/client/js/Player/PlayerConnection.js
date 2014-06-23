@@ -13,6 +13,7 @@ function PlayerSocketHandler() {
 	//Shows an error when the chosen username is already in use
 	socket.on('userNameInUse', function (){
 		showError("Username is already in use.");
+		checkScreenRotation();
 	});
 
 	//Sets the playername and shows the canvas when a username is accepted
@@ -28,8 +29,6 @@ function PlayerSocketHandler() {
 
 		//Show the player where he is on the mainscreen
 		pole.indicateJoin();
-		//Make everything fullscreen
-        //screenfull.request(); //temporarily disabled 
 
         //make canvas visible again
         var gameElem = document.getElementById("gameCanvas");
@@ -40,6 +39,14 @@ function PlayerSocketHandler() {
 		console.log("You shall not succeed!")
 		window.location.replace("http://www.youtube.com/watch?v=dQw4w9WgXcQ");
 	})
+
+	//Checks the initial rotation of the screen and gives an message when the player has the
+	//device currently in portrait mode
+	this.checkScreenRotation = function(){
+		if(Math.abs(window.orientation) !== 90){
+			alert("For an optimal experience please hold your device horizontal.");
+		}
+	}
 
 	//Emits the chosen name to the sockethandler to be checked
 	this.checkName = function (n){
@@ -53,6 +60,8 @@ function PlayerSocketHandler() {
         	error.innerHTML = "Username is too long.";
         } else {
         	socket.emit('userName', n);
+        	//Make everything fullscreen
+        	screenfull.request(); //temporarily disabled 
         }
 	}
 

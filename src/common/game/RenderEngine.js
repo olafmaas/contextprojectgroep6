@@ -107,8 +107,8 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	updateResolution = function(windowRatio, canvasRatio){
 		if (windowRatio < canvasRatio) {
-	            var height = window.innerHeight;
-	            scale = window.innerHeight/canvas.height;
+	        var height = window.innerHeight;
+	        scale = window.innerHeight/canvas.height;
     	} 
 		else {
             var width = window.innerWidth;

@@ -72,7 +72,7 @@ var Settings = {
 	}, 
 
 	/**** CANVAS PROPERTIES ****/
-	canvasWidth: 800,
+	canvasWidth: 775,
 	canvasHeight: 450,
 	
 	/**** POLE ****/
