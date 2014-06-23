@@ -58,8 +58,8 @@ function SocketHandler(_io){
  			mainScreenSocket.emit('removePlayer', socket.id);
 		});
 
-		socket.on('powerupSpawned', function (_powerupType, _location){
-			mainScreenSocket.emit('powerupSpawned', _powerupType, _location);
+		socket.on('powerupSpawned', function (_playerid, _powerupType, _location){
+			mainScreenSocket.emit('powerupSpawned', _playerid, _powerupType, _location);
 		});
 	};
 
