@@ -78,8 +78,8 @@ function MainScreenSocketHandler(){
 	// Powerup updates //
 	/////////////////////	
 
-	socket.on('powerupSpawned', function (_ptype, _plocation){
-		PUcontroller.createPowerup(_ptype, _plocation);
+	socket.on('powerupSpawned', function (_pid, _ptype, _plocation){
+		PUcontroller.createPowerup(_pid, _ptype, _plocation);
 	});
 
 	socket.on('powerupClicked', function (_pid, _ptype) {

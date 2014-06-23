@@ -134,7 +134,7 @@ function PlayerSocketHandler() {
 	socket.on('addPowerup', function () {
 		res = PUController.createPowerup(leftOffset, topOffset);
 		if(res){
-			socket.emit('powerupSpawned', res.t, res.position)		
+			socket.emit('powerupSpawned', player.getGlobalID(), res.t, res.position)		
 		}
 	});
 
