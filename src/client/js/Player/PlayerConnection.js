@@ -13,7 +13,6 @@ function PlayerSocketHandler() {
 	//Shows an error when the chosen username is already in use
 	socket.on('userNameInUse', function (){
 		showError("Username is already in use.");
-		checkScreenRotation();
 	});
 
 	//Sets the playername and shows the canvas when a username is accepted
@@ -33,6 +32,8 @@ function PlayerSocketHandler() {
         //make canvas visible again
         var gameElem = document.getElementById("gameCanvas");
         gameElem.style.display="block";
+
+        checkScreenRotation();
 	});
 
 	socket.on("cheaterDetected", function(){
@@ -43,7 +44,8 @@ function PlayerSocketHandler() {
 	//Checks the initial rotation of the screen and gives an message when the player has the
 	//device currently in portrait mode
 	this.checkScreenRotation = function(){
-		if(Math.abs(window.orientation) !== 90){
+		alert(window.orientation);
+		if(Math.abs(window.orientation) != 90){
 			alert("For an optimal experience please hold your device horizontal.");
 		}
 	}
