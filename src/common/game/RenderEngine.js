@@ -95,6 +95,9 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 			|| document.documentElement.clientHeight
 			|| document.body.clientHeight;
 
+		windowWidth -= 2;	//border
+		windowHeight -= 2;
+
         if(hasResolution()){
         	this.updateResolution(windowRatio, canvasRatio)
         }else{
@@ -107,8 +110,8 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	updateResolution = function(windowRatio, canvasRatio){
 		if (windowRatio < canvasRatio) {
-	            var height = window.innerHeight;
-	            scale = window.innerHeight/canvas.height;
+	        var height = window.innerHeight;
+	        scale = window.innerHeight/canvas.height;
     	} 
 		else {
             var width = window.innerWidth;
