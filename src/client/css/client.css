@@ -31,7 +31,7 @@
     height: 30px;
     padding-left: 10px;
     padding-right: 10px;
-    color: white;
+    color: black;
 }
 
 #boxHeader {
@@ -65,7 +65,7 @@
     font-size: 10pt;
     margin-left: 35px;
     margin-top: 5px;
-    color: white;
+    color: black;
 }
 
 #hint {
