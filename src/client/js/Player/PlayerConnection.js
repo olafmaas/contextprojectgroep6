@@ -15,12 +15,19 @@ function PlayerSocketHandler() {
 		showError("Username is already in use.");
 	});
 
+	socket.on('gameFull', function(){
+		showError("The current game is full.");
+	})
+
 	//Sets the playername and shows the canvas when a username is accepted
 	//by the server. It also removes the userform.
 	socket.on('showPlayerName', function (_name){
 		player.setName(_name);
 		player.setScore(0);
 		nameLabel.setText(_name);
+
+		//Make everything fullscreen
+        screenfull.request();
 
 		//Remove the username part
 		var elem = document.getElementById("removeAfterStart");
@@ -60,18 +67,14 @@ function PlayerSocketHandler() {
 
 	//Emits the chosen name to the sockethandler to be checked
 	this.checkName = function (n){
-		var error = document.getElementById("error");
-
 		if(n.indexOf("<") != -1){
-            error.innerHTML = "Brackets are not allowed";
+            showError("Brackets are not allowed");
         } else if(n.length == 0 || n == "null"){
-        	error.innerHTML = "name can not be empty or null";
+        	showError("name can not be empty or null");
         } else if(n.length >= Settings.player.maxNameLength){
-        	error.innerHTML = "Username is too long.";
+        	showError("Username is too long.");
         } else {
         	socket.emit('userName', n);
-        	//Make everything fullscreen
-        	screenfull.request(); //temporarily disabled 
         }
 	}
 
@@ -237,6 +240,7 @@ function PlayerSocketHandler() {
 	//Log when a connection fails.
 	socket.on('connect_failed', function (reason){ 
 		console.error('connect_failed: ', reason);
+		showError("Failed to make a connection");
 	});
 
 	//Log when an error occurs

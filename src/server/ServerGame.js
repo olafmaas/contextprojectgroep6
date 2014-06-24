@@ -70,6 +70,17 @@ function ServerGame(_socketHandler){
 			return playerIDs[member.getGlobalID()];
 		}
 	};
+
+	//Get the player count
+	this.getPlayerCount = function(){
+		var count = 0;
+
+		for(var gid in clientList){
+			if(clientList[gid] !== undefined) count++;
+		}
+
+		return count;
+	}
 	
 	/**
 	* Add a new client, create a new player, pole and shield. 
@@ -249,6 +260,9 @@ function ServerGame(_socketHandler){
 			}
 		}
 	};
+
+	//Function to count the players
+
 
 	//If you want some fancy function for the number of balls change ballsToBeAdded and ballsToBeRemoved.
 	function nofBallsToBeAdded(){ return getNewBallsPerPlayer();};
