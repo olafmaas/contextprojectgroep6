@@ -91,14 +91,22 @@ Drawer = function(_canvasContext){
 
 	this.drawPowerupSkin = function (_pole){
 		var powerup = _pole.player.getPowerup();
-		if(powerup != null && _pole.getPowerupDraw()){
-			canvasContext.beginPath();
-			canvasContext.arc(_pole.getBody().position.x, _pole.getBody().position.y, _pole.getRadius() + Settings.pole.ring, 0, Math.PI*2, true);
-			canvasContext.closePath();
+		if(powerup != null && _pole.getPowerupDraw() && _pole.getCDAngle() > 0){
+			var startAngle = Settings.startAngle;
+			var endAngle = (startAngle + _pole.getCDAngle()) % 360;
 
 			canvasContext.fillStyle = powerup.color;
+			canvasContext.moveTo(_pole.getPosition().x, _pole.getPosition().y)
+			canvasContext.beginPath();
+			canvasContext.arc(
+				_pole.getBody().position.x, _pole.getBody().position.y, _pole.getRadius() + Settings.pole.ring, startAngle * Math.PI / 180,
+				endAngle * Math.PI / 180, true
+			);
+			canvasContext.lineTo(_pole.getPosition().x, _pole.getPosition().y);
+			
 			canvasContext.fill();	
-			this.drawCoolDown(_pole, Settings.pole.ring+2);
+			canvasContext.closePath();
+			//this.drawCoolDown(_pole, Settings.pole.ring+2);
 		}
 	}
 
