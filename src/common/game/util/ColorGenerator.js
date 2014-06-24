@@ -1,3 +1,7 @@
+if(typeof module != 'undefined'){
+	var Settings = require('../../Settings.js');
+}
+
 /**
 * Class for a color generator
 * @class ColorGenerator
@@ -6,7 +10,7 @@
 */
 var ColorGenerator = {	
 
-	colors: Setting.balls.colors,
+	colors: Settings.ball.colors,
 
 	/**
 	* Returns a random color from the predefined color list above.

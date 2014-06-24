@@ -19,7 +19,7 @@ var Settings = {
 	//want anders wordt de oude powerup overschreden met de nieuwe timer :D hier nog een fix voor zoeken.
 	smallShield: {
 		time: 10,
-		color: "blue",
+		color: "lightblue",
 		length: 3.5,
 		path: "../client/img/powerup.png",
 		chance: 0.15
