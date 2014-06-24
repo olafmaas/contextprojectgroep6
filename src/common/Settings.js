@@ -44,7 +44,7 @@ var Settings = {
 	bigPole: {
 		time: 10,
 		color: "aqua",
-		radius: 1.5, //by which factor the pole will be multiplied
+		radius: 1.2, //by which factor the pole will be multiplied
 		path: "../client/img/powerup.png",
 		chance: 0.15
 	},
@@ -80,7 +80,7 @@ var Settings = {
 	/**** POLE ****/
 	pole: {
 		size: 10,
-		color: "#8CFF8E",
+		color: "blue",
 		maxsize: 60
 	},
 
@@ -102,7 +102,7 @@ var Settings = {
 		colors: ["#988CFF", "#FF3636", "#8CE4FF", "#90FF8C", "#F4FF8C", "#FFBC8C", 
 	"#FF8CF5", "#FF40DC", "#4640FF", "#29FFFB", "#38FF49", "#F5FF38"]
 	},
-
+	
 	player: {
 		maxNameLength: 20, //maximum number of characters that can be used for a username
 		//Points for hitting player is now removed
@@ -113,10 +113,10 @@ var Settings = {
 	/**** HIGHSCORE PROPERTIES ****/	
 	highScore: {
 		updateInterval: 5000,
-		radIncrStep: 10,
+		radIncrStep: 3,
 		top: 5,
-		colors: ["#FF8C8C","#FFD58C","#ECFF8C","#C6FF8C","#8CFF8E"],//From high to low
-		removalTime: 300000 //in milliseconds, the amount of time the highscore is saved after a disconnect from a player
+		colors: ["#FF1919","#E61616","#CF1414","#BA1212","#A71010"], //From high to low
+		removalTime: 300000 //In milliseconds, the amount of time the highscore is saved after a disconnect from a player
 	},
 
 	joinIndicator: {
