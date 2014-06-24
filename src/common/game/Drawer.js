@@ -93,12 +93,12 @@ Drawer = function(_canvasContext){
 		var powerup = _pole.player.getPowerup();
 		if(powerup != null && _pole.getPowerupDraw()){
 			canvasContext.beginPath();
-			canvasContext.arc(_pole.getBody().position.x, _pole.getBody().position.y, _pole.getRadius()+2, 0, Math.PI*2, true);
+			canvasContext.arc(_pole.getBody().position.x, _pole.getBody().position.y, _pole.getRadius() + Settings.pole.ring, 0, Math.PI*2, true);
 			canvasContext.closePath();
 
 			canvasContext.fillStyle = powerup.color;
 			canvasContext.fill();	
-			this.drawCoolDown(_pole, 4);
+			this.drawCoolDown(_pole, Settings.pole.ring+2);
 		}
 	}
 

@@ -83,7 +83,8 @@ var Settings = {
 		color: "green",
 		hitColor: "red",
 		minsize: 5,
-		maxsize: 60
+		maxsize: 60,
+		ring: 4 //size of the powerup ring around the pole
 	},
 
 	/**** SHIELD ****/
