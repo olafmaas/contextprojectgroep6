@@ -78,53 +78,47 @@ Drawer = function(_canvasContext){
 	* @param {object} _powerup - The powerup object to be drawn
 	*/
 	this.drawPowerup = function (_powerup){
-		canvasContext.beginPath();
-		canvasContext.arc(_powerup.getPosition().x, _powerup.getPosition().y, _powerup.getRadius(), 0, Math.PI*2, true);
-		canvasContext.closePath();
-		
-		canvasContext.fillStyle = _powerup.getColor();
-		canvasContext.fill();
-
-		//Draw the cooldown part
-		this.drawCoolDown(_powerup, 2);
+		drawCoolDown(_powerup, 2); //powerup should have a cooldown effect
 	};
 
+	/**
+	* Draws the ring around the pole when a powerup is active
+	* Note: this only happens when the pole is allowed to have a ring (so not on mainscreen)
+	*
+	* @method Draw#drawPowerupSkin
+	* @param {object} _pole - The pole around which the ring will be drawn
+	*/
 	this.drawPowerupSkin = function (_pole){
 		var powerup = _pole.player.getPowerup();
-		if(powerup != null && _pole.getPowerupDraw() && _pole.getCDAngle() > 0){
-			var startAngle = Settings.startAngle;
-			var endAngle = (startAngle + _pole.getCDAngle()) % 360;
-
-			canvasContext.fillStyle = powerup.color;
-			canvasContext.moveTo(_pole.getPosition().x, _pole.getPosition().y)
-			canvasContext.beginPath();
-			canvasContext.arc(
-				_pole.getBody().position.x, _pole.getBody().position.y, _pole.getRadius() + Settings.pole.ring, startAngle * Math.PI / 180,
-				endAngle * Math.PI / 180, true
-			);
-			canvasContext.lineTo(_pole.getPosition().x, _pole.getPosition().y);
-			
-			canvasContext.fill();	
-			canvasContext.closePath();
-			//this.drawCoolDown(_pole, Settings.pole.ring+2);
+		if(powerup != null && _pole.getPowerupDraw()){
+			drawCoolDown(_pole, Settings.pole.ring, powerup.getColor());
 		}
 	}
 
-	this.drawCoolDown = function (_object, _offset){	
+	/**
+	* Draws the powerup / pole with a cooldown effect
+	*
+	* @method Drawer#drawCoolDown
+	* @param {Object} _object - The object for which the cooldown is drawn
+	* @param {number} _offset - The offset which actually shows the ring around the object
+	* @param {string} _color - Optional; the color of the cooldown ring, or the color of the object if not specified
+	*/
+	this.drawCoolDown = function (_object, _offset, _color){	
 		if(_object.getCDAngle() > 0){
 			var startAngle = Settings.startAngle;
 			var endAngle = (startAngle + _object.getCDAngle()) % 360;
 
-			canvasContext.fillStyle = "black"; //Has to be the current background color
-			canvasContext.moveTo(_object.getPosition().x, _object.getPosition().y);
+			canvasContext.fillStyle = _color || _object.getColor();
+			canvasContext.moveTo(_object.getPosition().x, _object.getPosition().y)
 			canvasContext.beginPath();
 			canvasContext.arc(
-	            _object.getPosition().x, _object.getPosition().y, _object.getRadius() + _offset, startAngle * Math.PI / 180,
-	            endAngle * Math.PI / 180, false
-	        );
+				_object.getBody().position.x, _object.getBody().position.y, _object.getRadius() + _offset, startAngle * Math.PI / 180,
+				endAngle * Math.PI / 180, true
+			);
 			canvasContext.lineTo(_object.getPosition().x, _object.getPosition().y);
-	        canvasContext.fill();
-	        canvasContext.closePath();
+			
+			canvasContext.fill();	
+			canvasContext.closePath();
     	}
 	}
 }
