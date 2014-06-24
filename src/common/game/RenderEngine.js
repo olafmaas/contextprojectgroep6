@@ -38,7 +38,7 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 	* @method RenderEngine#initialize
 	*/
 	initialize = function(){
-		backGroundColor = "black";
+		backGroundColor = Settings.canvasColor;
 		fpsLimit = fpsLimit || 60;
 		initializeCanvas();
 		initializeListeners();

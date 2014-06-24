@@ -13,6 +13,7 @@ var Settings = {
 	port: 5050,
 
 	playerLimit: 30,
+	canvasColor: 'black',
 
 	/**** POWERUP TYPES ****/
 	//NOTE: time mag niet groter zijn dan de minimale spawntijd voor een nieuwe powerup.
