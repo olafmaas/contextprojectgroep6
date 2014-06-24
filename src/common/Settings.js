@@ -81,7 +81,7 @@ var Settings = {
 	pole: {
 		size: 10,
 		color: "green",
-		hitColor: "orange",
+		hitColor: "red",
 		maxsize: 60
 	},
 
@@ -100,8 +100,8 @@ var Settings = {
 		x: 100,
 		y: 100,
 		nrOfNewBalls: 3, //Number of new balls created per player. 
-		colors: ["#988CFF", "#FF3636", "#8CE4FF", "#90FF8C", "#F4FF8C", "#FFBC8C", 
-	"#FF8CF5", "#FF40DC", "#4640FF", "#29FFFB", "#38FF49", "#F5FF38"]
+		colors: ["#2237FF", "#FFBA00", "#FF0067", "#838FFF", "#FFD870", "#FFBC8C", 
+	"#FF70AA", "#FF004D", "#7716FF", "#FFE700"]
 	},
 	
 	player: {
