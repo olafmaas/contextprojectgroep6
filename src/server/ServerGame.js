@@ -78,6 +78,8 @@ function ServerGame(_socketHandler){
 		for(var gid in clientList){
 			if(clientList[gid] !== undefined) count++;
 		}
+
+		return count;
 	}
 	
 	/**

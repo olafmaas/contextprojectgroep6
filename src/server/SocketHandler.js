@@ -24,7 +24,7 @@ function SocketHandler(_io){
 	//Handles player connection and listeners
 	this.connectClient = function(socket, serverGame){
 		clientSockets[socket.id] = socket;
-		var clientCount = this.countClients();
+		var clientCount = serverGame.getPlayerCount();
 		console.log(clientCount);
 
 		socket.on('userName', function (name){
