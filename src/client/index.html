@@ -81,7 +81,7 @@
 
         <button id="toggleControls" onclick="toggle()"> Show/hide game info </button> </br>
 
-        <div id="gameControls" style="display: none;">
+        <div id="gameControls" style="display: block;">
             Protect your pole from the incoming balls and show who's the best by ranking up against other players!
 
             <div id="controlHeader">Some basic stuff you might want to know about: </div> <!-- controlHeader -->
@@ -109,7 +109,7 @@
     </body>
 
     <script>
-        var state = true; //Used to toggle between show/hide game info
+        var state = false; //Used to toggle between show/hide game info
         function toggle(){
             var description = document.getElementById("gameControls");
             if(state){
