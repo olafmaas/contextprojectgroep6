@@ -80,7 +80,7 @@ var Settings = {
 	/**** POLE ****/
 	pole: {
 		size: 10,
-		color: "blue",
+		color: "green",
 		maxsize: 60
 	},
 

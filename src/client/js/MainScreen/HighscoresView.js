@@ -58,7 +58,7 @@ HighscoresView = function(){
 	//Adds the html div used for a new score in the highscore list
 	this.newScoreDiv = function(_position, _score){
 		return "<div class=container>" + 
-					"<div class=Position>&nbsp;" + _position + ".</div>" +
+					"<div class=Position>&nbsp;" + "<font color='" + (Settings.highScore.colors[_position] || Settings.pole.color) + "'>" + _position + ".</font>" + "</div>" +
 					"<div class=Name>&nbsp;" + _score.Name + "</div>" +
 					"<div class=Score>" + _score.Score + "</div>" +
 				"</div>";
