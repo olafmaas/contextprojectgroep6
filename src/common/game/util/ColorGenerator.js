@@ -10,7 +10,8 @@ if(typeof module != 'undefined'){
 */
 var ColorGenerator = {	
 
-	colors: Settings.ball.colors,
+	colors: ["#2237FF", "#2237FF", "#FF0067", "#838FFF", "#FFD870", "#FFBC8C", 
+	"#FF70AA", "#FF004D", "#7716FF", "#FFE700"],
 
 	/**
 	* Returns a random color from the predefined color list above.
