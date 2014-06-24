@@ -81,6 +81,7 @@ var Settings = {
 	pole: {
 		size: 10,
 		color: "green",
+		hitColor: "orange",
 		maxsize: 60
 	},
 
@@ -115,7 +116,7 @@ var Settings = {
 		updateInterval: 5000,
 		radIncrStep: 3,
 		top: 5,
-		colors: ["#FF1919","#E61616","#CF1414","#BA1212","#A71010"], //From high to low
+		colors: ["#ADEE5D","#98E934","#80E800","#63B300","#4E8D00"], //From high to low
 		removalTime: 300000 //In milliseconds, the amount of time the highscore is saved after a disconnect from a player
 	},
 
