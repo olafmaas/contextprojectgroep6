@@ -79,6 +79,7 @@ var Settings = {
 	pole: {
 		size: 10,
 		color: "#8CFF8E",
+		minsize: 5,
 		maxsize: 60
 	},
 

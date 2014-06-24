@@ -31,7 +31,7 @@ var Pole = Ball.extend({
 	* @param {float} _radius - The radius of the pole
 	*/
 	constructor: function(_radius){
-		this.radius = _radius;
+		this.setRadius(_radius);
 		this.enableBody();
 		this.body.immovable = true;
 		this.ID = IDDistributor.getNewId();
@@ -111,6 +111,22 @@ var Pole = Ball.extend({
 		this.player = _player;
 		this.timer = new PlayerTimer(_player);
 		this.timer.startTimer();
+	},
+
+	/**
+	* Sets the radius of the pole, but between a min and max value
+	* 
+	* @method Pole#setRadius
+	* @Override
+	* @param {number} _radius - The radius that will be set
+	*/
+	setRadius: function(_radius){
+		if(_radius < Settings.pole.minsize)
+			this.radius = Settings.pole.minsize;
+		else if(_radius > Settings.pole.maxsize)
+			this.radius = Settings.pole.maxsize;
+		else
+			this.radius = _radius;
 	},
 
 	/**
