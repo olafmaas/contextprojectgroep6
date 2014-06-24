@@ -71,8 +71,13 @@ function ServerGame(_socketHandler){
 		}
 	};
 
+	//Get the player count
 	this.getPlayerCount = function(){
-		
+		var count = 0;
+
+		for(var gid in clientList){
+			if(clientList[gid] !== undefined) count++;
+		}
 	}
 	
 	/**
@@ -253,6 +258,9 @@ function ServerGame(_socketHandler){
 			}
 		}
 	};
+
+	//Function to count the players
+
 
 	//If you want some fancy function for the number of balls change ballsToBeAdded and ballsToBeRemoved.
 	function nofBallsToBeAdded(){ return getNewBallsPerPlayer();};
