@@ -16,6 +16,7 @@ if(typeof module != 'undefined'){
 */
 var Pole = Ball.extend({
 	hit: false,
+	radius: 1,
 	hitBy: -1,
 	coolDown: false,
 	prevColor: 0,
@@ -31,8 +32,8 @@ var Pole = Ball.extend({
 	* @param {float} _radius - The radius of the pole
 	*/
 	constructor: function(_radius){
-		this.radius = _radius;
 		this.enableBody();
+		this.setRadius(_radius);
 		this.body.immovable = true;
 		this.ID = IDDistributor.getNewId();
 	},
@@ -114,6 +115,24 @@ var Pole = Ball.extend({
 	},
 
 	/**
+	* Sets the radius of the pole, but between a min and max value
+	* 
+	* @method Pole#setRadius
+	* @Overrides Ball#setRadius
+	* @param {number} _radius - The radius that will be set
+	*/
+	setRadius: function(_radius){
+		var r = _radius;
+		if(r < Settings.pole.minsize) //not smaller than minsize
+			r = Settings.pole.minsize;
+		else if(r > Settings.pole.maxsize) //not bigger than maxsize
+			r = Settings.pole.maxsize;
+
+		this.radius = r;
+		this.body.setRadius(r);
+	},
+
+	/**
 	* Sets whether the powerup should be drawn
 	*
 	* @method Pole#setPowerupDraw
@@ -143,6 +162,16 @@ var Pole = Ball.extend({
 	* @return {Timer} - The timer belonging to the pole
 	*/
 	getTimer: function(){ return this.timer; },
+
+	/**
+	* Returns the radius of the pole
+	*
+	* @method Pole#getRadius
+	* @overrides Ball#getRadius
+	*/
+	getRadius: function(){
+		return this.radius;
+	},
 
 	/**
 	* Retrieves the ID of the pole

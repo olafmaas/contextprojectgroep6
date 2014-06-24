@@ -82,6 +82,7 @@ var Settings = {
 		size: 10,
 		color: "green",
 		hitColor: "red",
+		minsize: 5,
 		maxsize: 60
 	},
 
@@ -125,7 +126,6 @@ var Settings = {
 		interval: 200,
 		color: 'red'
 	}
-	
 }
 
 if(typeof module != 'undefined'){
