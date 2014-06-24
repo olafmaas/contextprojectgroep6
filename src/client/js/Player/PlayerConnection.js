@@ -58,7 +58,6 @@ function PlayerSocketHandler() {
 	//Adds the viewport meta tag when a user is in the game, so he can't scale anymore
 	function addViewport(){
 		var v = document.getElementById('viewport');
-		console.log(v.content);
 		v.content = "width=device-width, user-scalable=0 initial-scale=1.0, maximum-scale=1.0";
 	}
 
