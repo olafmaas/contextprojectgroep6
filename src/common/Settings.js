@@ -8,8 +8,8 @@ var Settings = {
 	updateInterval: 17,
 
 	/**** SERVER CONNECTION ****/
-	server: 'http://localhost',
-	//server: 'http://vps-76938-1774.hosted.at.hostnet.nl',	//Server Olaf
+	//server: 'http://localhost',
+	server: 'http://vps-76938-1774.hosted.at.hostnet.nl',	//Server Olaf
 	port: 5050,
 
 	playerLimit: 30,
@@ -20,7 +20,7 @@ var Settings = {
 	//want anders wordt de oude powerup overschreden met de nieuwe timer :D hier nog een fix voor zoeken.
 	smallShield: {
 		time: 10,
-		color: "greenyellow",
+		color: "lightblue",
 		length: 3.5,
 		path: "../client/img/powerup.png",
 		chance: 0.15
@@ -45,7 +45,7 @@ var Settings = {
 	bigPole: {
 		time: 10,
 		color: "aqua",
-		radius: 1.2, //by which factor the pole will be multiplied
+		radius: 1.5, //by which factor the pole will be multiplied
 		path: "../client/img/powerup.png",
 		chance: 0.15
 	},
@@ -84,7 +84,8 @@ var Settings = {
 		color: "green",
 		hitColor: "red",
 		minsize: 5,
-		maxsize: 60
+		maxsize: 60,
+		ring: 4 //size of the powerup ring around the pole
 	},
 
 	/**** SHIELD ****/
@@ -101,9 +102,7 @@ var Settings = {
 		//Positions of initial ball
 		x: 100,
 		y: 100,
-		nrOfNewBalls: 3, //Number of new balls created per player. 
-		colors: ["#2237FF", "#FFBA00", "#FF0067", "#838FFF", "#FFD870", "#FFBC8C", 
-	"#FF70AA", "#FF004D", "#7716FF", "#FFE700"]
+		nrOfNewBalls: 3 //Number of new balls created per player. 
 	},
 	
 	player: {
