@@ -87,13 +87,6 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 		var canvasRatio = canvas.height / canvas.width;
 		var windowRatio = window.innerHeight / window.innerWidth;
-		var windowWidth = window.innerWidth
-			|| document.documentElement.clientWidth
-			|| document.body.clientWidth;
-
-		var windowHeight = window.innerHeight
-			|| document.documentElement.clientHeight
-			|| document.body.clientHeight;
 
         if(hasResolution()){
         	this.updateResolution(windowRatio, canvasRatio)
@@ -107,12 +100,14 @@ function RenderEngine(_loadContent, _draw, _width, _height, _resWidth, _resHeigh
 
 	updateResolution = function(windowRatio, canvasRatio){
 		if (windowRatio < canvasRatio) {
-	            var height = window.innerHeight;
-	            scale = window.innerHeight/canvas.height;
+	        var height = window.innerHeight;
+	        scale = window.innerHeight/canvas.height;
+	        var width = canvas.width * scale;
     	} 
 		else {
             var width = window.innerWidth;
             scale = window.innerWidth/canvas.width;
+            var height = canvas.height * scale;
     	}
 		canvas.style.width = width + "px";
 		canvas.style.height = height + "px";

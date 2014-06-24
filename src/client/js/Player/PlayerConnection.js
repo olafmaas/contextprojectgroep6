@@ -15,6 +15,10 @@ function PlayerSocketHandler() {
 		showError("Username is already in use.");
 	});
 
+	socket.on('gameFull', function(){
+		showError("The current game is full.");
+	})
+
 	//Sets the playername and shows the canvas when a username is accepted
 	//by the server. It also removes the userform.
 	socket.on('showPlayerName', function (_name){
@@ -28,12 +32,14 @@ function PlayerSocketHandler() {
 
 		//Show the player where he is on the mainscreen
 		pole.indicateJoin();
-		//Make everything fullscreen
-        //screenfull.request(); //temporarily disabled 
 
         //make canvas visible again
         var gameElem = document.getElementById("gameCanvas");
         gameElem.style.display="block";
+
+        checkScreenRotation();
+        addViewport();
+        window.ontouchmove = sendShieldAngle; //Add this eventlistener
 	});
 
 	socket.on("cheaterDetected", function(){
@@ -41,18 +47,32 @@ function PlayerSocketHandler() {
 		window.location.replace("http://www.youtube.com/watch?v=dQw4w9WgXcQ");
 	})
 
+	//Checks the initial rotation of the screen and gives an message when the player has the
+	//device currently in portrait mode
+	function checkScreenRotation(){
+		if(Math.abs(window.orientation) != 90){
+			alert("For an optimal experience please hold your device horizontal.");
+		}
+	}
+
+	//Adds the viewport meta tag when a user is in the game, so he can't scale anymore
+	function addViewport(){
+		var v = document.getElementById('viewport');
+		v.content = "width=device-width, user-scalable=0 initial-scale=1.0, maximum-scale=1.0";
+	}
+
 	//Emits the chosen name to the sockethandler to be checked
 	this.checkName = function (n){
-		var error = document.getElementById("error");
-
 		if(n.indexOf("<") != -1){
-            error.innerHTML = "Brackets are not allowed";
+            showError("Brackets are not allowed");
         } else if(n.length == 0 || n == "null"){
-        	error.innerHTML = "name can not be empty or null";
+        	showError("name can not be empty or null");
         } else if(n.length >= Settings.player.maxNameLength){
-        	error.innerHTML = "Username is too long.";
+        	showError("Username is too long.");
         } else {
         	socket.emit('userName', n);
+        	//Make everything fullscreen
+        	screenfull.request(); //temporarily disabled 
         }
 	}
 
@@ -88,10 +108,10 @@ function PlayerSocketHandler() {
 	//When a mouse/finger is dragged across the screen,
 	//the shieldangle should be updated
 	window.onmousemove = sendShieldAngle;
-	window.ontouchmove = sendShieldAngle;
 
 	//Sends the shield angle to the sockethandler
-	function sendShieldAngle() {
+	function sendShieldAngle(e) {
+		e.preventDefault();
 		if(shield != undefined){
 			socket.emit('shieldAngle', shield.getAngle());
 		}
@@ -125,7 +145,7 @@ function PlayerSocketHandler() {
 	socket.on('addPowerup', function () {
 		res = PUController.createPowerup(leftOffset, topOffset);
 		if(res){
-			socket.emit('powerupSpawned', res.t, res.position)		
+			socket.emit('powerupSpawned', player.getGlobalID(), res.t, res.position)		
 		}
 	});
 
@@ -135,8 +155,8 @@ function PlayerSocketHandler() {
 	});
 
 	//For powerups, it should be able to click/tap on them
-	window.ontouchstart = handleTouchStart;
 	window.onmousedown = handleMouseDown;
+	window.ontouchstart = handleTouchStart;
 
 	//Handles the mousedown event and checks whether a powerup is clicked.
 	//If the powerup is clicked, it is sent to the server
@@ -157,6 +177,11 @@ function PlayerSocketHandler() {
 			socket.emit('powerupClicked', res.gid, res.t);
 		}
 	};
+
+	//
+	function handleTouchMove(e){
+		e.preventDefault();
+	}
 
 	////////////////
 	// Highscores //
@@ -189,7 +214,7 @@ function PlayerSocketHandler() {
 				player.setPoints(Settings.player.points + (Settings.player.step * count)); //Set points according to position in the highscore top
 				
 				if(player.getPowerup() == null){
-					player.getPole().setRadius(Settings.pole.size + count*2);
+					player.getPole().setRadius(Settings.pole.size + count * Settings.highScore.radIncrStep);
 				}
 			}
 			count--;
@@ -213,6 +238,7 @@ function PlayerSocketHandler() {
 	//Log when a connection fails.
 	socket.on('connect_failed', function (reason){ 
 		console.error('connect_failed: ', reason);
+		showError("Failed to make a connection");
 	});
 
 	//Log when an error occurs

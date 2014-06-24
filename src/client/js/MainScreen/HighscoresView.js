@@ -11,7 +11,7 @@ HighscoresView = function(){
 		scoresFontSize: "20px",
 
 		title: "Highscores:",
-		nameColTitle: "Name",
+		nameColTitle: "&nbsp;Name",
 		scoreColTitle: "Score",
 
 		overflow: "hidden",
@@ -58,8 +58,8 @@ HighscoresView = function(){
 	//Adds the html div used for a new score in the highscore list
 	this.newScoreDiv = function(_position, _score){
 		return "<div class=container>" + 
-					"<div class=Position>" + _position + ".</div>" +
-					"<div class=Name>" + _score.Name + "</div>" +
+					"<div class=Position>&nbsp;" + "<font color='" + (Settings.highScore.colors[_position] || Settings.pole.color) + "'>" + _position + ".</font>" + "</div>" +
+					"<div class=Name>&nbsp;" + _score.Name + "</div>" +
 					"<div class=Score>" + _score.Score + "</div>" +
 				"</div>";
 	}

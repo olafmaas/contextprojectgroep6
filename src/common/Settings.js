@@ -12,6 +12,8 @@ var Settings = {
 	//server: 'http://vps-76938-1774.hosted.at.hostnet.nl',	//Server Olaf
 	port: 5050,
 
+	playerLimit: 30,
+
 	/**** POWERUP TYPES ****/
 	//NOTE: time mag niet groter zijn dan de minimale spawntijd voor een nieuwe powerup.
 	//want anders wordt de oude powerup overschreden met de nieuwe timer :D hier nog een fix voor zoeken.
@@ -42,7 +44,7 @@ var Settings = {
 	bigPole: {
 		time: 10,
 		color: "aqua",
-		radius: 1.5, //by which factor the pole will be multiplied
+		radius: 1.2, //by which factor the pole will be multiplied
 		path: "../client/img/powerup.png",
 		chance: 0.15
 	},
@@ -58,8 +60,8 @@ var Settings = {
 	nrOfPowerups: 5,
 	powerupSize: 25,
 	removalTime: 4, //in seconds, how long a powerup is present on screen.
-	minTime: 5, //in seconds, minimum time between powerup spawns.
-	maxTime: 10, //in seconds, maximum time between powerup spawns.
+	minTime: 10, //in seconds, minimum time between powerup spawns.
+	maxTime: 30, //in seconds, maximum time between powerup spawns.
 	startAngle: 270, //The starting angle for the transition of the powerup when clicked (In degrees)
 
 	/**** LABEL POSITIONS ****/
@@ -72,13 +74,16 @@ var Settings = {
 	}, 
 
 	/**** CANVAS PROPERTIES ****/
-	canvasWidth: 800,
+	canvasWidth: 775,
 	canvasHeight: 450,
 	
 	/**** POLE ****/
 	pole: {
 		size: 10,
-		color: "blue"
+		color: "green",
+		hitColor: "red",
+		minsize: 5,
+		maxsize: 60
 	},
 
 	/**** SHIELD ****/
@@ -95,9 +100,11 @@ var Settings = {
 		//Positions of initial ball
 		x: 100,
 		y: 100,
-		nrOfNewBalls: 3 //Number of new balls created per player. 
+		nrOfNewBalls: 3, //Number of new balls created per player. 
+		colors: ["#2237FF", "#FFBA00", "#FF0067", "#838FFF", "#FFD870", "#FFBC8C", 
+	"#FF70AA", "#FF004D", "#7716FF", "#FFE700"]
 	},
-
+	
 	player: {
 		maxNameLength: 20, //maximum number of characters that can be used for a username
 		//Points for hitting player is now removed
@@ -108,17 +115,17 @@ var Settings = {
 	/**** HIGHSCORE PROPERTIES ****/	
 	highScore: {
 		updateInterval: 5000,
-		top: 3,
-		colors: ["#B8E6E6", "#66CCFF", "#3399FF", "#0066FF", "#0000FF"], //from blue to light-blue
-		removalTime: 300000 //in milliseconds, the amount of time the highscore is saved after a disconnect from a player
+		radIncrStep: 3,
+		top: 5,
+		colors: ["#ADEE5D","#98E934","#80E800","#63B300","#4E8D00"], //From high to low
+		removalTime: 300000 //In milliseconds, the amount of time the highscore is saved after a disconnect from a player
 	},
 
 	joinIndicator: {
-		times: 10,
+		times: 10,	//must be even!
 		interval: 200,
 		color: 'red'
 	}
-	
 }
 
 if(typeof module != 'undefined'){

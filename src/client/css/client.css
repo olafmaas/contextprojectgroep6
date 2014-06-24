@@ -24,14 +24,7 @@
 }
 
 #usernameBox button {
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    font-family: 'Indie Flower';
-    font-size: 10pt;
-    height: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: white;
+    margin-left: 0px;
 }
 
 #boxHeader {
@@ -58,14 +51,15 @@
     margin-bottom: 2px;
 }
 
-#toggleControls {
+button {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     font-family: 'Indie Flower';
     font-size: 10pt;
     margin-left: 35px;
     margin-top: 5px;
-    color: white;
+    color: black;
+    background-color: rgb(204,204,204);
 }
 
 #hint {

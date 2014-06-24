@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Player</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, user-scalable=0">
+        <meta id="viewport" name="viewport" content="width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -81,7 +81,7 @@
 
         <button id="toggleControls" onclick="toggle()"> Show/hide game info </button> </br>
 
-        <div id="gameControls" style="display: none;">
+        <div id="gameControls" style="display: block;">
             Protect your pole from the incoming balls and show who's the best by ranking up against other players!
 
             <div id="controlHeader">Some basic stuff you might want to know about: </div> <!-- controlHeader -->
@@ -91,25 +91,25 @@
 
             <div class="clear"> </div> <!-- clear -->
 
-            <img src="img/controlGuide/highscore.png" alt="Highscore" height="100"/>
-            In case you are rocking the game, you might end up high in the leaderboards. Depending on your position in there, it might happen that your pole changes color and starts to become a bit bigger. Just a little challenge for our top players.
+            <img src="img/controlGuide/highscore.png" alt="Highscore" height="80"/>
+            In case you are rocking the game, you might end up high in the leaderboards. Depending on your position in there, it might happen that your pole changes color and becomes a bit bigger. Just a little challenge for our top players.
 
             <div class="clear"> </div> <!-- clear -->
 
-            <img src="img/controlGuide/powerup.png" alt="Powerup" height="85"/>
+            <img src="img/controlGuide/powerup.png" alt="Powerup" height="82"/>
             Whenever you see this icon, tap it! It is a powerup and it could help you protect your pole. But be aware: some powerups might give you a disadvantage. 
             <div id="hint"> Hint: Keep a close look at the color of the ring around the powerup. </div> <!-- hint -->         
 
             <div class="clear"> </div> <!-- clear -->
 
-            <img src="img/controlGuide/powerup_active.png" alt="Active Powerup" height="70"/>
+            <img src="img/controlGuide/powerup_active.png" alt="Active Powerup" height="80"/>
             After you've tapped a powerup, you will see a ring around your pole. This ring indicates which powerup is currently active (color) and for how long. Whenever the ring runs out, the powerup will no longer be active. 
         </div> <!-- End gameControls -->
     </div> <!-- End removeAfterStart -->
     </body>
 
     <script>
-        var state = true; //Used to toggle between show/hide game info
+        var state = false; //Used to toggle between show/hide game info
         function toggle(){
             var description = document.getElementById("gameControls");
             if(state){
@@ -125,9 +125,7 @@
         var s = new PlayerSocketHandler();
         function startPlaying() {
             var n = document.getElementById("firstname").value;
-        
             s.checkName(n);
-
         }
     </script>
 </html>

@@ -9,6 +9,12 @@ body a{
     color: white;
 }
 
+#gameCanvas{
+    border: 1px solid white;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
 #HighscoresView{
     float:left;
 }
@@ -36,9 +42,8 @@ body a{
 
 #gameDiv{
     float:left;
-    width: 80%;
-    
-    
+    width: 80%; 
+
 }
 
 #Title{

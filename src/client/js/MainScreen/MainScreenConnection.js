@@ -78,8 +78,8 @@ function MainScreenSocketHandler(){
 	// Powerup updates //
 	/////////////////////	
 
-	socket.on('powerupSpawned', function (_ptype, _plocation){
-		PUcontroller.createPowerup(_ptype, _plocation);
+	socket.on('powerupSpawned', function (_pid, _ptype, _plocation){
+		PUcontroller.createPowerup(_pid, _ptype, _plocation);
 	});
 
 	socket.on('powerupClicked', function (_pid, _ptype) {
@@ -128,7 +128,7 @@ function MainScreenSocketHandler(){
 				player.getPole().setColor(colors[i]);
 				
 				if(player.getPowerup() == null){
-					player.getPole().setRadius(Settings.pole.size + count*2);
+					player.getPole().setRadius(Settings.pole.size + count * Settings.highScore.radIncrStep);
 				}
 			}
 			count--;
