@@ -78,7 +78,7 @@ Drawer = function(_canvasContext){
 	* @param {object} _powerup - The powerup object to be drawn
 	*/
 	this.drawPowerup = function (_powerup){
-		drawCoolDown(_powerup, 2); //powerup should have a cooldown effect
+		this.drawCoolDown(_powerup, 0); //powerup should have a cooldown effect
 	};
 
 	/**
@@ -91,7 +91,7 @@ Drawer = function(_canvasContext){
 	this.drawPowerupSkin = function (_pole){
 		var powerup = _pole.player.getPowerup();
 		if(powerup != null && _pole.getPowerupDraw()){
-			drawCoolDown(_pole, Settings.pole.ring, powerup.getColor());
+			this.drawCoolDown(_pole, Settings.pole.ring, powerup.getColor());
 		}
 	}
 
