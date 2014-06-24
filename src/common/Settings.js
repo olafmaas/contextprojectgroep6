@@ -12,7 +12,7 @@ var Settings = {
 	//server: 'http://vps-76938-1774.hosted.at.hostnet.nl',	//Server Olaf
 	port: 5050,
 
-	playerLimit: 4,
+	playerLimit: 30,
 
 	/**** POWERUP TYPES ****/
 	//NOTE: time mag niet groter zijn dan de minimale spawntijd voor een nieuwe powerup.
