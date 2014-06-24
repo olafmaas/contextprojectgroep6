@@ -82,6 +82,7 @@ var Settings = {
 		size: 10,
 		color: "green",
 		hitColor: "orange",
+		minsize: 5,
 		maxsize: 60
 	},
 
