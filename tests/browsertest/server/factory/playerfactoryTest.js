@@ -13,8 +13,8 @@ describe("PlayerFactory", function(){
 	describe("#createPole", function(){
 		it("returns a pole on position", function(){
 			var pole = PlayerFactory.createPole(polePos);
-			expect(pole.getPosition().x).to.equal(polePos.left * S.canvasWidth + S.canvasWidth/2);
-			expect(pole.getPosition().y).to.equal(polePos.top * S.canvasHeight + S.canvasHeight/2);
+			expect(pole.getPosition().x).to.equal(Math.round(polePos.left * S.canvasWidth + S.canvasWidth/2));
+			expect(pole.getPosition().y).to.equal(Math.round(polePos.top * S.canvasHeight + S.canvasHeight/2));
 		})
 	})
 

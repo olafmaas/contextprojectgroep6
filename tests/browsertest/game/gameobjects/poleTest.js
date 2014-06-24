@@ -9,7 +9,7 @@ describe("Pole", function(){
 		it("Should change the color, save the highscore and change the color on a hit", function(){
 			p.isHit();
 
-			expect(p.getColor()).to.equal('darkOrange');
+			expect(p.getColor()).to.equal(Settings.pole.hitColor);
 			expect(p.player.getHighscore()).to.equal(10);
 			expect(p.player.getScore()).to.equal(0);
 		})
