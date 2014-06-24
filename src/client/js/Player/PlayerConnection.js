@@ -26,9 +26,6 @@ function PlayerSocketHandler() {
 		player.setScore(0);
 		nameLabel.setText(_name);
 
-		//Make everything fullscreen
-        screenfull.request();
-
 		//Remove the username part
 		var elem = document.getElementById("removeAfterStart");
 		elem.outerHTML = "";
@@ -75,6 +72,8 @@ function PlayerSocketHandler() {
         	showError("Username is too long.");
         } else {
         	socket.emit('userName', n);
+        	//Make everything fullscreen
+        	screenfull.request(); //temporarily disabled 
         }
 	}
 
