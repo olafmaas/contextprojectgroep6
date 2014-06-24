@@ -50,10 +50,9 @@ var Pole = Ball.extend({
 			this.prevColor = this.getColor(); //retrieve original color
 			this.setColor(Settings.pole.hitColor); //set new color to indicate being hit
 			this.saveHighscore(); //Save current score if highscore
-			this.hit = false; //remove hit flag
 			this.hitBy = -1; //remove hitBy
 			var savedThis = this;
-			setTimeout(function() { savedThis.setColor(savedThis.prevColor); savedThis.coolDown = false  }, 1000); //set cooldown period
+			setTimeout(function() { savedThis.setColor(savedThis.prevColor); savedThis.coolDown = false; savedThis.hit = false; }, 1000); //set cooldown period
 		}
 	},
 
