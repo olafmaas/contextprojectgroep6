@@ -25,7 +25,6 @@ function SocketHandler(_io){
 	this.connectClient = function(socket, serverGame){
 		clientSockets[socket.id] = socket;
 		var clientCount = serverGame.getPlayerCount();
-		console.log(clientCount);
 
 		socket.on('userName', function (name){
 			var checkName = name.toLowerCase();
