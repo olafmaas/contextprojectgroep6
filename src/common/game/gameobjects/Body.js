@@ -19,10 +19,6 @@ var Body = Base.extend({
 	velocity: 0, //The velocity of the circle
 	velocityDirection: 0, //The direction the ball is moving in
 	vectorVelocity: {x: 0, y: 0}, //velocity of circle split in a vector
-	lastUpdate: Date.now(),
-	deltaTime: 0,
-	demping: 20,
-	starting: true,
 
 	/**
 	* Updates the position of the body
@@ -30,22 +26,13 @@ var Body = Base.extend({
 	* @method Body#update
 	*/
 	update: function(){
-		if(!this.starting){
-			this.deltaTime = (Date.now() - this.lastUpdate) / this.demping;
-		}else{
-			this.deltaTime = 1;
-			this.starting = false;
-		}
-
-		this.lastUpdate = Date.now();
-
 		//If the body is static it should be immovable
 		if(this.immovable) return;
 		//Keep velocityDirection value between 0 and 2pi
 		this.velocityDirection = this.velocityDirection % (2 * Math.PI);
 
-		this.position.x += this.vectorVelocity.x * this.deltaTime;
-		this.position.y += this.vectorVelocity.y * this.deltaTime;
+		this.position.x += this.vectorVelocity.x;
+		this.position.y += this.vectorVelocity.y;
 	},
 
 	handleCollision: function(_other){	}, //abstract function.
